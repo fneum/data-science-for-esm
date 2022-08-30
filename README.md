@@ -1,6 +1,6 @@
 # Data Science for Energy System Modelling
 
-Course at TU Berlin to learn energy system modelling with data.-
+Course at TU Berlin to learn energy system modelling with data.
 
 ## Usage
 

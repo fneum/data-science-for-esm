@@ -1,16 +1,5 @@
-# Welcome to your Jupyter Book
-
-This is a small sample book to give you a feel for how book content is
-structured.
+# Welcome to Data Science for Energy System Modelling
 
 :::{note}
-Here is a note!
+Course materials other than practical introductions to Python packages can be found on [ISIS](https://isis.tu-berlin.de/course/view.php?id=30525)
 :::
-
-And here is a code block:
-
-```
-e = mc^2
-```
-
-Check out the content pages bundled with this sample book to see more.

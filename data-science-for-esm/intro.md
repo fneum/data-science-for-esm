@@ -12,12 +12,8 @@ This section is adapted from the following resource:
 ## Python
 
 Python and nearly all of the software packages in the scientific python
-ecosystem are [open-source](https://opensource.org/).
-
-Coordinating the compatibility between these different packages and their
-multiple versions used to be a nightmare!
-
-Fortunately, the problem is solved by using a Python _distribution_ and/or _package manager_.
+ecosystem are [open-source](https://opensource.org/). Coordinating the compatibility between these different packages and their
+multiple versions used to be a nightmare! Fortunately, the problem is solved by using a Python _distribution_ and/or _package manager_.
 
 One important rule about data science in Python is:
 
@@ -35,9 +31,9 @@ Follow the link above to obtain a one-click installers for your operating system
 
 ## Accessing the Command Line
 
-For Linux and MacOS users, you can access the command line by opening the _terminal_ program.
+For **Linux and MacOS users**, you can access the command line by opening the _terminal_ program.
 
-For Windows users, you should first install Anaconda (described above) or Miniconda (described below), which gives you access to the "Anaconda Prompt" desktop application. (Instructions for this are given on the [Andaconda Website](https://docs.anaconda.com/anaconda/user-guide/getting-started/#write-a-python-program-using-anaconda-prompt-or-terminal).)
+For **Windows users**, you should first install Anaconda (described above) or Miniconda (described below), which gives you access to the "Anaconda Prompt" desktop application. (Instructions for this are given on the [Andaconda Website](https://docs.anaconda.com/anaconda/user-guide/getting-started/#write-a-python-program-using-anaconda-prompt-or-terminal).)
 
 From the Anaconda Prompt, you should be able to run `conda` and other shell commands.
 
@@ -63,8 +59,8 @@ To use this environment, simply "activate" it by executing:
 
     $ conda activate my_environment
 
-You should now see the string `(my_environment)`
-prepended to your prompt. Now, if you execute any Python-related tool from the
+You should now see the string `(my_environment)` prepended to your prompt.
+Now, if you execute any Python-related tool from the
 command line, it will first search in your environment.
 
 To install additional packages into your environment:
@@ -86,16 +82,11 @@ To see all the environments on your system:
 To get a complete summary of all the packages installed in your environment, run
 
     $ conda list
-    
-
 
 If you want to permanently remove an environment and delete all the data
 associated with it:
 
     $ conda env remove --name my_environment --all
-
-For extensive documentation on using environments, please see
-[the conda documentation](https://conda.io/docs/using/envs.html).
 
 A conda environment can also be defined through an `environment.yaml` file. With that file, a new environment with the exact
 configuration can be installed by executing
@@ -103,6 +94,9 @@ configuration can be installed by executing
     $ conda env create -f my_environment.yml
 
 Below we will see an example of an environment file.
+
+For extensive documentation on using environments, please see
+[the conda documentation](https://conda.io/docs/using/envs.html).
 
 ## Speeding things up with Mamba
 

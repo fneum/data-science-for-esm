@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Introduction to pandas" href="03-workshop-pandas.html" />
@@ -275,7 +277,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/fneum/data-science-for-esm/main?urlpath=tree/docs/02-workshop-numpy.ipynb"
+        <a href="https://mybinder.org/v2/gh/fneum/data-science-for-esm/main?urlpath=tree/data-science-for-esm/02-workshop-numpy.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -293,7 +295,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/fneum/data-science-for-esm/blob/main/docs/02-workshop-numpy.ipynb"
+        <a href="https://colab.research.google.com/github/fneum/data-science-for-esm/blob/main/data-science-for-esm/02-workshop-numpy.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -546,6 +548,11 @@ title="Print to PDF"
    Bar Plots
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -671,6 +678,11 @@ title="Print to PDF"
    Bar Plots
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -716,6 +728,7 @@ title="Print to PDF"
 <section id="importing-a-package">
 <h2>Importing a Package<a class="headerlink" href="#importing-a-package" title="Permalink to this headline">#</a></h2>
 <p>This will be our first experience with <em>importing</em> a package.</p>
+<p>Usually we import numpy with the alias np (to avoid having to type out n-u-m-p-y every time we want to use it).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -725,7 +738,8 @@ title="Print to PDF"
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you have not yet set up Python on your computer, you can execute this tutorial in your browser via Google Colab. Click on the rocket in the top right corner and launch “Colab”. Then install <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> by executing the following command in a Jupyter cell.</p>
+<p>If you have not yet set up Python on your computer, you can execute this tutorial in your browser via Google Colab. Click on the rocket in the top right corner and launch “Colab”. If you have not yet set up Python on your computer, you can execute this tutorial in your browser via <a class="reference external" href="https://colab.research.google.com/">Google Colab</a>. Click on the rocket in the top right corner and launch “Colab”. If that doesn’t work download the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file and import it in <a class="reference external" href="https://colab.research.google.com/">Google Colab</a></p>
+<p>Then install <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> by executing the following command in a Jupyter cell.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>!pip install matplotlib numpy
 </pre></div>
 </div>
@@ -879,11 +893,11 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.39902857, 0.40707857],
-       [0.44098808, 0.16932034],
-       [0.71199781, 0.77641263],
-       [0.02046198, 0.45977036],
-       [0.43797334, 0.91920516]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.3106443 , 0.63475083],
+       [0.91461537, 0.44276753],
+       [0.84512159, 0.0390022 ],
+       [0.07711496, 0.94850767],
+       [0.21539481, 0.97053154]])
 </pre></div>
 </div>
 </div>
@@ -1067,7 +1081,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbbd015e040&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7efdf892ff10&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_39_1.png" src="_images/02-workshop-numpy_39_1.png" />
@@ -1116,7 +1130,7 @@ He we use <code class="docutils literal notranslate"><span class="pre">pcolormes
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7fbbd00cff10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7efdf893ffa0&gt;
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_45_1.png" src="_images/02-workshop-numpy_45_1.png" />
@@ -1131,7 +1145,7 @@ He we use <code class="docutils literal notranslate"><span class="pre">pcolormes
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7fbbc8d046a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7efdf8804ca0&gt;
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_47_1.png" src="_images/02-workshop-numpy_47_1.png" />
@@ -1225,7 +1239,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7fbbd004afd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7efdf8774e80&gt;
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_56_1.png" src="_images/02-workshop-numpy_56_1.png" />
@@ -1292,7 +1306,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbbc8be07f0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7efdf860c640&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_63_1.png" src="_images/02-workshop-numpy_63_1.png" />
@@ -1305,7 +1319,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbbd015ed00&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7efdf86cd790&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_64_1.png" src="_images/02-workshop-numpy_64_1.png" />
@@ -1421,7 +1435,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbbc89f12b0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7efdf8462160&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_76_1.png" src="_images/02-workshop-numpy_76_1.png" />
@@ -1435,7 +1449,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbbc89739a0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7efdf83e44f0&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_78_1.png" src="_images/02-workshop-numpy_78_1.png" />
@@ -1452,7 +1466,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbbc88b8910&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7efdf82ae670&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_80_1.png" src="_images/02-workshop-numpy_80_1.png" />
@@ -1490,8 +1504,8 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbbc8766ee0&gt;,
- &lt;matplotlib.lines.Line2D at 0x7fbbc8766f40&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7efdf8159a60&gt;,
+ &lt;matplotlib.lines.Line2D at 0x7efdf8159ac0&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_84_1.png" src="_images/02-workshop-numpy_84_1.png" />
@@ -1506,8 +1520,8 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbbc86f6700&gt;,
- &lt;matplotlib.lines.Line2D at 0x7fbbc86f6760&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7efdf80e86d0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x7efdf80e8730&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_86_1.png" src="_images/02-workshop-numpy_86_1.png" />
@@ -1524,7 +1538,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbbc8688070&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7efdf806ad90&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_88_1.png" src="_images/02-workshop-numpy_88_1.png" />
@@ -1543,7 +1557,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbbc860e970&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7efdd9d48790&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_90_1.png" src="_images/02-workshop-numpy_90_1.png" />
@@ -1562,7 +1576,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbbc8594d60&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7efdd9ccebe0&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_92_1.png" src="_images/02-workshop-numpy_92_1.png" />
@@ -1601,7 +1615,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fbbc84947c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7efdd9bcd820&gt;
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_96_1.png" src="_images/02-workshop-numpy_96_1.png" />
@@ -1631,6 +1645,59 @@ If the last two dimensions have the same length, then the two arrays can be broa
 <img alt="_images/02-workshop-numpy_99_0.png" src="_images/02-workshop-numpy_99_0.png" />
 </div>
 </div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<p>Import numpy under the alias <code class="docutils literal notranslate"><span class="pre">np</span></code>.</p>
+<p>Create the following arrays:</p>
+<ol class="simple">
+<li><p>Create an array of 5 zeros.</p></li>
+<li><p>Create an array of 10 ones.</p></li>
+<li><p>Create an array of 5 <span class="math notranslate nohighlight">\(\pi\)</span> values.</p></li>
+<li><p>Create an array of the integers 1 to 20.</p></li>
+<li><p>Create a 5 x 5 matrix of ones with a dtype <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p></li>
+</ol>
+<p>Create a 3D matrix of 3 x 3 x 3 full of random numbers drawn from a standard normal distribution (hint: <code class="docutils literal notranslate"><span class="pre">np.random.randn()</span></code>)</p>
+<p>Create an array of 20 linearly spaced numbers between 1 and 10.</p>
+<p>Below I’ve defined an array of shape 4 x 4. Use indexing to procude the given outputs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">26</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1,  2,  3,  4,  5],
+       [ 6,  7,  8,  9, 10],
+       [11, 12, 13, 14, 15],
+       [16, 17, 18, 19, 20],
+       [21, 22, 23, 24, 25]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">24</span><span class="p">,</span> <span class="mi">25</span><span class="p">]])</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([</span> <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">]])</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mi">8</span><span class="p">,</span>  <span class="mi">9</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>Calculate the sum of all the numbers in <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p>
+<p>Calculate the sum of each row in <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p>
+<p>Extract all values of <code class="docutils literal notranslate"><span class="pre">a</span></code> greater than the mean of <code class="docutils literal notranslate"><span class="pre">a</span></code> (hint: use a boolean mask).</p>
+<p>Find the location of the minimum value in the following array <code class="docutils literal notranslate"><span class="pre">b</span></code>:</p>
 </section>
 </section>
 

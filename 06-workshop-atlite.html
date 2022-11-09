@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Introduction to atlite &#8212; Data Science for Energy System Modelling</title>
+    <title>Introduction to rasterio and atlite &#8212; Data Science for Energy System Modelling</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -169,6 +169,12 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     rasterio
+    </span>
+   </code>
+   and
    <code class="docutils literal notranslate">
     <span class="pre">
      atlite
@@ -408,23 +414,120 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repetition-of-vector-data">
+   Repetition of Vector Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#raster-data-with-rasterio">
+   Raster Data with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     rasterio
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#land-eligibility-analysis-with-atlite">
+   Land Eligibility Analysis with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     atlite
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combined-spatial-and-temporal-availability">
+   Combined Spatial and Temporal Availability
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introduction to atlite</h1>
+                <h1>Introduction to rasterio and atlite</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repetition-of-vector-data">
+   Repetition of Vector Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#raster-data-with-rasterio">
+   Raster Data with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     rasterio
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#land-eligibility-analysis-with-atlite">
+   Land Eligibility Analysis with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     atlite
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combined-spatial-and-temporal-availability">
+   Combined Spatial and Temporal Availability
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -432,19 +535,681 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-atlite">
-<h1>Introduction to <code class="docutils literal notranslate"><span class="pre">atlite</span></code><a class="headerlink" href="#introduction-to-atlite" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-rasterio-and-atlite">
+<h1>Introduction to <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> and <code class="docutils literal notranslate"><span class="pre">atlite</span></code><a class="headerlink" href="#introduction-to-rasterio-and-atlite" title="Permalink to this headline">#</a></h1>
+<p>Today, we’re going to cover two new Python packages:</p>
+<p><strong>Rasterio: access to geospatial raster data</strong></p>
+<blockquote>
+<div><p>Geographic information systems use GeoTIFF and other formats to organize and store gridded raster datasets such as satellite imagery and terrain models. Rasterio reads and writes these formats and provides a Python API based on Numpy N-dimensional arrays and GeoJSON.</p>
+</div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Documentation for this package is available at <a class="reference external" href="https://atlite.readthedocs.io/en/latest/">https://atlite.readthedocs.io/en/latest/</a>.</p>
+<p>Documentation for rasterio is available at <a class="reference external" href="https://rasterio.readthedocs.io/en/latest/index.html">https://rasterio.readthedocs.io/en/latest/index.html</a>.</p>
 </div>
+<p><strong>Atlite: Convert weather data to energy systems data</strong></p>
+<blockquote>
+<div><p>Atlite is a free software, xarray-based Python library for converting weather data (such as wind speeds, solar radiation, temperature and runoff) into power systems data (such as wind power, solar power, hydro power and heating demand time series).</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Documentation for atlite is available at <a class="reference external" href="https://atlite.readthedocs.io/en/latest/">https://atlite.readthedocs.io/en/latest/</a>.</p>
+<p>This tool is developed here at TU Berlin in the group of Digital Transformation of Energy Systems.</p>
+</div>
+<section id="repetition-of-vector-data">
+<h2>Repetition of Vector Data<a class="headerlink" href="#repetition-of-vector-data" title="Permalink to this headline">#</a></h2>
+<p>In the last tutorial, we used <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> to work with <strong>vector data</strong> (e.g. points, lines, polygons):</p>
+<p>Importing the package:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">atlite</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Reading the file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://tubcloud.tu-berlin.de/s/7bpHrAkjMT3ADSr/download/country_shapes.geojson&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Inspecting the GeoDataFrame</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>geometry</th>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>VN</th>
+      <td>MULTIPOLYGON (((107.49807 14.74595, 107.50928 ...</td>
+    </tr>
+    <tr>
+      <th>YE</th>
+      <td>MULTIPOLYGON (((52.09954 18.72304, 52.14233 18...</td>
+    </tr>
+    <tr>
+      <th>ZA</th>
+      <td>MULTIPOLYGON (((19.99292 -24.77585, 20.01049 -...</td>
+    </tr>
+    <tr>
+      <th>ZM</th>
+      <td>POLYGON ((32.92086 -9.40790, 32.92303 -9.46629...</td>
+    </tr>
+    <tr>
+      <th>ZW</th>
+      <td>POLYGON ((25.25978 -17.79411, 25.26671 -17.800...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This dataset uses ISO-2 country codes as index: <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2</a>.</p>
+</div>
+<p>Plotting the GeoDataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgrey&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/06-workshop-atlite_13_1.png" src="_images/06-workshop-atlite_13_1.png" />
+</div>
+</div>
+<p>Reprojecting geometries in the GeoDataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">cartopy</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crs</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">EqualEarth</span><span class="p">()</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">crs</span><span class="p">)</span>
+
+<span class="n">countries</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">crs</span><span class="o">.</span><span class="n">proj4_init</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgrey&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;GeoAxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/06-workshop-atlite_16_1.png" src="_images/06-workshop-atlite_16_1.png" />
+</div>
+</div>
+</section>
+<section id="raster-data-with-rasterio">
+<h2>Raster Data with <code class="docutils literal notranslate"><span class="pre">rasterio</span></code><a class="headerlink" href="#raster-data-with-rasterio" title="Permalink to this headline">#</a></h2>
+<p>But we haven’t worked with <strong>raster data</strong> yet!</p>
+<p>One useful package for working with raster data is <code class="docutils literal notranslate"><span class="pre">rasterio</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rasterio</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With rasterio, we can for instance load GeoTIFF files.</p>
+<p>In the example below, we load the CORINE land cover classification for Portugal:</p>
+<p><a class="reference external" href="https://land.copernicus.eu/pan-european/corine-land-cover">https://land.copernicus.eu/pan-european/corine-land-cover</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clc</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;../../materials/corine/U2018_CLC2018_V2020_20u1-PT.tif&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">CPLE_OpenFailedError</span><span class="g g-Whitespace">                      </span>Traceback (most recent call last)
+<span class="nn">File rasterio/_base.pyx:261,</span> in <span class="ni">rasterio._base.DatasetBase.__init__</span><span class="nt">()</span>
+
+<span class="nn">File rasterio/_shim.pyx:78,</span> in <span class="ni">rasterio._shim.open_dataset</span><span class="nt">()</span>
+
+<span class="nn">File rasterio/_err.pyx:215,</span> in <span class="ni">rasterio._err.exc_wrap_pointer</span><span class="nt">()</span>
+
+<span class="ne">CPLE_OpenFailedError</span>: ../../materials/corine/U2018_CLC2018_V2020_20u1-PT.tif: No such file or directory
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">RasterioIOError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">clc</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;../../materials/corine/U2018_CLC2018_V2020_20u1-PT.tif&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.9/site-packages/rasterio/env.py:437,</span> in <span class="ni">ensure_env_with_credentials.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">434</span>     <span class="n">session</span> <span class="o">=</span> <span class="n">DummySession</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">436</span> <span class="k">with</span> <span class="n">env_ctor</span><span class="p">(</span><span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">437</span>     <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.9/site-packages/rasterio/__init__.py:220,</span> in <span class="ni">open</span><span class="nt">(fp, mode, driver, width, height, count, crs, transform, dtype, nodata, sharing, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span> <span class="c1"># Create dataset instances and pass the given env, which will</span>
+<span class="g g-Whitespace">    </span><span class="mi">217</span> <span class="c1"># be taken over by the dataset&#39;s context manager if it is not</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span> <span class="c1"># None.</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span> <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;r&#39;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">220</span>     <span class="n">s</span> <span class="o">=</span> <span class="n">DatasetReader</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="n">driver</span><span class="p">,</span> <span class="n">sharing</span><span class="o">=</span><span class="n">sharing</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span> <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;r+&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>     <span class="n">s</span> <span class="o">=</span> <span class="n">get_writer_for_path</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="n">driver</span><span class="p">)(</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span>         <span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="n">driver</span><span class="p">,</span> <span class="n">sharing</span><span class="o">=</span><span class="n">sharing</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="p">)</span>
+
+<span class="nn">File rasterio/_base.pyx:263,</span> in <span class="ni">rasterio._base.DatasetBase.__init__</span><span class="nt">()</span>
+
+<span class="ne">RasterioIOError</span>: ../../materials/corine/U2018_CLC2018_V2020_20u1-PT.tif: No such file or directory
+</pre></div>
+</div>
+</div>
+</div>
+<p>Datasets can have one or more bands (or layers), which can be read with the <code class="docutils literal notranslate"><span class="pre">.read()</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="n">clc</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The returned object is a 2-dimensional <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">band</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.ndarray
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5662, 3404)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The band values correspond to a land cover and land use classification scheme with class values as listed at <a class="reference external" href="https://collections.sentinel-hub.com/corine-land-cover/readme.html">https://collections.sentinel-hub.com/corine-land-cover/readme.html</a>.</p>
+<p>This is an example of <strong>categorical values</strong> in raster data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">band</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-128,    1,    2,    3,    4,    5,    6,    7,    8,    9,   10,
+         11,   12,   13,   14,   15,   16,   17,   18,   19,   20,   21,
+         22,   23,   24,   25,   26,   27,   28,   29,   30,   31,   32,
+         33,   35,   37,   38,   39,   40,   41,   42,   43,   44],
+      dtype=int8)
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are two common options to plot raster data:</p>
+<ul class="simple">
+<li><p>with <code class="docutils literal notranslate"><span class="pre">plt.imshow()</span></code></p></li>
+<li><p>with <code class="docutils literal notranslate"><span class="pre">rasterio.plot.show()</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fed92679b80&gt;
+</pre></div>
+</div>
+<img alt="_images/06-workshop-atlite_32_1.png" src="_images/06-workshop-atlite_32_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rasterio.plot</span> <span class="kn">import</span> <span class="n">show</span>
+<span class="n">show</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/06-workshop-atlite_33_0.png" src="_images/06-workshop-atlite_33_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The integrated <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> plotting functionality is slightly more powerful.</p>
+<p>For instance, it can label the axes with proper geo-referenced extents.</p>
+<p>These are stored in the <code class="docutils literal notranslate"><span class="pre">.crs</span></code>, <code class="docutils literal notranslate"><span class="pre">.bounds</span></code> and <code class="docutils literal notranslate"><span class="pre">.transform</span></code> attributes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clc</span><span class="o">.</span><span class="n">crs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRS.from_epsg(3035)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clc</span><span class="o">.</span><span class="n">bounds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BoundingBox(left=2635400.0, bottom=1732500.0, right=2975800.0, top=2298700.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clc</span><span class="o">.</span><span class="n">transform</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Affine(100.0, 0.0, 2635400.0,
+       0.0, -100.0, 2298700.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can pass the information on the projection to the <code class="docutils literal notranslate"><span class="pre">rasterio.plot.show()</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rasterio.plot</span> <span class="kn">import</span> <span class="n">show</span>
+<span class="n">show</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">clc</span><span class="o">.</span><span class="n">transform</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/06-workshop-atlite_39_0.png" src="_images/06-workshop-atlite_39_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s quickly load another dataset with <strong>continuous values</strong>: The elevation and water depth in and around Portugal.</p>
+<p>This dataset comes from <a class="reference external" href="https://www.gebco.net/data_and_products/gridded_bathymetry_data/">GEBCO Gridded Bathymetry Data</a> and has another file format <code class="docutils literal notranslate"><span class="pre">.nc</span></code> (netCDF) which also stores raster data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gebco</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;../../materials/gebco/GEBCO_2014_2D-PT.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="n">gebco</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">band</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-2898, -2862, -2856, ...,  1915,  1926,  1959], dtype=int16)
+</pre></div>
+</div>
+</div>
+</div>
+<p>For plotting, we can also display <strong>vector and raster data together</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">countries</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;PT&quot;</span><span class="p">,</span> <span class="s2">&quot;ES&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">gebco</span><span class="o">.</span><span class="n">transform</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/06-workshop-atlite_45_1.png" src="_images/06-workshop-atlite_45_1.png" />
+</div>
+</div>
+</section>
+<section id="land-eligibility-analysis-with-atlite">
+<h2>Land Eligibility Analysis with <code class="docutils literal notranslate"><span class="pre">atlite</span></code><a class="headerlink" href="#land-eligibility-analysis-with-atlite" title="Permalink to this headline">#</a></h2>
+<p>To estimate the wind and solar generation potential of a country, land usage constraints need to be taken into account.</p>
+<p>Data required to determine the eligible areas is stored as <strong>raster</strong> and <strong>vector</strong> data.</p>
+<p><strong>Examples:</strong></p>
+<ul class="simple">
+<li><p><strong>Vector Data:</strong> natural protection areas, settlements</p></li>
+<li><p><strong>Raster Data:</strong> roads, airports, type of land, elevation, slope</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">atlite</span></code> library has some useful features to handle exclusion constraints for both datatypes.</p>
+<p>The core object to do land elibility analysis in <code class="docutils literal notranslate"><span class="pre">atlite</span></code> is the <code class="docutils literal notranslate"><span class="pre">ExclusionContainer</span></code>, which serves as a container for all rasters and geometries we want to exclude (or possibly include).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">atlite.gis</span> <span class="kn">import</span> <span class="n">ExclusionContainer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In many cases, rasters and geometries have different projections and resolutions. Therefore, the <code class="docutils literal notranslate"><span class="pre">ExclusionContainer</span></code> is initialized by a CRS and a resolution which suits as a basis for all added rasters and geometries. Per default the CRS is 3035 and the resoultion 100, which leads set a raster of 100 meter resolution. All rasters and geometries will be converted to this CRS and resolution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">excluder</span> <span class="o">=</span> <span class="n">ExclusionContainer</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="mi">3035</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s add our first exclusion criteria, the Natura2000 natural protection areas, to the container using the <code class="docutils literal notranslate"><span class="pre">excluder.add_geometry()</span></code> function. This function is for vector data. It’s sibling, <code class="docutils literal notranslate"><span class="pre">excluder.add_raster()</span></code> we will use later.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">excluder</span><span class="o">.</span><span class="n">add_geometry</span><span class="p">(</span><span class="s1">&#39;../../materials/natura/Natura2000_end2021-PT.gpkg&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To calculate the <em>mask</em> for the exclusion container (i.e. which cells are not excluded), we can use the <code class="docutils literal notranslate"><span class="pre">shape_availability()</span></code> function, which takes as arguments:</p>
+<ul class="simple">
+<li><p>a <strong>geometry</strong> (e.g. country shape) within which to calculate available areas</p></li>
+<li><p>an <strong>exclusion container</strong> object</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">atlite.gis</span> <span class="kn">import</span> <span class="n">shape_availability</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since the excluder is in <code class="docutils literal notranslate"><span class="pre">crs=3035</span></code>, we should also convert to geometry of Portucal to <code class="docutils literal notranslate"><span class="pre">excluder.crs</span></code> first.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shape</span> <span class="o">=</span> <span class="n">countries</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">excluder</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;PT&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">geometry</span>
+<span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/06-workshop-atlite_57_0.svg" src="_images/06-workshop-atlite_57_0.svg" /></div>
+</div>
+<p>We can then call the <code class="docutils literal notranslate"><span class="pre">shape_availability</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band</span><span class="p">,</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">shape_availability</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">excluder</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/fneum/miniconda3/envs/pypsa-eur-220719/lib/python3.9/site-packages/atlite/gis.py:469: UserWarning: Output dtype of shape_availability changed from float to boolean.
+  warn(
+</pre></div>
+</div>
+</div>
+</div>
+<p>This function returns a 2-D <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> and a transformation, similar to the previous <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> examples.</p>
+<p>Eligile raster cells have a <code class="docutils literal notranslate"><span class="pre">True</span></code> and excluded cells a <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[False, False, False, ..., False, False, False],
+       [False, False, False, ..., False, False, False],
+       [False, False, False, ..., False, False, False],
+       ...,
+       [False, False, False, ..., False, False, False],
+       [False, False, False, ..., False, False, False],
+       [False, False, False, ..., False, False, False]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transform</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Affine(100.0, 0.0, 2635400.0,
+       0.0, -100.0, 2298700.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use th <code class="docutils literal notranslate"><span class="pre">rasterio.plot.show()</span></code> function for plotting:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">shape</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greens&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/06-workshop-atlite_65_1.png" src="_images/06-workshop-atlite_65_1.png" />
+</div>
+</div>
+<p>How to calculate what share of the land is eligible?</p>
+<ol class="simple">
+<li><p>count number of eligible raster cells</p></li>
+<li><p>determine area per raster cell</p></li>
+<li><p>multiply cell area with number of cells</p></li>
+<li><p>divide eligible area by total land area</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eligible_cells</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cell_area</span> <span class="o">=</span> <span class="n">excluder</span><span class="o">.</span><span class="n">res</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eligible_area</span> <span class="o">=</span> <span class="n">cell_area</span> <span class="o">*</span> <span class="n">eligible_cells</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">country_area</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">area</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eligible_area</span> <span class="o">/</span> <span class="n">country_area</span> <span class="o">*</span> <span class="mi">100</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>79.65002907506357
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, approximately 20% of Portugal’s land area are covered by nature reserves.</p>
+<p>Typically, more than one dataset is needed for a proper land eligibility analysis, i.e. we need to add more datasets to our container.
+So, let’s expand the exclusion container …</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">excluder</span> <span class="o">=</span> <span class="n">ExclusionContainer</span><span class="p">()</span>
+<span class="n">excluder</span><span class="o">.</span><span class="n">add_geometry</span><span class="p">(</span><span class="s1">&#39;../../materials/natura/Natura2000_end2021-PT.gpkg&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>… by a selection of CORINE land cover classes, which is given as raster data:</p>
+<p>When adding a raster to the <code class="docutils literal notranslate"><span class="pre">ExclusionContainer</span></code> you can specify which <strong>codes</strong> (integers) to exclude.</p>
+<p>By setting <code class="docutils literal notranslate"><span class="pre">invert=True</span></code>, you can also restrict the inclusion to a set of codes.</p>
+<p>Furthermore, you can add a buffer around codes which should also be excluded.</p>
+<p>Here we are first going to include a set of suitable <a class="reference external" href="https://collections.sentinel-hub.com/corine-land-cover/readme.html">CORINE classes</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">codes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;../../materials/corine/U2018_CLC2018_V2020_20u1-PT.tif&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">excluder</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">codes</span><span class="o">=</span><span class="n">codes</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="mi">3035</span><span class="p">,</span> <span class="n">invert</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And then we are going exclude <a class="reference external" href="https://collections.sentinel-hub.com/corine-land-cover/readme.html">CORINE classes</a> representing settled areas with an 800 meter buffer around them:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;../../materials/corine/U2018_CLC2018_V2020_20u1-PT.tif&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">codes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">excluder</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">codes</span><span class="o">=</span><span class="n">codes</span><span class="p">,</span> <span class="n">buffer</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="mi">3035</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, we can simply repeat the calculation and visualisation of available cells:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band</span><span class="p">,</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">shape_availability</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">excluder</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">shape</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greens&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/fneum/miniconda3/envs/pypsa-eur-220719/lib/python3.9/site-packages/atlite/gis.py:469: UserWarning: Output dtype of shape_availability changed from float to boolean.
+  warn(
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/06-workshop-atlite_85_2.png" src="_images/06-workshop-atlite_85_2.png" />
+</div>
+</div>
+</section>
+<section id="combined-spatial-and-temporal-availability">
+<h2>Combined Spatial and Temporal Availability<a class="headerlink" href="#combined-spatial-and-temporal-availability" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<p>Tweak some parameters of the land exclusion calculation:</p>
+<ul class="simple">
+<li><p>vary the CORINE land classes allower for wind turbine development</p></li>
+<li><p>vary the buffer distance and observe the change in availble area</p></li>
+<li><p>add the GEBCO topography data to the exclusion calculator and exclude areas above 1000 m</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

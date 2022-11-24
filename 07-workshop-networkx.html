@@ -502,8 +502,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
+  <a class="reference internal nav-link" href="#exercise-1">
+   Exercise 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-2">
+   Exercise 2
   </a>
  </li>
 </ul>
@@ -589,8 +594,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
+  <a class="reference internal nav-link" href="#exercise-1">
+   Exercise 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-2">
+   Exercise 2
   </a>
  </li>
 </ul>
@@ -623,7 +633,10 @@ title="Print to PDF"
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The data used in this introduction is also available for download at</p>
-<p><a class="reference external" href="https://tubcloud.tu-berlin.de/s/TBD">https://tubcloud.tu-berlin.de/s/TBD</a>’</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/nodes.csv">https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/nodes.csv</a></p></li>
+<li><p><a class="reference external" href="https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/edges.csv">https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/edges.csv</a></p></li>
+</ul>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -634,7 +647,7 @@ title="Print to PDF"
 </div>
 </div>
 <p>Let’s perform some network analysis on this simple graph:</p>
-<img src="network.png" width="300px" /><section id="network-analysis-with-numpy">
+<img src="https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/network.png" width="300px" /><section id="network-analysis-with-numpy">
 <h2>Network Analysis with <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.<a class="headerlink" href="#network-analysis-with-numpy" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -643,7 +656,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Say we want to calculate the Laplacian <span class="math notranslate nohighlight">\(L\)</span> of this graph based on its incidence matrix <span class="math notranslate nohighlight">\(K\)</span>. We first need to write down the incidence matrix <span class="math notranslate nohighlight">\(K\)</span> as a <code class="docutils literal notranslate"><span class="pre">np.array</span></code>. Let’s also use the convention that edges are oriented such that they are directed at the node with the higher label value (i.e. 1-&gt;2, not 2-&gt;1).</p>
+<p>Say we want to calculate the Laplacian <span class="math notranslate nohighlight">\(L\)</span> of this graph based on its incidence matrix <span class="math notranslate nohighlight">\(K\)</span>. We first need to write down the incidence matrix <span class="math notranslate nohighlight">\(K\)</span> as a <code class="docutils literal notranslate"><span class="pre">np.array</span></code>. Let’s also use the convention that edges are oriented such that they are directed at the node with the higher label value (i.e. from node 1 to node 2, not vice versa).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
@@ -1171,6 +1184,11 @@ dtype: int64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[2, 3, 1]]
+</pre></div>
+</div>
+</div>
 </div>
 <p>This function returns a list of sequences. Each sequence indicates a series of nodes to traverse for the respective cycle.</p>
 </section>
@@ -1453,12 +1471,12 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">K_IE</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f60ea2df970&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fe32e8b1ac0&gt;
 </pre></div>
 </div>
 <img alt="_images/07-workshop-networkx_117_1.png" src="_images/07-workshop-networkx_117_1.png" />
@@ -1491,7 +1509,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f60ea290ca0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fe32e8176d0&gt;
 </pre></div>
 </div>
 <img alt="_images/07-workshop-networkx_120_1.png" src="_images/07-workshop-networkx_120_1.png" />
@@ -1507,14 +1525,14 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b_pu</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">/</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_pu</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">/</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_pu</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">b_pu</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1526,7 +1544,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f60ea270730&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fe32e7e5940&gt;
 </pre></div>
 </div>
 <img alt="_images/07-workshop-networkx_125_1.png" src="_images/07-workshop-networkx_125_1.png" />
@@ -1535,7 +1553,14 @@ dtype: int64
 <p>Now, we can calculate the weighted Laplacian:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1571,16 +1596,52 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f60e97c4d00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fe32e74d970&gt;
 </pre></div>
 </div>
-<img alt="_images/07-workshop-networkx_130_1.png" src="_images/07-workshop-networkx_130_1.png" />
+<img alt="_images/07-workshop-networkx_131_1.png" src="_images/07-workshop-networkx_131_1.png" />
 </div>
 </div>
-<p>The weighted Laplacian of the network is not invertible, but we can use the <a class="reference external" href="https://en.wikipedia.org/wiki/Moore%E2%80%93Penrose_inverse">Moore Penrose pseudo-inverse</a>:</p>
+<p>The weighted Laplacian of the network is not invertible, but we can use the <a class="reference external" href="https://en.wikipedia.org/wiki/Moore%E2%80%93Penrose_inverse">Moore Penrose pseudo-inverse</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>or apply a trick by disregarding the first column and row of the weighted Laplacian for inversion:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_nodes</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">L_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span><span class="mi">1</span><span class="p">:])</span>
+<span class="n">L_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_nodes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">L_inv</span><span class="p">))</span>
+<span class="n">L_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_nodes</span><span class="p">),</span> <span class="n">L_inv</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L_inv</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L_inv</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0004957770042911583
 </pre></div>
 </div>
 </div>
@@ -1592,10 +1653,10 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f60e9751d90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fe32e6a3820&gt;
 </pre></div>
 </div>
-<img alt="_images/07-workshop-networkx_133_1.png" src="_images/07-workshop-networkx_133_1.png" />
+<img alt="_images/07-workshop-networkx_138_1.png" src="_images/07-workshop-networkx_138_1.png" />
 </div>
 </div>
 <p>Now, we have all the ingredients to calculate the PTDF matrix</p>
@@ -1605,7 +1666,7 @@ dtype: int64
 \[f_\ell = \sum_j \text{PTDF}_{\ell j} p_j\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PTDF</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">L_inv</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PTDF</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">L_inv</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1617,7 +1678,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.7547169811313653
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.9999999999999989
 </pre></div>
 </div>
 </div>
@@ -1629,7 +1690,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7381347257486837
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8416043608137512
 </pre></div>
 </div>
 </div>
@@ -1641,10 +1702,10 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f60e979dbe0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fe32e605940&gt;
 </pre></div>
 </div>
-<img alt="_images/07-workshop-networkx_138_1.png" src="_images/07-workshop-networkx_138_1.png" />
+<img alt="_images/07-workshop-networkx_143_1.png" src="_images/07-workshop-networkx_143_1.png" />
 </div>
 </div>
 <p>This matrix, we can now use to calculate the (linearised) power flow in transmission lines based on nodal power imbalances. Here’s an example:</p>
@@ -1652,6 +1713,24 @@ dtype: int64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imbalance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">IE</span><span class="o">.</span><span class="n">nodes</span><span class="p">))</span>
 <span class="n">imbalance</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-10.        ,  -9.61538462,  -9.23076923,  -8.84615385,
+        -8.46153846,  -8.07692308,  -7.69230769,  -7.30769231,
+        -6.92307692,  -6.53846154,  -6.15384615,  -5.76923077,
+        -5.38461538,  -5.        ,  -4.61538462,  -4.23076923,
+        -3.84615385,  -3.46153846,  -3.07692308,  -2.69230769,
+        -2.30769231,  -1.92307692,  -1.53846154,  -1.15384615,
+        -0.76923077,  -0.38461538,   0.        ,   0.38461538,
+         0.76923077,   1.15384615,   1.53846154,   1.92307692,
+         2.30769231,   2.69230769,   3.07692308,   3.46153846,
+         3.84615385,   4.23076923,   4.61538462,   5.        ,
+         5.38461538,   5.76923077,   6.15384615,   6.53846154,
+         6.92307692,   7.30769231,   7.69230769,   8.07692308,
+         8.46153846,   8.84615385,   9.23076923,   9.61538462,
+        10.        ])
 </pre></div>
 </div>
 </div>
@@ -1706,9 +1785,41 @@ dtype: int64
 </div>
 </div>
 </section>
-<section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
-<p>Will be uploaded tonight!</p>
+<section id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">#</a></h2>
+<p>Build the following graph in <code class="docutils literal notranslate"><span class="pre">networkx</span></code> using the functions to add graphs. The weight of each edge should correspond to the sum of the node labels it connects.</p>
+<img src="example-graph.png" width="500px" /><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2">
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">#</a></h2>
+<p>For each subgraph (each represents a synchronous zone), determine</p>
+<ul class="simple">
+<li><p>the number of transmission lines (aka edges) and buses (aka nodes)</p></li>
+<li><p>whether the network is planar</p></li>
+<li><p>the average number of transmission lines connecting to a bus</p></li>
+<li><p>the number of cycles forming the cycle basis</p></li>
+<li><p>the histogram of the length of the cycles (i.e. number of <em>edges</em> per cycle) in the cycle basis</p></li>
+<li><p>the average length of the cycles in the cycle basis?</p></li>
+<li><p>the adjacency matrix</p></li>
+<li><p>the incidence matrix</p></li>
+<li><p>the weighted Laplacian (weighted by line susceptance = 1 / line reactance)</p></li>
+<li><p>the PTDF matrix</p></li>
+<li><p>the network flows if the first bus generates 1 unit of power and the last bus consumes 1 unit of power</p></li>
+<li><p>Show the absolute flows in a plot using the <a class="reference external" href="https://networkx.org/documentation/stable/reference/generated/networkx.drawing.nx_pylab.draw_networkx.html"><code class="docutils literal notranslate"><span class="pre">.draw</span></code></a> function of <code class="docutils literal notranslate"><span class="pre">networkx</span></code> and the keyword argument <code class="docutils literal notranslate"><span class="pre">edge_color</span></code>. Plot the network on a figure with a size of 10x10 inches. Change the <code class="docutils literal notranslate"><span class="pre">width</span></code> of the edges to the value 4.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 

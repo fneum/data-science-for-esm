@@ -1,0 +1,81 @@
+Traceback (most recent call last):
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import pypsa
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mImportError[0m                               Traceback (most recent call last)
+Cell [0;32mIn [1], line 1[0m
+[0;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mpypsa[39;00m
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/pypsa/__init__.py:10[0m
+[1;32m      1[0m [38;5;66;03m# -*- coding: utf-8 -*-[39;00m
+[1;32m      4[0m [38;5;124;03m"""[39;00m
+[1;32m      5[0m [38;5;124;03mPython for Power Systems Analysis (PyPSA)[39;00m
+[1;32m      6[0m 
+[1;32m      7[0m [38;5;124;03mGrid calculation library.[39;00m
+[1;32m      8[0m [38;5;124;03m"""[39;00m
+[0;32m---> 10[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpypsa[39;00m [38;5;28;01mimport[39;00m (
+[1;32m     11[0m     components,
+[1;32m     12[0m     contingency,
+[1;32m     13[0m     descriptors,
+[1;32m     14[0m     examples,
+[1;32m     15[0m     geo,
+[1;32m     16[0m     io,
+[1;32m     17[0m     linopf,
+[1;32m     18[0m     linopt,
+[1;32m     19[0m     networkclustering,
+[1;32m     20[0m     opf,
+[1;32m     21[0m     opt,
+[1;32m     22[0m     pf,
+[1;32m     23[0m     plot,
+[1;32m     24[0m )
+[1;32m     25[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpypsa[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcomponents[39;00m [38;5;28;01mimport[39;00m Network, SubNetwork
+[1;32m     27[0m __version__ [38;5;241m=[39m [38;5;124m"[39m[38;5;124m0.20.1[39m[38;5;124m"[39m
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/pypsa/components.py:27[0m
+[1;32m     24[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
+[1;32m     25[0m [38;5;28;01mfrom[39;00m [38;5;21;01mscipy[39;00m[38;5;21;01m.[39;00m[38;5;21;01msparse[39;00m [38;5;28;01mimport[39;00m csgraph
+[0;32m---> 27[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpypsa[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcontingency[39;00m [38;5;28;01mimport[39;00m calculate_BODF, network_lpf_contingency, network_sclopf
+[1;32m     28[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpypsa[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdescriptors[39;00m [38;5;28;01mimport[39;00m (
+[1;32m     29[0m     Dict,
+[1;32m     30[0m     get_active_assets,
+[0;32m   (...)[0m
+[1;32m     34[0m     get_switchable_as_dense,
+[1;32m     35[0m )
+[1;32m     36[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpypsa[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgraph[39;00m [38;5;28;01mimport[39;00m adjacency_matrix, graph, incidence_matrix
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/pypsa/contingency.py:29[0m
+[1;32m     27[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpypsa[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdescriptors[39;00m [38;5;28;01mimport[39;00m get_extendable_i
+[1;32m     28[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpypsa[39;00m[38;5;21;01m.[39;00m[38;5;21;01mlinopt[39;00m [38;5;28;01mimport[39;00m get_var, linexpr, set_conref, write_constraint
+[0;32m---> 29[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpypsa[39;00m[38;5;21;01m.[39;00m[38;5;21;01mopt[39;00m [38;5;28;01mimport[39;00m l_constraint
+[1;32m     30[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpypsa[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpf[39;00m [38;5;28;01mimport[39;00m _as_snapshots, calculate_PTDF
+[1;32m     33[0m [38;5;28;01mdef[39;00m [38;5;21mcalculate_BODF[39m(sub_network, skip_pre[38;5;241m=[39m[38;5;28;01mFalse[39;00m):
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/pypsa/opt.py:30[0m
+[1;32m     27[0m [38;5;28;01mfrom[39;00m [38;5;21;01mcontextlib[39;00m [38;5;28;01mimport[39;00m contextmanager
+[1;32m     29[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpyomo[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mbase[39;00m[38;5;21;01m.[39;00m[38;5;21;01mconstraint[39;00m [38;5;28;01mimport[39;00m _GeneralConstraintData
+[0;32m---> 30[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpyomo[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mexpr[39;00m[38;5;21;01m.[39;00m[38;5;21;01mlogical_expr[39;00m [38;5;28;01mimport[39;00m inequality
+[1;32m     31[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpyomo[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mexpr[39;00m[38;5;21;01m.[39;00m[38;5;21;01mnumeric_expr[39;00m [38;5;28;01mimport[39;00m LinearExpression
+[1;32m     32[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpyomo[39;00m[38;5;21;01m.[39;00m[38;5;21;01menviron[39;00m [38;5;28;01mimport[39;00m Constraint, Objective, Var, minimize
+
+[0;31mImportError[0m: cannot import name 'inequality' from 'pyomo.core.expr.logical_expr' (/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/pyomo/core/expr/logical_expr.cpython-39-x86_64-linux-gnu.so)
+ImportError: cannot import name 'inequality' from 'pyomo.core.expr.logical_expr' (/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/pyomo/core/expr/logical_expr.cpython-39-x86_64-linux-gnu.so)
+

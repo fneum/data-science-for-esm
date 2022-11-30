@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Introduction to pypsa" href="09-workshop-pypsa.html" />
@@ -414,12 +416,151 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-components">
+   Basic Components
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decision-variables">
+     Decision Variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#objectives">
+     Objectives
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constraints">
+     Constraints
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solving-optimisation-problems">
+   Solving optimisation problems
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solver-installation">
+     Solver installation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calling-solvers-from-pyomo">
+     Calling solvers from
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pyomo
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#retrieving-optimisation-results">
+   Retrieving optimisation results
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#primal-values">
+     Primal Values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dual-values-aka-shadow-prices">
+     Dual values (aka shadow prices)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#indexed-components-and-sets">
+   Indexed Components and Sets
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sets-and-range-sets">
+     Sets and Range Sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexed-variables">
+     Indexed Variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-comprehension-on-indexed-variables">
+     List comprehension on indexed variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexed-constraints">
+     Indexed Constraints
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#electricity-market-examples">
+   Electricity Market Examples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-bidding-zone-single-period">
+     Single bidding zone, single period
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#two-bidding-zones-with-transmission">
+     Two bidding zones with transmission
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-bidding-zone-with-several-periods">
+     Single bidding zone with several periods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-bidding-zone-with-several-periods-and-storage">
+     Single bidding zone with several periods and storage
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -431,6 +572,134 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-components">
+   Basic Components
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decision-variables">
+     Decision Variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#objectives">
+     Objectives
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constraints">
+     Constraints
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solving-optimisation-problems">
+   Solving optimisation problems
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solver-installation">
+     Solver installation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calling-solvers-from-pyomo">
+     Calling solvers from
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pyomo
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#retrieving-optimisation-results">
+   Retrieving optimisation results
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#primal-values">
+     Primal Values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dual-values-aka-shadow-prices">
+     Dual values (aka shadow prices)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#indexed-components-and-sets">
+   Indexed Components and Sets
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sets-and-range-sets">
+     Sets and Range Sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexed-variables">
+     Indexed Variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-comprehension-on-indexed-variables">
+     List comprehension on indexed variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexed-constraints">
+     Indexed Constraints
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#electricity-market-examples">
+   Electricity Market Examples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-bidding-zone-single-period">
+     Single bidding zone, single period
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#two-bidding-zones-with-transmission">
+     Two bidding zones with transmission
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-bidding-zone-with-several-periods">
+     Single bidding zone with several periods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-bidding-zone-with-several-periods-and-storage">
+     Single bidding zone with several periods and storage
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -442,15 +711,1984 @@ title="Print to PDF"
 <h1>Introduction to <code class="docutils literal notranslate"><span class="pre">pyomo</span></code><a class="headerlink" href="#introduction-to-pyomo" title="Permalink to this headline">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>This material is in part adapted from the following resources:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://jckantor.github.io/ND-Pyomo-Cookbook/notebooks/01.00-Getting-Started-with-Pyomo.html">ND Pyomo Cookbook</a></p></li>
+<li><p><a class="reference external" href="https://link.springer.com/book/10.1007/978-3-030-68928-5">Pyomo - Optimization Modeling in Python, Third Edition, Springer, 2021</a></p></li>
+</ul>
+</div>
+<img src="https://pyomo.readthedocs.io/en/stable/_images/PyomoNewBlue3.png" width="300px" />
+<p><a class="reference external" href="https://pyomo.org">Pyomo</a> is an open-source framework for formulating, solving and analysing optimisation problems with Python.</p>
+<p>One can embed within Python an optimization model consisting of <strong>decision variables</strong>, <strong>constraints</strong>, and an optimisation <strong>objective</strong>, and solve these instances using commercial and open-source solvers (specialised software).</p>
+<p><a class="reference external" href="https://pyomo.org">Pyomo</a> supports a wide range of problem types, including:</p>
+<ul class="simple">
+<li><p><strong>Linear programming</strong></p></li>
+<li><p>Quadratic programming</p></li>
+<li><p>Nonlinear programming</p></li>
+<li><p>Mixed-integer linear programming</p></li>
+<li><p>Mixed-integer quadratic programming</p></li>
+<li><p>Mixed-integer nonlinear programming</p></li>
+<li><p>Stochastic programming</p></li>
+<li><p>Generalized disjunctive programming</p></li>
+<li><p>Differential algebraic equations</p></li>
+<li><p>Bilevel programming</p></li>
+<li><p>Mathematical programs with equilibrium constraints</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Documentation for this package is available at <a class="reference external" href="http://www.pyomo.org/">http://www.pyomo.org/</a>.</p>
 </div>
+<section id="basic-components">
+<h2>Basic Components<a class="headerlink" href="#basic-components" title="Permalink to this headline">#</a></h2>
+<p>Almost all Pyomo objects exist within the <code class="docutils literal notranslate"><span class="pre">pyomo.environ</span></code> namespace:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyomo</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyomo.environ</span> <span class="k">as</span> <span class="nn">pe</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>A model instance is created by calling the <code class="docutils literal notranslate"><span class="pre">pe.ConcreteModel()</span></code> constructor and and assigninig it to a local variable. It’s good practice to choose a short variable name to reduce the verbosity of the code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pyomo.core.base.PyomoModel.ConcreteModel
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pyomo distinguishes between <em>concrete</em> and <em>abstract</em> models. The difference is that <em>concrete</em> models have real-valued input parameters in the building stage, whereas <em>abstract</em> models are initially build with placeholders for the input parameters.</p>
+</div>
+<section id="decision-variables">
+<h3>Decision Variables<a class="headerlink" href="#decision-variables" title="Permalink to this headline">#</a></h3>
+<p><strong>Variables</strong> are the unknowns of an optimisation problems and are intended to be given values by solving an optimisation problem.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>, decision variables are created with the <code class="docutils literal notranslate"><span class="pre">pe.Var()</span></code> constructor.</p>
+<p>In the code below, we create two decision variables:</p>
+<div class="math notranslate nohighlight">
+\[x, y \in \mathbb{R}^+\]</div>
+<ul class="simple">
+<li><p>The name you assign the object to (e.g. <code class="docutils literal notranslate"><span class="pre">m.x</span></code>) must be unique in any given model.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">pe.Var()</span></code> constructor can take a variety of keyword arguments.</p></li>
+<li><p>For instance, <code class="docutils literal notranslate"><span class="pre">within=...</span></code> would set the variable domain.</p></li>
+<li><p>There are several pre-defined domains, like <code class="docutils literal notranslate"><span class="pre">pe.NonNegativeReals</span></code>.</p></li>
+<li><p>But you can also manually define the <code class="docutils literal notranslate"><span class="pre">bounds=...</span></code> with a tuple representing lower and upper bounds.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">pe</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="objectives">
+<h3>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h3>
+<p>An <strong>objective</strong> is a function of variables that returns a value that an optimization package attempts to maximize or minimize.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>, objectives are created with the <code class="docutils literal notranslate"><span class="pre">pe.Objective()</span></code> constructor.</p>
+<p>In the code below, we create a simple objective function:</p>
+<div class="math notranslate nohighlight">
+\[\max_{x,y} 4x + 3y\]</div>
+<ul class="simple">
+<li><p>Like for variables, the object returned by <code class="docutils literal notranslate"><span class="pre">pe.Objective()</span></code> is assigned to the model under a unique name.</p></li>
+<li><p>The keyword argument <code class="docutils literal notranslate"><span class="pre">expr=...</span></code> can be a mathematical expression or a function that returns an expression.</p></li>
+<li><p>The keyword argument <code class="docutils literal notranslate"><span class="pre">sense=...</span></code> determines whether the objective should be maximised or minimised. You can conveniently access the optimisation sense through <code class="docutils literal notranslate"><span class="pre">pe.minimize</span></code> and <code class="docutils literal notranslate"><span class="pre">pe.maximize</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">pe.minimise</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">pe</span><span class="o">.</span><span class="n">maximize</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can inspect almost all <code class="docutils literal notranslate"><span class="pre">pyomo</span></code> components with the <code class="docutils literal notranslate"><span class="pre">.pprint()</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>obj : Size=1, Index=None, Active=True
+    Key  : Active : Sense    : Expression
+    None :   True : maximize : 4*x + 3*y
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="constraints">
+<h3>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">#</a></h3>
+<p><strong>Constraints</strong> are equality or inequality expressions that constrain the <em>feasible</em> space of the decision variables.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>, constraints are created with the <code class="docutils literal notranslate"><span class="pre">pe.Constraint()</span></code> constructor.</p>
+<p>In the code below, we create three simple constraints in different ways:</p>
+<p>\begin{align}
+x &amp; \leq 4 \
+2x + y &amp; \leq 10 \
+x + y &amp; \leq 10 \
+\end{align}</p>
+<ul class="simple">
+<li><p>Again, the object return by <code class="docutils literal notranslate"><span class="pre">pe.Constraint()</span></code> is assigned to the model under a unique name.</p></li>
+<li><p>Like for objectives, constraints take a mathematical expression under <code class="docutils literal notranslate"><span class="pre">expr=...</span></code>.</p></li>
+<li><p>Expressions can also be represented by a 3-tuple consisting of lower bound, body, upper bound.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">c1</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">c2</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="mi">2</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">c3</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also call <code class="docutils literal notranslate"><span class="pre">.pprint()</span></code> on the whole model <code class="docutils literal notranslate"><span class="pre">m</span></code> to get a full representation of the optimisation problem built:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 Var Declarations
+    x : Size=1, Index=None
+        Key  : Lower : Value : Upper : Fixed : Stale : Domain
+        None :     0 :  None :  None : False :  True : NonNegativeReals
+    y : Size=1, Index=None
+        Key  : Lower : Value : Upper : Fixed : Stale : Domain
+        None :     0 :  None :  None : False :  True :  Reals
+
+1 Objective Declarations
+    obj : Size=1, Index=None, Active=True
+        Key  : Active : Sense    : Expression
+        None :   True : maximize : 4*x + 3*y
+
+3 Constraint Declarations
+    c1 : Size=1, Index=None, Active=True
+        Key  : Lower : Body : Upper : Active
+        None :  -Inf :    x :   4.0 :   True
+    c2 : Size=1, Index=None, Active=True
+        Key  : Lower : Body    : Upper : Active
+        None :  -Inf : 2*x + y :  10.0 :   True
+    c3 : Size=1, Index=None, Active=True
+        Key  : Lower : Body  : Upper : Active
+        None :  -Inf : x + y :  10.0 :   True
+
+6 Declarations: x y obj c1 c2 c3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="solving-optimisation-problems">
+<h2>Solving optimisation problems<a class="headerlink" href="#solving-optimisation-problems" title="Permalink to this headline">#</a></h2>
+<section id="solver-installation">
+<h3>Solver installation<a class="headerlink" href="#solver-installation" title="Permalink to this headline">#</a></h3>
+<p>Solvers are needed to compute solutions to the optimization models developed using Pyomo.</p>
+<p>There exists a large variety of solvers. In many cases, they specialise in certain problem types or solving algorithms, e.g. linear or nonlinear problems.</p>
+<ul class="simple">
+<li><p><strong>open-source examples</strong>: <a class="reference external" href="https://www.coin-or.org/Cbc/">CBC</a>, <a class="reference external" href="https://www.gnu.org/software/glpk/">GLPK</a>, <a class="reference external" href="https://coin-or.github.io/Ipopt/">Ipopt</a>, <a class="reference external" href="https://highs.dev">HiGHS</a></p></li>
+<li><p><strong>commercial examples</strong>: <a class="reference external" href="https://www.gurobi.com/">Gurobi</a>, <a class="reference external" href="https://www.ibm.com/de-de/analytics/cplex-optimizer">CPLEX</a>, <a class="reference external" href="https://www.fico.com/en/products/fico-xpress-optimization">FICO Xpress</a></p></li>
+</ul>
+<p>The open-source solvers are sufficient to handle meaningful Pyomo models with hundreds to several thousand variables and constraints. However, as applications get large or more complex, there may be a need to turn to a commercial solvers (which often provide free academic licenses).</p>
+<p>Pyomo has support for a wide variety of solvers, but they need to be installed separately!</p>
+<p>CBC and GLPK are relatively easy to install and available through <code class="docutils literal notranslate"><span class="pre">conda</span></code> (or <code class="docutils literal notranslate"><span class="pre">mamba</span></code>).</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda install -c conda-forge coincbc
+conda install -c conda-forge glpk
+</pre></div>
+</div>
+<p>If you want to try the other solvers, follow the links to their documentation for installation instructions.</p>
+<p>The open-source solvers are sufficient to handle meaningful Pyomo models with hundreds to several thousand variables and constraints. However, as applications get large or more complex, there may be a need to turn to a commercial solvers (with free academic licenses).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For most solvers, it is possible to pass additional parameters before running the solver to configure things like solver tolerances, number of threads, type of solving algorithm (e.g. barrier or simplex). Read more about it in the <a class="reference external" href="https://pyomo.readthedocs.io/en/stable/working_models.html#sending-options-to-the-solver">Pyomo Documentation</a>.</p>
+</div>
+</section>
+<section id="calling-solvers-from-pyomo">
+<h3>Calling solvers from <code class="docutils literal notranslate"><span class="pre">pyomo</span></code><a class="headerlink" href="#calling-solvers-from-pyomo" title="Permalink to this headline">#</a></h3>
+<p>First, we create an instance of a solver (aka optimiser):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">opt</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span> <span class="c1"># try also &#39;glpk&#39;, &#39;gurobi&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can tell this optimiser to solve the model <code class="docutils literal notranslate"><span class="pre">m</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">tee</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Could not locate the &#39;cbc&#39; executable, which is required for solver
+    cbc
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ApplicationError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">log</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">tee</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.9/site-packages/pyomo/opt/base/solvers.py:513,</span> in <span class="ni">OptSolver.solve</span><span class="nt">(self, *args, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">510</span> <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">511</span>     <span class="sd">&quot;&quot;&quot; Solve the problem &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">513</span>     <span class="bp">self</span><span class="o">.</span><span class="n">available</span><span class="p">(</span><span class="n">exception_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">514</span>     <span class="c1">#</span>
+<span class="g g-Whitespace">    </span><span class="mi">515</span>     <span class="c1"># If the inputs are models, then validate that they have been</span>
+<span class="g g-Whitespace">    </span><span class="mi">516</span>     <span class="c1"># constructed! Collect suffix names to try and import from solution.</span>
+<span class="g g-Whitespace">    </span><span class="mi">517</span>     <span class="c1">#</span>
+<span class="g g-Whitespace">    </span><span class="mi">518</span>     <span class="kn">from</span> <span class="nn">pyomo.core.base.block</span> <span class="kn">import</span> <span class="n">_BlockData</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.9/site-packages/pyomo/opt/solver/shellcmd.py:129,</span> in <span class="ni">SystemCallSolver.available</span><span class="nt">(self, exception_flag)</span>
+<span class="g g-Whitespace">    </span><span class="mi">127</span>     <span class="k">if</span> <span class="n">exception_flag</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">128</span>         <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;No executable found for solver &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">129</span>         <span class="k">raise</span> <span class="n">ApplicationError</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>     <span class="k">return</span> <span class="kc">False</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span> <span class="k">return</span> <span class="kc">True</span>
+
+<span class="ne">ApplicationError</span>: No executable found for solver &#39;cbc&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The keyword argument <code class="docutils literal notranslate"><span class="pre">tee=True</span></code> is optional causes a more verbose display of solver log outputs.</p>
+<p>And then display the solver outputs:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: unknown
+  Lower bound: 30.0
+  Upper bound: 30.0
+  Number of objectives: 1
+  Number of constraints: 4
+  Number of variables: 3
+  Number of nonzeros: 2
+  Sense: maximize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  User time: -1.0
+  System time: 0.0
+  Wallclock time: 0.0
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Statistics: 
+    Branch and bound: 
+      Number of bounded subproblems: None
+      Number of created subproblems: None
+    Black box: 
+      Number of iterations: 1
+  Error rc: 0
+  Time: 0.04433155059814453
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>While we can read from the message above that our problem was solved successfully, we can also formally check by accessing the reported status and comparing it to a pre-defined range of status codes provided in <code class="docutils literal notranslate"><span class="pre">pe.SolverStatus</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">log</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="n">pe</span><span class="o">.</span><span class="n">SolverStatus</span><span class="o">.</span><span class="n">ok</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Other states of solved optimisation models are:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pe</span><span class="o">.</span><span class="n">SolverStatus</span><span class="o">.</span><span class="n">_member_names_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;ok&#39;, &#39;warning&#39;, &#39;error&#39;, &#39;aborted&#39;, &#39;unknown&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="retrieving-optimisation-results">
+<h2>Retrieving optimisation results<a class="headerlink" href="#retrieving-optimisation-results" title="Permalink to this headline">#</a></h2>
+<section id="primal-values">
+<h3>Primal Values<a class="headerlink" href="#primal-values" title="Permalink to this headline">#</a></h3>
+<p>Objective value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">obj</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Decision variables</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dual-values-aka-shadow-prices">
+<h3>Dual values (aka shadow prices)<a class="headerlink" href="#dual-values-aka-shadow-prices" title="Permalink to this headline">#</a></h3>
+<p>Access to dual values in scripts is similar to accessing primal variable values, except that dual values are not captured by default so additional directives are needed <strong>before</strong> optimization to signal that duals are desired.</p>
+<p>To signal that duals are desired, declare a <strong>Suffix</strong> (another <code class="docutils literal notranslate"><span class="pre">pyomo</span></code> component) with the name “dual” on the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">dual</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Suffix</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="n">pe</span><span class="o">.</span><span class="n">Suffix</span><span class="o">.</span><span class="n">IMPORT</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Resolve:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pe</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: unknown
+  Lower bound: 30.0
+  Upper bound: 30.0
+  Number of objectives: 1
+  Number of constraints: 4
+  Number of variables: 3
+  Number of nonzeros: 2
+  Sense: maximize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  User time: -1.0
+  System time: 0.0
+  Wallclock time: 0.0
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Statistics: 
+    Branch and bound: 
+      Number of bounded subproblems: None
+      Number of created subproblems: None
+    Black box: 
+      Number of iterations: 1
+  Error rc: 0
+  Time: 0.04360771179199219
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, we can access the shadow prices of individual constraints:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">c1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">c2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="indexed-components-and-sets">
+<h2>Indexed Components and Sets<a class="headerlink" href="#indexed-components-and-sets" title="Permalink to this headline">#</a></h2>
+<p>Let’s first create a fresh model instance:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Almost all Pyomo components can be indexed.</p>
+<p>While constructing them, all non-keyword arguments are assumed to represent indices.</p>
+<p>The indices can be any iterable object.</p>
+<section id="sets-and-range-sets">
+<h3>Sets and Range Sets<a class="headerlink" href="#sets-and-range-sets" title="Permalink to this headline">#</a></h3>
+<p>In many cases, it will be useful to make use of another basic <code class="docutils literal notranslate"><span class="pre">pyomo</span></code> component: the <strong>set</strong>, which is constructed by <code class="docutils literal notranslate"><span class="pre">pe.Set()</span></code> or <code class="docutils literal notranslate"><span class="pre">pe.RangeSet()</span></code>. These objects are handled very similarly to variables, constraints and objectives.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pe.RangeSet</span></code> will create a numbered index, starting from the value 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">RangeSet</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A : Dimen=1, Size=2, Bounds=(1, 2)
+    Key  : Finite : Members
+    None :   True :   [1:2]
+</pre></div>
+</div>
+</div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">pe.Set()</span></code> we can also pass more general indices:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;wind&quot;</span><span class="p">,</span> <span class="s2">&quot;solar&quot;</span><span class="p">]</span>
+<span class="n">m</span><span class="o">.</span><span class="n">B</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">B</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>B : Size=1, Index=None, Ordered=Insertion
+    Key  : Dimen : Domain : Size : Members
+    None :     1 :    Any :    2 : {&#39;wind&#39;, &#39;solar&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="indexed-variables">
+<h3>Indexed Variables<a class="headerlink" href="#indexed-variables" title="Permalink to this headline">#</a></h3>
+<p>We can then use these sets to create <code class="docutils literal notranslate"><span class="pre">pyomo</span></code> components, like variables:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x : Size=2, Index=A
+    Key : Lower : Value : Upper : Fixed : Stale : Domain
+      1 :  None :  None :  None : False :  True :  Reals
+      2 :  None :  None :  None : False :  True :  Reals
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are no restrictions as to how many dimensions an indexed variable can have:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y : Size=4, Index=y_index
+    Key          : Lower : Value : Upper : Fixed : Stale : Domain
+    (1, &#39;solar&#39;) :  None :  None :  None : False :  True :  Reals
+     (1, &#39;wind&#39;) :  None :  None :  None : False :  True :  Reals
+    (2, &#39;solar&#39;) :  None :  None :  None : False :  True :  Reals
+     (2, &#39;wind&#39;) :  None :  None :  None : False :  True :  Reals
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is not strictly necessary to use <em>set</em> objects to create indexed variables. We can use any iterable object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="list-comprehension-on-indexed-variables">
+<h3>List comprehension on indexed variables<a class="headerlink" href="#list-comprehension-on-indexed-variables" title="Permalink to this headline">#</a></h3>
+<p>List comprehensions are quite useful to process indexed variables in a compact format:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">c1</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">B</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">c1</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c1 : Size=1, Index=None, Active=True
+    Key  : Lower : Body               : Upper : Active
+    None :  -Inf : z[wind] + z[solar] :  10.0 :   True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="indexed-constraints">
+<h3>Indexed Constraints<a class="headerlink" href="#indexed-constraints" title="Permalink to this headline">#</a></h3>
+<p>Pyomo used the concept of <em>construction rules</em> to specify indexed constraints, rather than <code class="docutils literal notranslate"><span class="pre">expr=...</span></code>.</p>
+<p>When building indexed constraints, particular indices are passed as argument to a rule (function) that returns an expression for each index.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">construction_rule</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">B</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">c2</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">construction_rule</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">c2</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c2 : Size=2, Index=A, Active=True
+    Key : Lower : Body                   : Upper : Active
+      1 :   1.0 : y[1,wind] + y[1,solar] :   1.0 :   True
+      2 :   1.0 : y[2,wind] + y[2,solar] :   1.0 :   True
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can access individual constraints of a set of indexed constraints like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">c2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{Member of c2} : Size=2, Index=A, Active=True
+    Key : Lower : Body                   : Upper : Active
+      2 :   1.0 : y[2,wind] + y[2,solar] :   1.0 :   True
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is also possible to use an alternative decorator notation to reduce redundancy in rule definitions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@m</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">A</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">c3</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">B</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="electricity-market-examples">
+<h2>Electricity Market Examples<a class="headerlink" href="#electricity-market-examples" title="Permalink to this headline">#</a></h2>
+<section id="single-bidding-zone-single-period">
+<h3>Single bidding zone, single period<a class="headerlink" href="#single-bidding-zone-single-period" title="Permalink to this headline">#</a></h3>
+<p>We want to minimise operational cost of an example electricity system representing South Africa subject to generator limits and meeting the load:</p>
+<p>\begin{equation}
+\min_{g_s} \sum_s o_s g_s
+\end{equation}
+such that
+\begin{align}
+g_s &amp;\leq G_s \
+g_s &amp;\geq 0 \
+\sum_s g_s &amp;= d
+\end{align}</p>
+<p>We are given the following information on the South African electricity system:</p>
+<p>Marginal costs in EUR/MWh</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">marginal_costs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Wind&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;Coal&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> 
+    <span class="s2">&quot;Gas&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+    <span class="s2">&quot;Oil&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Power plant capacities in MW</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">capacities</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Coal&quot;</span><span class="p">:</span> <span class="mi">35000</span><span class="p">,</span>
+    <span class="s2">&quot;Wind&quot;</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
+    <span class="s2">&quot;Gas&quot;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span>
+    <span class="s2">&quot;Oil&quot;</span><span class="p">:</span> <span class="mi">2000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Inelastic demand in MW</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load</span> <span class="o">=</span> <span class="mi">42000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First step is to initialise a new model, and since we want to know about the shadow prices, we additionally pass the respective Suffix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">dual</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Suffix</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="n">pe</span><span class="o">.</span><span class="n">Suffix</span><span class="o">.</span><span class="n">IMPORT</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We create a set <span class="math notranslate nohighlight">\(S\)</span> for the technologies:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">S</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">capacities</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And the decision variables for the generator dispatch:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">g</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">S</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="n">pe</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our objective is to minimise total operational costs:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">cost</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">marginal_costs</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">g</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">S</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">cost</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cost : Size=1, Index=None, Active=True
+    Key  : Active : Sense    : Expression
+    None :   True : minimize : 30*g[Coal] + 60*g[Gas] + 80*g[Oil]
+</pre></div>
+</div>
+</div>
+</div>
+<p>subject to the capacity limits of the generators</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@m</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">generator_limit</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">g</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">capacities</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">generator_limit</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit : Size=4, Index=S, Active=True
+    Key  : Lower : Body    : Upper   : Active
+    Coal :  -Inf : g[Coal] : 35000.0 :   True
+     Gas :  -Inf :  g[Gas] :  8000.0 :   True
+     Oil :  -Inf :  g[Oil] :  2000.0 :   True
+    Wind :  -Inf : g[Wind] :  3000.0 :   True
+</pre></div>
+</div>
+</div>
+</div>
+<p>and meeting energy demand</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">energy_balance</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">g</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">S</span><span class="p">)</span> <span class="o">==</span> <span class="n">load</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">energy_balance</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>energy_balance : Size=1, Index=None, Active=True
+    Key  : Lower   : Body                                : Upper   : Active
+    None : 42000.0 : g[Coal] + g[Wind] + g[Gas] + g[Oil] : 42000.0 :   True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, we solve the problem:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pe</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: unknown
+  Lower bound: 1290000.0
+  Upper bound: 1290000.0
+  Number of objectives: 1
+  Number of constraints: 6
+  Number of variables: 5
+  Number of nonzeros: 3
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  User time: -1.0
+  System time: 0.01
+  Wallclock time: 0.0
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Statistics: 
+    Branch and bound: 
+      Number of bounded subproblems: None
+      Number of created subproblems: None
+    Black box: 
+      Number of iterations: 1
+  Error rc: 0
+  Time: 0.04413104057312012
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hopefully, the optimisation was successful (check!).</p>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">pandas</span></code> to retrieve and process the optimisation results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is the optimal generator dispatch (in MW):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">get_values</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coal    35000.0
+Wind     3000.0
+Gas      4000.0
+Oil         0.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>And the market clearing price we can read from the shadow price of the energy balance constraint (i.e. the added cost of increasing electricity demand by one unit):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">market_price</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">energy_balance</span><span class="p">]</span>
+<span class="n">market_price</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are further interesting shadow prices. The dual values of the generator limits tell us by how much the objective would be reduced if the capacity of the respective generator would be increased. It is either zero (cf. complementary slackness) for the generators for which their capacity limit is not binding (i.e. oil and gas), or, if the constraint is binding, it denotes the difference between the market clearing price and the marginal cost of the respective generator.</p>
+<p>Retrieve all shadow prices at once:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[Coal]   -30.0
+generator_limit[Gas]      0.0
+generator_limit[Oil]      0.0
+generator_limit[Wind]   -60.0
+[None]                   60.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>A more targeted alternative for the generator limits:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="n">s</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">generator_limit</span><span class="p">[</span><span class="n">s</span><span class="p">]]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">S</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coal   -30.0
+Wind   -60.0
+Gas      0.0
+Oil      0.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="two-bidding-zones-with-transmission">
+<h3>Two bidding zones with transmission<a class="headerlink" href="#two-bidding-zones-with-transmission" title="Permalink to this headline">#</a></h3>
+<p>Let’s add a spatial dimension, such that the optimisation problem is expanded to
+\begin{equation}
+\min_{g_{i,s}, f_\ell} \sum_s o_{i,s} g_{i,s}
+\end{equation}
+such that
+\begin{align}
+g_{i,s} &amp;\leq G_{i,s} \
+g_{i,s} &amp;\geq 0 \
+\sum_s g_{i,s} - \sum_\ell K_{i\ell} f_\ell &amp;= d_i &amp; \text{KCL} \
+|f_\ell| &amp;\leq F_\ell &amp; \text{line limits}  \
+\sum_\ell C_{\ell c} x_\ell f_\ell &amp;= 0 &amp; \text{KVL}
+\end{align}</p>
+<p>In this example, we connect the previous South African electricity system with a hydro generation unit in Mozambique through a single transmission line. Note that because a single transmission line will not result in any cycles, we can neglect KVL in this case.</p>
+<p>We are given the following data (all in MW):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">capacities</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;South Africa&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;Coal&quot;</span><span class="p">:</span> <span class="mi">35000</span><span class="p">,</span>
+        <span class="s2">&quot;Wind&quot;</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
+        <span class="s2">&quot;Gas&quot;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span>
+        <span class="s2">&quot;Oil&quot;</span><span class="p">:</span> <span class="mi">2000</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Mozambique&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;Hydro&quot;</span><span class="p">:</span> <span class="mi">1200</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transmission</span> <span class="o">=</span> <span class="mi">500</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loads</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;South Africa&quot;</span><span class="p">:</span> <span class="mi">42000</span><span class="p">,</span>
+    <span class="s2">&quot;Mozambique&quot;</span><span class="p">:</span> <span class="mi">650</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">marginal_costs</span><span class="p">[</span><span class="s2">&quot;Hydro&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># MWh</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First, let’s create a new model instance:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">dual</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Suffix</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="n">pe</span><span class="o">.</span><span class="n">Suffix</span><span class="o">.</span><span class="n">IMPORT</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now have two sets: one for the countries, one for the technologies, based on which we can create the generator dispatch variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">countries</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">loads</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">technologies</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">capacities</span><span class="p">[</span><span class="s2">&quot;South Africa&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">|</span> <span class="n">capacities</span><span class="p">[</span><span class="s2">&quot;Mozambique&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">technologies</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">technologies</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">g</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">countries</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">technologies</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="n">pe</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that we could have been more efficient by only creating variables for the combinations of country and technology that do exist, rather than creating variables for all combinations.</p>
+</div>
+<p>We als need an additional variable for the flow.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Var</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The objective remains unchanged:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">cost</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">marginal_costs</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">g</span><span class="p">[</span><span class="n">c</span><span class="p">,</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">technologies</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">countries</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Generator limits also remain quite similar albeit for the additional index.
+For missing entries, we set the upper limit to zero (e.g. this country-technology combination can not produce electricity).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@m</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">countries</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">technologies</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">generator_limit</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">g</span><span class="p">[</span><span class="n">c</span><span class="p">,</span><span class="n">s</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">capacities</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">generator_limit</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit : Size=10, Index=generator_limit_index, Active=True
+    Key                       : Lower : Body                  : Upper   : Active
+       (&#39;Mozambique&#39;, &#39;Coal&#39;) :  -Inf :    g[Mozambique,Coal] :     0.0 :   True
+        (&#39;Mozambique&#39;, &#39;Gas&#39;) :  -Inf :     g[Mozambique,Gas] :     0.0 :   True
+      (&#39;Mozambique&#39;, &#39;Hydro&#39;) :  -Inf :   g[Mozambique,Hydro] :  1200.0 :   True
+        (&#39;Mozambique&#39;, &#39;Oil&#39;) :  -Inf :     g[Mozambique,Oil] :     0.0 :   True
+       (&#39;Mozambique&#39;, &#39;Wind&#39;) :  -Inf :    g[Mozambique,Wind] :     0.0 :   True
+     (&#39;South Africa&#39;, &#39;Coal&#39;) :  -Inf :  g[South Africa,Coal] : 35000.0 :   True
+      (&#39;South Africa&#39;, &#39;Gas&#39;) :  -Inf :   g[South Africa,Gas] :  8000.0 :   True
+    (&#39;South Africa&#39;, &#39;Hydro&#39;) :  -Inf : g[South Africa,Hydro] :     0.0 :   True
+      (&#39;South Africa&#39;, &#39;Oil&#39;) :  -Inf :   g[South Africa,Oil] :  2000.0 :   True
+     (&#39;South Africa&#39;, &#39;Wind&#39;) :  -Inf :  g[South Africa,Wind] :  3000.0 :   True
+</pre></div>
+</div>
+</div>
+</div>
+<p>The energy balance constraint is replaced by KCL, where we take into account local generation as well as incoming or outgoing flows.</p>
+<p>We also need the incidence matrix of this network (here it’s very simple!) and assume some direction for the flow variable. Here, we picked the orientation from South Africa to Mozambique. This means that if the values for the flow variable <code class="docutils literal notranslate"><span class="pre">m.f</span></code> are positive South Africa exports to Mozambique and vice versa if the variable takes negative values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@m</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">countries</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">kcl</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s2">&quot;Mozambique&quot;</span> <span class="k">else</span> <span class="mi">1</span> <span class="c1"># minimal incidence matrix</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">g</span><span class="p">[</span><span class="n">c</span><span class="p">,</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">technologies</span><span class="p">)</span> <span class="o">-</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">f</span> <span class="o">==</span> <span class="n">loads</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">kcl</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kcl : Size=2, Index=countries, Active=True
+    Key          : Lower   : Body                                                                                                                : Upper   : Active
+      Mozambique :   650.0 :           g[Mozambique,Oil] + g[Mozambique,Coal] + g[Mozambique,Hydro] + g[Mozambique,Gas] + g[Mozambique,Wind] + f :   650.0 :   True
+    South Africa : 42000.0 : g[South Africa,Oil] + g[South Africa,Coal] + g[South Africa,Hydro] + g[South Africa,Gas] + g[South Africa,Wind] - f : 42000.0 :   True
+</pre></div>
+</div>
+</div>
+</div>
+<p>We also need to constrain the transmission flows to the line’s rated capacity. Here, we use a 3-tuple to specify upper and lower bounds in one go.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">line_limit</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">transmission</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="n">transmission</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Implicitly replacing the Component attribute line_limit (type=&lt;class
+    &#39;pyomo.core.base.constraint.ScalarConstraint&#39;&gt;) on block unknown with a
+    new Component (type=&lt;class
+    &#39;pyomo.core.base.constraint.AbstractScalarConstraint&#39;&gt;). This is usually
+    indicative of a modelling error. To avoid this warning, use
+    block.del_component() and block.add_component().
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">line_limit</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>line_limit : Size=1, Index=None, Active=True
+    Key  : Lower  : Body : Upper : Active
+    None : -500.0 :    f : 500.0 :   True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, we can solve and inspect results:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pe</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: unknown
+  Lower bound: 1260000.0
+  Upper bound: 1260000.0
+  Number of objectives: 1
+  Number of constraints: 15
+  Number of variables: 12
+  Number of nonzeros: 3
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  User time: -1.0
+  System time: 0.0
+  Wallclock time: 0.0
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Statistics: 
+    Branch and bound: 
+      Number of bounded subproblems: None
+      Number of created subproblems: None
+    Black box: 
+      Number of iterations: 1
+  Error rc: 0
+  Time: 0.040334463119506836
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">cost</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1260000.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">get_values</span><span class="p">())</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Coal</th>
+      <th>Gas</th>
+      <th>Hydro</th>
+      <th>Oil</th>
+      <th>Wind</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Mozambique</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1150.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>South Africa</th>
+      <td>35000.0</td>
+      <td>3500.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3000.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">f</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-500.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[Mozambique,Coal]        0.0
+generator_limit[Mozambique,Gas]         0.0
+generator_limit[Mozambique,Hydro]       0.0
+generator_limit[Mozambique,Oil]         0.0
+generator_limit[Mozambique,Wind]        0.0
+generator_limit[South Africa,Coal]    -30.0
+generator_limit[South Africa,Gas]       0.0
+generator_limit[South Africa,Hydro]   -60.0
+generator_limit[South Africa,Oil]       0.0
+generator_limit[South Africa,Wind]    -60.0
+kcl[Mozambique]                         0.0
+kcl[South Africa]                      60.0
+[None]                                 60.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">pyomo</span></code> it is also possible to deactivate (and activate) constraints, and fix variables to a pre-defined value, which alters the results</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">line_limit</span><span class="o">.</span><span class="n">deactivate</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">g</span><span class="p">[</span><span class="s2">&quot;South Africa&quot;</span><span class="p">,</span> <span class="s2">&quot;Coal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">34000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pe</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: unknown
+  Lower bound: 1287000.0
+  Upper bound: 1287000.0
+  Number of objectives: 1
+  Number of constraints: 13
+  Number of variables: 11
+  Number of nonzeros: 2
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  User time: -1.0
+  System time: 0.0
+  Wallclock time: 0.0
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Statistics: 
+    Branch and bound: 
+      Number of bounded subproblems: None
+      Number of created subproblems: None
+    Black box: 
+      Number of iterations: 1
+  Error rc: 0
+  Time: 0.04297304153442383
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">get_values</span><span class="p">())</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Coal</th>
+      <th>Gas</th>
+      <th>Hydro</th>
+      <th>Oil</th>
+      <th>Wind</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Mozambique</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1200.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>South Africa</th>
+      <td>34000.0</td>
+      <td>4450.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3000.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">cost</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1287000.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="single-bidding-zone-with-several-periods">
+<h3>Single bidding zone with several periods<a class="headerlink" href="#single-bidding-zone-with-several-periods" title="Permalink to this headline">#</a></h3>
+<p>In this example, we consider multiple time periods (labelled [1,2,3,4]) to represent variable wind generation and changing load.</p>
+<p>\begin{equation}
+\min_{g_{s,t}} \sum_s o_{s} g_{s,t}
+\end{equation}
+such that
+\begin{align}
+g_{s,t} &amp;\leq \hat{g}<em>{s,t} G</em>{i,s} \
+g_{s,t} &amp;\geq 0 \
+\sum_s g_{s,t} &amp;= d_t
+\end{align}</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wind_ts</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
+<span class="n">load_ts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">42000</span><span class="p">,</span> <span class="mi">43000</span><span class="p">,</span> <span class="mi">45000</span><span class="p">,</span> <span class="mi">46000</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">dual</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Suffix</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="n">pe</span><span class="o">.</span><span class="n">Suffix</span><span class="o">.</span><span class="n">IMPORT</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">techs</span> <span class="o">=</span> <span class="n">capacities</span><span class="p">[</span><span class="s2">&quot;South Africa&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">S</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">techs</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">RangeSet</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">g</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">S</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="n">pe</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">cost</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">marginal_costs</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">g</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">S</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@m</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">S</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">generator_limit</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">cf</span> <span class="o">=</span> <span class="n">wind_ts</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">&quot;Wind&quot;</span> <span class="k">else</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">g</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">cf</span> <span class="o">*</span> <span class="n">capacities</span><span class="p">[</span><span class="s2">&quot;South Africa&quot;</span><span class="p">][</span><span class="n">s</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">generator_limit</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit : Size=16, Index=generator_limit_index, Active=True
+    Key         : Lower : Body      : Upper   : Active
+    (&#39;Coal&#39;, 1) :  -Inf : g[Coal,1] : 35000.0 :   True
+    (&#39;Coal&#39;, 2) :  -Inf : g[Coal,2] : 35000.0 :   True
+    (&#39;Coal&#39;, 3) :  -Inf : g[Coal,3] : 35000.0 :   True
+    (&#39;Coal&#39;, 4) :  -Inf : g[Coal,4] : 35000.0 :   True
+     (&#39;Gas&#39;, 1) :  -Inf :  g[Gas,1] :  8000.0 :   True
+     (&#39;Gas&#39;, 2) :  -Inf :  g[Gas,2] :  8000.0 :   True
+     (&#39;Gas&#39;, 3) :  -Inf :  g[Gas,3] :  8000.0 :   True
+     (&#39;Gas&#39;, 4) :  -Inf :  g[Gas,4] :  8000.0 :   True
+     (&#39;Oil&#39;, 1) :  -Inf :  g[Oil,1] :  2000.0 :   True
+     (&#39;Oil&#39;, 2) :  -Inf :  g[Oil,2] :  2000.0 :   True
+     (&#39;Oil&#39;, 3) :  -Inf :  g[Oil,3] :  2000.0 :   True
+     (&#39;Oil&#39;, 4) :  -Inf :  g[Oil,4] :  2000.0 :   True
+    (&#39;Wind&#39;, 1) :  -Inf : g[Wind,1] :   900.0 :   True
+    (&#39;Wind&#39;, 2) :  -Inf : g[Wind,2] :  1800.0 :   True
+    (&#39;Wind&#39;, 3) :  -Inf : g[Wind,3] :  1200.0 :   True
+    (&#39;Wind&#39;, 4) :  -Inf : g[Wind,4] :  1500.0 :   True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@m</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">energy_balance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">g</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">S</span><span class="p">)</span> <span class="o">==</span> <span class="n">load_ts</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">energy_balance</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>energy_balance : Size=4, Index=T, Active=True
+    Key : Lower   : Body                                        : Upper   : Active
+      1 : 42000.0 : g[Coal,1] + g[Wind,1] + g[Gas,1] + g[Oil,1] : 42000.0 :   True
+      2 : 43000.0 : g[Coal,2] + g[Wind,2] + g[Gas,2] + g[Oil,2] : 43000.0 :   True
+      3 : 45000.0 : g[Coal,3] + g[Wind,3] + g[Gas,3] + g[Oil,3] : 45000.0 :   True
+      4 : 46000.0 : g[Coal,4] + g[Wind,4] + g[Gas,4] + g[Oil,4] : 46000.0 :   True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we can solve. Let’s also time how long it takes to solve this problem with a small IPython tool.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 1 -r 1
+<span class="n">pe</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: unknown
+  Lower bound: 6082000.0
+  Upper bound: 6082000.0
+  Number of objectives: 1
+  Number of constraints: 21
+  Number of variables: 17
+  Number of nonzeros: 12
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  User time: -1.0
+  System time: 0.0
+  Wallclock time: 0.0
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Statistics: 
+    Branch and bound: 
+      Number of bounded subproblems: None
+      Number of created subproblems: None
+    Black box: 
+      Number of iterations: 4
+  Error rc: 0
+  Time: 0.04445362091064453
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+78.9 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">cost</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6082000.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[Coal,1]   -30.0
+generator_limit[Coal,2]   -30.0
+generator_limit[Coal,3]   -50.0
+generator_limit[Coal,4]   -50.0
+generator_limit[Gas,1]      0.0
+generator_limit[Gas,2]      0.0
+generator_limit[Gas,3]    -20.0
+generator_limit[Gas,4]    -20.0
+generator_limit[Oil,1]      0.0
+generator_limit[Oil,2]      0.0
+generator_limit[Oil,3]      0.0
+generator_limit[Oil,4]      0.0
+generator_limit[Wind,1]   -60.0
+generator_limit[Wind,2]   -60.0
+generator_limit[Wind,3]   -80.0
+generator_limit[Wind,4]   -80.0
+energy_balance[1]          60.0
+energy_balance[2]          60.0
+energy_balance[3]          80.0
+energy_balance[4]          80.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">get_values</span><span class="p">())</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Coal</th>
+      <th>Gas</th>
+      <th>Oil</th>
+      <th>Wind</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>35000.0</td>
+      <td>6100.0</td>
+      <td>0.0</td>
+      <td>900.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>35000.0</td>
+      <td>6200.0</td>
+      <td>0.0</td>
+      <td>1800.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>35000.0</td>
+      <td>8000.0</td>
+      <td>800.0</td>
+      <td>1200.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>35000.0</td>
+      <td>8000.0</td>
+      <td>1500.0</td>
+      <td>1500.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="single-bidding-zone-with-several-periods-and-storage">
+<h3>Single bidding zone with several periods and storage<a class="headerlink" href="#single-bidding-zone-with-several-periods-and-storage" title="Permalink to this headline">#</a></h3>
+<p>Now, we want to expand the optimisation model with a storage unit to do price arbitrage to reduce oil consumption.</p>
+<p>We have been given the following characteristics of the storage:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">storage_energy</span> <span class="o">=</span> <span class="mi">6000</span> <span class="c1"># MWh</span>
+<span class="n">storage_power</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># MW</span>
+<span class="n">efficiency</span> <span class="o">=</span> <span class="mf">0.9</span> <span class="c1"># discharge = charge </span>
+<span class="n">standing_loss</span> <span class="o">=</span> <span class="mf">0.00001</span> <span class="c1"># per hour</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To model a storage unit, we need three additional variables for the discharging and charging of the storage unit and for its state of charge (energy filling level). We can directly define the bounds of these variables in the variable definition:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">discharge</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">storage_power</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">charge</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">storage_power</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">soc</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">storage_energy</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, we implement the storage consistency equations,</p>
+<div class="math notranslate nohighlight">
+\[e_{t} = (1-\text{standing loss}) \cdot e_{t-1} + \eta \cdot g_{charge, t} - \frac{1}{\eta} \cdot g_{discharge, t}\]</div>
+<p>For the initial period, we set the state of charge to zero.</p>
+<div class="math notranslate nohighlight">
+\[e_{0} = 0\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@m</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">storage_consistency</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">soc</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">soc</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">standing_loss</span> <span class="p">)</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">soc</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">efficiency</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">charge</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">efficiency</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">discharge</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">storage_consistency</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>storage_consistency : Size=4, Index=T, Active=True
+    Key : Lower : Body                                                                        : Upper : Active
+      1 :   0.0 :                                                                      soc[1] :   0.0 :   True
+      2 :   0.0 : soc[2] - (0.99999*soc[1] + 0.9*charge[2] - 1.1111111111111112*discharge[2]) :   0.0 :   True
+      3 :   0.0 : soc[3] - (0.99999*soc[2] + 0.9*charge[3] - 1.1111111111111112*discharge[3]) :   0.0 :   True
+      4 :   0.0 : soc[4] - (0.99999*soc[3] + 0.9*charge[4] - 1.1111111111111112*discharge[4]) :   0.0 :   True
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we also need to modify the energy balance to include the contributions of storage discharging and charging.</p>
+<p>For that, we should first remove the existing energy balance constraint, which we seek to overwrite.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">del_component</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">energy_balance</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@m</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">energy_balance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">g</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">S</span><span class="p">)</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">discharge</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">charge</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">load_ts</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pe</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">cost</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6017200.656
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">get_values</span><span class="p">())</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Coal</th>
+      <th>Gas</th>
+      <th>Oil</th>
+      <th>Wind</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>35000.0</td>
+      <td>5100.0</td>
+      <td>0.0000</td>
+      <td>900.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>35000.0</td>
+      <td>7200.0</td>
+      <td>0.0000</td>
+      <td>1800.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>35000.0</td>
+      <td>8000.0</td>
+      <td>0.0000</td>
+      <td>1200.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>35000.0</td>
+      <td>8000.0</td>
+      <td>1490.0082</td>
+      <td>1500.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">charge</span><span class="o">.</span><span class="n">get_values</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1       0.0
+2    1000.0
+3       0.0
+4       0.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">discharge</span><span class="o">.</span><span class="n">get_values</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1    1000.0000
+2       0.0000
+3     800.0000
+4       9.9918
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">soc</span><span class="o">.</span><span class="n">get_values</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1      0.000000
+2    900.000000
+3     11.102111
+4      0.000000
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[Coal,1]   -30.00000
+generator_limit[Coal,2]   -30.00000
+generator_limit[Coal,3]   -49.99920
+generator_limit[Coal,4]   -50.00000
+generator_limit[Gas,1]      0.00000
+generator_limit[Gas,2]      0.00000
+generator_limit[Gas,3]    -19.99920
+generator_limit[Gas,4]    -20.00000
+generator_limit[Oil,1]      0.00000
+generator_limit[Oil,2]      0.00000
+generator_limit[Oil,3]      0.00000
+generator_limit[Oil,4]      0.00000
+generator_limit[Wind,1]   -60.00000
+generator_limit[Wind,2]   -60.00000
+generator_limit[Wind,3]   -79.99920
+generator_limit[Wind,4]   -80.00000
+storage_consistency[1]    -71.99784
+storage_consistency[2]    -71.99856
+storage_consistency[3]    -71.99928
+storage_consistency[4]    -72.00000
+energy_balance[1]          60.00000
+energy_balance[2]          60.00000
+energy_balance[3]          79.99920
+energy_balance[4]          80.00000
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Using the conversion efficiencies and specific emissions from the lecture slides, add a constraint that limits the total emissions in the four periods to 50% of the unconstrained optimal solution. How does the optimal objective value and the generator dispatch change?</p></li>
+<li><p>Reimplement the storage consistency constraint such that the initial state of charge is not zero but corresponds to the state of charge in the final period of the optimisation horizon.</p></li>
+<li><p>What parameters of the storage unit would have to be changed to reduce the objective? What’s the sensitivity?</p></li>
+</ul>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

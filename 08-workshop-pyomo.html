@@ -709,14 +709,14 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-pyomo">
 <h1>Introduction to <code class="docutils literal notranslate"><span class="pre">pyomo</span></code><a class="headerlink" href="#introduction-to-pyomo" title="Permalink to this headline">#</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This material is in part adapted from the following resources:</p>
+<p>:::{note}
+This material is in part adapted from the following resources:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://jckantor.github.io/ND-Pyomo-Cookbook/notebooks/01.00-Getting-Started-with-Pyomo.html">ND Pyomo Cookbook</a></p></li>
 <li><p><a class="reference external" href="https://link.springer.com/book/10.1007/978-3-030-68928-5">Pyomo - Optimization Modeling in Python, Third Edition, Springer, 2021</a></p></li>
+<li><p><a class="reference external" href="https://pypsa.readthedocs.io/en/latest/examples/simple-electricity-market-examples.html">PyPSA simple electricity market examples</a>
+:::</p></li>
 </ul>
-</div>
 <img src="https://pyomo.readthedocs.io/en/stable/_images/PyomoNewBlue3.png" width="300px" />
 <p><a class="reference external" href="https://pyomo.org">Pyomo</a> is an open-source framework for formulating, solving and analysing optimisation problems with Python.</p>
 <p>One can embed within Python an optimization model consisting of <strong>decision variables</strong>, <strong>constraints</strong>, and an optimisation <strong>objective</strong>, and solve these instances using commercial and open-source solvers (specialised software).</p>
@@ -734,10 +734,9 @@ title="Print to PDF"
 <li><p>Bilevel programming</p></li>
 <li><p>Mathematical programs with equilibrium constraints</p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Documentation for this package is available at <a class="reference external" href="http://www.pyomo.org/">http://www.pyomo.org/</a>.</p>
-</div>
+<p>:::{note}
+Documentation for this package is available at http://www.pyomo.org/.
+:::</p>
 <section id="basic-components">
 <h2>Basic Components<a class="headerlink" href="#basic-components" title="Permalink to this headline">#</a></h2>
 <p>Almost all Pyomo objects exist within the <code class="docutils literal notranslate"><span class="pre">pyomo.environ</span></code> namespace:</p>
@@ -768,17 +767,15 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Pyomo distinguishes between <em>concrete</em> and <em>abstract</em> models. The difference is that <em>concrete</em> models have real-valued input parameters in the building stage, whereas <em>abstract</em> models are initially build with placeholders for the input parameters.</p>
-</div>
+<p>:::{note}
+Pyomo distinguishes between <em>concrete</em> and <em>abstract</em> models. The difference is that <em>concrete</em> models have real-valued input parameters in the building stage, whereas <em>abstract</em> models are initially build with placeholders for the input parameters.
+:::</p>
 <section id="decision-variables">
 <h3>Decision Variables<a class="headerlink" href="#decision-variables" title="Permalink to this headline">#</a></h3>
 <p><strong>Variables</strong> are the unknowns of an optimisation problems and are intended to be given values by solving an optimisation problem.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>, decision variables are created with the <code class="docutils literal notranslate"><span class="pre">pe.Var()</span></code> constructor.</p>
 <p>In the code below, we create two decision variables:</p>
-<div class="math notranslate nohighlight">
-\[x, y \in \mathbb{R}^+\]</div>
+<p>$$x, y \in \mathbb{R}^+$$</p>
 <ul class="simple">
 <li><p>The name you assign the object to (e.g. <code class="docutils literal notranslate"><span class="pre">m.x</span></code>) must be unique in any given model.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">pe.Var()</span></code> constructor can take a variety of keyword arguments.</p></li>
@@ -806,8 +803,7 @@ title="Print to PDF"
 <p>An <strong>objective</strong> is a function of variables that returns a value that an optimization package attempts to maximize or minimize.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>, objectives are created with the <code class="docutils literal notranslate"><span class="pre">pe.Objective()</span></code> constructor.</p>
 <p>In the code below, we create a simple objective function:</p>
-<div class="math notranslate nohighlight">
-\[\max_{x,y} 4x + 3y\]</div>
+<p>$$\max_{x,y} 4x + 3y$$</p>
 <ul class="simple">
 <li><p>Like for variables, the object returned by <code class="docutils literal notranslate"><span class="pre">pe.Objective()</span></code> is assigned to the model under a unique name.</p></li>
 <li><p>The keyword argument <code class="docutils literal notranslate"><span class="pre">expr=...</span></code> can be a mathematical expression or a function that returns an expression.</p></li>
@@ -841,11 +837,12 @@ title="Print to PDF"
 <p><strong>Constraints</strong> are equality or inequality expressions that constrain the <em>feasible</em> space of the decision variables.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>, constraints are created with the <code class="docutils literal notranslate"><span class="pre">pe.Constraint()</span></code> constructor.</p>
 <p>In the code below, we create three simple constraints in different ways:</p>
-<p>\begin{align}
-x &amp; \leq 4 \
-2x + y &amp; \leq 10 \
-x + y &amp; \leq 10 \
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4f2fc34d-436d-4351-8d09-024d53acde48">
+<span class="eqno">(1)<a class="headerlink" href="#equation-4f2fc34d-436d-4351-8d09-024d53acde48" title="Permalink to this equation">#</a></span>\[\begin{align}
+  x &amp; \leq 4 \\
+  2x + y &amp; \leq 10 \\
+  x + y &amp; \leq 10 \\
+\end{align}\]</div>
 <ul class="simple">
 <li><p>Again, the object return by <code class="docutils literal notranslate"><span class="pre">pe.Constraint()</span></code> is assigned to the model under a unique name.</p></li>
 <li><p>Like for objectives, constraints take a mathematical expression under <code class="docutils literal notranslate"><span class="pre">expr=...</span></code>.</p></li>
@@ -930,10 +927,9 @@ conda install -c conda-forge glpk
 </div>
 <p>If you want to try the other solvers, follow the links to their documentation for installation instructions.</p>
 <p>The open-source solvers are sufficient to handle meaningful Pyomo models with hundreds to several thousand variables and constraints. However, as applications get large or more complex, there may be a need to turn to a commercial solvers (with free academic licenses).</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For most solvers, it is possible to pass additional parameters before running the solver to configure things like solver tolerances, number of threads, type of solving algorithm (e.g. barrier or simplex). Read more about it in the <a class="reference external" href="https://pyomo.readthedocs.io/en/stable/working_models.html#sending-options-to-the-solver">Pyomo Documentation</a>.</p>
-</div>
+<p>:::{note}
+For most solvers, it is possible to pass additional parameters before running the solver to configure things like solver tolerances, number of threads, type of solving algorithm (e.g. barrier or simplex). Read more about it in the <a class="reference external" href="https://pyomo.readthedocs.io/en/stable/working_models.html#sending-options-to-the-solver">Pyomo Documentation</a>.
+:::</p>
 </section>
 <section id="calling-solvers-from-pyomo">
 <h3>Calling solvers from <code class="docutils literal notranslate"><span class="pre">pyomo</span></code><a class="headerlink" href="#calling-solvers-from-pyomo" title="Permalink to this headline">#</a></h3>
@@ -953,33 +949,36 @@ conda install -c conda-forge glpk
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Could not locate the &#39;cbc&#39; executable, which is required for solver
-    cbc
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ApplicationError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">log</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">tee</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
+Version: 2.10.8 
+Build Date: May  6 2022 
 
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.9/site-packages/pyomo/opt/base/solvers.py:513,</span> in <span class="ni">OptSolver.solve</span><span class="nt">(self, *args, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">510</span> <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">511</span>     <span class="sd">&quot;&quot;&quot; Solve the problem &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">513</span>     <span class="bp">self</span><span class="o">.</span><span class="n">available</span><span class="p">(</span><span class="n">exception_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">514</span>     <span class="c1">#</span>
-<span class="g g-Whitespace">    </span><span class="mi">515</span>     <span class="c1"># If the inputs are models, then validate that they have been</span>
-<span class="g g-Whitespace">    </span><span class="mi">516</span>     <span class="c1"># constructed! Collect suffix names to try and import from solution.</span>
-<span class="g g-Whitespace">    </span><span class="mi">517</span>     <span class="c1">#</span>
-<span class="g g-Whitespace">    </span><span class="mi">518</span>     <span class="kn">from</span> <span class="nn">pyomo.core.base.block</span> <span class="kn">import</span> <span class="n">_BlockData</span>
+command line - /home/runner/micromamba-root/envs/esm/bin/cbc -printingOptions all -import /tmp/tmp9p61qn97.pyomo.lp -stat=1 -solve -solu /tmp/tmp9p61qn97.pyomo.soln (default strategy 1)
+Option for printingOptions changed from normal to all
+ CoinLpIO::readLp(): Maximization problem reformulated as minimization
+Coin0009I Switching back to maximization to get correct duals etc
+Presolve 2 (-2) rows, 2 (-1) columns and 4 (-2) elements
+Statistics for presolved model
 
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.9/site-packages/pyomo/opt/solver/shellcmd.py:129,</span> in <span class="ni">SystemCallSolver.available</span><span class="nt">(self, exception_flag)</span>
-<span class="g g-Whitespace">    </span><span class="mi">127</span>     <span class="k">if</span> <span class="n">exception_flag</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">128</span>         <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;No executable found for solver &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">129</span>         <span class="k">raise</span> <span class="n">ApplicationError</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">130</span>     <span class="k">return</span> <span class="kc">False</span>
-<span class="g g-Whitespace">    </span><span class="mi">131</span> <span class="k">return</span> <span class="kc">True</span>
 
-<span class="ne">ApplicationError</span>: No executable found for solver &#39;cbc&#39;
+Problem has 2 rows, 2 columns (2 with objective) and 4 elements
+Column breakdown:
+1 of type 0.0-&gt;inf, 1 of type 0.0-&gt;up, 0 of type lo-&gt;inf, 
+0 of type lo-&gt;up, 0 of type free, 0 of type fixed, 
+0 of type -inf-&gt;0.0, 0 of type -inf-&gt;up, 0 of type 0.0-&gt;1.0 
+Row breakdown:
+0 of type E 0.0, 0 of type E 1.0, 0 of type E -1.0, 
+0 of type E other, 0 of type G 0.0, 0 of type G 1.0, 
+0 of type G other, 0 of type L 0.0, 0 of type L 1.0, 
+2 of type L other, 0 of type Range 0.0-&gt;1.0, 0 of type Range other, 
+0 of type Free 
+Presolve 2 (-2) rows, 2 (-1) columns and 4 (-2) elements
+0  Obj -0 Dual inf 6.999998 (2)
+1  Obj 30
+Optimal - objective value 30
+After Postsolve, objective 30, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 30 - 1 iterations time 0.002, Presolve 0.00
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.01
 </pre></div>
 </div>
 </div>
@@ -1015,7 +1014,7 @@ Solver:
 - Status: ok
   User time: -1.0
   System time: 0.0
-  Wallclock time: 0.0
+  Wallclock time: 0.01
   Termination condition: optimal
   Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
   Statistics: 
@@ -1025,7 +1024,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.04433155059814453
+  Time: 0.0486147403717041
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1153,7 +1152,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.04360771179199219
+  Time: 0.01680135726928711
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1403,15 +1402,17 @@ Solution:
 <section id="single-bidding-zone-single-period">
 <h3>Single bidding zone, single period<a class="headerlink" href="#single-bidding-zone-single-period" title="Permalink to this headline">#</a></h3>
 <p>We want to minimise operational cost of an example electricity system representing South Africa subject to generator limits and meeting the load:</p>
-<p>\begin{equation}
-\min_{g_s} \sum_s o_s g_s
-\end{equation}
-such that
-\begin{align}
-g_s &amp;\leq G_s \
-g_s &amp;\geq 0 \
-\sum_s g_s &amp;= d
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2e51a75b-ec76-45a1-8229-d62666c3250e">
+<span class="eqno">(2)<a class="headerlink" href="#equation-2e51a75b-ec76-45a1-8229-d62666c3250e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+    \min_{g_s} \sum_s o_s g_s
+  \end{equation}\]</div>
+<p>such that</p>
+<div class="amsmath math notranslate nohighlight" id="equation-950d5d34-9b5a-4b45-be61-ee4b5f228978">
+<span class="eqno">(3)<a class="headerlink" href="#equation-950d5d34-9b5a-4b45-be61-ee4b5f228978" title="Permalink to this equation">#</a></span>\[\begin{align}
+    g_s &amp;\leq G_s \\
+    g_s &amp;\geq 0 \\
+    \sum_s g_s &amp;= d
+  \end{align}\]</div>
 <p>We are given the following information on the South African electricity system:</p>
 <p>Marginal costs in EUR/MWh</p>
 <div class="cell docutils container">
@@ -1456,7 +1457,7 @@ g_s &amp;\geq 0 \
 </div>
 </div>
 </div>
-<p>We create a set <span class="math notranslate nohighlight">\(S\)</span> for the technologies:</p>
+<p>We create a set $S$ for the technologies:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">S</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">capacities</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
@@ -1572,7 +1573,7 @@ Problem:
 Solver: 
 - Status: ok
   User time: -1.0
-  System time: 0.01
+  System time: 0.0
   Wallclock time: 0.0
   Termination condition: optimal
   Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
@@ -1583,7 +1584,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.04413104057312012
+  Time: 0.017086267471313477
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1673,18 +1674,20 @@ dtype: float64
 </section>
 <section id="two-bidding-zones-with-transmission">
 <h3>Two bidding zones with transmission<a class="headerlink" href="#two-bidding-zones-with-transmission" title="Permalink to this headline">#</a></h3>
-<p>Let’s add a spatial dimension, such that the optimisation problem is expanded to
-\begin{equation}
-\min_{g_{i,s}, f_\ell} \sum_s o_{i,s} g_{i,s}
-\end{equation}
-such that
-\begin{align}
-g_{i,s} &amp;\leq G_{i,s} \
-g_{i,s} &amp;\geq 0 \
-\sum_s g_{i,s} - \sum_\ell K_{i\ell} f_\ell &amp;= d_i &amp; \text{KCL} \
-|f_\ell| &amp;\leq F_\ell &amp; \text{line limits}  \
-\sum_\ell C_{\ell c} x_\ell f_\ell &amp;= 0 &amp; \text{KVL}
-\end{align}</p>
+<p>Let’s add a spatial dimension, such that the optimisation problem is expanded to</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8c69a14e-ccb2-4535-9430-45db4250765d">
+<span class="eqno">(4)<a class="headerlink" href="#equation-8c69a14e-ccb2-4535-9430-45db4250765d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+  \min_{g_{i,s}, f_\ell} \sum_s o_{i,s} g_{i,s}
+\end{equation}\]</div>
+<p>such that</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7b5fa0ec-0355-478e-bf94-0afed5e96323">
+<span class="eqno">(5)<a class="headerlink" href="#equation-7b5fa0ec-0355-478e-bf94-0afed5e96323" title="Permalink to this equation">#</a></span>\[\begin{align}
+  g_{i,s} &amp;\leq G_{i,s} \\
+  g_{i,s} &amp;\geq 0 \\
+  \sum_s g_{i,s} - \sum_\ell K_{i\ell} f_\ell &amp;= d_i &amp; \text{KCL} \\
+  |f_\ell| &amp;\leq F_\ell &amp; \text{line limits}  \\
+  \sum_\ell C_{\ell c} x_\ell f_\ell &amp;= 0 &amp; \text{KVL} 
+\end{align}\]</div>
 <p>In this example, we connect the previous South African electricity system with a hydro generation unit in Mozambique through a single transmission line. Note that because a single transmission line will not result in any cycles, we can neglect KVL in this case.</p>
 <p>We are given the following data (all in MW):</p>
 <div class="cell docutils container">
@@ -1766,10 +1769,9 @@ g_{i,s} &amp;\geq 0 \
 </div>
 </div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Note that we could have been more efficient by only creating variables for the combinations of country and technology that do exist, rather than creating variables for all combinations.</p>
-</div>
+<p>:::{note}
+Note that we could have been more efficient by only creating variables for the combinations of country and technology that do exist, rather than creating variables for all combinations.
+:::</p>
 <p>We als need an additional variable for the flow.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1841,8 +1843,8 @@ For missing entries, we set the upper limit to zero (e.g. this country-technolog
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kcl : Size=2, Index=countries, Active=True
     Key          : Lower   : Body                                                                                                                : Upper   : Active
-      Mozambique :   650.0 :           g[Mozambique,Oil] + g[Mozambique,Coal] + g[Mozambique,Hydro] + g[Mozambique,Gas] + g[Mozambique,Wind] + f :   650.0 :   True
-    South Africa : 42000.0 : g[South Africa,Oil] + g[South Africa,Coal] + g[South Africa,Hydro] + g[South Africa,Gas] + g[South Africa,Wind] - f : 42000.0 :   True
+      Mozambique :   650.0 :           g[Mozambique,Wind] + g[Mozambique,Hydro] + g[Mozambique,Gas] + g[Mozambique,Oil] + g[Mozambique,Coal] + f :   650.0 :   True
+    South Africa : 42000.0 : g[South Africa,Wind] + g[South Africa,Hydro] + g[South Africa,Gas] + g[South Africa,Oil] + g[South Africa,Coal] - f : 42000.0 :   True
 </pre></div>
 </div>
 </div>
@@ -1851,16 +1853,6 @@ For missing entries, we set the upper limit to zero (e.g. this country-technolog
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">line_limit</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">transmission</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="n">transmission</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Implicitly replacing the Component attribute line_limit (type=&lt;class
-    &#39;pyomo.core.base.constraint.ScalarConstraint&#39;&gt;) on block unknown with a
-    new Component (type=&lt;class
-    &#39;pyomo.core.base.constraint.AbstractScalarConstraint&#39;&gt;). This is usually
-    indicative of a modelling error. To avoid this warning, use
-    block.del_component() and block.add_component().
 </pre></div>
 </div>
 </div>
@@ -1919,7 +1911,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.040334463119506836
+  Time: 0.018443584442138672
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -2080,7 +2072,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.04297304153442383
+  Time: 0.018361806869506836
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -2160,15 +2152,17 @@ Solution:
 <section id="single-bidding-zone-with-several-periods">
 <h3>Single bidding zone with several periods<a class="headerlink" href="#single-bidding-zone-with-several-periods" title="Permalink to this headline">#</a></h3>
 <p>In this example, we consider multiple time periods (labelled [1,2,3,4]) to represent variable wind generation and changing load.</p>
-<p>\begin{equation}
-\min_{g_{s,t}} \sum_s o_{s} g_{s,t}
-\end{equation}
-such that
-\begin{align}
-g_{s,t} &amp;\leq \hat{g}<em>{s,t} G</em>{i,s} \
-g_{s,t} &amp;\geq 0 \
-\sum_s g_{s,t} &amp;= d_t
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b54a3333-86d0-45c8-b54d-f5c0a16f886c">
+<span class="eqno">(6)<a class="headerlink" href="#equation-b54a3333-86d0-45c8-b54d-f5c0a16f886c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+    \min_{g_{s,t}} \sum_s o_{s} g_{s,t}
+  \end{equation}\]</div>
+<p>such that</p>
+<div class="amsmath math notranslate nohighlight" id="equation-31987bc8-c054-4024-8447-0235ce52e585">
+<span class="eqno">(7)<a class="headerlink" href="#equation-31987bc8-c054-4024-8447-0235ce52e585" title="Permalink to this equation">#</a></span>\[\begin{align}
+    g_{s,t} &amp;\leq \hat{g}_{s,t} G_{i,s} \\
+    g_{s,t} &amp;\geq 0 \\
+    \sum_s g_{s,t} &amp;= d_t
+  \end{align}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wind_ts</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
@@ -2315,14 +2309,14 @@ Solver:
     Black box: 
       Number of iterations: 4
   Error rc: 0
-  Time: 0.04445362091064453
+  Time: 0.017468929290771484
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
 Solution: 
 - number of solutions: 0
   number of solutions displayed: 0
-78.9 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+39.3 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -2461,11 +2455,9 @@ dtype: float64
 </div>
 </div>
 <p>Then, we implement the storage consistency equations,</p>
-<div class="math notranslate nohighlight">
-\[e_{t} = (1-\text{standing loss}) \cdot e_{t-1} + \eta \cdot g_{charge, t} - \frac{1}{\eta} \cdot g_{discharge, t}\]</div>
+<p>$$e_{t} = (1-\text{standing loss}) \cdot e_{t-1} + \eta \cdot g_{charge, t} - \frac{1}{\eta} \cdot g_{discharge, t}$$</p>
 <p>For the initial period, we set the state of charge to zero.</p>
-<div class="math notranslate nohighlight">
-\[e_{0} = 0\]</div>
+<p>$$e_{0} = 0$$</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@m</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
@@ -2515,6 +2507,49 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pe</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: unknown
+  Lower bound: 6017200.656
+  Upper bound: 6017200.656
+  Number of objectives: 1
+  Number of constraints: 25
+  Number of variables: 29
+  Number of nonzeros: 12
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  User time: -1.0
+  System time: 0.0
+  Wallclock time: 0.0
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Statistics: 
+    Branch and bound: 
+      Number of bounded subproblems: None
+      Number of created subproblems: None
+    Black box: 
+      Number of iterations: 9
+  Error rc: 0
+  Time: 0.017577171325683594
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
 </pre></div>
 </div>
 </div>

@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Introduction to pandas" href="03-workshop-pandas.html" />
@@ -689,13 +691,14 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-numpy-and-matplotlib">
 <h1>Introduction to <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code><a class="headerlink" href="#introduction-to-numpy-and-matplotlib" title="Permalink to this headline">#</a></h1>
-<p>:::{note}
-This material is mostly adapted from the following resources:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This material is mostly adapted from the following resources:</p>
 <ul class="simple">
-<li><p>https://earth-env-data-science.github.io/lectures/basic_scipy/numpy_and_matplotlib.html</p></li>
-<li><p>https://www.tomasbeuzen.com/python-programming-for-data-science/chapters/chapter5-numpy.html
-:::</p></li>
+<li><p><a class="reference external" href="https://earth-env-data-science.github.io/lectures/basic_scipy/numpy_and_matplotlib.html">https://earth-env-data-science.github.io/lectures/basic_scipy/numpy_and_matplotlib.html</a></p></li>
+<li><p><a class="reference external" href="https://www.tomasbeuzen.com/python-programming-for-data-science/chapters/chapter5-numpy.html">https://www.tomasbeuzen.com/python-programming-for-data-science/chapters/chapter5-numpy.html</a></p></li>
 </ul>
+</div>
 <p>This lecture will introduce NumPy and Matplotlib.
 <strong>Numpy</strong> and <strong>Matplotlib</strong> are two of the most fundamental parts of the scientific python ecosystem. Most of everything else is built on top of them.</p>
 <img src="https://numpy.org/images/logo.svg" width="100px" />
@@ -704,18 +707,20 @@ This material is mostly adapted from the following resources:</p>
 <li><p>Website: <a class="reference external" href="https://numpy.org/">https://numpy.org/</a></p></li>
 <li><p>GitHub: <a class="reference external" href="https://github.com/numpy/numpy">https://github.com/numpy/numpy</a></p></li>
 </ul>
-<p>:::{note}
-Documentation for this package is available at https://numpy.org/doc/1.23/.
-:::</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Documentation for this package is available at <a class="reference external" href="https://numpy.org/doc/1.23/">https://numpy.org/doc/1.23/</a>.</p>
+</div>
 <img src="https://matplotlib.org/_static/logo2_compressed.svg" width="300px" />
 <p><strong>Matlotlib</strong>: <em>Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python.</em></p>
 <ul class="simple">
 <li><p>Website: <a class="reference external" href="https://matplotlib.org/">https://matplotlib.org/</a></p></li>
 <li><p>GitHub: <a class="reference external" href="https://github.com/matplotlib/matplotlib">https://github.com/matplotlib/matplotlib</a></p></li>
 </ul>
-<p>:::{note}
-Documentation for this package is available at https://matplotlib.org/stable/index.html.
-:::</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Documentation for this package is available at <a class="reference external" href="https://matplotlib.org/stable/index.html">https://matplotlib.org/stable/index.html</a>.</p>
+</div>
 <section id="importing-a-package">
 <h2>Importing a Package<a class="headerlink" href="#importing-a-package" title="Permalink to this headline">#</a></h2>
 <p>This will be our first experience with <em>importing</em> a package.</p>
@@ -727,13 +732,14 @@ Documentation for this package is available at https://matplotlib.org/stable/ind
 </div>
 </div>
 </div>
-<p>:::{note}
-If you have not yet set up Python on your computer, you can execute this tutorial in your browser via Google Colab. Click on the rocket in the top right corner and launch “Colab”. If you have not yet set up Python on your computer, you can execute this tutorial in your browser via <a class="reference external" href="https://colab.research.google.com/">Google Colab</a>. Click on the rocket in the top right corner and launch “Colab”. If that doesn’t work download the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file and import it in <a class="reference external" href="https://colab.research.google.com/">Google Colab</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have not yet set up Python on your computer, you can execute this tutorial in your browser via Google Colab. Click on the rocket in the top right corner and launch “Colab”. If you have not yet set up Python on your computer, you can execute this tutorial in your browser via <a class="reference external" href="https://colab.research.google.com/">Google Colab</a>. Click on the rocket in the top right corner and launch “Colab”. If that doesn’t work download the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file and import it in <a class="reference external" href="https://colab.research.google.com/">Google Colab</a></p>
 <p>Then install <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> by executing the following command in a Jupyter cell.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>!pip install matplotlib numpy
 </pre></div>
 </div>
-<p>:::</p>
+</div>
 </section>
 <section id="ndarrays">
 <h2>NDArrays<a class="headerlink" href="#ndarrays" title="Permalink to this headline">#</a></h2>
@@ -763,9 +769,10 @@ If you have not yet set up Python on your computer, you can execute this tutoria
 </div>
 </div>
 </div>
-<p>:::{note}
-Remember that if you’re in Jupyter, you can use <code class="docutils literal notranslate"><span class="pre">&lt;shift&gt;</span> <span class="pre">+</span> <span class="pre">&lt;tab&gt;</span></code> to inspect a function.
-:::</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember that if you’re in Jupyter, you can use <code class="docutils literal notranslate"><span class="pre">&lt;shift&gt;</span> <span class="pre">+</span> <span class="pre">&lt;tab&gt;</span></code> to inspect a function.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find out the datatype</span>
@@ -882,11 +889,11 @@ Remember that if you’re in Jupyter, you can use <code class="docutils literal 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.46936285, 0.42679198],
-       [0.00768306, 0.78372325],
-       [0.14946184, 0.20415294],
-       [0.08045581, 0.22277648],
-       [0.62185261, 0.63078267]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.50290006, 0.44040805],
+       [0.67867787, 0.50808018],
+       [0.19703897, 0.46038894],
+       [0.80292123, 0.07263472],
+       [0.84074112, 0.76253248]])
 </pre></div>
 </div>
 </div>
@@ -1070,7 +1077,7 @@ Remember that if you’re in Jupyter, you can use <code class="docutils literal 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4d1c9a7550&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0cbc122d00&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_39_1.png" src="_images/02-workshop-numpy_39_1.png" />
@@ -1109,7 +1116,7 @@ He we use <code class="docutils literal notranslate"><span class="pre">pcolormes
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7f4d1c8160d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7f0ca8ce9550&gt;
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_44_1.png" src="_images/02-workshop-numpy_44_1.png" />
@@ -1203,7 +1210,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7f4d1c89a2e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7f0cbc083ee0&gt;
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_53_1.png" src="_images/02-workshop-numpy_53_1.png" />
@@ -1270,7 +1277,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4d1c7f7250&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0ca8cc96a0&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_60_1.png" src="_images/02-workshop-numpy_60_1.png" />
@@ -1283,7 +1290,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4d1c74cee0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0ca8c2b400&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_61_1.png" src="_images/02-workshop-numpy_61_1.png" />
@@ -1399,7 +1406,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4d1c438040&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0ca890b3d0&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_73_1.png" src="_images/02-workshop-numpy_73_1.png" />
@@ -1413,7 +1420,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4d1c3a61c0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0ca88756a0&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_75_1.png" src="_images/02-workshop-numpy_75_1.png" />
@@ -1430,7 +1437,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4d1c346b80&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0ca881bf40&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_77_1.png" src="_images/02-workshop-numpy_77_1.png" />
@@ -1468,8 +1475,8 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4d1c6860d0&gt;,
- &lt;matplotlib.lines.Line2D at 0x7f4d1c686130&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0ca87aa670&gt;,
+ &lt;matplotlib.lines.Line2D at 0x7f0ca87aa6d0&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_81_1.png" src="_images/02-workshop-numpy_81_1.png" />
@@ -1484,8 +1491,8 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4d1c66bb20&gt;,
- &lt;matplotlib.lines.Line2D at 0x7f4d1c66bb80&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0ca8b4f130&gt;,
+ &lt;matplotlib.lines.Line2D at 0x7f0ca8b4f190&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_83_1.png" src="_images/02-workshop-numpy_83_1.png" />
@@ -1502,7 +1509,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4d1c5e0af0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0ca8ac2280&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_85_1.png" src="_images/02-workshop-numpy_85_1.png" />
@@ -1521,7 +1528,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4d1c277400&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0ca8746730&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_87_1.png" src="_images/02-workshop-numpy_87_1.png" />
@@ -1540,7 +1547,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4d1c1ea220&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0ca86b86a0&gt;]
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_89_1.png" src="_images/02-workshop-numpy_89_1.png" />
@@ -1579,13 +1586,13 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f4d1c157670&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f0ca85bf310&gt;
 </pre></div>
 </div>
 <img alt="_images/02-workshop-numpy_93_1.png" src="_images/02-workshop-numpy_93_1.png" />
 </div>
 </div>
-<p>There are many different colormaps available in matplotlib: https://matplotlib.org/stable/tutorials/colors/colormaps.html</p>
+<p>There are many different colormaps available in matplotlib: <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">https://matplotlib.org/stable/tutorials/colors/colormaps.html</a></p>
 </section>
 <section id="bar-plots">
 <h2>Bar Plots<a class="headerlink" href="#bar-plots" title="Permalink to this headline">#</a></h2>
@@ -1622,7 +1629,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 <ol class="simple">
 <li><p>Create an array of 5 zeros.</p></li>
 <li><p>Create an array of 10 ones.</p></li>
-<li><p>Create an array of 5 $\pi$ values.</p></li>
+<li><p>Create an array of 5 <span class="math notranslate nohighlight">\(\pi\)</span> values.</p></li>
 <li><p>Create an array of the integers 1 to 20.</p></li>
 <li><p>Create a 5 x 5 matrix of ones with a dtype <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p></li>
 </ol>
@@ -1699,17 +1706,17 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[-1.86359115, -0.40223861, -0.28876738],
-        [-0.58209075, -1.57278891,  1.44747797],
-        [-0.2230995 ,  2.22831849, -0.24294517]],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[-0.89375381, -0.03478156,  0.76142037],
+        [-0.70120696, -0.42909278,  0.16599441],
+        [ 0.02941268,  0.70673101, -0.46052125]],
 
-       [[ 0.22953285,  1.14186418,  0.06797828],
-        [-0.35960613,  0.16513118,  0.21597998],
-        [ 0.38095593,  0.10210755, -0.47417125]],
+       [[-0.14990837, -1.67842575, -0.70014019],
+        [-0.7103374 , -0.02483572, -0.04301072],
+        [ 1.22137657,  1.41068881, -0.23734084]],
 
-       [[-2.00754305, -0.74204862, -0.23886071],
-        [-0.16893279, -1.18464557, -0.60790069],
-        [-0.5198643 , -0.40816197, -1.23740524]]])
+       [[ 0.51513988, -0.76418317,  0.71857599],
+        [-1.00369102, -0.92461259, -0.4459827 ],
+        [ 1.32588455,  1.35108256, -1.40179859]]])
 </pre></div>
 </div>
 </div>

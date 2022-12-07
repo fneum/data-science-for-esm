@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Introduction to networkx" href="07-workshop-networkx.html" />
@@ -542,21 +544,24 @@ title="Print to PDF"
 <blockquote>
 <div><p>Geographic information systems use GeoTIFF and other formats to organize and store gridded raster datasets such as satellite imagery and terrain models. Rasterio reads and writes these formats and provides a Python API based on Numpy N-dimensional arrays and GeoJSON.</p>
 </div></blockquote>
-<p>:::{note}
-Documentation for rasterio is available at https://rasterio.readthedocs.io/en/latest/index.html.
-:::</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Documentation for rasterio is available at <a class="reference external" href="https://rasterio.readthedocs.io/en/latest/index.html">https://rasterio.readthedocs.io/en/latest/index.html</a>.</p>
+</div>
 <p><strong>Atlite: Convert weather data to energy systems data</strong></p>
 <blockquote>
 <div><p>Atlite is a free software, xarray-based Python library for converting weather data (such as wind speeds, solar radiation, temperature and runoff) into power systems data (such as wind power, solar power, hydro power and heating demand time series).</p>
 </div></blockquote>
-<p>:::{note}
-Documentation for atlite is available at https://atlite.readthedocs.io/en/latest/.</p>
-<p>This tool is developed here at TU Berlin in the group of Digital Transformation of Energy Systems.
-:::</p>
-<p>:::{note}
-The data used in this introduction is also available for download at</p>
-<p>https://tubcloud.tu-berlin.de/s/BHo2s4FRCkiKxDn
-:::</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Documentation for atlite is available at <a class="reference external" href="https://atlite.readthedocs.io/en/latest/">https://atlite.readthedocs.io/en/latest/</a>.</p>
+<p>This tool is developed here at TU Berlin in the group of Digital Transformation of Energy Systems.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The data used in this introduction is also available for download at</p>
+<p><a class="reference external" href="https://tubcloud.tu-berlin.de/s/BHo2s4FRCkiKxDn">https://tubcloud.tu-berlin.de/s/BHo2s4FRCkiKxDn</a></p>
+</div>
 <section id="repetition-of-vector-data">
 <h2>Repetition of Vector Data<a class="headerlink" href="#repetition-of-vector-data" title="Permalink to this headline">#</a></h2>
 <p>In the last tutorial, we used <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> to work with <strong>vector data</strong> (e.g. points, lines, polygons):</p>
@@ -641,9 +646,10 @@ The data used in this introduction is also available for download at</p>
 </table>
 </div></div></div>
 </div>
-<p>:::{note}
-This dataset uses ISO-2 country codes as index: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.
-:::</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This dataset uses ISO-2 country codes as index: <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2</a>.</p>
+</div>
 <p>Plotting the GeoDataFrame:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -705,7 +711,7 @@ This dataset uses ISO-2 country codes as index: https://en.wikipedia.org/wiki/IS
 </div>
 <p>With <code class="docutils literal notranslate"><span class="pre">rasteri</span></code>, we can for instance load GeoTIFF files.</p>
 <p>In the example below, we load the CORINE land cover classification for Portugal:</p>
-<p>https://land.copernicus.eu/pan-european/corine-land-cover</p>
+<p><a class="reference external" href="https://land.copernicus.eu/pan-european/corine-land-cover">https://land.copernicus.eu/pan-european/corine-land-cover</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clc</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;U2018_CLC2018_V2020_20u1-PT.tif&#39;</span><span class="p">)</span>
@@ -746,7 +752,7 @@ This dataset uses ISO-2 country codes as index: https://en.wikipedia.org/wiki/IS
 </div>
 </div>
 </div>
-<p>The band values correspond to a land cover and land use classification scheme with class values as listed at https://collections.sentinel-hub.com/corine-land-cover/readme.html.</p>
+<p>The band values correspond to a land cover and land use classification scheme with class values as listed at <a class="reference external" href="https://collections.sentinel-hub.com/corine-land-cover/readme.html">https://collections.sentinel-hub.com/corine-land-cover/readme.html</a>.</p>
 <p>This is an example of <strong>categorical values</strong> in raster data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -783,7 +789,7 @@ This dataset uses ISO-2 country codes as index: https://en.wikipedia.org/wiki/IS
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fb5b8047d90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f4a363a4550&gt;
 </pre></div>
 </div>
 <img alt="_images/06-workshop-atlite_32_1.png" src="_images/06-workshop-atlite_32_1.png" />
@@ -971,10 +977,6 @@ This dataset uses ISO-2 country codes as index: https://en.wikipedia.org/wiki/IS
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/geopandas/geodataframe.py:630: RuntimeWarning: Sequential read of iterator was interrupted. Resetting iterator. This can negatively impact the performance.
-  for feature in features_lst:
-</pre></div>
-</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/atlite/gis.py:469: UserWarning: Output dtype of shape_availability changed from float to boolean.
   warn(
 </pre></div>
@@ -1153,10 +1155,6 @@ So, let’s expand the exclusion container …</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/geopandas/geodataframe.py:630: RuntimeWarning: Sequential read of iterator was interrupted. Resetting iterator. This can negatively impact the performance.
-  for feature in features_lst:
-</pre></div>
-</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/atlite/gis.py:469: UserWarning: Output dtype of shape_availability changed from float to boolean.
   warn(
 </pre></div>
@@ -1164,7 +1162,7 @@ So, let’s expand the exclusion container …</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="_images/06-workshop-atlite_84_3.png" src="_images/06-workshop-atlite_84_3.png" />
+<img alt="_images/06-workshop-atlite_84_2.png" src="_images/06-workshop-atlite_84_2.png" />
 </div>
 </div>
 </section>
@@ -1605,15 +1603,15 @@ Attributes:
     dx:                 0.3
     dy:                 0.3
     Conventions:        CF-1.6
-    history:            2022-03-04 14:08:37 GMT by grib_to_netcdf-2.24.2: /op...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-18034dc7-a4d5-4bf2-a09f-884f6f2a4d60' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-18034dc7-a4d5-4bf2-a09f-884f6f2a4d60' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>x</span>: 14</li><li><span class='xr-has-index'>y</span>: 24</li><li><span class='xr-has-index'>time</span>: 768</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-65821321-b441-465f-9d33-aa3272b181d2' class='xr-section-summary-in' type='checkbox'  checked><label for='section-65821321-b441-465f-9d33-aa3272b181d2' class='xr-section-summary' >Coordinates: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-9.9 -9.6 -9.3 ... -6.6 -6.3 -6.0</div><input id='attrs-983052bd-1f04-461c-958e-f547b7068b5b' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-983052bd-1f04-461c-958e-f547b7068b5b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b2e5bbf6-fdf6-4591-b301-8f6a12f9caa5' class='xr-var-data-in' type='checkbox'><label for='data-b2e5bbf6-fdf6-4591-b301-8f6a12f9caa5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-9.9, -9.6, -9.3, -9. , -8.7, -8.4, -8.1, -7.8, -7.5, -7.2, -6.9, -6.6,
-       -6.3, -6. ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>36.0 36.3 36.6 ... 42.3 42.6 42.9</div><input id='attrs-828c3953-1139-4648-a467-85e045deed90' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-828c3953-1139-4648-a467-85e045deed90' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4f23175e-151a-4b34-8557-f2ce32986721' class='xr-var-data-in' type='checkbox'><label for='data-4f23175e-151a-4b34-8557-f2ce32986721' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([36. , 36.3, 36.6, 36.9, 37.2, 37.5, 37.8, 38.1, 38.4, 38.7, 39. , 39.3,
-       39.6, 39.9, 40.2, 40.5, 40.8, 41.1, 41.4, 41.7, 42. , 42.3, 42.6, 42.9])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2013-01-01 ... 2013-02-01T23:00:00</div><input id='attrs-88d84cd1-d004-4243-bf74-18e699d015e0' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-88d84cd1-d004-4243-bf74-18e699d015e0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c00644b9-883b-4c44-b849-a29cc6ce25ab' class='xr-var-data-in' type='checkbox'><label for='data-c00644b9-883b-4c44-b849-a29cc6ce25ab' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2013-01-01T00:00:00.000000000&#x27;, &#x27;2013-01-01T01:00:00.000000000&#x27;,
+    history:            2022-03-04 14:08:37 GMT by grib_to_netcdf-2.24.2: /op...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-72c01541-bdae-4568-a2bc-2f3abcd3c88c' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-72c01541-bdae-4568-a2bc-2f3abcd3c88c' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>x</span>: 14</li><li><span class='xr-has-index'>y</span>: 24</li><li><span class='xr-has-index'>time</span>: 768</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-529f2575-72b7-4981-9a00-5935b8226aca' class='xr-section-summary-in' type='checkbox'  checked><label for='section-529f2575-72b7-4981-9a00-5935b8226aca' class='xr-section-summary' >Coordinates: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-9.9 -9.6 -9.3 ... -6.6 -6.3 -6.0</div><input id='attrs-275d5d53-b1ee-4f34-9797-ba44a07e0d76' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-275d5d53-b1ee-4f34-9797-ba44a07e0d76' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9998dc5d-1e8d-4566-b18f-5f38d1ff15be' class='xr-var-data-in' type='checkbox'><label for='data-9998dc5d-1e8d-4566-b18f-5f38d1ff15be' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-9.9, -9.6, -9.3, -9. , -8.7, -8.4, -8.1, -7.8, -7.5, -7.2, -6.9, -6.6,
+       -6.3, -6. ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>36.0 36.3 36.6 ... 42.3 42.6 42.9</div><input id='attrs-ff523f09-fe25-4739-b16d-95db60e4eac6' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-ff523f09-fe25-4739-b16d-95db60e4eac6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8ec5ed50-ce77-462a-9702-cfaa6df17c60' class='xr-var-data-in' type='checkbox'><label for='data-8ec5ed50-ce77-462a-9702-cfaa6df17c60' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([36. , 36.3, 36.6, 36.9, 37.2, 37.5, 37.8, 38.1, 38.4, 38.7, 39. , 39.3,
+       39.6, 39.9, 40.2, 40.5, 40.8, 41.1, 41.4, 41.7, 42. , 42.3, 42.6, 42.9])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2013-01-01 ... 2013-02-01T23:00:00</div><input id='attrs-769579e0-a2b8-4a91-ab31-94783bea7d86' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-769579e0-a2b8-4a91-ab31-94783bea7d86' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a6b77591-bb1f-4771-97c4-3d958a07f053' class='xr-var-data-in' type='checkbox'><label for='data-a6b77591-bb1f-4771-97c4-3d958a07f053' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2013-01-01T00:00:00.000000000&#x27;, &#x27;2013-01-01T01:00:00.000000000&#x27;,
        &#x27;2013-01-01T02:00:00.000000000&#x27;, ..., &#x27;2013-02-01T21:00:00.000000000&#x27;,
        &#x27;2013-02-01T22:00:00.000000000&#x27;, &#x27;2013-02-01T23:00:00.000000000&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(14,), meta=np.ndarray&gt;</div><input id='attrs-a9b8d148-4917-49a1-93b0-bc60cd513c33' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-a9b8d148-4917-49a1-93b0-bc60cd513c33' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c8b56f9c-d6e0-4453-9cef-a57efd9dbc7e' class='xr-var-data-in' type='checkbox'><label for='data-c8b56f9c-d6e0-4453-9cef-a57efd9dbc7e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(14,), meta=np.ndarray&gt;</div><input id='attrs-0f0a9364-66c5-435f-b142-6c1ea12e6b9f' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-0f0a9364-66c5-435f-b142-6c1ea12e6b9f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b8e4d3cd-9e0d-4fc7-a3c8-a890b44ed61f' class='xr-var-data-in' type='checkbox'><label for='data-b8e4d3cd-9e0d-4fc7-a3c8-a890b44ed61f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
-            <table>
+            <table style="border-collapse: collapse;">
                 <thead>
                     <tr>
                         <td> </td>
@@ -1635,14 +1633,12 @@ Attributes:
                         <td> (14,) </td>
                     </tr>
                     <tr>
-                        <th> Count </th>
-                        <td> 2 Tasks </td>
-                        <td> 1 Chunks </td>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 1 chunks in 2 graph layers </td>
                     </tr>
                     <tr>
-                    <th> Type </th>
-                    <td> float64 </td>
-                    <td> numpy.ndarray </td>
+                        <th> Data type </th>
+                        <td colspan="2"> float64 numpy.ndarray </td>
                     </tr>
                 </tbody>
             </table>
@@ -1667,10 +1663,10 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(24,), meta=np.ndarray&gt;</div><input id='attrs-72435fab-c89d-4c0a-a0c1-2048dfeebbb3' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-72435fab-c89d-4c0a-a0c1-2048dfeebbb3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9760aa54-c6f6-474e-8382-b18803eaa9ee' class='xr-var-data-in' type='checkbox'><label for='data-9760aa54-c6f6-474e-8382-b18803eaa9ee' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(24,), meta=np.ndarray&gt;</div><input id='attrs-54d82a64-500f-4e90-bdc1-b9355cd8fe36' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-54d82a64-500f-4e90-bdc1-b9355cd8fe36' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-74c32351-bba9-44cb-a1d0-546fda07e34d' class='xr-var-data-in' type='checkbox'><label for='data-74c32351-bba9-44cb-a1d0-546fda07e34d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
-            <table>
+            <table style="border-collapse: collapse;">
                 <thead>
                     <tr>
                         <td> </td>
@@ -1692,14 +1688,12 @@ Attributes:
                         <td> (24,) </td>
                     </tr>
                     <tr>
-                        <th> Count </th>
-                        <td> 2 Tasks </td>
-                        <td> 1 Chunks </td>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 1 chunks in 2 graph layers </td>
                     </tr>
                     <tr>
-                    <th> Type </th>
-                    <td> float64 </td>
-                    <td> numpy.ndarray </td>
+                        <th> Data type </th>
+                        <td colspan="2"> float64 numpy.ndarray </td>
                     </tr>
                 </tbody>
             </table>
@@ -1724,10 +1718,10 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-de001ea3-b705-42e9-9d7f-494132e06b57' class='xr-section-summary-in' type='checkbox'  checked><label for='section-de001ea3-b705-42e9-9d7f-494132e06b57' class='xr-section-summary' >Data variables: <span>(13)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>height</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(24, 14), meta=np.ndarray&gt;</div><input id='attrs-5e05fe54-a8b1-4a59-8a62-540dbedadba5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5e05fe54-a8b1-4a59-8a62-540dbedadba5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5c2d8f12-13ed-455e-bc05-e219db43886c' class='xr-var-data-in' type='checkbox'><label for='data-5c2d8f12-13ed-455e-bc05-e219db43886c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>height</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-8343dbad-4a2c-400b-8535-0334adf8614f' class='xr-section-summary-in' type='checkbox'  checked><label for='section-8343dbad-4a2c-400b-8535-0334adf8614f' class='xr-section-summary' >Data variables: <span>(13)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>height</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(24, 14), meta=np.ndarray&gt;</div><input id='attrs-cf44302b-f0c3-4c12-a5ae-fc4c933d19da' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cf44302b-f0c3-4c12-a5ae-fc4c933d19da' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-18a1a435-867f-4bb1-b371-a72ec2847f18' class='xr-var-data-in' type='checkbox'><label for='data-18a1a435-867f-4bb1-b371-a72ec2847f18' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>height</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
-            <table>
+            <table style="border-collapse: collapse;">
                 <thead>
                     <tr>
                         <td> </td>
@@ -1749,14 +1743,12 @@ Attributes:
                         <td> (24, 14) </td>
                     </tr>
                     <tr>
-                        <th> Count </th>
-                        <td> 2 Tasks </td>
-                        <td> 1 Chunks </td>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 1 chunks in 2 graph layers </td>
                     </tr>
                     <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
                     </tr>
                 </tbody>
             </table>
@@ -1781,10 +1773,10 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wnd100m</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-93a12909-eff0-47f7-b1e2-339e59d817b5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-93a12909-eff0-47f7-b1e2-339e59d817b5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5fea44ad-e2bb-47f6-b8b1-6a46b203ecc0' class='xr-var-data-in' type='checkbox'><label for='data-5fea44ad-e2bb-47f6-b8b1-6a46b203ecc0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m s**-1</dd><dt><span>long_name :</span></dt><dd>100 metre wind speed</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>wind</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wnd100m</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-35b3f531-faaf-4d5f-bb0a-9ce169aeeaf9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-35b3f531-faaf-4d5f-bb0a-9ce169aeeaf9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1e3a475c-8833-451a-887f-84152b00314b' class='xr-var-data-in' type='checkbox'><label for='data-1e3a475c-8833-451a-887f-84152b00314b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m s**-1</dd><dt><span>long_name :</span></dt><dd>100 metre wind speed</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>wind</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
-            <table>
+            <table style="border-collapse: collapse;">
                 <thead>
                     <tr>
                         <td> </td>
@@ -1806,14 +1798,12 @@ Attributes:
                         <td> (100, 24, 14) </td>
                     </tr>
                     <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 8 chunks in 2 graph layers </td>
                     </tr>
                     <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
                     </tr>
                 </tbody>
             </table>
@@ -1875,10 +1865,10 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wnd_azimuth</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-f59e7a41-a670-406e-b55f-db00affc0452' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f59e7a41-a670-406e-b55f-db00affc0452' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-979c17d4-fa54-43bf-8b9c-24f4d0d7ecdd' class='xr-var-data-in' type='checkbox'><label for='data-979c17d4-fa54-43bf-8b9c-24f4d0d7ecdd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m s**-1</dd><dt><span>long_name :</span></dt><dd>100 metre U wind component</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>wind</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wnd_azimuth</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-ad9f8b2d-f343-4d9a-8490-19872dbcc0fd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ad9f8b2d-f343-4d9a-8490-19872dbcc0fd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-63858f6a-9cb2-4499-a1a9-6c9d9154abd4' class='xr-var-data-in' type='checkbox'><label for='data-63858f6a-9cb2-4499-a1a9-6c9d9154abd4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m s**-1</dd><dt><span>long_name :</span></dt><dd>100 metre U wind component</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>wind</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
-            <table>
+            <table style="border-collapse: collapse;">
                 <thead>
                     <tr>
                         <td> </td>
@@ -1900,14 +1890,12 @@ Attributes:
                         <td> (100, 24, 14) </td>
                     </tr>
                     <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 8 chunks in 2 graph layers </td>
                     </tr>
                     <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
                     </tr>
                 </tbody>
             </table>
@@ -1969,10 +1957,10 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>roughness</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-e1a3c7b8-04ed-4afa-8941-09fc979182ed' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e1a3c7b8-04ed-4afa-8941-09fc979182ed' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f8b8eac2-e0d0-4d02-b75f-66656c5f4256' class='xr-var-data-in' type='checkbox'><label for='data-f8b8eac2-e0d0-4d02-b75f-66656c5f4256' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>Forecast surface roughness</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>wind</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>roughness</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-abf9f184-2c2f-44de-acaf-a1c58fbad32d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-abf9f184-2c2f-44de-acaf-a1c58fbad32d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-497b2fe8-cbe6-42bd-a74e-f0f3e8a35b63' class='xr-var-data-in' type='checkbox'><label for='data-497b2fe8-cbe6-42bd-a74e-f0f3e8a35b63' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>Forecast surface roughness</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>wind</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
-            <table>
+            <table style="border-collapse: collapse;">
                 <thead>
                     <tr>
                         <td> </td>
@@ -1994,14 +1982,12 @@ Attributes:
                         <td> (100, 24, 14) </td>
                     </tr>
                     <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 8 chunks in 2 graph layers </td>
                     </tr>
                     <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
                     </tr>
                 </tbody>
             </table>
@@ -2063,10 +2049,10 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>influx_toa</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-c5ed3427-b3b9-4639-9068-dbb5558597d2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c5ed3427-b3b9-4639-9068-dbb5558597d2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4b544c8d-740a-4953-8121-b3bf3e7d33af' class='xr-var-data-in' type='checkbox'><label for='data-4b544c8d-740a-4953-8121-b3bf3e7d33af' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>W m**-2</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>influx</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>influx_toa</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-111d3270-1346-4c03-84ad-1d56a4954bf4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-111d3270-1346-4c03-84ad-1d56a4954bf4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-742e6c53-fae6-4444-8429-bbb539cef01e' class='xr-var-data-in' type='checkbox'><label for='data-742e6c53-fae6-4444-8429-bbb539cef01e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>W m**-2</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>influx</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
-            <table>
+            <table style="border-collapse: collapse;">
                 <thead>
                     <tr>
                         <td> </td>
@@ -2088,14 +2074,12 @@ Attributes:
                         <td> (100, 24, 14) </td>
                     </tr>
                     <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 8 chunks in 2 graph layers </td>
                     </tr>
                     <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
                     </tr>
                 </tbody>
             </table>
@@ -2157,10 +2141,10 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>influx_direct</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-796a4bea-bd59-4c0e-a8fd-26f263b03fec' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-796a4bea-bd59-4c0e-a8fd-26f263b03fec' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a745cc97-4f6c-421b-a744-ea114492b882' class='xr-var-data-in' type='checkbox'><label for='data-a745cc97-4f6c-421b-a744-ea114492b882' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>W m**-2</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>influx</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>influx_direct</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-9217108f-b04f-4258-ad5a-492dd711f230' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9217108f-b04f-4258-ad5a-492dd711f230' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e24165c5-df6a-4f9e-8c62-f40ac9474270' class='xr-var-data-in' type='checkbox'><label for='data-e24165c5-df6a-4f9e-8c62-f40ac9474270' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>W m**-2</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>influx</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
-            <table>
+            <table style="border-collapse: collapse;">
                 <thead>
                     <tr>
                         <td> </td>
@@ -2182,14 +2166,12 @@ Attributes:
                         <td> (100, 24, 14) </td>
                     </tr>
                     <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 8 chunks in 2 graph layers </td>
                     </tr>
                     <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
                     </tr>
                 </tbody>
             </table>
@@ -2251,10 +2233,10 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>influx_diffuse</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-6f4f7650-d7de-44ab-872c-7c2d12127e45' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6f4f7650-d7de-44ab-872c-7c2d12127e45' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b0095992-0e9c-439a-8526-ed33ab3b14e3' class='xr-var-data-in' type='checkbox'><label for='data-b0095992-0e9c-439a-8526-ed33ab3b14e3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>W m**-2</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>influx</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>influx_diffuse</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-e5fc8452-b4d6-4890-9ea8-9a58f585a369' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e5fc8452-b4d6-4890-9ea8-9a58f585a369' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2f99f051-f5cb-421f-b41c-0b79c2c204ed' class='xr-var-data-in' type='checkbox'><label for='data-2f99f051-f5cb-421f-b41c-0b79c2c204ed' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>W m**-2</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>influx</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
-            <table>
+            <table style="border-collapse: collapse;">
                 <thead>
                     <tr>
                         <td> </td>
@@ -2276,14 +2258,12 @@ Attributes:
                         <td> (100, 24, 14) </td>
                     </tr>
                     <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 8 chunks in 2 graph layers </td>
                     </tr>
                     <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
                     </tr>
                 </tbody>
             </table>
@@ -2345,10 +2325,10 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>albedo</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-567be962-4eb5-443b-bd18-e60913bdaa06' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-567be962-4eb5-443b-bd18-e60913bdaa06' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-603d53ad-6c03-47f7-bc5a-a72b28eb4d60' class='xr-var-data-in' type='checkbox'><label for='data-603d53ad-6c03-47f7-bc5a-a72b28eb4d60' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>(0 - 1)</dd><dt><span>long_name :</span></dt><dd>Albedo</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>influx</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>albedo</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-ccb687ed-e71f-4f19-af76-22b4066e9a8f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ccb687ed-e71f-4f19-af76-22b4066e9a8f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6dc6c26e-edcd-4848-9340-1bde39d87e82' class='xr-var-data-in' type='checkbox'><label for='data-6dc6c26e-edcd-4848-9340-1bde39d87e82' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>(0 - 1)</dd><dt><span>long_name :</span></dt><dd>Albedo</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>influx</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
-            <table>
+            <table style="border-collapse: collapse;">
                 <thead>
                     <tr>
                         <td> </td>
@@ -2370,14 +2350,12 @@ Attributes:
                         <td> (100, 24, 14) </td>
                     </tr>
                     <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 8 chunks in 2 graph layers </td>
                     </tr>
                     <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
                     </tr>
                 </tbody>
             </table>
@@ -2439,10 +2417,10 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>solar_altitude</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-0c90f1cd-1b81-48cd-9f55-3ec40d1bf7ff' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0c90f1cd-1b81-48cd-9f55-3ec40d1bf7ff' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-24723ad9-ab59-486d-8a7a-5ce6bd8a9b40' class='xr-var-data-in' type='checkbox'><label for='data-24723ad9-ab59-486d-8a7a-5ce6bd8a9b40' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>time shift :</span></dt><dd>-1 days +23:30:00</dd><dt><span>units :</span></dt><dd>rad</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>influx</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>solar_altitude</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-1944f306-f9c1-48d4-8ab0-0c226ca73728' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1944f306-f9c1-48d4-8ab0-0c226ca73728' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-33db4030-b800-4087-b19c-665ba16fceb1' class='xr-var-data-in' type='checkbox'><label for='data-33db4030-b800-4087-b19c-665ba16fceb1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>time shift :</span></dt><dd>-1 days +23:30:00</dd><dt><span>units :</span></dt><dd>rad</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>influx</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
-            <table>
+            <table style="border-collapse: collapse;">
                 <thead>
                     <tr>
                         <td> </td>
@@ -2464,14 +2442,12 @@ Attributes:
                         <td> (100, 24, 14) </td>
                     </tr>
                     <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 8 chunks in 2 graph layers </td>
                     </tr>
                     <tr>
-                    <th> Type </th>
-                    <td> float64 </td>
-                    <td> numpy.ndarray </td>
+                        <th> Data type </th>
+                        <td colspan="2"> float64 numpy.ndarray </td>
                     </tr>
                 </tbody>
             </table>
@@ -2533,10 +2509,10 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>solar_azimuth</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-07490016-1fef-47f4-a6fe-d7cf154f2fcb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-07490016-1fef-47f4-a6fe-d7cf154f2fcb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-64aeedec-4d54-4de3-a985-25bc6b337c00' class='xr-var-data-in' type='checkbox'><label for='data-64aeedec-4d54-4de3-a985-25bc6b337c00' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>time shift :</span></dt><dd>-1 days +23:30:00</dd><dt><span>units :</span></dt><dd>rad</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>influx</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>solar_azimuth</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-453a36c8-3f1f-4cb0-b75d-ab565f4067c6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-453a36c8-3f1f-4cb0-b75d-ab565f4067c6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-22de4548-1efd-430b-8608-1b654b6830a2' class='xr-var-data-in' type='checkbox'><label for='data-22de4548-1efd-430b-8608-1b654b6830a2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>time shift :</span></dt><dd>-1 days +23:30:00</dd><dt><span>units :</span></dt><dd>rad</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>influx</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
-            <table>
+            <table style="border-collapse: collapse;">
                 <thead>
                     <tr>
                         <td> </td>
@@ -2558,14 +2534,12 @@ Attributes:
                         <td> (100, 24, 14) </td>
                     </tr>
                     <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 8 chunks in 2 graph layers </td>
                     </tr>
                     <tr>
-                    <th> Type </th>
-                    <td> float64 </td>
-                    <td> numpy.ndarray </td>
+                        <th> Data type </th>
+                        <td colspan="2"> float64 numpy.ndarray </td>
                     </tr>
                 </tbody>
             </table>
@@ -2627,10 +2601,10 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>temperature</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-89fd1cf2-3103-42ac-b1c0-df682cbdccfd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-89fd1cf2-3103-42ac-b1c0-df682cbdccfd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-008414f6-0b03-4ca0-b8d5-85e6fb997920' class='xr-var-data-in' type='checkbox'><label for='data-008414f6-0b03-4ca0-b8d5-85e6fb997920' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>K</dd><dt><span>long_name :</span></dt><dd>2 metre temperature</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>temperature</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>temperature</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-d5440f5c-3a05-404c-a119-20aea21ae515' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d5440f5c-3a05-404c-a119-20aea21ae515' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4ec88ac6-7e82-42e6-8435-21c249f4b55b' class='xr-var-data-in' type='checkbox'><label for='data-4ec88ac6-7e82-42e6-8435-21c249f4b55b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>K</dd><dt><span>long_name :</span></dt><dd>2 metre temperature</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>temperature</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
-            <table>
+            <table style="border-collapse: collapse;">
                 <thead>
                     <tr>
                         <td> </td>
@@ -2652,14 +2626,12 @@ Attributes:
                         <td> (100, 24, 14) </td>
                     </tr>
                     <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 8 chunks in 2 graph layers </td>
                     </tr>
                     <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
                     </tr>
                 </tbody>
             </table>
@@ -2721,10 +2693,10 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>soil temperature</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-62efb65c-fee0-4313-bdcb-6a52b325ae27' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-62efb65c-fee0-4313-bdcb-6a52b325ae27' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-76bec3a8-0ed2-4555-89f3-58540a5471c0' class='xr-var-data-in' type='checkbox'><label for='data-76bec3a8-0ed2-4555-89f3-58540a5471c0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>K</dd><dt><span>long_name :</span></dt><dd>Soil temperature level 4</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>temperature</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>soil temperature</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-8d8c6a28-1829-4f9c-bda2-192a2d71d06f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8d8c6a28-1829-4f9c-bda2-192a2d71d06f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0d7e22e9-853c-4904-bc8b-d8c474522b3b' class='xr-var-data-in' type='checkbox'><label for='data-0d7e22e9-853c-4904-bc8b-d8c474522b3b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>K</dd><dt><span>long_name :</span></dt><dd>Soil temperature level 4</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>temperature</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
-            <table>
+            <table style="border-collapse: collapse;">
                 <thead>
                     <tr>
                         <td> </td>
@@ -2746,14 +2718,12 @@ Attributes:
                         <td> (100, 24, 14) </td>
                     </tr>
                     <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 8 chunks in 2 graph layers </td>
                     </tr>
                     <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
                     </tr>
                 </tbody>
             </table>
@@ -2815,10 +2785,10 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>runoff</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-72bd0167-5af9-4720-8f9d-e0b817eb9f31' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-72bd0167-5af9-4720-8f9d-e0b817eb9f31' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cc193d53-3a52-434d-b987-40bbefeaca29' class='xr-var-data-in' type='checkbox'><label for='data-cc193d53-3a52-434d-b987-40bbefeaca29' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>Runoff</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>runoff</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>runoff</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(100, 24, 14), meta=np.ndarray&gt;</div><input id='attrs-2fec6dc8-a7cf-464d-8f6a-bb0b67400d1e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2fec6dc8-a7cf-464d-8f6a-bb0b67400d1e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f579607b-d858-430d-b87a-e70648bd6a44' class='xr-var-data-in' type='checkbox'><label for='data-f579607b-d858-430d-b87a-e70648bd6a44' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>Runoff</dd><dt><span>module :</span></dt><dd>era5</dd><dt><span>feature :</span></dt><dd>runoff</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
-            <table>
+            <table style="border-collapse: collapse;">
                 <thead>
                     <tr>
                         <td> </td>
@@ -2840,14 +2810,12 @@ Attributes:
                         <td> (100, 24, 14) </td>
                     </tr>
                     <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 8 chunks in 2 graph layers </td>
                     </tr>
                     <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
                     </tr>
                 </tbody>
             </table>
@@ -2909,12 +2877,12 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-5c669a57-50f6-4487-8891-52219610a69f' class='xr-section-summary-in' type='checkbox'  ><label for='section-5c669a57-50f6-4487-8891-52219610a69f' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>x</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-b87d3180-f984-4255-845d-f35a86bed4a1' class='xr-index-data-in' type='checkbox'/><label for='index-b87d3180-f984-4255-845d-f35a86bed4a1' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([-9.9, -9.6, -9.3, -9.0, -8.7, -8.4, -8.1, -7.8, -7.5, -7.2, -6.9,
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-5d4b5f56-9012-4503-bb00-81336bd5f64a' class='xr-section-summary-in' type='checkbox'  ><label for='section-5d4b5f56-9012-4503-bb00-81336bd5f64a' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>x</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-2b614681-113e-414c-9d22-08485aa20bda' class='xr-index-data-in' type='checkbox'/><label for='index-2b614681-113e-414c-9d22-08485aa20bda' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([-9.9, -9.6, -9.3, -9.0, -8.7, -8.4, -8.1, -7.8, -7.5, -7.2, -6.9,
               -6.6, -6.3, -6.0],
-             dtype=&#x27;float64&#x27;, name=&#x27;x&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>y</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-6ea20c70-0279-44dd-952d-68a67d20f30d' class='xr-index-data-in' type='checkbox'/><label for='index-6ea20c70-0279-44dd-952d-68a67d20f30d' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([36.0, 36.3, 36.6, 36.9, 37.2, 37.5, 37.8, 38.1, 38.4, 38.7, 39.0,
+             dtype=&#x27;float64&#x27;, name=&#x27;x&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>y</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-fe794c36-7d37-439e-b625-48ef474b65c9' class='xr-index-data-in' type='checkbox'/><label for='index-fe794c36-7d37-439e-b625-48ef474b65c9' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([36.0, 36.3, 36.6, 36.9, 37.2, 37.5, 37.8, 38.1, 38.4, 38.7, 39.0,
               39.3, 39.6, 39.9, 40.2, 40.5, 40.8, 41.1, 41.4, 41.7, 42.0, 42.3,
               42.6, 42.9],
-             dtype=&#x27;float64&#x27;, name=&#x27;y&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-a796cd4f-16fc-4469-b650-f77b35810a97' class='xr-index-data-in' type='checkbox'/><label for='index-a796cd4f-16fc-4469-b650-f77b35810a97' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2013-01-01 00:00:00&#x27;, &#x27;2013-01-01 01:00:00&#x27;,
+             dtype=&#x27;float64&#x27;, name=&#x27;y&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-f4a932d8-9832-487c-b372-73a73bb80fd2' class='xr-index-data-in' type='checkbox'/><label for='index-f4a932d8-9832-487c-b372-73a73bb80fd2' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2013-01-01 00:00:00&#x27;, &#x27;2013-01-01 01:00:00&#x27;,
                &#x27;2013-01-01 02:00:00&#x27;, &#x27;2013-01-01 03:00:00&#x27;,
                &#x27;2013-01-01 04:00:00&#x27;, &#x27;2013-01-01 05:00:00&#x27;,
                &#x27;2013-01-01 06:00:00&#x27;, &#x27;2013-01-01 07:00:00&#x27;,
@@ -2925,7 +2893,7 @@ Attributes:
                &#x27;2013-02-01 18:00:00&#x27;, &#x27;2013-02-01 19:00:00&#x27;,
                &#x27;2013-02-01 20:00:00&#x27;, &#x27;2013-02-01 21:00:00&#x27;,
                &#x27;2013-02-01 22:00:00&#x27;, &#x27;2013-02-01 23:00:00&#x27;],
-              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=768, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-27540956-edbb-48b9-a15b-d8f3bf59a805' class='xr-section-summary-in' type='checkbox'  checked><label for='section-27540956-edbb-48b9-a15b-d8f3bf59a805' class='xr-section-summary' >Attributes: <span>(7)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>module :</span></dt><dd>era5</dd><dt><span>prepared_features :</span></dt><dd>[&#x27;height&#x27;, &#x27;runoff&#x27;, &#x27;temperature&#x27;, &#x27;wind&#x27;, &#x27;influx&#x27;]</dd><dt><span>chunksize_time :</span></dt><dd>100</dd><dt><span>dx :</span></dt><dd>0.3</dd><dt><span>dy :</span></dt><dd>0.3</dd><dt><span>Conventions :</span></dt><dd>CF-1.6</dd><dt><span>history :</span></dt><dd>2022-03-04 14:08:37 GMT by grib_to_netcdf-2.24.2: /opt/ecmwf/mars-client/bin/grib_to_netcdf -S param -o /cache/data5/adaptor.mars.internal-1646402916.940792-4467-14-36e42b7d-86c5-45a9-804b-239a490afe28.nc /cache/tmp/36e42b7d-86c5-45a9-804b-239a490afe28-adaptor.mars.internal-1646402913.817388-4467-5-tmp.grib</dd></dl></div></li></ul></div></div></div></div>
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=768, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-eadb3a31-4746-41d2-9058-8915f86acb48' class='xr-section-summary-in' type='checkbox'  checked><label for='section-eadb3a31-4746-41d2-9058-8915f86acb48' class='xr-section-summary' >Attributes: <span>(7)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>module :</span></dt><dd>era5</dd><dt><span>prepared_features :</span></dt><dd>[&#x27;height&#x27;, &#x27;runoff&#x27;, &#x27;temperature&#x27;, &#x27;wind&#x27;, &#x27;influx&#x27;]</dd><dt><span>chunksize_time :</span></dt><dd>100</dd><dt><span>dx :</span></dt><dd>0.3</dd><dt><span>dy :</span></dt><dd>0.3</dd><dt><span>Conventions :</span></dt><dd>CF-1.6</dd><dt><span>history :</span></dt><dd>2022-03-04 14:08:37 GMT by grib_to_netcdf-2.24.2: /opt/ecmwf/mars-client/bin/grib_to_netcdf -S param -o /cache/data5/adaptor.mars.internal-1646402916.940792-4467-14-36e42b7d-86c5-45a9-804b-239a490afe28.nc /cache/tmp/36e42b7d-86c5-45a9-804b-239a490afe28-adaptor.mars.internal-1646402913.817388-4467-5-tmp.grib</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>Let’s quickly plot the spatial resolution and scope of this dataset:</p>
 <div class="cell docutils container">
@@ -2968,7 +2936,8 @@ Attributes:
 </div>
 </div>
 <p>This cutout happens to also have data on the surface roughness. We can use this to scale the 100 meter wind speeds down to 10 meters using the <strong>log law</strong>:</p>
-<p>$$\frac{U(z)}{U(z_r)} = \frac{\ln\left(\frac{z}{z_0}\right)}{\ln\left(\frac{z_r}{z_0}\right)}$$</p>
+<div class="math notranslate nohighlight">
+\[\frac{U(z)}{U(z_r)} = \frac{\ln\left(\frac{z}{z_0}\right)}{\ln\left(\frac{z_r}{z_0}\right)}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z_r</span> <span class="o">=</span> <span class="n">cutout</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">roughness</span>
@@ -3009,7 +2978,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb5adaf2160&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4a1ede5a00&gt;]
 </pre></div>
 </div>
 <img alt="_images/06-workshop-atlite_102_1.png" src="_images/06-workshop-atlite_102_1.png" />
@@ -3026,10 +2995,10 @@ Attributes:
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Compute availability matrix:   0%|          | 0/1 [00:00&lt;?, ? gridcells/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Compute availability matrix: 100%|██████████| 1/1 [00:01&lt;00:00,  1.69s/ gridcells]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Compute availability matrix: 100%|██████████| 1/1 [00:01&lt;00:00,  1.82s/ gridcells]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Compute availability matrix: 100%|██████████| 1/1 [00:01&lt;00:00,  1.69s/ gridcells]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Compute availability matrix: 100%|██████████| 1/1 [00:01&lt;00:00,  1.82s/ gridcells]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -3056,9 +3025,10 @@ Attributes:
 </div>
 <p>The availibility matrix <code class="docutils literal notranslate"><span class="pre">A</span></code> can now be used as a layout matrix in the conversion functions of <code class="docutils literal notranslate"><span class="pre">atlite</span></code> from wind speeds to capacity factors.</p>
 <p>The normal approach would be to weigh the availabilities with the area per grid cell and the capacity per area.</p>
-<p>:::{note}
-No worries, if this part of the code is a bit too complicated!
-:::</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>No worries, if this part of the code is a bit too complicated!</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
@@ -3089,7 +3059,7 @@ No worries, if this part of the code is a bit too complicated!
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb5b1577eb0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4a0f5efcd0&gt;]
 </pre></div>
 </div>
 <img alt="_images/06-workshop-atlite_112_1.png" src="_images/06-workshop-atlite_112_1.png" />

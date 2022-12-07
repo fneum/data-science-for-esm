@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Introduction to pyomo" href="08-workshop-pyomo.html" />
@@ -624,16 +626,18 @@ title="Print to PDF"
 <li><p>Many standard graph algorithms</p></li>
 <li><p>Network structure and analysis measures</p></li>
 </ul>
-<p>:::{note}
-Documentation for this package is available at https://networkx.github.io/.
-:::</p>
-<p>:::{note}
-The data used in this introduction is also available for download at</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Documentation for this package is available at <a class="reference external" href="https://networkx.github.io/">https://networkx.github.io/</a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The data used in this introduction is also available for download at</p>
 <ul class="simple">
-<li><p>https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/nodes.csv</p></li>
-<li><p>https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/edges.csv
-:::</p></li>
+<li><p><a class="reference external" href="https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/nodes.csv">https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/nodes.csv</a></p></li>
+<li><p><a class="reference external" href="https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/edges.csv">https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/edges.csv</a></p></li>
 </ul>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
@@ -652,7 +656,7 @@ The data used in this introduction is also available for download at</p>
 </div>
 </div>
 </div>
-<p>Say we want to calculate the Laplacian $L$ of this graph based on its incidence matrix $K$. We first need to write down the incidence matrix $K$ as a <code class="docutils literal notranslate"><span class="pre">np.array</span></code>. Let’s also use the convention that edges are oriented such that they are directed at the node with the higher label value (i.e. from node 1 to node 2, not vice versa).</p>
+<p>Say we want to calculate the Laplacian <span class="math notranslate nohighlight">\(L\)</span> of this graph based on its incidence matrix <span class="math notranslate nohighlight">\(K\)</span>. We first need to write down the incidence matrix <span class="math notranslate nohighlight">\(K\)</span> as a <code class="docutils literal notranslate"><span class="pre">np.array</span></code>. Let’s also use the convention that edges are oriented such that they are directed at the node with the higher label value (i.e. from node 1 to node 2, not vice versa).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
@@ -907,7 +911,7 @@ The data used in this introduction is also available for download at</p>
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
 <span class="ne">NetworkXError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">G</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 
 <span class="nn">File ~/micromamba-root/envs/esm/lib/python3.9/site-packages/networkx/classes/graph.py:1057,</span> in <span class="ni">Graph.remove_edge</span><span class="nt">(self, u, v)</span>
@@ -968,10 +972,11 @@ The data used in this introduction is also available for download at</p>
 <img alt="_images/07-workshop-networkx_61_0.png" src="_images/07-workshop-networkx_61_0.png" />
 </div>
 </div>
-<p>:::{note}
-For a full list of arguments of the function see
-https://networkx.org/documentation/stable/reference/generated/networkx.drawing.nx_pylab.draw_networkx.html
-:::</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a full list of arguments of the function see
+<a class="reference external" href="https://networkx.org/documentation/stable/reference/generated/networkx.drawing.nx_pylab.draw_networkx.html">https://networkx.org/documentation/stable/reference/generated/networkx.drawing.nx_pylab.draw_networkx.html</a></p>
+</div>
 </section>
 <section id="analysing-graphs">
 <h3>Analysing graphs<a class="headerlink" href="#analysing-graphs" title="Permalink to this headline">#</a></h3>
@@ -1122,7 +1127,8 @@ dtype: int64
 </div>
 </div>
 <p>Let’s do a few checks using different formulas for the <em>Laplacian matrix</em>:</p>
-<p>$$L = KK^\top$$</p>
+<div class="math notranslate nohighlight">
+\[L = KK^\top\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
@@ -1146,7 +1152,8 @@ dtype: int64
 </div>
 </div>
 </div>
-<p>$$L = D-A$$</p>
+<div class="math notranslate nohighlight">
+\[L = D-A\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">-</span> <span class="n">A</span>
@@ -1521,7 +1528,7 @@ dtype: int64
 <img alt="_images/07-workshop-networkx_121_1.png" src="_images/07-workshop-networkx_121_1.png" />
 </div>
 </div>
-<p>If we want to calculate the weighted Laplacian $L = KBK^\top$, we also need the diagonal matrix $B$ for the susceptances (i.e inverse of reactances):</p>
+<p>If we want to calculate the weighted Laplacian <span class="math notranslate nohighlight">\(L = KBK^\top\)</span>, we also need the diagonal matrix <span class="math notranslate nohighlight">\(B\)</span> for the susceptances (i.e inverse of reactances):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_pu</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">IE</span><span class="p">,</span> <span class="s1">&#39;x_pu&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
@@ -1666,8 +1673,10 @@ dtype: int64
 </div>
 </div>
 <p>Now, we have all the ingredients to calculate the PTDF matrix</p>
-<p>$$f_\ell = \frac{1}{x_\ell}\sum_{i,j} K_{i\ell}  (L^{-1})<em>{ij} p_j$$
-$$f</em>\ell = \sum_j \text{PTDF}_{\ell j} p_j$$</p>
+<div class="math notranslate nohighlight">
+\[f_\ell = \frac{1}{x_\ell}\sum_{i,j} K_{i\ell}  (L^{-1})_{ij} p_j\]</div>
+<div class="math notranslate nohighlight">
+\[f_\ell = \sum_j \text{PTDF}_{\ell j} p_j\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PTDF</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">L_inv</span><span class="p">)</span>

@@ -682,6 +682,7 @@ title="Print to PDF"
 <p class="admonition-title">Note</p>
 <p>Links in the table lead to documentation for each component.</p>
 </div>
+<img src="https://pypsa.readthedocs.io/en/latest/_images/buses.png" width="500px" />
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Per unit values of voltage and impedance are used internally for network calculations. It is assumed internally that the base power is <strong>1 MW</strong>.</p>
@@ -691,13 +692,13 @@ title="Print to PDF"
 <h2>From structured data to optimisation<a class="headerlink" href="#from-structured-data-to-optimisation" title="Permalink to this headline">#</a></h2>
 <p>The design principle of PyPSA is that basically each component is associated with a set of variables and constraints that will be added to the optimisation model based on the input data stored for the components.</p>
 <p>For an <em>hourly</em> electricity market simulation, PyPSA will solve an optimisation problem that looks like this</p>
-<div class="amsmath math notranslate nohighlight" id="equation-73312c56-5eb8-4e59-90cd-93ebdf7f3016">
-<span class="eqno">(8)<a class="headerlink" href="#equation-73312c56-5eb8-4e59-90cd-93ebdf7f3016" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-249cfd64-40ed-4980-aa3f-b8e77fb47723">
+<span class="eqno">(8)<a class="headerlink" href="#equation-249cfd64-40ed-4980-aa3f-b8e77fb47723" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min_{g_{i,s,t}; f_{\ell,t}; g_{i,r,t,\text{charge}}; g_{i,r,t,\text{discharge}}; e_{i,r,t}} \sum_s o_{s} g_{i,s,t}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1be42bbe-1017-4cf8-9178-8ec183f13666">
-<span class="eqno">(9)<a class="headerlink" href="#equation-1be42bbe-1017-4cf8-9178-8ec183f13666" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-42e5e3e1-263c-46af-90dd-47ad621a7acf">
+<span class="eqno">(9)<a class="headerlink" href="#equation-42e5e3e1-263c-46af-90dd-47ad621a7acf" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp; \leq g_{i,s,t} \leq \hat{g}_{i,s,t} G_{i,s}  &amp; \text{generation limits : generator} \\
 -F_\ell &amp;\leq f_{\ell,t} \leq F_\ell &amp; \text{transmission limits : line}  \\
 d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{i,r,t,\text{charge}} - \sum_\ell K_{i\ell} f_{\ell,t} &amp; \text{KCL : bus} \\
@@ -1417,7 +1418,7 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.09s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.11s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Cbc solver
@@ -1690,8 +1691,8 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f598cf6d6a0&gt;,
- &lt;matplotlib.collections.LineCollection at 0x7f598cc87640&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7fbbdd128c10&gt;,
+ &lt;matplotlib.collections.LineCollection at 0x7fbbdd32fa90&gt;)
 </pre></div>
 </div>
 <img alt="_images/09-workshop-pypsa_63_1.png" src="_images/09-workshop-pypsa_63_1.png" />
@@ -1850,7 +1851,7 @@ Name: now, dtype: int64
 <img alt="_images/09-workshop-pypsa_83_1.png" src="_images/09-workshop-pypsa_83_1.png" />
 </div>
 </div>
-<p>How does this magic work? The plotting function will look up the colors specified in <code class="docutils literal notranslate"><span class="pre">n.carriers</span></code> for each carrier and match it with the second index-level of <code class="docutils literal notranslate"><span class="pre">s</span></code>.</p>
+<p><strong>How does this magic work?</strong> The plotting function will look up the colors specified in <code class="docutils literal notranslate"><span class="pre">n.carriers</span></code> for each carrier and match it with the second index-level of <code class="docutils literal notranslate"><span class="pre">s</span></code>.</p>
 </section>
 <section id="modifying-networks">
 <h2>Modifying networks<a class="headerlink" href="#modifying-networks" title="Permalink to this headline">#</a></h2>
@@ -1974,7 +1975,7 @@ Name: now, dtype: int64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.09s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.11s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Glpk solver
@@ -2050,7 +2051,7 @@ Name: now, dtype: int64
 <section id="global-constraints-for-emission-limits">
 <h2>Global constraints for emission limits<a class="headerlink" href="#global-constraints-for-emission-limits" title="Permalink to this headline">#</a></h2>
 <p>In the example above, we happen to have some spare gas capacity with lower carbon intensity than the coal and oil generators. We could use this to lower the emissions of the system, but it will be more expensive. We can implement the limit of carbon dioxide emissions as a constraint.</p>
-<p>This is achieved in PyPSA through <strong>Global Constraints</strong> which apply to many components at once.</p>
+<p>This is achieved in PyPSA through <strong>Global Constraints</strong> which add constraints that apply to many components at once.</p>
 <p>But first, we need to calculate the current level of emissions to set a sensible limit.</p>
 <p>We can compute the emissions per generator (in tonnes of CO<span class="math notranslate nohighlight">\(_2\)</span>) in the following way.</p>
 <div class="math notranslate nohighlight">
@@ -2146,7 +2147,7 @@ Name: now, dtype: int64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.1s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.13s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Glpk solver
@@ -2298,7 +2299,7 @@ Name: mu, dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.1s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.13s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Glpk solver
@@ -2336,7 +2337,7 @@ Name: mu, dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Directory tmp does not exist, creating it
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has carriers, global_constraints, loads, buses, lines, generators
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has buses, generators, global_constraints, lines, carriers, loads
 </pre></div>
 </div>
 </div>
@@ -2362,7 +2363,7 @@ INFO:pypsa.io:Imported network tmp has buses, carriers, generators, global_const
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has carriers, global_constraints, loads, buses, lines, generators
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has buses, generators, global_constraints, lines, carriers, loads
 </pre></div>
 </div>
 </div>
@@ -2382,9 +2383,690 @@ INFO:pypsa.io:Imported network tmp has buses, carriers, generators, global_const
 </section>
 <section id="a-slightly-more-realistic-example">
 <h2>A slightly more realistic example<a class="headerlink" href="#a-slightly-more-realistic-example" title="Permalink to this headline">#</a></h2>
+<p><strong>Dispatch problem with German SciGRID network</strong></p>
+<p><a class="reference external" href="https://www.scigrid.de/pages/general-information.html">SciGRID</a> is a project that provides an open reference model of the European transmission network. The network comprises time series for loads and the availability of renewable generation at an hourly resolution for January 1, 2011 as well as approximate generation capacities in 2014. This dataset is a little out of date and only intended to demonstrate the capabilities of PyPSA.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">pypsa</span><span class="o">.</span><span class="n">examples</span><span class="o">.</span><span class="n">scigrid_de</span><span class="p">(</span><span class="n">from_master</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.examples:Retrieving network data from https://github.com/PyPSA/PyPSA/raw/master/examples/scigrid-de/scigrid-with-load-gen-trafos.nc
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Importing network from PyPSA version v0.17.1 while current version is v0.21.2. Read the release notes at https://pypsa.readthedocs.io/en/latest/release_notes.html to prepare your network for import.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Imported network scigrid-de.nc has buses, generators, lines, loads, storage_units, transformers
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are some infeasibilities without allowing extension. Moreover, to approximate so-called <span class="math notranslate nohighlight">\(N-1\)</span> security, we don’t allow any line to be loaded above 70% of their thermal rating. <span class="math notranslate nohighlight">\(N-1\)</span> security is a constraint that states that no single transmission line may be overloaded by the failure of another transmission line (e.g. through a tripped connection).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">s_max_pu</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="n">n</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;316&quot;</span><span class="p">,</span> <span class="s2">&quot;527&quot;</span><span class="p">,</span> <span class="s2">&quot;602&quot;</span><span class="p">],</span> <span class="s2">&quot;s_nom&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1715</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because this network includes time-varying data, now is the time to look at another attribute of <code class="docutils literal notranslate"><span class="pre">n</span></code>: <code class="docutils literal notranslate"><span class="pre">n.snapshots</span></code>. Snapshots is the PyPSA terminology for time steps. In most cases, they represent a particular hour. They can be a <code class="docutils literal notranslate"><span class="pre">pandas.DatetimeIndex</span></code> or any other list-like attributes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">snapshots</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DatetimeIndex([&#39;2011-01-01 00:00:00&#39;, &#39;2011-01-01 01:00:00&#39;,
+               &#39;2011-01-01 02:00:00&#39;, &#39;2011-01-01 03:00:00&#39;,
+               &#39;2011-01-01 04:00:00&#39;, &#39;2011-01-01 05:00:00&#39;,
+               &#39;2011-01-01 06:00:00&#39;, &#39;2011-01-01 07:00:00&#39;,
+               &#39;2011-01-01 08:00:00&#39;, &#39;2011-01-01 09:00:00&#39;,
+               &#39;2011-01-01 10:00:00&#39;, &#39;2011-01-01 11:00:00&#39;,
+               &#39;2011-01-01 12:00:00&#39;, &#39;2011-01-01 13:00:00&#39;,
+               &#39;2011-01-01 14:00:00&#39;, &#39;2011-01-01 15:00:00&#39;,
+               &#39;2011-01-01 16:00:00&#39;, &#39;2011-01-01 17:00:00&#39;,
+               &#39;2011-01-01 18:00:00&#39;, &#39;2011-01-01 19:00:00&#39;,
+               &#39;2011-01-01 20:00:00&#39;, &#39;2011-01-01 21:00:00&#39;,
+               &#39;2011-01-01 22:00:00&#39;, &#39;2011-01-01 23:00:00&#39;],
+              dtype=&#39;datetime64[ns]&#39;, name=&#39;snapshot&#39;, freq=None)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This index will match with any time-varying attributes of components:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">loads_t</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Load</th>
+      <th>1</th>
+      <th>3</th>
+      <th>4</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>11</th>
+      <th>14</th>
+      <th>16</th>
+      <th>...</th>
+      <th>382_220kV</th>
+      <th>384_220kV</th>
+      <th>385_220kV</th>
+      <th>391_220kV</th>
+      <th>403_220kV</th>
+      <th>404_220kV</th>
+      <th>413_220kV</th>
+      <th>421_220kV</th>
+      <th>450_220kV</th>
+      <th>458_220kV</th>
+    </tr>
+    <tr>
+      <th>snapshot</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2011-01-01 00:00:00</th>
+      <td>231.716206</td>
+      <td>40.613618</td>
+      <td>66.790442</td>
+      <td>196.124424</td>
+      <td>147.804142</td>
+      <td>123.671946</td>
+      <td>83.637404</td>
+      <td>73.280624</td>
+      <td>175.260369</td>
+      <td>298.900165</td>
+      <td>...</td>
+      <td>202.010114</td>
+      <td>222.695091</td>
+      <td>212.621816</td>
+      <td>77.570241</td>
+      <td>16.148970</td>
+      <td>0.092794</td>
+      <td>58.427056</td>
+      <td>67.013686</td>
+      <td>38.449243</td>
+      <td>66.752618</td>
+    </tr>
+    <tr>
+      <th>2011-01-01 01:00:00</th>
+      <td>221.822547</td>
+      <td>38.879526</td>
+      <td>63.938670</td>
+      <td>187.750439</td>
+      <td>141.493303</td>
+      <td>118.391487</td>
+      <td>80.066312</td>
+      <td>70.151738</td>
+      <td>167.777223</td>
+      <td>286.137932</td>
+      <td>...</td>
+      <td>193.384825</td>
+      <td>213.186609</td>
+      <td>203.543436</td>
+      <td>74.258201</td>
+      <td>15.459452</td>
+      <td>0.088831</td>
+      <td>55.932378</td>
+      <td>64.152382</td>
+      <td>36.807564</td>
+      <td>63.902460</td>
+    </tr>
+    <tr>
+      <th>2011-01-01 02:00:00</th>
+      <td>213.127360</td>
+      <td>37.355494</td>
+      <td>61.432348</td>
+      <td>180.390839</td>
+      <td>135.946929</td>
+      <td>113.750678</td>
+      <td>76.927805</td>
+      <td>67.401871</td>
+      <td>161.200550</td>
+      <td>274.921657</td>
+      <td>...</td>
+      <td>185.804364</td>
+      <td>204.829941</td>
+      <td>195.564769</td>
+      <td>71.347365</td>
+      <td>14.853460</td>
+      <td>0.085349</td>
+      <td>53.739893</td>
+      <td>61.637683</td>
+      <td>35.364750</td>
+      <td>61.397558</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 485 columns</p>
+</div></div></div>
+</div>
+<p>We can use simple <code class="docutils literal notranslate"><span class="pre">pandas</span></code> syntax, to create an overview of the load time series…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">loads_t</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">60</span><span class="p">],</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;MW&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;snapshot&#39;, ylabel=&#39;MW&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/09-workshop-pypsa_124_1.png" src="_images/09-workshop-pypsa_124_1.png" />
+</div>
+</div>
+<p>… and the capacity factor time series:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p_max_pu</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">carrier</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;p.u.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;snapshot&#39;, ylabel=&#39;p.u.&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/09-workshop-pypsa_126_1.png" src="_images/09-workshop-pypsa_126_1.png" />
+</div>
+</div>
+<p>We can also inspect the total power plant capacities per technology…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;carrier&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">p_nom</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;GW&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;GW&#39;)
+</pre></div>
+</div>
+<img alt="_images/09-workshop-pypsa_128_1.png" src="_images/09-workshop-pypsa_128_1.png" />
+</div>
+</div>
+<p>… and plot the regional distribution of loads…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">loads_t</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">loads</span><span class="o">.</span><span class="n">bus</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">EqualEarth</span><span class="p">())</span>
+
+<span class="n">n</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">bus_sizes</span><span class="o">=</span><span class="n">load</span> <span class="o">/</span> <span class="mf">2e5</span><span class="p">,</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:825: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:877: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:944: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+</pre></div>
+</div>
+<img alt="_images/09-workshop-pypsa_131_1.png" src="_images/09-workshop-pypsa_131_1.png" />
+</div>
+</div>
+<p>… and power plant capacities:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">capacities</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;bus&#39;</span><span class="p">,</span> <span class="s1">&#39;carrier&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">p_nom</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For plotting we need to assign some colors to the technologies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">carriers</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">carrier</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;#</span><span class="si">%06x</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mh">0xFFFFFF</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">carriers</span><span class="p">]</span>
+<span class="n">n</span><span class="o">.</span><span class="n">madd</span><span class="p">(</span><span class="s2">&quot;Carrier&quot;</span><span class="p">,</span> <span class="n">carriers</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Gas&#39;, &#39;Hard Coal&#39;, &#39;Run of River&#39;, &#39;Waste&#39;, &#39;Brown Coal&#39;, &#39;Oil&#39;,
+       &#39;Storage Hydro&#39;, &#39;Other&#39;, &#39;Multiple&#39;, &#39;Nuclear&#39;, &#39;Geothermal&#39;,
+       &#39;Wind Offshore&#39;, &#39;Wind Onshore&#39;, &#39;Solar&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because we want to see which color represents which technology, we cann add a legend using the  <code class="docutils literal notranslate"><span class="pre">add_legend_patches</span></code> function of PyPSA.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pypsa.plot</span> <span class="kn">import</span> <span class="n">add_legend_patches</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">EqualEarth</span><span class="p">())</span>
+
+<span class="n">n</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">bus_sizes</span><span class="o">=</span><span class="n">capacities</span> <span class="o">/</span> <span class="mf">2e4</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">add_legend_patches</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">colors</span><span class="p">,</span>
+    <span class="n">carriers</span><span class="p">,</span>
+    <span class="n">legend_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/pypsa/plot.py:259: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
+  for i, ratio in ratios.iteritems():
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:825: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:877: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:944: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+</pre></div>
+</div>
+<img alt="_images/09-workshop-pypsa_137_2.png" src="_images/09-workshop-pypsa_137_2.png" />
+</div>
+</div>
+<p>This dataset also includes a few hydro storage units:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">storage_units</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>bus</th>
+      <th>p_nom</th>
+      <th>carrier</th>
+      <th>marginal_cost</th>
+      <th>max_hours</th>
+      <th>efficiency_store</th>
+      <th>efficiency_dispatch</th>
+      <th>control</th>
+      <th>type</th>
+      <th>p_nom_extendable</th>
+      <th>...</th>
+      <th>build_year</th>
+      <th>lifetime</th>
+      <th>state_of_charge_initial</th>
+      <th>state_of_charge_initial_per_period</th>
+      <th>state_of_charge_set</th>
+      <th>cyclic_state_of_charge</th>
+      <th>cyclic_state_of_charge_per_period</th>
+      <th>standing_loss</th>
+      <th>inflow</th>
+      <th>p_nom_opt</th>
+    </tr>
+    <tr>
+      <th>StorageUnit</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>100_220kV Pumped Hydro</th>
+      <td>100_220kV</td>
+      <td>144.5</td>
+      <td>Pumped Hydro</td>
+      <td>3.0</td>
+      <td>6.0</td>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>PQ</td>
+      <td></td>
+      <td>False</td>
+      <td>...</td>
+      <td>0</td>
+      <td>inf</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>True</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>114 Pumped Hydro</th>
+      <td>114</td>
+      <td>138.0</td>
+      <td>Pumped Hydro</td>
+      <td>3.0</td>
+      <td>6.0</td>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>PQ</td>
+      <td></td>
+      <td>False</td>
+      <td>...</td>
+      <td>0</td>
+      <td>inf</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>True</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>121 Pumped Hydro</th>
+      <td>121</td>
+      <td>238.0</td>
+      <td>Pumped Hydro</td>
+      <td>3.0</td>
+      <td>6.0</td>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>PQ</td>
+      <td></td>
+      <td>False</td>
+      <td>...</td>
+      <td>0</td>
+      <td>inf</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>True</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 28 columns</p>
+</div></div></div>
+</div>
+<p>So let’s solve the electricity market simulation for January 1, 2011. It’ll take a short moment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">lopf</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 1.91s
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Cbc solver
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Optimization successful. Objective value: 9.20e+06
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we can also plot model outputs, like the calculated power flows on the network map.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line_loading</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">lines_t</span><span class="o">.</span><span class="n">p0</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span> <span class="o">/</span> <span class="n">n</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">s_nom</span> <span class="o">/</span> <span class="n">n</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">s_max_pu</span> <span class="o">*</span> <span class="mi">100</span> <span class="c1"># %</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">norm</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">EqualEarth</span><span class="p">())</span>
+
+<span class="n">n</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">bus_sizes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">line_colors</span><span class="o">=</span><span class="n">line_loading</span><span class="p">,</span>
+    <span class="n">line_norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span>
+    <span class="n">line_cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span>
+    <span class="n">line_widths</span><span class="o">=</span><span class="n">n</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">s_nom</span> <span class="o">/</span> <span class="mi">1000</span>
+<span class="p">);</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">),</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Relative line loading [%]&#39;</span><span class="p">,</span>
+    <span class="n">shrink</span><span class="o">=</span><span class="mf">0.6</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fbbd4eebd60&gt;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:825: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:877: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:944: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+</pre></div>
+</div>
+<img alt="_images/09-workshop-pypsa_145_2.png" src="_images/09-workshop-pypsa_145_2.png" />
+</div>
+</div>
+<p>Or plot the hourly dispatch grouped by carrier:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_by_carrier</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">carrier</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">p_by_carrier</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;area&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20b&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
+    <span class="n">ncol</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span>
+    <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;GW&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/09-workshop-pypsa_148_0.png" src="_images/09-workshop-pypsa_148_0.png" />
+</div>
+</div>
+<p>Or plot the aggregate dispatch of the pumped hydro storage units and the state of charge throughout the day:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">p_storage</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">storage_units_t</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span>
+<span class="n">state_of_charge</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">storage_units_t</span><span class="o">.</span><span class="n">state_of_charge</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span>
+
+<span class="n">p_storage</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Pumped hydro dispatch [GW]&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">state_of_charge</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;State of charge [GWh]&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;MWh or MW&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;MWh or MW&#39;)
+</pre></div>
+</div>
+<img alt="_images/09-workshop-pypsa_150_1.png" src="_images/09-workshop-pypsa_150_1.png" />
+</div>
+</div>
+<p>Or plot the locational marginal prices (LMPs):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">EqualEarth</span><span class="p">())</span>
+
+<span class="n">norm</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># €/MWh</span>
+
+<span class="n">n</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">bus_colors</span><span class="o">=</span><span class="n">n</span><span class="o">.</span><span class="n">buses_t</span><span class="o">.</span><span class="n">marginal_price</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+    <span class="n">bus_cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span>
+    <span class="n">bus_norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">),</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LMP [€/MWh]&#39;</span><span class="p">,</span>
+    <span class="n">shrink</span><span class="o">=</span><span class="mf">0.6</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fbbd1737e50&gt;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:825: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(multi_line_string) &gt; 1:
+/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:877: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  for line in multi_line_string:
+/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:944: ShapelyDeprecationWarning: __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+  if len(p_mline) &gt; 0:
+</pre></div>
+</div>
+<img alt="_images/09-workshop-pypsa_152_2.png" src="_images/09-workshop-pypsa_152_2.png" />
+</div>
+</div>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Will be uploaded later this week.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 

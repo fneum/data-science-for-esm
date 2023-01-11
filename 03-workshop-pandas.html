@@ -212,6 +212,16 @@ const thebe_selector_output = ".output, .cell_output"
    </code>
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10-workshop-pypsa-cem.html">
+   Capacity Expansion Planning with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pypsa
+    </span>
+   </code>
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -2632,68 +2642,68 @@ Freq: M, dtype: float64
   <tbody>
     <tr>
       <th>0</th>
-      <td>Doel</td>
+      <td>Emsland</td>
       <td>Nuclear</td>
       <td>Steam Turbine</td>
-      <td>PP</td>
-      <td>Belgium</td>
-      <td>2911.0</td>
-      <td>NaN</td>
-      <td>1975.0</td>
-      <td>NaN</td>
+      <td>CHP</td>
+      <td>Germany</td>
+      <td>1336.000000</td>
+      <td>0.33</td>
+      <td>1988.0</td>
+      <td>1988.0</td>
       <td>2022.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Sarrans</td>
-      <td>Hydro</td>
-      <td>Reservoir</td>
-      <td>Store</td>
-      <td>France</td>
-      <td>183.0</td>
+      <td>Mellach</td>
+      <td>Hard Coal</td>
+      <td>Steam Turbine</td>
+      <td>CHP</td>
+      <td>Austria</td>
+      <td>200.000000</td>
       <td>NaN</td>
-      <td>1932.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>1986.0</td>
+      <td>1986.0</td>
+      <td>2020.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Pragneres</td>
-      <td>Hydro</td>
-      <td>Reservoir</td>
-      <td>Store</td>
-      <td>France</td>
-      <td>189.2</td>
+      <td>Eemshaven</td>
+      <td>Hard Coal</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>Netherlands</td>
+      <td>1604.170304</td>
+      <td>0.58</td>
+      <td>2015.0</td>
       <td>NaN</td>
-      <td>1953.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>2029.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Revin</td>
-      <td>Hydro</td>
-      <td>Pumped Storage</td>
-      <td>Store</td>
+      <td>Emile Huchet</td>
+      <td>Hard Coal</td>
+      <td>CCGT</td>
+      <td>PP</td>
       <td>France</td>
-      <td>808.0</td>
+      <td>596.493211</td>
       <td>NaN</td>
-      <td>1974.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>1958.0</td>
+      <td>2010.0</td>
+      <td>2022.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Rhinau</td>
-      <td>Hydro</td>
-      <td>Run-Of-River</td>
+      <td>Fusina</td>
+      <td>Hard Coal</td>
+      <td>Steam Turbine</td>
       <td>PP</td>
-      <td>France</td>
-      <td>152.0</td>
+      <td>Italy</td>
+      <td>899.810470</td>
       <td>NaN</td>
-      <td>2016.0</td>
-      <td>2016.0</td>
+      <td>1964.0</td>
       <td>NaN</td>
+      <td>2025.0</td>
     </tr>
   </tbody>
 </table>
@@ -2707,30 +2717,30 @@ Freq: M, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Int64Index: 5010 entries, 0 to 5076
+Int64Index: 5404 entries, 0 to 5719
 Data columns (total 18 columns):
  #   Column               Non-Null Count  Dtype  
 ---  ------               --------------  -----  
- 0   Name                 5010 non-null   object 
- 1   Fueltype             5010 non-null   object 
- 2   Technology           3987 non-null   object 
- 3   Set                  5010 non-null   object 
- 4   Country              5010 non-null   object 
- 5   Capacity             5010 non-null   float64
- 6   Efficiency           510 non-null    float64
- 7   DateIn               2976 non-null   float64
- 8   DateRetrofit         1832 non-null   float64
- 9   DateOut              154 non-null    float64
- 10  lat                  5010 non-null   float64
- 11  lon                  5010 non-null   float64
- 12  Duration             448 non-null    float64
- 13  Volume_Mm3           5010 non-null   float64
- 14  DamHeight_m          5010 non-null   float64
- 15  StorageCapacity_MWh  5010 non-null   float64
- 16  EIC                  5010 non-null   object 
- 17  projectID            5010 non-null   object 
+ 0   Name                 5404 non-null   object 
+ 1   Fueltype             5404 non-null   object 
+ 2   Technology           4344 non-null   object 
+ 3   Set                  5404 non-null   object 
+ 4   Country              5404 non-null   object 
+ 5   Capacity             5404 non-null   float64
+ 6   Efficiency           527 non-null    float64
+ 7   DateIn               3303 non-null   float64
+ 8   DateRetrofit         1857 non-null   float64
+ 9   DateOut              158 non-null    float64
+ 10  lat                  5404 non-null   float64
+ 11  lon                  5404 non-null   float64
+ 12  Duration             450 non-null    float64
+ 13  Volume_Mm3           5404 non-null   float64
+ 14  DamHeight_m          5404 non-null   float64
+ 15  StorageCapacity_MWh  5404 non-null   float64
+ 16  EIC                  5404 non-null   object 
+ 17  projectID            5404 non-null   object 
 dtypes: float64(11), object(7)
-memory usage: 743.7+ KB
+memory usage: 802.2+ KB
 </pre></div>
 </div>
 </div>
@@ -2776,45 +2786,45 @@ memory usage: 743.7+ KB
   <tbody>
     <tr>
       <th>count</th>
-      <td>5010.000000</td>
-      <td>510.000000</td>
-      <td>2976.000000</td>
-      <td>1832.000000</td>
-      <td>154.000000</td>
-      <td>5010.000000</td>
-      <td>5010.000000</td>
-      <td>448.000000</td>
-      <td>5010.000000</td>
-      <td>5010.000000</td>
-      <td>5.010000e+03</td>
+      <td>5404.000000</td>
+      <td>527.000000</td>
+      <td>3303.000000</td>
+      <td>1857.000000</td>
+      <td>158.000000</td>
+      <td>5404.000000</td>
+      <td>5404.000000</td>
+      <td>450.000000</td>
+      <td>5404.000000</td>
+      <td>5404.000000</td>
+      <td>5.404000e+03</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>151.363414</td>
-      <td>0.486821</td>
-      <td>1980.047715</td>
-      <td>1984.816048</td>
-      <td>2026.883117</td>
-      <td>48.844509</td>
-      <td>8.511741</td>
-      <td>1202.280996</td>
-      <td>14.637022</td>
-      <td>8.233239</td>
-      <td>1.807718e+03</td>
+      <td>150.357016</td>
+      <td>0.485121</td>
+      <td>1981.845292</td>
+      <td>1984.907377</td>
+      <td>2026.784810</td>
+      <td>48.832638</td>
+      <td>8.706691</td>
+      <td>1199.192225</td>
+      <td>13.607419</td>
+      <td>7.730871</td>
+      <td>1.705821e+03</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>412.728137</td>
-      <td>0.180187</td>
-      <td>24.986943</td>
-      <td>25.003845</td>
-      <td>8.234272</td>
-      <td>7.054305</td>
-      <td>8.648696</td>
-      <td>1610.022363</td>
-      <td>178.497746</td>
-      <td>59.251280</td>
-      <td>4.897179e+04</td>
+      <td>399.738819</td>
+      <td>0.179122</td>
+      <td>24.768803</td>
+      <td>24.963034</td>
+      <td>8.157168</td>
+      <td>6.964000</td>
+      <td>8.740303</td>
+      <td>1607.123646</td>
+      <td>171.912937</td>
+      <td>57.241482</td>
+      <td>4.719071e+04</td>
     </tr>
     <tr>
       <th>min</th>
@@ -2832,42 +2842,42 @@ memory usage: 743.7+ KB
     </tr>
     <tr>
       <th>25%</th>
-      <td>4.600000</td>
-      <td>0.359237</td>
-      <td>1962.000000</td>
-      <td>1966.750000</td>
+      <td>5.400000</td>
+      <td>0.359274</td>
+      <td>1964.000000</td>
+      <td>1967.000000</td>
       <td>2021.000000</td>
-      <td>43.450527</td>
-      <td>2.340625</td>
-      <td>33.280117</td>
+      <td>43.521450</td>
+      <td>2.536165</td>
+      <td>33.605131</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000e+00</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>24.000000</td>
+      <td>26.276500</td>
       <td>0.389400</td>
-      <td>1982.000000</td>
+      <td>1985.000000</td>
       <td>1991.000000</td>
       <td>2024.000000</td>
-      <td>47.653396</td>
-      <td>8.902054</td>
-      <td>636.146377</td>
+      <td>47.727941</td>
+      <td>9.036402</td>
+      <td>635.471429</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000e+00</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>92.000000</td>
-      <td>0.589875</td>
-      <td>2003.000000</td>
+      <td>98.751725</td>
+      <td>0.585897</td>
+      <td>2004.000000</td>
       <td>2005.000000</td>
       <td>2029.000000</td>
-      <td>51.641645</td>
-      <td>13.025138</td>
-      <td>1861.401642</td>
+      <td>51.678898</td>
+      <td>13.158624</td>
+      <td>1852.856250</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000e+00</td>
@@ -2876,10 +2886,10 @@ memory usage: 743.7+ KB
       <th>max</th>
       <td>5460.000000</td>
       <td>0.917460</td>
-      <td>2022.000000</td>
+      <td>2024.000000</td>
       <td>2020.000000</td>
       <td>2051.000000</td>
-      <td>70.409578</td>
+      <td>70.689366</td>
       <td>39.262400</td>
       <td>16840.000000</td>
       <td>9500.000000</td>
@@ -2913,10 +2923,11 @@ Germany                     NaN
 Greece                      NaN
 Hungary                     NaN
 Ireland                     NaN
-Italy                     114.0
+Italy                     766.0
 Latvia                      NaN
 Lithuania                   NaN
 Luxembourg                  NaN
+Moldova                     NaN
 Montenegro                  NaN
 Netherlands                 NaN
 Norway                      NaN
@@ -2959,10 +2970,10 @@ Name: Geothermal, dtype: float64
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country
 Albania                    1636.208275
-Austria                   17722.520000
-Belgium                   13666.055947
-Bosnia and Herzegovina     2127.500000
-Bulgaria                   9572.486363
+Austria                   18156.520000
+Belgium                   15049.055947
+Bosnia and Herzegovina     2135.500000
+Bulgaria                  10632.486363
 Name: Capacity, dtype: float64
 </pre></div>
 </div>
@@ -2990,7 +3001,7 @@ Name: Capacity, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7fbbec792730&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7fabd017f0d0&gt;
 </pre></div>
 </div>
 </div>
@@ -3003,7 +3014,7 @@ Name: Capacity, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34
 </pre></div>
 </div>
 </div>
@@ -3017,7 +3028,7 @@ Name: Capacity, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34
 </pre></div>
 </div>
 </div>
@@ -3043,11 +3054,11 @@ Name: Capacity, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country
-Germany           104246.894396
-France             98319.699420
-Spain              85980.832222
-Italy              79086.907019
-United Kingdom     69902.466414
+Germany           114551.629396
+France            100340.699420
+Spain              89220.506669
+Italy              80881.107019
+United Kingdom     72735.213406
 Name: Capacity, dtype: float64
 </pre></div>
 </div>
@@ -3062,10 +3073,10 @@ Name: Capacity, dtype: float64
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country
 Albania                   1976.666667
-Austria                   1972.566176
-Belgium                   1987.031250
-Bosnia and Herzegovina    1979.333333
-Bulgaria                  1973.130435
+Austria                   1973.468085
+Belgium                   1990.377778
+Bosnia and Herzegovina    1978.625000
+Bulgaria                  1974.655172
 Name: DateIn, dtype: float64
 </pre></div>
 </div>
@@ -3085,15 +3096,15 @@ we might want to group the capacities by country <strong>and</strong> fuel type.
 Albania         Hydro           1546.353732
                 Oil               89.854543
 Austria         Hard Coal        578.400000
-                Hydro          12726.420000
-                Natural Gas     4417.700000
+                Hydro          13270.420000
+                Natural Gas     4307.700000
                                    ...     
 United Kingdom  Nuclear        11239.000000
                 Oil              100.000000
                 Other             55.000000
                 Waste            498.900000
                 Wind            3401.000000
-Name: Capacity, Length: 153, dtype: float64
+Name: Capacity, Length: 168, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -3191,14 +3202,14 @@ Name: Capacity, Length: 153, dtype: float64
       <td>9492.767594</td>
       <td>0.000000</td>
       <td>NaN</td>
-      <td>23206.997071</td>
+      <td>16569.050983</td>
       <td>12059.890974</td>
     </tr>
     <tr>
       <th>Hydro</th>
-      <td>25762.867247</td>
+      <td>25909.571248</td>
       <td>13958.718931</td>
-      <td>18292.0</td>
+      <td>18459.63</td>
       <td>4806.212023</td>
       <td>9645.700000</td>
     </tr>
@@ -3212,24 +3223,24 @@ Name: Capacity, Length: 153, dtype: float64
     </tr>
     <tr>
       <th>Natural Gas</th>
-      <td>23587.497259</td>
-      <td>1091.000000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>32715.675440</td>
+      <td>27372.332000</td>
+      <td>1373.000000</td>
+      <td>55.00</td>
+      <td>7796.000000</td>
+      <td>35548.422432</td>
     </tr>
     <tr>
       <th>Nuclear</th>
       <td>7117.200000</td>
       <td>8617.000000</td>
-      <td>3348.0</td>
+      <td>3348.00</td>
       <td>12443.698212</td>
       <td>11239.000000</td>
     </tr>
     <tr>
       <th>Oil</th>
-      <td>2703.935294</td>
-      <td>1435.000000</td>
+      <td>1901.271000</td>
+      <td>1685.000000</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>100.000000</td>
@@ -3260,8 +3271,8 @@ Name: Capacity, Length: 153, dtype: float64
     </tr>
     <tr>
       <th>Wind</th>
-      <td>11112.580000</td>
-      <td>398.000000</td>
+      <td>11223.380000</td>
+      <td>633.000000</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>3401.000000</td>
@@ -3317,45 +3328,45 @@ Name: Capacity, Length: 153, dtype: float64
   <tbody>
     <tr>
       <th>count</th>
-      <td>5010.000000</td>
-      <td>510.000000</td>
-      <td>2976.000000</td>
-      <td>1832.000000</td>
-      <td>154.000000</td>
-      <td>5010.000000</td>
-      <td>5010.000000</td>
-      <td>448.000000</td>
-      <td>5010.000000</td>
-      <td>5010.000000</td>
-      <td>5.010000e+03</td>
+      <td>5404.000000</td>
+      <td>527.000000</td>
+      <td>3303.000000</td>
+      <td>1857.000000</td>
+      <td>158.000000</td>
+      <td>5404.000000</td>
+      <td>5404.000000</td>
+      <td>450.000000</td>
+      <td>5404.000000</td>
+      <td>5404.000000</td>
+      <td>5.404000e+03</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>151.363414</td>
-      <td>0.486821</td>
-      <td>1980.047715</td>
-      <td>1984.816048</td>
-      <td>2026.883117</td>
-      <td>48.844509</td>
-      <td>8.511741</td>
-      <td>1202.280996</td>
-      <td>14.637022</td>
-      <td>8.233239</td>
-      <td>1.807718e+03</td>
+      <td>150.357016</td>
+      <td>0.485121</td>
+      <td>1981.845292</td>
+      <td>1984.907377</td>
+      <td>2026.784810</td>
+      <td>48.832638</td>
+      <td>8.706691</td>
+      <td>1199.192225</td>
+      <td>13.607419</td>
+      <td>7.730871</td>
+      <td>1.705821e+03</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>412.728137</td>
-      <td>0.180187</td>
-      <td>24.986943</td>
-      <td>25.003845</td>
-      <td>8.234272</td>
-      <td>7.054305</td>
-      <td>8.648696</td>
-      <td>1610.022363</td>
-      <td>178.497746</td>
-      <td>59.251280</td>
-      <td>4.897179e+04</td>
+      <td>399.738819</td>
+      <td>0.179122</td>
+      <td>24.768803</td>
+      <td>24.963034</td>
+      <td>8.157168</td>
+      <td>6.964000</td>
+      <td>8.740303</td>
+      <td>1607.123646</td>
+      <td>171.912937</td>
+      <td>57.241482</td>
+      <td>4.719071e+04</td>
     </tr>
     <tr>
       <th>min</th>
@@ -3373,42 +3384,42 @@ Name: Capacity, Length: 153, dtype: float64
     </tr>
     <tr>
       <th>25%</th>
-      <td>4.600000</td>
-      <td>0.359237</td>
-      <td>1962.000000</td>
-      <td>1966.750000</td>
+      <td>5.400000</td>
+      <td>0.359274</td>
+      <td>1964.000000</td>
+      <td>1967.000000</td>
       <td>2021.000000</td>
-      <td>43.450527</td>
-      <td>2.340625</td>
-      <td>33.280117</td>
+      <td>43.521450</td>
+      <td>2.536165</td>
+      <td>33.605131</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000e+00</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>24.000000</td>
+      <td>26.276500</td>
       <td>0.389400</td>
-      <td>1982.000000</td>
+      <td>1985.000000</td>
       <td>1991.000000</td>
       <td>2024.000000</td>
-      <td>47.653396</td>
-      <td>8.902054</td>
-      <td>636.146377</td>
+      <td>47.727941</td>
+      <td>9.036402</td>
+      <td>635.471429</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000e+00</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>92.000000</td>
-      <td>0.589875</td>
-      <td>2003.000000</td>
+      <td>98.751725</td>
+      <td>0.585897</td>
+      <td>2004.000000</td>
       <td>2005.000000</td>
       <td>2029.000000</td>
-      <td>51.641645</td>
-      <td>13.025138</td>
-      <td>1861.401642</td>
+      <td>51.678898</td>
+      <td>13.158624</td>
+      <td>1852.856250</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000e+00</td>
@@ -3417,10 +3428,10 @@ Name: Capacity, Length: 153, dtype: float64
       <th>max</th>
       <td>5460.000000</td>
       <td>0.917460</td>
-      <td>2022.000000</td>
+      <td>2024.000000</td>
       <td>2020.000000</td>
       <td>2051.000000</td>
-      <td>70.409578</td>
+      <td>70.689366</td>
       <td>39.262400</td>
       <td>16840.000000</td>
       <td>9500.000000</td>
@@ -3439,8 +3450,8 @@ Name: Capacity, Length: 153, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Nuclear&#39;, &#39;Hydro&#39;, &#39;Hard Coal&#39;, &#39;Oil&#39;, &#39;Natural Gas&#39;, &#39;Bioenergy&#39;,
-       &#39;Lignite&#39;, &#39;Other&#39;, &#39;Wind&#39;, &#39;Solar&#39;, &#39;Waste&#39;, &#39;Geothermal&#39;],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Nuclear&#39;, &#39;Hard Coal&#39;, &#39;Natural Gas&#39;, &#39;Hydro&#39;, &#39;Lignite&#39;, &#39;Other&#39;,
+       &#39;Oil&#39;, &#39;Bioenergy&#39;, &#39;Wind&#39;, &#39;Solar&#39;, &#39;Geothermal&#39;, &#39;Waste&#39;],
       dtype=object)
 </pre></div>
 </div>
@@ -3454,9 +3465,9 @@ Name: Capacity, Length: 153, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Steam Turbine&#39;, &#39;Reservoir&#39;, &#39;Pumped Storage&#39;, &#39;Run-Of-River&#39;,
-       nan, &#39;CCGT&#39;, &#39;Marine&#39;, &#39;Offshore&#39;, &#39;Onshore&#39;, &#39;OCGT&#39;, &#39;Csp&#39;,
-       &#39;Combustion Engine&#39;, &#39;CSP&#39;], dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Steam Turbine&#39;, &#39;CCGT&#39;, &#39;Pumped Storage&#39;, &#39;Reservoir&#39;,
+       &#39;Run-Of-River&#39;, nan, &#39;Marine&#39;, &#39;Not Found&#39;, &#39;Offshore&#39;, &#39;Onshore&#39;,
+       &#39;Csp&#39;, &#39;not found&#39;, &#39;Combustion Engine&#39;, &#39;CSP&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -3531,52 +3542,73 @@ Name: Capacity, Length: 153, dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>49</th>
-      <td>Bastardo</td>
+      <th>1</th>
+      <td>Mellach</td>
       <td>Hard Coal</td>
+      <td>Steam Turbine</td>
+      <td>CHP</td>
+      <td>Austria</td>
+      <td>200.000000</td>
       <td>NaN</td>
-      <td>PP</td>
-      <td>Italy</td>
-      <td>138.290543</td>
-      <td>NaN</td>
-      <td>1989.0</td>
-      <td>NaN</td>
-      <td>2025.0</td>
-      <td>42.8933</td>
-      <td>12.5397</td>
+      <td>1986.0</td>
+      <td>1986.0</td>
+      <td>2020.0</td>
+      <td>46.911700</td>
+      <td>15.488300</td>
       <td>NaN</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>{'26WIMPI-S10BSTRJ'}</td>
-      <td>{'BEYONDCOAL': {'BEYOND-IT-10'}, 'ENTSOE': {'2...</td>
+      <td>{'14W-WML-KW-----0'}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-AT-11'}, 'ENTSOE': {'1...</td>
     </tr>
     <tr>
-      <th>51</th>
-      <td>Brindisi Sud</td>
-      <td>Hard Coal</td>
-      <td>NaN</td>
-      <td>PP</td>
-      <td>Italy</td>
-      <td>1825.435174</td>
-      <td>NaN</td>
-      <td>1991.0</td>
-      <td>NaN</td>
-      <td>2025.0</td>
-      <td>40.5639</td>
-      <td>18.0322</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>{'26WIMPI-S16BSCRY'}</td>
-      <td>{'BEYONDCOAL': {'BEYOND-IT-2'}, 'ENTSOE': {'26...</td>
-    </tr>
-    <tr>
-      <th>52</th>
-      <td>Fusina</td>
+      <th>2</th>
+      <td>Eemshaven</td>
       <td>Hard Coal</td>
       <td>CCGT</td>
+      <td>PP</td>
+      <td>Netherlands</td>
+      <td>1604.170304</td>
+      <td>0.58</td>
+      <td>2015.0</td>
+      <td>NaN</td>
+      <td>2029.0</td>
+      <td>53.440500</td>
+      <td>6.861200</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'49W000000000044-'}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-NL-12'}, 'ENTSOE': {'4...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Emile Huchet</td>
+      <td>Hard Coal</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>France</td>
+      <td>596.493211</td>
+      <td>NaN</td>
+      <td>1958.0</td>
+      <td>2010.0</td>
+      <td>2022.0</td>
+      <td>49.152500</td>
+      <td>6.698100</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'17W100P100P0345B', '17W100P100P0344D'}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-FR-67'}, 'ENTSOE': {'1...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Fusina</td>
+      <td>Hard Coal</td>
+      <td>Steam Turbine</td>
       <td>PP</td>
       <td>Italy</td>
       <td>899.810470</td>
@@ -3584,8 +3616,8 @@ Name: Capacity, Length: 153, dtype: float64
       <td>1964.0</td>
       <td>NaN</td>
       <td>2025.0</td>
-      <td>45.4314</td>
-      <td>12.2458</td>
+      <td>45.431400</td>
+      <td>12.245800</td>
       <td>NaN</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -3594,46 +3626,25 @@ Name: Capacity, Length: 153, dtype: float64
       <td>{'BEYONDCOAL': {'BEYOND-IT-24'}, 'ENTSOE': {'2...</td>
     </tr>
     <tr>
-      <th>53</th>
-      <td>Monfalcone</td>
+      <th>61</th>
+      <td>Hemweg</td>
       <td>Hard Coal</td>
-      <td>NaN</td>
+      <td>CCGT</td>
       <td>PP</td>
-      <td>Italy</td>
-      <td>309.770817</td>
+      <td>Netherlands</td>
+      <td>1090.000000</td>
       <td>NaN</td>
-      <td>1965.0</td>
+      <td>2012.0</td>
       <td>NaN</td>
-      <td>2025.0</td>
-      <td>45.7967</td>
-      <td>13.5456</td>
       <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>{'26WIMPI-S06MTNFA'}</td>
-      <td>{'BEYONDCOAL': {'BEYOND-IT-13'}, 'ENTSOE': {'2...</td>
-    </tr>
-    <tr>
-      <th>54</th>
-      <td>Sulcis</td>
-      <td>Hard Coal</td>
-      <td>NaN</td>
-      <td>PP</td>
-      <td>Italy</td>
-      <td>543.942804</td>
-      <td>NaN</td>
-      <td>1986.0</td>
-      <td>2001.0</td>
-      <td>2025.0</td>
-      <td>39.1953</td>
-      <td>8.4000</td>
+      <td>52.405370</td>
+      <td>4.844820</td>
       <td>NaN</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>{'26WIMPI-S20SCLC8'}</td>
-      <td>{'BEYONDCOAL': {'BEYOND-IT-20'}, 'ENTSOE': {'2...</td>
+      <td>{'49W000000000045Y'}</td>
+      <td>{'ENTSOE': {'49W000000000045Y'}, 'OPSD': {'OEU...</td>
     </tr>
     <tr>
       <th>...</th>
@@ -3657,91 +3668,91 @@ Name: Capacity, Length: 153, dtype: float64
       <td>...</td>
     </tr>
     <tr>
-      <th>2930</th>
-      <td>Vaertaverket</td>
-      <td>Hard Coal</td>
-      <td>NaN</td>
-      <td>PP</td>
-      <td>Sweden</td>
-      <td>0.000000</td>
-      <td>NaN</td>
-      <td>1990.0</td>
-      <td>NaN</td>
-      <td>2020.0</td>
-      <td>59.3526</td>
-      <td>18.1009</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>{nan}</td>
-      <td>{'BEYONDCOAL': {'BEYOND-SE-11'}}</td>
-    </tr>
-    <tr>
-      <th>2931</th>
-      <td>Vitkovice</td>
-      <td>Hard Coal</td>
-      <td>NaN</td>
-      <td>PP</td>
-      <td>Czech Republic</td>
-      <td>0.000000</td>
-      <td>NaN</td>
-      <td>1970.0</td>
-      <td>NaN</td>
-      <td>2020.0</td>
-      <td>49.8160</td>
-      <td>18.2733</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>{nan}</td>
-      <td>{'BEYONDCOAL': {'BEYOND-CZ-31'}}</td>
-    </tr>
-    <tr>
-      <th>2932</th>
-      <td>Wilhelmshaven New</td>
+      <th>5000</th>
+      <td>Ensdorf</td>
       <td>Hard Coal</td>
       <td>NaN</td>
       <td>PP</td>
       <td>Germany</td>
-      <td>732.939880</td>
-      <td>NaN</td>
-      <td>2015.0</td>
+      <td>389.000000</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>53.5788</td>
-      <td>8.1327</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>49.306235</td>
+      <td>6.780411</td>
       <td>NaN</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>{nan}</td>
-      <td>{'BEYONDCOAL': {'BEYOND-DE-247'}}</td>
+      <td>{'11WD7ENSD2SKW1-4', '11WD7ENSD5SKW3-E'}</td>
+      <td>{'ENTSOE': {'11WD7ENSD2SKW1-4', '11WD7ENSD5SKW...</td>
     </tr>
     <tr>
-      <th>2933</th>
-      <td>Wolfsburg North</td>
+      <th>5027</th>
+      <td>International Paper Kwidzyn</td>
+      <td>Hard Coal</td>
+      <td>NaN</td>
+      <td>PP</td>
+      <td>Poland</td>
+      <td>111.600000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>53.726353</td>
+      <td>18.932304</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'19W0000000002337'}</td>
+      <td>{'ENTSOE': {'19W0000000002337'}}</td>
+    </tr>
+    <tr>
+      <th>5031</th>
+      <td>Kiel</td>
       <td>Hard Coal</td>
       <td>NaN</td>
       <td>PP</td>
       <td>Germany</td>
-      <td>129.071174</td>
+      <td>323.000000</td>
       <td>NaN</td>
-      <td>2000.0</td>
       <td>NaN</td>
-      <td>2022.0</td>
-      <td>52.4317</td>
-      <td>10.7870</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>54.323293</td>
+      <td>10.122765</td>
       <td>NaN</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>{nan}</td>
-      <td>{'BEYONDCOAL': {'BEYOND-DE-234'}}</td>
+      <td>{'11WD2KIKW000301W'}</td>
+      <td>{'ENTSOE': {'11WD2KIKW000301W'}}</td>
     </tr>
     <tr>
-      <th>4707</th>
+      <th>5049</th>
+      <td>Nowa</td>
+      <td>Hard Coal</td>
+      <td>NaN</td>
+      <td>PP</td>
+      <td>Poland</td>
+      <td>155.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>53.649030</td>
+      <td>18.727108</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'19W000000000239W'}</td>
+      <td>{'ENTSOE': {'19W000000000239W'}}</td>
+    </tr>
+    <tr>
+      <th>5354</th>
       <td>Escatron Gr</td>
       <td>Hard Coal</td>
       <td>NaN</td>
@@ -3752,8 +3763,8 @@ Name: Capacity, Length: 153, dtype: float64
       <td>1990.0</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>41.2961</td>
-      <td>-0.3376</td>
+      <td>41.296100</td>
+      <td>-0.337600</td>
       <td>NaN</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -3763,7 +3774,7 @@ Name: Capacity, Length: 153, dtype: float64
     </tr>
   </tbody>
 </table>
-<p>193 rows × 18 columns</p>
+<p>201 rows × 18 columns</p>
 </div></div></div>
 </div>
 <p>Identify the 5 largest coal power plants. In which countries are they located? When were they built?</p>
@@ -3835,7 +3846,7 @@ Name: Capacity, Length: 153, dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>307</th>
+      <th>392</th>
       <td>Kozienice</td>
       <td>Hard Coal</td>
       <td>NaN</td>
@@ -3846,7 +3857,7 @@ Name: Capacity, Length: 153, dtype: float64
       <td>1972.0</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>51.6647</td>
+      <td>51.66470</td>
       <td>21.46670</td>
       <td>NaN</td>
       <td>0.0</td>
@@ -3856,49 +3867,7 @@ Name: Capacity, Length: 153, dtype: float64
       <td>{'BEYONDCOAL': {'BEYOND-PL-96'}, 'ENTSOE': {'1...</td>
     </tr>
     <tr>
-      <th>1396</th>
-      <td>Zaporiska</td>
-      <td>Hard Coal</td>
-      <td>CCGT</td>
-      <td>PP</td>
-      <td>Ukraine</td>
-      <td>3318.973044</td>
-      <td>NaN</td>
-      <td>1972.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>47.5089</td>
-      <td>34.62530</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>{nan, nan, nan, nan, nan, nan, nan}</td>
-      <td>{'GEO': {'GEO-42988'}, 'GPD': {'WRI1005101'}}</td>
-    </tr>
-    <tr>
-      <th>1397</th>
-      <td>Vuhlehirska Uglegorskaya</td>
-      <td>Hard Coal</td>
-      <td>CCGT</td>
-      <td>PP</td>
-      <td>Ukraine</td>
-      <td>3318.973044</td>
-      <td>NaN</td>
-      <td>1972.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>48.4633</td>
-      <td>38.20328</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>{nan, nan, nan, nan, nan, nan, nan}</td>
-      <td>{'GEO': {'GEO-43001'}, 'GPD': {'WRI1005107'}}</td>
-    </tr>
-    <tr>
-      <th>1227</th>
+      <th>1001</th>
       <td>Opole</td>
       <td>Hard Coal</td>
       <td>NaN</td>
@@ -3909,7 +3878,7 @@ Name: Capacity, Length: 153, dtype: float64
       <td>1993.0</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>50.7518</td>
+      <td>50.75180</td>
       <td>17.88200</td>
       <td>NaN</td>
       <td>0.0</td>
@@ -3919,7 +3888,7 @@ Name: Capacity, Length: 153, dtype: float64
       <td>{'BEYONDCOAL': {'BEYOND-PL-16'}, 'ENTSOE': {'1...</td>
     </tr>
     <tr>
-      <th>1407</th>
+      <th>1787</th>
       <td>Krivorozhskaya</td>
       <td>Hard Coal</td>
       <td>CCGT</td>
@@ -3930,7 +3899,7 @@ Name: Capacity, Length: 153, dtype: float64
       <td>1965.0</td>
       <td>1992.0</td>
       <td>NaN</td>
-      <td>47.5432</td>
+      <td>47.54320</td>
       <td>33.65830</td>
       <td>NaN</td>
       <td>0.0</td>
@@ -3938,6 +3907,48 @@ Name: Capacity, Length: 153, dtype: float64
       <td>0.0</td>
       <td>{nan, nan, nan, nan, nan, nan, nan, nan, nan, ...</td>
       <td>{'GEO': {'GEO-42989'}, 'GPD': {'WRI1005100'}}</td>
+    </tr>
+    <tr>
+      <th>1797</th>
+      <td>Burshtynska Tes</td>
+      <td>Hard Coal</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>Ukraine</td>
+      <td>2120.455000</td>
+      <td>NaN</td>
+      <td>1965.0</td>
+      <td>1984.0</td>
+      <td>NaN</td>
+      <td>49.21038</td>
+      <td>24.66654</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan, nan, nan, nan, nan, nan, nan, nan, nan, ...</td>
+      <td>{'GEO': {'GEO-42991'}, 'GPD': {'WRI1005097'}}</td>
+    </tr>
+    <tr>
+      <th>970</th>
+      <td>Jaworzno</td>
+      <td>Hard Coal</td>
+      <td>Steam Turbine</td>
+      <td>CHP</td>
+      <td>Poland</td>
+      <td>2078.967837</td>
+      <td>NaN</td>
+      <td>1977.0</td>
+      <td>1999.0</td>
+      <td>NaN</td>
+      <td>50.20780</td>
+      <td>19.20970</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'19W0000000000628', '19W0000000000636', '19W0...</td>
+      <td>{'BEYONDCOAL': {'BEYOND-PL-70'}, 'ENTSOE': {'1...</td>
     </tr>
   </tbody>
 </table>
@@ -3970,7 +3981,7 @@ DamHeight_m                                                         14.0
 StorageCapacity_MWh                                                  0.0
 EIC                                                                {nan}
 projectID                   {&#39;JRC&#39;: {&#39;JRC-H2138&#39;}, &#39;GEO&#39;: {&#39;GEO-42677&#39;}}
-Name: 1719, dtype: object
+Name: 1373, dtype: object
 </pre></div>
 </div>
 </div>
@@ -4045,7 +4056,49 @@ Name: 1719, dtype: object
   </thead>
   <tbody>
     <tr>
-      <th>968</th>
+      <th>2630</th>
+      <td>Melkoya</td>
+      <td>Natural Gas</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>Norway</td>
+      <td>230.0</td>
+      <td>NaN</td>
+      <td>2007.0</td>
+      <td>2007.0</td>
+      <td>NaN</td>
+      <td>70.689366</td>
+      <td>23.600448</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'50WP00000000456T'}</td>
+      <td>{'ENTSOE': {'50WP00000000456T'}, 'OPSD': {'OEU...</td>
+    </tr>
+    <tr>
+      <th>3188</th>
+      <td>Hammerfest Snohvit Terminal</td>
+      <td>Natural Gas</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>Norway</td>
+      <td>229.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>70.685400</td>
+      <td>23.590000</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan}</td>
+      <td>{'GGPT': {'G410482'}}</td>
+    </tr>
+    <tr>
+      <th>1296</th>
       <td>Adamselv</td>
       <td>Hydro</td>
       <td>Reservoir</td>
@@ -4066,7 +4119,7 @@ Name: 1719, dtype: object
       <td>{'OPSD': {'OEU-3106', 'OEU-3105'}, 'JRC': {'JR...</td>
     </tr>
     <tr>
-      <th>1988</th>
+      <th>3022</th>
       <td>Nedre Porsa</td>
       <td>Hydro</td>
       <td>Reservoir</td>
@@ -4087,7 +4140,7 @@ Name: 1719, dtype: object
       <td>{'OPSD': {'OEU-4052'}, 'JRC': {'JRC-N297'}}</td>
     </tr>
     <tr>
-      <th>1965</th>
+      <th>2610</th>
       <td>Kvaenangsbotn</td>
       <td>Hydro</td>
       <td>Reservoir</td>
@@ -4108,7 +4161,7 @@ Name: 1719, dtype: object
       <td>{'OPSD': {'OEU-3856'}, 'JRC': {'JRC-N226'}}</td>
     </tr>
     <tr>
-      <th>216</th>
+      <th>615</th>
       <td>Alta Krv</td>
       <td>Hydro</td>
       <td>Reservoir</td>
@@ -4129,7 +4182,7 @@ Name: 1719, dtype: object
       <td>{'ENTSOE': {'50WP00000000006N'}, 'OPSD': {'OEU...</td>
     </tr>
     <tr>
-      <th>1928</th>
+      <th>2321</th>
       <td>Smavatna</td>
       <td>Hydro</td>
       <td>Reservoir</td>
@@ -4150,7 +4203,7 @@ Name: 1719, dtype: object
       <td>{'OPSD': {'OEU-4353'}, 'JRC': {'JRC-N392'}}</td>
     </tr>
     <tr>
-      <th>2277</th>
+      <th>2790</th>
       <td>Guolasjohka</td>
       <td>Hydro</td>
       <td>Reservoir</td>
@@ -4171,7 +4224,7 @@ Name: 1719, dtype: object
       <td>{'OPSD': {'OEU-3532'}, 'JRC': {'JRC-N123'}}</td>
     </tr>
     <tr>
-      <th>2005</th>
+      <th>2678</th>
       <td>Melkefoss</td>
       <td>Hydro</td>
       <td>Reservoir</td>
@@ -4192,7 +4245,7 @@ Name: 1719, dtype: object
       <td>{'OPSD': {'OEU-3972'}, 'JRC': {'JRC-N267'}}</td>
     </tr>
     <tr>
-      <th>1936</th>
+      <th>2313</th>
       <td>Skogfoss</td>
       <td>Hydro</td>
       <td>Reservoir</td>
@@ -4212,48 +4265,6 @@ Name: 1719, dtype: object
       <td>{nan}</td>
       <td>{'OPSD': {'OEU-4320'}, 'JRC': {'JRC-N383'}}</td>
     </tr>
-    <tr>
-      <th>1939</th>
-      <td>Skibotn</td>
-      <td>Hydro</td>
-      <td>Reservoir</td>
-      <td>Store</td>
-      <td>Norway</td>
-      <td>70.0</td>
-      <td>NaN</td>
-      <td>1979.0</td>
-      <td>1979.0</td>
-      <td>NaN</td>
-      <td>69.312883</td>
-      <td>20.342060</td>
-      <td>2186.080000</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>{nan}</td>
-      <td>{'OPSD': {'OEU-4301'}, 'JRC': {'JRC-N375'}}</td>
-    </tr>
-    <tr>
-      <th>969</th>
-      <td>Bardufoss</td>
-      <td>Hydro</td>
-      <td>Reservoir</td>
-      <td>Store</td>
-      <td>Norway</td>
-      <td>43.7</td>
-      <td>NaN</td>
-      <td>1953.0</td>
-      <td>1982.0</td>
-      <td>NaN</td>
-      <td>69.043788</td>
-      <td>18.589681</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>{nan}</td>
-      <td>{'OPSD': {'OEU-3139', 'OEU-3237'}, 'JRC': {'JR...</td>
-    </tr>
   </tbody>
 </table>
 </div></div></div>
@@ -4267,17 +4278,17 @@ Name: 1719, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fueltype
-Hydro          1970.613256
-Hard Coal      1976.884211
-Lignite        1978.326087
+Hydro          1970.639702
+Hard Coal      1977.089005
+Lignite        1977.591837
 Geothermal     1981.000000
 Nuclear        1983.730159
-Oil            1986.622951
-Natural Gas    1996.582938
-Waste          1996.951807
-Bioenergy      2000.538462
-Other          2000.680851
-Wind           2006.238532
+Oil            1986.774194
+Waste          1996.809524
+Natural Gas    1997.751032
+Other          2000.208333
+Bioenergy      2000.740741
+Wind           2006.227273
 Solar          2010.750000
 Name: DateIn, dtype: float64
 </pre></div>
@@ -4377,9 +4388,9 @@ Name: DateIn, dtype: float64
       <td>0</td>
       <td>0</td>
       <td>2</td>
-      <td>165</td>
+      <td>171</td>
       <td>0</td>
-      <td>10</td>
+      <td>17</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -4394,20 +4405,20 @@ Name: DateIn, dtype: float64
       <td>1</td>
       <td>13</td>
       <td>0</td>
-      <td>17</td>
+      <td>26</td>
       <td>2</td>
       <td>9</td>
       <td>0</td>
       <td>0</td>
       <td>8</td>
-      <td>8</td>
+      <td>9</td>
     </tr>
     <tr>
       <th>Bosnia and Herzegovina</th>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>15</td>
+      <td>16</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -4424,7 +4435,7 @@ Name: DateIn, dtype: float64
       <td>2</td>
       <td>30</td>
       <td>8</td>
-      <td>0</td>
+      <td>6</td>
       <td>1</td>
       <td>0</td>
       <td>0</td>
@@ -4439,7 +4450,7 @@ Name: DateIn, dtype: float64
       <td>1</td>
       <td>21</td>
       <td>0</td>
-      <td>0</td>
+      <td>6</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -4453,8 +4464,8 @@ Name: DateIn, dtype: float64
       <td>0</td>
       <td>9</td>
       <td>14</td>
-      <td>24</td>
-      <td>1</td>
+      <td>26</td>
+      <td>5</td>
       <td>2</td>
       <td>0</td>
       <td>0</td>
@@ -4464,12 +4475,12 @@ Name: DateIn, dtype: float64
     </tr>
     <tr>
       <th>Denmark</th>
-      <td>3</td>
+      <td>4</td>
       <td>0</td>
-      <td>7</td>
+      <td>9</td>
       <td>0</td>
       <td>0</td>
-      <td>3</td>
+      <td>13</td>
       <td>0</td>
       <td>1</td>
       <td>2</td>
@@ -4484,9 +4495,9 @@ Name: DateIn, dtype: float64
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -4494,15 +4505,15 @@ Name: DateIn, dtype: float64
     </tr>
     <tr>
       <th>Finland</th>
-      <td>39</td>
+      <td>40</td>
       <td>0</td>
       <td>9</td>
-      <td>104</td>
-      <td>3</td>
-      <td>16</td>
+      <td>105</td>
+      <td>6</td>
+      <td>21</td>
       <td>2</td>
       <td>17</td>
-      <td>2</td>
+      <td>3</td>
       <td>0</td>
       <td>0</td>
       <td>11</td>
@@ -4514,7 +4525,7 @@ Name: DateIn, dtype: float64
       <td>4</td>
       <td>150</td>
       <td>0</td>
-      <td>11</td>
+      <td>27</td>
       <td>19</td>
       <td>7</td>
       <td>2</td>
@@ -4524,18 +4535,18 @@ Name: DateIn, dtype: float64
     </tr>
     <tr>
       <th>Germany</th>
-      <td>41</td>
+      <td>42</td>
       <td>0</td>
-      <td>53</td>
-      <td>706</td>
+      <td>55</td>
+      <td>730</td>
       <td>29</td>
-      <td>175</td>
+      <td>210</td>
       <td>7</td>
       <td>29</td>
       <td>26</td>
       <td>0</td>
-      <td>63</td>
-      <td>11</td>
+      <td>64</td>
+      <td>15</td>
     </tr>
     <tr>
       <th>Greece</th>
@@ -4543,8 +4554,8 @@ Name: DateIn, dtype: float64
       <td>0</td>
       <td>0</td>
       <td>20</td>
-      <td>6</td>
-      <td>9</td>
+      <td>7</td>
+      <td>12</td>
       <td>0</td>
       <td>3</td>
       <td>0</td>
@@ -4554,14 +4565,14 @@ Name: DateIn, dtype: float64
     </tr>
     <tr>
       <th>Hungary</th>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>1</td>
       <td>4</td>
       <td>1</td>
-      <td>0</td>
+      <td>17</td>
       <td>1</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>3</td>
       <td>0</td>
@@ -4574,9 +4585,9 @@ Name: DateIn, dtype: float64
       <td>1</td>
       <td>6</td>
       <td>2</td>
-      <td>7</td>
+      <td>9</td>
       <td>0</td>
-      <td>4</td>
+      <td>3</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -4585,11 +4596,11 @@ Name: DateIn, dtype: float64
     <tr>
       <th>Italy</th>
       <td>2</td>
-      <td>1</td>
-      <td>11</td>
+      <td>24</td>
+      <td>10</td>
       <td>286</td>
       <td>0</td>
-      <td>80</td>
+      <td>112</td>
       <td>0</td>
       <td>2</td>
       <td>1</td>
@@ -4604,7 +4615,7 @@ Name: DateIn, dtype: float64
       <td>0</td>
       <td>3</td>
       <td>0</td>
-      <td>0</td>
+      <td>3</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -4619,7 +4630,7 @@ Name: DateIn, dtype: float64
       <td>0</td>
       <td>2</td>
       <td>0</td>
-      <td>0</td>
+      <td>4</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -4635,6 +4646,21 @@ Name: DateIn, dtype: float64
       <td>2</td>
       <td>0</td>
       <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Moldova</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -4661,40 +4687,40 @@ Name: DateIn, dtype: float64
       <th>Netherlands</th>
       <td>0</td>
       <td>0</td>
-      <td>6</td>
+      <td>7</td>
       <td>0</td>
       <td>0</td>
-      <td>29</td>
+      <td>53</td>
       <td>1</td>
       <td>1</td>
       <td>3</td>
       <td>0</td>
       <td>0</td>
-      <td>6</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>Norway</th>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>377</td>
+      <td>378</td>
+      <td>0</td>
+      <td>3</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>Poland</th>
       <td>0</td>
       <td>0</td>
-      <td>39</td>
+      <td>45</td>
       <td>18</td>
-      <td>4</td>
-      <td>2</td>
+      <td>5</td>
+      <td>16</td>
       <td>0</td>
       <td>1</td>
       <td>0</td>
@@ -4707,9 +4733,9 @@ Name: DateIn, dtype: float64
       <td>0</td>
       <td>0</td>
       <td>2</td>
-      <td>40</td>
+      <td>41</td>
       <td>0</td>
-      <td>4</td>
+      <td>12</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -4724,7 +4750,7 @@ Name: DateIn, dtype: float64
       <td>3</td>
       <td>119</td>
       <td>5</td>
-      <td>0</td>
+      <td>10</td>
       <td>1</td>
       <td>0</td>
       <td>0</td>
@@ -4737,9 +4763,9 @@ Name: DateIn, dtype: float64
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>12</td>
-      <td>6</td>
-      <td>0</td>
+      <td>13</td>
+      <td>9</td>
+      <td>3</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -4754,7 +4780,7 @@ Name: DateIn, dtype: float64
       <td>2</td>
       <td>30</td>
       <td>3</td>
-      <td>2</td>
+      <td>4</td>
       <td>2</td>
       <td>0</td>
       <td>0</td>
@@ -4767,7 +4793,7 @@ Name: DateIn, dtype: float64
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>27</td>
+      <td>28</td>
       <td>2</td>
       <td>2</td>
       <td>1</td>
@@ -4782,15 +4808,15 @@ Name: DateIn, dtype: float64
       <td>1</td>
       <td>0</td>
       <td>16</td>
-      <td>357</td>
+      <td>361</td>
       <td>3</td>
-      <td>53</td>
+      <td>80</td>
       <td>5</td>
-      <td>14</td>
+      <td>13</td>
       <td>15</td>
       <td>189</td>
       <td>15</td>
-      <td>291</td>
+      <td>294</td>
     </tr>
     <tr>
       <th>Sweden</th>
@@ -4799,22 +4825,22 @@ Name: DateIn, dtype: float64
       <td>1</td>
       <td>145</td>
       <td>0</td>
+      <td>9</td>
+      <td>3</td>
       <td>4</td>
-      <td>3</td>
-      <td>3</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>3</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>Switzerland</th>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>463</td>
+      <td>465</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>4</td>
       <td>0</td>
       <td>0</td>
@@ -4826,10 +4852,10 @@ Name: DateIn, dtype: float64
       <th>Ukraine</th>
       <td>0</td>
       <td>0</td>
-      <td>13</td>
+      <td>11</td>
       <td>8</td>
       <td>0</td>
-      <td>0</td>
+      <td>11</td>
       <td>4</td>
       <td>0</td>
       <td>0</td>
@@ -4844,7 +4870,7 @@ Name: DateIn, dtype: float64
       <td>9</td>
       <td>100</td>
       <td>0</td>
-      <td>63</td>
+      <td>86</td>
       <td>8</td>
       <td>1</td>
       <td>1</td>

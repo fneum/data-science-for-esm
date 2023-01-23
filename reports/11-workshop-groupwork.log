@@ -1,15 +1,4 @@
 Traceback (most recent call last):
-  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/client.py", line 730, in _async_poll_for_reply
-    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/util.py", line 96, in ensure_async
-    result = await obj
-  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/jupyter_client/channels.py", line 230, in get_msg
-    raise Empty
-_queue.Empty
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
   File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
     executenb(
   File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
@@ -22,18 +11,156 @@ Traceback (most recent call last):
     return future.result()
   File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/client.py", line 949, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/client.py", line 754, in _async_poll_for_reply
-    await self._async_handle_timeout(timeout, cell)
-  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/client.py", line 801, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-fn = "era5-2013-NL.nc"
-url = "https://tubcloud.tu-berlin.de/s/bAJj9xmN5ZLZQZJ/download/" + fn
-urlretrieve(url, )
--------------------
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+cutout.prepare()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mException[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[11], line 1[0m
+[0;32m----> 1[0m [43mcutout[49m[38;5;241;43m.[39;49m[43mprepare[49m[43m([49m[43m)[49m
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/atlite/data.py:102[0m, in [0;36mmaybe_remove_tmpdir.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m    100[0m kwargs[[38;5;124m"[39m[38;5;124mtmpdir[39m[38;5;124m"[39m] [38;5;241m=[39m mkdtemp()
+[1;32m    101[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 102[0m     res [38;5;241m=[39m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m    103[0m [38;5;28;01mfinally[39;00m:
+[1;32m    104[0m     rmtree(kwargs[[38;5;124m"[39m[38;5;124mtmpdir[39m[38;5;124m"[39m])
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/atlite/data.py:164[0m, in [0;36mcutout_prepare[0;34m(cutout, features, tmpdir, overwrite)[0m
+[1;32m    162[0m logger[38;5;241m.[39minfo([38;5;124mf[39m[38;5;124m"[39m[38;5;124mCalculating and writing with module [39m[38;5;132;01m{[39;00mmodule[38;5;132;01m}[39;00m[38;5;124m:[39m[38;5;124m"[39m)
+[1;32m    163[0m missing_features [38;5;241m=[39m missing_vars[38;5;241m.[39mindex[38;5;241m.[39munique([38;5;124m"[39m[38;5;124mfeature[39m[38;5;124m"[39m)
+[0;32m--> 164[0m ds [38;5;241m=[39m [43mget_features[49m[43m([49m[43mcutout[49m[43m,[49m[43m [49m[43mmodule[49m[43m,[49m[43m [49m[43mmissing_features[49m[43m,[49m[43m [49m[43mtmpdir[49m[38;5;241;43m=[39;49m[43mtmpdir[49m[43m)[49m
+[1;32m    165[0m prepared [38;5;241m|[39m[38;5;241m=[39m [38;5;28mset[39m(missing_features)
+[1;32m    167[0m cutout[38;5;241m.[39mdata[38;5;241m.[39mattrs[38;5;241m.[39mupdate([38;5;28mdict[39m(prepared_features[38;5;241m=[39m[38;5;28mlist[39m(prepared)))
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/atlite/data.py:46[0m, in [0;36mget_features[0;34m(cutout, module, features, tmpdir)[0m
+[1;32m     41[0m     feature_data [38;5;241m=[39m delayed(get_data)(
+[1;32m     42[0m         cutout, feature, tmpdir[38;5;241m=[39mtmpdir, lock[38;5;241m=[39mlock, [38;5;241m*[39m[38;5;241m*[39mparameters
+[1;32m     43[0m     )
+[1;32m     44[0m     datasets[38;5;241m.[39mappend(feature_data)
+[0;32m---> 46[0m datasets [38;5;241m=[39m [43mcompute[49m[43m([49m[38;5;241;43m*[39;49m[43mdatasets[49m[43m)[49m
+[1;32m     48[0m ds [38;5;241m=[39m xr[38;5;241m.[39mmerge(datasets, compat[38;5;241m=[39m[38;5;124m"[39m[38;5;124mequals[39m[38;5;124m"[39m)
+[1;32m     49[0m [38;5;28;01mfor[39;00m v [38;5;129;01min[39;00m ds:
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/dask/base.py:599[0m, in [0;36mcompute[0;34m(traverse, optimize_graph, scheduler, get, *args, **kwargs)[0m
+[1;32m    596[0m     keys[38;5;241m.[39mappend(x[38;5;241m.[39m__dask_keys__())
+[1;32m    597[0m     postcomputes[38;5;241m.[39mappend(x[38;5;241m.[39m__dask_postcompute__())
+[0;32m--> 599[0m results [38;5;241m=[39m [43mschedule[49m[43m([49m[43mdsk[49m[43m,[49m[43m [49m[43mkeys[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m    600[0m [38;5;28;01mreturn[39;00m repack([f(r, [38;5;241m*[39ma) [38;5;28;01mfor[39;00m r, (f, a) [38;5;129;01min[39;00m [38;5;28mzip[39m(results, postcomputes)])
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/dask/threaded.py:89[0m, in [0;36mget[0;34m(dsk, keys, cache, num_workers, pool, **kwargs)[0m
+[1;32m     86[0m     [38;5;28;01melif[39;00m [38;5;28misinstance[39m(pool, multiprocessing[38;5;241m.[39mpool[38;5;241m.[39mPool):
+[1;32m     87[0m         pool [38;5;241m=[39m MultiprocessingPoolExecutor(pool)
+[0;32m---> 89[0m results [38;5;241m=[39m [43mget_async[49m[43m([49m
+[1;32m     90[0m [43m    [49m[43mpool[49m[38;5;241;43m.[39;49m[43msubmit[49m[43m,[49m
+[1;32m     91[0m [43m    [49m[43mpool[49m[38;5;241;43m.[39;49m[43m_max_workers[49m[43m,[49m
+[1;32m     92[0m [43m    [49m[43mdsk[49m[43m,[49m
+[1;32m     93[0m [43m    [49m[43mkeys[49m[43m,[49m
+[1;32m     94[0m [43m    [49m[43mcache[49m[38;5;241;43m=[39;49m[43mcache[49m[43m,[49m
+[1;32m     95[0m [43m    [49m[43mget_id[49m[38;5;241;43m=[39;49m[43m_thread_get_id[49m[43m,[49m
+[1;32m     96[0m [43m    [49m[43mpack_exception[49m[38;5;241;43m=[39;49m[43mpack_exception[49m[43m,[49m
+[1;32m     97[0m [43m    [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m,[49m
+[1;32m     98[0m [43m[49m[43m)[49m
+[1;32m    100[0m [38;5;66;03m# Cleanup pools associated to dead threads[39;00m
+[1;32m    101[0m [38;5;28;01mwith[39;00m pools_lock:
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/dask/local.py:511[0m, in [0;36mget_async[0;34m(submit, num_workers, dsk, result, cache, get_id, rerun_exceptions_locally, pack_exception, raise_exception, callbacks, dumps, loads, chunksize, **kwargs)[0m
+[1;32m    509[0m         _execute_task(task, data)  [38;5;66;03m# Re-execute locally[39;00m
+[1;32m    510[0m     [38;5;28;01melse[39;00m:
+[0;32m--> 511[0m         [43mraise_exception[49m[43m([49m[43mexc[49m[43m,[49m[43m [49m[43mtb[49m[43m)[49m
+[1;32m    512[0m res, worker_id [38;5;241m=[39m loads(res_info)
+[1;32m    513[0m state[[38;5;124m"[39m[38;5;124mcache[39m[38;5;124m"[39m][key] [38;5;241m=[39m res
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/dask/local.py:319[0m, in [0;36mreraise[0;34m(exc, tb)[0m
+[1;32m    317[0m [38;5;28;01mif[39;00m exc[38;5;241m.[39m__traceback__ [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m tb:
+[1;32m    318[0m     [38;5;28;01mraise[39;00m exc[38;5;241m.[39mwith_traceback(tb)
+[0;32m--> 319[0m [38;5;28;01mraise[39;00m exc
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/dask/local.py:224[0m, in [0;36mexecute_task[0;34m(key, task_info, dumps, loads, get_id, pack_exception)[0m
+[1;32m    222[0m [38;5;28;01mtry[39;00m:
+[1;32m    223[0m     task, data [38;5;241m=[39m loads(task_info)
+[0;32m--> 224[0m     result [38;5;241m=[39m [43m_execute_task[49m[43m([49m[43mtask[49m[43m,[49m[43m [49m[43mdata[49m[43m)[49m
+[1;32m    225[0m     [38;5;28mid[39m [38;5;241m=[39m get_id()
+[1;32m    226[0m     result [38;5;241m=[39m dumps((result, [38;5;28mid[39m))
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/dask/core.py:119[0m, in [0;36m_execute_task[0;34m(arg, cache, dsk)[0m
+[1;32m    115[0m     func, args [38;5;241m=[39m arg[[38;5;241m0[39m], arg[[38;5;241m1[39m:]
+[1;32m    116[0m     [38;5;66;03m# Note: Don't assign the subtask results to a variable. numpy detects[39;00m
+[1;32m    117[0m     [38;5;66;03m# temporaries by their reference count and can execute certain[39;00m
+[1;32m    118[0m     [38;5;66;03m# operations in-place.[39;00m
+[0;32m--> 119[0m     [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43m([49m[43m_execute_task[49m[43m([49m[43ma[49m[43m,[49m[43m [49m[43mcache[49m[43m)[49m[43m [49m[38;5;28;43;01mfor[39;49;00m[43m [49m[43ma[49m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43margs[49m[43m)[49m[43m)[49m
+[1;32m    120[0m [38;5;28;01melif[39;00m [38;5;129;01mnot[39;00m ishashable(arg):
+[1;32m    121[0m     [38;5;28;01mreturn[39;00m arg
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/dask/utils.py:71[0m, in [0;36mapply[0;34m(func, args, kwargs)[0m
+[1;32m     40[0m [38;5;250m[39m[38;5;124;03m"""Apply a function given its positional and keyword arguments.[39;00m
+[1;32m     41[0m 
+[1;32m     42[0m [38;5;124;03mEquivalent to ``func(*args, **kwargs)``[39;00m
+[0;32m   (...)[0m
+[1;32m     68[0m [38;5;124;03m>>> dsk = {'task-name': task}  # adds the task to a low level Dask task graph[39;00m
+[1;32m     69[0m [38;5;124;03m"""[39;00m
+[1;32m     70[0m [38;5;28;01mif[39;00m kwargs:
+[0;32m---> 71[0m     [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m     72[0m [38;5;28;01melse[39;00m:
+[1;32m     73[0m     [38;5;28;01mreturn[39;00m func([38;5;241m*[39margs)
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/atlite/datasets/era5.py:377[0m, in [0;36mget_data[0;34m(cutout, feature, tmpdir, lock, **creation_parameters)[0m
+[1;32m    373[0m     [38;5;28;01mreturn[39;00m retrieve_once(retrieval_times(coords, static[38;5;241m=[39m[38;5;28;01mTrue[39;00m))[38;5;241m.[39msqueeze()
+[1;32m    375[0m datasets [38;5;241m=[39m [38;5;28mmap[39m(retrieve_once, retrieval_times(coords))
+[0;32m--> 377[0m [38;5;28;01mreturn[39;00m [43mxr[49m[38;5;241;43m.[39;49m[43mconcat[49m[43m([49m[43mdatasets[49m[43m,[49m[43m [49m[43mdim[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mtime[39;49m[38;5;124;43m"[39;49m[43m)[49m[38;5;241m.[39msel(time[38;5;241m=[39mcoords[[38;5;124m"[39m[38;5;124mtime[39m[38;5;124m"[39m])
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/xarray/core/concat.py:226[0m, in [0;36mconcat[0;34m(objs, dim, data_vars, coords, compat, positions, fill_value, join, combine_attrs)[0m
+[1;32m    223[0m [38;5;28;01mfrom[39;00m [38;5;21;01mxarray[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdataset[39;00m [38;5;28;01mimport[39;00m Dataset
+[1;32m    225[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 226[0m     first_obj, objs [38;5;241m=[39m [43mutils[49m[38;5;241;43m.[39;49m[43mpeek_at[49m[43m([49m[43mobjs[49m[43m)[49m
+[1;32m    227[0m [38;5;28;01mexcept[39;00m [38;5;167;01mStopIteration[39;00m:
+[1;32m    228[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m"[39m[38;5;124mmust supply at least one object to concatenate[39m[38;5;124m"[39m)
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/xarray/core/utils.py:186[0m, in [0;36mpeek_at[0;34m(iterable)[0m
+[1;32m    182[0m [38;5;250m[39m[38;5;124;03m"""Returns the first value from iterable, as well as a new iterator with[39;00m
+[1;32m    183[0m [38;5;124;03mthe same content as the original iterable[39;00m
+[1;32m    184[0m [38;5;124;03m"""[39;00m
+[1;32m    185[0m gen [38;5;241m=[39m [38;5;28miter[39m(iterable)
+[0;32m--> 186[0m peek [38;5;241m=[39m [38;5;28;43mnext[39;49m[43m([49m[43mgen[49m[43m)[49m
+[1;32m    187[0m [38;5;28;01mreturn[39;00m peek, itertools[38;5;241m.[39mchain([peek], gen)
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/atlite/datasets/era5.py:367[0m, in [0;36mget_data.<locals>.retrieve_once[0;34m(time)[0m
+[1;32m    366[0m [38;5;28;01mdef[39;00m [38;5;21mretrieve_once[39m(time):
+[0;32m--> 367[0m     ds [38;5;241m=[39m [43mfunc[49m[43m([49m[43m{[49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mretrieval_params[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mtime[49m[43m}[49m[43m)[49m
+[1;32m    368[0m     [38;5;28;01mif[39;00m sanitize [38;5;129;01mand[39;00m sanitize_func [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[1;32m    369[0m         ds [38;5;241m=[39m sanitize_func(ds)
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/atlite/datasets/era5.py:203[0m, in [0;36mget_data_runoff[0;34m(retrieval_params)[0m
+[1;32m    201[0m [38;5;28;01mdef[39;00m [38;5;21mget_data_runoff[39m(retrieval_params):
+[1;32m    202[0m [38;5;250m    [39m[38;5;124;03m"""Get runoff data for given retrieval parameters."""[39;00m
+[0;32m--> 203[0m     ds [38;5;241m=[39m [43mretrieve_data[49m[43m([49m[43mvariable[49m[38;5;241;43m=[39;49m[43m[[49m[38;5;124;43m"[39;49m[38;5;124;43mrunoff[39;49m[38;5;124;43m"[39;49m[43m][49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mretrieval_params[49m[43m)[49m
+[1;32m    205[0m     ds [38;5;241m=[39m _rename_and_clean_coords(ds)
+[1;32m    206[0m     ds [38;5;241m=[39m ds[38;5;241m.[39mrename({[38;5;124m"[39m[38;5;124mro[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124mrunoff[39m[38;5;124m"[39m})
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/atlite/datasets/era5.py:297[0m, in [0;36mretrieve_data[0;34m(product, chunks, tmpdir, lock, **updates)[0m
+[1;32m    291[0m request[38;5;241m.[39mupdate(updates)
+[1;32m    293[0m [38;5;28;01massert[39;00m {[38;5;124m"[39m[38;5;124myear[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mmonth[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvariable[39m[38;5;124m"[39m}[38;5;241m.[39missubset(
+[1;32m    294[0m     request
+[1;32m    295[0m ), [38;5;124m"[39m[38;5;124mNeed to specify at least [39m[38;5;124m'[39m[38;5;124mvariable[39m[38;5;124m'[39m[38;5;124m, [39m[38;5;124m'[39m[38;5;124myear[39m[38;5;124m'[39m[38;5;124m and [39m[38;5;124m'[39m[38;5;124mmonth[39m[38;5;124m'[39m[38;5;124m"[39m
+[0;32m--> 297[0m client [38;5;241m=[39m [43mcdsapi[49m[38;5;241;43m.[39;49m[43mClient[49m[43m([49m
+[1;32m    298[0m [43m    [49m[43minfo_callback[49m[38;5;241;43m=[39;49m[43mlogger[49m[38;5;241;43m.[39;49m[43mdebug[49m[43m,[49m[43m [49m[43mdebug[49m[38;5;241;43m=[39;49m[43mlogging[49m[38;5;241;43m.[39;49m[43mDEBUG[49m[43m [49m[38;5;241;43m>[39;49m[38;5;241;43m=[39;49m[43m [49m[43mlogging[49m[38;5;241;43m.[39;49m[43mroot[49m[38;5;241;43m.[39;49m[43mlevel[49m
+[1;32m    299[0m [43m[49m[43m)[49m
+[1;32m    300[0m result [38;5;241m=[39m client[38;5;241m.[39mretrieve(product, request)
+[1;32m    302[0m [38;5;28;01mif[39;00m lock [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/cdsapi/api.py:301[0m, in [0;36mClient.__init__[0;34m(self, url, key, quiet, debug, verify, timeout, progress, full_stack, delete, retry_max, sleep_max, wait_until_complete, info_callback, warning_callback, error_callback, debug_callback, metadata, forget, session)[0m
+[1;32m    298[0m             verify [38;5;241m=[39m [38;5;28mint[39m(config[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mverify[39m[38;5;124m"[39m, [38;5;241m1[39m))
+[1;32m    300[0m [38;5;28;01mif[39;00m url [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mor[39;00m key [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mor[39;00m key [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 301[0m     [38;5;28;01mraise[39;00m [38;5;167;01mException[39;00m([38;5;124m"[39m[38;5;124mMissing/incomplete configuration file: [39m[38;5;132;01m%s[39;00m[38;5;124m"[39m [38;5;241m%[39m (dotrc))
+[1;32m    303[0m [38;5;28mself[39m[38;5;241m.[39murl [38;5;241m=[39m url
+[1;32m    304[0m [38;5;28mself[39m[38;5;241m.[39mkey [38;5;241m=[39m key
+
+[0;31mException[0m: Missing/incomplete configuration file: /home/runner/.cdsapirc
+Exception: Missing/incomplete configuration file: /home/runner/.cdsapirc
 

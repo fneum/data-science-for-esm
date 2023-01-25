@@ -1,0 +1,2270 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Sector-Coupling with pypsa &#8212; Data Science for Energy System Modelling</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Preparation for Group Assignment" href="11-workshop-groupwork.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science for Energy System Modelling</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-workshop-python.html">
+   Introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Python
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-workshop-numpy.html">
+   Introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     numpy
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     matplotlib
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-workshop-pandas.html">
+   Introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pandas
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04-workshop-geopandas.html">
+   Introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     geopandas
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     cartopy
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06-workshop-atlite.html">
+   Introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     rasterio
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     atlite
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07-workshop-networkx.html">
+   Introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     networkx
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08-workshop-pyomo.html">
+   Introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pyomo
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09-workshop-pypsa.html">
+   Introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pypsa
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10-workshop-pypsa-cem.html">
+   Capacity Expansion Planning with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pypsa
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11-workshop-groupwork.html">
+   Preparation for Group Assignment
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Sector-Coupling with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pypsa
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/fneum/data-science-for-esm/main?urlpath=tree/data-science-for-esm/12-workshop-pypsa-sector-coupling.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/fneum/data-science-for-esm/blob/main/data-science-for-esm/12-workshop-pypsa-sector-coupling.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/fneum/data-science-for-esm"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/fneum/data-science-for-esm/issues/new?title=Issue%20on%20page%20%2F12-workshop-pypsa-sector-coupling.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/12-workshop-pypsa-sector-coupling.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#previous-capacity-expansion-model">
+   Previous Capacity Expansion Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hydrogen-production">
+   Hydrogen Production
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#heat-demand">
+   Heat Demand
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#heat-pumps">
+   Heat pumps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combined-heat-and-power-chp">
+   Combined Heat-and-Power (CHP)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#electric-vehicles">
+   Electric Vehicles
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Sector-Coupling with pypsa</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#previous-capacity-expansion-model">
+   Previous Capacity Expansion Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hydrogen-production">
+   Hydrogen Production
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#heat-demand">
+   Heat Demand
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#heat-pumps">
+   Heat pumps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combined-heat-and-power-chp">
+   Combined Heat-and-Power (CHP)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#electric-vehicles">
+   Electric Vehicles
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="sector-coupling-with-pypsa">
+<h1>Sector-Coupling with <code class="docutils literal notranslate"><span class="pre">pypsa</span></code><a class="headerlink" href="#sector-coupling-with-pypsa" title="Permalink to this headline">#</a></h1>
+<img src="https://github.com/fneum/data-science-for-esm/raw/main/data-science-for-esm/pypsa-logo.png" width="300px" /><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Also in this tutorial, you might want to refer to the PyPSA documentation: <a class="reference external" href="https://pypsa.readthedocs.io">https://pypsa.readthedocs.io</a>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pypsa</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;bmh&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span> <span class="o">=</span> <span class="s2">&quot;network-cem.nc&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://tubcloud.tu-berlin.de/s/kpWaraGc9LeaxLK/download/&quot;</span> <span class="o">+</span> <span class="n">fn</span>
+<span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;network-cem.nc&#39;, &lt;http.client.HTTPMessage at 0x7f68bdf5a100&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="previous-capacity-expansion-model">
+<h2>Previous Capacity Expansion Model<a class="headerlink" href="#previous-capacity-expansion-model" title="Permalink to this headline">#</a></h2>
+<p>To explore sector-coupling options with PyPSA, let’s load the capacity expansion model we built for the electricity system and add sector-coupling technologies and demands on top.</p>
+<p>This example has single node for Germany and 4-hourly temporal resolution for a year. It has wind and solar solar generation, an OCGT generator as well as battery and hydrogen storage to supply a fixed electricity demand.</p>
+<p>Some sector-coupling technologies have multiple ouputs (e.g. CHP plants producing heat and power). By default, PyPSA links have only one input (<code class="docutils literal notranslate"><span class="pre">bus0</span></code>)
+and one output (<code class="docutils literal notranslate"><span class="pre">bus1</span></code>) with a given efficieny (<code class="docutils literal notranslate"><span class="pre">efficiency</span></code>). Thus, we have to tell PyPSA that links can have multiple outputs by <strong>overriding the component attributes</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">override_component_attrs</span> <span class="o">=</span> <span class="n">pypsa</span><span class="o">.</span><span class="n">descriptors</span><span class="o">.</span><span class="n">Dict</span><span class="p">(</span>
+    <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pypsa</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">component_attrs</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">override_component_attrs</span><span class="p">[</span><span class="s2">&quot;Link&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;bus2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;n/a&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;n/a&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2nd bus&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Input (optional)&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">override_component_attrs</span><span class="p">[</span><span class="s2">&quot;Link&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;efficiency2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;static or series&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;per unit&quot;</span><span class="p">,</span>
+    <span class="mf">1.0</span><span class="p">,</span>
+    <span class="s2">&quot;2nd bus efficiency&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Input (optional)&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">override_component_attrs</span><span class="p">[</span><span class="s2">&quot;Link&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;p2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;series&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;MW&quot;</span><span class="p">,</span>
+    <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s2">&quot;2nd bus output&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Output&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">override_component_attrs</span><span class="p">[</span><span class="s2">&quot;Link&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>type</th>
+      <th>unit</th>
+      <th>default</th>
+      <th>description</th>
+      <th>status</th>
+    </tr>
+    <tr>
+      <th>attribute</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>mu_upper</th>
+      <td>series</td>
+      <td>currency/MW</td>
+      <td>0</td>
+      <td>Shadow price of upper p_nom limit f \leq F. Al...</td>
+      <td>Output</td>
+    </tr>
+    <tr>
+      <th>mu_p_set</th>
+      <td>series</td>
+      <td>currency/MWh</td>
+      <td>0</td>
+      <td>Shadow price of fixed power transmission p_set</td>
+      <td>Output</td>
+    </tr>
+    <tr>
+      <th>bus2</th>
+      <td>string</td>
+      <td>n/a</td>
+      <td>n/a</td>
+      <td>2nd bus</td>
+      <td>Input (optional)</td>
+    </tr>
+    <tr>
+      <th>efficiency2</th>
+      <td>static or series</td>
+      <td>per unit</td>
+      <td>1.0</td>
+      <td>2nd bus efficiency</td>
+      <td>Input (optional)</td>
+    </tr>
+    <tr>
+      <th>p2</th>
+      <td>series</td>
+      <td>MW</td>
+      <td>0.0</td>
+      <td>2nd bus output</td>
+      <td>Output</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">pypsa</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s2">&quot;network-cem.nc&quot;</span><span class="p">,</span> <span class="n">override_component_attrs</span><span class="o">=</span><span class="n">override_component_attrs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Imported network network-cem.nc has buses, carriers, generators, global_constraints, loads, storage_units
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PyPSA Network
+Components:
+ - Bus: 1
+ - Carrier: 6
+ - Generator: 4
+ - GlobalConstraint: 1
+ - Load: 1
+ - StorageUnit: 2
+Snapshots: 2190
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">buses</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Germany&#39;], dtype=&#39;object&#39;, name=&#39;Bus&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;OCGT&#39;, &#39;onwind&#39;, &#39;offwind&#39;, &#39;solar&#39;], dtype=&#39;object&#39;, name=&#39;Generator&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">storage_units</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;battery storage&#39;, &#39;hydrogen storage underground&#39;], dtype=&#39;object&#39;, name=&#39;StorageUnit&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="hydrogen-production">
+<h2>Hydrogen Production<a class="headerlink" href="#hydrogen-production" title="Permalink to this headline">#</a></h2>
+<p>The following example shows how to model the components of hydrogen storage separately, i.e. electrolysis, fuel cell and storage.</p>
+<p>First, let’s remove the simplified hydrogen storage representation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;StorageUnit&quot;</span><span class="p">,</span> <span class="s2">&quot;hydrogen storage underground&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Add a separate <code class="docutils literal notranslate"><span class="pre">Bus</span></code> for the hydrogen energy carrier:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Bus&quot;</span><span class="p">,</span> <span class="s2">&quot;Germany hydrogen&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Add a <code class="docutils literal notranslate"><span class="pre">Link</span></code> for the hydrogen electrolysis:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Link&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;electrolysis&quot;</span><span class="p">,</span>
+    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
+    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;Germany hydrogen&quot;</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;electrolysis&#39;</span><span class="p">,</span>
+    <span class="n">p_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">efficiency</span><span class="o">=</span><span class="mf">.7</span><span class="p">,</span>
+    <span class="n">capital_cost</span><span class="o">=</span><span class="mf">50e3</span><span class="p">,</span> <span class="c1"># €/MW/a</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Add a <code class="docutils literal notranslate"><span class="pre">Link</span></code> for the fuel cell which reconverts hydrogen to electricity:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Link&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fuel cell&quot;</span><span class="p">,</span>
+    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;Germany hydrogen&quot;</span><span class="p">,</span>
+    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;fuel cell&#39;</span><span class="p">,</span>
+    <span class="n">p_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">efficiency</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span>
+    <span class="n">capital_cost</span><span class="o">=</span><span class="mf">120e3</span><span class="p">,</span> <span class="c1"># €/MW/a</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Add a <code class="docutils literal notranslate"><span class="pre">Store</span></code> for the hydrogen storage:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;Store&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hydrogen storage&quot;</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;Germany hydrogen&quot;</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;hydrogen storage&#39;</span><span class="p">,</span>
+    <span class="n">capital_cost</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="c1"># €/MWh/a</span>
+    <span class="n">e_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">e_cyclic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1"># cyclic state of charge</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also add a hydrogen demand to the hydrogen bus.</p>
+<p>In the example below, we add a constant hydrogen demand half the size of the electricity demand.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_set</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">loads_t</span><span class="o">.</span><span class="n">p_set</span><span class="p">[</span><span class="s2">&quot;demand&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_set</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>54671.88812785388
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;Load&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hydrogen demand&quot;</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;Germany hydrogen&quot;</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;hydrogen&quot;</span><span class="p">,</span>
+    <span class="n">p_set</span><span class="o">=</span><span class="n">p_set</span> <span class="c1"># MW</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">lopf</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;gurobi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.41s
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Gurobi solver
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">n</span><span class="o">.</span><span class="n">lopf</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;gurobi&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.9/site-packages/pypsa/components.py:769,</span> in <span class="ni">Network.lopf</span><span class="nt">(self, snapshots, pyomo, solver_name, solver_options, solver_logfile, formulation, keep_files, extra_functionality, multi_investment_periods, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">767</span> <span class="k">if</span> <span class="n">pyomo</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">768</span>     <span class="k">return</span> <span class="n">network_lopf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">769</span> <span class="k">return</span> <span class="n">network_lopf_lowmem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.9/site-packages/pypsa/linopf.py:1468,</span> in <span class="ni">network_lopf</span><span class="nt">(n, snapshots, solver_name, solver_logfile, extra_functionality, multi_investment_periods, skip_objective, skip_pre, extra_postprocessing, formulation, keep_references, keep_files, keep_shadowprices, solver_options, warmstart, store_basis, solver_dir)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1465</span>     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Solve linear problem using </span><span class="si">{</span><span class="n">solver_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> solver&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1467</span> <span class="n">solve</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;run_and_read_</span><span class="si">{</span><span class="n">solver_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1468</span> <span class="n">res</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1469</span>     <span class="n">n</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1470</span>     <span class="n">problem_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1471</span>     <span class="n">solution_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1472</span>     <span class="n">solver_logfile</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1473</span>     <span class="n">solver_options</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1474</span>     <span class="n">warmstart</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1475</span>     <span class="n">store_basis</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1476</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1478</span> <span class="n">status</span><span class="p">,</span> <span class="n">termination_condition</span><span class="p">,</span> <span class="n">variables_sol</span><span class="p">,</span> <span class="n">constraints_dual</span><span class="p">,</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">res</span>
+<span class="g g-Whitespace">   </span><span class="mi">1480</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">keep_files</span><span class="p">:</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.9/site-packages/pypsa/linopt.py:1062,</span> in <span class="ni">run_and_read_gurobi</span><span class="nt">(n, problem_fn, solution_fn, solver_logfile, solver_options, warmstart, store_basis)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1053</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1054</span><span class="sd"> Solving function. Reads the linear problem file and passes it to the gurobi</span>
+<span class="g g-Whitespace">   </span><span class="mi">1055</span><span class="sd"> solver. If the solution is successful it returns variable solutions and</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1059</span><span class="sd"> https://www.gurobi.com/documentation/{gurobi_verion}/refman/parameter_descriptions.html</span>
+<span class="g g-Whitespace">   </span><span class="mi">1060</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1061</span> <span class="k">if</span> <span class="n">find_spec</span><span class="p">(</span><span class="s2">&quot;gurobipy&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1062</span>     <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1063</span>         <span class="s2">&quot;Optional dependency &#39;gurobipy&#39; not found. &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1064</span>         <span class="s2">&quot;Install via &#39;conda install -c gurobi gurobi&#39;  or follow the &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1065</span>         <span class="s2">&quot;instructions on the documentation page &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1066</span>         <span class="s2">&quot;https://www.gurobi.com/documentation/&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1067</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1068</span> <span class="kn">import</span> <span class="nn">gurobipy</span>
+<span class="g g-Whitespace">   </span><span class="mi">1070</span> <span class="c1"># disable logging for this part, as gurobi output is doubled otherwise</span>
+
+<span class="ne">ModuleNotFoundError</span>: Optional dependency &#39;gurobipy&#39; not found. Install via &#39;conda install -c gurobi gurobi&#39;  or follow the instructions on the documentation page https://www.gurobi.com/documentation/
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="heat-demand">
+<h2>Heat Demand<a class="headerlink" href="#heat-demand" title="Permalink to this headline">#</a></h2>
+<p>add heat demand profile</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Bus&quot;</span><span class="p">,</span> <span class="s2">&quot;Germany heat&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://tubcloud.tu-berlin.de/s/mSkHERH8fJCKNXx/download/heat-load-example.csv&quot;</span>
+<span class="n">p_set</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_set</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;Load&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;heat demand&quot;</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;heat&quot;</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;Germany heat&quot;</span><span class="p">,</span>
+    <span class="n">p_set</span><span class="o">=</span><span class="n">p_set</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">loads_t</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;snapshot&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/12-workshop-pypsa-sector-coupling_38_1.png" src="_images/12-workshop-pypsa-sector-coupling_38_1.png" />
+</div>
+</div>
+</section>
+<section id="heat-pumps">
+<h2>Heat pumps<a class="headerlink" href="#heat-pumps" title="Permalink to this headline">#</a></h2>
+<p>To model heat pumps, first we have to calculate the <strong>coefficient of performance (COP)</strong> profile based on the temperature profile of the heat source.</p>
+<p>In the example below, we calculate the COP for an air-sourced heat pump with a sink temperature of 55° C and a population-weighted ambient temperature profile for Germany.</p>
+<p>The heat pump performance is given by the following function:</p>
+<div class="math notranslate nohighlight">
+\[
+COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta T = T_{sink} - T_{source}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cop</span><span class="p">(</span><span class="n">t_source</span><span class="p">,</span> <span class="n">t_sink</span><span class="o">=</span><span class="mi">55</span><span class="p">):</span>
+    <span class="n">delta_t</span> <span class="o">=</span> <span class="n">t_sink</span> <span class="o">-</span> <span class="n">t_source</span>
+    <span class="k">return</span> <span class="mf">6.81</span> <span class="o">-</span> <span class="mf">0.121</span> <span class="o">*</span> <span class="n">delta_t</span> <span class="o">+</span> <span class="mf">0.000630</span> <span class="o">*</span> <span class="n">delta_t</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://tubcloud.tu-berlin.de/s/S4jRAQMP5Te96jW/download/ninja_weather_country_DE_merra-2_population_weighted.csv&quot;</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2015&quot;</span><span class="p">,</span> <span class="s2">&quot;temperature&quot;</span><span class="p">][::</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cop</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;COP&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/12-workshop-pypsa-sector-coupling_43_0.png" src="_images/12-workshop-pypsa-sector-coupling_43_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">cop</span><span class="p">(</span><span class="n">temp</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;temperature [°C]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;COP [-]&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;COP [-]&#39;)
+</pre></div>
+</div>
+<img alt="_images/12-workshop-pypsa-sector-coupling_44_1.png" src="_images/12-workshop-pypsa-sector-coupling_44_1.png" />
+</div>
+</div>
+<p>Once we have calculated the heat pump coefficient of performance, we can add the heat pump to the network as a <code class="docutils literal notranslate"><span class="pre">Link</span></code>. We use the parameter <code class="docutils literal notranslate"><span class="pre">efficiency</span></code> to incorporate the COP.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;Link&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;heat pump&quot;</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;heat pump&#39;</span><span class="p">,</span>
+    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
+    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;Germany heat&quot;</span><span class="p">,</span>
+    <span class="n">efficiency</span><span class="o">=</span><span class="n">cop</span><span class="p">(</span><span class="n">temp</span><span class="p">),</span>
+    <span class="n">p_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">capital_cost</span><span class="o">=</span><span class="mf">3e5</span> <span class="c1"># €/MWe/a</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s also add a resistive heater as backup technology:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;Link&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;resistive heater&quot;</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;resistive heater&#39;</span><span class="p">,</span>
+    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
+    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;Germany heat&quot;</span><span class="p">,</span>
+    <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">capital_cost</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span> <span class="c1"># €/MWe/a</span>
+    <span class="n">p_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="combined-heat-and-power-chp">
+<h2>Combined Heat-and-Power (CHP)<a class="headerlink" href="#combined-heat-and-power-chp" title="Permalink to this headline">#</a></h2>
+<p>In the following, we are going to add gas-fired combined heat-and-power plants (CHPs). Today, these would use fossil gas, but in the example below we assume green methane with relatively high marginal costs. Since we have no other net emission technology, we can remove the CO<span class="math notranslate nohighlight">\(_2\)</span> limit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;GlobalConstraint&quot;</span><span class="p">,</span> <span class="s2">&quot;CO2Limit&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, we explicitly represent the energy carrier gas:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Bus&quot;</span><span class="p">,</span> <span class="s2">&quot;Germany gas&quot;</span><span class="p">,</span> <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And add a <code class="docutils literal notranslate"><span class="pre">Store</span></code> of gas, which can be depleted (up to 100 TWh) with fuel costs of 150 €/MWh.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;Store&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;gas storage&quot;</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;gas storage&quot;</span><span class="p">,</span>
+    <span class="n">e_initial</span><span class="o">=</span><span class="mf">100e6</span><span class="p">,</span> <span class="c1"># MWh</span>
+    <span class="n">e_nom</span><span class="o">=</span><span class="mf">100e6</span><span class="p">,</span> <span class="c1"># MWh</span>
+    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;Germany gas&quot;</span><span class="p">,</span>
+    <span class="n">marginal_cost</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="c1"># €/MWh_th</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>When we do this, we have to model the OCGT power plant as link which converts gas to electricity, not as generator.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;Generator&quot;</span><span class="p">,</span> <span class="s2">&quot;OCGT&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;Link&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;OCGT&quot;</span><span class="p">,</span>
+    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;Germany gas&quot;</span><span class="p">,</span>
+    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;OCGT&quot;</span><span class="p">,</span>
+    <span class="n">p_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">capital_cost</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="c1"># €/MW/a</span>
+    <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we are going to add a combined heat-and-power (CHP) plant with fixed heat-power ratio (i.e. backpressure operation). If you want to model flexible heat-power ratios, have a look at this example: <a class="reference external" href="https://pypsa.readthedocs.io/en/latest/examples/power-to-gas-boiler-chp.html">https://pypsa.readthedocs.io/en/latest/examples/power-to-gas-boiler-chp.html</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;Link&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CHP&quot;</span><span class="p">,</span>
+    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;Germany gas&quot;</span><span class="p">,</span>
+    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
+    <span class="n">bus2</span><span class="o">=</span><span class="s2">&quot;Germany heat&quot;</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;CHP&quot;</span><span class="p">,</span>
+    <span class="n">p_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">capital_cost</span><span class="o">=</span><span class="mi">40000</span><span class="p">,</span>
+    <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">efficiency2</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, we can solve the combined electricity-heat system:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">lopf</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;gurobi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
+/home/fneum/miniconda3/envs/pypsa-eur-221227/lib/python3.10/site-packages/pypsa/linopt.py:473: FutureWarning:
+
+In a future version, `df.iloc[:, i] = newvals` will attempt to set the values inplace instead of always setting a new array. To retain the old behavior, use either `df[df.columns[i]] = newvals` or, if columns are non-unique, `df.isetitem(i, newvals)`
+
+/home/fneum/miniconda3/envs/pypsa-eur-221227/lib/python3.10/site-packages/pypsa/linopt.py:473: FutureWarning:
+
+In a future version, `df.iloc[:, i] = newvals` will attempt to set the values inplace instead of always setting a new array. To retain the old behavior, use either `df[df.columns[i]] = newvals` or, if columns are non-unique, `df.isetitem(i, newvals)`
+
+INFO:pypsa.linopf:Total preparation time: 0.41s
+INFO:pypsa.linopf:Solve linear problem using Gurobi solver
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Read LP format model from file /tmp/pypsa-problem-hx6inupr.lp
+Reading time = 0.11 seconds
+obj: 76650 rows, 35052 columns, 154439 nonzeros
+Gurobi Optimizer version 10.0.0 build v10.0.0rc2 (linux64)
+
+CPU model: AMD Ryzen 7 PRO 4750U with Radeon Graphics, instruction set [SSE2|AVX|AVX2]
+Thread count: 8 physical cores, 16 logical processors, using up to 16 threads
+
+Optimize a model with 76650 rows, 35052 columns and 154439 nonzeros
+Model fingerprint: 0x7e558a27
+Coefficient statistics:
+  Matrix range     [1e-04, 6e+00]
+  Objective range  [4e-02, 3e+05]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+04, 1e+08]
+Presolve removed 40332 rows and 7483 columns
+Presolve time: 0.07s
+Presolved: 36318 rows, 27569 columns, 106625 nonzeros
+
+Concurrent LP optimizer: primal simplex, dual simplex, and barrier
+Showing barrier log only...
+
+Ordering time: 0.04s
+
+Barrier statistics:
+ Dense cols : 11
+ AA&#39; NZ     : 9.440e+04
+ Factor NZ  : 4.741e+05 (roughly 30 MB of memory)
+ Factor Ops : 7.748e+06 (less than 1 second per iteration)
+ Threads    : 6
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   5.34872214e+12 -7.61339322e+13  7.04e+07 1.42e+02  6.94e+10     0s
+   1   1.24651568e+13 -3.25223027e+13  1.50e+07 4.27e+03  1.75e+10     0s
+   2   1.37273974e+13 -8.75454970e+12  1.38e+06 6.27e+02  2.70e+09     0s
+   3   6.89896348e+12 -2.07425577e+12  5.43e+04 4.79e+01  3.00e+08     0s
+   4   3.14900397e+12 -4.82336073e+11  1.37e+04 8.99e+00  7.92e+07     0s
+   5   1.29358252e+12 -1.56596376e+11  4.72e+03 3.22e+00  2.77e+07     0s
+   6   6.56072453e+11 -5.28263901e+10  2.10e+03 1.60e+00  1.29e+07     0s
+   7   4.21324645e+11 -2.21617278e+09  1.17e+03 9.37e-01  7.56e+06     0s
+   8   3.08279600e+11  2.28302405e+10  7.36e+02 6.89e-01  5.08e+06     0s
+   9   2.56585770e+11  4.80112173e+10  5.30e+02 5.03e-01  3.69e+06     0s
+  10   2.27291109e+11  6.49919932e+10  4.19e+02 3.78e-01  2.87e+06     0s
+  11   2.03854703e+11  8.14238799e+10  3.22e+02 2.72e-01  2.17e+06     0s
+  12   1.92614687e+11  9.26974599e+10  2.75e+02 2.05e-01  1.77e+06     1s
+  13   1.80238453e+11  1.02076788e+11  2.23e+02 1.49e-01  1.39e+06     1s
+  14   1.62041885e+11  1.06808668e+11  1.48e+02 1.22e-01  1.00e+06     1s
+  15   1.54509941e+11  1.11498934e+11  1.15e+02 9.63e-02  7.89e+05     1s
+  16   1.50562698e+11  1.12187939e+11  9.68e+01 9.23e-02  7.14e+05     1s
+  17   1.49276264e+11  1.15137993e+11  9.03e+01 7.79e-02  6.33e+05     1s
+  18   1.44927828e+11  1.16978191e+11  6.90e+01 6.86e-02  5.27e+05     1s
+  19   1.44463316e+11  1.18116804e+11  6.65e+01 6.32e-02  4.96e+05     1s
+  20   1.43958519e+11  1.19429651e+11  6.38e+01 5.71e-02  4.60e+05     1s
+  21   1.40435537e+11  1.23199035e+11  4.30e+01 3.96e-02  3.25e+05     1s
+  22   1.39421901e+11  1.24170310e+11  3.67e+01 3.51e-02  2.88e+05     1s
+  23   1.37956887e+11  1.24907287e+11  2.91e+01 3.21e-02  2.50e+05     1s
+  24   1.37098187e+11  1.26606029e+11  2.30e+01 2.51e-02  2.00e+05     1s
+  25   1.36900425e+11  1.27034983e+11  2.17e+01 2.33e-02  1.88e+05     1s
+  26   1.35834203e+11  1.27763760e+11  1.59e+01 2.02e-02  1.56e+05     1s
+  27   1.34961507e+11  1.28743605e+11  1.13e+01 1.62e-02  1.22e+05     1s
+  28   1.34423406e+11  1.29544222e+11  8.32e+00 1.30e-02  9.64e+04     1s
+  29   1.33976312e+11  1.29889960e+11  6.02e+00 1.16e-02  8.21e+04     1s
+  30   1.33943661e+11  1.30441202e+11  5.82e+00 9.50e-03  6.98e+04     1s
+  31   1.33816266e+11  1.30727274e+11  5.18e+00 8.39e-03  6.16e+04     1s
+  32   1.33663580e+11  1.30997356e+11  4.28e+00 7.29e-03  5.34e+04     1s
+  33   1.33477620e+11  1.31280814e+11  3.34e+00 6.21e-03  4.43e+04     1s
+  34   1.33340128e+11  1.31845028e+11  2.67e+00 3.74e-03  2.95e+04     1s
+  35   1.33254820e+11  1.32128923e+11  2.28e+00 2.48e-03  2.18e+04     1s
+  36   1.33146658e+11  1.32241195e+11  1.78e+00 2.01e-03  1.76e+04     1s
+  37   1.33031566e+11  1.32419789e+11  1.25e+00 1.26e-03  1.17e+04     1s
+  38   1.32962324e+11  1.32479105e+11  9.33e-01 1.02e-03  9.33e+03     1s
+  39   1.32902346e+11  1.32513392e+11  6.44e-01 8.90e-04  7.62e+03     1s
+  40   1.32879477e+11  1.32592848e+11  5.34e-01 6.01e-04  5.53e+03     1s
+  41   1.32872827e+11  1.32646189e+11  5.07e-01 3.87e-04  4.25e+03     1s
+  42   1.32843075e+11  1.32677002e+11  3.83e-01 2.75e-04  3.10e+03     1s
+  43   1.32829243e+11  1.32685871e+11  3.26e-01 2.43e-04  2.69e+03     2s
+  44   1.32805974e+11  1.32698826e+11  2.25e-01 1.92e-04  2.02e+03     2s
+  45   1.32789339e+11  1.32710895e+11  1.56e-01 1.44e-04  1.49e+03     2s
+  46   1.32780757e+11  1.32732802e+11  1.20e-01 6.42e-05  8.74e+02     2s
+  47   1.32771961e+11  1.32739640e+11  8.23e-02 4.04e-05  5.85e+02     2s
+  48   1.32766444e+11  1.32742524e+11  6.07e-02 2.96e-05  4.33e+02     2s
+  49   1.32763871e+11  1.32744294e+11  5.04e-02 2.34e-05  3.53e+02     2s
+  50   1.32761432e+11  1.32745131e+11  3.98e-02 2.08e-05  2.96e+02     2s
+  51   1.32760774e+11  1.32746531e+11  3.71e-02 1.64e-05  2.56e+02     2s
+  52   1.32758408e+11  1.32747185e+11  2.77e-02 1.43e-05  2.04e+02     2s
+  53   1.32754416e+11  1.32747697e+11  1.26e-02 1.20e-05  1.27e+02     2s
+  54   1.32751699e+11  1.32750625e+11  1.59e-03 1.66e-06  2.00e+01     2s
+  55   1.32751297e+11  1.32751174e+11  1.70e-04 1.71e-07  2.27e+00     2s
+  56   1.32751261e+11  1.32751220e+11  3.72e-05 6.34e-08  7.77e-01     2s
+  57   1.32751253e+11  1.32751249e+11  1.40e-05 1.38e-07  5.80e-02     2s
+  58   1.32751252e+11  1.32751252e+11  7.41e-06 4.00e-10  2.38e-05     2s
+  59   1.32751252e+11  1.32751252e+11  1.28e-08 3.49e-10  2.68e-08     2s
+  60   1.32751252e+11  1.32751252e+11  1.31e-08 5.82e-10  5.16e-10     2s
+
+Barrier solved model in 60 iterations and 2.05 seconds (0.86 work units)
+Optimal objective 1.32751252e+11
+
+Crossover log...
+
+    4633 DPushes remaining with DInf 0.0000000e+00                 2s
+       0 DPushes remaining with DInf 0.0000000e+00                 2s
+Warning: Markowitz tolerance tightened to 0.5
+
+    1132 PPushes remaining with PInf 0.0000000e+00                 2s
+       0 PPushes remaining with PInf 0.0000000e+00                 2s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 2.8074779e-09      2s
+
+
+Solved with barrier
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+    1579    1.3275125e+11   0.000000e+00   0.000000e+00      2s
+
+Solved in 1579 iterations and 2.29 seconds (1.02 work units)
+Optimal objective  1.327512522e+11
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Optimization successful. Objective value: 1.33e+11
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Capacity Factor</th>
+      <th>Capital Expenditure</th>
+      <th>Curtailment</th>
+      <th>Installed Capacity</th>
+      <th>Operational Expenditure</th>
+      <th>Optimal Capacity</th>
+      <th>Revenue</th>
+      <th>Supply</th>
+      <th>Withdrawal</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>carrier</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="3" valign="top">Generator</th>
+      <th>offwind</th>
+      <td>0.346386</td>
+      <td>3.903216e+10</td>
+      <td>4049.531527</td>
+      <td>0.0</td>
+      <td>1.710077e+03</td>
+      <td>2.468456e+05</td>
+      <td>4.457436e+06</td>
+      <td>85503.865110</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>onwind</th>
+      <td>0.161778</td>
+      <td>7.322453e+09</td>
+      <td>3350.407948</td>
+      <td>0.0</td>
+      <td>1.664373e+04</td>
+      <td>7.620737e+04</td>
+      <td>8.525402e+05</td>
+      <td>12328.692065</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>solar</th>
+      <td>0.123577</td>
+      <td>2.280905e+10</td>
+      <td>298.415096</td>
+      <td>0.0</td>
+      <td>6.060525e+02</td>
+      <td>4.904234e+05</td>
+      <td>2.604379e+06</td>
+      <td>60605.245770</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="6" valign="top">Link</th>
+      <th>CHP</th>
+      <td>0.060100</td>
+      <td>7.597728e+09</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.000000e+00</td>
+      <td>1.899432e+05</td>
+      <td>-3.297577e+05</td>
+      <td>4566.210046</td>
+      <td>-11415.525114</td>
+    </tr>
+    <tr>
+      <th>OCGT</th>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>electrolysis</th>
+      <td>0.462903</td>
+      <td>8.436188e+09</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.000000e+00</td>
+      <td>1.687238e+05</td>
+      <td>9.630351e+05</td>
+      <td>54671.888128</td>
+      <td>-78102.697326</td>
+    </tr>
+    <tr>
+      <th>fuel cell</th>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>heat pump</th>
+      <td>0.478028</td>
+      <td>1.556408e+10</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.000000e+00</td>
+      <td>5.188025e+04</td>
+      <td>1.776721e+06</td>
+      <td>59225.109768</td>
+      <td>-24800.187418</td>
+    </tr>
+    <tr>
+      <th>resistive heater</th>
+      <td>0.059484</td>
+      <td>7.432687e+08</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.000000e+00</td>
+      <td>7.432687e+04</td>
+      <td>8.484802e+04</td>
+      <td>3979.141775</td>
+      <td>-4421.268639</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Load</th>
+      <th>-</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.963561e+06</td>
+      <td>0.000000</td>
+      <td>-54671.888128</td>
+    </tr>
+    <tr>
+      <th>heat</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.643190e+06</td>
+      <td>0.000000</td>
+      <td>-67770.461559</td>
+    </tr>
+    <tr>
+      <th>hydrogen</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.966930e+06</td>
+      <td>0.000000</td>
+      <td>-54671.888128</td>
+    </tr>
+    <tr>
+      <th>StorageUnit</th>
+      <th>battery storage</th>
+      <td>0.265015</td>
+      <td>8.989971e+09</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000e+00</td>
+      <td>9.322315e+04</td>
+      <td>1.026252e+06</td>
+      <td>11848.795506</td>
+      <td>-12856.766985</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Store</th>
+      <th>AC</th>
+      <td>0.529974</td>
+      <td>7.090275e+09</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.000000e+00</td>
+      <td>5.064482e+07</td>
+      <td>8.093922e+05</td>
+      <td>23069.438660</td>
+      <td>-23069.438660</td>
+    </tr>
+    <tr>
+      <th>gas storage</th>
+      <td>0.283313</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+      <td>100000000.0</td>
+      <td>1.712329e+06</td>
+      <td>1.000000e+08</td>
+      <td>2.131757e+06</td>
+      <td>11415.525114</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="p">()[</span><span class="s2">&quot;Capital Expenditure&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e9</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;bn€/a&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20c&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;None,carrier&#39;, ylabel=&#39;bn€/a&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/12-workshop-pypsa-sector-coupling_64_1.png" src="_images/12-workshop-pypsa-sector-coupling_64_1.png" />
+</div>
+</div>
+</section>
+<section id="electric-vehicles">
+<h2>Electric Vehicles<a class="headerlink" href="#electric-vehicles" title="Permalink to this headline">#</a></h2>
+<p>To model electric vehicles, we first create another bus for the electric vehicles.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Bus&quot;</span><span class="p">,</span> <span class="s2">&quot;Germany EV&quot;</span><span class="p">,</span> <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;Germany EV&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, we can attach the electricity consumption of electric vehicles to this bus:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://tubcloud.tu-berlin.de/s/9r5bMSbzzQiqG7H/download/electric-vehicle-profile-example.csv&quot;</span>
+<span class="n">p_set</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_set</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2015-01-01&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;MW&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;snapshot&#39;, ylabel=&#39;MW&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/12-workshop-pypsa-sector-coupling_70_1.png" src="_images/12-workshop-pypsa-sector-coupling_70_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;Load&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;EV demand&quot;</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;Germany EV&quot;</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;EV demand&quot;</span><span class="p">,</span>
+    <span class="n">p_set</span><span class="o">=</span><span class="n">p_set</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s have a quick look at how the heat, electricity and electric vehicle demands relate to each other:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">loads_t</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;MW&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;snapshot&#39;, ylabel=&#39;MW&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/12-workshop-pypsa-sector-coupling_73_1.png" src="_images/12-workshop-pypsa-sector-coupling_73_1.png" />
+</div>
+</div>
+<p>The electric vehicles can only be charged when they are plugged-in. Below we load an availability profile
+telling us what share of electric vehicles is plugged-in <strong>at home</strong> – we only assume home charging in this example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://tubcloud.tu-berlin.de/s/E3PBWPfYaWwCq7a/download/electric-vehicle-availability-example.csv&quot;</span>
+<span class="n">availability_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">availability_profile</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2015-01-01&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;snapshot&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/12-workshop-pypsa-sector-coupling_76_1.png" src="_images/12-workshop-pypsa-sector-coupling_76_1.png" />
+</div>
+</div>
+<p>Then, we can add a link for the electric vehicle charger using assumption about the number of EVs and their charging rates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number_cars</span> <span class="o">=</span> <span class="mf">40e6</span>  <span class="c1">#  number of EV cars</span>
+<span class="n">bev_charger_rate</span> <span class="o">=</span> <span class="mf">0.011</span>  <span class="c1"># 3-phase EV charger with 11 kW</span>
+<span class="n">p_nom</span> <span class="o">=</span> <span class="n">number_cars</span> <span class="o">*</span> <span class="n">bev_charger_rate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;Link&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;EV charger&quot;</span><span class="p">,</span>
+    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
+    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;Germany EV&quot;</span><span class="p">,</span>
+    <span class="n">p_nom</span><span class="o">=</span><span class="n">p_nom</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;EV charger&quot;</span><span class="p">,</span>
+    <span class="n">p_max_pu</span><span class="o">=</span><span class="n">availability_profile</span><span class="p">,</span>
+    <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also allow vehicle-to-grid operation (i.e. electric vehicles inject power into the grid):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;Link&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;V2G&quot;</span><span class="p">,</span>
+    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;Germany EV&quot;</span><span class="p">,</span>
+    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
+    <span class="n">p_nom</span><span class="o">=</span><span class="n">p_nom</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;V2G&quot;</span><span class="p">,</span>
+    <span class="n">p_max_pu</span><span class="o">=</span><span class="n">availability_profile</span><span class="p">,</span>
+    <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The demand-side management potential we model as a store. This is not unlike a battery storage, but we impose additional constraints on when the store needs to be charged to a certain level (e.g. 75% full every morning).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bev_energy</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># average battery size of EV in MWh</span>
+<span class="n">bev_dsm_participants</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># share of cars that do smart charging</span>
+
+<span class="n">e_nom</span> <span class="o">=</span> <span class="n">number_cars</span> <span class="o">*</span> <span class="n">bev_energy</span> <span class="o">*</span> <span class="n">bev_dsm_participants</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://tubcloud.tu-berlin.de/s/K62yACBRTrxLTia/download/dsm-profile-example.csv&quot;</span>
+<span class="n">dsm_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dsm_profile</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2015-01-01&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;snapshot&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/12-workshop-pypsa-sector-coupling_85_1.png" src="_images/12-workshop-pypsa-sector-coupling_85_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;Store&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;EV DSM&quot;</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;Germany EV&quot;</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;EV battery&quot;</span><span class="p">,</span>
+    <span class="n">e_cyclic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># state of charge at beginning = state of charge at the end</span>
+    <span class="n">e_nom</span><span class="o">=</span><span class="n">e_nom</span><span class="p">,</span>
+    <span class="n">e_min_pu</span><span class="o">=</span><span class="n">dsm_profile</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, we can solve the fully sector-coupled model altogether including electricity, passenger transport, hydrogen and heating.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">lopf</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;gurobi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
+/home/fneum/miniconda3/envs/pypsa-eur-221227/lib/python3.10/site-packages/pypsa/linopt.py:473: FutureWarning:
+
+In a future version, `df.iloc[:, i] = newvals` will attempt to set the values inplace instead of always setting a new array. To retain the old behavior, use either `df[df.columns[i]] = newvals` or, if columns are non-unique, `df.isetitem(i, newvals)`
+
+/home/fneum/miniconda3/envs/pypsa-eur-221227/lib/python3.10/site-packages/pypsa/linopt.py:473: FutureWarning:
+
+In a future version, `df.iloc[:, i] = newvals` will attempt to set the values inplace instead of always setting a new array. To retain the old behavior, use either `df[df.columns[i]] = newvals` or, if columns are non-unique, `df.isetitem(i, newvals)`
+
+/home/fneum/miniconda3/envs/pypsa-eur-221227/lib/python3.10/site-packages/pypsa/linopt.py:473: FutureWarning:
+
+In a future version, `df.iloc[:, i] = newvals` will attempt to set the values inplace instead of always setting a new array. To retain the old behavior, use either `df[df.columns[i]] = newvals` or, if columns are non-unique, `df.isetitem(i, newvals)`
+
+/home/fneum/miniconda3/envs/pypsa-eur-221227/lib/python3.10/site-packages/pypsa/linopt.py:473: FutureWarning:
+
+In a future version, `df.iloc[:, i] = newvals` will attempt to set the values inplace instead of always setting a new array. To retain the old behavior, use either `df[df.columns[i]] = newvals` or, if columns are non-unique, `df.isetitem(i, newvals)`
+
+INFO:pypsa.linopf:Total preparation time: 0.45s
+INFO:pypsa.linopf:Solve linear problem using Gurobi solver
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Read LP format model from file /tmp/pypsa-problem-pm7smt7v.lp
+Reading time = 0.13 seconds
+obj: 94170 rows, 43812 columns, 185099 nonzeros
+Gurobi Optimizer version 10.0.0 build v10.0.0rc2 (linux64)
+
+CPU model: AMD Ryzen 7 PRO 4750U with Radeon Graphics, instruction set [SSE2|AVX|AVX2]
+Thread count: 8 physical cores, 16 logical processors, using up to 16 threads
+
+Optimize a model with 94170 rows, 43812 columns and 185099 nonzeros
+Model fingerprint: 0x91b6ffff
+Coefficient statistics:
+  Matrix range     [1e-04, 6e+00]
+  Objective range  [4e-02, 3e+05]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+03, 1e+08]
+Presolve removed 55662 rows and 9673 columns
+Presolve time: 0.09s
+Presolved: 38508 rows, 34139 columns, 119765 nonzeros
+
+Concurrent LP optimizer: primal simplex, dual simplex, and barrier
+Showing barrier log only...
+
+Ordering time: 0.04s
+
+Barrier statistics:
+ Dense cols : 11
+ AA&#39; NZ     : 9.878e+04
+ Factor NZ  : 5.472e+05 (roughly 34 MB of memory)
+ Factor Ops : 9.995e+06 (less than 1 second per iteration)
+ Threads    : 6
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   5.38091950e+12 -1.70032548e+14  7.05e+07 1.42e+02  7.48e+10     0s
+   1   1.26625405e+13 -1.18935941e+14  1.35e+07 4.38e+03  1.82e+10     0s
+   2   1.36061952e+13 -5.41865343e+13  1.79e+06 3.95e+02  2.44e+09     0s
+   3   6.67595411e+12 -9.69810216e+12  1.11e+05 3.40e+01  3.16e+08     0s
+   4   2.82607575e+12 -2.17821168e+12  2.70e+04 6.69e+00  7.96e+07     0s
+   5   1.21301746e+12 -9.29656613e+11  1.01e+04 2.84e+00  3.18e+07     0s
+   6   6.52414663e+11 -4.78262949e+11  4.73e+03 1.54e+00  1.63e+07     0s
+   7   4.39160106e+11 -2.17169430e+11  2.75e+03 8.37e-01  9.32e+06     0s
+   8   3.28099973e+11 -1.09797050e+11  1.70e+03 5.67e-01  6.18e+06     0s
+   9   2.58509033e+11 -4.11140702e+10  1.04e+03 4.00e-01  4.23e+06     0s
+  10   2.42802982e+11  1.74304661e+10  9.07e+02 2.62e-01  3.16e+06     1s
+  11   2.19843331e+11  4.55962123e+10  7.17e+02 1.94e-01  2.45e+06     1s
+  12   1.93475804e+11  7.99989775e+10  5.04e+02 1.15e-01  1.60e+06     1s
+  13   1.75363014e+11  8.99313716e+10  3.64e+02 9.11e-02  1.21e+06     1s
+  14   1.66201703e+11  9.94996902e+10  2.91e+02 6.85e-02  9.49e+05     1s
+  15   1.60029092e+11  1.09426292e+11  2.41e+02 4.60e-02  7.17e+05     1s
+  16   1.51590213e+11  1.15702048e+11  1.75e+02 3.14e-02  5.10e+05     1s
+  17   1.46017608e+11  1.19447390e+11  1.27e+02 2.31e-02  3.78e+05     1s
+  18   1.43077040e+11  1.20282411e+11  1.02e+02 2.15e-02  3.28e+05     1s
+  19   1.39993384e+11  1.24576694e+11  7.66e+01 1.24e-02  2.20e+05     1s
+  20   1.38346796e+11  1.26004996e+11  6.16e+01 9.62e-03  1.76e+05     1s
+  21   1.37387939e+11  1.26633931e+11  5.31e+01 8.38e-03  1.53e+05     1s
+  22   1.35946169e+11  1.27386753e+11  4.16e+01 6.83e-03  1.23e+05     1s
+  23   1.35045910e+11  1.27803365e+11  3.35e+01 6.02e-03  1.04e+05     1s
+  24   1.34579784e+11  1.28467972e+11  2.95e+01 4.70e-03  8.75e+04     1s
+  25   1.33812875e+11  1.28932784e+11  2.25e+01 3.82e-03  7.00e+04     1s
+  26   1.33430390e+11  1.29411104e+11  1.95e+01 2.82e-03  5.73e+04     1s
+  27   1.32665717e+11  1.29537750e+11  1.35e+01 2.56e-03  4.51e+04     1s
+  28   1.32542934e+11  1.29676766e+11  1.25e+01 2.32e-03  4.13e+04     1s
+  29   1.32246573e+11  1.29764369e+11  1.00e+01 2.17e-03  3.60e+04     1s
+  30   1.32094447e+11  1.30129533e+11  8.76e+00 1.51e-03  2.82e+04     1s
+  31   1.31951092e+11  1.30254261e+11  7.65e+00 1.29e-03  2.44e+04     1s
+  32   1.31776932e+11  1.30270859e+11  6.23e+00 1.25e-03  2.18e+04     1s
+  33   1.31622343e+11  1.30403497e+11  4.95e+00 1.03e-03  1.76e+04     1s
+  34   1.31588196e+11  1.30464912e+11  4.63e+00 9.44e-04  1.62e+04     1s
+  35   1.31529199e+11  1.30471273e+11  4.17e+00 9.35e-04  1.54e+04     1s
+  36   1.31494100e+11  1.30586183e+11  3.87e+00 7.37e-04  1.31e+04     1s
+  37   1.31430005e+11  1.30654916e+11  3.37e+00 6.20e-04  1.12e+04     1s
+  38   1.31370764e+11  1.30704135e+11  2.90e+00 5.34e-04  9.61e+03     1s
+  39   1.31354222e+11  1.30729760e+11  2.76e+00 4.89e-04  8.98e+03     1s
+  40   1.31307683e+11  1.30761151e+11  2.36e+00 4.38e-04  7.88e+03     1s
+  41   1.31302291e+11  1.30768715e+11  2.31e+00 4.26e-04  7.69e+03     1s
+  42   1.31277626e+11  1.30796210e+11  2.12e+00 3.78e-04  6.93e+03     1s
+  43   1.31241886e+11  1.30817269e+11  1.86e+00 3.40e-04  6.12e+03     1s
+  44   1.31224973e+11  1.30869738e+11  1.71e+00 2.49e-04  5.07e+03     1s
+  45   1.31189433e+11  1.30886895e+11  1.40e+00 2.18e-04  4.33e+03     2s
+  46   1.31152830e+11  1.30902013e+11  1.10e+00 1.91e-04  3.60e+03     2s
+  47   1.31135792e+11  1.30928549e+11  9.63e-01 1.45e-04  2.96e+03     2s
+  48   1.31129303e+11  1.30942633e+11  9.12e-01 1.22e-04  2.66e+03     2s
+  49   1.31094705e+11  1.30952388e+11  6.52e-01 1.01e-04  2.04e+03     2s
+  50   1.31089879e+11  1.30956635e+11  6.12e-01 9.37e-05  1.90e+03     2s
+  51   1.31078178e+11  1.30975433e+11  5.20e-01 6.04e-05  1.45e+03     2s
+  52   1.31065699e+11  1.30979504e+11  4.21e-01 5.37e-05  1.22e+03     2s
+  53   1.31054821e+11  1.30982034e+11  3.35e-01 4.96e-05  1.04e+03     2s
+  54   1.31037096e+11  1.30996848e+11  1.91e-01 2.02e-05  5.66e+02     2s
+  55   1.31026755e+11  1.31005304e+11  1.15e-01 7.58e-06  2.98e+02     2s
+  56   1.31024987e+11  1.31005505e+11  1.02e-01 7.29e-06  2.71e+02     2s
+  57   1.31021997e+11  1.31007280e+11  7.98e-02 4.70e-06  2.04e+02     2s
+  58   1.31013383e+11  1.31008530e+11  1.66e-02 2.80e-06  6.90e+01     2s
+  59   1.31012263e+11  1.31010542e+11  8.90e-03 2.54e-07  2.35e+01     2s
+  60   1.31011336e+11  1.31010805e+11  2.74e-03 4.85e-08  7.22e+00     2s
+  61   1.31010991e+11  1.31010892e+11  5.48e-04 2.36e-10  1.33e+00     2s
+  62   1.31010914e+11  1.31010899e+11  7.97e-05 2.65e-09  1.99e-01     2s
+  63   1.31010900e+11  1.31010900e+11  7.79e-07 4.14e-09  5.45e-03     2s
+  64   1.31010900e+11  1.31010900e+11  4.96e-09 5.82e-10  2.46e-08     2s
+  65   1.31010900e+11  1.31010900e+11  4.96e-09 1.16e-09  5.26e-09     2s
+
+Barrier solved model in 65 iterations and 1.99 seconds (1.10 work units)
+Optimal objective 1.31010900e+11
+
+Crossover log...
+
+   13210 DPushes remaining with DInf 0.0000000e+00                 2s
+       0 DPushes remaining with DInf 0.0000000e+00                 2s
+Warning: Markowitz tolerance tightened to 0.5
+
+    1595 PPushes remaining with PInf 0.0000000e+00                 2s
+       0 PPushes remaining with PInf 0.0000000e+00                 2s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 2.6993887e-09      2s
+
+
+Solved with barrier
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+    6550    1.3101090e+11   0.000000e+00   0.000000e+00      2s
+
+Solved in 6550 iterations and 2.31 seconds (1.39 work units)
+Optimal objective  1.310108999e+11
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Optimization successful. Objective value: 1.31e+11
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Capacity Factor</th>
+      <th>Capital Expenditure</th>
+      <th>Curtailment</th>
+      <th>Installed Capacity</th>
+      <th>Operational Expenditure</th>
+      <th>Optimal Capacity</th>
+      <th>Revenue</th>
+      <th>Supply</th>
+      <th>Withdrawal</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>carrier</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="3" valign="top">Generator</th>
+      <th>offwind</th>
+      <td>0.346425</td>
+      <td>4.879948e+10</td>
+      <td>5.050910e+03</td>
+      <td>0.0</td>
+      <td>2.138243e+03</td>
+      <td>3.086157e+05</td>
+      <td>5.572855e+06</td>
+      <td>106912.135412</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>onwind</th>
+      <td>0.137733</td>
+      <td>2.531552e+09</td>
+      <td>1.791829e+03</td>
+      <td>0.0</td>
+      <td>4.898909e+03</td>
+      <td>2.634676e+04</td>
+      <td>2.938889e+05</td>
+      <td>3628.821510</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>solar</th>
+      <td>0.124186</td>
+      <td>2.447404e+10</td>
+      <td>1.166147e-11</td>
+      <td>0.0</td>
+      <td>6.534945e+02</td>
+      <td>5.262228e+05</td>
+      <td>2.794494e+06</td>
+      <td>65349.447929</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">Link</th>
+      <th>CHP</th>
+      <td>0.054881</td>
+      <td>8.320176e+09</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.000000e+00</td>
+      <td>2.080044e+05</td>
+      <td>-2.550875e+05</td>
+      <td>4566.210046</td>
+      <td>-11415.525114</td>
+    </tr>
+    <tr>
+      <th>EV charger</th>
+      <td>0.066488</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+      <td>440000.0</td>
+      <td>0.000000e+00</td>
+      <td>4.400000e+05</td>
+      <td>8.339002e-11</td>
+      <td>26329.251853</td>
+      <td>-29254.724281</td>
+    </tr>
+    <tr>
+      <th>OCGT</th>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>V2G</th>
+      <td>0.027596</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+      <td>440000.0</td>
+      <td>0.000000e+00</td>
+      <td>4.400000e+05</td>
+      <td>-1.538721e-12</td>
+      <td>10928.078639</td>
+      <td>-12142.309598</td>
+    </tr>
+    <tr>
+      <th>electrolysis</th>
+      <td>0.483609</td>
+      <td>8.074980e+09</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.000000e+00</td>
+      <td>1.614996e+05</td>
+      <td>9.218013e+05</td>
+      <td>54671.888128</td>
+      <td>-78102.697326</td>
+    </tr>
+    <tr>
+      <th>fuel cell</th>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>heat pump</th>
+      <td>0.481696</td>
+      <td>1.537655e+10</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.000000e+00</td>
+      <td>5.125518e+04</td>
+      <td>1.755314e+06</td>
+      <td>59004.890773</td>
+      <td>-24689.427369</td>
+    </tr>
+    <tr>
+      <th>resistive heater</th>
+      <td>0.060393</td>
+      <td>7.725992e+08</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.000000e+00</td>
+      <td>7.725992e+04</td>
+      <td>8.819625e+04</td>
+      <td>4199.360788</td>
+      <td>-4665.956431</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">Load</th>
+      <th>-</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.782368e+06</td>
+      <td>0.000000</td>
+      <td>-54671.888128</td>
+    </tr>
+    <tr>
+      <th>EV demand</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.220516e+06</td>
+      <td>0.000000</td>
+      <td>-14186.942254</td>
+    </tr>
+    <tr>
+      <th>heat</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.587414e+06</td>
+      <td>0.000000</td>
+      <td>-67770.461559</td>
+    </tr>
+    <tr>
+      <th>hydrogen</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.690642e+06</td>
+      <td>0.000000</td>
+      <td>-54671.888128</td>
+    </tr>
+    <tr>
+      <th>StorageUnit</th>
+      <th>battery storage</th>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.0</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Store</th>
+      <th>AC</th>
+      <td>0.531430</td>
+      <td>7.594148e+09</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.000000e+00</td>
+      <td>5.424391e+07</td>
+      <td>8.669119e+05</td>
+      <td>23338.261675</td>
+      <td>-23338.261675</td>
+    </tr>
+    <tr>
+      <th>EV battery</th>
+      <td>0.505381</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+      <td>1000000.0</td>
+      <td>0.000000e+00</td>
+      <td>1.000000e+06</td>
+      <td>8.487339e+05</td>
+      <td>19646.186891</td>
+      <td>-19646.186891</td>
+    </tr>
+    <tr>
+      <th>gas storage</th>
+      <td>0.270998</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+      <td>100000000.0</td>
+      <td>1.712329e+06</td>
+      <td>1.000000e+08</td>
+      <td>2.188953e+06</td>
+      <td>11415.525114</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<p>Here are a few things you can do to explore this system:</p>
+<ul class="simple">
+<li><p>exclude one of transport sector, heating sector, hydrogen demand and investigate what impact it has on system operation and investments</p></li>
+<li><p>vary the charging rates and availability profiles of electric vehicles</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="11-workshop-groupwork.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Preparation for Group Assignment</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Fabian Neumann<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

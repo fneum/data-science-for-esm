@@ -867,8 +867,8 @@ title="Print to PDF"
 <p><strong>Constraints</strong> are equality or inequality expressions that constrain the <em>feasible</em> space of the decision variables.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>, constraints are created with the <code class="docutils literal notranslate"><span class="pre">pe.Constraint()</span></code> constructor.</p>
 <p>In the code below, we create three simple constraints in different ways:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-de4c17f1-20bf-4af1-844e-920e1e8aeb0f">
-<span class="eqno">(1)<a class="headerlink" href="#equation-de4c17f1-20bf-4af1-844e-920e1e8aeb0f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c83c9a58-ca5b-41b1-9d20-35ad7ef4e16a">
+<span class="eqno">(1)<a class="headerlink" href="#equation-c83c9a58-ca5b-41b1-9d20-35ad7ef4e16a" title="Permalink to this equation">#</a></span>\[\begin{align}
   x &amp; \leq 4 \\
   2x + y &amp; \leq 10 \\
   x + y &amp; \leq 10 \\
@@ -984,7 +984,7 @@ conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 Version: 2.10.8 
 Build Date: May  6 2022 
 
-command line - /home/runner/micromamba-root/envs/esm/bin/cbc -printingOptions all -import /tmp/tmpf6rhk0d1.pyomo.lp -stat=1 -solve -solu /tmp/tmpf6rhk0d1.pyomo.soln (default strategy 1)
+command line - /home/runner/micromamba-root/envs/esm/bin/cbc -printingOptions all -import /tmp/tmpfb8z0fv4.pyomo.lp -stat=1 -solve -solu /tmp/tmpfb8z0fv4.pyomo.soln (default strategy 1)
 Option for printingOptions changed from normal to all
  CoinLpIO::readLp(): Maximization problem reformulated as minimization
 Coin0009I Switching back to maximization to get correct duals etc
@@ -1055,7 +1055,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.02033376693725586
+  Time: 0.017923593521118164
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1183,7 +1183,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.017897844314575195
+  Time: 0.014049768447875977
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1433,13 +1433,13 @@ Solution:
 <section id="single-bidding-zone-single-period">
 <h3>Single bidding zone, single period<a class="headerlink" href="#single-bidding-zone-single-period" title="Permalink to this headline">#</a></h3>
 <p>We want to minimise operational cost of an example electricity system representing South Africa subject to generator limits and meeting the load:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8bf32a12-7d27-402f-a912-b10e470a8b96">
-<span class="eqno">(2)<a class="headerlink" href="#equation-8bf32a12-7d27-402f-a912-b10e470a8b96" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a21f25ce-815f-490d-938b-96a7604f78dd">
+<span class="eqno">(2)<a class="headerlink" href="#equation-a21f25ce-815f-490d-938b-96a7604f78dd" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \min_{g_s} \sum_s o_s g_s
   \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-de7e4e79-cdad-4b54-a8ed-02601e1c387f">
-<span class="eqno">(3)<a class="headerlink" href="#equation-de7e4e79-cdad-4b54-a8ed-02601e1c387f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-dde8e62c-174c-4bac-93ed-91d01a22fdb1">
+<span class="eqno">(3)<a class="headerlink" href="#equation-dde8e62c-174c-4bac-93ed-91d01a22fdb1" title="Permalink to this equation">#</a></span>\[\begin{align}
     g_s &amp;\leq G_s \\
     g_s &amp;\geq 0 \\
     \sum_s g_s &amp;= d
@@ -1615,7 +1615,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.01771068572998047
+  Time: 0.0151214599609375
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1706,13 +1706,13 @@ dtype: float64
 <section id="two-bidding-zones-with-transmission">
 <h3>Two bidding zones with transmission<a class="headerlink" href="#two-bidding-zones-with-transmission" title="Permalink to this headline">#</a></h3>
 <p>Let’s add a spatial dimension, such that the optimisation problem is expanded to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-122ad7c6-24c3-477f-b109-65e63c844dd5">
-<span class="eqno">(4)<a class="headerlink" href="#equation-122ad7c6-24c3-477f-b109-65e63c844dd5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4a6b0b92-81ea-4284-9262-11b58327924f">
+<span class="eqno">(4)<a class="headerlink" href="#equation-4a6b0b92-81ea-4284-9262-11b58327924f" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \min_{g_{i,s}, f_\ell} \sum_s o_{i,s} g_{i,s}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c3053583-b8a2-4467-b398-4692680c8498">
-<span class="eqno">(5)<a class="headerlink" href="#equation-c3053583-b8a2-4467-b398-4692680c8498" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-729a1375-e8f2-4a15-a175-795840e57089">
+<span class="eqno">(5)<a class="headerlink" href="#equation-729a1375-e8f2-4a15-a175-795840e57089" title="Permalink to this equation">#</a></span>\[\begin{align}
   g_{i,s} &amp;\leq G_{i,s} \\
   g_{i,s} &amp;\geq 0 \\
   \sum_s g_{i,s} - \sum_\ell K_{i\ell} f_\ell &amp;= d_i &amp; \text{KCL} \\
@@ -1875,8 +1875,8 @@ For missing entries, we set the upper limit to zero (e.g. this country-technolog
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kcl : Size=2, Index=countries, Active=True
     Key          : Lower   : Body                                                                                                                : Upper   : Active
-      Mozambique :   650.0 :           g[Mozambique,Oil] + g[Mozambique,Hydro] + g[Mozambique,Wind] + g[Mozambique,Coal] + g[Mozambique,Gas] + f :   650.0 :   True
-    South Africa : 42000.0 : g[South Africa,Oil] + g[South Africa,Hydro] + g[South Africa,Wind] + g[South Africa,Coal] + g[South Africa,Gas] - f : 42000.0 :   True
+      Mozambique :   650.0 :           g[Mozambique,Oil] + g[Mozambique,Hydro] + g[Mozambique,Coal] + g[Mozambique,Gas] + g[Mozambique,Wind] + f :   650.0 :   True
+    South Africa : 42000.0 : g[South Africa,Oil] + g[South Africa,Hydro] + g[South Africa,Coal] + g[South Africa,Gas] + g[South Africa,Wind] - f : 42000.0 :   True
 </pre></div>
 </div>
 </div>
@@ -1943,7 +1943,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.018986225128173828
+  Time: 0.016123056411743164
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -2104,7 +2104,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.019931554794311523
+  Time: 0.015494346618652344
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -2184,13 +2184,13 @@ Solution:
 <section id="single-bidding-zone-with-several-periods">
 <h3>Single bidding zone with several periods<a class="headerlink" href="#single-bidding-zone-with-several-periods" title="Permalink to this headline">#</a></h3>
 <p>In this example, we consider multiple time periods (labelled [1,2,3,4]) to represent variable wind generation and changing load.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-06c9943c-7d26-4da4-b04e-369bad28f35b">
-<span class="eqno">(6)<a class="headerlink" href="#equation-06c9943c-7d26-4da4-b04e-369bad28f35b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4a144214-4a6a-4ee5-b7f0-887081494a89">
+<span class="eqno">(6)<a class="headerlink" href="#equation-4a144214-4a6a-4ee5-b7f0-887081494a89" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \min_{g_{s,t}} \sum_s o_{s} g_{s,t}
   \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-27e50441-a73f-4cc8-860d-6560fb4a9f18">
-<span class="eqno">(7)<a class="headerlink" href="#equation-27e50441-a73f-4cc8-860d-6560fb4a9f18" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-252024a6-4ca1-4ef7-a1f5-bc3d23a26542">
+<span class="eqno">(7)<a class="headerlink" href="#equation-252024a6-4ca1-4ef7-a1f5-bc3d23a26542" title="Permalink to this equation">#</a></span>\[\begin{align}
     g_{s,t} &amp;\leq \hat{g}_{s,t} G_{i,s} \\
     g_{s,t} &amp;\geq 0 \\
     \sum_s g_{s,t} &amp;= d_t
@@ -2341,14 +2341,14 @@ Solver:
     Black box: 
       Number of iterations: 4
   Error rc: 0
-  Time: 0.019115209579467773
+  Time: 0.016106843948364258
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
 Solution: 
 - number of solutions: 0
   number of solutions displayed: 0
-41.1 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+34.6 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -2577,7 +2577,7 @@ Solver:
     Black box: 
       Number of iterations: 9
   Error rc: 0
-  Time: 0.01954197883605957
+  Time: 0.016223430633544922
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -2772,7 +2772,7 @@ dtype: float64
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true

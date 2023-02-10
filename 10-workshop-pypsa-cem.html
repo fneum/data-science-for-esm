@@ -684,6 +684,7 @@ in the <em>objective function</em> and <em>new constraints for their expansion l
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pypsa</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;bmh&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1165,7 +1166,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.3s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.22s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Cbc solver
@@ -1266,16 +1267,16 @@ dtype: float64
 <p>If you have the newest version of PyPSA installed, you can also run the following to determine the total system cost by technology:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">capex</span><span class="p">()</span> <span class="o">+</span> <span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">opex</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">capex</span><span class="p">()</span> <span class="o">+</span> <span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">opex</span><span class="p">(</span><span class="n">aggregate_time</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           carrier
-Generator  OCGT       3.166478e+09
-           offwind    6.704375e+09
-           onwind     0.000000e+00
-           solar      3.828771e+09
+Generator  OCGT       16995.624257
+           offwind     6707.003125
+           onwind         0.000000
+           solar       3829.661877
 dtype: float64
 </pre></div>
 </div>
@@ -1417,7 +1418,7 @@ at the beginning of the optimisation period must equal the final state of charge
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.44s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.33s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Cbc solver
@@ -1491,7 +1492,7 @@ Name: p_nom_opt, dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.47s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.35s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Cbc solver
@@ -1572,7 +1573,7 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">system_cost</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">tsc</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">capex</span><span class="p">()</span> <span class="o">+</span> <span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">opex</span><span class="p">()</span>
+    <span class="n">tsc</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">capex</span><span class="p">()</span> <span class="o">+</span> <span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">opex</span><span class="p">(</span><span class="n">aggregate_time</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">tsc</span><span class="o">.</span><span class="n">droplevel</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span> <span class="c1"># million €/a</span>
 </pre></div>
 </div>
@@ -1580,8 +1581,9 @@ dtype: float64
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you have an older PyPSA version, the statistics accessor might not be available and you may have to use this alternative, more complicated function:</p>
+<p>If you have an older PyPSA version, the statistics accessor might not be available and you may have to use this alternative, more complicated function with individual items for each cost component:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">system_cost</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">opex</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">snapshot_weightings</span><span class="o">.</span><span class="n">generators</span> <span class="o">@</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">marginal_cost</span> <span class="o">*</span> <span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span> <span class="c1"># M€/a</span>
     <span class="n">capex</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">p_nom_opt</span> <span class="o">*</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">capital_cost</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span> <span class="c1"># M€/a</span>
     <span class="n">capex_storage</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">storage_units</span><span class="o">.</span><span class="n">p_nom_opt</span> <span class="o">*</span> <span class="n">n</span><span class="o">.</span><span class="n">storage_units</span><span class="o">.</span><span class="n">capital_cost</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span> <span class="c1"># M€/a</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">opex</span><span class="p">,</span> <span class="n">capex</span><span class="p">,</span> <span class="n">capex_storage</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1596,12 +1598,12 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>carrier
+OCGT                                0.000000
+offwind                         12168.412489
+onwind                          21803.629914
+solar                           11557.207340
 battery storage                  3289.077324
 hydrogen storage underground    16994.853645
-OCGT                                0.000000
-offwind                         12163.698975
-onwind                          21711.882324
-solar                           11554.542546
 dtype: float64
 </pre></div>
 </div>
@@ -1636,7 +1638,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>137.21136561341456
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>137.4183411238975
 </pre></div>
 </div>
 </div>
@@ -1658,7 +1660,7 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sensitivity</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">co2</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">]:</span>
+<span class="k">for</span> <span class="n">co2</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">0</span><span class="p">]:</span>
     <span class="n">n</span><span class="o">.</span><span class="n">global_constraints</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;CO2Limit&quot;</span><span class="p">,</span> <span class="s2">&quot;constant&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">co2</span> <span class="o">*</span> <span class="mf">1e6</span>
     <span class="n">n</span><span class="o">.</span><span class="n">lopf</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
     <span class="n">sensitivity</span><span class="p">[</span><span class="n">co2</span><span class="p">]</span> <span class="o">=</span> <span class="n">system_cost</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
@@ -1669,7 +1671,7 @@ dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.45s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.35s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Cbc solver
@@ -1681,7 +1683,7 @@ dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.46s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.35s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Cbc solver
@@ -1693,7 +1695,7 @@ dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.47s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.35s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Cbc solver
@@ -1705,7 +1707,7 @@ dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.46s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.35s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Cbc solver
@@ -1714,30 +1716,30 @@ dtype: float64
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">54</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">co2</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">]:</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">co2</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">0</span><span class="p">]:</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">n</span><span class="o">.</span><span class="n">global_constraints</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;CO2Limit&quot;</span><span class="p">,</span> <span class="s2">&quot;constant&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">co2</span> <span class="o">*</span> <span class="mf">1e6</span>
 <span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">n</span><span class="o">.</span><span class="n">lopf</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">sensitivity</span><span class="p">[</span><span class="n">co2</span><span class="p">]</span> <span class="o">=</span> <span class="n">system_cost</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.9/site-packages/pypsa/components.py:769,</span> in <span class="ni">Network.lopf</span><span class="nt">(self, snapshots, pyomo, solver_name, solver_options, solver_logfile, formulation, keep_files, extra_functionality, multi_investment_periods, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">767</span> <span class="k">if</span> <span class="n">pyomo</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">768</span>     <span class="k">return</span> <span class="n">network_lopf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">769</span> <span class="k">return</span> <span class="n">network_lopf_lowmem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span>
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.9/site-packages/pypsa/components.py:767,</span> in <span class="ni">Network.lopf</span><span class="nt">(self, snapshots, pyomo, solver_name, solver_options, solver_logfile, formulation, keep_files, extra_functionality, multi_investment_periods, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">765</span> <span class="k">if</span> <span class="n">pyomo</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">766</span>     <span class="k">return</span> <span class="n">network_lopf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">767</span> <span class="k">return</span> <span class="n">network_lopf_lowmem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span>
 
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.9/site-packages/pypsa/linopf.py:1468,</span> in <span class="ni">network_lopf</span><span class="nt">(n, snapshots, solver_name, solver_logfile, extra_functionality, multi_investment_periods, skip_objective, skip_pre, extra_postprocessing, formulation, keep_references, keep_files, keep_shadowprices, solver_options, warmstart, store_basis, solver_dir)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1465</span>     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Solve linear problem using </span><span class="si">{</span><span class="n">solver_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> solver&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1467</span> <span class="n">solve</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;run_and_read_</span><span class="si">{</span><span class="n">solver_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1468</span> <span class="n">res</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1469</span>     <span class="n">n</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1470</span>     <span class="n">problem_fn</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1471</span>     <span class="n">solution_fn</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1472</span>     <span class="n">solver_logfile</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1473</span>     <span class="n">solver_options</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1474</span>     <span class="n">warmstart</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1475</span>     <span class="n">store_basis</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1476</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1478</span> <span class="n">status</span><span class="p">,</span> <span class="n">termination_condition</span><span class="p">,</span> <span class="n">variables_sol</span><span class="p">,</span> <span class="n">constraints_dual</span><span class="p">,</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">res</span>
-<span class="g g-Whitespace">   </span><span class="mi">1480</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">keep_files</span><span class="p">:</span>
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.9/site-packages/pypsa/linopf.py:1472,</span> in <span class="ni">network_lopf</span><span class="nt">(n, snapshots, solver_name, solver_logfile, extra_functionality, multi_investment_periods, skip_objective, skip_pre, extra_postprocessing, formulation, keep_references, keep_files, keep_shadowprices, solver_options, warmstart, store_basis, solver_dir)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1469</span>     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Solve linear problem using </span><span class="si">{</span><span class="n">solver_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> solver&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1471</span> <span class="n">solve</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;run_and_read_</span><span class="si">{</span><span class="n">solver_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1472</span> <span class="n">res</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1473</span>     <span class="n">n</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1474</span>     <span class="n">problem_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1475</span>     <span class="n">solution_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1476</span>     <span class="n">solver_logfile</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1477</span>     <span class="n">solver_options</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1478</span>     <span class="n">warmstart</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1479</span>     <span class="n">store_basis</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1480</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1482</span> <span class="n">status</span><span class="p">,</span> <span class="n">termination_condition</span><span class="p">,</span> <span class="n">variables_sol</span><span class="p">,</span> <span class="n">constraints_dual</span><span class="p">,</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">res</span>
+<span class="g g-Whitespace">   </span><span class="mi">1484</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">keep_files</span><span class="p">:</span>
 
 <span class="nn">File ~/micromamba-root/envs/esm/lib/python3.9/site-packages/pypsa/linopt.py:847,</span> in <span class="ni">run_and_read_cbc</span><span class="nt">(n, problem_fn, solution_fn, solver_logfile, solver_options, warmstart, store_basis)</span>
 <span class="g g-Whitespace">    </span><span class="mi">845</span> <span class="n">log</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">solver_logfile</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">solver_logfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span>
@@ -1790,69 +1792,19 @@ dtype: float64
     <span class="n">color</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">carriers</span><span class="o">.</span><span class="n">color</span><span class="p">),</span>
     <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
     <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">150</span><span class="p">),</span>
-    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;CO2 emissions [Mt/a]&quot;</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;CO$_2$ emissions [Mt/a]&quot;</span><span class="p">,</span>
     <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;System cost [bn€/a]&quot;</span><span class="p">,</span>
     <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span>
 <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sensitivity</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">solar_cost</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">]:</span>
-    <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;solar&quot;</span><span class="p">,</span> <span class="s2">&quot;capital_cost&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">solar_cost</span> <span class="o">*</span> <span class="mf">1e3</span>
-    <span class="n">n</span><span class="o">.</span><span class="n">lopf</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
-    <span class="n">sensitivity</span><span class="p">[</span><span class="n">solar_cost</span><span class="p">]</span> <span class="o">=</span> <span class="n">system_cost</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;solar&quot;</span><span class="p">,</span> <span class="s2">&quot;capital_cost&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">40</span> <span class="o">*</span> <span class="mf">1e3</span>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f1073ca0b80&gt;
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sensitivity</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span> <span class="c1"># billion Euro/a</span>
-<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span>
-    <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">carriers</span><span class="o">.</span><span class="n">color</span><span class="p">),</span>
-    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
-    <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">150</span><span class="p">),</span>
-    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Solar Capital Cost [€/MW/a]&quot;</span><span class="p">,</span>
-    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;System cost [bn€/a]&quot;</span><span class="p">,</span>
-    <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sensitivity</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">offwind_potential</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">]:</span>
-    <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;offwind&quot;</span><span class="p">,</span> <span class="s2">&quot;p_nom_max&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">offwind_potential</span> <span class="o">*</span> <span class="mf">1e3</span>
-    <span class="n">n</span><span class="o">.</span><span class="n">lopf</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
-    <span class="n">sensitivity</span><span class="p">[</span><span class="n">offwind_potential</span><span class="p">]</span> <span class="o">=</span> <span class="n">system_cost</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sensitivity</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span> <span class="c1"># billion Euro/a</span>
-<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span>
-    <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">carriers</span><span class="o">.</span><span class="n">color</span><span class="p">),</span>
-    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
-    <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">150</span><span class="p">),</span>
-    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Offshore Wind Potential [GW]&quot;</span><span class="p">,</span>
-    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;System cost [bn€/a]&quot;</span><span class="p">,</span>
-    <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span>
-<span class="p">)</span>
-</pre></div>
-</div>
+<img alt="_images/10-workshop-pypsa-cem_113_1.png" src="_images/10-workshop-pypsa-cem_113_1.png" />
 </div>
 </div>
 </section>
@@ -1884,7 +1836,7 @@ dtype: float64
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true

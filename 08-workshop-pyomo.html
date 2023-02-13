@@ -239,6 +239,11 @@ const thebe_selector_output = ".output, .cell_output"
    </code>
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13-workshop-interactive-visualisation.html">
+   Interactive Visualisation and Dashboards
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -867,8 +872,8 @@ title="Print to PDF"
 <p><strong>Constraints</strong> are equality or inequality expressions that constrain the <em>feasible</em> space of the decision variables.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>, constraints are created with the <code class="docutils literal notranslate"><span class="pre">pe.Constraint()</span></code> constructor.</p>
 <p>In the code below, we create three simple constraints in different ways:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-00e84c06-3d49-460c-9eae-fb6edaf70e80">
-<span class="eqno">(1)<a class="headerlink" href="#equation-00e84c06-3d49-460c-9eae-fb6edaf70e80" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-facf04c5-194f-4a83-b921-387657163993">
+<span class="eqno">(1)<a class="headerlink" href="#equation-facf04c5-194f-4a83-b921-387657163993" title="Permalink to this equation">#</a></span>\[\begin{align}
   x &amp; \leq 4 \\
   2x + y &amp; \leq 10 \\
   x + y &amp; \leq 10 \\
@@ -984,7 +989,7 @@ conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 Version: 2.10.8 
 Build Date: May  6 2022 
 
-command line - /home/runner/micromamba-root/envs/esm/bin/cbc -printingOptions all -import /tmp/tmpck9golj1.pyomo.lp -stat=1 -solve -solu /tmp/tmpck9golj1.pyomo.soln (default strategy 1)
+command line - /home/runner/micromamba-root/envs/esm/bin/cbc -printingOptions all -import /tmp/tmpzcenxe90.pyomo.lp -stat=1 -solve -solu /tmp/tmpzcenxe90.pyomo.soln (default strategy 1)
 Option for printingOptions changed from normal to all
  CoinLpIO::readLp(): Maximization problem reformulated as minimization
 Coin0009I Switching back to maximization to get correct duals etc
@@ -1055,7 +1060,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.02420783042907715
+  Time: 0.02076578140258789
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1183,7 +1188,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.01675701141357422
+  Time: 0.018859148025512695
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1433,13 +1438,13 @@ Solution:
 <section id="single-bidding-zone-single-period">
 <h3>Single bidding zone, single period<a class="headerlink" href="#single-bidding-zone-single-period" title="Permalink to this headline">#</a></h3>
 <p>We want to minimise operational cost of an example electricity system representing South Africa subject to generator limits and meeting the load:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d13439a7-c5c8-45f6-aa74-6452f67b61bc">
-<span class="eqno">(2)<a class="headerlink" href="#equation-d13439a7-c5c8-45f6-aa74-6452f67b61bc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c06fcb51-8990-4a59-a537-f68bc35f6312">
+<span class="eqno">(2)<a class="headerlink" href="#equation-c06fcb51-8990-4a59-a537-f68bc35f6312" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \min_{g_s} \sum_s o_s g_s
   \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6a870235-a2f2-4456-b707-173b39963718">
-<span class="eqno">(3)<a class="headerlink" href="#equation-6a870235-a2f2-4456-b707-173b39963718" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ab92d2d4-cf02-4537-ac53-0204dc353ac5">
+<span class="eqno">(3)<a class="headerlink" href="#equation-ab92d2d4-cf02-4537-ac53-0204dc353ac5" title="Permalink to this equation">#</a></span>\[\begin{align}
     g_s &amp;\leq G_s \\
     g_s &amp;\geq 0 \\
     \sum_s g_s &amp;= d
@@ -1615,7 +1620,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.016614198684692383
+  Time: 0.01932358741760254
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1706,13 +1711,13 @@ dtype: float64
 <section id="two-bidding-zones-with-transmission">
 <h3>Two bidding zones with transmission<a class="headerlink" href="#two-bidding-zones-with-transmission" title="Permalink to this headline">#</a></h3>
 <p>Let’s add a spatial dimension, such that the optimisation problem is expanded to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d8a6e760-a3f6-46a7-ab67-1bafba47c109">
-<span class="eqno">(4)<a class="headerlink" href="#equation-d8a6e760-a3f6-46a7-ab67-1bafba47c109" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0af348c7-45fd-4576-b47c-f52f85584086">
+<span class="eqno">(4)<a class="headerlink" href="#equation-0af348c7-45fd-4576-b47c-f52f85584086" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \min_{g_{i,s}, f_\ell} \sum_s o_{i,s} g_{i,s}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a006c632-d122-4c33-bb2e-3ab5aa99a924">
-<span class="eqno">(5)<a class="headerlink" href="#equation-a006c632-d122-4c33-bb2e-3ab5aa99a924" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5ac04027-bb08-4c22-9c1f-50f21e530ec1">
+<span class="eqno">(5)<a class="headerlink" href="#equation-5ac04027-bb08-4c22-9c1f-50f21e530ec1" title="Permalink to this equation">#</a></span>\[\begin{align}
   g_{i,s} &amp;\leq G_{i,s} \\
   g_{i,s} &amp;\geq 0 \\
   \sum_s g_{i,s} - \sum_\ell K_{i\ell} f_\ell &amp;= d_i &amp; \text{KCL} \\
@@ -1875,8 +1880,8 @@ For missing entries, we set the upper limit to zero (e.g. this country-technolog
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kcl : Size=2, Index=countries, Active=True
     Key          : Lower   : Body                                                                                                                : Upper   : Active
-      Mozambique :   650.0 :           g[Mozambique,Gas] + g[Mozambique,Hydro] + g[Mozambique,Wind] + g[Mozambique,Coal] + g[Mozambique,Oil] + f :   650.0 :   True
-    South Africa : 42000.0 : g[South Africa,Gas] + g[South Africa,Hydro] + g[South Africa,Wind] + g[South Africa,Coal] + g[South Africa,Oil] - f : 42000.0 :   True
+      Mozambique :   650.0 :           g[Mozambique,Coal] + g[Mozambique,Gas] + g[Mozambique,Wind] + g[Mozambique,Oil] + g[Mozambique,Hydro] + f :   650.0 :   True
+    South Africa : 42000.0 : g[South Africa,Coal] + g[South Africa,Gas] + g[South Africa,Wind] + g[South Africa,Oil] + g[South Africa,Hydro] - f : 42000.0 :   True
 </pre></div>
 </div>
 </div>
@@ -1943,7 +1948,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.017441272735595703
+  Time: 0.021504640579223633
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -2104,7 +2109,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.01788806915283203
+  Time: 0.019074440002441406
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -2184,13 +2189,13 @@ Solution:
 <section id="single-bidding-zone-with-several-periods">
 <h3>Single bidding zone with several periods<a class="headerlink" href="#single-bidding-zone-with-several-periods" title="Permalink to this headline">#</a></h3>
 <p>In this example, we consider multiple time periods (labelled [1,2,3,4]) to represent variable wind generation and changing load.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a86798d5-8511-49dc-aea0-fcd9aefd37e0">
-<span class="eqno">(6)<a class="headerlink" href="#equation-a86798d5-8511-49dc-aea0-fcd9aefd37e0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3d6c716c-618e-4fdb-bf74-f14b87c9b136">
+<span class="eqno">(6)<a class="headerlink" href="#equation-3d6c716c-618e-4fdb-bf74-f14b87c9b136" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \min_{g_{s,t}} \sum_s o_{s} g_{s,t}
   \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-789ea1cc-ac29-42cf-b4f9-e4faf5ddb395">
-<span class="eqno">(7)<a class="headerlink" href="#equation-789ea1cc-ac29-42cf-b4f9-e4faf5ddb395" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8b029d8a-83b5-4505-880f-766d93545cb8">
+<span class="eqno">(7)<a class="headerlink" href="#equation-8b029d8a-83b5-4505-880f-766d93545cb8" title="Permalink to this equation">#</a></span>\[\begin{align}
     g_{s,t} &amp;\leq \hat{g}_{s,t} G_{i,s} \\
     g_{s,t} &amp;\geq 0 \\
     \sum_s g_{s,t} &amp;= d_t
@@ -2341,14 +2346,14 @@ Solver:
     Black box: 
       Number of iterations: 4
   Error rc: 0
-  Time: 0.017204761505126953
+  Time: 0.01980447769165039
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
 Solution: 
 - number of solutions: 0
   number of solutions displayed: 0
-37.9 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+47.2 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -2577,7 +2582,7 @@ Solver:
     Black box: 
       Number of iterations: 9
   Error rc: 0
-  Time: 0.017465829849243164
+  Time: 0.01986241340637207
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------

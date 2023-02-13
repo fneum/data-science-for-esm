@@ -239,6 +239,11 @@ const thebe_selector_output = ".output, .cell_output"
    </code>
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13-workshop-interactive-visualisation.html">
+   Interactive Visualisation and Dashboards
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -708,13 +713,13 @@ title="Print to PDF"
 <h2>From structured data to optimisation<a class="headerlink" href="#from-structured-data-to-optimisation" title="Permalink to this headline">#</a></h2>
 <p>The design principle of PyPSA is that basically each component is associated with a set of variables and constraints that will be added to the optimisation model based on the input data stored for the components.</p>
 <p>For an <em>hourly</em> electricity market simulation, PyPSA will solve an optimisation problem that looks like this</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6d0cc868-2e3d-4c57-80f5-d27ba58f4083">
-<span class="eqno">(8)<a class="headerlink" href="#equation-6d0cc868-2e3d-4c57-80f5-d27ba58f4083" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6a59c052-d389-4e4e-bf97-225726c2c4f8">
+<span class="eqno">(8)<a class="headerlink" href="#equation-6a59c052-d389-4e4e-bf97-225726c2c4f8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min_{g_{i,s,t}; f_{\ell,t}; g_{i,r,t,\text{charge}}; g_{i,r,t,\text{discharge}}; e_{i,r,t}} \sum_s o_{s} g_{i,s,t}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2bc6af2d-6378-4b06-8807-8ee7d7f41cf8">
-<span class="eqno">(9)<a class="headerlink" href="#equation-2bc6af2d-6378-4b06-8807-8ee7d7f41cf8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-62b7a846-301e-43f9-b690-d319fe0738cc">
+<span class="eqno">(9)<a class="headerlink" href="#equation-62b7a846-301e-43f9-b690-d319fe0738cc" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp; \leq g_{i,s,t} \leq \hat{g}_{i,s,t} G_{i,s}  &amp; \text{generation limits : generator} \\
 -F_\ell &amp;\leq f_{\ell,t} \leq F_\ell &amp; \text{transmission limits : line}  \\
 d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{i,r,t,\text{charge}} - \sum_\ell K_{i\ell} f_{\ell,t} &amp; \text{KCL : bus} \\
@@ -1434,7 +1439,7 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.1s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.11s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Cbc solver
@@ -1707,8 +1712,8 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f612bd64040&gt;,
- &lt;matplotlib.collections.LineCollection at 0x7f612bd40610&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f4f7a8e6910&gt;,
+ &lt;matplotlib.collections.LineCollection at 0x7f4f7a88ee80&gt;)
 </pre></div>
 </div>
 <img alt="_images/09-workshop-pypsa_63_1.png" src="_images/09-workshop-pypsa_63_1.png" />
@@ -1992,7 +1997,7 @@ Name: now, dtype: int64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.09s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.11s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Glpk solver
@@ -2160,7 +2165,7 @@ Name: now, dtype: int64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.11s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.12s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Glpk solver
@@ -2312,7 +2317,7 @@ Name: mu, dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.11s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.12s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Glpk solver
@@ -2350,7 +2355,7 @@ Name: mu, dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Directory tmp does not exist, creating it
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has carriers, generators, global_constraints, buses, loads, lines
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has global_constraints, generators, lines, buses, carriers, loads
 </pre></div>
 </div>
 </div>
@@ -2378,7 +2383,7 @@ INFO:pypsa.io:Imported network tmp has buses, carriers, generators, global_const
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has carriers, generators, global_constraints, buses, loads, lines
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has global_constraints, generators, lines, buses, carriers, loads
 </pre></div>
 </div>
 </div>
@@ -2911,7 +2916,7 @@ __len__ for multi-part geometries is deprecated and will be removed in Shapely 2
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 1.52s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 1.76s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Cbc solver
@@ -2963,7 +2968,7 @@ __len__ for multi-part geometries is deprecated and will be removed in Shapely 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f6122d77d60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f4f718a66d0&gt;
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:825: ShapelyDeprecationWarning:

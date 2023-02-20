@@ -1,15 +1,15 @@
 # Welcome
 
-On this Website you will find bits of codes and exercises we discuss in the Workshops on Wednesdays.
+Welcome to the website accompanying the course [Data Science for Energy System Modelling](https://moseskonto.tu-berlin.de/moses/modultransfersystem/bolognamodule/beschreibung/anzeigen.html;jsessionid=DQfixqzzpn1XIg5N1GG7S9um4EDykZn99AHmH6Fj.moseskonto?number=31027&version=1&sprache=2). This course is being developed by [Dr. Fabian Neumann](https://neumann.fyi) and offered as part of the curriculum of the [Department of Digital Transformation of Energy Systems at TU Berlin](https://www.tu.berlin/ensys).
+
+On this website you will find practical introductions to many Python packages that are useful for dealing with energy data and building energy system modells. Course materials other than practical introductions to Python packages can be found on [ISIS](https://isis.tu-berlin.de/course/view.php?id=30525).
+
+## Python
 
 :::{note}
-Course materials other than practical introductions to Python packages can be found on [ISIS](https://isis.tu-berlin.de/course/view.php?id=30525)
-
 This section is adapted from the following resource:
 - https://earth-env-data-science.github.io/lectures/environment/python_environments.html
 :::
-
-## Python
 
 Python and nearly all of the software packages in the scientific python
 ecosystem are [open-source](https://opensource.org/). Coordinating the compatibility between these different packages and their
@@ -53,7 +53,7 @@ and configuration.
 
 To create a conda environment, you execute the following command:
 
-    $ conda create --name my_environment python=3.9 numpy
+    $ conda create --name my_environment python=3.10 numpy
 
 To use this environment, simply "activate" it by executing:
 
@@ -125,7 +125,7 @@ Copy and paste the following `environment.yml` file somewhere on your local hard
     channels:
     - conda-forge
     dependencies:
-    - python==3.9
+    - python==3.10
     - pip
 
       # main packages
@@ -138,9 +138,9 @@ Copy and paste the following `environment.yml` file somewhere on your local hard
     - yaml
     - pyomo
     - netcdf4
-    - pypsa>=0.20
+    - pypsa>=0.22
     - atlite>=0.2.9
-    - powerplantmatching>=0.5.4
+    - powerplantmatching>=0.5.5
     - rasterio!=1.2.10
 
       # interactive python
@@ -156,7 +156,7 @@ Copy and paste the following `environment.yml` file somewhere on your local hard
     - openpyxl
 
       # geodata utilities
-    - fiona<=1.18.20
+    - fiona
     - shapely<2.0
     - proj
     - geopy
@@ -173,6 +173,7 @@ Copy and paste the following `environment.yml` file somewhere on your local hard
     - geoviews
     - graphviz
     - contextily
+    - streamlit
 
       # publishing
     - jupyter-book

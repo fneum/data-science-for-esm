@@ -660,14 +660,6 @@ title="Print to PDF"
 <p class="admonition-title">Note</p>
 <p>Documentation for this package is available at <a class="reference external" href="https://networkx.github.io/">https://networkx.github.io/</a>.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The data used in this introduction is also available for download at</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/nodes.csv">https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/nodes.csv</a></p></li>
-<li><p><a class="reference external" href="https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/edges.csv">https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/edges.csv</a></p></li>
-</ul>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
@@ -1228,7 +1220,8 @@ dtype: int64
 <p>In this example, we are going to load a slightly simplified dataset of the European high-voltage transmission network. In this dataset, HVDC links and back-to-back converters have been left out, and the data only shows AC transmission lines.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;nodes.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/nodes.csv&quot;</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">nodes</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1293,7 +1286,8 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">edges</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;edges.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/edges.csv&quot;</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">edges</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2172,7 +2166,7 @@ dtype: float64
   
     By Fabian Neumann<br/>
   
-      &copy; Copyright 2022.<br/>
+      &copy; Copyright 2022-2023.<br/>
 </p>
         </footer>
     </div>

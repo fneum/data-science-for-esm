@@ -679,11 +679,11 @@ title="Print to PDF"
 <tr class="row-even"><td><p><a class="reference external" href="https://pypsa.readthedocs.io/en/latest/components.html#global-constraints">GlobalConstraint</a></p></td>
 <td><p>Constraints affecting many components at once, such as emission limits.</p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p><strong>not used in this course</strong></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pypsa.readthedocs.io/en/latest/components.html#store">Store</a></p></td>
+<td><p>Storage with separately extendable energy capacity.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://pypsa.readthedocs.io/en/latest/components.html#store">Store</a></p></td>
-<td><p>Storage with extendable energy capacity.</p></td>
+<tr class="row-even"><td><p></p></td>
+<td><p><strong>not used in this course</strong></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://pypsa.readthedocs.io/en/latest/components.html#line-types">LineType</a></p></td>
 <td><p>Standard line types.</p></td>
@@ -713,13 +713,13 @@ title="Print to PDF"
 <h2>From structured data to optimisation<a class="headerlink" href="#from-structured-data-to-optimisation" title="Permalink to this headline">#</a></h2>
 <p>The design principle of PyPSA is that basically each component is associated with a set of variables and constraints that will be added to the optimisation model based on the input data stored for the components.</p>
 <p>For an <em>hourly</em> electricity market simulation, PyPSA will solve an optimisation problem that looks like this</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6a59c052-d389-4e4e-bf97-225726c2c4f8">
-<span class="eqno">(8)<a class="headerlink" href="#equation-6a59c052-d389-4e4e-bf97-225726c2c4f8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7c704da2-1532-4ae3-8ae4-504fb3dc7310">
+<span class="eqno">(8)<a class="headerlink" href="#equation-7c704da2-1532-4ae3-8ae4-504fb3dc7310" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min_{g_{i,s,t}; f_{\ell,t}; g_{i,r,t,\text{charge}}; g_{i,r,t,\text{discharge}}; e_{i,r,t}} \sum_s o_{s} g_{i,s,t}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-62b7a846-301e-43f9-b690-d319fe0738cc">
-<span class="eqno">(9)<a class="headerlink" href="#equation-62b7a846-301e-43f9-b690-d319fe0738cc" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-76deab41-835d-4d8e-b2f9-b11a96d2d678">
+<span class="eqno">(9)<a class="headerlink" href="#equation-76deab41-835d-4d8e-b2f9-b11a96d2d678" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp; \leq g_{i,s,t} \leq \hat{g}_{i,s,t} G_{i,s}  &amp; \text{generation limits : generator} \\
 -F_\ell &amp;\leq f_{\ell,t} \leq F_\ell &amp; \text{transmission limits : line}  \\
 d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{i,r,t,\text{charge}} - \sum_\ell K_{i\ell} f_{\ell,t} &amp; \text{KCL : bus} \\
@@ -1421,7 +1421,12 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09-workshop-pypsa_45_0.png" src="_images/09-workshop-pypsa_45_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/mpl/style.py:76: UserWarning:
+
+facecolor will have no effect as it has been defined as &quot;never&quot;.
+</pre></div>
+</div>
+<img alt="_images/09-workshop-pypsa_45_1.png" src="_images/09-workshop-pypsa_45_1.png" />
 </div>
 </div>
 </section>
@@ -1439,7 +1444,7 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.11s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.1s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Cbc solver
@@ -1712,11 +1717,16 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f4f7a8e6910&gt;,
- &lt;matplotlib.collections.LineCollection at 0x7f4f7a88ee80&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f7563dd3670&gt;,
+ &lt;matplotlib.collections.LineCollection at 0x7f7563d95be0&gt;)
 </pre></div>
 </div>
-<img alt="_images/09-workshop-pypsa_63_1.png" src="_images/09-workshop-pypsa_63_1.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/mpl/style.py:76: UserWarning:
+
+facecolor will have no effect as it has been defined as &quot;never&quot;.
+</pre></div>
+</div>
+<img alt="_images/09-workshop-pypsa_63_2.png" src="_images/09-workshop-pypsa_63_2.png" />
 </div>
 </div>
 <p>Since we have provided <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> coordinates for our buses, <code class="docutils literal notranslate"><span class="pre">n.plot()</span></code> will try to plot the network on a map by default. Of course, there’s an option to deactivate this behaviour:</p>
@@ -1748,7 +1758,12 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09-workshop-pypsa_67_0.png" src="_images/09-workshop-pypsa_67_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/mpl/style.py:76: UserWarning:
+
+facecolor will have no effect as it has been defined as &quot;never&quot;.
+</pre></div>
+</div>
+<img alt="_images/09-workshop-pypsa_67_1.png" src="_images/09-workshop-pypsa_67_1.png" />
 </div>
 </div>
 <p>Just like with <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> we can also control the projection of the network plot:</p>
@@ -1773,6 +1788,10 @@ Iteration over multi-part geometries is deprecated and will be removed in Shapel
 /home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:944: ShapelyDeprecationWarning:
 
 __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+
+/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/mpl/style.py:76: UserWarning:
+
+facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
 <img alt="_images/09-workshop-pypsa_69_1.png" src="_images/09-workshop-pypsa_69_1.png" />
@@ -1809,7 +1828,12 @@ Name: p_set, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09-workshop-pypsa_74_0.png" src="_images/09-workshop-pypsa_74_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/mpl/style.py:76: UserWarning:
+
+facecolor will have no effect as it has been defined as &quot;never&quot;.
+</pre></div>
+</div>
+<img alt="_images/09-workshop-pypsa_74_1.png" src="_images/09-workshop-pypsa_74_1.png" />
 </div>
 </div>
 <p>The important point here is, that <code class="docutils literal notranslate"><span class="pre">s</span></code> needs to have entries for all buses, i.e. its index needs to match <code class="docutils literal notranslate"><span class="pre">n.buses.index</span></code>.</p>
@@ -1870,7 +1894,12 @@ Name: now, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09-workshop-pypsa_83_0.png" src="_images/09-workshop-pypsa_83_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/mpl/style.py:76: UserWarning:
+
+facecolor will have no effect as it has been defined as &quot;never&quot;.
+</pre></div>
+</div>
+<img alt="_images/09-workshop-pypsa_83_1.png" src="_images/09-workshop-pypsa_83_1.png" />
 </div>
 </div>
 <p><strong>How does this magic work?</strong> The plotting function will look up the colors specified in <code class="docutils literal notranslate"><span class="pre">n.carriers</span></code> for each carrier and match it with the second index-level of <code class="docutils literal notranslate"><span class="pre">s</span></code>.</p>
@@ -1997,7 +2026,7 @@ Name: now, dtype: int64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.11s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.1s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Glpk solver
@@ -2317,7 +2346,7 @@ Name: mu, dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.12s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.11s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Glpk solver
@@ -2355,7 +2384,7 @@ Name: mu, dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Directory tmp does not exist, creating it
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has global_constraints, generators, lines, buses, carriers, loads
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has global_constraints, generators, buses, carriers, loads, lines
 </pre></div>
 </div>
 </div>
@@ -2383,7 +2412,7 @@ INFO:pypsa.io:Imported network tmp has buses, carriers, generators, global_const
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has global_constraints, generators, lines, buses, carriers, loads
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has global_constraints, generators, buses, carriers, loads, lines
 </pre></div>
 </div>
 </div>
@@ -2415,7 +2444,7 @@ INFO:pypsa.io:Imported network tmp has buses, carriers, generators, global_const
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.examples:Retrieving network data from https://github.com/PyPSA/PyPSA/raw/master/examples/scigrid-de/scigrid-with-load-gen-trafos.nc
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Importing network from PyPSA version v0.17.1 while current version is v0.22.0. Read the release notes at https://pypsa.readthedocs.io/en/latest/release_notes.html to prepare your network for import.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Importing network from PyPSA version v0.17.1 while current version is v0.22.1. Read the release notes at https://pypsa.readthedocs.io/en/latest/release_notes.html to prepare your network for import.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Imported network scigrid-de.nc has buses, generators, lines, loads, storage_units, transformers
@@ -2683,6 +2712,10 @@ Iteration over multi-part geometries is deprecated and will be removed in Shapel
 /home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:944: ShapelyDeprecationWarning:
 
 __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+
+/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/mpl/style.py:76: UserWarning:
+
+facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
 <img alt="_images/09-workshop-pypsa_131_1.png" src="_images/09-workshop-pypsa_131_1.png" />
@@ -2749,6 +2782,10 @@ Iteration over multi-part geometries is deprecated and will be removed in Shapel
 /home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:944: ShapelyDeprecationWarning:
 
 __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+
+/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/mpl/style.py:76: UserWarning:
+
+facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
 <img alt="_images/09-workshop-pypsa_137_1.png" src="_images/09-workshop-pypsa_137_1.png" />
@@ -2916,7 +2953,7 @@ __len__ for multi-part geometries is deprecated and will be removed in Shapely 2
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 1.76s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 1.52s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Cbc solver
@@ -2968,7 +3005,7 @@ __len__ for multi-part geometries is deprecated and will be removed in Shapely 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f4f718a66d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f755af39220&gt;
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:825: ShapelyDeprecationWarning:
@@ -2982,6 +3019,10 @@ Iteration over multi-part geometries is deprecated and will be removed in Shapel
 /home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:944: ShapelyDeprecationWarning:
 
 __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+
+/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/mpl/style.py:76: UserWarning:
+
+facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
 <img alt="_images/09-workshop-pypsa_145_2.png" src="_images/09-workshop-pypsa_145_2.png" />
@@ -3087,12 +3128,12 @@ __len__ for multi-part geometries is deprecated and will be removed in Shapely 2
 <span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="n">shrink</span><span class="o">=</span><span class="mf">0.6</span>
 <span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="p">)</span>
 
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.9/site-packages/pypsa/plot.py:291,</span> in <span class="ni">plot</span><span class="nt">(n, margin, ax, geomap, projection, bus_colors, bus_alpha, bus_sizes, bus_cmap, bus_norm, line_colors, link_colors, transformer_colors, line_alpha, link_alpha, transformer_alpha, line_widths, link_widths, transformer_widths, line_cmap, link_cmap, transformer_cmap, line_norm, link_norm, transformer_norm, flow, branch_components, layouter, title, boundaries, geometry, jitter, color_geomap)</span>
-<span class="g g-Whitespace">    </span><span class="mi">289</span> <span class="k">if</span> <span class="n">bus_cmap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">c</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">is</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">290</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">bus_cmap</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">291</span>         <span class="n">bus_cmap</span> <span class="o">=</span> <span class="n">colormaps</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">bus_cmap</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">292</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">bus_norm</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">293</span>         <span class="n">bus_norm</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.9/site-packages/pypsa/plot.py:309,</span> in <span class="ni">plot</span><span class="nt">(n, margin, ax, geomap, projection, bus_colors, bus_alpha, bus_sizes, bus_cmap, bus_norm, bus_split_circles, line_colors, link_colors, transformer_colors, line_alpha, link_alpha, transformer_alpha, line_widths, link_widths, transformer_widths, line_cmap, link_cmap, transformer_cmap, line_norm, link_norm, transformer_norm, flow, branch_components, layouter, title, boundaries, geometry, jitter, color_geomap)</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span> <span class="k">if</span> <span class="n">bus_cmap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">c</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">is</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">bus_cmap</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">309</span>         <span class="n">bus_cmap</span> <span class="o">=</span> <span class="n">colormaps</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">bus_cmap</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">bus_norm</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">311</span>         <span class="n">bus_norm</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 
 <span class="ne">AttributeError</span>: &#39;ColormapRegistry&#39; object has no attribute &#39;get_cmap&#39;
 </pre></div>
@@ -3108,6 +3149,10 @@ Iteration over multi-part geometries is deprecated and will be removed in Shapel
 /home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/crs.py:944: ShapelyDeprecationWarning:
 
 __len__ for multi-part geometries is deprecated and will be removed in Shapely 2.0. Check the length of the `geoms` property instead to get the  number of parts of a multi-part geometry.
+
+/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/cartopy/mpl/style.py:76: UserWarning:
+
+facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
 <img alt="_images/09-workshop-pypsa_152_2.png" src="_images/09-workshop-pypsa_152_2.png" />
@@ -3166,7 +3211,7 @@ __len__ for multi-part geometries is deprecated and will be removed in Shapely 2
   
     By Fabian Neumann<br/>
   
-      &copy; Copyright 2022.<br/>
+      &copy; Copyright 2022-2023.<br/>
 </p>
         </footer>
     </div>

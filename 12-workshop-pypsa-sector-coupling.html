@@ -594,7 +594,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;network-cem.nc&#39;, &lt;http.client.HTTPMessage at 0x7f92f3e36970&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;network-cem.nc&#39;, &lt;http.client.HTTPMessage at 0x7f03cc7eed30&gt;)
 </pre></div>
 </div>
 </div>
@@ -733,7 +733,7 @@ and one output (<code class="docutils literal notranslate"><span class="pre">bus
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Importing network from PyPSA version v0.21.3 while current version is v0.22.0. Read the release notes at https://pypsa.readthedocs.io/en/latest/release_notes.html to prepare your network for import.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Importing network from PyPSA version v0.21.3 while current version is v0.22.1. Read the release notes at https://pypsa.readthedocs.io/en/latest/release_notes.html to prepare your network for import.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Imported network network-cem.nc has buses, carriers, generators, global_constraints, loads, storage_units
@@ -812,7 +812,7 @@ Snapshots: 2190
 <p>Add a separate <code class="docutils literal notranslate"><span class="pre">Bus</span></code> for the hydrogen energy carrier:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Bus&quot;</span><span class="p">,</span> <span class="s2">&quot;Germany hydrogen&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Bus&quot;</span><span class="p">,</span> <span class="s2">&quot;hydrogen&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -822,13 +822,18 @@ Snapshots: 2190
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Link&quot;</span><span class="p">,</span>
     <span class="s2">&quot;electrolysis&quot;</span><span class="p">,</span>
-    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
-    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;Germany hydrogen&quot;</span><span class="p">,</span>
+    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">,</span>
+    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;hydrogen&quot;</span><span class="p">,</span>
     <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;electrolysis&#39;</span><span class="p">,</span>
     <span class="n">p_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">efficiency</span><span class="o">=</span><span class="mf">.7</span><span class="p">,</span>
     <span class="n">capital_cost</span><span class="o">=</span><span class="mf">50e3</span><span class="p">,</span> <span class="c1"># €/MW/a</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The bus name `electricity` given for bus0 of Link `electrolysis` does not appear in network.buses
 </pre></div>
 </div>
 </div>
@@ -838,13 +843,18 @@ Snapshots: 2190
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Link&quot;</span><span class="p">,</span>
     <span class="s2">&quot;fuel cell&quot;</span><span class="p">,</span>
-    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;Germany hydrogen&quot;</span><span class="p">,</span>
-    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
+    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;hydrogen&quot;</span><span class="p">,</span>
+    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">,</span>
     <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;fuel cell&#39;</span><span class="p">,</span>
     <span class="n">p_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">efficiency</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span>
     <span class="n">capital_cost</span><span class="o">=</span><span class="mf">120e3</span><span class="p">,</span> <span class="c1"># €/MW/a</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The bus name `electricity` given for bus1 of Link `fuel cell` does not appear in network.buses
 </pre></div>
 </div>
 </div>
@@ -855,7 +865,7 @@ Snapshots: 2190
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
     <span class="s2">&quot;Store&quot;</span><span class="p">,</span>
     <span class="s2">&quot;hydrogen storage&quot;</span><span class="p">,</span>
-    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;Germany hydrogen&quot;</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;hydrogen&quot;</span><span class="p">,</span>
     <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;hydrogen storage&#39;</span><span class="p">,</span>
     <span class="n">capital_cost</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="c1"># €/MWh/a</span>
     <span class="n">e_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -891,7 +901,7 @@ Snapshots: 2190
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
     <span class="s2">&quot;Load&quot;</span><span class="p">,</span>
     <span class="s2">&quot;hydrogen demand&quot;</span><span class="p">,</span>
-    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;Germany hydrogen&quot;</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;hydrogen&quot;</span><span class="p">,</span>
     <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;hydrogen&quot;</span><span class="p">,</span>
     <span class="n">p_set</span><span class="o">=</span><span class="n">p_set</span> <span class="c1"># MW</span>
 <span class="p">)</span>
@@ -905,7 +915,7 @@ Snapshots: 2190
 <p>For the heat demand, we create another bus and connect a load with the heat demand time series to it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Bus&quot;</span><span class="p">,</span> <span class="s2">&quot;Germany heat&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Bus&quot;</span><span class="p">,</span> <span class="s2">&quot;heat&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -942,7 +952,7 @@ Name: 0, dtype: float64
     <span class="s2">&quot;Load&quot;</span><span class="p">,</span>
     <span class="s2">&quot;heat demand&quot;</span><span class="p">,</span>
     <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;heat&quot;</span><span class="p">,</span>
-    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;Germany heat&quot;</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;heat&quot;</span><span class="p">,</span>
     <span class="n">p_set</span><span class="o">=</span><span class="n">p_set</span>
 <span class="p">)</span>
 </pre></div>
@@ -1022,12 +1032,17 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
     <span class="s2">&quot;Link&quot;</span><span class="p">,</span>
     <span class="s2">&quot;heat pump&quot;</span><span class="p">,</span>
     <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;heat pump&#39;</span><span class="p">,</span>
-    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
-    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;Germany heat&quot;</span><span class="p">,</span>
+    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">,</span>
+    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;heat&quot;</span><span class="p">,</span>
     <span class="n">efficiency</span><span class="o">=</span><span class="n">cop</span><span class="p">(</span><span class="n">temp</span><span class="p">),</span>
     <span class="n">p_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">capital_cost</span><span class="o">=</span><span class="mf">3e5</span> <span class="c1"># €/MWe/a</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The bus name `electricity` given for bus0 of Link `heat pump` does not appear in network.buses
 </pre></div>
 </div>
 </div>
@@ -1039,12 +1054,17 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
     <span class="s2">&quot;Link&quot;</span><span class="p">,</span>
     <span class="s2">&quot;resistive heater&quot;</span><span class="p">,</span>
     <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;resistive heater&#39;</span><span class="p">,</span>
-    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
-    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;Germany heat&quot;</span><span class="p">,</span>
+    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">,</span>
+    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;heat&quot;</span><span class="p">,</span>
     <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
     <span class="n">capital_cost</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span> <span class="c1"># €/MWe/a</span>
     <span class="n">p_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The bus name `electricity` given for bus0 of Link `resistive heater` does not appear in network.buses
 </pre></div>
 </div>
 </div>
@@ -1063,7 +1083,7 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 <p>Then, we explicitly represent the energy carrier gas:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Bus&quot;</span><span class="p">,</span> <span class="s2">&quot;Germany gas&quot;</span><span class="p">,</span> <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Bus&quot;</span><span class="p">,</span> <span class="s2">&quot;gas&quot;</span><span class="p">,</span> <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1077,7 +1097,7 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
     <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;gas storage&quot;</span><span class="p">,</span>
     <span class="n">e_initial</span><span class="o">=</span><span class="mf">100e6</span><span class="p">,</span> <span class="c1"># MWh</span>
     <span class="n">e_nom</span><span class="o">=</span><span class="mf">100e6</span><span class="p">,</span> <span class="c1"># MWh</span>
-    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;Germany gas&quot;</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span>
     <span class="n">marginal_cost</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="c1"># €/MWh_th</span>
 <span class="p">)</span>
 </pre></div>
@@ -1097,13 +1117,18 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
     <span class="s2">&quot;Link&quot;</span><span class="p">,</span>
     <span class="s2">&quot;OCGT&quot;</span><span class="p">,</span>
-    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;Germany gas&quot;</span><span class="p">,</span>
-    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
+    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span>
+    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">,</span>
     <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;OCGT&quot;</span><span class="p">,</span>
     <span class="n">p_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">capital_cost</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="c1"># €/MW/a</span>
     <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The bus name `electricity` given for bus1 of Link `OCGT` does not appear in network.buses
 </pre></div>
 </div>
 </div>
@@ -1114,15 +1139,20 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
     <span class="s2">&quot;Link&quot;</span><span class="p">,</span>
     <span class="s2">&quot;CHP&quot;</span><span class="p">,</span>
-    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;Germany gas&quot;</span><span class="p">,</span>
-    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
-    <span class="n">bus2</span><span class="o">=</span><span class="s2">&quot;Germany heat&quot;</span><span class="p">,</span>
+    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span>
+    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">,</span>
+    <span class="n">bus2</span><span class="o">=</span><span class="s2">&quot;heat&quot;</span><span class="p">,</span>
     <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;CHP&quot;</span><span class="p">,</span>
     <span class="n">p_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">capital_cost</span><span class="o">=</span><span class="mi">40000</span><span class="p">,</span>
     <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
     <span class="n">efficiency2</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The bus name `electricity` given for bus1 of Link `CHP` does not appear in network.buses
 </pre></div>
 </div>
 </div>
@@ -1133,7 +1163,7 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 <p>To model electric vehicles, we first create another bus for the electric vehicles.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Bus&quot;</span><span class="p">,</span> <span class="s2">&quot;Germany EV&quot;</span><span class="p">,</span> <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;Germany EV&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Bus&quot;</span><span class="p">,</span> <span class="s2">&quot;EV&quot;</span><span class="p">,</span> <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;EV&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1165,7 +1195,7 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
     <span class="s2">&quot;Load&quot;</span><span class="p">,</span>
     <span class="s2">&quot;EV demand&quot;</span><span class="p">,</span>
-    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;Germany EV&quot;</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;EV&quot;</span><span class="p">,</span>
     <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;EV demand&quot;</span><span class="p">,</span>
     <span class="n">p_set</span><span class="o">=</span><span class="n">p_set</span>
 <span class="p">)</span>
@@ -1183,7 +1213,7 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f92e8672190&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0380a223d0&gt;
 </pre></div>
 </div>
 <img alt="_images/12-workshop-pypsa-sector-coupling_67_1.png" src="_images/12-workshop-pypsa-sector-coupling_67_1.png" />
@@ -1227,13 +1257,18 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
     <span class="s2">&quot;Link&quot;</span><span class="p">,</span>
     <span class="s2">&quot;EV charger&quot;</span><span class="p">,</span>
-    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
-    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;Germany EV&quot;</span><span class="p">,</span>
+    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">,</span>
+    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;EV&quot;</span><span class="p">,</span>
     <span class="n">p_nom</span><span class="o">=</span><span class="n">p_nom</span><span class="p">,</span>
     <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;EV charger&quot;</span><span class="p">,</span>
     <span class="n">p_max_pu</span><span class="o">=</span><span class="n">availability_profile</span><span class="p">,</span>
     <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The bus name `electricity` given for bus0 of Link `EV charger` does not appear in network.buses
 </pre></div>
 </div>
 </div>
@@ -1244,13 +1279,18 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
     <span class="s2">&quot;Link&quot;</span><span class="p">,</span>
     <span class="s2">&quot;V2G&quot;</span><span class="p">,</span>
-    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;Germany EV&quot;</span><span class="p">,</span>
-    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
+    <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;EV&quot;</span><span class="p">,</span>
+    <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">,</span>
     <span class="n">p_nom</span><span class="o">=</span><span class="n">p_nom</span><span class="p">,</span>
     <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;V2G&quot;</span><span class="p">,</span>
     <span class="n">p_max_pu</span><span class="o">=</span><span class="n">availability_profile</span><span class="p">,</span>
     <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The bus name `electricity` given for bus1 of Link `V2G` does not appear in network.buses
 </pre></div>
 </div>
 </div>
@@ -1292,7 +1332,7 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
     <span class="s2">&quot;Store&quot;</span><span class="p">,</span>
     <span class="s2">&quot;EV DSM&quot;</span><span class="p">,</span>
-    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;Germany EV&quot;</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;EV&quot;</span><span class="p">,</span>
     <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;EV battery&quot;</span><span class="p">,</span>
     <span class="n">e_cyclic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># state of charge at beginning = state of charge at the end</span>
     <span class="n">e_nom</span><span class="o">=</span><span class="n">e_nom</span><span class="p">,</span>
@@ -1313,13 +1353,13 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.66s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.56s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Cbc solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Optimization successful. Objective value: 1.31e+11
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Optimization successful. Objective value: 1.21e+11
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
@@ -1381,64 +1421,64 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
     <tr>
       <th rowspan="3" valign="top">Generator</th>
       <th>offwind</th>
-      <td>0.346425</td>
-      <td>4.879948e+10</td>
-      <td>5050.910708</td>
+      <td>0.159939</td>
+      <td>3.606999e+09</td>
+      <td>4627.300990</td>
       <td>0.0</td>
-      <td>2.138243e+03</td>
-      <td>3.086157e+05</td>
-      <td>5.572855e+06</td>
-      <td>1.069121e+05</td>
+      <td>72.968297</td>
+      <td>2.281124e+04</td>
+      <td>4.118309e+05</td>
+      <td>3.648415e+03</td>
       <td>0.000000e+00</td>
     </tr>
     <tr>
       <th>onwind</th>
-      <td>0.137733</td>
-      <td>2.531552e+09</td>
-      <td>1791.828887</td>
+      <td>0.012838</td>
+      <td>3.303204e+10</td>
+      <td>66316.032450</td>
       <td>0.0</td>
-      <td>4.898909e+03</td>
-      <td>2.634676e+04</td>
-      <td>2.938889e+05</td>
-      <td>3.628822e+03</td>
+      <td>5958.027613</td>
+      <td>3.437762e+05</td>
+      <td>3.776739e+06</td>
+      <td>4.413354e+03</td>
       <td>0.000000e+00</td>
     </tr>
     <tr>
       <th>solar</th>
-      <td>0.124186</td>
-      <td>2.447404e+10</td>
-      <td>0.000506</td>
+      <td>0.063811</td>
+      <td>3.532292e+10</td>
+      <td>45854.222888</td>
       <td>0.0</td>
-      <td>6.534945e+02</td>
-      <td>5.262228e+05</td>
-      <td>2.794494e+06</td>
-      <td>6.534945e+04</td>
+      <td>484.633963</td>
+      <td>7.594874e+05</td>
+      <td>4.032781e+06</td>
+      <td>4.846340e+04</td>
       <td>0.000000e+00</td>
     </tr>
     <tr>
       <th rowspan="8" valign="top">Link</th>
       <th>CHP</th>
-      <td>0.054881</td>
-      <td>8.320176e+09</td>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
       <td>NaN</td>
       <td>0.0</td>
+      <td>0.000000</td>
       <td>0.000000e+00</td>
-      <td>2.080044e+05</td>
-      <td>-2.550875e+05</td>
-      <td>4.566210e+03</td>
-      <td>-1.141553e+04</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
     </tr>
     <tr>
       <th>EV charger</th>
-      <td>0.066488</td>
+      <td>0.035826</td>
       <td>0.000000e+00</td>
       <td>NaN</td>
       <td>440000.0</td>
-      <td>0.000000e+00</td>
+      <td>0.000000</td>
       <td>4.400000e+05</td>
-      <td>-5.363657e-03</td>
-      <td>2.632925e+04</td>
-      <td>-2.925472e+04</td>
+      <td>0.000000e+00</td>
+      <td>1.418694e+04</td>
+      <td>-1.576327e+04</td>
     </tr>
     <tr>
       <th>OCGT</th>
@@ -1446,7 +1486,7 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
       <td>0.000000e+00</td>
       <td>NaN</td>
       <td>0.0</td>
-      <td>0.000000e+00</td>
+      <td>0.000000</td>
       <td>0.000000e+00</td>
       <td>0.000000e+00</td>
       <td>0.000000e+00</td>
@@ -1454,25 +1494,25 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
     </tr>
     <tr>
       <th>V2G</th>
-      <td>0.027596</td>
+      <td>0.000000</td>
       <td>0.000000e+00</td>
       <td>NaN</td>
       <td>440000.0</td>
-      <td>0.000000e+00</td>
+      <td>0.000000</td>
       <td>4.400000e+05</td>
-      <td>1.008293e-02</td>
-      <td>1.092808e+04</td>
-      <td>-1.214231e+04</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
     </tr>
     <tr>
       <th>electrolysis</th>
-      <td>0.483609</td>
-      <td>8.074980e+09</td>
+      <td>1.000000</td>
+      <td>3.905135e+09</td>
       <td>NaN</td>
       <td>0.0</td>
+      <td>0.000000</td>
+      <td>7.810270e+04</td>
       <td>0.000000e+00</td>
-      <td>1.614996e+05</td>
-      <td>9.218013e+05</td>
       <td>5.467189e+04</td>
       <td>-7.810270e+04</td>
     </tr>
@@ -1482,7 +1522,7 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
       <td>0.000000e+00</td>
       <td>NaN</td>
       <td>0.0</td>
-      <td>0.000000e+00</td>
+      <td>0.000000</td>
       <td>0.000000e+00</td>
       <td>0.000000e+00</td>
       <td>0.000000e+00</td>
@@ -1490,27 +1530,27 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
     </tr>
     <tr>
       <th>heat pump</th>
-      <td>0.481696</td>
-      <td>1.537655e+10</td>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
       <td>NaN</td>
       <td>0.0</td>
+      <td>0.000000</td>
       <td>0.000000e+00</td>
-      <td>5.125518e+04</td>
-      <td>1.755314e+06</td>
-      <td>5.900489e+04</td>
-      <td>-2.468943e+04</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
     </tr>
     <tr>
       <th>resistive heater</th>
-      <td>0.060393</td>
-      <td>7.725991e+08</td>
+      <td>0.330618</td>
+      <td>2.277568e+09</td>
       <td>NaN</td>
       <td>0.0</td>
+      <td>0.000000</td>
+      <td>2.277568e+05</td>
       <td>0.000000e+00</td>
-      <td>7.725991e+04</td>
-      <td>8.819624e+04</td>
-      <td>4.199361e+03</td>
-      <td>-4.665956e+03</td>
+      <td>6.777046e+04</td>
+      <td>-7.530051e+04</td>
     </tr>
     <tr>
       <th rowspan="4" valign="top">Load</th>
@@ -1521,7 +1561,7 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>4.782368e+06</td>
+      <td>1.314015e+07</td>
       <td>0.000000e+00</td>
       <td>-5.467189e+04</td>
     </tr>
@@ -1533,7 +1573,7 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>1.220516e+06</td>
+      <td>0.000000e+00</td>
       <td>0.000000e+00</td>
       <td>-1.418694e+04</td>
     </tr>
@@ -1545,7 +1585,7 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>6.587414e+06</td>
+      <td>2.599963e+05</td>
       <td>0.000000e+00</td>
       <td>-6.777046e+04</td>
     </tr>
@@ -1557,59 +1597,59 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>3.690642e+06</td>
+      <td>4.457917e+05</td>
       <td>0.000000e+00</td>
       <td>-5.467189e+04</td>
     </tr>
     <tr>
       <th>StorageUnit</th>
       <th>battery storage</th>
-      <td>inf</td>
-      <td>0.000000e+00</td>
+      <td>0.101662</td>
+      <td>4.308868e+10</td>
       <td>0.000000</td>
       <td>0.0</td>
-      <td>0.000000e+00</td>
-      <td>0.000000e+00</td>
-      <td>-5.440136e-13</td>
-      <td>9.094223e-27</td>
-      <td>-1.766927e-15</td>
+      <td>0.000000</td>
+      <td>4.468160e+05</td>
+      <td>4.918799e+06</td>
+      <td>2.178544e+04</td>
+      <td>-2.363871e+04</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">Store</th>
       <th>EV battery</th>
-      <td>0.563587</td>
+      <td>0.000000</td>
       <td>0.000000e+00</td>
       <td>NaN</td>
       <td>1000000.0</td>
-      <td>0.000000e+00</td>
+      <td>0.000000</td>
       <td>1.000000e+06</td>
-      <td>8.487339e+05</td>
-      <td>1.809196e+04</td>
-      <td>-1.809196e+04</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
     </tr>
     <tr>
       <th>gas storage</th>
-      <td>0.271040</td>
+      <td>1.000000</td>
       <td>0.000000e+00</td>
       <td>NaN</td>
       <td>100000000.0</td>
-      <td>1.712329e+06</td>
+      <td>0.000000</td>
       <td>1.000000e+08</td>
-      <td>2.188953e+06</td>
-      <td>1.141553e+04</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
       <td>0.000000e+00</td>
     </tr>
     <tr>
       <th>hydrogen storage</th>
-      <td>0.529996</td>
-      <td>7.594148e+09</td>
+      <td>0.039875</td>
+      <td>1.810238e-08</td>
       <td>NaN</td>
       <td>0.0</td>
-      <td>0.000000e+00</td>
-      <td>5.424391e+07</td>
-      <td>8.669119e+05</td>
-      <td>2.359585e+04</td>
-      <td>-2.359585e+04</td>
+      <td>0.000000</td>
+      <td>1.293027e-10</td>
+      <td>2.066482e-12</td>
+      <td>2.086000e-14</td>
+      <td>-2.086000e-14</td>
     </tr>
   </tbody>
 </table>
@@ -1643,7 +1683,7 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network network-cem-sc.nc has loads, storage_units, carriers, buses, links, generators, stores
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network network-cem-sc.nc has generators, carriers, stores, loads, storage_units, buses, links
 </pre></div>
 </div>
 </div>
@@ -1701,7 +1741,7 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
   
     By Fabian Neumann<br/>
   
-      &copy; Copyright 2022.<br/>
+      &copy; Copyright 2022-2023.<br/>
 </p>
         </footer>
     </div>

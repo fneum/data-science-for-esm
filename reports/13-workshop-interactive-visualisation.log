@@ -1,0 +1,76 @@
+Traceback (most recent call last):
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/asyncio/base_events.py", line 650, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/client.py", line 608, in async_setup_kernel
+    yield
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+ppl.query("Fueltype == 'Hard Coal'").hvplot(
+    geo=True,
+    tiles=True,
+    frame_height=600
+)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mDataError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[13], line 1[0m
+[0;32m----> 1[0m [43mppl[49m[38;5;241;43m.[39;49m[43mquery[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mFueltype == [39;49m[38;5;124;43m'[39;49m[38;5;124;43mHard Coal[39;49m[38;5;124;43m'[39;49m[38;5;124;43m"[39;49m[43m)[49m[38;5;241;43m.[39;49m[43mhvplot[49m[43m([49m
+[1;32m      2[0m [43m    [49m[43mgeo[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m
+[1;32m      3[0m [43m    [49m[43mtiles[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m
+[1;32m      4[0m [43m    [49m[43mframe_height[49m[38;5;241;43m=[39;49m[38;5;241;43m600[39;49m
+[1;32m      5[0m [43m)[49m
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.11/site-packages/hvplot/plotting/core.py:92[0m, in [0;36mhvPlotBase.__call__[0;34m(self, x, y, kind, **kwds)[0m
+[1;32m     89[0m         plot [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_get_converter(x, y, kind, [38;5;241m*[39m[38;5;241m*[39mkwds)(kind, x, y)
+[1;32m     90[0m         [38;5;28;01mreturn[39;00m pn[38;5;241m.[39mpanel(plot, [38;5;241m*[39m[38;5;241m*[39mpanel_dict)
+[0;32m---> 92[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_get_converter[49m[43m([49m[43mx[49m[43m,[49m[43m [49m[43my[49m[43m,[49m[43m [49m[43mkind[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwds[49m[43m)[49m[43m([49m[43mkind[49m[43m,[49m[43m [49m[43mx[49m[43m,[49m[43m [49m[43my[49m[43m)[49m
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.11/site-packages/hvplot/converter.py:1226[0m, in [0;36mHoloViewsConverter.__call__[0;34m(self, kind, x, y)[0m
+[1;32m   1224[0m     columns [38;5;241m=[39m [c [38;5;28;01mfor[39;00m c [38;5;129;01min[39;00m data[38;5;241m.[39mcolumns [38;5;28;01mif[39;00m c [38;5;241m!=[39m [38;5;124m'[39m[38;5;124mgeometry[39m[38;5;124m'[39m]
+[1;32m   1225[0m     shape_dims [38;5;241m=[39m [[38;5;124m'[39m[38;5;124mLongitude[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mLatitude[39m[38;5;124m'[39m] [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mgeo [38;5;28;01melse[39;00m [[38;5;124m'[39m[38;5;124mx[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124my[39m[38;5;124m'[39m]
+[0;32m-> 1226[0m     dataset [38;5;241m=[39m [43mDataset[49m[43m([49m[43mdata[49m[43m,[49m[43m [49m[43mkdims[49m[38;5;241;43m=[39;49m[43mshape_dims[49m[38;5;241;43m+[39;49m[43mcolumns[49m[43m)[49m
+[1;32m   1227[0m [38;5;28;01melif[39;00m [38;5;28mself[39m[38;5;241m.[39mdatatype [38;5;241m==[39m [38;5;124m'[39m[38;5;124mxarray[39m[38;5;124m'[39m:
+[1;32m   1228[0m     [38;5;28;01mimport[39;00m [38;5;21;01mxarray[39;00m [38;5;28;01mas[39;00m [38;5;21;01mxr[39;00m
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.11/site-packages/holoviews/core/data/__init__.py:335[0m, in [0;36mDataset.__init__[0;34m(self, data, kdims, vdims, **kwargs)[0m
+[1;32m    333[0m (data, [38;5;28mself[39m[38;5;241m.[39minterface, dims, extra_kws) [38;5;241m=[39m initialized
+[1;32m    334[0m [38;5;28msuper[39m()[38;5;241m.[39m[38;5;21m__init__[39m(data, [38;5;241m*[39m[38;5;241m*[39m[38;5;28mdict[39m(kwargs, [38;5;241m*[39m[38;5;241m*[39m[38;5;28mdict[39m(dims, [38;5;241m*[39m[38;5;241m*[39mextra_kws)))
+[0;32m--> 335[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43minterface[49m[38;5;241;43m.[39;49m[43mvalidate[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mvalidate_vdims[49m[43m)[49m
+[1;32m    337[0m [38;5;66;03m# Handle _pipeline property[39;00m
+[1;32m    338[0m [38;5;28;01mif[39;00m input_pipeline [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.11/site-packages/holoviews/core/data/pandas.py:160[0m, in [0;36mPandasInterface.validate[0;34m(cls, dataset, vdims)[0m
+[1;32m    158[0m not_found [38;5;241m=[39m [d [38;5;28;01mfor[39;00m d [38;5;129;01min[39;00m dimensions [38;5;28;01mif[39;00m d [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m cols]
+[1;32m    159[0m [38;5;28;01mif[39;00m not_found:
+[0;32m--> 160[0m     [38;5;28;01mraise[39;00m DataError([38;5;124m"[39m[38;5;124mSupplied data does not contain specified [39m[38;5;124m"[39m
+[1;32m    161[0m                     [38;5;124m"[39m[38;5;124mdimensions, the following dimensions were [39m[38;5;124m"[39m
+[1;32m    162[0m                     [38;5;124m"[39m[38;5;124mnot found: [39m[38;5;132;01m%s[39;00m[38;5;124m"[39m [38;5;241m%[39m [38;5;28mrepr[39m(not_found), [38;5;28mcls[39m)
+
+[0;31mDataError[0m: Supplied data does not contain specified dimensions, the following dimensions were not found: ['Longitude', 'Latitude']
+
+PandasInterface expects tabular data, for more information on supported datatypes see http://holoviews.org/user_guide/Tabular_Datasets.html
+DataError: Supplied data does not contain specified dimensions, the following dimensions were not found: ['Longitude', 'Latitude']
+
+PandasInterface expects tabular data, for more information on supported datatypes see http://holoviews.org/user_guide/Tabular_Datasets.html
+

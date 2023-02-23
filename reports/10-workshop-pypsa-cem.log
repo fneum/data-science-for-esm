@@ -1,67 +1,52 @@
 Traceback (most recent call last):
-  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/client.py", line 730, in _async_poll_for_reply
+    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/util.py", line 96, in ensure_async
+    result = await obj
+             ^^^^^^^^^
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/jupyter_client/channels.py", line 315, in get_msg
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
     executenb(
-  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/client.py", line 1204, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/util.py", line 84, in wrapped
     return just_run(coro(*args, **kwargs))
-  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/util.py", line 62, in just_run
     return loop.run_until_complete(coro)
-  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/asyncio/base_events.py", line 650, in run_until_complete
     return future.result()
-  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+           ^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/client.py", line 608, in async_setup_kernel
+    yield
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
-    await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/home/runner/micromamba-root/envs/esm/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-n.lopf(solver_name='gurobi')
-------------------
-
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[26], line 1[0m
-[0;32m----> 1[0m [43mn[49m[38;5;241;43m.[39;49m[43mlopf[49m[43m([49m[43msolver_name[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mgurobi[39;49m[38;5;124;43m'[39;49m[43m)[49m
-
-File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/pypsa/components.py:764[0m, in [0;36mNetwork.lopf[0;34m(self, snapshots, pyomo, solver_name, solver_options, solver_logfile, formulation, keep_files, extra_functionality, multi_investment_periods, **kwargs)[0m
-[1;32m    762[0m [38;5;28;01mif[39;00m pyomo:
-[1;32m    763[0m     [38;5;28;01mreturn[39;00m network_lopf([38;5;28mself[39m, [38;5;241m*[39m[38;5;241m*[39margs)
-[0;32m--> 764[0m [38;5;28;01mreturn[39;00m [43mnetwork_lopf_lowmem[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43margs[49m[43m)[49m
-
-File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/pypsa/linopf.py:1472[0m, in [0;36mnetwork_lopf[0;34m(n, snapshots, solver_name, solver_logfile, extra_functionality, multi_investment_periods, skip_objective, skip_pre, extra_postprocessing, formulation, keep_references, keep_files, keep_shadowprices, solver_options, warmstart, store_basis, solver_dir)[0m
-[1;32m   1469[0m     logger[38;5;241m.[39minfo([38;5;124mf[39m[38;5;124m"[39m[38;5;124mSolve linear problem using [39m[38;5;132;01m{[39;00msolver_name[38;5;241m.[39mtitle()[38;5;132;01m}[39;00m[38;5;124m solver[39m[38;5;124m"[39m)
-[1;32m   1471[0m solve [38;5;241m=[39m [38;5;28meval[39m([38;5;124mf[39m[38;5;124m"[39m[38;5;124mrun_and_read_[39m[38;5;132;01m{[39;00msolver_name[38;5;132;01m}[39;00m[38;5;124m"[39m)
-[0;32m-> 1472[0m res [38;5;241m=[39m [43msolve[49m[43m([49m
-[1;32m   1473[0m [43m    [49m[43mn[49m[43m,[49m
-[1;32m   1474[0m [43m    [49m[43mproblem_fn[49m[43m,[49m
-[1;32m   1475[0m [43m    [49m[43msolution_fn[49m[43m,[49m
-[1;32m   1476[0m [43m    [49m[43msolver_logfile[49m[43m,[49m
-[1;32m   1477[0m [43m    [49m[43msolver_options[49m[43m,[49m
-[1;32m   1478[0m [43m    [49m[43mwarmstart[49m[43m,[49m
-[1;32m   1479[0m [43m    [49m[43mstore_basis[49m[43m,[49m
-[1;32m   1480[0m [43m[49m[43m)[49m
-[1;32m   1482[0m status, termination_condition, variables_sol, constraints_dual, obj [38;5;241m=[39m res
-[1;32m   1484[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m keep_files:
-
-File [0;32m~/micromamba-root/envs/esm/lib/python3.9/site-packages/pypsa/linopt.py:1063[0m, in [0;36mrun_and_read_gurobi[0;34m(n, problem_fn, solution_fn, solver_logfile, solver_options, warmstart, store_basis)[0m
-[1;32m   1053[0m [38;5;250m[39m[38;5;124;03m"""[39;00m
-[1;32m   1054[0m [38;5;124;03mSolving function. Reads the linear problem file and passes it to the gurobi[39;00m
-[1;32m   1055[0m [38;5;124;03msolver. If the solution is successful it returns variable solutions and[39;00m
-[0;32m   (...)[0m
-[1;32m   1060[0m [38;5;124;03m<https://www.gurobi.com/documentation/{gurobi_verion}/refman/parameter_descriptions.html>_[39;00m
-[1;32m   1061[0m [38;5;124;03m"""[39;00m
-[1;32m   1062[0m [38;5;28;01mif[39;00m find_spec([38;5;124m"[39m[38;5;124mgurobipy[39m[38;5;124m"[39m) [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
-[0;32m-> 1063[0m     [38;5;28;01mraise[39;00m [38;5;167;01mModuleNotFoundError[39;00m(
-[1;32m   1064[0m         [38;5;124m"[39m[38;5;124mOptional dependency [39m[38;5;124m'[39m[38;5;124mgurobipy[39m[38;5;124m'[39m[38;5;124m not found. [39m[38;5;124m"[39m
-[1;32m   1065[0m         [38;5;124m"[39m[38;5;124mInstall via [39m[38;5;124m'[39m[38;5;124mconda install -c gurobi gurobi[39m[38;5;124m'[39m[38;5;124m  or follow the [39m[38;5;124m"[39m
-[1;32m   1066[0m         [38;5;124m"[39m[38;5;124minstructions on the documentation page [39m[38;5;124m"[39m
-[1;32m   1067[0m         [38;5;124m"[39m[38;5;124mhttps://www.gurobi.com/documentation/[39m[38;5;124m"[39m
-[1;32m   1068[0m     )
-[1;32m   1069[0m [38;5;28;01mimport[39;00m [38;5;21;01mgurobipy[39;00m
-[1;32m   1071[0m [38;5;66;03m# disable logging for this part, as gurobi output is doubled otherwise[39;00m
-
-[0;31mModuleNotFoundError[0m: Optional dependency 'gurobipy' not found. Install via 'conda install -c gurobi gurobi'  or follow the instructions on the documentation page https://www.gurobi.com/documentation/
-ModuleNotFoundError: Optional dependency 'gurobipy' not found. Install via 'conda install -c gurobi gurobi'  or follow the instructions on the documentation page https://www.gurobi.com/documentation/
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/client.py", line 949, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/client.py", line 754, in _async_poll_for_reply
+    await self._async_handle_timeout(timeout, cell)
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/client.py", line 801, in _async_handle_timeout
+    raise CellTimeoutError.error_from_timeout_and_cell(
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+sensitivity = {}
+for co2 in [150,100,50,25,0]:
+    n.global_constraints.loc["CO2Limit", "constant"] = co2 * 1e6
+    n.lopf(solver_name='cbc')
+    sensitivity[co2] = system_cost(n)
+-------------------
 

@@ -2,7 +2,7 @@
 
 Welcome to the website accompanying the course [Data Science for Energy System Modelling](https://moseskonto.tu-berlin.de/moses/modultransfersystem/bolognamodule/beschreibung/anzeigen.html;jsessionid=DQfixqzzpn1XIg5N1GG7S9um4EDykZn99AHmH6Fj.moseskonto?number=31027&version=1&sprache=2). This course is being developed by [Dr. Fabian Neumann](https://neumann.fyi) and offered as part of the curriculum of the [Department of Digital Transformation of Energy Systems at TU Berlin](https://www.tu.berlin/ensys).
 
-On this website you will find practical introductions to many Python packages that are useful for dealing with energy data and building energy system modells. Course materials other than practical introductions to Python packages can be found on [ISIS](https://isis.tu-berlin.de/course/view.php?id=30525).
+On this website you will find practical introductions to many Python packages that are useful for dealing with energy data and building energy system models. Course materials other than practical introductions to Python packages can be found on [ISIS](https://isis.tu-berlin.de/course/view.php?id=30525).
 
 ## Python
 
@@ -33,7 +33,7 @@ Follow the link above to obtain a one-click installers for your operating system
 
 For **Linux and MacOS users**, you can access the command line by opening the _terminal_ program.
 
-For **Windows users**, you should first install Anaconda (described above) or Miniconda (described below), which gives you access to the "Anaconda Prompt" desktop application. (Instructions for this are given on the [Andaconda Website](https://docs.anaconda.com/anaconda/user-guide/getting-started/#write-a-python-program-using-anaconda-prompt-or-terminal).)
+For **Windows users**, you should first install Anaconda (described above) or Miniconda (described below), which gives you access to the "Anaconda Prompt" desktop application. (Instructions for this are given on the [Anaconda Website](https://docs.anaconda.com/anaconda/user-guide/getting-started/#write-a-python-program-using-anaconda-prompt-or-terminal).)
 
 From the Anaconda Prompt, you should be able to run `conda` and other shell commands.
 
@@ -103,7 +103,7 @@ For extensive documentation on using environments, please see
 In order to put together an actual python environment from your package specifications,
 conda has to solve a difficult puzzle, to ensure that the combination of packages is mutually compatible.
 Each package specified has certain dependencies on other packages.
-Moreoever, each version of one package requires certain minimum versions of other
+Moreover, each version of one package requires certain minimum versions of other
 packages.
 Other packages in your environment may have different or incompatible versions.
 The default implementation of `conda` can be very slow.

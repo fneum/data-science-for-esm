@@ -714,13 +714,13 @@ title="Print to PDF"
 <h2>From structured data to optimisation<a class="headerlink" href="#from-structured-data-to-optimisation" title="Permalink to this headline">#</a></h2>
 <p>The design principle of PyPSA is that basically each component is associated with a set of variables and constraints that will be added to the optimisation model based on the input data stored for the components.</p>
 <p>For an <em>hourly</em> electricity market simulation, PyPSA will solve an optimisation problem that looks like this</p>
-<div class="amsmath math notranslate nohighlight" id="equation-06b07264-de34-404e-81d0-310ec48865c5">
-<span class="eqno">(8)<a class="headerlink" href="#equation-06b07264-de34-404e-81d0-310ec48865c5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f4c270b0-3aa7-4c17-9f22-a47285e2becc">
+<span class="eqno">(8)<a class="headerlink" href="#equation-f4c270b0-3aa7-4c17-9f22-a47285e2becc" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min_{g_{i,s,t}; f_{\ell,t}; g_{i,r,t,\text{charge}}; g_{i,r,t,\text{discharge}}; e_{i,r,t}} \sum_s o_{s} g_{i,s,t}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e3f18eb2-3e23-48aa-a43d-5e2affe38ada">
-<span class="eqno">(9)<a class="headerlink" href="#equation-e3f18eb2-3e23-48aa-a43d-5e2affe38ada" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8410b9c4-ab5b-4963-a6bc-52c19e9fa104">
+<span class="eqno">(9)<a class="headerlink" href="#equation-8410b9c4-ab5b-4963-a6bc-52c19e9fa104" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp; \leq g_{i,s,t} \leq \hat{g}_{i,s,t} G_{i,s}  &amp; \text{generation limits : generator} \\
 -F_\ell &amp;\leq f_{\ell,t} \leq F_\ell &amp; \text{transmission limits : line}  \\
 d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{i,r,t,\text{charge}} - \sum_\ell K_{i\ell} f_{\ell,t} &amp; \text{KCL : bus} \\
@@ -1718,8 +1718,8 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f1b2e993c10&gt;,
- &lt;matplotlib.collections.LineCollection at 0x7f1b26871550&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f7f0809bed0&gt;,
+ &lt;matplotlib.collections.LineCollection at 0x7f7f0808c8d0&gt;)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
@@ -2373,7 +2373,7 @@ Name: mu, dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Directory tmp does not exist, creating it
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has carriers, buses, lines, global_constraints, loads, generators
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has global_constraints, lines, generators, loads, carriers, buses
 </pre></div>
 </div>
 </div>
@@ -2402,7 +2402,7 @@ The parsing of &#39;now&#39; in pd.to_datetime without `utc=True` is deprecated.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has carriers, buses, lines, global_constraints, loads, generators
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has global_constraints, lines, generators, loads, carriers, buses
 </pre></div>
 </div>
 </div>
@@ -2919,7 +2919,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 1.31s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 1.29s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Cbc solver
@@ -2971,12 +2971,12 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3835/2878191809.py:13: MatplotlibDeprecationWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2418/2878191809.py:13: MatplotlibDeprecationWarning:
 
 Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f1b1d72e310&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f7eff0e02d0&gt;
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
@@ -3070,12 +3070,12 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3835/3349850528.py:13: MatplotlibDeprecationWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2418/3349850528.py:13: MatplotlibDeprecationWarning:
 
 Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f1b14a295d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f7eff089cd0&gt;
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:

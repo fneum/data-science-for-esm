@@ -1,35 +1,45 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Introduction to numpy and matplotlib &#8212; Data Science for Energy System Modelling</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -37,13 +47,13 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -53,61 +63,93 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02-workshop-numpy';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Introduction to pandas" href="03-workshop-pandas.html" />
     <link rel="prev" title="Introduction to Python" href="01-workshop-python.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Data Science for Energy System Modelling</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -117,617 +159,306 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01-workshop-python.html">
-   Introduction to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Python
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Introduction to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     numpy
-    </span>
-   </code>
-   and
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     matplotlib
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03-workshop-pandas.html">
-   Introduction to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     pandas
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04-workshop-geopandas.html">
-   Introduction to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     geopandas
-    </span>
-   </code>
-   and
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     cartopy
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06-workshop-atlite.html">
-   Introduction to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     rasterio
-    </span>
-   </code>
-   and
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     atlite
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07-workshop-networkx.html">
-   Introduction to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     networkx
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08-workshop-pyomo.html">
-   Introduction to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     pyomo
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09-workshop-pypsa.html">
-   Introduction to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     pypsa
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10-workshop-pypsa-cem.html">
-   Capacity Expansion Planning with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     pypsa
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11-workshop-groupwork.html">
-   Preparation for Group Assignment
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="12-workshop-pypsa-sector-coupling.html">
-   Sector-Coupling with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     pypsa
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="13-workshop-interactive-visualisation.html">
-   Interactive Visualisation and Dashboards
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01-workshop-python.html">Introduction to <code class="docutils literal notranslate"><span class="pre">Python</span></code></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-workshop-pandas.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-workshop-geopandas.html">Introduction to <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> and <code class="docutils literal notranslate"><span class="pre">cartopy</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-workshop-atlite.html">Introduction to <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> and <code class="docutils literal notranslate"><span class="pre">atlite</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-workshop-networkx.html">Introduction to <code class="docutils literal notranslate"><span class="pre">networkx</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-workshop-pyomo.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pyomo</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-workshop-pypsa.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pypsa</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-workshop-pypsa-cem.html">Capacity Expansion Planning with <code class="docutils literal notranslate"><span class="pre">pypsa</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-workshop-groupwork.html">Preparation for Group Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-workshop-pypsa-sector-coupling.html">Sector-Coupling with <code class="docutils literal notranslate"><span class="pre">pypsa</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-workshop-interactive-visualisation.html">Interactive Visualisation and Dashboards</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/fneum/data-science-for-esm/main?urlpath=tree/data-science-for-esm/02-workshop-numpy.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/fneum/data-science-for-esm/main?urlpath=tree/data-science-for-esm/02-workshop-numpy.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_binder.svg">
   </span>
-<span class="headerbtn__text-container">Binder</span>
+<span class="btn__text-container">Binder</span>
 </a>
-
-      </li>
+</li>
       
-      <li>
-        <a href="https://colab.research.google.com/github/fneum/data-science-for-esm/blob/main/data-science-for-esm/02-workshop-numpy.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/fneum/data-science-for-esm/blob/main/data-science-for-esm/02-workshop-numpy.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fneum/data-science-for-esm" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fneum/data-science-for-esm/issues/new?title=Issue%20on%20page%20%2F02-workshop-numpy.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/02-workshop-numpy.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/fneum/data-science-for-esm"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/fneum/data-science-for-esm/issues/new?title=Issue%20on%20page%20%2F02-workshop-numpy.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/02-workshop-numpy.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing-a-package">
-   Importing a Package
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ndarrays">
-   NDArrays
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#array-creation">
-   Array Creation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#indexing">
-   Indexing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-arrays-with-matplotlib">
-   Visualizing Arrays with Matplotlib
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#array-operations">
-   Array Operations
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#basic-math">
-     Basic Math
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#broadcasting">
-   Broadcasting
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reduction-operations">
-   Reduction Operations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#figures-and-axes">
-   Figures and Axes
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#subplots">
-     Subplots
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#drawing-into-axes">
-   Drawing into Axes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#labeling-plots">
-   Labeling Plots
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#customizing-plots">
-   Customizing Plots
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#line-styles">
-     Line Styles
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#colors">
-     Colors
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#markers">
-     Markers
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#axis-limits">
-     Axis Limits
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scatter-plots">
-   Scatter Plots
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bar-plots">
-   Bar Plots
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introduction to numpy and matplotlib</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing-a-package">
-   Importing a Package
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ndarrays">
-   NDArrays
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#array-creation">
-   Array Creation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#indexing">
-   Indexing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-arrays-with-matplotlib">
-   Visualizing Arrays with Matplotlib
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#array-operations">
-   Array Operations
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#basic-math">
-     Basic Math
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#broadcasting">
-   Broadcasting
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reduction-operations">
-   Reduction Operations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#figures-and-axes">
-   Figures and Axes
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#subplots">
-     Subplots
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#drawing-into-axes">
-   Drawing into Axes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#labeling-plots">
-   Labeling Plots
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#customizing-plots">
-   Customizing Plots
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#line-styles">
-     Line Styles
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#colors">
-     Colors
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#markers">
-     Markers
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#axis-limits">
-     Axis Limits
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scatter-plots">
-   Scatter Plots
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bar-plots">
-   Bar Plots
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to numpy and matplotlib</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-a-package">Importing a Package</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ndarrays">NDArrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-creation">Array Creation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing">Indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-arrays-with-matplotlib">Visualizing Arrays with Matplotlib</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-operations">Array Operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-math">Basic Math</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Broadcasting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduction-operations">Reduction Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figures-and-axes">Figures and Axes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subplots">Subplots</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-into-axes">Drawing into Axes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#labeling-plots">Labeling Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-plots">Customizing Plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-styles">Line Styles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colors">Colors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markers">Markers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axis-limits">Axis Limits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plots">Scatter Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-plots">Bar Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-numpy-and-matplotlib">
 <h1>Introduction to <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code><a class="headerlink" href="#introduction-to-numpy-and-matplotlib" title="Permalink to this headline">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This material is mostly adapted from the following resources:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://earth-env-data-science.github.io/lectures/basic_scipy/numpy_and_matplotlib.html">https://earth-env-data-science.github.io/lectures/basic_scipy/numpy_and_matplotlib.html</a></p></li>
-<li><p><a class="reference external" href="https://www.tomasbeuzen.com/python-programming-for-data-science/chapters/chapter5-numpy.html">https://www.tomasbeuzen.com/python-programming-for-data-science/chapters/chapter5-numpy.html</a></p></li>
+<li><p><a class="reference external" href="https://earth-env-data-science.github.io/lectures/basic_scipy/numpy_and_matplotlib.html">Earth and Environmental Data Science: Numpy and Matplotlib</a></p></li>
+<li><p><a class="reference external" href="https://www.tomasbeuzen.com/python-programming-for-data-science/chapters/chapter5-numpy.html">Python Programming for Data Science: Chapter 5: Introduction to NumPy</a></p></li>
 </ul>
 </div>
 <p>This lecture will introduce NumPy and Matplotlib.
@@ -736,26 +467,34 @@ title="Print to PDF"
 <p><strong>Numpy</strong>: <em>The fundamental package for scientific computing with Python. NumPy is the standard Python library used for working with arrays (i.e., vectors &amp; matrices), linear algebra, and other numerical computations.</em></p>
 <ul class="simple">
 <li><p>Website: <a class="reference external" href="https://numpy.org/">https://numpy.org/</a></p></li>
-<li><p>GitHub: <a class="reference external" href="https://github.com/numpy/numpy">https://github.com/numpy/numpy</a></p></li>
+<li><p>GitHub: <a class="github reference external" href="https://github.com/numpy/numpy">numpy/numpy</a></p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Documentation for this package is available at <a class="reference external" href="https://numpy.org/doc/1.23/">https://numpy.org/doc/1.23/</a>.</p>
+<p>Documentation for this package is available at <a class="reference external" href="https://numpy.org/doc/stable/index.html">https://numpy.org/doc/stable/index.html</a>.</p>
 </div>
 <img src="https://matplotlib.org/_static/logo2_compressed.svg" width="300px" />
-<p><strong>Matplotlib</strong>: <em>Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python.</em></p>
+<p><strong>Matplotlib</strong>: <em>Matplotlib is a comprehensive library for creating static and animated visualizations in Python.</em></p>
 <ul class="simple">
 <li><p>Website: <a class="reference external" href="https://matplotlib.org/">https://matplotlib.org/</a></p></li>
-<li><p>GitHub: <a class="reference external" href="https://github.com/matplotlib/matplotlib">https://github.com/matplotlib/matplotlib</a></p></li>
+<li><p>GitHub: <a class="github reference external" href="https://github.com/matplotlib/matplotlib">matplotlib/matplotlib</a></p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Documentation for this package is available at <a class="reference external" href="https://matplotlib.org/stable/index.html">https://matplotlib.org/stable/index.html</a>.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have not yet set up Python on your computer, you can execute this tutorial in your browser via Google Colab. Click on the rocket in the top right corner and launch “Colab”. If you have not yet set up Python on your computer, you can execute this tutorial in your browser via <a class="reference external" href="https://colab.research.google.com/">Google Colab</a>. Click on the rocket in the top right corner and launch “Colab”. If that doesn’t work download the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file and import it in <a class="reference external" href="https://colab.research.google.com/">Google Colab</a></p>
+<p>Then install <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> by executing the following command in a Jupyter cell at the top of the notebook.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>!pip<span class="w"> </span>install<span class="w"> </span>matplotlib<span class="w"> </span>numpy
+</pre></div>
+</div>
+</div>
 <section id="importing-a-package">
 <h2>Importing a Package<a class="headerlink" href="#importing-a-package" title="Permalink to this headline">#</a></h2>
 <p>This will be our first experience with <em>importing</em> a package.</p>
-<p>Usually we import numpy with the alias np (to avoid having to type out n-u-m-p-y every time we want to use it).</p>
+<p>Usually we import <code class="docutils literal notranslate"><span class="pre">numpy</span></code> with the <em>alias</em> <code class="docutils literal notranslate"><span class="pre">np</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -763,36 +502,17 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you have not yet set up Python on your computer, you can execute this tutorial in your browser via Google Colab. Click on the rocket in the top right corner and launch “Colab”. If you have not yet set up Python on your computer, you can execute this tutorial in your browser via <a class="reference external" href="https://colab.research.google.com/">Google Colab</a>. Click on the rocket in the top right corner and launch “Colab”. If that doesn’t work download the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file and import it in <a class="reference external" href="https://colab.research.google.com/">Google Colab</a></p>
-<p>Then install <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> by executing the following command in a Jupyter cell.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>!pip<span class="w"> </span>install<span class="w"> </span>matplotlib<span class="w"> </span>numpy
-</pre></div>
-</div>
-</div>
 </section>
 <section id="ndarrays">
 <h2>NDArrays<a class="headerlink" href="#ndarrays" title="Permalink to this headline">#</a></h2>
-<p>The core class is the numpy ndarray (n-dimensional array).</p>
-<p>The main differences between a numpy array and a <code class="docutils literal notranslate"><span class="pre">list</span></code> are the following:</p>
+<p>NDarrays (short for n-dimensional arrays) are a key data structure in <code class="docutils literal notranslate"><span class="pre">numpy</span></code>. NDarrays are similar to Python lists, but they allow for fast, efficient computations on large arrays and matrices of numerical data. NDarrays can have any number of dimensions, and are used for a wide range of numerical and scientific computing tasks, including linear algebra, statistical analysis, and image processing.</p>
+<p>Thus, the main differences between a numpy array and a <code class="docutils literal notranslate"><span class="pre">list</span></code> are the following:</p>
 <ul class="simple">
-<li><p>Numpy arrays can have N dimensions (while lists only have 1)</p></li>
-<li><p>Numpy arrays hold values of the same datatype (e.g. <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>), while lists can contain anything.</p></li>
-<li><p>Numpy optimizes numerical operations on arrays. Numpy is <em>fast!</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays can have N dimensions (while lists only have 1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays hold values of the same datatype (e.g. <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>), while lists can contain anything.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> optimizes numerical operations on arrays. Numpy is <em>fast!</em></p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://predictivehacks.com/wp-content/uploads/2020/08/numpy_arrays.png&#39;</span><span class="p">,</span>
-     <span class="n">width</span><span class="o">=</span><span class="mi">720</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><img src="https://predictivehacks.com/wp-content/uploads/2020/08/numpy_arrays.png" width="720"/></div></div>
-</div>
-<div class="cell docutils container">
+<img src="https://predictivehacks.com/wp-content/uploads/2020/08/numpy_arrays.png" width="720px" /><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create an array from a list</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
@@ -802,7 +522,7 @@ title="Print to PDF"
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Remember that if you’re in Jupyter, you can use <code class="docutils literal notranslate"><span class="pre">&lt;shift&gt;</span> <span class="pre">+</span> <span class="pre">&lt;tab&gt;</span></code> to inspect a function.</p>
+<p>If you’re in Jupyter, you can use <code class="docutils literal notranslate"><span class="pre">&lt;shift&gt;</span> <span class="pre">+</span> <span class="pre">&lt;tab&gt;</span></code> to inspect a function.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -870,7 +590,7 @@ title="Print to PDF"
 <p>There are lots of ways to create arrays.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -885,7 +605,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -901,7 +621,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -920,11 +640,11 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.23446429, 0.19828929],
-       [0.8165541 , 0.70915285],
-       [0.79821996, 0.60904734],
-       [0.38064517, 0.58372312],
-       [0.83405864, 0.08144534]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.72240993, 0.57383206],
+       [0.42724785, 0.30527406],
+       [0.86577089, 0.16460081],
+       [0.36963503, 0.82140998],
+       [0.38779912, 0.40512023]])
 </pre></div>
 </div>
 </div>
@@ -943,7 +663,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mf">0.25</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -956,7 +676,7 @@ title="Print to PDF"
 <p>A frequent need is to generate an array of N numbers, evenly spaced between two values. That is what <code class="docutils literal notranslate"><span class="pre">linspace</span></code> is for.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -970,7 +690,7 @@ title="Print to PDF"
 </div>
 </div>
 <p>Numpy also has some utilities for helping us generate multi-dimensional arrays.
-<code class="docutils literal notranslate"><span class="pre">meshgrid</span></code> creates 2D arrays out of a combination of 1D arrays.</p>
+For instance, <code class="docutils literal notranslate"><span class="pre">meshgrid</span></code> creates 2D arrays out of a combination of 1D arrays.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -1019,7 +739,7 @@ title="Print to PDF"
 </section>
 <section id="indexing">
 <h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">#</a></h2>
-<p>Basic indexing is similar to lists</p>
+<p>Basic indexing in <code class="docutils literal notranslate"><span class="pre">numpy</span></code> is similar to lists.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get some individual elements of xx</span>
@@ -1092,7 +812,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>It can be hard to work with big arrays without actually seeing anything with our eyes!</p>
+<p>For plotting a 1D array as a line, we use the <code class="docutils literal notranslate"><span class="pre">plot</span></code> command.</p>
+<p>To use this function, we first need to import it from the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> library.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -1100,18 +821,14 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>For plotting a 1D array as a line, we use the <code class="docutils literal notranslate"><span class="pre">plot</span></code> command.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe2aceaed90&gt;]
-</pre></div>
-</div>
-<img alt="_images/02-workshop-numpy_39_1.png" src="_images/02-workshop-numpy_39_1.png" />
+<img alt="_images/f2903ec59b193259ba6045157be5090d5e7a7107b5150cfb30f3c1b8556abb37.png" src="_images/f2903ec59b193259ba6045157be5090d5e7a7107b5150cfb30f3c1b8556abb37.png" />
 </div>
 </div>
 <p>There are many ways to visualize 2D data.
@@ -1123,7 +840,7 @@ He we use <code class="docutils literal notranslate"><span class="pre">pcolormes
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02-workshop-numpy_41_0.png" src="_images/02-workshop-numpy_41_0.png" />
+<img alt="_images/7c1a57f1a0a8a2986529d0fec76ad85427d7cdf8028a8536b609fb64fae02e5a.png" src="_images/7c1a57f1a0a8a2986529d0fec76ad85427d7cdf8028a8536b609fb64fae02e5a.png" />
 </div>
 </div>
 </section>
@@ -1147,10 +864,10 @@ He we use <code class="docutils literal notranslate"><span class="pre">pcolormes
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7fe2acc7eb90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7f09584fcf90&gt;
 </pre></div>
 </div>
-<img alt="_images/02-workshop-numpy_44_1.png" src="_images/02-workshop-numpy_44_1.png" />
+<img alt="_images/21573948ec78dfc077c4cecf60be7b8088a0ac7e475ebd82891de1237418fd91.png" src="_images/21573948ec78dfc077c4cecf60be7b8088a0ac7e475ebd82891de1237418fd91.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1188,20 +905,9 @@ He we use <code class="docutils literal notranslate"><span class="pre">pcolormes
 <section id="broadcasting">
 <h2>Broadcasting<a class="headerlink" href="#broadcasting" title="Permalink to this headline">#</a></h2>
 <p>Not all the arrays we want to work with will have the same size!</p>
-<p><em>Broadcasting</em> is an efficient way to multiply arrays of different sizes</p>
-<p>The core concept of broadcasting is telling Numpy which dimensions are supposed to line up with each other.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s1">&#39;http://scipy-lectures.github.io/_images/numpy_broadcasting.png&#39;</span><span class="p">,</span>
-     <span class="n">width</span><span class="o">=</span><span class="mi">720</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><img src="http://scipy-lectures.github.io/_images/numpy_broadcasting.png" width="720"/></div></div>
-</div>
-<p>Dimensions are automatically aligned <em>starting with the last dimension</em>.
+<p><strong>Broadcasting</strong> is a powerful feature in <code class="docutils literal notranslate"><span class="pre">numpy</span></code> that allows you to perform operations on arrays of different shapes and sizes. It automatically expands the smaller array to match the dimensions of the larger array, without actually making copies of the data, so that element-wise operations can be performed. This is done by following a set of rules that determine how the shapes of the arrays align.</p>
+<p>Broadcasting allows you to vectorize operations and avoid explicit loops, leading to more concise and efficient code. It’s particularly useful when working with large data sets, as it helps optimize memory usage and computational speed.</p>
+<img src="http://scipy-lectures.github.io/_images/numpy_broadcasting.png" width="720px" /><p>Dimensions are automatically aligned <em>starting with the last dimension</em>.
 If the last two dimensions have the same length, then the two arrays can be broadcast.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1241,17 +947,47 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7fe2acd0d6d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7f0950c9bc10&gt;
 </pre></div>
 </div>
-<img alt="_images/02-workshop-numpy_53_1.png" src="_images/02-workshop-numpy_53_1.png" />
+<img alt="_images/7ab8b95efdfded7a4023d289f46e332e98dd6f628aa9167cc647ea755d3d179e.png" src="_images/7ab8b95efdfded7a4023d289f46e332e98dd6f628aa9167cc647ea755d3d179e.png" />
 </div>
 </div>
 </section>
 <section id="reduction-operations">
 <h2>Reduction Operations<a class="headerlink" href="#reduction-operations" title="Permalink to this headline">#</a></h2>
 <p>In data science, we usually start with a lot of data and want to reduce it down in order to make plots of summary tables.</p>
-<p>There are many different reduction operations. Here we will look at some of the most common ones.</p>
+<p>There are many different reduction operations. The table below lists the most common functions:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Reduction Operation</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">numpy.sum()</span></code></p></td>
+<td><p>Computes the sum of array elements over a given axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">numpy.mean()</span></code></p></td>
+<td><p>Computes the arithmetic mean along a specified axis.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">numpy.min()</span></code></p></td>
+<td><p>Computes the minimum value along a specified axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">numpy.max()</span></code></p></td>
+<td><p>Computes the maximum value along a specified axis.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">numpy.prod()</span></code></p></td>
+<td><p>Computes the product of array elements over a given axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">numpy.std()</span></code></p></td>
+<td><p>Computes the standard deviation along a specified axis.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">numpy.var()</span></code></p></td>
+<td><p>Computes the variance along a specified axis.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sum</span>
@@ -1308,10 +1044,10 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe2acd989d0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0950d670d0&gt;]
 </pre></div>
 </div>
-<img alt="_images/02-workshop-numpy_60_1.png" src="_images/02-workshop-numpy_60_1.png" />
+<img alt="_images/dcdbe49440ea939a186e4573a5413263dda06a5fa67ff7773f321b76e1edca5b.png" src="_images/dcdbe49440ea939a186e4573a5413263dda06a5fa67ff7773f321b76e1edca5b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1321,16 +1057,16 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe2acaf7610&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0950d2f6d0&gt;]
 </pre></div>
 </div>
-<img alt="_images/02-workshop-numpy_61_1.png" src="_images/02-workshop-numpy_61_1.png" />
+<img alt="_images/4ec40e9c65e91554312db2dafbb67c9b4cb8e4748ad16f6c035144003c88fa50.png" src="_images/4ec40e9c65e91554312db2dafbb67c9b4cb8e4748ad16f6c035144003c88fa50.png" />
 </div>
 </div>
 </section>
 <section id="figures-and-axes">
 <h2>Figures and Axes<a class="headerlink" href="#figures-and-axes" title="Permalink to this headline">#</a></h2>
-<p>The <em>figure</em> is the highest level of organization of matplotlib objects.</p>
+<p>The <em>figure</em> is the highest level of organization of <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> objects.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -1363,7 +1099,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02-workshop-numpy_65_0.png" src="_images/02-workshop-numpy_65_0.png" />
+<img alt="_images/039ad6b471aaef3be17591a92d3434d5d61fe3a25a78bc9cac60c04e3c4a09c5.png" src="_images/039ad6b471aaef3be17591a92d3434d5d61fe3a25a78bc9cac60c04e3c4a09c5.png" />
 </div>
 </div>
 <section id="subplots">
@@ -1376,7 +1112,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02-workshop-numpy_67_0.png" src="_images/02-workshop-numpy_67_0.png" />
+<img alt="_images/9787f8a2451f2e7e36145ae170b7a0df1c349c31116bdd2985cc12a5f053b850.png" src="_images/9787f8a2451f2e7e36145ae170b7a0df1c349c31116bdd2985cc12a5f053b850.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1398,7 +1134,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02-workshop-numpy_69_0.png" src="_images/02-workshop-numpy_69_0.png" />
+<img alt="_images/be7cbc882009077f2bf6a011bcb3fc50c5bcdf7870abcf794be7cd91c1b604c4.png" src="_images/be7cbc882009077f2bf6a011bcb3fc50c5bcdf7870abcf794be7cd91c1b604c4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1437,10 +1173,10 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe2acb63f90&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0950b4f6d0&gt;]
 </pre></div>
 </div>
-<img alt="_images/02-workshop-numpy_73_1.png" src="_images/02-workshop-numpy_73_1.png" />
+<img alt="_images/133ba8dd9743a7b0a05efadf307f58f810a2cf810cbb0a602af9ca3e540836b1.png" src="_images/133ba8dd9743a7b0a05efadf307f58f810a2cf810cbb0a602af9ca3e540836b1.png" />
 </div>
 </div>
 <p>This does the same thing as</p>
@@ -1451,13 +1187,13 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe2ac901c10&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f09506776d0&gt;]
 </pre></div>
 </div>
-<img alt="_images/02-workshop-numpy_75_1.png" src="_images/02-workshop-numpy_75_1.png" />
+<img alt="_images/133ba8dd9743a7b0a05efadf307f58f810a2cf810cbb0a602af9ca3e540836b1.png" src="_images/133ba8dd9743a7b0a05efadf307f58f810a2cf810cbb0a602af9ca3e540836b1.png" />
 </div>
 </div>
-<p>This starts to matter when we have multiple axes to worry about.</p>
+<p>This starts to matter when we have multiple axes to manage.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -1468,15 +1204,16 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe2acc517d0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0950dee290&gt;]
 </pre></div>
 </div>
-<img alt="_images/02-workshop-numpy_77_1.png" src="_images/02-workshop-numpy_77_1.png" />
+<img alt="_images/b72219e5a3ff9aa3f0fcae833c53422b73b31574fb48c4020db816f8123c3eb0.png" src="_images/b72219e5a3ff9aa3f0fcae833c53422b73b31574fb48c4020db816f8123c3eb0.png" />
 </div>
 </div>
 </section>
 <section id="labeling-plots">
 <h2>Labeling Plots<a class="headerlink" href="#labeling-plots" title="Permalink to this headline">#</a></h2>
+<p>Labeling plots is very important! We want to know what data is shown and what the units are. <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> offers some functions to label graphics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
@@ -1492,7 +1229,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02-workshop-numpy_79_0.png" src="_images/02-workshop-numpy_79_0.png" />
+<img alt="_images/74300939d5928c67517e4b80c54c4fecdde6fd3b963a43b368fd49a4d40edfd5.png" src="_images/74300939d5928c67517e4b80c54c4fecdde6fd3b963a43b368fd49a4d40edfd5.png" />
 </div>
 </div>
 </section>
@@ -1506,11 +1243,11 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe2ac840790&gt;,
- &lt;matplotlib.lines.Line2D at 0x7fe2ac870690&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f09509fee90&gt;,
+ &lt;matplotlib.lines.Line2D at 0x7f0950a28dd0&gt;]
 </pre></div>
 </div>
-<img alt="_images/02-workshop-numpy_81_1.png" src="_images/02-workshop-numpy_81_1.png" />
+<img alt="_images/af698ac178cc6ddd08735972fae401e7da0ed933456b748bce1b99e0a0a9870e.png" src="_images/af698ac178cc6ddd08735972fae401e7da0ed933456b748bce1b99e0a0a9870e.png" />
 </div>
 </div>
 <p>It’s simple to switch axes</p>
@@ -1522,11 +1259,11 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe2ac8b0790&gt;,
- &lt;matplotlib.lines.Line2D at 0x7fe2ac6e91d0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0950a74410&gt;,
+ &lt;matplotlib.lines.Line2D at 0x7f0950aa4590&gt;]
 </pre></div>
 </div>
-<img alt="_images/02-workshop-numpy_83_1.png" src="_images/02-workshop-numpy_83_1.png" />
+<img alt="_images/18a104dfff5dc3991fe6f8cfffc04bbf368e0a895a8643985763247ab04b59e9.png" src="_images/18a104dfff5dc3991fe6f8cfffc04bbf368e0a895a8643985763247ab04b59e9.png" />
 </div>
 </div>
 <section id="line-styles">
@@ -1540,16 +1277,16 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe2ac765b90&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0950929190&gt;]
 </pre></div>
 </div>
-<img alt="_images/02-workshop-numpy_85_1.png" src="_images/02-workshop-numpy_85_1.png" />
+<img alt="_images/13156f53d39daaec537085e66f208383e0dc717bb96f2cdf7d4026968a7e24d1.png" src="_images/13156f53d39daaec537085e66f208383e0dc717bb96f2cdf7d4026968a7e24d1.png" />
 </div>
 </div>
 </section>
 <section id="colors">
 <h3>Colors<a class="headerlink" href="#colors" title="Permalink to this headline">#</a></h3>
-<p>As described in the <a class="reference external" href="https://matplotlib.org/2.0.2/api/colors_api.html">colors documentation</a>, there are some special codes for commonly used colors.</p>
+<p>As described in the <a class="reference external" href="https://matplotlib.org/stable/api/colors_api.html">colors documentation</a>, there are some special codes for commonly used colors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -1559,10 +1296,10 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe2ac74bd50&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f09509acc90&gt;]
 </pre></div>
 </div>
-<img alt="_images/02-workshop-numpy_87_1.png" src="_images/02-workshop-numpy_87_1.png" />
+<img alt="_images/0feeda68b0f3882398c168200f73bdfc7ae7c15697bc02cefa6adfe36dbd121e.png" src="_images/0feeda68b0f3882398c168200f73bdfc7ae7c15697bc02cefa6adfe36dbd121e.png" />
 </div>
 </div>
 </section>
@@ -1578,10 +1315,10 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe2ac663cd0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0950543a90&gt;]
 </pre></div>
 </div>
-<img alt="_images/02-workshop-numpy_89_1.png" src="_images/02-workshop-numpy_89_1.png" />
+<img alt="_images/7c67480d7c1cfc03cc54856e4fa0bcd15a3be3fd06554fbb10447f2ba393fdf5.png" src="_images/7c67480d7c1cfc03cc54856e4fa0bcd15a3be3fd06554fbb10447f2ba393fdf5.png" />
 </div>
 </div>
 </section>
@@ -1600,7 +1337,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-3.0, 3.0)
 </pre></div>
 </div>
-<img alt="_images/02-workshop-numpy_91_1.png" src="_images/02-workshop-numpy_91_1.png" />
+<img alt="_images/093fc4e1996d409bc7daaf2e06644105c851b344b52515645be2487d5fe5bb4f.png" src="_images/093fc4e1996d409bc7daaf2e06644105c851b344b52515645be2487d5fe5bb4f.png" />
 </div>
 </div>
 </section>
@@ -1617,10 +1354,10 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fe2ac532ed0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f095055fe10&gt;
 </pre></div>
 </div>
-<img alt="_images/02-workshop-numpy_93_1.png" src="_images/02-workshop-numpy_93_1.png" />
+<img alt="_images/a0f266dd6e7b8bc237599ffe1572c6f336f4cccae29d5331c70c1b8193ea8575.png" src="_images/a0f266dd6e7b8bc237599ffe1572c6f336f4cccae29d5331c70c1b8193ea8575.png" />
 </div>
 </div>
 <p>There are many different colormaps available in matplotlib: <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">https://matplotlib.org/stable/tutorials/colors/colormaps.html</a></p>
@@ -1642,13 +1379,13 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02-workshop-numpy_96_0.png" src="_images/02-workshop-numpy_96_0.png" />
+<img alt="_images/bed6c9a41455a3cff31fdce956866d6ec79cf9a54800b73cbd6fa72774eeb6b9.png" src="_images/bed6c9a41455a3cff31fdce956866d6ec79cf9a54800b73cbd6fa72774eeb6b9.png" />
 </div>
 </div>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
-<p>Import numpy under the alias <code class="docutils literal notranslate"><span class="pre">np</span></code>.</p>
+<p>Import <code class="docutils literal notranslate"><span class="pre">numpy</span></code> under the alias <code class="docutils literal notranslate"><span class="pre">np</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1657,7 +1394,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <p>Create the following arrays:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Create an array of 5 zeros.</p></li>
 <li><p>Create an array of 10 ones.</p></li>
 <li><p>Create an array of 5 <span class="math notranslate nohighlight">\(\pi\)</span> values.</p></li>
@@ -1729,7 +1466,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 </div>
-<p>Create a 3D matrix of 3 x 3 x 3 full of random numbers drawn from a standard normal distribution (hint: <code class="docutils literal notranslate"><span class="pre">np.random.randn()</span></code>)</p>
+<p>Create a 3D matrix of 3 x 3 x 3 full of random numbers drawn from a standard normal distribution (hint: <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.randn.html"><code class="docutils literal notranslate"><span class="pre">np.random.randn()</span></code></a>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
@@ -1737,17 +1474,17 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[ 1.5342722 , -0.62626863,  1.06537011],
-        [-0.85184791,  0.48004055, -0.91596427],
-        [-0.03409479, -0.42451051, -0.87455109]],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[-2.46730742,  0.36997486, -1.24525681],
+        [ 0.11073261, -0.3270275 , -2.09642515],
+        [ 0.74257919, -0.85852362, -0.31237112]],
 
-       [[-1.63634125,  1.5094815 , -1.26075812],
-        [ 1.88855828,  1.78088146,  0.60060948],
-        [-1.47471868, -0.7913397 , -0.04394487]],
+       [[ 0.85598844, -0.35450377,  0.8461848 ],
+        [-1.40837637, -0.65381858,  0.94624351],
+        [ 1.72279121, -0.03445438, -0.82357461]],
 
-       [[ 0.26363884, -0.22598696, -0.01131231],
-        [-0.83731602, -0.97028515, -0.01098325],
-        [ 0.28914128, -0.44402901, -1.14814962]]])
+       [[-1.90977417, -0.26107566,  0.3770448 ],
+        [ 1.92610628, -0.87584387, -0.28768313],
+        [-0.66070731, -1.42101068,  1.19994614]]])
 </pre></div>
 </div>
 </div>
@@ -1930,50 +1667,131 @@ If the last two dimensions have the same length, then the two arrays can be broa
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="01-workshop-python.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction to <code class="docutils literal notranslate"><span class="pre">Python</span></code></p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01-workshop-python.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to <code class="docutils literal notranslate"><span class="pre">Python</span></code></p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="03-workshop-pandas.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="03-workshop-pandas.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Introduction to <code class="docutils literal notranslate"><span class="pre">pandas</span></code></p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Fabian Neumann<br/>
-  
-      &copy; Copyright 2022-2023.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-a-package">Importing a Package</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ndarrays">NDArrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-creation">Array Creation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing">Indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-arrays-with-matplotlib">Visualizing Arrays with Matplotlib</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-operations">Array Operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-math">Basic Math</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Broadcasting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduction-operations">Reduction Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figures-and-axes">Figures and Axes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subplots">Subplots</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-into-axes">Drawing into Axes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#labeling-plots">Labeling Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-plots">Customizing Plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-styles">Line Styles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colors">Colors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markers">Markers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axis-limits">Axis Limits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plots">Scatter Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-plots">Bar Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Fabian Neumann
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022-2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

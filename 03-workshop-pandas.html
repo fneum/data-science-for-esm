@@ -1,35 +1,45 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Introduction to pandas &#8212; Data Science for Energy System Modelling</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -37,13 +47,13 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -51,61 +61,93 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03-workshop-pandas';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Introduction to geopandas and cartopy" href="04-workshop-geopandas.html" />
     <link rel="prev" title="Introduction to numpy and matplotlib" href="02-workshop-numpy.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Data Science for Energy System Modelling</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -115,559 +157,297 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01-workshop-python.html">
-   Introduction to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Python
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02-workshop-numpy.html">
-   Introduction to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     numpy
-    </span>
-   </code>
-   and
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     matplotlib
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Introduction to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     pandas
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04-workshop-geopandas.html">
-   Introduction to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     geopandas
-    </span>
-   </code>
-   and
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     cartopy
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06-workshop-atlite.html">
-   Introduction to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     rasterio
-    </span>
-   </code>
-   and
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     atlite
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07-workshop-networkx.html">
-   Introduction to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     networkx
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08-workshop-pyomo.html">
-   Introduction to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     pyomo
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09-workshop-pypsa.html">
-   Introduction to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     pypsa
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10-workshop-pypsa-cem.html">
-   Capacity Expansion Planning with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     pypsa
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11-workshop-groupwork.html">
-   Preparation for Group Assignment
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="12-workshop-pypsa-sector-coupling.html">
-   Sector-Coupling with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     pypsa
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="13-workshop-interactive-visualisation.html">
-   Interactive Visualisation and Dashboards
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01-workshop-python.html">Introduction to <code class="docutils literal notranslate"><span class="pre">Python</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-workshop-numpy.html">Introduction to <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-workshop-geopandas.html">Introduction to <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> and <code class="docutils literal notranslate"><span class="pre">cartopy</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-workshop-atlite.html">Introduction to <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> and <code class="docutils literal notranslate"><span class="pre">atlite</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-workshop-networkx.html">Introduction to <code class="docutils literal notranslate"><span class="pre">networkx</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-workshop-pyomo.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pyomo</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-workshop-pypsa.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pypsa</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-workshop-pypsa-cem.html">Capacity Expansion Planning with <code class="docutils literal notranslate"><span class="pre">pypsa</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-workshop-groupwork.html">Preparation for Group Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-workshop-pypsa-sector-coupling.html">Sector-Coupling with <code class="docutils literal notranslate"><span class="pre">pypsa</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-workshop-interactive-visualisation.html">Interactive Visualisation and Dashboards</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/fneum/data-science-for-esm/main?urlpath=tree/data-science-for-esm/03-workshop-pandas.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/fneum/data-science-for-esm/main?urlpath=tree/data-science-for-esm/03-workshop-pandas.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_binder.svg">
   </span>
-<span class="headerbtn__text-container">Binder</span>
+<span class="btn__text-container">Binder</span>
 </a>
-
-      </li>
+</li>
       
-      <li>
-        <a href="https://colab.research.google.com/github/fneum/data-science-for-esm/blob/main/data-science-for-esm/03-workshop-pandas.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/fneum/data-science-for-esm/blob/main/data-science-for-esm/03-workshop-pandas.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fneum/data-science-for-esm" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fneum/data-science-for-esm/issues/new?title=Issue%20on%20page%20%2F03-workshop-pandas.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/03-workshop-pandas.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/fneum/data-science-for-esm"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/fneum/data-science-for-esm/issues/new?title=Issue%20on%20page%20%2F03-workshop-pandas.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/03-workshop-pandas.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-data-structures-series">
-   Pandas Data Structures: Series
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-data-structures-dataframe">
-   Pandas Data Structures: DataFrame
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sorting-data">
-   Sorting Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#merging-data">
-   Merging Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#filtering-data">
-   Filtering Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modifying-values">
-   Modifying Values
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#applying-functions">
-   Applying Functions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#renaming-indices-columns">
-   Renaming Indices / Columns
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#replacing-values">
-   Replacing Values
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting">
-   Plotting
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#time-indexes">
-   Time Indexes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reading-and-writing-files">
-   Reading and Writing Files
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#groupby-functionality">
-   Groupby Functionality
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#power-plants-data">
-     Power Plants Data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#time-series-analysis">
-     Time Series Analysis
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introduction to pandas</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-data-structures-series">
-   Pandas Data Structures: Series
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-data-structures-dataframe">
-   Pandas Data Structures: DataFrame
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sorting-data">
-   Sorting Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#merging-data">
-   Merging Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#filtering-data">
-   Filtering Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modifying-values">
-   Modifying Values
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#applying-functions">
-   Applying Functions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#renaming-indices-columns">
-   Renaming Indices / Columns
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#replacing-values">
-   Replacing Values
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting">
-   Plotting
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#time-indexes">
-   Time Indexes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reading-and-writing-files">
-   Reading and Writing Files
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#groupby-functionality">
-   Groupby Functionality
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#power-plants-data">
-     Power Plants Data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#time-series-analysis">
-     Time Series Analysis
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to pandas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-data-structures-series">Pandas Data Structures: Series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-data-structures-dataframe">Pandas Data Structures: DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-data">Sorting Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-data">Merging Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-data">Filtering Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-values">Modifying Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-functions">Applying Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#renaming-indices-and-columns">Renaming Indices and Columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replacing-values">Replacing Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting">Plotting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-indexes">Time Indexes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-files">Reading and Writing Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#groupby-functionality">Groupby Functionality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-plants-data">Power Plants Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-analysis">Time Series Analysis</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-pandas">
 <h1>Introduction to <code class="docutils literal notranslate"><span class="pre">pandas</span></code><a class="headerlink" href="#introduction-to-pandas" title="Permalink to this headline">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This material is mostly adapted from the following resources:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://earth-env-data-science.github.io/lectures/pandas/pandas_intro.html">https://earth-env-data-science.github.io/lectures/pandas/pandas_intro.html</a></p></li>
-<li><p><a class="reference external" href="https://www.tomasbeuzen.com/python-programming-for-data-science/chapters/chapter7-pandas.html">https://www.tomasbeuzen.com/python-programming-for-data-science/chapters/chapter7-pandas.html</a></p></li>
+<li><p><a class="reference external" href="https://earth-env-data-science.github.io/lectures/pandas/pandas_intro.html">Earth and Environmental Data Science: Pandas</a></p></li>
+<li><p><a class="reference external" href="https://www.tomasbeuzen.com/python-programming-for-data-science/chapters/chapter7-pandas.html">Python Programming for Data Science: Pandas</a></p></li>
 </ul>
 </div>
 <img src="https://pandas.pydata.org/static/img/pandas.svg" width="300px" />
@@ -682,26 +462,22 @@ title="Print to PDF"
 <li><p>Hierarchical indexing provides an intuitive way of working with high-dimensional data;</p></li>
 <li><p>Time series-functionality: date-based indexing, frequency conversion, moving windows, date shifting and lagging;</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://media.geeksforgeeks.org/wp-content/cdn-uploads/creating_dataframe1.png&#39;</span><span class="p">,</span>
-     <span class="n">width</span><span class="o">=</span><span class="mi">720</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/creating_dataframe1.png" width="720"/></div></div>
+<img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/creating_dataframe1.png" width="720px" /><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Documentation for this package is available at <a class="reference external" href="https://pandas.pydata.org/docs/">https://pandas.pydata.org/docs/</a>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Documentation for this package is available at <a class="reference external" href="https://pandas.pydata.org/docs/">https://pandas.pydata.org/docs/</a>.</p>
+<p>If you have not yet set up Python on your computer, you can execute this tutorial in your browser via Google Colab. Click on the rocket in the top right corner and launch “Colab”. If you have not yet set up Python on your computer, you can execute this tutorial in your browser via <a class="reference external" href="https://colab.research.google.com/">Google Colab</a>. Click on the rocket in the top right corner and launch “Colab”. If that doesn’t work download the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file and import it in <a class="reference external" href="https://colab.research.google.com/">Google Colab</a>.</p>
+<p>Then install <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy</span></code> by executing the following command in a Jupyter cell at the top of the notebook.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>!pip<span class="w"> </span>install<span class="w"> </span>pandas<span class="w"> </span>numpy
+</pre></div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
@@ -709,11 +485,11 @@ title="Print to PDF"
 <section id="pandas-data-structures-series">
 <h2>Pandas Data Structures: Series<a class="headerlink" href="#pandas-data-structures-series" title="Permalink to this headline">#</a></h2>
 <p>A Series represents a one-dimensional array of data. The main difference between a Series and numpy array is that a Series has an <strong>index</strong>. The index contains the labels that we use to access the data.</p>
-<p>There are many ways to <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/dsintro.html#series">create a Series</a>. We will just show a few. The core constructor is <code class="docutils literal notranslate"><span class="pre">pd.Series()</span></code>.</p>
+<p>There are many ways to <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/dsintro.html#series">create a Series</a>. We will just show a few. The core constructor is <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html"><code class="docutils literal notranslate"><span class="pre">pd.Series()</span></code></a>.</p>
 <p>(Data are from Wikipedia’s <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_power_stations_in_Germany#Nuclear">List of power stations in Germany</a>.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Neckarwestheim&#39;</span><span class="p">,</span> <span class="s1">&#39;Essenbach&#39;</span><span class="p">,</span> <span class="s1">&#39;Emsland&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Neckarwestheim&#39;</span><span class="p">,</span> <span class="s1">&#39;Isar 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Emsland&#39;</span><span class="p">]</span>
 <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1269</span><span class="p">,</span> <span class="mi">1365</span><span class="p">,</span> <span class="mi">1290</span><span class="p">]</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
 <span class="n">s</span>
@@ -722,7 +498,7 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neckarwestheim    1269
-Essenbach         1365
+Isar 2            1365
 Emsland           1290
 dtype: int64
 </pre></div>
@@ -733,7 +509,7 @@ dtype: int64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dictionary</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;Neckarwestheim&#39;</span><span class="p">:</span> <span class="mi">1269</span><span class="p">,</span>
-    <span class="s1">&#39;Essenbach&#39;</span><span class="p">:</span> <span class="mi">1365</span><span class="p">,</span>
+    <span class="s1">&#39;Isar 2&#39;</span><span class="p">:</span> <span class="mi">1365</span><span class="p">,</span>
     <span class="s1">&#39;Emsland&#39;</span><span class="p">:</span> <span class="mi">1290</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dictionary</span><span class="p">)</span>
@@ -743,7 +519,7 @@ dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neckarwestheim    1269
-Essenbach         1365
+Isar 2            1365
 Emsland           1290
 dtype: int64
 </pre></div>
@@ -760,7 +536,7 @@ An important point is that the Series keep their index during such operations.</
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neckarwestheim    0.200600
-Essenbach         0.195391
+Isar 2            0.195391
 Emsland           0.199418
 dtype: float64
 </pre></div>
@@ -775,7 +551,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Neckarwestheim&#39;, &#39;Essenbach&#39;, &#39;Emsland&#39;], dtype=&#39;object&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Neckarwestheim&#39;, &#39;Isar 2&#39;, &#39;Emsland&#39;], dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
@@ -783,12 +559,12 @@ dtype: float64
 <p>We can get values back out using the index via the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> attribute</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Emsland&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Isar 2&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1290
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1365
 </pre></div>
 </div>
 </div>
@@ -830,7 +606,7 @@ dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neckarwestheim    1269
-Essenbach         1365
+Isar 2            1365
 Emsland           1290
 dtype: int64
 </pre></div>
@@ -845,7 +621,7 @@ dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neckarwestheim    1269
-Essenbach         1365
+Isar 2            1365
 dtype: int64
 </pre></div>
 </div>
@@ -878,7 +654,7 @@ dtype: int64
         <span class="s1">&#39;start_year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1989</span><span class="p">,</span> <span class="mi">1988</span><span class="p">,</span> <span class="mi">1988</span><span class="p">],</span>
         <span class="s1">&#39;end_year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span>
        <span class="p">}</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Neckarwestheim&#39;</span><span class="p">,</span> <span class="s1">&#39;Essenbach&#39;</span><span class="p">,</span> <span class="s1">&#39;Emsland&#39;</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Neckarwestheim&#39;</span><span class="p">,</span> <span class="s1">&#39;Isar 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Emsland&#39;</span><span class="p">])</span>
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -917,7 +693,7 @@ dtype: int64
       <td>NaN</td>
     </tr>
     <tr>
-      <th>Essenbach</th>
+      <th>Isar 2</th>
       <td>1365</td>
       <td>PWR</td>
       <td>1988</td>
@@ -961,7 +737,7 @@ dtype: int64
     <tr style="text-align: right;">
       <th></th>
       <th>Neckarwestheim</th>
-      <th>Essenbach</th>
+      <th>Isar 2</th>
       <th>Emsland</th>
     </tr>
   </thead>
@@ -1133,7 +909,7 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neckarwestheim    1269
-Essenbach         1365
+Isar 2            1365
 Emsland           1290
 Name: capacity, dtype: int64
 </pre></div>
@@ -1149,7 +925,7 @@ Name: capacity, dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neckarwestheim    1269
-Essenbach         1365
+Isar 2            1365
 Emsland           1290
 Name: capacity, dtype: int64
 </pre></div>
@@ -1254,7 +1030,7 @@ Name: Emsland, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neckarwestheim    1015.2
-Essenbach         1092.0
+Isar 2            1092.0
 Emsland           1032.0
 Name: capacity, dtype: float64
 </pre></div>
@@ -1305,7 +1081,7 @@ Name: capacity, dtype: float64
       <td>1015.2</td>
     </tr>
     <tr>
-      <th>Essenbach</th>
+      <th>Isar 2</th>
       <td>1365</td>
       <td>PWR</td>
       <td>1988</td>
@@ -1365,7 +1141,7 @@ Name: capacity, dtype: float64
       <td>NaN</td>
     </tr>
     <tr>
-      <th>Essenbach</th>
+      <th>Isar 2</th>
       <td>1365</td>
       <td>PWR</td>
       <td>1988</td>
@@ -1429,7 +1205,7 @@ Name: capacity, dtype: float64
       <td>1989</td>
     </tr>
     <tr>
-      <th>Essenbach</th>
+      <th>Isar 2</th>
       <td>1365</td>
       <td>PWR</td>
       <td>1988</td>
@@ -1485,7 +1261,7 @@ Name: capacity, dtype: float64
       <td>2023.0</td>
     </tr>
     <tr>
-      <th>Essenbach</th>
+      <th>Isar 2</th>
       <td>1365</td>
       <td>PWR</td>
       <td>1988</td>
@@ -1551,7 +1327,7 @@ Name: capacity, dtype: float64
       <td>2023.0</td>
     </tr>
     <tr>
-      <th>Essenbach</th>
+      <th>Isar 2</th>
       <td>1365</td>
       <td>PWR</td>
       <td>1988</td>
@@ -1612,7 +1388,7 @@ Name: capacity, dtype: float64
       <td>2023.0</td>
     </tr>
     <tr>
-      <th>Essenbach</th>
+      <th>Isar 2</th>
       <td>1365</td>
       <td>PWR</td>
       <td>1988</td>
@@ -1662,7 +1438,7 @@ Name: capacity, dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>Essenbach</th>
+      <th>Isar 2</th>
       <td>1365</td>
       <td>PWR</td>
       <td>1988</td>
@@ -1772,10 +1548,10 @@ Name: capacity, dtype: float64
 </div>
 </div>
 </div>
-<p>We can also index using a boolean series obtained from a condition. This is very useful</p>
 </section>
 <section id="filtering-data">
 <h2>Filtering Data<a class="headerlink" href="#filtering-data" title="Permalink to this headline">#</a></h2>
+<p>We can also filter a DataFrame using a boolean series obtained from a condition. This is very useful to build subsets of the DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">capacity</span> <span class="o">&gt;</span> <span class="mi">1300</span>
@@ -1784,7 +1560,7 @@ Name: capacity, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neckarwestheim    False
-Essenbach          True
+Isar 2             True
 Emsland           False
 Gundremmingen     False
 Grohnde            True
@@ -1829,7 +1605,7 @@ Name: capacity, dtype: bool
   </thead>
   <tbody>
     <tr>
-      <th>Essenbach</th>
+      <th>Isar 2</th>
       <td>1365</td>
       <td>PWR</td>
       <td>1988</td>
@@ -1859,7 +1635,7 @@ Name: capacity, dtype: bool
 </table>
 </div></div></div>
 </div>
-<p>We can also combine multiple conditions, but need to take care of brackets!</p>
+<p>We can also combine multiple conditions, but we need to wrap the conditions with brackets!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">capacity</span> <span class="o">&gt;</span> <span class="mi">1300</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">start_year</span> <span class="o">&gt;=</span> <span class="mi">1988</span><span class="p">)]</span>
@@ -1895,7 +1671,7 @@ Name: capacity, dtype: bool
   </thead>
   <tbody>
     <tr>
-      <th>Essenbach</th>
+      <th>Isar 2</th>
       <td>1365</td>
       <td>PWR</td>
       <td>1988</td>
@@ -1943,7 +1719,7 @@ Name: capacity, dtype: bool
   </thead>
   <tbody>
     <tr>
-      <th>Essenbach</th>
+      <th>Isar 2</th>
       <td>1365</td>
       <td>PWR</td>
       <td>1988</td>
@@ -2000,7 +1776,7 @@ Name: capacity, dtype: bool
   </thead>
   <tbody>
     <tr>
-      <th>Essenbach</th>
+      <th>Isar 2</th>
       <td>1365</td>
       <td>PWR</td>
       <td>1988</td>
@@ -2015,10 +1791,10 @@ Name: capacity, dtype: bool
 </section>
 <section id="modifying-values">
 <h2>Modifying Values<a class="headerlink" href="#modifying-values" title="Permalink to this headline">#</a></h2>
-<p>We often want to modify values in a dataframe based on some rule. To modify values, we need to use <code class="docutils literal notranslate"><span class="pre">.loc</span></code> or <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></p>
+<p>In many cases, we want to modify values in a dataframe based on some rule. To modify values, we need to use <code class="docutils literal notranslate"><span class="pre">.loc</span></code> or <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Essenbach&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">12.29</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Isar 2&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">12.29</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Grohnde&#39;</span><span class="p">,</span> <span class="s1">&#39;capacity&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="n">df</span>
 </pre></div>
@@ -2062,7 +1838,7 @@ Name: capacity, dtype: bool
       <td>NaN</td>
     </tr>
     <tr>
-      <th>Essenbach</th>
+      <th>Isar 2</th>
       <td>1365</td>
       <td>PWR</td>
       <td>1988</td>
@@ -2112,7 +1888,7 @@ Name: capacity, dtype: bool
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">operational</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Neckarwestheim&#39;</span><span class="p">,</span> <span class="s1">&#39;Essenbach&#39;</span><span class="p">,</span> <span class="s1">&#39;Emsland&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">operational</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Neckarwestheim&#39;</span><span class="p">,</span> <span class="s1">&#39;Isar 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Emsland&#39;</span><span class="p">]</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">operational</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">49.04</span><span class="p">,</span> <span class="mf">48.61</span><span class="p">,</span> <span class="mf">52.47</span><span class="p">]</span>
 <span class="n">df</span>
 </pre></div>
@@ -2156,7 +1932,7 @@ Name: capacity, dtype: bool
       <td>49.04</td>
     </tr>
     <tr>
-      <th>Essenbach</th>
+      <th>Isar 2</th>
       <td>1365</td>
       <td>PWR</td>
       <td>1988</td>
@@ -2216,7 +1992,7 @@ Name: capacity, dtype: bool
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neckarwestheim    0.929670
-Essenbach         1.000000
+Isar 2            1.000000
 Emsland           0.945055
 Gundremmingen     0.943590
 Grohnde           0.997070
@@ -2234,7 +2010,7 @@ Name: capacity, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neckarwestheim    0.929670
-Essenbach         1.000000
+Isar 2            1.000000
 Emsland           0.945055
 Gundremmingen     0.943590
 Grohnde           0.997070
@@ -2253,7 +2029,7 @@ Name: capacity, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neckarwestheim    0.929670
-Essenbach         1.000000
+Isar 2            1.000000
 Emsland           0.945055
 Gundremmingen     0.943590
 Grohnde           0.997070
@@ -2265,8 +2041,8 @@ Name: capacity, dtype: float64
 </div>
 <p>But <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> and <code class="docutils literal notranslate"><span class="pre">.map()</span></code> often give you more flexibility.</p>
 </section>
-<section id="renaming-indices-columns">
-<h2>Renaming Indices / Columns<a class="headerlink" href="#renaming-indices-columns" title="Permalink to this headline">#</a></h2>
+<section id="renaming-indices-and-columns">
+<h2>Renaming Indices and Columns<a class="headerlink" href="#renaming-indices-and-columns" title="Permalink to this headline">#</a></h2>
 <p>Sometimes it can be useful to rename columns:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2312,7 +2088,7 @@ Name: capacity, dtype: float64
       <td>49.04</td>
     </tr>
     <tr>
-      <th>Essenbach</th>
+      <th>Isar 2</th>
       <td>1365</td>
       <td>PWR</td>
       <td>1988</td>
@@ -2408,7 +2184,7 @@ Name: capacity, dtype: float64
       <td>49.04</td>
     </tr>
     <tr>
-      <th>Essenbach</th>
+      <th>Isar 2</th>
       <td>1365</td>
       <td>Pressurized water reactor</td>
       <td>1988</td>
@@ -2459,7 +2235,7 @@ Name: capacity, dtype: float64
 </section>
 <section id="plotting">
 <h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">#</a></h2>
-<p>DataFrames have all kinds of <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/visualization.html">useful plotting</a> built in.</p>
+<p>DataFrames have all kinds of <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/visualization.html">useful plotting</a> built in. Note that we do not even have to import <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> for this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;capacity&#39;</span><span class="p">)</span>
@@ -2470,7 +2246,7 @@ Name: capacity, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;start_year&#39;, ylabel=&#39;capacity&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/03-workshop-pandas_93_1.png" src="_images/03-workshop-pandas_93_1.png" />
+<img alt="_images/22c4796cd4dbb8de3367b569b5df29c4a8a1ae52b8527450aa4a80ca7c8df6f7.png" src="_images/22c4796cd4dbb8de3367b569b5df29c4a8a1ae52b8527450aa4a80ca7c8df6f7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2483,13 +2259,13 @@ Name: capacity, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/03-workshop-pandas_94_1.png" src="_images/03-workshop-pandas_94_1.png" />
+<img alt="_images/4f9b688f96adda893f56e6040264ac08df5f82c52af7848155ecb3664243965e.png" src="_images/4f9b688f96adda893f56e6040264ac08df5f82c52af7848155ecb3664243965e.png" />
 </div>
 </div>
 </section>
 <section id="time-indexes">
 <h2>Time Indexes<a class="headerlink" href="#time-indexes" title="Permalink to this headline">#</a></h2>
-<p>Indexes are very powerful. They are a big part of why Pandas is so useful. There are different indices for different types of data. Time Indexes are especially great!</p>
+<p>Indexes are very powerful. They are a big part of why Pandas is so useful. There are different indices for different types of data. Time Indexes are especially great when handling time-dependent data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;2023-01-01&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
@@ -2503,10 +2279,10 @@ Name: capacity, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/03-workshop-pandas_96_1.png" src="_images/03-workshop-pandas_96_1.png" />
+<img alt="_images/8835d7042a4c643114bc2e0f95c9515133b34130e198a1f430c6fffb23e7e3d7.png" src="_images/8835d7042a4c643114bc2e0f95c9515133b34130e198a1f430c6fffb23e7e3d7.png" />
 </div>
 </div>
-<p>We can use python’s slicing notation inside <code class="docutils literal notranslate"><span class="pre">.loc</span></code> to select a date range.</p>
+<p>We can use Python’s <em>slicing</em> notation inside <code class="docutils literal notranslate"><span class="pre">.loc</span></code> to select a date range.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">:</span><span class="s1">&#39;2021-07-01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -2517,7 +2293,7 @@ Name: capacity, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/03-workshop-pandas_98_1.png" src="_images/03-workshop-pandas_98_1.png" />
+<img alt="_images/b1e7a5cee8f4826b763cf6630b18d89f4c7565c338cc3cf396764cfb982ea916.png" src="_images/b1e7a5cee8f4826b763cf6630b18d89f4c7565c338cc3cf396764cfb982ea916.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2530,10 +2306,10 @@ Name: capacity, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/03-workshop-pandas_99_1.png" src="_images/03-workshop-pandas_99_1.png" />
+<img alt="_images/69c60aa2a93484e3ebb2c043f056eb5b6ab1b3af51f64b48669eedf89cfcae34.png" src="_images/69c60aa2a93484e3ebb2c043f056eb5b6ab1b3af51f64b48669eedf89cfcae34.png" />
 </div>
 </div>
-<p>The TimeIndex object has lots of useful attributes</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pd.TimeIndex</span></code> object has lots of useful attributes</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span>
@@ -2541,10 +2317,10 @@ Name: capacity, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Int64Index([ 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
-            ...
-            12, 12, 12, 12, 12, 12, 12, 12, 12,  1],
-           dtype=&#39;int64&#39;, length=731)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([ 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
+       ...
+       12, 12, 12, 12, 12, 12, 12, 12, 12,  1],
+      dtype=&#39;int32&#39;, length=731)
 </pre></div>
 </div>
 </div>
@@ -2556,10 +2332,10 @@ Name: capacity, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Int64Index([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10,
-            ...
-            23, 24, 25, 26, 27, 28, 29, 30, 31,  1],
-           dtype=&#39;int64&#39;, length=731)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10,
+       ...
+       23, 24, 25, 26, 27, 28, 29, 30, 31,  1],
+      dtype=&#39;int32&#39;, length=731)
 </pre></div>
 </div>
 </div>
@@ -2593,15 +2369,15 @@ Freq: M, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/03-workshop-pandas_105_1.png" src="_images/03-workshop-pandas_105_1.png" />
+<img alt="_images/211194c1156dcedaa236427c64f2aa59fcdce0fcdd9bf020b848d882d4c1f2ea.png" src="_images/211194c1156dcedaa236427c64f2aa59fcdce0fcdd9bf020b848d882d4c1f2ea.png" />
 </div>
 </div>
 </section>
 <section id="reading-and-writing-files">
 <h2>Reading and Writing Files<a class="headerlink" href="#reading-and-writing-files" title="Permalink to this headline">#</a></h2>
 <p>To read data into pandas, we can use for instance the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html"><code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code></a> function. This function is incredibly powerful and complex with a multitude of settings. You can use it to extract data from almost any text file.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> function can take a path to a local file as an input or even a link to an online text file.</p>
-<p>Let’s import a slightly larger dataset about the power plant fleet in Europe</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> function can take a path to a local file as an input, or even a link to an online text file.</p>
+<p>Let’s import a slightly larger dataset about the power plant fleet in Europe_</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/PyPSA/powerplantmatching/master/powerplants.csv&quot;</span>
@@ -2738,7 +2514,7 @@ Freq: M, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Int64Index: 5404 entries, 0 to 5719
+Index: 5404 entries, 0 to 5719
 Data columns (total 18 columns):
  #   Column               Non-Null Count  Dtype  
 ---  ------               --------------  -----  
@@ -2921,10 +2697,10 @@ memory usage: 802.2+ KB
 </table>
 </div></div></div>
 </div>
-<p>Sometimes, we also want to store a DataFrame for later use. There are many different file formats tabular data can be stored in,  including HTML, JSON, Excel, Parquet, Feather, etc. Here, let’s say we want to store the DataFrame as CSV (comma-separated values) file under the name “powerplants.csv”.</p>
+<p>Sometimes, we also want to store a DataFrame for later use. There are many different file formats tabular data can be stored in,  including HTML, JSON, Excel, Parquet, Feather, etc. Here, let’s say we want to store the DataFrame as CSV (comma-separated values) file under the name “tmp.csv”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;powerplants.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;tmp.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2955,19 +2731,18 @@ Name: Capacity, dtype: float64
 </div>
 <p>Such <strong>“chaining”</strong> operations together is very common with pandas:</p>
 <p>Let’s break apart this operation a bit. The workflow with <code class="docutils literal notranslate"><span class="pre">groupby</span></code> can be divided into three general steps:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><strong>Split</strong>: Partition the data into different groups based on some criterion.</p></li>
 <li><p><strong>Apply</strong>: Do some caclulation within each group. Different types of steps might be</p>
 <ul class="simple">
 <li><p><em>Aggregation</em>: Get the mean or max within the group.</p></li>
-<li><p><em>Transformation</em>: Normalize all the values within a group</p></li>
+<li><p><em>Transformation</em>: Normalize all the values within a group.</p></li>
 <li><p><em>Filtration</em>: Eliminate some groups based on a criterion.</p></li>
 </ul>
 </li>
 <li><p><strong>Combine</strong>: Put the results back together into a single object.</p></li>
 </ol>
-<p><img alt="split-apply-combine" src="https://miro.medium.com/max/1840/1*JbF6nhrQsn4f-TaSF6IR9g.png" /></p>
-<div class="cell docutils container">
+<img src="https://miro.medium.com/max/1840/1*JbF6nhrQsn4f-TaSF6IR9g.png" width="720px" /><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gb</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Country&#39;</span><span class="p">)</span>
 <span class="n">gb</span>
@@ -2975,7 +2750,7 @@ Name: Capacity, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f98a4603210&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f85af656150&gt;
 </pre></div>
 </div>
 </div>
@@ -4280,7 +4055,7 @@ Name: DateIn, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Frequency&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/03-workshop-pandas_156_1.png" src="_images/03-workshop-pandas_156_1.png" />
+<img alt="_images/ad02ceec09940d6a62ae05a50fc4527f9f387bc102e4904035450afceb6089f0.png" src="_images/ad02ceec09940d6a62ae05a50fc4527f9f387bc102e4904035450afceb6089f0.png" />
 </div>
 </div>
 <p>How many power plants of each fuel type are there in each country? Display the results in a DataFrame with countries as index and fuel type as columns. Fill missing values with the value zero. Convert all values to integers.</p>
@@ -4859,13 +4634,9 @@ Name: DateIn, dtype: float64
 </section>
 <section id="time-series-analysis">
 <h3>Time Series Analysis<a class="headerlink" href="#time-series-analysis" title="Permalink to this headline">#</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Solution for this exercise will be uploaded after 18 November 2022.</p>
-</div>
-<p>Read in the time series from the second lecture into a pandas DataFrame.</p>
+<p>Read in the time series from the second lecture into a DataFrame.</p>
 <p>The file is available at <a class="reference external" href="https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/time-series-lecture-2.csv">https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/time-series-lecture-2.csv</a>. and includes hourly time series for Germany in 2015 for:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>electricity demand from <a class="reference external" href="https://open-power-system-data.org/">OPSD</a> in GW</p></li>
 <li><p>onshore wind capacity factors from <a class="reference external" href="https://www.renewables.ninja/">renewables.ninja</a> in per-unit of installed capacity</p></li>
 <li><p>offshore wind capacity factors from <a class="reference external" href="https://www.renewables.ninja/">renewables.ninja</a> in per-unit of installed capacity</p></li>
@@ -4881,73 +4652,57 @@ time stamps are treated as <code class="docutils literal notranslate"><span clas
 </div>
 </div>
 </div>
-<p>The start of the dataframe should look like this:</p>
+<p>The start of the DataFrame should look like this:</p>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="text-align:left head"><p></p></th>
-<th class="text-align:right head"><p>load</p></th>
-<th class="text-align:right head"><p>onwind</p></th>
-<th class="text-align:right head"><p>offwind</p></th>
-<th class="text-align:right head"><p>solar</p></th>
-<th class="text-align:right head"><p>prices</p></th>
+<tr class="row-odd"><th class="text-left head"><p></p></th>
+<th class="text-right head"><p>load</p></th>
+<th class="text-right head"><p>onwind</p></th>
+<th class="text-right head"><p>offwind</p></th>
+<th class="text-right head"><p>solar</p></th>
+<th class="text-right head"><p>prices</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:left"><p>2015-01-01 00:00:00</p></td>
-<td class="text-align:right"><p>41.151</p></td>
-<td class="text-align:right"><p>0.1566</p></td>
-<td class="text-align:right"><p>0.703</p></td>
-<td class="text-align:right"><p>0</p></td>
-<td class="text-align:right"><p>nan</p></td>
+<tr class="row-even"><td class="text-left"><p>2015-01-01 00:00:00</p></td>
+<td class="text-right"><p>41.151</p></td>
+<td class="text-right"><p>0.1566</p></td>
+<td class="text-right"><p>0.703</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>nan</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>2015-01-01 01:00:00</p></td>
-<td class="text-align:right"><p>40.135</p></td>
-<td class="text-align:right"><p>0.1659</p></td>
-<td class="text-align:right"><p>0.6875</p></td>
-<td class="text-align:right"><p>0</p></td>
-<td class="text-align:right"><p>nan</p></td>
+<tr class="row-odd"><td class="text-left"><p>2015-01-01 01:00:00</p></td>
+<td class="text-right"><p>40.135</p></td>
+<td class="text-right"><p>0.1659</p></td>
+<td class="text-right"><p>0.6875</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>nan</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>2015-01-01 02:00:00</p></td>
-<td class="text-align:right"><p>39.106</p></td>
-<td class="text-align:right"><p>0.1746</p></td>
-<td class="text-align:right"><p>0.6535</p></td>
-<td class="text-align:right"><p>0</p></td>
-<td class="text-align:right"><p>nan</p></td>
+<tr class="row-even"><td class="text-left"><p>2015-01-01 02:00:00</p></td>
+<td class="text-right"><p>39.106</p></td>
+<td class="text-right"><p>0.1746</p></td>
+<td class="text-right"><p>0.6535</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>nan</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>2015-01-01 03:00:00</p></td>
-<td class="text-align:right"><p>38.765</p></td>
-<td class="text-align:right"><p>0.1745</p></td>
-<td class="text-align:right"><p>0.6803</p></td>
-<td class="text-align:right"><p>0</p></td>
-<td class="text-align:right"><p>nan</p></td>
+<tr class="row-odd"><td class="text-left"><p>2015-01-01 03:00:00</p></td>
+<td class="text-right"><p>38.765</p></td>
+<td class="text-right"><p>0.1745</p></td>
+<td class="text-right"><p>0.6803</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>nan</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>2015-01-01 04:00:00</p></td>
-<td class="text-align:right"><p>38.941</p></td>
-<td class="text-align:right"><p>0.1826</p></td>
-<td class="text-align:right"><p>0.7272</p></td>
-<td class="text-align:right"><p>0</p></td>
-<td class="text-align:right"><p>nan</p></td>
+<tr class="row-even"><td class="text-left"><p>2015-01-01 04:00:00</p></td>
+<td class="text-right"><p>38.941</p></td>
+<td class="text-right"><p>0.1826</p></td>
+<td class="text-right"><p>0.7272</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>nan</p></td>
 </tr>
 </tbody>
 </table>
 <p>And it should pass the following test:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="o">==</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">85</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="o">==</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span>
-
-<span class="ne">AssertionError</span>: 
-</pre></div>
-</div>
-</div>
-</div>
+<p><code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">type(df.index)</span> <span class="pre">==</span> <span class="pre">pd.DatetimeIndex</span></code></p>
 <p>For each column:</p>
 <ul class="simple">
 <li><p>What are the average, minimum and maximum values?</p></li>
@@ -4961,13 +4716,7 @@ time stamps are treated as <code class="docutils literal notranslate"><span clas
 <li><p>Perform a Fourier transformation of the time series. What are the dominant frequencies? <em>Hint: Below you can find an example how Fourier transformation can be down with <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</em></p></li>
 <li><p>Calculate the Pearson correlation coefficients between all time series. <em>Hint: There is a function for that. Google for “pandas dataframe correlation”.</em></p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">solar</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">solar</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span> <span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfftfreq</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">solar</span><span class="p">),</span> <span class="n">d</span><span class="o">=</span><span class="mf">1.</span><span class="o">/</span><span class="mi">8760</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p><code class="docutils literal notranslate"><span class="pre">abs(pd.Series(np.fft.rfft(df.solar</span> <span class="pre">-</span> <span class="pre">df.solar.mean()),</span> <span class="pre">index=np.fft.rfftfreq(len(df.solar),</span> <span class="pre">d=1./8760))**2)</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
@@ -4999,50 +4748,122 @@ time stamps are treated as <code class="docutils literal notranslate"><span clas
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="02-workshop-numpy.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction to <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02-workshop-numpy.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="04-workshop-geopandas.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="04-workshop-geopandas.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Introduction to <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> and <code class="docutils literal notranslate"><span class="pre">cartopy</span></code></p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Fabian Neumann<br/>
-  
-      &copy; Copyright 2022-2023.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-data-structures-series">Pandas Data Structures: Series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-data-structures-dataframe">Pandas Data Structures: DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-data">Sorting Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-data">Merging Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-data">Filtering Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-values">Modifying Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-functions">Applying Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#renaming-indices-and-columns">Renaming Indices and Columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replacing-values">Replacing Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting">Plotting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-indexes">Time Indexes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-files">Reading and Writing Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#groupby-functionality">Groupby Functionality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-plants-data">Power Plants Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-analysis">Time Series Analysis</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Fabian Neumann
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022-2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

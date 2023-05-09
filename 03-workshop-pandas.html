@@ -2750,7 +2750,7 @@ Name: Capacity, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f7a79bcf790&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f3a4950bf10&gt;
 </pre></div>
 </div>
 </div>
@@ -3036,7 +3036,12 @@ Name: Capacity, Length: 168, dtype: float64
 <section id="power-plants-data">
 <h3>Power Plants Data<a class="headerlink" href="#power-plants-data" title="Permalink to this headline">#</a></h3>
 <p>Run the function <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> on the DataFrame that includes the power plant database:</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -3190,9 +3195,15 @@ Name: Capacity, Length: 168, dtype: float64
   </tbody>
 </table>
 </div></div></div>
+</details>
 </div>
 <p>Provide a list of unique fuel types included in the dataset</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">Fueltype</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
@@ -3205,9 +3216,15 @@ Name: Capacity, Length: 168, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Provide a list of unique technologies included in the dataset</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">Technology</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
@@ -3220,9 +3237,15 @@ Name: Capacity, Length: 168, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Filter the dataset by power plants with the fuel type “Hard Coal”</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coal</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Fueltype</span> <span class="o">==</span> <span class="s2">&quot;Hard Coal&quot;</span><span class="p">]</span>
 <span class="n">coal</span>
@@ -3525,9 +3548,15 @@ Name: Capacity, Length: 168, dtype: float64
 </table>
 <p>201 rows × 18 columns</p>
 </div></div></div>
+</details>
 </div>
 <p>Identify the 5 largest coal power plants. In which countries are they located? When were they built?</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coal</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">coal</span><span class="o">.</span><span class="n">Capacity</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
 </pre></div>
@@ -3702,9 +3731,15 @@ Name: Capacity, Length: 168, dtype: float64
   </tbody>
 </table>
 </div></div></div>
+</details>
 </div>
 <p>Identify the power plant with the longest “Name”.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Name</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span>
 <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -3734,9 +3769,15 @@ Name: 1373, dtype: object
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Identify the 10 northernmost powerplants. What type of power plants are they?</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
@@ -4017,9 +4058,15 @@ Name: 1373, dtype: object
   </tbody>
 </table>
 </div></div></div>
+</details>
 </div>
 <p>What is the average “DateIn” of each “Fueltype”? Which type of power plants is the oldest on average?</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Fueltype&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">DateIn</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
 </pre></div>
@@ -4043,9 +4090,15 @@ Name: DateIn, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Plot a histogram of power plant capacities with bins of length 100 MW between 0 and 4000 MW. What do you observe?</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">Capacity</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4001</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
 </pre></div>
@@ -4057,12 +4110,18 @@ Name: DateIn, dtype: float64
 </div>
 <img alt="_images/ad02ceec09940d6a62ae05a50fc4527f9f387bc102e4904035450afceb6089f0.png" src="_images/ad02ceec09940d6a62ae05a50fc4527f9f387bc102e4904035450afceb6089f0.png" />
 </div>
+</details>
 </div>
 <p>How many power plants of each fuel type are there in each country? Display the results in a DataFrame with countries as index and fuel type as columns. Fill missing values with the value zero. Convert all values to integers.</p>
 <blockquote>
 <div><p>Browse Google or the pandas documentation to find the right aggregation function to count values.</p>
 </div></blockquote>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;Fueltype&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">0.</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 </pre></div>
@@ -4630,6 +4689,7 @@ Name: DateIn, dtype: float64
   </tbody>
 </table>
 </div></div></div>
+</details>
 </div>
 </section>
 <section id="time-series-analysis">

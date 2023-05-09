@@ -550,13 +550,13 @@ document.write(`
 <h2>From structured data to optimisation<a class="headerlink" href="#from-structured-data-to-optimisation" title="Permalink to this headline">#</a></h2>
 <p>The design principle of PyPSA is that basically each component is associated with a set of variables and constraints that will be added to the optimisation model based on the input data stored for the components.</p>
 <p>For an <em>hourly</em> electricity market simulation, PyPSA will solve an optimisation problem that looks like this</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a92ef6f7-deca-4089-804d-4a18899f2940">
-<span class="eqno">(8)<a class="headerlink" href="#equation-a92ef6f7-deca-4089-804d-4a18899f2940" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e5cfc961-db48-4622-b54e-97ab5c50d7f3">
+<span class="eqno">(8)<a class="headerlink" href="#equation-e5cfc961-db48-4622-b54e-97ab5c50d7f3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min_{g_{i,s,t}; f_{\ell,t}; g_{i,r,t,\text{charge}}; g_{i,r,t,\text{discharge}}; e_{i,r,t}} \sum_s o_{s} g_{i,s,t}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5694bdbb-d727-4929-86cd-c0fa24a4fdba">
-<span class="eqno">(9)<a class="headerlink" href="#equation-5694bdbb-d727-4929-86cd-c0fa24a4fdba" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e02697c7-5b7c-48a1-9897-b7aba05a6b92">
+<span class="eqno">(9)<a class="headerlink" href="#equation-e02697c7-5b7c-48a1-9897-b7aba05a6b92" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp; \leq g_{i,s,t} \leq \hat{g}_{i,s,t} G_{i,s}  &amp; \text{generation limits : generator} \\
 -F_\ell &amp;\leq f_{\ell,t} \leq F_\ell &amp; \text{transmission limits : line}  \\
 d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{i,r,t,\text{charge}} - \sum_\ell K_{i\ell} f_{\ell,t} &amp; \text{KCL : bus} \\
@@ -1143,6 +1143,7 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
     <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;MZ&quot;</span><span class="p">,</span>
     <span class="n">s_nom</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
     <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">r</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1227,7 +1228,7 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
       <td>MZ</td>
       <td></td>
       <td>1.0</td>
-      <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>500.0</td>
@@ -1269,31 +1270,55 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </section>
 <section id="optimisation">
 <h2>Optimisation<a class="headerlink" href="#optimisation" title="Permalink to this headline">#</a></h2>
-<p>With all input data transferred into PyPSA’s data structure, we can now build and run the resulting optimisation problem. In PyPSA, building, solving and retrieving results from the optimisation model is contained in a single function call <code class="docutils literal notranslate"><span class="pre">n.lopf()</span></code>. <strong>LOPF</strong> stands for <em>Linear Optimal Power Flow</em>, which hints at the linearisation of power flows in our search for cost-optimal dispatch descisions.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">n.lopf()</span></code> function can take a variety of arguments. The most relevant for the moment is the choice of the solver. We already know the different solvers from the introduction to <code class="docutils literal notranslate"><span class="pre">pyomo</span></code> (e.g. “cbc”, “glpk”, “gurobi” etc.). They need to be installed on your computer, to use them here!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">lopf</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
+<p>With all input data transferred into PyPSA’s data structure, we can now build and run the resulting optimisation problem. In PyPSA, building, solving and retrieving results from the optimisation model is contained in a single function call <code class="docutils literal notranslate"><span class="pre">n.optimize()</span></code>. This function optimizes dispatch and investment decisions for least cost.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">n.optimize()</span></code> function can take a variety of arguments. The most relevant for the moment is the choice of the solver. We already know the different solvers from the introduction to <code class="docutils literal notranslate"><span class="pre">pyomo</span></code> (e.g. “cbc”, “glpk”, “gurobi” etc.). They need to be installed on your computer, to use them here!</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve linear problem using Cbc solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.09s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.06s
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Cbc solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 6 primals, 14 duals
+Objective: 1.38e+06
+Solver model: not available
+Solver message: Optimal - objective value 1381391.25242450
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Optimization successful. Objective value: 1.38e+06
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
+Version: 2.10.10 
+Build Date: Apr 19 2023 
+
+command line - cbc -printingOptions all -import /tmp/linopy-problem-pigiskz9.lp -solve -solu /tmp/linopy-solve-m_axxnj6.sol (default strategy 1)
+Option for printingOptions changed from normal to all
+Presolve 1 (-13) rows, 3 (-3) columns and 3 (-16) elements
+0  Obj 949510.03 Primal inf 8500.2009 (1)
+1  Obj 1381391.3
+Optimal - objective value 1381391.3
+After Postsolve, objective 1381391.3, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 1381391.252 - 1 iterations time 0.002, Presolve 0.00
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Let’s have a look at the results.</p>
 <p>Since the power flow and dispatch are generally time-varying quantities, these are stored in a different location than e.g. <code class="docutils literal notranslate"><span class="pre">n.generators</span></code>. They are stored in <code class="docutils literal notranslate"><span class="pre">n.generators_t</span></code>. Thus, to find out the dispatch of the generators, run</p>
@@ -1340,11 +1365,11 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
   <tbody>
     <tr>
       <th>now</th>
-      <td>1150</td>
-      <td>35000</td>
-      <td>3000</td>
-      <td>1500</td>
-      <td>2000</td>
+      <td>1150.0</td>
+      <td>35000.0</td>
+      <td>3000.0</td>
+      <td>1500.0</td>
+      <td>2000.0</td>
     </tr>
   </tbody>
 </table>
@@ -1441,7 +1466,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
   <tbody>
     <tr>
       <th>now</th>
-      <td>-500</td>
+      <td>-500.0</td>
     </tr>
   </tbody>
 </table>
@@ -1482,7 +1507,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
   <tbody>
     <tr>
       <th>now</th>
-      <td>500</td>
+      <td>500.0</td>
     </tr>
   </tbody>
 </table>
@@ -1554,8 +1579,8 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7fe05158c690&gt;,
- &lt;matplotlib.collections.LineCollection at 0x7fe0515451d0&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f360aa7ef10&gt;,
+ &lt;matplotlib.collections.LineCollection at 0x7f360aa9fdd0&gt;)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
@@ -1672,12 +1697,12 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generator
-MZ hydro     1150
-SA coal     35000
-SA wind      3000
-SA gas       1500
-SA oil       2000
-Name: now, dtype: int64
+MZ hydro     1150.0
+SA coal     35000.0
+SA wind      3000.0
+SA gas       1500.0
+SA oil       2000.0
+Name: now, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1701,12 +1726,12 @@ Name: now, dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bus  carrier
-MZ   hydro       1150
-SA   coal       35000
-     gas         1500
-     oil         2000
-     wind        3000
-Name: now, dtype: int64
+MZ   hydro       1150.0
+SA   coal       35000.0
+     gas         1500.0
+     oil         2000.0
+     wind        3000.0
+Name: now, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1818,7 +1843,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
       <td>MZ</td>
       <td></td>
       <td>1.0</td>
-      <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>400.0</td>
@@ -1828,11 +1853,11 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
       <td>inf</td>
       <td>0</td>
       <td>0.000006</td>
-      <td>0.0</td>
+      <td>0.000006</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.000006</td>
-      <td>0.0</td>
+      <td>0.000006</td>
       <td>500.0</td>
       <td>400.0</td>
     </tr>
@@ -1841,29 +1866,62 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <p>1 rows × 30 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">lopf</span><span class="p">()</span>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve linear problem using Glpk solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.08s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.06s
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Glpk solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 6 primals, 14 duals
+Objective: 1.40e+06
+Solver model: not available
+Solver message: optimal
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Optimization successful. Objective value: 1.40e+06
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GLPSOL--GLPK LP/MIP Solver 5.0
+Parameter(s) specified in the command line:
+ --lp /tmp/linopy-problem-oe5mujqm.lp --output /tmp/linopy-solve-m1r64e4_.sol
+Reading problem data from &#39;/tmp/linopy-problem-oe5mujqm.lp&#39;...
+14 rows, 6 columns, 19 non-zeros
+104 lines were read
+GLPK Simplex Optimizer 5.0
+14 rows, 6 columns, 19 non-zeros
+Preprocessing...
+1 row, 4 columns, 4 non-zeros
+Scaling...
+ A: min|aij| =  1.000e+00  max|aij| =  1.000e+00  ratio =  1.000e+00
+Problem data seem to be well scaled
+Constructing initial basis...
+Size of triangular part is 1
+      0: obj =   1.008484848e+06 inf =   6.600e+03 (1)
+      1: obj =   1.986415883e+06 inf =   0.000e+00 (0)
+*     3: obj =   1.398632632e+06 inf =   0.000e+00 (0)
+OPTIMAL LP SOLUTION FOUND
+Time used:   0.0 secs
+Memory used: 0.0 Mb (40404 bytes)
+Writing basic solution to &#39;/tmp/linopy-solve-m1r64e4_.sol&#39;...
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>You can see that the production of the hydro power plant was reduced and that of the gas power plant increased owing to the reduced transmission capacity.</p>
 <div class="cell docutils container">
@@ -1909,11 +1967,11 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
   <tbody>
     <tr>
       <th>now</th>
-      <td>1050</td>
-      <td>35000</td>
-      <td>3000</td>
-      <td>1600</td>
-      <td>2000</td>
+      <td>1050.0</td>
+      <td>35000.0</td>
+      <td>3000.0</td>
+      <td>1600.0</td>
+      <td>2000.0</td>
     </tr>
   </tbody>
 </table>
@@ -2009,29 +2067,61 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">lopf</span><span class="p">()</span>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve linear problem using Glpk solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.1s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.07s
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Glpk solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 6 primals, 15 duals
+Objective: 2.12e+06
+Solver model: not available
+Solver message: optimal
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Optimization successful. Objective value: 2.12e+06
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GLPSOL--GLPK LP/MIP Solver 5.0
+Parameter(s) specified in the command line:
+ --lp /tmp/linopy-problem-9o_psbuq.lp --output /tmp/linopy-solve-ofbqyim9.sol
+Reading problem data from &#39;/tmp/linopy-problem-9o_psbuq.lp&#39;...
+15 rows, 6 columns, 22 non-zeros
+111 lines were read
+GLPK Simplex Optimizer 5.0
+15 rows, 6 columns, 22 non-zeros
+Preprocessing...
+2 rows, 4 columns, 7 non-zeros
+Scaling...
+ A: min|aij| =  3.448e-01  max|aij| =  1.030e+00  ratio =  2.988e+00
+Problem data seem to be well scaled
+Constructing initial basis...
+Size of triangular part is 2
+      0: obj =   0.000000000e+00 inf =   3.860e+04 (1)
+      2: obj =   2.120621285e+06 inf =   0.000e+00 (0)
+OPTIMAL LP SOLUTION FOUND
+Time used:   0.0 secs
+Memory used: 0.0 Mb (40412 bytes)
+Writing basic solution to &#39;/tmp/linopy-solve-ofbqyim9.sol&#39;...
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2076,11 +2166,11 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
   <tbody>
     <tr>
       <th>now</th>
-      <td>1050</td>
+      <td>1050.0</td>
       <td>30603.4</td>
-      <td>3000</td>
+      <td>3000.0</td>
       <td>7996.58</td>
-      <td>0</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
@@ -2147,7 +2237,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GlobalConstraint
-emission_limit    216.159
+emission_limit    0.0
 Name: mu, dtype: float64
 </pre></div>
 </div>
@@ -2161,29 +2251,63 @@ Name: mu, dtype: float64
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">lopf</span><span class="p">()</span>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve linear problem using Glpk solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.1s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.07s
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Glpk solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:linopy.constants:Optimization failed: 
+Status: warning
+Termination condition: infeasible_or_unbounded
+Solution: 0 primals, 0 duals
+Objective: nan
+Solver model: not available
+Solver message: undefined
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.linopf:Optimization failed with status warning and termination condition infeasible
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GLPSOL--GLPK LP/MIP Solver 5.0
+Parameter(s) specified in the command line:
+ --lp /tmp/linopy-problem-6rp4sdru.lp --output /tmp/linopy-solve-6g349cw5.sol
+Reading problem data from &#39;/tmp/linopy-problem-6rp4sdru.lp&#39;...
+15 rows, 6 columns, 22 non-zeros
+111 lines were read
+GLPK Simplex Optimizer 5.0
+15 rows, 6 columns, 22 non-zeros
+Preprocessing...
+2 rows, 4 columns, 7 non-zeros
+Scaling...
+ A: min|aij| =  3.448e-01  max|aij| =  1.030e+00  ratio =  2.988e+00
+Problem data seem to be well scaled
+Constructing initial basis...
+Size of triangular part is 2
+      0: obj =   0.000000000e+00 inf =   3.860e+04 (1)
+      2: obj =   4.250000000e+02 inf =   3.860e+04 (1)
+LP HAS NO PRIMAL FEASIBLE SOLUTION
+glp_simplex: unable to recover undefined or non-optimal solution
+If you need actual output for non-optimal solution, use --nopresol
+Time used:   0.0 secs
+Memory used: 0.0 Mb (40412 bytes)
+Writing basic solution to &#39;/tmp/linopy-solve-6g349cw5.sol&#39;...
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;warning&#39;, &#39;infeasible&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;warning&#39;, &#39;infeasible_or_unbounded&#39;)
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>No! Without any additional capacities, we have exhausted our options to reduce CO2 in that hour. The optimiser tells us that the problem is <em>infeasible</em>.</p>
 </section>
@@ -2209,7 +2333,7 @@ Name: mu, dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Directory tmp does not exist, creating it
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has generators, lines, loads, carriers, global_constraints, buses
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has global_constraints, lines, buses, loads, carriers, generators
 </pre></div>
 </div>
 </div>
@@ -2233,7 +2357,7 @@ Name: mu, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has generators, lines, loads, carriers, global_constraints, buses
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has global_constraints, lines, buses, loads, carriers, generators
 </pre></div>
 </div>
 </div>
@@ -2585,7 +2709,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/1cdc13c150f4a6888c9a11243b07699a7d716b8b1751081a7ef6546c1a85c166.png" src="_images/1cdc13c150f4a6888c9a11243b07699a7d716b8b1751081a7ef6546c1a85c166.png" />
+<img alt="_images/846fae594a5678311ae3e756e2e7373b25802ff4a47340d4733102c1b7794f2f.png" src="_images/846fae594a5678311ae3e756e2e7373b25802ff4a47340d4733102c1b7794f2f.png" />
 </div>
 </div>
 <p>This dataset also includes a few hydro storage units:</p>
@@ -2740,29 +2864,212 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </div></div></div>
 </div>
 <p>So let’s solve the electricity market simulation for January 1, 2011. It’ll take a short moment.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">lopf</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The following transformers have zero r, which could break the linear load flow:
+Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;15&#39;, &#39;18&#39;, &#39;20&#39;, &#39;22&#39;, &#39;24&#39;, &#39;26&#39;, &#39;30&#39;,
+       &#39;32&#39;, &#39;37&#39;, &#39;42&#39;, &#39;46&#39;, &#39;52&#39;, &#39;56&#39;, &#39;61&#39;, &#39;68&#39;, &#39;69&#39;, &#39;74&#39;, &#39;78&#39;, &#39;86&#39;,
+       &#39;87&#39;, &#39;94&#39;, &#39;95&#39;, &#39;96&#39;, &#39;99&#39;, &#39;100&#39;, &#39;104&#39;, &#39;105&#39;, &#39;106&#39;, &#39;107&#39;, &#39;117&#39;,
+       &#39;120&#39;, &#39;123&#39;, &#39;124&#39;, &#39;125&#39;, &#39;128&#39;, &#39;129&#39;, &#39;138&#39;, &#39;143&#39;, &#39;156&#39;, &#39;157&#39;,
+       &#39;159&#39;, &#39;160&#39;, &#39;165&#39;, &#39;184&#39;, &#39;191&#39;, &#39;195&#39;, &#39;201&#39;, &#39;220&#39;, &#39;231&#39;, &#39;232&#39;,
+       &#39;233&#39;, &#39;236&#39;, &#39;247&#39;, &#39;248&#39;, &#39;250&#39;, &#39;251&#39;, &#39;252&#39;, &#39;261&#39;, &#39;263&#39;, &#39;264&#39;,
+       &#39;267&#39;, &#39;272&#39;, &#39;279&#39;, &#39;281&#39;, &#39;282&#39;, &#39;292&#39;, &#39;303&#39;, &#39;307&#39;, &#39;308&#39;, &#39;312&#39;,
+       &#39;315&#39;, &#39;317&#39;, &#39;322&#39;, &#39;332&#39;, &#39;334&#39;, &#39;336&#39;, &#39;338&#39;, &#39;351&#39;, &#39;353&#39;, &#39;360&#39;,
+       &#39;362&#39;, &#39;382&#39;, &#39;384&#39;, &#39;385&#39;, &#39;391&#39;, &#39;403&#39;, &#39;404&#39;, &#39;413&#39;, &#39;421&#39;, &#39;450&#39;,
+       &#39;458&#39;],
+      dtype=&#39;object&#39;, name=&#39;Transformer&#39;)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 1.42s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The following transformers have zero r, which could break the linear load flow:
+Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;15&#39;, &#39;18&#39;, &#39;20&#39;, &#39;22&#39;, &#39;24&#39;, &#39;26&#39;, &#39;30&#39;,
+       &#39;32&#39;, &#39;37&#39;, &#39;42&#39;, &#39;46&#39;, &#39;52&#39;, &#39;56&#39;, &#39;61&#39;, &#39;68&#39;, &#39;69&#39;, &#39;74&#39;, &#39;78&#39;, &#39;86&#39;,
+       &#39;87&#39;, &#39;94&#39;, &#39;95&#39;, &#39;96&#39;, &#39;99&#39;, &#39;100&#39;, &#39;104&#39;, &#39;105&#39;, &#39;106&#39;, &#39;107&#39;, &#39;117&#39;,
+       &#39;120&#39;, &#39;123&#39;, &#39;124&#39;, &#39;125&#39;, &#39;128&#39;, &#39;129&#39;, &#39;138&#39;, &#39;143&#39;, &#39;156&#39;, &#39;157&#39;,
+       &#39;159&#39;, &#39;160&#39;, &#39;165&#39;, &#39;184&#39;, &#39;191&#39;, &#39;195&#39;, &#39;201&#39;, &#39;220&#39;, &#39;231&#39;, &#39;232&#39;,
+       &#39;233&#39;, &#39;236&#39;, &#39;247&#39;, &#39;248&#39;, &#39;250&#39;, &#39;251&#39;, &#39;252&#39;, &#39;261&#39;, &#39;263&#39;, &#39;264&#39;,
+       &#39;267&#39;, &#39;272&#39;, &#39;279&#39;, &#39;281&#39;, &#39;282&#39;, &#39;292&#39;, &#39;303&#39;, &#39;307&#39;, &#39;308&#39;, &#39;312&#39;,
+       &#39;315&#39;, &#39;317&#39;, &#39;322&#39;, &#39;332&#39;, &#39;334&#39;, &#39;336&#39;, &#39;338&#39;, &#39;351&#39;, &#39;353&#39;, &#39;360&#39;,
+       &#39;362&#39;, &#39;382&#39;, &#39;384&#39;, &#39;385&#39;, &#39;391&#39;, &#39;403&#39;, &#39;404&#39;, &#39;413&#39;, &#39;421&#39;, &#39;450&#39;,
+       &#39;458&#39;],
+      dtype=&#39;object&#39;, name=&#39;Transformer&#39;)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Cbc solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__array_function__ internals&gt;:200: RuntimeWarning:
+
+invalid value encountered in cast
+
+&lt;__array_function__ internals&gt;:200: RuntimeWarning:
+
+invalid value encountered in cast
+
+&lt;__array_function__ internals&gt;:200: RuntimeWarning:
+
+invalid value encountered in cast
+
+&lt;__array_function__ internals&gt;:200: RuntimeWarning:
+
+invalid value encountered in cast
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Optimization successful. Objective value: 9.20e+06
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve linear problem using Cbc solver
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  13%|█▎        | 2/15 [00:00&lt;00:00, 14.56it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  33%|███▎      | 5/15 [00:00&lt;00:00, 21.22it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 32.15it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 26.78it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 92.81it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.68s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
+Version: 2.10.10 
+Build Date: Apr 19 2023 
+
+command line - cbc -printingOptions all -import /tmp/linopy-problem-34kip669.lp -solve -solu /tmp/linopy-solve-0a42cxcx.sol (default strategy 1)
+Option for printingOptions changed from normal to all
+Presolve 14714 (-128254) rows, 26628 (-33012) columns and 96626 (-170744) elements
+Perturbing problem by 0.001% of 8902.5915 - largest nonzero change 0.00098796191 ( 0.0082548958%) - largest zero change 0.00098544984
+0  Obj 384619.79 Primal inf 33355436 (13559) Dual inf 6318.6673 (17)
+298  Obj 90048.536 Primal inf 29091763 (13516)
+596  Obj 90048.802 Primal inf 28775627 (13405)
+894  Obj 90051.177 Primal inf 24434460 (13213)
+1192  Obj 90054.308 Primal inf 22342335 (13104)
+1490  Obj 90054.968 Primal inf 21151152 (13011)
+1788  Obj 90055.201 Primal inf 20025734 (12911)
+2086  Obj 90056.227 Primal inf 20760123 (12786)
+2384  Obj 90057.31 Primal inf 25158790 (12687)
+2682  Obj 90058.114 Primal inf 20648502 (12528)
+2980  Obj 90058.575 Primal inf 22902386 (12425)
+3278  Obj 90059.074 Primal inf 20865335 (12308)
+3576  Obj 90059.767 Primal inf 22514058 (12171)
+3874  Obj 90061.512 Primal inf 21466016 (12104)
+4172  Obj 90062.718 Primal inf 21333084 (11968)
+4470  Obj 90065.41 Primal inf 19350377 (11837)
+4768  Obj 90069.127 Primal inf 43314657 (11658)
+5066  Obj 90071.898 Primal inf 18961685 (11442)
+5364  Obj 90073.21 Primal inf 17855831 (11348)
+5662  Obj 90074.373 Primal inf 17360373 (11216)
+5960  Obj 90075.992 Primal inf 16386701 (11025)
+6258  Obj 90077.822 Primal inf 18472924 (10939)
+6556  Obj 90080.083 Primal inf 18912879 (10734)
+6854  Obj 90082.286 Primal inf 20696033 (10618)
+7152  Obj 90084.27 Primal inf 17715406 (10372)
+7450  Obj 90087.17 Primal inf 18999663 (10214)
+7748  Obj 90088.904 Primal inf 19771820 (10042)
+8046  Obj 90090.727 Primal inf 17796338 (9815)
+8344  Obj 90092.417 Primal inf 17181430 (9658)
+8642  Obj 90095.246 Primal inf 19165824 (9518)
+8940  Obj 90098.593 Primal inf 24784856 (9283)
+9238  Obj 90101.675 Primal inf 24732733 (9030)
+9536  Obj 115281.07 Primal inf 17639531 (8852)
+9834  Obj 147583.62 Primal inf 17339197 (8707)
+10132  Obj 147586.9 Primal inf 14286021 (8216)
+10430  Obj 162764.54 Primal inf 36761646 (8395)
+10728  Obj 166236.6 Primal inf 37736890 (8094)
+11026  Obj 166240.79 Primal inf 35670806 (7633)
+11324  Obj 166244.74 Primal inf 41482357 (7650)
+11622  Obj 166248.57 Primal inf 36928761 (7636)
+11920  Obj 166253.15 Primal inf 38135358 (7439)
+12218  Obj 166257.29 Primal inf 32873889 (6863)
+12516  Obj 166262.14 Primal inf 30257776 (6542)
+12814  Obj 167273.2 Primal inf 20672658 (6391)
+13112  Obj 214376.5 Primal inf 5.8423682e+08 (6880)
+13410  Obj 280037.46 Primal inf 5.8135379e+08 (6598)
+13708  Obj 371539.33 Primal inf 57309463 (6556)
+13837  Obj 392737.31 Primal inf 4.593896e+08 (6419)
+14135  Obj 520399.12 Primal inf 3.455186e+08 (6219)
+14433  Obj 828439.77 Primal inf 4.9266163e+08 (6233)
+14731  Obj 958941.96 Primal inf 1.7933118e+08 (5592)
+15029  Obj 1245368.6 Primal inf 3.082684e+08 (5501)
+15327  Obj 1849480.9 Primal inf 1.5708556e+08 (5119)
+15625  Obj 2416087.3 Primal inf 97621532 (4664)
+15923  Obj 2846415.4 Primal inf 86437403 (4273)
+16221  Obj 3272678.4 Primal inf 69981530 (4024)
+16519  Obj 4053922.2 Primal inf 91217668 (3947)
+16817  Obj 4852881.8 Primal inf 54394261 (3599)
+17115  Obj 5502731.4 Primal inf 1.8712689e+09 (4882)
+17413  Obj 6369008.2 Primal inf 2.344028e+09 (5009)
+17711  Obj 6887682.7 Primal inf 1.3105392e+08 (2853)
+18009  Obj 7373843.1 Primal inf 40802295 (2171)
+18307  Obj 7793771.5 Primal inf 25946152 (2315)
+18605  Obj 8202105 Primal inf 7712072 (1752)
+18903  Obj 8495284.8 Primal inf 538487.17 (1476)
+19201  Obj 8846770.2 Primal inf 537722.63 (1271)
+19499  Obj 9016573.3 Primal inf 740778.08 (1284)
+19797  Obj 9100952.3 Primal inf 348644.17 (922)
+20095  Obj 9156741.7 Primal inf 320726.66 (1294)
+20393  Obj 9189340.2 Primal inf 62582.795 (469)
+20691  Obj 9196892.8 Primal inf 3205.4057 (271)
+20985  Obj 9199316.9
+20985  Obj 9199288 Dual inf 0.0037078967 (10)
+20994  Obj 9199288
+Optimal - objective value 9199288
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After Postsolve, objective 9199288, infeasibilities - dual 614.30899 (21), primal 6.2468274e-06 (21)
+Presolved model was optimal, full model needs cleaning up
+0  Obj 9199288 Primal inf 7.5769086e-07 (2) Dual inf 2.0000001e+08 (28)
+End of values pass after 0 iterations
+0  Obj 9199288 Primal inf 7.5769086e-07 (2) Dual inf 2.0000001e+08 (28) w.o. free dual inf (26)
+End of values pass after 0 iterations
+0  Obj 9199288 Primal inf 7.5769086e-07 (2) Dual inf 2.0000001e+08 (28) w.o. free dual inf (24)
+End of values pass after 0 iterations
+0  Obj 9199288 Primal inf 7.5769086e-07 (2) Dual inf 2.0000001e+08 (28) w.o. free dual inf (23)
+End of values pass after 44 iterations
+44  Obj 9199288 Dual inf 5.179536 (5) w.o. free dual inf (0)
+53  Obj 9199288
+Optimal - objective value 9199288
+Optimal objective 9199288.041 - 21047 iterations time 7.462, Presolve 0.12
+Total time (CPU seconds):       8.04   (Wallclock seconds):       8.11
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 59640 primals, 142968 duals
+Objective: 9.20e+06
+Solver model: not available
+Solver message: Optimal - objective value 9199288.04053955
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Now, we can also plot model outputs, like the calculated power flows on the network map.</p>
 <div class="cell docutils container">
@@ -2802,12 +3109,12 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3914/2878191809.py:13: MatplotlibDeprecationWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3956/2878191809.py:13: MatplotlibDeprecationWarning:
 
 Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fe04862e750&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f35f8981c50&gt;
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
@@ -2815,7 +3122,7 @@ Unable to determine Axes to steal space for Colorbar. Using gca(), but will rais
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/174ba2abbae3dc9ffb191f368782cc646322327338943e0abe9627d9b2a1a791.png" src="_images/174ba2abbae3dc9ffb191f368782cc646322327338943e0abe9627d9b2a1a791.png" />
+<img alt="_images/1c8b8ae6570c6264043a8b10adb3f976edde9606c356298fca55ae62e18e0f96.png" src="_images/1c8b8ae6570c6264043a8b10adb3f976edde9606c356298fca55ae62e18e0f96.png" />
 </div>
 </div>
 <p>Or plot the hourly dispatch grouped by carrier:</p>
@@ -2850,7 +3157,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e32e17f6818cf76b731cbe857ddbbe1682adab0986355e441c8f530b53160a88.png" src="_images/e32e17f6818cf76b731cbe857ddbbe1682adab0986355e441c8f530b53160a88.png" />
+<img alt="_images/c15a272b736aba01c2b2d642dc6d934205c3477ab213ab5d1dd211f03b55f70c.png" src="_images/c15a272b736aba01c2b2d642dc6d934205c3477ab213ab5d1dd211f03b55f70c.png" />
 </div>
 </div>
 <p>Or plot the aggregate dispatch of the pumped hydro storage units and the state of charge throughout the day:</p>
@@ -2874,7 +3181,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;MWh or MW&#39;)
 </pre></div>
 </div>
-<img alt="_images/9347ffa15af95105a482d23c8f4d12d22cc31e3b6d349194b6e7b8b61541e4c0.png" src="_images/9347ffa15af95105a482d23c8f4d12d22cc31e3b6d349194b6e7b8b61541e4c0.png" />
+<img alt="_images/7e3df28f3f49d154f9cbfe8d5ea068210afe3a666eaad394fc03115917be73fa.png" src="_images/7e3df28f3f49d154f9cbfe8d5ea068210afe3a666eaad394fc03115917be73fa.png" />
 </div>
 </div>
 <p>Or plot the locational marginal prices (LMPs):</p>
@@ -2901,12 +3208,12 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3914/3349850528.py:13: MatplotlibDeprecationWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3956/3349850528.py:13: MatplotlibDeprecationWarning:
 
 Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fe045055dd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f36014af390&gt;
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:

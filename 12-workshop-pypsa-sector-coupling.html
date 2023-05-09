@@ -457,7 +457,12 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span> <span class="o">=</span> <span class="s2">&quot;network-cem.nc&quot;</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://tubcloud.tu-berlin.de/s/kpWaraGc9LeaxLK/download/&quot;</span> <span class="o">+</span> <span class="n">fn</span>
@@ -466,10 +471,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;network-cem.nc&#39;, &lt;http.client.HTTPMessage at 0x7fa67c6e9cd0&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;network-cem.nc&#39;, &lt;http.client.HTTPMessage at 0x7f6d249f1b50&gt;)
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <section id="previous-capacity-expansion-model">
 <h2>Previous Capacity Expansion Model<a class="headerlink" href="#previous-capacity-expansion-model" title="Permalink to this headline">#</a></h2>
@@ -1085,7 +1091,7 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa6377a8590&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6d243ffdd0&gt;
 </pre></div>
 </div>
 <img alt="_images/95f9f0ff1a85219985b682e862ca6917bf53271c625374702ece78c9223eeb46.png" src="_images/95f9f0ff1a85219985b682e862ca6917bf53271c625374702ece78c9223eeb46.png" />
@@ -1215,29 +1221,159 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
 </div>
 </div>
 <p>Then, we can solve the fully sector-coupled model altogether including electricity, passenger transport, hydrogen and heating.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">lopf</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Prepare linear problem
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The following links have bus0 which are not defined:
+Index([&#39;electrolysis&#39;, &#39;heat pump&#39;, &#39;resistive heater&#39;, &#39;EV charger&#39;], dtype=&#39;object&#39;, name=&#39;Link&#39;)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Total preparation time: 0.54s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The following links have bus1 which are not defined:
+Index([&#39;fuel cell&#39;, &#39;OCGT&#39;, &#39;CHP&#39;, &#39;V2G&#39;], dtype=&#39;object&#39;, name=&#39;Link&#39;)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Solve linear problem using Cbc solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The following links have bus0 which are not defined:
+Index([&#39;electrolysis&#39;, &#39;heat pump&#39;, &#39;resistive heater&#39;, &#39;EV charger&#39;], dtype=&#39;object&#39;, name=&#39;Link&#39;)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.linopf:Optimization successful. Objective value: 1.21e+11
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The following links have bus1 which are not defined:
+Index([&#39;fuel cell&#39;, &#39;OCGT&#39;, &#39;CHP&#39;, &#39;V2G&#39;], dtype=&#39;object&#39;, name=&#39;Link&#39;)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__array_function__ internals&gt;:200: RuntimeWarning:
+
+invalid value encountered in cast
+
+&lt;__array_function__ internals&gt;:200: RuntimeWarning:
+
+invalid value encountered in cast
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve linear problem using Cbc solver
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/27 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  41%|████      | 11/27 [00:00&lt;00:00, 97.52it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  78%|███████▊  | 21/27 [00:00&lt;00:00, 65.36it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 27/27 [00:00&lt;00:00, 58.53it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing variables.:   0%|          | 0/12 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing variables.: 100%|██████████| 12/12 [00:00&lt;00:00, 172.35it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.61s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
+Version: 2.10.10 
+Build Date: Apr 19 2023 
+
+command line - cbc -printingOptions all -import /tmp/linopy-problem-xcx2okom.lp -solve -solu /tmp/linopy-solve-dh3xc372.sol (default strategy 1)
+Option for printingOptions changed from normal to all
+Presolve 36183 (-57998) rows, 27433 (-16378) columns and 93214 (-74376) elements
+Perturbing problem by 0.001% of 231.23943 - largest nonzero change 0.00033121988 ( 6.9759368%) - largest zero change 0.0003303862
+0  Obj 0 Primal inf 6.4326091e+08 (6571)
+405  Obj 3270.2799 Primal inf 5.9258096e+08 (6663)
+810  Obj 4543.3413 Primal inf 5.7964649e+08 (6744)
+1215  Obj 5767.4811 Primal inf 5.7505193e+08 (6847)
+1620  Obj 6897.4165 Primal inf 5.7167414e+08 (6931)
+2025  Obj 6.1100088e+08 Primal inf 5.7441945e+08 (7045)
+2430  Obj 2.2523634e+09 Primal inf 5.5305377e+08 (7150)
+2835  Obj 2.2538579e+09 Primal inf 5.7888808e+08 (7247)
+3240  Obj 6.5099857e+10 Primal inf 5.3792142e+08 (6467)
+3645  Obj 6.5100775e+10 Primal inf 7.1439876e+08 (6483)
+4050  Obj 6.5101129e+10 Primal inf 5.6228638e+08 (6444)
+4455  Obj 6.5101766e+10 Primal inf 5.4087999e+08 (6453)
+4860  Obj 6.5105871e+10 Primal inf 5.6048825e+08 (6446)
+5265  Obj 6.5106298e+10 Primal inf 5.3383987e+08 (6423)
+5670  Obj 6.5106746e+10 Primal inf 5.3541559e+08 (6457)
+6075  Obj 6.510731e+10 Primal inf 6.0762151e+08 (6475)
+6480  Obj 6.5110737e+10 Primal inf 6.0777964e+08 (6471)
+6885  Obj 6.5111272e+10 Primal inf 5.5191835e+08 (6496)
+7290  Obj 6.5116202e+10 Primal inf 8.3046391e+08 (6556)
+7695  Obj 6.5126466e+10 Primal inf 5.6610324e+08 (6440)
+8100  Obj 6.5131084e+10 Primal inf 5.6511599e+08 (6416)
+8505  Obj 6.5136932e+10 Primal inf 7.4709906e+08 (6441)
+8910  Obj 6.5139735e+10 Primal inf 6.3471125e+08 (6456)
+9315  Obj 6.515026e+10 Primal inf 7.7364296e+08 (6531)
+9720  Obj 6.5150596e+10 Primal inf 6.5485091e+08 (6490)
+10125  Obj 6.7967651e+10 Primal inf 7.1712155e+08 (6283)
+10530  Obj 6.9077602e+10 Primal inf 5.3750332e+08 (5391)
+10935  Obj 6.9081931e+10 Primal inf 6.179144e+08 (5379)
+11340  Obj 6.9092845e+10 Primal inf 5.2098343e+08 (5454)
+11745  Obj 6.910743e+10 Primal inf 4.3629575e+08 (5463)
+12150  Obj 6.9110945e+10 Primal inf 5.8202817e+08 (5486)
+12555  Obj 6.9129008e+10 Primal inf 6.4488936e+08 (5415)
+12960  Obj 6.944604e+10 Primal inf 5.4801891e+08 (5402)
+13365  Obj 6.9503795e+10 Primal inf 5.4994312e+08 (5334)
+13770  Obj 6.985042e+10 Primal inf 5.4435437e+08 (5229)
+14175  Obj 6.9875128e+10 Primal inf 5.2797827e+08 (5139)
+14580  Obj 9.9781393e+10 Primal inf 5.5084229e+08 (4440)
+14985  Obj 9.9795471e+10 Primal inf 6.0390644e+08 (4080)
+15390  Obj 1.0009919e+11 Primal inf 6.9380077e+09 (5262)
+15795  Obj 1.1300227e+11 Primal inf 2.8735983e+09 (6193)
+16200  Obj 1.1333185e+11 Primal inf 1.3714222e+08 (2797)
+16605  Obj 1.1449448e+11 Primal inf 4.0169324e+09 (6019)
+17010  Obj 1.1472375e+11 Primal inf 3.4486812e+09 (6199)
+17415  Obj 1.1492179e+11 Primal inf 6.5752945e+09 (6286)
+17820  Obj 1.1519421e+11 Primal inf 9.3888708e+09 (6346)
+18225  Obj 1.1526008e+11 Primal inf 4.9966863e+09 (6365)
+18630  Obj 1.1527574e+11 Primal inf 5.3891359e+09 (6392)
+19035  Obj 1.1649405e+11 Primal inf 5.5619617e+09 (6322)
+19440  Obj 1.1670134e+11 Primal inf 5.2557393e+09 (6190)
+19845  Obj 1.1686877e+11 Primal inf 2.1620787e+09 (5961)
+20250  Obj 1.1763339e+11 Primal inf 1.5237373e+09 (5571)
+20655  Obj 1.179658e+11 Primal inf 43755407 (1811)
+21060  Obj 1.1910353e+11 Primal inf 1.1506829e+09 (4741)
+21465  Obj 1.1973779e+11 Primal inf 30116690 (1497)
+21870  Obj 1.1973915e+11 Primal inf 15579987 (1164)
+22275  Obj 1.2012551e+11 Primal inf 1.4979945e+08 (1767)
+22680  Obj 1.2125374e+11 Primal inf 3104534.8 (350)
+23035  Obj 1.2129045e+11
+Optimal - objective value 1.2129041e+11
+After Postsolve, objective 1.2129041e+11, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 1.212904101e+11 - 23035 iterations time 1.802, Presolve 0.13
+Total time (CPU seconds):       2.19   (Wallclock seconds):       2.18
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 43811 primals, 94181 duals
+Objective: 1.21e+11
+Solver model: not available
+Solver message: Optimal - objective value 121290410055.97111511
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1295,9 +1431,9 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
       <th>offwind</th>
       <td>0.159939</td>
       <td>3.606999e+09</td>
-      <td>4627.300990</td>
+      <td>4627.301088</td>
       <td>0.0</td>
-      <td>72.968297</td>
+      <td>72.968294</td>
       <td>2.281124e+04</td>
       <td>4.118309e+05</td>
       <td>3.648415e+03</td>
@@ -1307,9 +1443,9 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
       <th>onwind</th>
       <td>0.012838</td>
       <td>3.303204e+10</td>
-      <td>66316.032450</td>
+      <td>66316.032434</td>
       <td>0.0</td>
-      <td>5958.027613</td>
+      <td>5958.027629</td>
       <td>3.437762e+05</td>
       <td>3.776739e+06</td>
       <td>4.413354e+03</td>
@@ -1319,12 +1455,12 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
       <th>solar</th>
       <td>0.063811</td>
       <td>3.532292e+10</td>
-      <td>45854.222888</td>
+      <td>45854.222090</td>
       <td>0.0</td>
-      <td>484.633963</td>
+      <td>484.633946</td>
       <td>7.594874e+05</td>
       <td>4.032781e+06</td>
-      <td>4.846340e+04</td>
+      <td>4.846339e+04</td>
       <td>0.000000e+00</td>
     </tr>
     <tr>
@@ -1481,7 +1617,7 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
       <td>0.000000</td>
       <td>0.0</td>
       <td>0.000000</td>
-      <td>4.468160e+05</td>
+      <td>4.468159e+05</td>
       <td>4.918799e+06</td>
       <td>2.178544e+04</td>
       <td>-2.363871e+04</td>
@@ -1496,8 +1632,8 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
       <td>0.000000</td>
       <td>1.000000e+06</td>
       <td>0.000000e+00</td>
-      <td>0.000000e+00</td>
-      <td>0.000000e+00</td>
+      <td>2.097237e-14</td>
+      <td>-1.287413e-14</td>
     </tr>
     <tr>
       <th>gas storage</th>
@@ -1513,15 +1649,15 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
     </tr>
     <tr>
       <th>hydrogen storage</th>
-      <td>0.039875</td>
-      <td>1.810238e-08</td>
+      <td>-0.037045</td>
+      <td>-1.381130e-08</td>
       <td>NaN</td>
       <td>0.0</td>
       <td>0.000000</td>
-      <td>1.293027e-10</td>
-      <td>2.066482e-12</td>
-      <td>2.086000e-14</td>
-      <td>-2.086000e-14</td>
+      <td>-9.865212e-11</td>
+      <td>0.000000e+00</td>
+      <td>9.967065e-15</td>
+      <td>0.000000e+00</td>
     </tr>
   </tbody>
 </table>
@@ -1537,7 +1673,7 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;None,carrier&#39;, ylabel=&#39;bn€/a&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/515e109562281dae99a5a197be4cbc7f43491231bf4e7f32b0881f233a08c8a2.png" src="_images/515e109562281dae99a5a197be4cbc7f43491231bf4e7f32b0881f233a08c8a2.png" />
+<img alt="_images/a8109c68cd5cd75816605f1307c8b42f62081045f0fe99b65a798845187bab83.png" src="_images/a8109c68cd5cd75816605f1307c8b42f62081045f0fe99b65a798845187bab83.png" />
 </div>
 </div>
 </section>

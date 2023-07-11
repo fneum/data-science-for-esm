@@ -598,8 +598,8 @@ document.write(`
 <p><strong>Constraints</strong> are equality or inequality expressions that constrain the <em>feasible</em> space of the decision variables.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>, constraints are created with the <code class="docutils literal notranslate"><span class="pre">pe.Constraint()</span></code> constructor.</p>
 <p>In the code below, we create three simple constraints in different ways:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6f814fa1-a70b-4871-8bcd-2a19236463ec">
-<span class="eqno">(1)<a class="headerlink" href="#equation-6f814fa1-a70b-4871-8bcd-2a19236463ec" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6661438a-029e-4301-bdab-260abf96adbf">
+<span class="eqno">(1)<a class="headerlink" href="#equation-6661438a-029e-4301-bdab-260abf96adbf" title="Permalink to this equation">#</a></span>\[\begin{align}
   x &amp; \leq 4 \\
   2x + y &amp; \leq 10 \\
   x + y &amp; \leq 10 \\
@@ -719,11 +719,11 @@ conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - /home/runner/micromamba-root/envs/esm/bin/cbc -printingOptions all -import /tmp/tmpe47mmwuh.pyomo.lp -stat=1 -solve -solu /tmp/tmpe47mmwuh.pyomo.soln (default strategy 1)
+command line - /home/runner/micromamba-root/envs/esm/bin/cbc -printingOptions all -import /tmp/tmpnc54q8_x.pyomo.lp -stat=1 -solve -solu /tmp/tmpnc54q8_x.pyomo.soln (default strategy 1)
 Option for printingOptions changed from normal to all
  CoinLpIO::readLp(): Maximization problem reformulated as minimization
 Coin0009I Switching back to maximization to get correct duals etc
-Presolve 2 (-2) rows, 2 (-1) columns and 4 (-2) elements
+Presolve 2 (-1) rows, 2 (0) columns and 4 (-1) elements
 Statistics for presolved model
 
 
@@ -738,7 +738,7 @@ Row breakdown:
 0 of type G other, 0 of type L 0.0, 0 of type L 1.0, 
 2 of type L other, 0 of type Range 0.0-&gt;1.0, 0 of type Range other, 
 0 of type Free 
-Presolve 2 (-2) rows, 2 (-1) columns and 4 (-2) elements
+Presolve 2 (-1) rows, 2 (0) columns and 4 (-1) elements
 0  Obj -0 Dual inf 6.999998 (2)
 1  Obj 30
 Optimal - objective value 30
@@ -769,8 +769,8 @@ Problem:
   Lower bound: 30.0
   Upper bound: 30.0
   Number of objectives: 1
-  Number of constraints: 4
-  Number of variables: 3
+  Number of constraints: 3
+  Number of variables: 2
   Number of nonzeros: 2
   Sense: maximize
 # ----------------------------------------------------------
@@ -790,7 +790,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.030262231826782227
+  Time: 0.030861377716064453
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -897,8 +897,8 @@ Problem:
   Lower bound: 30.0
   Upper bound: 30.0
   Number of objectives: 1
-  Number of constraints: 4
-  Number of variables: 3
+  Number of constraints: 3
+  Number of variables: 2
   Number of nonzeros: 2
   Sense: maximize
 # ----------------------------------------------------------
@@ -918,7 +918,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.01134634017944336
+  Time: 0.012067556381225586
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1168,13 +1168,13 @@ Solution:
 <section id="single-bidding-zone-single-period">
 <h3>Single bidding zone, single period<a class="headerlink" href="#single-bidding-zone-single-period" title="Permalink to this headline">#</a></h3>
 <p>We want to minimise operational cost of an example electricity system representing South Africa subject to generator limits and meeting the load:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7bfb0dab-10bc-4430-8795-83da01fea92d">
-<span class="eqno">(2)<a class="headerlink" href="#equation-7bfb0dab-10bc-4430-8795-83da01fea92d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-563c9294-c185-48c4-a40a-b52779bcf013">
+<span class="eqno">(2)<a class="headerlink" href="#equation-563c9294-c185-48c4-a40a-b52779bcf013" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \min_{g_s} \sum_s o_s g_s
   \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e077bc1c-5f68-4057-870e-a59353fe3750">
-<span class="eqno">(3)<a class="headerlink" href="#equation-e077bc1c-5f68-4057-870e-a59353fe3750" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-49591bea-6032-4eeb-8950-daeff9f1e1a4">
+<span class="eqno">(3)<a class="headerlink" href="#equation-49591bea-6032-4eeb-8950-daeff9f1e1a4" title="Permalink to this equation">#</a></span>\[\begin{align}
     g_s &amp;\leq G_s \\
     g_s &amp;\geq 0 \\
     \sum_s g_s &amp;= d
@@ -1256,7 +1256,7 @@ Solution:
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cost : Size=1, Index=None, Active=True
     Key  : Active : Sense    : Expression
-    None :   True : minimize : 30*g[Coal] + 60*g[Gas] + 80*g[Oil]
+    None :   True : minimize : 30*g[Coal] + 0*g[Wind] + 60*g[Gas] + 80*g[Oil]
 </pre></div>
 </div>
 </div>
@@ -1329,8 +1329,8 @@ Problem:
   Lower bound: 1290000.0
   Upper bound: 1290000.0
   Number of objectives: 1
-  Number of constraints: 6
-  Number of variables: 5
+  Number of constraints: 5
+  Number of variables: 4
   Number of nonzeros: 3
   Sense: minimize
 # ----------------------------------------------------------
@@ -1350,7 +1350,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.012241125106811523
+  Time: 0.01192784309387207
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1411,9 +1411,9 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[Coal]   -30.0
+generator_limit[Wind]   -60.0
 generator_limit[Gas]      0.0
 generator_limit[Oil]      0.0
-generator_limit[Wind]   -60.0
 [None]                   60.0
 dtype: float64
 </pre></div>
@@ -1441,13 +1441,13 @@ dtype: float64
 <section id="two-bidding-zones-with-transmission">
 <h3>Two bidding zones with transmission<a class="headerlink" href="#two-bidding-zones-with-transmission" title="Permalink to this headline">#</a></h3>
 <p>Let’s add a spatial dimension, such that the optimisation problem is expanded to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-24b206c8-78c9-4154-b9a0-9a5fc3a6259e">
-<span class="eqno">(4)<a class="headerlink" href="#equation-24b206c8-78c9-4154-b9a0-9a5fc3a6259e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6a5b361b-6430-41d5-b4eb-c51e01fbadca">
+<span class="eqno">(4)<a class="headerlink" href="#equation-6a5b361b-6430-41d5-b4eb-c51e01fbadca" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \min_{g_{i,s}, f_\ell} \sum_s o_{i,s} g_{i,s}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1c584d22-74c1-43cb-a3bb-b4ed19d4d1eb">
-<span class="eqno">(5)<a class="headerlink" href="#equation-1c584d22-74c1-43cb-a3bb-b4ed19d4d1eb" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4d6af3f5-9215-4413-8b45-b9804e42ff8f">
+<span class="eqno">(5)<a class="headerlink" href="#equation-4d6af3f5-9215-4413-8b45-b9804e42ff8f" title="Permalink to this equation">#</a></span>\[\begin{align}
   g_{i,s} &amp;\leq G_{i,s} \\
   g_{i,s} &amp;\geq 0 \\
   \sum_s g_{i,s} - \sum_\ell K_{i\ell} f_\ell &amp;= d_i &amp; \text{KCL} \\
@@ -1610,8 +1610,8 @@ For missing entries, we set the upper limit to zero (e.g. this country-technolog
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kcl : Size=2, Index=countries, Active=True
     Key          : Lower   : Body                                                                                                                : Upper   : Active
-      Mozambique :   650.0 :           g[Mozambique,Oil] + g[Mozambique,Gas] + g[Mozambique,Coal] + g[Mozambique,Wind] + g[Mozambique,Hydro] + f :   650.0 :   True
-    South Africa : 42000.0 : g[South Africa,Oil] + g[South Africa,Gas] + g[South Africa,Coal] + g[South Africa,Wind] + g[South Africa,Hydro] - f : 42000.0 :   True
+      Mozambique :   650.0 :           g[Mozambique,Coal] + g[Mozambique,Oil] + g[Mozambique,Wind] + g[Mozambique,Gas] + g[Mozambique,Hydro] + f :   650.0 :   True
+    South Africa : 42000.0 : g[South Africa,Coal] + g[South Africa,Oil] + g[South Africa,Wind] + g[South Africa,Gas] + g[South Africa,Hydro] - f : 42000.0 :   True
 </pre></div>
 </div>
 </div>
@@ -1657,8 +1657,8 @@ Problem:
   Lower bound: 1260000.0
   Upper bound: 1260000.0
   Number of objectives: 1
-  Number of constraints: 15
-  Number of variables: 12
+  Number of constraints: 14
+  Number of variables: 11
   Number of nonzeros: 3
   Sense: minimize
 # ----------------------------------------------------------
@@ -1678,7 +1678,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.012913227081298828
+  Time: 0.012094497680664062
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1773,18 +1773,18 @@ Solution:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[Mozambique,Coal]        0.0
-generator_limit[Mozambique,Gas]         0.0
-generator_limit[Mozambique,Hydro]       0.0
-generator_limit[Mozambique,Oil]         0.0
-generator_limit[Mozambique,Wind]        0.0
-generator_limit[South Africa,Coal]    -30.0
-generator_limit[South Africa,Gas]       0.0
-generator_limit[South Africa,Hydro]   -60.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[South Africa,Coal]    -30.0
 generator_limit[South Africa,Oil]       0.0
 generator_limit[South Africa,Wind]    -60.0
-kcl[Mozambique]                         0.0
+generator_limit[South Africa,Gas]       0.0
+generator_limit[South Africa,Hydro]   -60.0
+generator_limit[Mozambique,Coal]        0.0
+generator_limit[Mozambique,Oil]         0.0
+generator_limit[Mozambique,Wind]        0.0
+generator_limit[Mozambique,Gas]         0.0
+generator_limit[Mozambique,Hydro]       0.0
 kcl[South Africa]                      60.0
+kcl[Mozambique]                         0.0
 [None]                                 60.0
 dtype: float64
 </pre></div>
@@ -1818,7 +1818,7 @@ Problem:
   Lower bound: 1287000.0
   Upper bound: 1287000.0
   Number of objectives: 1
-  Number of constraints: 13
+  Number of constraints: 12
   Number of variables: 11
   Number of nonzeros: 2
   Sense: minimize
@@ -1839,7 +1839,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.011174678802490234
+  Time: 0.01202249526977539
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1919,13 +1919,13 @@ Solution:
 <section id="single-bidding-zone-with-several-periods">
 <h3>Single bidding zone with several periods<a class="headerlink" href="#single-bidding-zone-with-several-periods" title="Permalink to this headline">#</a></h3>
 <p>In this example, we consider multiple time periods (labelled [1,2,3,4]) to represent variable wind generation and changing load.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5c270d39-1bc8-4fbe-8b19-85b0917a3a6a">
-<span class="eqno">(6)<a class="headerlink" href="#equation-5c270d39-1bc8-4fbe-8b19-85b0917a3a6a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-654998e1-9817-4bf4-8dcf-ca2d7d135e53">
+<span class="eqno">(6)<a class="headerlink" href="#equation-654998e1-9817-4bf4-8dcf-ca2d7d135e53" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \min_{g_{s,t}} \sum_s o_{s} g_{s,t}
   \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-622350f6-89ab-4a2a-a37e-11c65dfb9eea">
-<span class="eqno">(7)<a class="headerlink" href="#equation-622350f6-89ab-4a2a-a37e-11c65dfb9eea" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cc65bd12-1cdc-42f7-b3d5-02bc613f584e">
+<span class="eqno">(7)<a class="headerlink" href="#equation-cc65bd12-1cdc-42f7-b3d5-02bc613f584e" title="Permalink to this equation">#</a></span>\[\begin{align}
     g_{s,t} &amp;\leq \hat{g}_{s,t} G_{i,s} \\
     g_{s,t} &amp;\geq 0 \\
     \sum_s g_{s,t} &amp;= d_t
@@ -2055,8 +2055,8 @@ Problem:
   Lower bound: 6082000.0
   Upper bound: 6082000.0
   Number of objectives: 1
-  Number of constraints: 21
-  Number of variables: 17
+  Number of constraints: 20
+  Number of variables: 16
   Number of nonzeros: 12
   Sense: minimize
 # ----------------------------------------------------------
@@ -2076,14 +2076,14 @@ Solver:
     Black box: 
       Number of iterations: 4
   Error rc: 0
-  Time: 0.011173725128173828
+  Time: 0.012447357177734375
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
 Solution: 
 - number of solutions: 0
   number of solutions displayed: 0
-25.1 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+41.2 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -2111,6 +2111,10 @@ Solution:
 generator_limit[Coal,2]   -30.0
 generator_limit[Coal,3]   -50.0
 generator_limit[Coal,4]   -50.0
+generator_limit[Wind,1]   -60.0
+generator_limit[Wind,2]   -60.0
+generator_limit[Wind,3]   -80.0
+generator_limit[Wind,4]   -80.0
 generator_limit[Gas,1]      0.0
 generator_limit[Gas,2]      0.0
 generator_limit[Gas,3]    -20.0
@@ -2119,10 +2123,6 @@ generator_limit[Oil,1]      0.0
 generator_limit[Oil,2]      0.0
 generator_limit[Oil,3]      0.0
 generator_limit[Oil,4]      0.0
-generator_limit[Wind,1]   -60.0
-generator_limit[Wind,2]   -60.0
-generator_limit[Wind,3]   -80.0
-generator_limit[Wind,4]   -80.0
 energy_balance[1]          60.0
 energy_balance[2]          60.0
 energy_balance[3]          80.0
@@ -2291,8 +2291,8 @@ Problem:
   Lower bound: 6017200.656
   Upper bound: 6017200.656
   Number of objectives: 1
-  Number of constraints: 25
-  Number of variables: 29
+  Number of constraints: 24
+  Number of variables: 28
   Number of nonzeros: 12
   Sense: minimize
 # ----------------------------------------------------------
@@ -2312,7 +2312,7 @@ Solver:
     Black box: 
       Number of iterations: 9
   Error rc: 0
-  Time: 0.011061668395996094
+  Time: 0.013961315155029297
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -2458,6 +2458,10 @@ dtype: float64
 generator_limit[Coal,2]   -30.00000
 generator_limit[Coal,3]   -49.99920
 generator_limit[Coal,4]   -50.00000
+generator_limit[Wind,1]   -60.00000
+generator_limit[Wind,2]   -60.00000
+generator_limit[Wind,3]   -79.99920
+generator_limit[Wind,4]   -80.00000
 generator_limit[Gas,1]      0.00000
 generator_limit[Gas,2]      0.00000
 generator_limit[Gas,3]    -19.99920
@@ -2466,10 +2470,6 @@ generator_limit[Oil,1]      0.00000
 generator_limit[Oil,2]      0.00000
 generator_limit[Oil,3]      0.00000
 generator_limit[Oil,4]      0.00000
-generator_limit[Wind,1]   -60.00000
-generator_limit[Wind,2]   -60.00000
-generator_limit[Wind,3]   -79.99920
-generator_limit[Wind,4]   -80.00000
 storage_consistency[1]    -71.99784
 storage_consistency[2]    -71.99856
 storage_consistency[3]    -71.99928

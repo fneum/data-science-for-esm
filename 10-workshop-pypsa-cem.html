@@ -507,6 +507,13 @@ in the <em>objective function</em> and <em>new constraints for their expansion l
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/pypsa/networkclustering.py:16: UserWarning:
+
+The namespace `pypsa.networkclustering` is deprecated and will be removed in PyPSA v0.24. Please use `pypsa.clustering.spatial instead`. 
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="prerequisites-handling-technology-data-and-costs">
@@ -918,7 +925,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;snapshot&#39;, ylabel=&#39;MW&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/3e58c9077f15b05fdff8bce736620c594b1990cb157a523708adc8c64c501d5f.png" src="_images/3e58c9077f15b05fdff8bce736620c594b1990cb157a523708adc8c64c501d5f.png" />
+<img alt="_images/0736e9a3f03ab516ad23677473ae98355372a5951de37591436596a0fd16cbc4.png" src="_images/0736e9a3f03ab516ad23677473ae98355372a5951de37591436596a0fd16cbc4.png" />
 </div>
 </div>
 <p>We are going to add one dispatchable generation technology to the model. This is an open-cycle gas turbine (OCGT) with CO<span class="math notranslate nohighlight">\(_2\)</span> emissions of 0.2 t/MWh<span class="math notranslate nohighlight">\(_{th}\)</span>.</p>
@@ -968,7 +975,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;snapshot&#39;, ylabel=&#39;CF&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/b7d1ff59beafecea398d955be801221158f6d9455e99b6bf91243f7d0da09e48.png" src="_images/b7d1ff59beafecea398d955be801221158f6d9455e99b6bf91243f7d0da09e48.png" />
+<img alt="_images/bfe87467358fda847b457afd5c7deaf00b130c5641a16bc6d5ef510785c01eec.png" src="_images/bfe87467358fda847b457afd5c7deaf00b130c5641a16bc6d5ef510785c01eec.png" />
 </div>
 </div>
 </section>
@@ -982,14 +989,10 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-INFO:linopy.model: Solve linear problem using Cbc solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve linear problem using Cbc solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.11s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.13s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -998,28 +1001,28 @@ Termination condition: optimal
 Solution: 8764 primals, 19714 duals
 Objective: 2.75e+10
 Solver model: not available
-Solver message: Optimal - objective value 27532289223.69232178
+Solver message: Optimal - objective value 27532289223.69249344
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-mvyq2dyh.lp -solve -solu /tmp/linopy-solve-4ex9b60v.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-b73uqsrh.lp -solve -solu /tmp/linopy-solve-auot_l_w.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 9900 (-9814) rows, 7714 (-1050) columns and 23130 (-10864) elements
-Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033155867 ( 6.8960834%) - largest zero change 0
+Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033155867 ( 6.5156784%) - largest zero change 0
 0  Obj 0 Primal inf 1.6937954e+08 (2190)
-273  Obj 99289248 Primal inf 1.6143953e+08 (2190)
-546  Obj 1.8929297e+08 Primal inf 1.5545163e+08 (2190)
-819  Obj 3.053471e+08 Primal inf 1.4853111e+08 (2190)
+273  Obj 99289259 Primal inf 1.6143953e+08 (2190)
+546  Obj 1.8929296e+08 Primal inf 1.5545163e+08 (2190)
+819  Obj 3.0534711e+08 Primal inf 1.4853111e+08 (2190)
 1092  Obj 4.3229077e+08 Primal inf 1.4050834e+08 (2190)
 1365  Obj 5.7839109e+08 Primal inf 1.3256861e+08 (2190)
 1638  Obj 7.44638e+08 Primal inf 1.2422418e+08 (2190)
-1911  Obj 9.9448681e+08 Primal inf 1.1699429e+08 (2190)
+1911  Obj 9.9448682e+08 Primal inf 1.1699429e+08 (2190)
 2184  Obj 4.349048e+09 Primal inf 1.0442117e+08 (2109)
 2457  Obj 4.7128424e+09 Primal inf 95575591 (2085)
-2730  Obj 5.1032609e+09 Primal inf 88029222 (2054)
+2730  Obj 5.103261e+09 Primal inf 88029222 (2054)
 3003  Obj 5.7075703e+09 Primal inf 79560489 (2008)
 3276  Obj 6.5109548e+09 Primal inf 69850183 (1942)
 3549  Obj 7.2877291e+09 Primal inf 63779648 (1875)
@@ -1036,13 +1039,13 @@ Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033155867
 6552  Obj 2.1669797e+10 Primal inf 17322881 (786)
 6825  Obj 2.3269216e+10 Primal inf 14052672 (670)
 7098  Obj 2.4817852e+10 Primal inf 7484725 (415)
-7371  Obj 2.6399462e+10 Primal inf 3546329.1 (263)
+7371  Obj 2.6399461e+10 Primal inf 3546329.1 (263)
 7644  Obj 2.7530103e+10 Primal inf 43091.304 (79)
 7708  Obj 2.7532295e+10
 Optimal - objective value 2.7532289e+10
 After Postsolve, objective 2.7532289e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 2.753228922e+10 - 7708 iterations time 0.162, Presolve 0.02
-Total time (CPU seconds):       0.26   (Wallclock seconds):       0.23
+Optimal objective 2.753228922e+10 - 7708 iterations time 0.182, Presolve 0.03
+Total time (CPU seconds):       0.28   (Wallclock seconds):       0.23
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
@@ -1061,7 +1064,7 @@ Total time (CPU seconds):       0.26   (Wallclock seconds):       0.23
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27.53228922369232
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27.532289223692494
 </pre></div>
 </div>
 </div>
@@ -1076,7 +1079,7 @@ Total time (CPU seconds):       0.26   (Wallclock seconds):       0.23
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generator
 OCGT       70.182246
-onwind      0.000000
+onwind     -0.000000
 offwind    42.399533
 solar      82.323420
 Name: p_nom_opt, dtype: float64
@@ -1223,7 +1226,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d3feabc3b11fb999dc5ed813877bea98c5213598d6fe2a78507a545d8861c7eb.png" src="_images/d3feabc3b11fb999dc5ed813877bea98c5213598d6fe2a78507a545d8861c7eb.png" />
+<img alt="_images/9b363e8ab45b703fa0c111de421e34fea7f4a3fa660ad8999a9a905f6d603b46.png" src="_images/9b363e8ab45b703fa0c111de421e34fea7f4a3fa660ad8999a9a905f6d603b46.png" />
 </div>
 </div>
 </section>
@@ -1290,19 +1293,7 @@ at the beginning of the optimisation period must equal the final state of charge
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-INFO:linopy.model: Solve linear problem using Cbc solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve linear problem using Cbc solver
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
@@ -1311,22 +1302,25 @@ INFO:linopy.model: Solve linear problem using Cbc solver
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/14 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  57%|█████▋    | 8/14 [00:00&lt;00:00, 69.29it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  50%|█████     | 7/14 [00:00&lt;00:00, 67.80it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 14/14 [00:00&lt;00:00, 57.72it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 14/14 [00:00&lt;00:00, 47.36it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 14/14 [00:00&lt;00:00, 49.46it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 189.00it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 146.71it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.32s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.36s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -1335,81 +1329,82 @@ Termination condition: optimal
 Solution: 21906 primals, 50376 duals
 Objective: 2.75e+10
 Solver model: not available
-Solver message: Optimal - objective value 27532289223.69231415
+Solver message: Optimal - objective value 27532289223.69249725
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-kthpmydj.lp -solve -solu /tmp/linopy-solve-d9_7dix9.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-upmszznk.lp -solve -solu /tmp/linopy-solve-mxiq0paz.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 27420 (-22956) rows, 20856 (-1050) columns and 75690 (-24006) elements
-Perturbing problem by 0.001% of 232.80852 - largest nonzero change 0.00033269303 ( 6.8859498%) - largest zero change 0.0003312509
-0  Obj 0 Primal inf 1.7299319e+08 (2190)
-362  Obj 1533.1194 Primal inf 2.0311713e+08 (2526)
-724  Obj 57854.02 Primal inf 2.3613949e+08 (2828)
-1086  Obj 2.7945624e+09 Primal inf 2.6149483e+08 (3052)
-1448  Obj 3.028221e+09 Primal inf 2.7838941e+08 (3215)
-1810  Obj 3.2790364e+09 Primal inf 2.8919513e+08 (3325)
-2172  Obj 3.5661458e+09 Primal inf 2.9340495e+08 (3404)
-2534  Obj 3.8615063e+09 Primal inf 3.0078977e+08 (3476)
-2896  Obj 4.1368103e+09 Primal inf 3.0506132e+08 (3523)
-3258  Obj 4.35539e+09 Primal inf 3.0659227e+08 (3566)
-3620  Obj 4.5115102e+09 Primal inf 2.9965418e+08 (3578)
-3982  Obj 4.7012691e+09 Primal inf 3.0619855e+08 (3619)
-4344  Obj 4.929369e+09 Primal inf 2.9669713e+08 (3640)
-4706  Obj 5.0927827e+09 Primal inf 2.9536911e+08 (3672)
-5068  Obj 5.436143e+09 Primal inf 2.8590574e+08 (3668)
-5430  Obj 5.7259353e+09 Primal inf 2.794528e+08 (3668)
-5792  Obj 6.0526507e+09 Primal inf 2.7091083e+08 (3659)
-6154  Obj 6.1922592e+09 Primal inf 2.6075623e+08 (3640)
-6516  Obj 6.5929942e+09 Primal inf 2.4730128e+08 (3596)
-6878  Obj 6.8999994e+09 Primal inf 2.3833123e+08 (3580)
-7240  Obj 7.321848e+09 Primal inf 2.2978354e+08 (3521)
-7602  Obj 7.5556003e+09 Primal inf 2.2398371e+08 (3471)
-7964  Obj 8.0534511e+09 Primal inf 2.1426713e+08 (3430)
-8326  Obj 8.3290574e+09 Primal inf 2.1103598e+08 (3397)
-8688  Obj 8.5715647e+09 Primal inf 2.0470435e+08 (3363)
-9050  Obj 9.085733e+09 Primal inf 1.9946535e+08 (3343)
-9412  Obj 9.8510392e+09 Primal inf 1.9375142e+08 (3314)
-9774  Obj 1.0396867e+10 Primal inf 1.8183844e+08 (3211)
-10136  Obj 1.1231802e+10 Primal inf 1.6004685e+08 (3120)
-10498  Obj 1.2052908e+10 Primal inf 1.525137e+08 (3072)
-10860  Obj 1.3018317e+10 Primal inf 1.3788882e+08 (2962)
-11222  Obj 1.3982347e+10 Primal inf 1.2776496e+08 (2834)
-11584  Obj 1.5051631e+10 Primal inf 1.1522189e+08 (2716)
-11946  Obj 1.5758807e+10 Primal inf 2.8470938e+08 (6283)
-12308  Obj 1.6058239e+10 Primal inf 1.73256e+08 (4356)
-12670  Obj 1.6343074e+10 Primal inf 1.9005439e+08 (4255)
-13032  Obj 1.6518896e+10 Primal inf 3.5136232e+08 (6006)
-13394  Obj 1.6914757e+10 Primal inf 2.9134601e+08 (4082)
-13756  Obj 1.7480497e+10 Primal inf 3.0444203e+08 (4080)
-14118  Obj 1.8204522e+10 Primal inf 3.135408e+08 (4147)
-14480  Obj 1.8809472e+10 Primal inf 1.0702363e+09 (11295)
-14842  Obj 1.9303471e+10 Primal inf 6.5665248e+08 (11047)
-15204  Obj 1.9939625e+10 Primal inf 3.2504084e+08 (4012)
-15566  Obj 2.0542191e+10 Primal inf 3.4631532e+08 (3963)
-15928  Obj 2.1478996e+10 Primal inf 1.1717958e+08 (3476)
-16290  Obj 2.2349618e+10 Primal inf 1.1173589e+08 (3440)
-16652  Obj 2.3134886e+10 Primal inf 4.9250036e+08 (5642)
-17014  Obj 2.368181e+10 Primal inf 2.6344083e+08 (3758)
-17376  Obj 2.4246833e+10 Primal inf 2.6470794e+08 (3376)
-17738  Obj 2.4847634e+10 Primal inf 3.7672411e+09 (16825)
-18100  Obj 2.5309228e+10 Primal inf 9.5997994e+08 (4850)
-18462  Obj 2.5795532e+10 Primal inf 1.6926277e+08 (4044)
-18824  Obj 2.6370301e+10 Primal inf 9.3970491e+08 (5119)
-19186  Obj 2.6749348e+10 Primal inf 2.0237103e+08 (4013)
-19548  Obj 2.6825886e+10 Primal inf 45296715 (2235)
-19910  Obj 2.6898838e+10 Primal inf 84419260 (4576)
-20272  Obj 2.7093344e+10 Primal inf 25114397 (2988)
-20634  Obj 2.7409537e+10 Primal inf 11748081 (856)
-20996  Obj 2.7520857e+10 Primal inf 401656.68 (165)
-21174  Obj 2.7532295e+10
+Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033165059 ( 6.4525769%) - largest zero change 0.00033012146
+0  Obj 0 Primal inf 1.7358713e+08 (2190)
+362  Obj 1543.4857 Primal inf 2.0321318e+08 (2527)
+724  Obj 19832.97 Primal inf 2.3881486e+08 (2849)
+1086  Obj 68606166 Primal inf 2.6347822e+08 (3076)
+1448  Obj 1.5756001e+08 Primal inf 2.9079848e+08 (3241)
+1810  Obj 3.0625936e+09 Primal inf 2.8688716e+08 (3331)
+2172  Obj 3.3794089e+09 Primal inf 2.9465038e+08 (3413)
+2534  Obj 3.6678922e+09 Primal inf 3.01542e+08 (3466)
+2896  Obj 4.0392432e+09 Primal inf 3.0363182e+08 (3516)
+3258  Obj 4.1872803e+09 Primal inf 3.0117201e+08 (3557)
+3620  Obj 4.3128171e+09 Primal inf 2.9846672e+08 (3585)
+3982  Obj 4.44975e+09 Primal inf 3.0299305e+08 (3632)
+4344  Obj 4.5004666e+09 Primal inf 3.1235367e+08 (3669)
+4706  Obj 4.7258007e+09 Primal inf 2.9736591e+08 (3697)
+5068  Obj 5.0632555e+09 Primal inf 2.9474655e+08 (3711)
+5430  Obj 5.2500656e+09 Primal inf 2.8280721e+08 (3710)
+5792  Obj 5.5452757e+09 Primal inf 2.7516092e+08 (3709)
+6154  Obj 5.745717e+09 Primal inf 2.6300869e+08 (3681)
+6516  Obj 6.1572954e+09 Primal inf 2.5425807e+08 (3643)
+6878  Obj 6.6298093e+09 Primal inf 2.4477174e+08 (3607)
+7240  Obj 6.8733334e+09 Primal inf 2.29993e+08 (3523)
+7602  Obj 7.3288347e+09 Primal inf 2.245302e+08 (3509)
+7964  Obj 7.8478549e+09 Primal inf 2.1860265e+08 (3480)
+8326  Obj 8.3921361e+09 Primal inf 2.1376705e+08 (3443)
+8688  Obj 8.5549342e+09 Primal inf 2.0865676e+08 (3419)
+9050  Obj 9.4246121e+09 Primal inf 2.00783e+08 (3382)
+9412  Obj 9.983999e+09 Primal inf 1.997405e+08 (3360)
+9774  Obj 1.0702389e+10 Primal inf 1.8388731e+08 (3286)
+10136  Obj 1.1418148e+10 Primal inf 1.7173676e+08 (3222)
+10498  Obj 1.2127245e+10 Primal inf 1.6006885e+08 (3145)
+10860  Obj 1.2818885e+10 Primal inf 1.3977635e+08 (3006)
+11222  Obj 1.3703578e+10 Primal inf 1.2937387e+08 (2873)
+11584  Obj 1.4620667e+10 Primal inf 1.1227258e+08 (2693)
+11946  Obj 1.5429609e+10 Primal inf 1.2031809e+08 (4507)
+12308  Obj 1.5510581e+10 Primal inf 2.3557398e+08 (5964)
+12670  Obj 1.5860941e+10 Primal inf 8.5380587e+08 (6057)
+13032  Obj 1.6376397e+10 Primal inf 1.5397174e+08 (4220)
+13394  Obj 1.6866099e+10 Primal inf 2.9585181e+08 (5851)
+13756  Obj 1.7496187e+10 Primal inf 2.4097312e+08 (5549)
+14118  Obj 1.7635827e+10 Primal inf 1.8795567e+09 (5682)
+14480  Obj 1.8545574e+10 Primal inf 2.7283125e+08 (5471)
+14842  Obj 1.9031068e+10 Primal inf 2.9126375e+08 (5362)
+15204  Obj 1.9605184e+10 Primal inf 1.3436363e+08 (3999)
+15566  Obj 2.0272803e+10 Primal inf 4.4288402e+08 (10167)
+15928  Obj 2.0613056e+10 Primal inf 2.3474442e+08 (3458)
+16290  Obj 2.1641938e+10 Primal inf 2.7270698e+08 (3555)
+16652  Obj 2.2491233e+10 Primal inf 4.2529333e+08 (5063)
+17014  Obj 2.3009694e+10 Primal inf 4.4977536e+08 (4744)
+17376  Obj 2.3601616e+10 Primal inf 5.2367705e+08 (11024)
+17738  Obj 2.4020182e+10 Primal inf 2.1400865e+08 (5310)
+18100  Obj 2.4575821e+10 Primal inf 7.0158694e+08 (10392)
+18462  Obj 2.5407455e+10 Primal inf 47945778 (3136)
+18824  Obj 2.5947169e+10 Primal inf 1.0700285e+08 (11848)
+19186  Obj 2.6334845e+10 Primal inf 6.262312e+08 (10013)
+19548  Obj 2.6769875e+10 Primal inf 4.5778274e+08 (10155)
+19910  Obj 2.7015558e+10 Primal inf 22865751 (2879)
+20272  Obj 2.7165525e+10 Primal inf 37071774 (8227)
+20634  Obj 2.7301647e+10 Primal inf 28187054 (1985)
+20996  Obj 2.7428264e+10 Primal inf 2.937843e+08 (7259)
+21358  Obj 2.75167e+10 Primal inf 722300.6 (1003)
+21573  Obj 2.7532295e+10
 Optimal - objective value 2.7532289e+10
 After Postsolve, objective 2.7532289e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 2.753228922e+10 - 21174 iterations time 2.112, Presolve 0.04
-Total time (CPU seconds):       2.33   (Wallclock seconds):       2.34
+Optimal objective 2.753228922e+10 - 21573 iterations time 2.452, Presolve 0.04
+Total time (CPU seconds):       2.69   (Wallclock seconds):       2.67
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
@@ -1427,7 +1422,7 @@ Total time (CPU seconds):       2.33   (Wallclock seconds):       2.34
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generator
 OCGT       70182.246
-onwind         0.000
+onwind        -0.000
 offwind    42399.533
 solar      82323.420
 Name: p_nom_opt, dtype: float64
@@ -1480,19 +1475,7 @@ Name: p_nom_opt, dtype: float64
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-INFO:linopy.model: Solve linear problem using Cbc solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve linear problem using Cbc solver
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
@@ -1501,111 +1484,112 @@ INFO:linopy.model: Solve linear problem using Cbc solver
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  53%|█████▎    | 8/15 [00:00&lt;00:00, 70.91it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  47%|████▋     | 7/15 [00:00&lt;00:00, 68.75it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 60.82it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  93%|█████████▎| 14/15 [00:00&lt;00:00, 46.92it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 51.04it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 190.67it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 142.49it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.32s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
-Version: 2.10.10 
-Build Date: Apr 19 2023 
-
-command line - cbc -printingOptions all -import /tmp/linopy-problem-iz4_vkmk.lp -solve -solu /tmp/linopy-solve-82rzdcjp.sol (default strategy 1)
-Option for printingOptions changed from normal to all
-Presolve 25230 (-25147) rows, 18665 (-3241) columns and 69120 (-32766) elements
-Perturbing problem by 0.001% of 232.80852 - largest nonzero change 0.00032089483 ( 6.9617437%) - largest zero change 0.00032065496
-0  Obj 0 Primal inf 1.7299319e+08 (2190)
-351  Obj 1493.2063 Primal inf 2.019611e+08 (2516)
-702  Obj 19768.495 Primal inf 2.3707684e+08 (2831)
-1053  Obj 1.1549821e+10 Primal inf 1.9381022e+08 (2257)
-1404  Obj 1.7620182e+10 Primal inf 2.917228e+08 (3144)
-1755  Obj 1.762027e+10 Primal inf 3.740087e+08 (3204)
-2106  Obj 1.7623518e+10 Primal inf 3.2041701e+08 (3248)
-2457  Obj 1.7623677e+10 Primal inf 4.5217242e+08 (3293)
-2808  Obj 1.7624126e+10 Primal inf 3.3797596e+08 (3347)
-3159  Obj 1.7629318e+10 Primal inf 4.2297751e+08 (3333)
-3510  Obj 1.7629381e+10 Primal inf 7.4586056e+08 (3414)
-3861  Obj 1.7629617e+10 Primal inf 5.1214998e+08 (3522)
-4212  Obj 1.7629729e+10 Primal inf 4.7389473e+08 (3592)
-4563  Obj 1.7629895e+10 Primal inf 4.9994957e+08 (3569)
-4914  Obj 1.7630331e+10 Primal inf 5.0752938e+08 (3756)
-5265  Obj 1.7644643e+10 Primal inf 1.1143298e+09 (3729)
-5616  Obj 1.7678866e+10 Primal inf 4.7464905e+08 (3774)
-5967  Obj 1.7702582e+10 Primal inf 6.3591934e+08 (3811)
-6318  Obj 1.7708007e+10 Primal inf 6.6661095e+08 (3839)
-6669  Obj 1.7766744e+10 Primal inf 6.514763e+08 (3843)
-7020  Obj 2.7055127e+10 Primal inf 1.5080934e+09 (3819)
-7371  Obj 2.7085805e+10 Primal inf 5.1651111e+08 (3804)
-7722  Obj 4.0875435e+10 Primal inf 4.018669e+08 (3934)
-8073  Obj 4.0875558e+10 Primal inf 4.4312166e+08 (4060)
-8424  Obj 4.0875725e+10 Primal inf 4.3704163e+08 (4165)
-8775  Obj 4.0877747e+10 Primal inf 4.4507561e+08 (4263)
-9126  Obj 4.4321005e+10 Primal inf 3.8640415e+08 (3929)
-9477  Obj 4.4321527e+10 Primal inf 4.468353e+08 (4056)
-9828  Obj 4.4322209e+10 Primal inf 3.7719085e+08 (3972)
-10179  Obj 4.4322389e+10 Primal inf 3.3567797e+08 (3842)
-10530  Obj 4.4322693e+10 Primal inf 3.4618779e+08 (3822)
-10881  Obj 4.432282e+10 Primal inf 5.0675272e+08 (3925)
-11232  Obj 4.4518679e+10 Primal inf 4.2314349e+08 (3872)
-11583  Obj 4.4535383e+10 Primal inf 4.0876152e+08 (3879)
-11934  Obj 4.4535746e+10 Primal inf 4.0183276e+08 (3864)
-12285  Obj 4.4536009e+10 Primal inf 3.6420439e+08 (3886)
-12636  Obj 4.4536233e+10 Primal inf 4.3141423e+08 (4005)
-12987  Obj 4.4536551e+10 Primal inf 7.9547182e+08 (3989)
-13338  Obj 4.454034e+10 Primal inf 4.2950001e+08 (3851)
-13689  Obj 4.4541205e+10 Primal inf 6.9347967e+08 (3908)
-14040  Obj 4.5304663e+10 Primal inf 2.8458908e+08 (3602)
-14391  Obj 5.1370715e+10 Primal inf 2.0345449e+08 (3001)
-14742  Obj 5.2187862e+10 Primal inf 8.4987245e+08 (9420)
-15093  Obj 5.2239632e+10 Primal inf 8.1551123e+08 (9591)
-15444  Obj 5.2338613e+10 Primal inf 1.0257012e+09 (9821)
-15795  Obj 5.560809e+10 Primal inf 7.9763653e+08 (5430)
-16146  Obj 5.722518e+10 Primal inf 97418274 (2496)
-16497  Obj 5.8055778e+10 Primal inf 6.2779532e+08 (8949)
-16848  Obj 5.9242602e+10 Primal inf 2.9036167e+09 (9311)
-17199  Obj 6.0941764e+10 Primal inf 1.1963173e+08 (2570)
-17550  Obj 6.1667e+10 Primal inf 2.5283118e+08 (2904)
-17901  Obj 6.1683882e+10 Primal inf 5.4950137e+08 (3219)
-18252  Obj 6.2086071e+10 Primal inf 2.1176798e+08 (3055)
-18603  Obj 6.2208168e+10 Primal inf 3.7587043e+08 (3317)
-18949  Obj 6.2273584e+10 Primal inf 3.888203e+08 (3241)
-19300  Obj 6.3000287e+10 Primal inf 2.4756172e+09 (6560)
-19651  Obj 6.3850263e+10 Primal inf 2.630614e+08 (3240)
-20002  Obj 6.4030173e+10 Primal inf 2.7599938e+08 (3130)
-20353  Obj 6.4493377e+10 Primal inf 1.9884207e+08 (3014)
-20704  Obj 6.5112443e+10 Primal inf 37925072 (1486)
-21055  Obj 6.5534463e+10 Primal inf 29320962 (1234)
-21406  Obj 6.5557353e+10 Primal inf 20296656 (999)
-21757  Obj 6.5653553e+10 Primal inf 7594346.3 (757)
-22108  Obj 6.5701993e+10 Primal inf 3442385.5 (651)
-22459  Obj 6.5800795e+10 Primal inf 24074699 (462)
-22696  Obj 6.5813275e+10
-Optimal - objective value 6.581318e+10
-After Postsolve, objective 6.581318e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 6.581318003e+10 - 22696 iterations time 4.662, Presolve 0.03
-Total time (CPU seconds):       4.91   (Wallclock seconds):       4.92
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.36s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
 Status: ok
 Termination condition: optimal
 Solution: 21906 primals, 50377 duals
-Objective: 6.58e+10
+Objective: 6.10e+10
 Solver model: not available
-Solver message: Optimal - objective value 65813180032.18479919
+Solver message: Optimal - objective value 61044271610.31913757
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
+Version: 2.10.10 
+Build Date: Apr 19 2023 
+
+command line - cbc -printingOptions all -import /tmp/linopy-problem-lndymv3p.lp -solve -solu /tmp/linopy-solve-pn1ad9__.sol (default strategy 1)
+Option for printingOptions changed from normal to all
+Presolve 25230 (-25147) rows, 18665 (-3241) columns and 69120 (-32766) elements
+Perturbing problem by 0.001% of 231.23943 - largest nonzero change 0.00030699396 ( 7.1617767%) - largest zero change 0.00030695614
+0  Obj 0 Primal inf 1.8152884e+08 (2190)
+351  Obj 1546.51 Primal inf 2.0873427e+08 (2519)
+702  Obj 2874.2512 Primal inf 2.417313e+08 (2837)
+1053  Obj 1.7441828e+10 Primal inf 2.5610731e+08 (3141)
+1404  Obj 1.7441837e+10 Primal inf 2.7336886e+08 (3226)
+1755  Obj 1.7442144e+10 Primal inf 2.9390083e+08 (3273)
+2106  Obj 1.746325e+10 Primal inf 3.1024338e+08 (3355)
+2457  Obj 2.610895e+10 Primal inf 3.4626519e+08 (3374)
+2808  Obj 2.6109385e+10 Primal inf 2.9024368e+08 (3382)
+3159  Obj 2.6109744e+10 Primal inf 2.7803287e+08 (3417)
+3510  Obj 2.6109992e+10 Primal inf 3.1269462e+08 (3490)
+3861  Obj 2.6141746e+10 Primal inf 3.6961916e+08 (3613)
+4212  Obj 2.6152772e+10 Primal inf 3.4007139e+08 (3545)
+4563  Obj 2.6152951e+10 Primal inf 4.7109268e+08 (3549)
+4914  Obj 2.616564e+10 Primal inf 3.6930343e+08 (3545)
+5265  Obj 2.6180648e+10 Primal inf 3.7264903e+08 (3529)
+5616  Obj 2.6194775e+10 Primal inf 4.0993813e+08 (3569)
+5967  Obj 3.7271398e+10 Primal inf 4.9623681e+08 (9179)
+6318  Obj 3.7756864e+10 Primal inf 3.2948445e+08 (3083)
+6669  Obj 3.7757255e+10 Primal inf 2.5923758e+08 (3043)
+7020  Obj 3.7757389e+10 Primal inf 2.8304033e+08 (3108)
+7371  Obj 3.7757405e+10 Primal inf 3.3811533e+08 (3190)
+7722  Obj 3.7757576e+10 Primal inf 3.6652752e+08 (3165)
+8073  Obj 3.7757725e+10 Primal inf 3.2014589e+08 (3169)
+8424  Obj 3.7757882e+10 Primal inf 3.0897342e+08 (3157)
+8775  Obj 3.7757988e+10 Primal inf 3.9030276e+08 (3202)
+9126  Obj 3.7764759e+10 Primal inf 3.3507342e+08 (3259)
+9477  Obj 3.7764838e+10 Primal inf 4.3040296e+08 (3232)
+9828  Obj 3.7765009e+10 Primal inf 4.3497963e+08 (3233)
+10179  Obj 3.7765263e+10 Primal inf 3.0513715e+08 (3157)
+10530  Obj 3.7795521e+10 Primal inf 1.9304819e+09 (9399)
+10881  Obj 3.9389549e+10 Primal inf 7.8146183e+08 (8928)
+11232  Obj 4.0717169e+10 Primal inf 4.8400617e+08 (3732)
+11583  Obj 4.1097055e+10 Primal inf 4.6196815e+08 (4163)
+11934  Obj 4.4709587e+10 Primal inf 2.7701395e+09 (9949)
+12285  Obj 5.0342291e+10 Primal inf 7.8502487e+08 (8944)
+12636  Obj 5.1034803e+10 Primal inf 4.5876414e+08 (8628)
+12987  Obj 5.1727529e+10 Primal inf 1.2671306e+09 (6522)
+13338  Obj 5.353119e+10 Primal inf 1.8199642e+09 (6744)
+13689  Obj 5.3801985e+10 Primal inf 3.1495943e+09 (11808)
+14040  Obj 5.4021244e+10 Primal inf 8.7513523e+08 (11465)
+14391  Obj 5.4158683e+10 Primal inf 2.4805648e+08 (3241)
+14742  Obj 5.4172602e+10 Primal inf 3.5987363e+08 (3467)
+15093  Obj 5.4187738e+10 Primal inf 2.7076411e+08 (3756)
+15444  Obj 5.6120792e+10 Primal inf 2.988424e+08 (4073)
+15795  Obj 5.6280346e+10 Primal inf 4.4831009e+08 (5804)
+16146  Obj 5.6617776e+10 Primal inf 7.1084335e+08 (5821)
+16497  Obj 5.6814359e+10 Primal inf 3.2371012e+08 (8367)
+16848  Obj 5.713718e+10 Primal inf 3.4091791e+08 (5125)
+17199  Obj 5.7154957e+10 Primal inf 1.0650485e+09 (6065)
+17550  Obj 5.7581527e+10 Primal inf 5.282295e+08 (5469)
+17901  Obj 5.7664951e+10 Primal inf 2.7357485e+08 (3164)
+18252  Obj 5.8175181e+10 Primal inf 6.2703202e+08 (5417)
+18603  Obj 5.867082e+10 Primal inf 5.691256e+08 (5316)
+18954  Obj 5.9454153e+10 Primal inf 1.4086683e+09 (6121)
+19305  Obj 5.9475266e+10 Primal inf 8.2078323e+08 (3755)
+19656  Obj 5.9502135e+10 Primal inf 6.2755562e+08 (3627)
+20007  Obj 5.9724299e+10 Primal inf 28995934 (1493)
+20328  Obj 5.9788884e+10 Primal inf 1.6269939e+09 (6487)
+20679  Obj 5.993445e+10 Primal inf 2.0215213e+09 (6275)
+21030  Obj 6.0816501e+10 Primal inf 1.229411e+08 (1884)
+21381  Obj 6.0960551e+10 Primal inf 9.0720175e+08 (4323)
+21732  Obj 6.1034832e+10 Primal inf 10991004 (514)
+22061  Obj 6.1044363e+10
+Optimal - objective value 6.1044272e+10
+After Postsolve, objective 6.1044272e+10, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 6.104427161e+10 - 22061 iterations time 4.462, Presolve 0.04
+Total time (CPU seconds):       4.69   (Wallclock seconds):       4.69
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
@@ -1623,10 +1607,10 @@ Solver message: Optimal - objective value 65813180032.18479919
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generator
-OCGT            0.000
-onwind     225963.170
-offwind     76925.172
-solar      248437.260
+OCGT           -0.00
+onwind     204721.81
+offwind     79600.83
+solar      248107.69
 Name: p_nom_opt, dtype: float64
 </pre></div>
 </div>
@@ -1640,8 +1624,8 @@ Name: p_nom_opt, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>StorageUnit
-battery storage                 34106.690
-hydrogen storage underground    60603.643
+battery storage                 25414.245
+hydrogen storage underground    53296.658
 Name: p_nom_opt, dtype: float64
 </pre></div>
 </div>
@@ -1655,8 +1639,8 @@ Name: p_nom_opt, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>StorageUnit
-battery storage                   204.640140
-hydrogen storage underground    10181.412024
+battery storage                  152.485470
+hydrogen storage underground    8953.838544
 dtype: float64
 </pre></div>
 </div>
@@ -1670,12 +1654,12 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/plotting/_matplotlib/core.py:1598: UserWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/plotting/_matplotlib/core.py:1600: UserWarning:
 
 Attempting to set identical low and high ylims makes transformation singular; automatically expanding.
 </pre></div>
 </div>
-<img alt="_images/3f5897d122f5da10eac8e55f52d76bb7d19edbd8a8aa855c4afa7303d5033eee.png" src="_images/3f5897d122f5da10eac8e55f52d76bb7d19edbd8a8aa855c4afa7303d5033eee.png" />
+<img alt="_images/e2ee12d720c6b89111b22ea1860ce91d3ea233f75aa5924b517c88a1548bb0c4.png" src="_images/e2ee12d720c6b89111b22ea1860ce91d3ea233f75aa5924b517c88a1548bb0c4.png" />
 </div>
 </div>
 <p>We are also keen to see what technologies constitute the largest cost components. For that we’re going to define a small helper function:</p>
@@ -1707,12 +1691,12 @@ Attempting to set identical low and high ylims makes transformation singular; au
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>carrier
-battery storage                  3289.077324
-hydrogen storage underground    16994.853645
+battery storage                  2450.821728
+hydrogen storage underground    14718.372895
 OCGT                                0.000000
-offwind                         12168.412647
-onwind                          21803.629913
-solar                           11557.206875
+offwind                         12591.554095
+onwind                          19741.697969
+solar                           11541.825126
 dtype: float64
 </pre></div>
 </div>
@@ -1729,7 +1713,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/3e08e559644483fdf004c99f8f830c4daef1736e2faec69b43d4ab26539b0598.png" src="_images/3e08e559644483fdf004c99f8f830c4daef1736e2faec69b43d4ab26539b0598.png" />
+<img alt="_images/e3ad11b4af7399c2d10d3abd139c31bdc23693bb13c2aa44fd8ee08d7c92df87.png" src="_images/e3ad11b4af7399c2d10d3abd139c31bdc23693bb13c2aa44fd8ee08d7c92df87.png" />
 </div>
 </div>
 <p>or use to compute the cost per unit of electricity consumed:</p>
@@ -1747,7 +1731,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>137.41834048013087
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>127.46082892309398
 </pre></div>
 </div>
 </div>
@@ -1782,19 +1766,7 @@ dtype: float64
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-INFO:linopy.model: Solve linear problem using Cbc solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve linear problem using Cbc solver
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
@@ -1803,22 +1775,25 @@ INFO:linopy.model: Solve linear problem using Cbc solver
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  53%|█████▎    | 8/15 [00:00&lt;00:00, 70.76it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  47%|████▋     | 7/15 [00:00&lt;00:00, 69.95it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 60.86it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  93%|█████████▎| 14/15 [00:00&lt;00:00, 47.43it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 51.64it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 190.78it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 141.67it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.32s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.36s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -1827,96 +1802,86 @@ Termination condition: optimal
 Solution: 21906 primals, 50377 duals
 Objective: 2.75e+10
 Solver model: not available
-Solver message: Optimal - objective value 27532289223.69231415
+Solver message: Optimal - objective value 27532289223.69249725
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-7atizc8a.lp -solve -solu /tmp/linopy-solve-hyxfs6j0.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-_jkc8z1_.lp -solve -solu /tmp/linopy-solve-f1b7jtr3.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 27421 (-22956) rows, 20856 (-1050) columns and 77880 (-24006) elements
-Perturbing problem by 0.001% of 232.80852 - largest nonzero change 0.00033269303 ( 6.8859498%) - largest zero change 0.0003312509
-0  Obj 0 Primal inf 1.7299319e+08 (2190)
-362  Obj 1533.1194 Primal inf 2.0311713e+08 (2526)
-724  Obj 57854.02 Primal inf 2.3613949e+08 (2828)
-1086  Obj 2.7945624e+09 Primal inf 2.6149483e+08 (3052)
-1448  Obj 3.028221e+09 Primal inf 2.7838941e+08 (3215)
-1810  Obj 3.2790364e+09 Primal inf 2.8919513e+08 (3325)
-2172  Obj 3.5661458e+09 Primal inf 2.9340495e+08 (3404)
-2534  Obj 3.8615063e+09 Primal inf 3.0078977e+08 (3476)
-2896  Obj 4.1368103e+09 Primal inf 3.0506132e+08 (3523)
-3258  Obj 4.35539e+09 Primal inf 3.0659227e+08 (3566)
-3620  Obj 4.5115102e+09 Primal inf 2.9965418e+08 (3578)
-3982  Obj 4.7012691e+09 Primal inf 3.0619855e+08 (3619)
-4344  Obj 4.929369e+09 Primal inf 2.9669713e+08 (3640)
-4706  Obj 5.0927827e+09 Primal inf 2.9536911e+08 (3672)
-5068  Obj 5.436143e+09 Primal inf 2.8590574e+08 (3668)
-5430  Obj 5.7259353e+09 Primal inf 2.794528e+08 (3668)
-5792  Obj 6.0526507e+09 Primal inf 2.7091083e+08 (3659)
-6154  Obj 6.1922592e+09 Primal inf 2.6075623e+08 (3640)
-6516  Obj 6.5929942e+09 Primal inf 2.4730128e+08 (3596)
-6878  Obj 6.8999994e+09 Primal inf 2.3833123e+08 (3580)
-7240  Obj 7.321848e+09 Primal inf 2.2978354e+08 (3521)
-7602  Obj 7.5556003e+09 Primal inf 2.2398371e+08 (3471)
-7964  Obj 8.0534511e+09 Primal inf 2.1426713e+08 (3430)
-8326  Obj 8.3290574e+09 Primal inf 2.1103598e+08 (3397)
-8688  Obj 8.5715647e+09 Primal inf 2.0470435e+08 (3363)
-9050  Obj 9.085733e+09 Primal inf 1.9946535e+08 (3343)
-9412  Obj 9.8510392e+09 Primal inf 1.9375142e+08 (3314)
-9774  Obj 1.0396867e+10 Primal inf 1.8183844e+08 (3211)
-10136  Obj 1.1231802e+10 Primal inf 1.6004685e+08 (3120)
-10498  Obj 1.2052908e+10 Primal inf 1.525137e+08 (3072)
-10860  Obj 1.3018317e+10 Primal inf 1.3788882e+08 (2962)
-11222  Obj 1.3982347e+10 Primal inf 1.2776496e+08 (2834)
-11584  Obj 1.5051631e+10 Primal inf 1.1522189e+08 (2716)
-11946  Obj 1.5758807e+10 Primal inf 2.8470938e+08 (6283)
-12308  Obj 1.6058239e+10 Primal inf 1.73256e+08 (4356)
-12670  Obj 1.6343074e+10 Primal inf 1.9005439e+08 (4255)
-13032  Obj 1.6518896e+10 Primal inf 3.5136232e+08 (6006)
-13394  Obj 1.6914757e+10 Primal inf 2.9134601e+08 (4082)
-13756  Obj 1.7480497e+10 Primal inf 3.0444203e+08 (4080)
-14118  Obj 1.8204522e+10 Primal inf 3.1405383e+08 (4145)
-14480  Obj 1.8809472e+10 Primal inf 1.0926059e+09 (11298)
-14842  Obj 1.9304848e+10 Primal inf 2.3371545e+08 (4025)
-15204  Obj 1.9900352e+10 Primal inf 6.0002038e+09 (11195)
-15566  Obj 2.0333682e+10 Primal inf 1.3707095e+08 (10472)
-15928  Obj 2.0607995e+10 Primal inf 1.5919249e+08 (4063)
-16290  Obj 2.1742181e+10 Primal inf 3.1900747e+08 (4007)
-16652  Obj 2.2731761e+10 Primal inf 3.8925361e+08 (4091)
-17014  Obj 2.3726576e+10 Primal inf 1.058705e+08 (3349)
-17376  Obj 2.3976541e+10 Primal inf 1.2450393e+08 (4443)
-17738  Obj 2.4672868e+10 Primal inf 2.8953535e+09 (9786)
-18100  Obj 2.5411014e+10 Primal inf 4.0616379e+08 (3355)
-18462  Obj 2.5960218e+10 Primal inf 4.4814934e+09 (16678)
-18824  Obj 2.6569949e+10 Primal inf 1.0859145e+09 (3718)
-19186  Obj 2.6726753e+10 Primal inf 1.6716351e+09 (5847)
-19548  Obj 2.6814302e+10 Primal inf 34121054 (2371)
-19910  Obj 2.7025862e+10 Primal inf 2.7141968e+08 (9735)
-20272  Obj 2.7343597e+10 Primal inf 6399664 (809)
-20634  Obj 2.7439116e+10 Primal inf 2281471.9 (390)
-20996  Obj 2.753219e+10 Primal inf 2645.4191 (27)
-21013  Obj 2.7532295e+10
+Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033165059 ( 6.4525769%) - largest zero change 0.00033012146
+0  Obj 0 Primal inf 1.7358713e+08 (2190)
+362  Obj 1543.4857 Primal inf 2.0321318e+08 (2527)
+724  Obj 19832.97 Primal inf 2.3881486e+08 (2849)
+1086  Obj 68606166 Primal inf 2.6347822e+08 (3076)
+1448  Obj 1.5756001e+08 Primal inf 2.9079848e+08 (3241)
+1810  Obj 3.0625936e+09 Primal inf 2.8688716e+08 (3331)
+2172  Obj 3.3794089e+09 Primal inf 2.9465038e+08 (3413)
+2534  Obj 3.6678922e+09 Primal inf 3.01542e+08 (3466)
+2896  Obj 4.0392432e+09 Primal inf 3.0363182e+08 (3516)
+3258  Obj 4.1872803e+09 Primal inf 3.0117201e+08 (3557)
+3620  Obj 4.3128171e+09 Primal inf 2.9846672e+08 (3585)
+3982  Obj 4.44975e+09 Primal inf 3.0299305e+08 (3632)
+4344  Obj 4.5004666e+09 Primal inf 3.1235367e+08 (3669)
+4706  Obj 4.7258007e+09 Primal inf 2.9736591e+08 (3697)
+5068  Obj 5.0632555e+09 Primal inf 2.9474655e+08 (3711)
+5430  Obj 5.2500656e+09 Primal inf 2.8280721e+08 (3710)
+5792  Obj 5.5452757e+09 Primal inf 2.7516092e+08 (3709)
+6154  Obj 5.745717e+09 Primal inf 2.6300869e+08 (3681)
+6516  Obj 6.1572954e+09 Primal inf 2.5425807e+08 (3643)
+6878  Obj 6.6298093e+09 Primal inf 2.4477174e+08 (3607)
+7240  Obj 6.8733334e+09 Primal inf 2.29993e+08 (3523)
+7602  Obj 7.3288347e+09 Primal inf 2.245302e+08 (3509)
+7964  Obj 7.8478549e+09 Primal inf 2.1860265e+08 (3480)
+8326  Obj 8.3921361e+09 Primal inf 2.1376705e+08 (3443)
+8688  Obj 8.5549342e+09 Primal inf 2.0865676e+08 (3419)
+9050  Obj 9.4246121e+09 Primal inf 2.00783e+08 (3382)
+9412  Obj 9.983999e+09 Primal inf 1.997405e+08 (3360)
+9774  Obj 1.0702389e+10 Primal inf 1.8388731e+08 (3286)
+10136  Obj 1.1418148e+10 Primal inf 1.7173676e+08 (3222)
+10498  Obj 1.2127245e+10 Primal inf 1.6006885e+08 (3145)
+10860  Obj 1.2818885e+10 Primal inf 1.3977635e+08 (3006)
+11222  Obj 1.3703578e+10 Primal inf 1.2937387e+08 (2873)
+11584  Obj 1.4620667e+10 Primal inf 1.1227258e+08 (2693)
+11946  Obj 1.5429609e+10 Primal inf 1.2031809e+08 (4507)
+12308  Obj 1.5510581e+10 Primal inf 2.3557398e+08 (5964)
+12670  Obj 1.5860941e+10 Primal inf 8.5380587e+08 (6057)
+13032  Obj 1.6376397e+10 Primal inf 1.5397174e+08 (4220)
+13394  Obj 1.6866099e+10 Primal inf 2.9585181e+08 (5851)
+13756  Obj 1.7496187e+10 Primal inf 2.4097312e+08 (5549)
+14118  Obj 1.7635827e+10 Primal inf 1.8795567e+09 (5682)
+14480  Obj 1.8545574e+10 Primal inf 2.7283125e+08 (5471)
+14842  Obj 1.9031068e+10 Primal inf 2.9126375e+08 (5362)
+15204  Obj 1.9605184e+10 Primal inf 1.3436363e+08 (3999)
+15566  Obj 2.0272803e+10 Primal inf 4.6068034e+08 (10168)
+15928  Obj 2.0613056e+10 Primal inf 2.3474442e+08 (3458)
+16290  Obj 2.1641938e+10 Primal inf 2.7270698e+08 (3555)
+16652  Obj 2.2487055e+10 Primal inf 1.4957687e+08 (9472)
+17014  Obj 2.3099606e+10 Primal inf 6.8323035e+08 (6069)
+17376  Obj 2.3759526e+10 Primal inf 1.3148284e+08 (4210)
+17738  Obj 2.4122438e+10 Primal inf 5.6933951e+08 (10228)
+18100  Obj 2.467883e+10 Primal inf 8.254048e+08 (5579)
+18462  Obj 2.5273746e+10 Primal inf 2.7603008e+08 (4062)
+18824  Obj 2.5795064e+10 Primal inf 96874603 (3412)
+19186  Obj 2.6020775e+10 Primal inf 2.4085295e+08 (4166)
+19548  Obj 2.6395807e+10 Primal inf 1.7226387e+08 (3295)
+19910  Obj 2.6569161e+10 Primal inf 66965020 (9368)
+20272  Obj 2.6777608e+10 Primal inf 1.2718694e+08 (5078)
+20634  Obj 2.7108624e+10 Primal inf 51515515 (10161)
+20996  Obj 2.7221626e+10 Primal inf 27119258 (2392)
+21358  Obj 2.7364144e+10 Primal inf 70956385 (2886)
+21720  Obj 2.7455693e+10 Primal inf 1676940 (340)
+22078  Obj 2.7532295e+10
 Optimal - objective value 2.7532289e+10
 After Postsolve, objective 2.7532289e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 2.753228922e+10 - 21013 iterations time 2.102, Presolve 0.04
-Total time (CPU seconds):       2.34   (Wallclock seconds):       2.32
+Optimal objective 2.753228922e+10 - 22078 iterations time 3.282, Presolve 0.04
+Total time (CPU seconds):       3.51   (Wallclock seconds):       3.51
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-INFO:linopy.model: Solve linear problem using Cbc solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve linear problem using Cbc solver
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
@@ -1925,22 +1890,25 @@ INFO:linopy.model: Solve linear problem using Cbc solver
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  53%|█████▎    | 8/15 [00:00&lt;00:00, 70.70it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  47%|████▋     | 7/15 [00:00&lt;00:00, 69.45it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 60.79it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  93%|█████████▎| 14/15 [00:00&lt;00:00, 47.58it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 51.72it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 190.28it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 144.64it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.32s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.36s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -1949,98 +1917,84 @@ Termination condition: optimal
 Solution: 21906 primals, 50377 duals
 Objective: 2.79e+10
 Solver model: not available
-Solver message: Optimal - objective value 27888335402.39854813
+Solver message: Optimal - objective value 27888335402.39853287
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-67rlvtqi.lp -solve -solu /tmp/linopy-solve-mnosiom0.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-8a6ybzhb.lp -solve -solu /tmp/linopy-solve-x_mu1jmu.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 27421 (-22956) rows, 20856 (-1050) columns and 77880 (-24006) elements
-Perturbing problem by 0.001% of 232.80852 - largest nonzero change 0.00033269303 ( 6.8859498%) - largest zero change 0.0003312509
-0  Obj 0 Primal inf 1.7299319e+08 (2190)
-362  Obj 1533.1194 Primal inf 2.0311713e+08 (2526)
-724  Obj 57854.02 Primal inf 2.3613949e+08 (2828)
-1086  Obj 2.7945624e+09 Primal inf 2.6149483e+08 (3052)
-1448  Obj 3.028221e+09 Primal inf 2.7838941e+08 (3215)
-1810  Obj 3.2790364e+09 Primal inf 2.8919513e+08 (3325)
-2172  Obj 3.5661458e+09 Primal inf 2.9340495e+08 (3404)
-2534  Obj 3.8615063e+09 Primal inf 3.0078977e+08 (3476)
-2896  Obj 4.1368103e+09 Primal inf 3.0506132e+08 (3523)
-3258  Obj 4.35539e+09 Primal inf 3.0659227e+08 (3566)
-3620  Obj 4.5115102e+09 Primal inf 2.9965418e+08 (3578)
-3982  Obj 4.7012691e+09 Primal inf 3.0619855e+08 (3619)
-4344  Obj 4.929369e+09 Primal inf 2.9669713e+08 (3640)
-4706  Obj 5.0927827e+09 Primal inf 2.9536911e+08 (3672)
-5068  Obj 5.436143e+09 Primal inf 2.8590574e+08 (3668)
-5430  Obj 5.7259353e+09 Primal inf 2.794528e+08 (3668)
-5792  Obj 6.0526507e+09 Primal inf 2.7091083e+08 (3659)
-6154  Obj 6.1922592e+09 Primal inf 2.6075623e+08 (3640)
-6516  Obj 6.5929942e+09 Primal inf 2.4730128e+08 (3596)
-6878  Obj 6.8999994e+09 Primal inf 2.3833123e+08 (3580)
-7240  Obj 7.321848e+09 Primal inf 2.2978354e+08 (3521)
-7602  Obj 7.5556003e+09 Primal inf 2.2398371e+08 (3471)
-7964  Obj 8.0534511e+09 Primal inf 2.1426713e+08 (3430)
-8326  Obj 8.3290574e+09 Primal inf 2.1103598e+08 (3397)
-8688  Obj 8.5715647e+09 Primal inf 2.0470435e+08 (3363)
-9050  Obj 9.085733e+09 Primal inf 1.9946535e+08 (3343)
-9412  Obj 9.8510392e+09 Primal inf 1.9375142e+08 (3314)
-9774  Obj 1.0396867e+10 Primal inf 1.8183844e+08 (3211)
-10136  Obj 1.1231802e+10 Primal inf 1.6004685e+08 (3120)
-10498  Obj 1.2052908e+10 Primal inf 1.525137e+08 (3072)
-10860  Obj 1.3018317e+10 Primal inf 1.3788882e+08 (2962)
-11222  Obj 1.3982347e+10 Primal inf 1.2904994e+08 (2835)
-11584  Obj 1.466828e+10 Primal inf 1.4408635e+08 (4697)
-11946  Obj 1.5225651e+10 Primal inf 1.4863842e+08 (4638)
-12308  Obj 1.5343907e+10 Primal inf 1.8739454e+08 (4617)
-12670  Obj 1.5921382e+10 Primal inf 2.1527756e+08 (4548)
-13032  Obj 1.6124383e+10 Primal inf 2.4662282e+08 (4509)
-13394  Obj 1.6688295e+10 Primal inf 2.9324339e+08 (4532)
-13756  Obj 1.8464292e+10 Primal inf 3.0119727e+08 (4547)
-14118  Obj 1.9806029e+10 Primal inf 2.0074334e+08 (3192)
-14480  Obj 2.0798995e+10 Primal inf 4.088741e+08 (5559)
-14842  Obj 2.1837681e+10 Primal inf 4.6387508e+08 (10370)
-15204  Obj 2.24189e+10 Primal inf 4.1927085e+08 (5843)
-15566  Obj 2.3304832e+10 Primal inf 88165745 (3967)
-15928  Obj 2.4219445e+10 Primal inf 1.0386084e+08 (3693)
-16290  Obj 2.4868165e+10 Primal inf 1.3021303e+09 (10086)
-16652  Obj 2.5342226e+10 Primal inf 4.0383877e+09 (7549)
-17014  Obj 2.5768246e+10 Primal inf 53074003 (2467)
-17376  Obj 2.6137791e+10 Primal inf 4.9696697e+08 (8522)
-17738  Obj 2.6440411e+10 Primal inf 46869489 (3331)
-18100  Obj 2.6796819e+10 Primal inf 34701438 (9088)
-18462  Obj 2.7072385e+10 Primal inf 1.9777097e+08 (8954)
-18824  Obj 2.7240373e+10 Primal inf 40435308 (9018)
-19186  Obj 2.7375909e+10 Primal inf 19487768 (2421)
-19548  Obj 2.7452418e+10 Primal inf 51322550 (8387)
-19910  Obj 2.7479952e+10 Primal inf 1.5107628e+08 (1921)
-20272  Obj 2.7656287e+10 Primal inf 6559855.8 (2405)
-20634  Obj 2.7721488e+10 Primal inf 95991651 (1979)
-20996  Obj 2.7804831e+10 Primal inf 2313324.9 (1923)
-21358  Obj 2.7863276e+10 Primal inf 1814775.6 (657)
-21720  Obj 2.7883693e+10 Primal inf 72246.148 (244)
-21846  Obj 2.7888341e+10
+Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033165059 ( 6.4525769%) - largest zero change 0.00033012146
+0  Obj 0 Primal inf 1.7358713e+08 (2190)
+362  Obj 1543.4857 Primal inf 2.0321318e+08 (2527)
+724  Obj 19832.97 Primal inf 2.3881486e+08 (2849)
+1086  Obj 68606166 Primal inf 2.6347822e+08 (3076)
+1448  Obj 1.5756001e+08 Primal inf 2.9079848e+08 (3241)
+1810  Obj 3.0625936e+09 Primal inf 2.8688716e+08 (3331)
+2172  Obj 3.3794089e+09 Primal inf 2.9465038e+08 (3413)
+2534  Obj 3.6678922e+09 Primal inf 3.01542e+08 (3466)
+2896  Obj 4.0392432e+09 Primal inf 3.0363182e+08 (3516)
+3258  Obj 4.1872803e+09 Primal inf 3.0117201e+08 (3557)
+3620  Obj 4.3128171e+09 Primal inf 2.9846672e+08 (3585)
+3982  Obj 4.44975e+09 Primal inf 3.0299305e+08 (3632)
+4344  Obj 4.5004666e+09 Primal inf 3.1235367e+08 (3669)
+4706  Obj 4.7258007e+09 Primal inf 2.9736591e+08 (3697)
+5068  Obj 5.0632555e+09 Primal inf 2.9474655e+08 (3711)
+5430  Obj 5.2500656e+09 Primal inf 2.8280721e+08 (3710)
+5792  Obj 5.5452757e+09 Primal inf 2.7516092e+08 (3709)
+6154  Obj 5.745717e+09 Primal inf 2.6300869e+08 (3681)
+6516  Obj 6.1572954e+09 Primal inf 2.5425807e+08 (3643)
+6878  Obj 6.6298093e+09 Primal inf 2.4477174e+08 (3607)
+7240  Obj 6.8733334e+09 Primal inf 2.29993e+08 (3523)
+7602  Obj 7.3288347e+09 Primal inf 2.245302e+08 (3509)
+7964  Obj 7.8478549e+09 Primal inf 2.1860265e+08 (3480)
+8326  Obj 8.3921361e+09 Primal inf 2.1376705e+08 (3443)
+8688  Obj 8.5549342e+09 Primal inf 2.0865676e+08 (3419)
+9050  Obj 9.4246121e+09 Primal inf 2.00783e+08 (3382)
+9412  Obj 9.983999e+09 Primal inf 1.997405e+08 (3360)
+9774  Obj 1.0702389e+10 Primal inf 1.8388731e+08 (3286)
+10136  Obj 1.1418148e+10 Primal inf 1.7173676e+08 (3222)
+10498  Obj 1.2127245e+10 Primal inf 1.6006885e+08 (3145)
+10860  Obj 1.2818885e+10 Primal inf 1.3977635e+08 (3006)
+11222  Obj 1.3703578e+10 Primal inf 1.303274e+08 (2874)
+11584  Obj 1.4261462e+10 Primal inf 1.3194711e+08 (4638)
+11946  Obj 1.4923753e+10 Primal inf 1.5222116e+08 (4582)
+12308  Obj 1.5684444e+10 Primal inf 1.8615517e+08 (4567)
+12670  Obj 1.6526259e+10 Primal inf 1.1338243e+09 (10832)
+13032  Obj 1.7171331e+10 Primal inf 1.7069725e+08 (4459)
+13394  Obj 1.811913e+10 Primal inf 4.7515257e+09 (10829)
+13756  Obj 1.8974925e+10 Primal inf 2.3219815e+08 (4484)
+14118  Obj 2.0521033e+10 Primal inf 2.7350643e+08 (4499)
+14480  Obj 2.052164e+10 Primal inf 2.8355946e+08 (4445)
+14842  Obj 2.0569709e+10 Primal inf 3.9244397e+08 (4517)
+15204  Obj 2.2770223e+10 Primal inf 1.9841368e+08 (4383)
+15566  Obj 2.3916082e+10 Primal inf 1.706964e+09 (4879)
+15928  Obj 2.4406063e+10 Primal inf 5.5719277e+08 (11376)
+16290  Obj 2.5141317e+10 Primal inf 1.7990424e+08 (5351)
+16652  Obj 2.5704689e+10 Primal inf 80248899 (2875)
+17014  Obj 2.6156494e+10 Primal inf 6.3246481e+08 (8628)
+17376  Obj 2.666511e+10 Primal inf 1.7832882e+08 (10118)
+17738  Obj 2.6994086e+10 Primal inf 3.8239105e+08 (5998)
+18100  Obj 2.7122772e+10 Primal inf 1.3433181e+08 (2329)
+18462  Obj 2.7272245e+10 Primal inf 16053984 (8780)
+18824  Obj 2.735923e+10 Primal inf 24206498 (2073)
+19186  Obj 2.7525905e+10 Primal inf 34639125 (3542)
+19548  Obj 2.7725026e+10 Primal inf 7786364.3 (2286)
+19910  Obj 2.7825704e+10 Primal inf 2429938.7 (8155)
+20272  Obj 2.7833595e+10 Primal inf 72846171 (1750)
+20634  Obj 2.7852605e+10 Primal inf 764655.6 (573)
+20996  Obj 2.7882262e+10 Primal inf 466342.81 (319)
+21266  Obj 2.7888341e+10
 Optimal - objective value 2.7888335e+10
 After Postsolve, objective 2.7888335e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 2.78883354e+10 - 21846 iterations time 7.912, Presolve 0.04
-Total time (CPU seconds):       8.15   (Wallclock seconds):       8.15
+Optimal objective 2.78883354e+10 - 21266 iterations time 8.052, Presolve 0.04
+Total time (CPU seconds):       8.28   (Wallclock seconds):       8.26
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-INFO:linopy.model: Solve linear problem using Cbc solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve linear problem using Cbc solver
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
@@ -2049,96 +2003,99 @@ INFO:linopy.model: Solve linear problem using Cbc solver
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  53%|█████▎    | 8/15 [00:00&lt;00:00, 70.97it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  47%|████▋     | 7/15 [00:00&lt;00:00, 69.21it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 60.96it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  93%|█████████▎| 14/15 [00:00&lt;00:00, 47.67it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 51.86it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 191.92it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 143.23it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.32s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.36s
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-qnbn3qs3.lp -solve -solu /tmp/linopy-solve-g0y7_d_z.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-_zxk3cvf.lp -solve -solu /tmp/linopy-solve-6yfcte3f.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 27421 (-22956) rows, 20856 (-1050) columns and 77880 (-24006) elements
-Perturbing problem by 0.001% of 232.80852 - largest nonzero change 0.00033269303 ( 6.8859498%) - largest zero change 0.0003312509
-0  Obj 0 Primal inf 1.7299319e+08 (2190)
-362  Obj 1533.1194 Primal inf 2.0311713e+08 (2526)
-724  Obj 57854.02 Primal inf 2.3613949e+08 (2828)
-1086  Obj 2.7945624e+09 Primal inf 2.6149483e+08 (3052)
-1448  Obj 3.028221e+09 Primal inf 2.7838941e+08 (3215)
-1810  Obj 3.2790364e+09 Primal inf 2.8919513e+08 (3325)
-2172  Obj 3.5661458e+09 Primal inf 2.9340495e+08 (3404)
-2534  Obj 3.8615063e+09 Primal inf 3.0078977e+08 (3476)
-2896  Obj 4.1368103e+09 Primal inf 3.0506132e+08 (3523)
-3258  Obj 4.35539e+09 Primal inf 3.0659227e+08 (3566)
-3620  Obj 4.5115102e+09 Primal inf 2.9965418e+08 (3578)
-3982  Obj 4.7012691e+09 Primal inf 3.0619855e+08 (3619)
-4344  Obj 4.929369e+09 Primal inf 2.9669713e+08 (3640)
-4706  Obj 5.0927827e+09 Primal inf 2.9536911e+08 (3672)
-5068  Obj 5.436143e+09 Primal inf 2.8590574e+08 (3668)
-5430  Obj 5.7259353e+09 Primal inf 2.794528e+08 (3668)
-5792  Obj 6.0526507e+09 Primal inf 2.7091083e+08 (3659)
-6154  Obj 6.1922592e+09 Primal inf 2.6075623e+08 (3640)
-6516  Obj 6.5929942e+09 Primal inf 2.4730128e+08 (3596)
-6878  Obj 6.8999994e+09 Primal inf 2.3833123e+08 (3580)
-7240  Obj 7.321848e+09 Primal inf 2.2978354e+08 (3521)
-7602  Obj 7.5556003e+09 Primal inf 2.2398371e+08 (3471)
-7964  Obj 8.0534511e+09 Primal inf 2.1426713e+08 (3430)
-8326  Obj 8.3290574e+09 Primal inf 2.1154715e+08 (3398)
-8688  Obj 8.5715647e+09 Primal inf 2.0633831e+08 (3364)
-9050  Obj 9.682397e+09 Primal inf 2.1427809e+08 (4887)
-9412  Obj 9.6886303e+09 Primal inf 2.529289e+08 (4908)
-9774  Obj 9.704828e+09 Primal inf 2.6084472e+08 (4903)
-10136  Obj 1.0760398e+10 Primal inf 2.9881936e+08 (4810)
-10498  Obj 1.0797379e+10 Primal inf 2.9996741e+08 (4839)
-10860  Obj 1.1855959e+10 Primal inf 3.5462692e+08 (4798)
-11222  Obj 1.2456885e+10 Primal inf 3.7589544e+08 (4741)
-11584  Obj 1.246172e+10 Primal inf 4.5091986e+08 (4724)
-11946  Obj 1.286283e+10 Primal inf 4.2339496e+08 (4664)
-12308  Obj 1.2875637e+10 Primal inf 4.080516e+08 (4561)
-12670  Obj 1.3306147e+10 Primal inf 4.6696308e+08 (4568)
-13032  Obj 1.3964576e+10 Primal inf 4.9646534e+08 (4520)
-13394  Obj 1.6522008e+10 Primal inf 1.1255549e+09 (9858)
-13756  Obj 1.7520951e+10 Primal inf 9.0172701e+08 (9825)
-14118  Obj 1.9519323e+10 Primal inf 4.1939903e+10 (10572)
-14480  Obj 2.0678206e+10 Primal inf 3.762443e+08 (9577)
-14842  Obj 2.1604123e+10 Primal inf 1.6579959e+09 (9852)
-15204  Obj 2.2511088e+10 Primal inf 3.8866454e+08 (9275)
-15566  Obj 2.3434464e+10 Primal inf 1.4439749e+09 (10129)
-15928  Obj 2.4614331e+10 Primal inf 6.8854048e+08 (9756)
-16290  Obj 2.5188509e+10 Primal inf 5.9382179e+08 (14804)
-16652  Obj 2.624008e+10 Primal inf 1.5214701e+09 (15501)
-17014  Obj 2.6377172e+10 Primal inf 2.1599942e+08 (9205)
-17376  Obj 2.6848297e+10 Primal inf 6.4764775e+08 (15098)
-17738  Obj 2.7095683e+10 Primal inf 5.8762955e+08 (12961)
-18100  Obj 2.7737909e+10 Primal inf 8.531421e+08 (12179)
-18462  Obj 2.8594734e+10 Primal inf 1.121041e+09 (11473)
-18824  Obj 2.8797938e+10 Primal inf 2.3804347e+08 (11360)
-19186  Obj 2.9125184e+10 Primal inf 1.4683037e+08 (9107)
-19548  Obj 2.9632056e+10 Primal inf 7.0713116e+08 (9614)
-19910  Obj 2.9836903e+10 Primal inf 1.0275581e+08 (8584)
-20272  Obj 3.020131e+10 Primal inf 51106556 (3041)
-20634  Obj 3.0428613e+10 Primal inf 40655549 (3144)
-20996  Obj 3.0717038e+10 Primal inf 58199093 (8687)
-21358  Obj 3.0954336e+10 Primal inf 1.8172389e+08 (3159)
-21720  Obj 3.1157817e+10 Primal inf 1.4684851e+08 (8391)
-22082  Obj 3.1306301e+10 Primal inf 96536580 (4131)
-22444  Obj 3.1511655e+10 Primal inf 68393900 (8803)
-22806  Obj 3.1796963e+10 Primal inf 1.2193608e+08 (2760)
+Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033165059 ( 6.4525769%) - largest zero change 0.00033012146
+0  Obj 0 Primal inf 1.7358713e+08 (2190)
+362  Obj 1543.4857 Primal inf 2.0321318e+08 (2527)
+724  Obj 19832.97 Primal inf 2.3881486e+08 (2849)
+1086  Obj 68606166 Primal inf 2.6347822e+08 (3076)
+1448  Obj 1.5756001e+08 Primal inf 2.9079848e+08 (3241)
+1810  Obj 3.0625936e+09 Primal inf 2.8688716e+08 (3331)
+2172  Obj 3.3794089e+09 Primal inf 2.9465038e+08 (3413)
+2534  Obj 3.6678922e+09 Primal inf 3.01542e+08 (3466)
+2896  Obj 4.0392432e+09 Primal inf 3.0363182e+08 (3516)
+3258  Obj 4.1872803e+09 Primal inf 3.0117201e+08 (3557)
+3620  Obj 4.3128171e+09 Primal inf 2.9846672e+08 (3585)
+3982  Obj 4.44975e+09 Primal inf 3.0299305e+08 (3632)
+4344  Obj 4.5004666e+09 Primal inf 3.1235367e+08 (3669)
+4706  Obj 4.7258007e+09 Primal inf 2.9736591e+08 (3697)
+5068  Obj 5.0632555e+09 Primal inf 2.9474655e+08 (3711)
+5430  Obj 5.2500656e+09 Primal inf 2.8280721e+08 (3710)
+5792  Obj 5.5452757e+09 Primal inf 2.7516092e+08 (3709)
+6154  Obj 5.745717e+09 Primal inf 2.6300869e+08 (3681)
+6516  Obj 6.1572954e+09 Primal inf 2.5425807e+08 (3643)
+6878  Obj 6.6298093e+09 Primal inf 2.4477174e+08 (3607)
+7240  Obj 6.8733334e+09 Primal inf 2.29993e+08 (3523)
+7602  Obj 7.3288347e+09 Primal inf 2.245302e+08 (3509)
+7964  Obj 7.8478549e+09 Primal inf 2.1860265e+08 (3480)
+8326  Obj 8.3921361e+09 Primal inf 2.1554735e+08 (3444)
+8688  Obj 8.9605578e+09 Primal inf 2.2113968e+08 (4886)
+9050  Obj 9.1631249e+09 Primal inf 2.3531385e+08 (4873)
+9412  Obj 9.9255584e+09 Primal inf 2.4937662e+08 (4862)
+9774  Obj 1.1051789e+10 Primal inf 2.6537144e+08 (4842)
+10136  Obj 1.2444448e+10 Primal inf 3.3466986e+08 (4832)
+10498  Obj 1.2445043e+10 Primal inf 3.6173524e+08 (4764)
+10860  Obj 1.319728e+10 Primal inf 2.7791782e+08 (3614)
+11222  Obj 1.3941682e+10 Primal inf 2.7579123e+09 (10531)
+11584  Obj 1.4386488e+10 Primal inf 2.747948e+08 (4326)
+11946  Obj 1.4393479e+10 Primal inf 3.2903564e+08 (4319)
+12308  Obj 1.4410583e+10 Primal inf 3.3692406e+08 (4347)
+12670  Obj 1.4570312e+10 Primal inf 2.8860554e+09 (10142)
+13032  Obj 1.4944089e+10 Primal inf 3.4327131e+08 (4469)
+13394  Obj 1.6080015e+10 Primal inf 4.3454531e+08 (4482)
+13756  Obj 1.8571402e+10 Primal inf 5.0816655e+08 (4434)
+14118  Obj 2.0591245e+10 Primal inf 2.9769126e+08 (4793)
+14480  Obj 2.1531187e+10 Primal inf 2.3896842e+08 (4553)
+14842  Obj 2.2147872e+10 Primal inf 3.8332803e+08 (4432)
+15204  Obj 2.390307e+10 Primal inf 2.9270981e+08 (4385)
+15566  Obj 2.4293357e+10 Primal inf 1.5208712e+08 (4688)
+15928  Obj 2.4955818e+10 Primal inf 4.1040416e+08 (10289)
+16290  Obj 2.5678498e+10 Primal inf 3.6954849e+09 (12414)
+16652  Obj 2.6088002e+10 Primal inf 4.8394454e+08 (10411)
+17014  Obj 2.6530054e+10 Primal inf 7.422039e+09 (11852)
+17376  Obj 2.7082901e+10 Primal inf 2.1514694e+08 (9400)
+17738  Obj 2.7162898e+10 Primal inf 1.2934618e+08 (3897)
+18100  Obj 2.765611e+10 Primal inf 2.7362431e+08 (9267)
+18462  Obj 2.8059599e+10 Primal inf 1.4264649e+08 (9350)
+18824  Obj 2.8496325e+10 Primal inf 2.9349415e+08 (14402)
+19186  Obj 2.8905819e+10 Primal inf 3.3711798e+08 (4997)
+19548  Obj 2.9321363e+10 Primal inf 1.0049102e+08 (3819)
+19910  Obj 2.9689786e+10 Primal inf 67558342 (3380)
+20272  Obj 2.9846163e+10 Primal inf 68764222 (8586)
+20634  Obj 3.019256e+10 Primal inf 3.9610126e+09 (9655)
+20996  Obj 3.0559724e+10 Primal inf 1.4524404e+09 (9498)
+21358  Obj 3.1012442e+10 Primal inf 3.096173e+08 (8823)
+21720  Obj 3.1223699e+10 Primal inf 1.0591685e+08 (8644)
+22082  Obj 3.1462258e+10 Primal inf 21406930 (1998)
+22444  Obj 3.1636109e+10 Primal inf 32762038 (2299)
+22806  Obj 3.1767644e+10 Primal inf 3.9105729e+08 (8718)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -2147,33 +2104,21 @@ Termination condition: optimal
 Solution: 21906 primals, 50377 duals
 Objective: 3.22e+10
 Solver model: not available
-Solver message: Optimal - objective value 32192481955.19140244
+Solver message: Optimal - objective value 32192481955.19141006
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23168  Obj 3.1955471e+10 Primal inf 83959436 (2774)
-23530  Obj 3.2059272e+10 Primal inf 36714476 (3017)
-23892  Obj 3.2148527e+10 Primal inf 6577358.7 (7603)
-24254  Obj 3.2185235e+10 Primal inf 231537.73 (324)
-24477  Obj 3.219249e+10
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23168  Obj 3.1969679e+10 Primal inf 11376558 (1717)
+23530  Obj 3.2064348e+10 Primal inf 4211493.9 (1230)
+23892  Obj 3.2147845e+10 Primal inf 1647035.2 (824)
+24254  Obj 3.2186696e+10 Primal inf 549876.55 (348)
+24410  Obj 3.219249e+10
 Optimal - objective value 3.2192482e+10
 After Postsolve, objective 3.2192482e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 3.219248196e+10 - 24477 iterations time 9.412, Presolve 0.04
-Total time (CPU seconds):       9.65   (Wallclock seconds):       9.67
+Optimal objective 3.219248196e+10 - 24410 iterations time 10.192, Presolve 0.04
+Total time (CPU seconds):       10.43   (Wallclock seconds):       10.43
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-&lt;__array_function__ internals&gt;:200: RuntimeWarning:
-
-invalid value encountered in cast
-
-INFO:linopy.model: Solve linear problem using Cbc solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve linear problem using Cbc solver
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
@@ -2182,22 +2127,25 @@ INFO:linopy.model: Solve linear problem using Cbc solver
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  53%|█████▎    | 8/15 [00:00&lt;00:00, 70.68it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  47%|████▋     | 7/15 [00:00&lt;00:00, 69.52it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 60.56it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  93%|█████████▎| 14/15 [00:00&lt;00:00, 47.87it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 51.94it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 185.73it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 145.91it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.32s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.36s
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -2208,41 +2156,41 @@ INFO:linopy.model: Solve linear problem using Cbc solver
 <span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">sensitivity</span><span class="p">[</span><span class="n">co2</span><span class="p">]</span> <span class="o">=</span> <span class="n">system_cost</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pypsa/optimization/optimize.py:525,</span> in <span class="ni">OptimizationAccessor.__call__</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">523</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">optimize</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">524</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">525</span>     <span class="k">return</span> <span class="n">optimize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pypsa/optimization/optimize.py:552,</span> in <span class="ni">OptimizationAccessor.__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">550</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">optimize</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">551</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">552</span>     <span class="k">return</span> <span class="n">optimize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pypsa/optimization/optimize.py:505,</span> in <span class="ni">optimize</span><span class="nt">(n, snapshots, multi_investment_periods, transmission_losses, linearized_unit_commitment, model_kwargs, extra_functionality, solver_name, solver_options, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">503</span> <span class="k">if</span> <span class="n">extra_functionality</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">504</span>     <span class="n">extra_functionality</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">sns</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">505</span> <span class="n">status</span><span class="p">,</span> <span class="n">condition</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="n">solver_name</span><span class="p">,</span> <span class="o">**</span><span class="n">solver_options</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">507</span> <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;ok&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">508</span>     <span class="n">assign_solution</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pypsa/optimization/optimize.py:532,</span> in <span class="ni">optimize</span><span class="nt">(n, snapshots, multi_investment_periods, transmission_losses, linearized_unit_commitment, model_kwargs, extra_functionality, solver_name, solver_options, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">530</span> <span class="k">if</span> <span class="n">extra_functionality</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">531</span>     <span class="n">extra_functionality</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">sns</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">532</span> <span class="n">status</span><span class="p">,</span> <span class="n">condition</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="n">solver_name</span><span class="p">,</span> <span class="o">**</span><span class="n">solver_options</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">534</span> <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;ok&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">535</span>     <span class="n">assign_solution</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/model.py:1057,</span> in <span class="ni">Model.solve</span><span class="nt">(self, solver_name, io_api, problem_fn, solution_fn, log_fn, basis_fn, warmstart_fn, keep_files, sanitize_zeros, remote, **solver_options)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1055</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1056</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">solvers</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;run_</span><span class="si">{</span><span class="n">solver_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1057</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1058</span>         <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1059</span>         <span class="n">io_api</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1060</span>         <span class="n">problem_fn</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1061</span>         <span class="n">solution_fn</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1062</span>         <span class="n">log_fn</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1063</span>         <span class="n">warmstart_fn</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1064</span>         <span class="n">basis_fn</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1065</span>         <span class="n">keep_files</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1066</span>         <span class="o">**</span><span class="n">solver_options</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1067</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1068</span> <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1069</span>     <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="p">(</span><span class="n">problem_fn</span><span class="p">,</span> <span class="n">solution_fn</span><span class="p">):</span>
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/model.py:1042,</span> in <span class="ni">Model.solve</span><span class="nt">(self, solver_name, io_api, problem_fn, solution_fn, log_fn, basis_fn, warmstart_fn, keep_files, sanitize_zeros, remote, **solver_options)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1040</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1041</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">solvers</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;run_</span><span class="si">{</span><span class="n">solver_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1042</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1043</span>         <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1044</span>         <span class="n">io_api</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1045</span>         <span class="n">problem_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1046</span>         <span class="n">solution_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1047</span>         <span class="n">log_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1048</span>         <span class="n">warmstart_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1049</span>         <span class="n">basis_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1050</span>         <span class="n">keep_files</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1051</span>         <span class="o">**</span><span class="n">solver_options</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1052</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1053</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1054</span>     <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="p">(</span><span class="n">problem_fn</span><span class="p">,</span> <span class="n">solution_fn</span><span class="p">):</span>
 
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/solvers.py:153,</span> in <span class="ni">run_cbc</span><span class="nt">(model, io_api, problem_fn, solution_fn, log_fn, warmstart_fn, basis_fn, keep_files, **solver_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">151</span> <span class="k">if</span> <span class="n">log_fn</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">152</span>     <span class="n">p</span> <span class="o">=</span> <span class="n">sub</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">),</span> <span class="n">stdout</span><span class="o">=</span><span class="n">sub</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">sub</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">153</span>     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">readline</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">154</span>         <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">155</span>     <span class="n">p</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/solvers.py:155,</span> in <span class="ni">run_cbc</span><span class="nt">(model, io_api, problem_fn, solution_fn, log_fn, warmstart_fn, basis_fn, keep_files, **solver_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">153</span> <span class="k">if</span> <span class="n">log_fn</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">154</span>     <span class="n">p</span> <span class="o">=</span> <span class="n">sub</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">),</span> <span class="n">stdout</span><span class="o">=</span><span class="n">sub</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">sub</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">155</span>     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">readline</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">156</span>         <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">157</span>     <span class="n">p</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>

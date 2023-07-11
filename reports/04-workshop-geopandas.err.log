@@ -1,0 +1,88 @@
+Traceback (most recent call last):
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+ax = plt.axes(projection=ccrs.Mollweide())
+ax.stock_img()
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+Cell [0;32mIn[12], line 2[0m
+[1;32m      1[0m ax [38;5;241m=[39m plt[38;5;241m.[39maxes(projection[38;5;241m=[39mccrs[38;5;241m.[39mMollweide())
+[0;32m----> 2[0m [43max[49m[38;5;241;43m.[39;49m[43mstock_img[49m[43m([49m[43m)[49m
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/geoaxes.py:1019[0m, in [0;36mGeoAxes.stock_img[0;34m(self, name)[0m
+[1;32m   1014[0m     source_proj [38;5;241m=[39m ccrs[38;5;241m.[39mPlateCarree()
+[1;32m   1015[0m     fname [38;5;241m=[39m os[38;5;241m.[39mpath[38;5;241m.[39mjoin(config[[38;5;124m"[39m[38;5;124mrepo_data_dir[39m[38;5;124m"[39m],
+[1;32m   1016[0m                          [38;5;124m'[39m[38;5;124mraster[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mnatural_earth[39m[38;5;124m'[39m,
+[1;32m   1017[0m                          [38;5;124m'[39m[38;5;124m50-natural-earth-1-downsampled.png[39m[38;5;124m'[39m)
+[0;32m-> 1019[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mimshow[49m[43m([49m[43mimread[49m[43m([49m[43mfname[49m[43m)[49m[43m,[49m[43m [49m[43morigin[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mupper[39;49m[38;5;124;43m'[39;49m[43m,[49m
+[1;32m   1020[0m [43m                       [49m[43mtransform[49m[38;5;241;43m=[39;49m[43msource_proj[49m[43m,[49m
+[1;32m   1021[0m [43m                       [49m[43mextent[49m[38;5;241;43m=[39;49m[43m[[49m[38;5;241;43m-[39;49m[38;5;241;43m180[39;49m[43m,[49m[43m [49m[38;5;241;43m180[39;49m[43m,[49m[43m [49m[38;5;241;43m-[39;49m[38;5;241;43m90[39;49m[43m,[49m[43m [49m[38;5;241;43m90[39;49m[43m][49m[43m)[49m
+[1;32m   1022[0m [38;5;28;01melse[39;00m:
+[1;32m   1023[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m'[39m[38;5;124mUnknown stock image [39m[38;5;132;01m%r[39;00m[38;5;124m.[39m[38;5;124m'[39m [38;5;241m%[39m name)
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/geoaxes.py:318[0m, in [0;36m_add_transform.<locals>.wrapper[0;34m(self, *args, **kwargs)[0m
+[1;32m    313[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124mf[39m[38;5;124m'[39m[38;5;124mInvalid transform: Spherical [39m[38;5;132;01m{[39;00mfunc[38;5;241m.[39m[38;5;18m__name__[39m[38;5;132;01m}[39;00m[38;5;124m [39m[38;5;124m'[39m
+[1;32m    314[0m                      [38;5;124m'[39m[38;5;124mis not supported - consider using [39m[38;5;124m'[39m
+[1;32m    315[0m                      [38;5;124m'[39m[38;5;124mPlateCarree/RotatedPole.[39m[38;5;124m'[39m)
+[1;32m    317[0m kwargs[[38;5;124m'[39m[38;5;124mtransform[39m[38;5;124m'[39m] [38;5;241m=[39m transform
+[0;32m--> 318[0m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/geoaxes.py:1331[0m, in [0;36mGeoAxes.imshow[0;34m(self, img, *args, **kwargs)[0m
+[1;32m   1329[0m [38;5;28;01mfrom[39;00m [38;5;21;01mcartopy[39;00m[38;5;21;01m.[39;00m[38;5;21;01mimg_transform[39;00m [38;5;28;01mimport[39;00m warp_array
+[1;32m   1330[0m original_extent [38;5;241m=[39m extent
+[0;32m-> 1331[0m img, extent [38;5;241m=[39m [43mwarp_array[49m[43m([49m[43mimg[49m[43m,[49m
+[1;32m   1332[0m [43m                         [49m[43msource_proj[49m[38;5;241;43m=[39;49m[43mtransform[49m[43m,[49m
+[1;32m   1333[0m [43m                         [49m[43msource_extent[49m[38;5;241;43m=[39;49m[43moriginal_extent[49m[43m,[49m
+[1;32m   1334[0m [43m                         [49m[43mtarget_proj[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mprojection[49m[43m,[49m
+[1;32m   1335[0m [43m                         [49m[43mtarget_res[49m[38;5;241;43m=[39;49m[43mregrid_shape[49m[43m,[49m
+[1;32m   1336[0m [43m                         [49m[43mtarget_extent[49m[38;5;241;43m=[39;49m[43mtarget_extent[49m[43m,[49m
+[1;32m   1337[0m [43m                         [49m[43mmask_extrapolated[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m
+[1;32m   1338[0m [43m                         [49m[43m)[49m
+[1;32m   1339[0m alpha [38;5;241m=[39m kwargs[38;5;241m.[39mpop([38;5;124m'[39m[38;5;124malpha[39m[38;5;124m'[39m, [38;5;28;01mNone[39;00m)
+[1;32m   1340[0m [38;5;28;01mif[39;00m np[38;5;241m.[39marray(alpha)[38;5;241m.[39mndim [38;5;241m==[39m [38;5;241m2[39m:
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/img_transform.py:192[0m, in [0;36mwarp_array[0;34m(array, target_proj, source_proj, target_res, source_extent, target_extent, mask_extrapolated)[0m
+[1;32m    186[0m [38;5;66;03m# XXX Take into account the extents of the original to determine[39;00m
+[1;32m    187[0m [38;5;66;03m# target_extents?[39;00m
+[1;32m    188[0m target_native_x, target_native_y, extent [38;5;241m=[39m mesh_projection(
+[1;32m    189[0m     target_proj, target_res[[38;5;241m0[39m], target_res[[38;5;241m1[39m],
+[1;32m    190[0m     x_extents[38;5;241m=[39mtarget_x_extents, y_extents[38;5;241m=[39mtarget_y_extents)
+[0;32m--> 192[0m array [38;5;241m=[39m [43mregrid[49m[43m([49m[43marray[49m[43m,[49m[43m [49m[43msource_native_xy[49m[43m[[49m[38;5;241;43m0[39;49m[43m][49m[43m,[49m[43m [49m[43msource_native_xy[49m[43m[[49m[38;5;241;43m1[39;49m[43m][49m[43m,[49m
+[1;32m    193[0m [43m               [49m[43msource_proj[49m[43m,[49m[43m [49m[43mtarget_proj[49m[43m,[49m
+[1;32m    194[0m [43m               [49m[43mtarget_native_x[49m[43m,[49m[43m [49m[43mtarget_native_y[49m[43m,[49m
+[1;32m    195[0m [43m               [49m[43mmask_extrapolated[49m[43m)[49m
+[1;32m    196[0m [38;5;28;01mreturn[39;00m array, extent
+
+File [0;32m~/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/img_transform.py:278[0m, in [0;36mregrid[0;34m(array, source_x_coords, source_y_coords, source_proj, target_proj, target_x_points, target_y_points, mask_extrapolated)[0m
+[1;32m    274[0m [38;5;28;01melse[39;00m:
+[1;32m    275[0m     [38;5;66;03m# Versions of scipy >= v0.16 added the balanced_tree argument,[39;00m
+[1;32m    276[0m     [38;5;66;03m# which caused the KDTree to hang with this input.[39;00m
+[1;32m    277[0m     kdtree [38;5;241m=[39m scipy[38;5;241m.[39mspatial[38;5;241m.[39mcKDTree(xyz, balanced_tree[38;5;241m=[39m[38;5;28;01mFalse[39;00m)
+[0;32m--> 278[0m     _, indices [38;5;241m=[39m [43mkdtree[49m[38;5;241;43m.[39;49m[43mquery[49m[43m([49m[43mtarget_xyz[49m[43m,[49m[43m [49m[43mk[49m[38;5;241;43m=[39;49m[38;5;241;43m1[39;49m[43m)[49m
+[1;32m    279[0m mask [38;5;241m=[39m indices [38;5;241m>[39m[38;5;241m=[39m [38;5;28mlen[39m(xyz)
+[1;32m    280[0m indices[mask] [38;5;241m=[39m [38;5;241m0[39m
+
+File [0;32m_ckdtree.pyx:795[0m, in [0;36mscipy.spatial._ckdtree.cKDTree.query[0;34m()[0m
+
+[0;31mValueError[0m: 'x' must be finite, check for nan or inf values
+

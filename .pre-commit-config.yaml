@@ -1,0 +1,45 @@
+# SPDX-FileCopyrightText: : 2022 The PyPSA-Eur Authors
+#
+# SPDX-License-Identifier: CC0-1.0
+exclude: "^LICENSES"
+
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+  - id: check-merge-conflict
+  - id: end-of-file-fixer
+  - id: fix-encoding-pragma
+  - id: mixed-line-ending
+  - id: trailing-whitespace
+#  - id: check-added-large-files
+#    args: ["--maxkb=6000"]
+
+  # Formatting with "black" coding style
+- repo: https://github.com/psf/black
+  rev: 23.7.0
+  hooks:
+      # Format Python files
+  - id: black
+      # Format Jupyter Python notebooks
+  - id: black-jupyter
+
+  # Remove output from Jupyter notebooks
+- repo: https://github.com/aflc/pre-commit-jupyter
+  rev: v1.2.1
+  hooks:
+  - id: jupyter-notebook-cleanup
+    args: ["--remove-kernel-metadata"]
+
+  # Do YAML formatting (before the linter checks it for misses)
+- repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+  rev: v2.10.0
+  hooks:
+  - id: pretty-format-yaml
+    args: [--autofix, --indent, "2", --preserve-quotes]
+
+  # For cleaning jupyter notebooks
+- repo: https://github.com/aflc/pre-commit-jupyter
+  rev: v1.2.1
+  hooks:
+  - id: jupyter-notebook-cleanup

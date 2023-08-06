@@ -38,9 +38,9 @@ The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
 sensitivity = {}
-for co2 in [150,100,50,25,0]:
+for co2 in [150, 100, 50, 25, 0]:
     n.global_constraints.loc["CO2Limit", "constant"] = co2 * 1e6
-    n.optimize(solver_name='cbc')
+    n.optimize(solver_name="cbc")
     sensitivity[co2] = system_cost(n)
 -------------------
 

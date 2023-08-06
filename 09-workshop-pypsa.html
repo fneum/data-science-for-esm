@@ -550,13 +550,13 @@ document.write(`
 <h2>From structured data to optimisation<a class="headerlink" href="#from-structured-data-to-optimisation" title="Permalink to this headline">#</a></h2>
 <p>The design principle of PyPSA is that basically each component is associated with a set of variables and constraints that will be added to the optimisation model based on the input data stored for the components.</p>
 <p>For an <em>hourly</em> electricity market simulation, PyPSA will solve an optimisation problem that looks like this</p>
-<div class="amsmath math notranslate nohighlight" id="equation-127bc61f-4d64-4386-816f-14034057737c">
-<span class="eqno">(8)<a class="headerlink" href="#equation-127bc61f-4d64-4386-816f-14034057737c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-537fe39b-6c1c-4dbd-8c38-b159aa3a6d3e">
+<span class="eqno">(8)<a class="headerlink" href="#equation-537fe39b-6c1c-4dbd-8c38-b159aa3a6d3e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min_{g_{i,s,t}; f_{\ell,t}; g_{i,r,t,\text{charge}}; g_{i,r,t,\text{discharge}}; e_{i,r,t}} \sum_s o_{s} g_{i,s,t}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a91795ad-7137-40f9-9e3f-518d2de033ba">
-<span class="eqno">(9)<a class="headerlink" href="#equation-a91795ad-7137-40f9-9e3f-518d2de033ba" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2875cb6b-5c49-4bd4-a047-4dd1dca9981f">
+<span class="eqno">(9)<a class="headerlink" href="#equation-2875cb6b-5c49-4bd4-a047-4dd1dca9981f" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp; \leq g_{i,s,t} \leq \hat{g}_{i,s,t} G_{i,s}  &amp; \text{generation limits : generator} \\
 -F_\ell &amp;\leq f_{\ell,t} \leq F_\ell &amp; \text{transmission limits : line}  \\
 d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{i,r,t,\text{charge}} - \sum_\ell K_{i\ell} f_{\ell,t} &amp; \text{KCL : bus} \\
@@ -600,7 +600,7 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fuel_cost</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">coal</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> 
+    <span class="n">coal</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
     <span class="n">gas</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
     <span class="n">oil</span><span class="o">=</span><span class="mi">48</span><span class="p">,</span>
 <span class="p">)</span>
@@ -629,8 +629,8 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># t/MWh thermal</span>
 <span class="n">emissions</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">coal</span><span class="o">=</span><span class="mf">0.34</span><span class="p">,</span> 
-    <span class="n">gas</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> 
+    <span class="n">coal</span><span class="o">=</span><span class="mf">0.34</span><span class="p">,</span>
+    <span class="n">gas</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
     <span class="n">oil</span><span class="o">=</span><span class="mf">0.26</span><span class="p">,</span>
     <span class="n">hydro</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="p">)</span>
@@ -688,8 +688,8 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 <p>Components can be added to the network <code class="docutils literal notranslate"><span class="pre">n</span></code> using the <code class="docutils literal notranslate"><span class="pre">n.add()</span></code> function. It takes the component name as a first argument, the name of the component as a second argument and possibly further parameters as keyword arguments. Let’s use this function, to add buses for each country to our network:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Bus&quot;</span><span class="p">,</span> <span class="s2">&quot;SA&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">30.5</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">v_nom</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;AC&#39;</span><span class="p">)</span>
-<span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Bus&quot;</span><span class="p">,</span> <span class="s2">&quot;MZ&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">18.5</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">35.5</span><span class="p">,</span> <span class="n">v_nom</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;AC&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Bus&quot;</span><span class="p">,</span> <span class="s2">&quot;SA&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">30.5</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">v_nom</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;AC&quot;</span><span class="p">)</span>
+<span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Bus&quot;</span><span class="p">,</span> <span class="s2">&quot;MZ&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">18.5</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">35.5</span><span class="p">,</span> <span class="n">v_nom</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;AC&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -799,7 +799,7 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">madd</span><span class="p">(</span>
     <span class="s2">&quot;Carrier&quot;</span><span class="p">,</span>
-    <span class="p">[</span><span class="s2">&quot;coal&quot;</span><span class="p">,</span> <span class="s2">&quot;gas&quot;</span><span class="p">,</span> <span class="s2">&quot;oil&quot;</span><span class="p">,</span> <span class="s2">&quot;hydro&quot;</span><span class="p">,</span> <span class="s2">&quot;wind&quot;</span><span class="p">],</span> 
+    <span class="p">[</span><span class="s2">&quot;coal&quot;</span><span class="p">,</span> <span class="s2">&quot;gas&quot;</span><span class="p">,</span> <span class="s2">&quot;oil&quot;</span><span class="p">,</span> <span class="s2">&quot;hydro&quot;</span><span class="p">,</span> <span class="s2">&quot;wind&quot;</span><span class="p">],</span>
     <span class="n">co2_emissions</span><span class="o">=</span><span class="n">emissions</span><span class="p">,</span>
     <span class="n">nice_name</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Coal&quot;</span><span class="p">,</span> <span class="s2">&quot;Gas&quot;</span><span class="p">,</span> <span class="s2">&quot;Oil&quot;</span><span class="p">,</span> <span class="s2">&quot;Hydro&quot;</span><span class="p">,</span> <span class="s2">&quot;Onshore Wind&quot;</span><span class="p">],</span>
     <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="s2">&quot;indianred&quot;</span><span class="p">,</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="s2">&quot;aquamarine&quot;</span><span class="p">,</span> <span class="s2">&quot;dodgerblue&quot;</span><span class="p">],</span>
@@ -817,12 +817,13 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 <p>In Mozambique:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Generator&quot;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;Generator&quot;</span><span class="p">,</span>
     <span class="s2">&quot;MZ hydro&quot;</span><span class="p">,</span>
     <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;MZ&quot;</span><span class="p">,</span>
-    <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;hydro&#39;</span><span class="p">,</span>
-    <span class="n">p_nom</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span> <span class="c1"># MW</span>
-    <span class="n">marginal_cost</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="c1"># default</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;hydro&quot;</span><span class="p">,</span>
+    <span class="n">p_nom</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span>  <span class="c1"># MW</span>
+    <span class="n">marginal_cost</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  <span class="c1"># default</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -832,7 +833,8 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">tech</span><span class="p">,</span> <span class="n">p_nom</span> <span class="ow">in</span> <span class="n">power_plants</span><span class="p">[</span><span class="s2">&quot;SA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Generator&quot;</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+        <span class="s2">&quot;Generator&quot;</span><span class="p">,</span>
         <span class="sa">f</span><span class="s2">&quot;SA </span><span class="si">{</span><span class="n">tech</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
         <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;SA&quot;</span><span class="p">,</span>
         <span class="n">carrier</span><span class="o">=</span><span class="n">tech</span><span class="p">,</span>
@@ -1047,11 +1049,12 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 <p>A positive value for <code class="docutils literal notranslate"><span class="pre">p_set</span></code> means consumption of power from the bus.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Load&quot;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;Load&quot;</span><span class="p">,</span>
     <span class="s2">&quot;SA electricity demand&quot;</span><span class="p">,</span>
     <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;SA&quot;</span><span class="p">,</span>
     <span class="n">p_set</span><span class="o">=</span><span class="n">loads</span><span class="p">[</span><span class="s2">&quot;SA&quot;</span><span class="p">],</span>
-    <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;electricity&#39;</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1059,11 +1062,12 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Load&quot;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;Load&quot;</span><span class="p">,</span>
     <span class="s2">&quot;MZ electricity demand&quot;</span><span class="p">,</span>
     <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;MZ&quot;</span><span class="p">,</span>
     <span class="n">p_set</span><span class="o">=</span><span class="n">loads</span><span class="p">[</span><span class="s2">&quot;MZ&quot;</span><span class="p">],</span>
-    <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;electricity&#39;</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1137,7 +1141,8 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 <p>Finally, we add the connection between Mozambique and South Africa with a 500 MW line:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Line&quot;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;Line&quot;</span><span class="p">,</span>
     <span class="s2">&quot;SA-MZ&quot;</span><span class="p">,</span>
     <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;SA&quot;</span><span class="p">,</span>
     <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;MZ&quot;</span><span class="p">,</span>
@@ -1274,7 +1279,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <p>The <code class="docutils literal notranslate"><span class="pre">n.optimize()</span></code> function can take a variety of arguments. The most relevant for the moment is the choice of the solver. We already know the different solvers from the introduction to <code class="docutils literal notranslate"><span class="pre">pyomo</span></code> (e.g. “cbc”, “glpk”, “gurobi” etc.). They need to be installed on your computer, to use them here!</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1287,7 +1292,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Cbc solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.04s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.03s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -1306,7 +1311,7 @@ Solver message: Optimal - objective value 1381391.25242450
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-ear256sl.lp -solve -solu /tmp/linopy-solve-3y8d2znc.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-qzwrjavh.lp -solve -solu /tmp/linopy-solve-pn1rtlo8.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 1 (-13) rows, 3 (-3) columns and 3 (-16) elements
 0  Obj 949510.03 Primal inf 8500.2009 (1)
@@ -1582,8 +1587,8 @@ Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f708125bcd0&gt;,
- &lt;matplotlib.collections.LineCollection at 0x7f708125fc10&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7fdfe04e51d0&gt;,
+ &lt;matplotlib.collections.LineCollection at 0x7fdfe04d6690&gt;)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
@@ -1611,13 +1616,12 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">margin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="n">bus_sizes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">bus_colors</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span>
+    <span class="n">bus_colors</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span>
     <span class="n">bus_alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
     <span class="n">color_geomap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">line_colors</span><span class="o">=</span><span class="s1">&#39;orchid&#39;</span><span class="p">,</span>
+    <span class="n">line_colors</span><span class="o">=</span><span class="s2">&quot;orchid&quot;</span><span class="p">,</span>
     <span class="n">line_widths</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span>
-
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Test&quot;</span><span class="p">,</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -1634,7 +1638,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <p>Just like with <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> we can also control the projection of the network plot:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">EqualEarth</span><span class="p">())</span>
 
 <span class="n">n</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bus_sizes</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
@@ -1653,7 +1657,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">bus_sizes</span></code> argument of <code class="docutils literal notranslate"><span class="pre">n.plot()</span></code> to display the regional distribution of load. First, we calculate the total load per bus:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">loads</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;bus&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="mf">1e4</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">loads</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;bus&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="mf">1e4</span>
 </pre></div>
 </div>
 </div>
@@ -1713,9 +1717,7 @@ Name: now, dtype: float64
 <p>If we group this by the <strong>bus</strong> and <strong>carrier</strong>…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;now&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
-    <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">bus</span><span class="p">,</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">carrier</span><span class="p">]</span>
-<span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;now&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">bus</span><span class="p">,</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">carrier</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1742,7 +1744,7 @@ Name: now, dtype: float64
 <p>… which we can pass to <code class="docutils literal notranslate"><span class="pre">n.plot(bus_sizes=...)</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bus_sizes</span><span class="o">=</span><span class="n">s</span><span class="o">/</span><span class="mi">3000</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bus_sizes</span><span class="o">=</span><span class="n">s</span> <span class="o">/</span> <span class="mi">3000</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1901,8 +1903,8 @@ Solver message: optimal
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GLPSOL--GLPK LP/MIP Solver 5.0
 Parameter(s) specified in the command line:
- --lp /tmp/linopy-problem-ozu54t9z.lp --output /tmp/linopy-solve-485dled_.sol
-Reading problem data from &#39;/tmp/linopy-problem-ozu54t9z.lp&#39;...
+ --lp /tmp/linopy-problem-55kqurxd.lp --output /tmp/linopy-solve-5boy3g4r.sol
+Reading problem data from &#39;/tmp/linopy-problem-55kqurxd.lp&#39;...
 14 rows, 6 columns, 19 non-zeros
 78 lines were read
 GLPK Simplex Optimizer 5.0
@@ -1920,7 +1922,7 @@ Size of triangular part is 1
 OPTIMAL LP SOLUTION FOUND
 Time used:   0.0 secs
 Memory used: 0.0 Mb (40404 bytes)
-Writing basic solution to &#39;/tmp/linopy-solve-485dled_.sol&#39;...
+Writing basic solution to &#39;/tmp/linopy-solve-5boy3g4r.sol&#39;...
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
@@ -1995,7 +1997,11 @@ Writing basic solution to &#39;/tmp/linopy-solve-485dled_.sol&#39;...
 <p>where <span class="math notranslate nohighlight">\( \rho\)</span> is the specific emissions (tonnes/MWh thermal) and <span class="math notranslate nohighlight">\(\eta\)</span> is the conversion efficiency (MWh electric / MWh thermal) of the generator with dispatch <span class="math notranslate nohighlight">\(g\)</span> (MWh electric):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p</span> <span class="o">/</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">efficiency</span> <span class="o">*</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">carrier</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">carriers</span><span class="o">.</span><span class="n">co2_emissions</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p</span>
+    <span class="o">/</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">efficiency</span>
+    <span class="o">*</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">carrier</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">carriers</span><span class="o">.</span><span class="n">co2_emissions</span><span class="p">)</span>
+<span class="p">)</span>
 <span class="n">e</span>
 </pre></div>
 </div>
@@ -2063,12 +2069,13 @@ Writing basic solution to &#39;/tmp/linopy-solve-485dled_.sol&#39;...
 <p>So, let’s say we want to reduce emissions by 10%:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;GlobalConstraint&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;emission_limit&quot;</span><span class="p">,</span>
-      <span class="n">carrier_attribute</span><span class="o">=</span><span class="s2">&quot;co2_emissions&quot;</span><span class="p">,</span>
-      <span class="n">sense</span><span class="o">=</span><span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span>
-      <span class="n">constant</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.9</span>
-     <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;GlobalConstraint&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;emission_limit&quot;</span><span class="p">,</span>
+    <span class="n">carrier_attribute</span><span class="o">=</span><span class="s2">&quot;co2_emissions&quot;</span><span class="p">,</span>
+    <span class="n">sense</span><span class="o">=</span><span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span>
+    <span class="n">constant</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2105,8 +2112,8 @@ Solver message: optimal
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GLPSOL--GLPK LP/MIP Solver 5.0
 Parameter(s) specified in the command line:
- --lp /tmp/linopy-problem-8nosy6ng.lp --output /tmp/linopy-solve-caeseqw0.sol
-Reading problem data from &#39;/tmp/linopy-problem-8nosy6ng.lp&#39;...
+ --lp /tmp/linopy-problem-4d3hj3gy.lp --output /tmp/linopy-solve-f8p7ud23.sol
+Reading problem data from &#39;/tmp/linopy-problem-4d3hj3gy.lp&#39;...
 15 rows, 6 columns, 22 non-zeros
 83 lines were read
 GLPK Simplex Optimizer 5.0
@@ -2123,7 +2130,7 @@ Size of triangular part is 2
 OPTIMAL LP SOLUTION FOUND
 Time used:   0.0 secs
 Memory used: 0.0 Mb (40412 bytes)
-Writing basic solution to &#39;/tmp/linopy-solve-caeseqw0.sol&#39;...
+Writing basic solution to &#39;/tmp/linopy-solve-f8p7ud23.sol&#39;...
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
@@ -2275,7 +2282,7 @@ Name: mu, dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Glpk solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.05s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.04s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:linopy.constants:Optimization failed: 
@@ -2289,8 +2296,8 @@ Solver message: undefined
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GLPSOL--GLPK LP/MIP Solver 5.0
 Parameter(s) specified in the command line:
- --lp /tmp/linopy-problem-8gsd3___.lp --output /tmp/linopy-solve-8ve_kxa4.sol
-Reading problem data from &#39;/tmp/linopy-problem-8gsd3___.lp&#39;...
+ --lp /tmp/linopy-problem-5pnt0tz3.lp --output /tmp/linopy-solve-_aajjj3n.sol
+Reading problem data from &#39;/tmp/linopy-problem-5pnt0tz3.lp&#39;...
 15 rows, 6 columns, 22 non-zeros
 83 lines were read
 GLPK Simplex Optimizer 5.0
@@ -2309,7 +2316,7 @@ glp_simplex: unable to recover undefined or non-optimal solution
 If you need actual output for non-optimal solution, use --nopresol
 Time used:   0.0 secs
 Memory used: 0.0 Mb (40412 bytes)
-Writing basic solution to &#39;/tmp/linopy-solve-8ve_kxa4.sol&#39;...
+Writing basic solution to &#39;/tmp/linopy-solve-_aajjj3n.sol&#39;...
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;warning&#39;, &#39;infeasible_or_unbounded&#39;)
@@ -2334,7 +2341,7 @@ Writing basic solution to &#39;/tmp/linopy-solve-8ve_kxa4.sol&#39;...
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">export_to_csv_folder</span><span class="p">(</span><span class="s1">&#39;tmp&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">export_to_csv_folder</span><span class="p">(</span><span class="s2">&quot;tmp&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2342,14 +2349,14 @@ Writing basic solution to &#39;/tmp/linopy-solve-8ve_kxa4.sol&#39;...
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Directory tmp does not exist, creating it
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has loads, global_constraints, carriers, generators, buses, lines
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has global_constraints, carriers, loads, buses, lines, generators
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_csv</span> <span class="o">=</span> <span class="n">pypsa</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s1">&#39;tmp&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_csv</span> <span class="o">=</span> <span class="n">pypsa</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s2">&quot;tmp&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2366,7 +2373,7 @@ Writing basic solution to &#39;/tmp/linopy-solve-8ve_kxa4.sol&#39;...
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has loads, global_constraints, carriers, generators, buses, lines
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has global_constraints, carriers, loads, buses, lines, generators
 </pre></div>
 </div>
 </div>
@@ -2594,7 +2601,7 @@ Writing basic solution to &#39;/tmp/linopy-solve-8ve_kxa4.sol&#39;...
 <p>We can use simple <code class="docutils literal notranslate"><span class="pre">pandas</span></code> syntax, to create an overview of the load time series…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">loads_t</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">60</span><span class="p">],</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;MW&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">loads_t</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;MW&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2608,7 +2615,7 @@ Writing basic solution to &#39;/tmp/linopy-solve-8ve_kxa4.sol&#39;...
 <p>… and the capacity factor time series:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p_max_pu</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">carrier</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;p.u.&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p_max_pu</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">carrier</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;p.u.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2623,7 +2630,7 @@ Writing basic solution to &#39;/tmp/linopy-solve-8ve_kxa4.sol&#39;...
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;carrier&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">p_nom</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;GW&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;GW&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2666,7 +2673,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <p>… and power plant capacities:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">capacities</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;bus&#39;</span><span class="p">,</span> <span class="s1">&#39;carrier&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">p_nom</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">capacities</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;bus&quot;</span><span class="p">,</span> <span class="s2">&quot;carrier&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">p_nom</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2675,6 +2682,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
 <span class="n">carriers</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">carrier</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;#</span><span class="si">%06x</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mh">0xFFFFFF</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">carriers</span><span class="p">]</span>
 <span class="n">n</span><span class="o">.</span><span class="n">madd</span><span class="p">(</span><span class="s2">&quot;Carrier&quot;</span><span class="p">,</span> <span class="n">carriers</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
@@ -2704,10 +2712,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <span class="p">)</span>
 
 <span class="n">add_legend_patches</span><span class="p">(</span>
-    <span class="n">ax</span><span class="p">,</span>
-    <span class="n">colors</span><span class="p">,</span>
-    <span class="n">carriers</span><span class="p">,</span>
-    <span class="n">legend_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">carriers</span><span class="p">,</span> <span class="n">legend_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -2718,7 +2723,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/d80537ee4114c88ff55a546bc1bccec7bd71cbd9dee0aaebe5f2b5ccc57b3040.png" src="_images/d80537ee4114c88ff55a546bc1bccec7bd71cbd9dee0aaebe5f2b5ccc57b3040.png" />
+<img alt="_images/bff8a67c38d4bc9aaf1aeb041f6bce982c6c9691195390b46572393cde570d98.png" src="_images/bff8a67c38d4bc9aaf1aeb041f6bce982c6c9691195390b46572393cde570d98.png" />
 </div>
 </div>
 <p>This dataset also includes a few hydro storage units:</p>
@@ -2875,7 +2880,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <p>So let’s solve the electricity market simulation for January 1, 2011. It’ll take a short moment.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2922,22 +2927,19 @@ Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   7%|▋         | 1/15 [00:00&lt;00:01,  8.78it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  13%|█▎        | 2/15 [00:00&lt;00:01,  9.60it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  13%|█▎        | 2/15 [00:00&lt;00:01,  8.74it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  27%|██▋       | 4/15 [00:00&lt;00:00, 11.62it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  27%|██▋       | 4/15 [00:00&lt;00:00, 11.18it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 21.71it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 21.46it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 15.15it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 15.83it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 15.63it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 15.52it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -2946,10 +2948,10 @@ Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:  29%|██▊       | 2/7 [00:00&lt;00:00, 19.71it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:  43%|████▎     | 3/7 [00:00&lt;00:00, 28.56it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 56.73it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 57.77it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 1.11s
@@ -2959,98 +2961,97 @@ Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-omfv32pb.lp -solve -solu /tmp/linopy-solve-_i8s6zm_.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-inz3xii_.lp -solve -solu /tmp/linopy-solve-u2xkv5wx.sol (default strategy 1)
 Option for printingOptions changed from normal to all
-Presolve 14637 (-128331) rows, 26541 (-33099) columns and 99248 (-170258) elements
-Perturbing problem by 0.001% of 8148.2582 - largest nonzero change 0.00097369061 ( 0.0098700101%) - largest zero change 0.00097352733
-0  Obj 384626.3 Primal inf 28257462 (13482) Dual inf 13706.72 (17)
-298  Obj 90055.382 Primal inf 25814442 (13394)
-596  Obj 90056.957 Primal inf 22439054 (13295)
-894  Obj 90058.261 Primal inf 21510265 (13209)
-1192  Obj 90063.917 Primal inf 20009980 (13073)
-1490  Obj 90067.311 Primal inf 19709890 (12943)
-1788  Obj 90067.554 Primal inf 20799004 (12826)
-2086  Obj 90067.616 Primal inf 19337618 (12746)
-2384  Obj 90067.763 Primal inf 18770400 (12616)
-2682  Obj 90067.934 Primal inf 18511727 (12479)
-2980  Obj 90068.046 Primal inf 18598648 (12397)
-3278  Obj 90068.305 Primal inf 21057276 (12345)
-3576  Obj 90068.61 Primal inf 19078545 (12233)
-3874  Obj 90069.484 Primal inf 19224232 (12052)
-4172  Obj 90070.921 Primal inf 19810281 (11911)
-4470  Obj 90071.337 Primal inf 23519086 (11826)
-4768  Obj 90071.919 Primal inf 23509421 (11744)
-5066  Obj 90072.769 Primal inf 24943038 (11519)
-5364  Obj 90073.388 Primal inf 25217861 (11397)
-5662  Obj 90074.344 Primal inf 30903941 (11230)
-5960  Obj 90075.591 Primal inf 24442884 (11133)
-6258  Obj 90076.987 Primal inf 24476012 (10964)
-6556  Obj 90079.32 Primal inf 24951462 (10813)
-6854  Obj 90081.666 Primal inf 29111801 (10856)
-7152  Obj 90083.804 Primal inf 26425103 (10621)
-7450  Obj 90085.563 Primal inf 29232780 (10585)
-7748  Obj 90087.026 Primal inf 94970433 (10467)
-8046  Obj 90088.934 Primal inf 93188288 (10118)
-8344  Obj 90091.805 Primal inf 89856925 (9867)
-8642  Obj 90093.825 Primal inf 91755536 (9630)
-8940  Obj 147571.94 Primal inf 91485608 (9360)
-9238  Obj 147573.86 Primal inf 24119312 (9131)
-9536  Obj 147575.7 Primal inf 23114015 (8950)
-9834  Obj 166220.34 Primal inf 25281457 (8825)
-10132  Obj 166222.56 Primal inf 24137307 (8431)
-10430  Obj 166225.13 Primal inf 32055179 (8342)
-10728  Obj 166229.17 Primal inf 25016844 (8195)
-11026  Obj 166271.27 Primal inf 28410231 (7905)
-11324  Obj 166273.27 Primal inf 24346407 (7754)
-11622  Obj 166276.29 Primal inf 27376998 (7636)
-11920  Obj 166279.16 Primal inf 24193929 (7347)
-12218  Obj 197433.14 Primal inf 19021932 (7057)
-12516  Obj 198057.53 Primal inf 20326364 (6649)
-12814  Obj 217174.73 Primal inf 45308790 (6583)
-13112  Obj 267875.03 Primal inf 27060410 (6239)
-13410  Obj 336559.37 Primal inf 26381969 (5770)
-13708  Obj 363346.74 Primal inf 24943884 (5580)
-14006  Obj 532876 Primal inf 20770711 (5314)
-14304  Obj 726669.05 Primal inf 34480927 (4993)
-14602  Obj 1070282.8 Primal inf 33967415 (4814)
-14900  Obj 1294239.4 Primal inf 23247611 (4859)
-15198  Obj 1834529.5 Primal inf 32728705 (4319)
-15496  Obj 2264543.4 Primal inf 31380058 (4226)
-15794  Obj 2894119.2 Primal inf 12169456 (3530)
-16092  Obj 3358621.1 Primal inf 9023842.7 (3682)
-16390  Obj 4114532.1 Primal inf 19763512 (3308)
-16688  Obj 4800307 Primal inf 8305009.5 (2973)
-16986  Obj 5474388.8 Primal inf 9533630 (3076)
-17284  Obj 6584174.2 Primal inf 2378499 (2912)
-17582  Obj 7174618.3 Primal inf 1720638 (2359)
-17880  Obj 7627154.9 Primal inf 662329.59 (2058)
-18178  Obj 8085609 Primal inf 2034543.4 (2159)
-18476  Obj 8524734.5 Primal inf 112797.41 (1426)
-18774  Obj 8799032.7 Primal inf 237736.4 (1754)
-19072  Obj 8992073.1 Primal inf 59495.659 (1001)
-19370  Obj 9101078.9 Primal inf 67456.56 (1015)
-19668  Obj 9159660.5 Primal inf 15708.9 (524)
-19966  Obj 9188518.9 Primal inf 4430.8501 (342)
-20264  Obj 9197501.1 Primal inf 256.32168 (153)
-20494  Obj 9199308.6
-20494  Obj 9199288 Dual inf 0.00023460357 (2)
-20496  Obj 9199288
+Presolve 14393 (-128575) rows, 26389 (-33251) columns and 107893 (-170637) elements
+Perturbing problem by 0.001% of 10131.749 - largest nonzero change 0.00099810781 ( 0.0099416189%) - largest zero change 0.00099774618
+0  Obj 384605.34 Primal inf 51066108 (13238) Dual inf 7191.0689 (17)
+296  Obj 90034.041 Primal inf 37762097 (13173)
+592  Obj 90034.085 Primal inf 33292729 (13080)
+888  Obj 90034.188 Primal inf 29636376 (12961)
+1184  Obj 90034.584 Primal inf 28694192 (12910)
+1480  Obj 90041.263 Primal inf 26238538 (12710)
+1776  Obj 90047.795 Primal inf 26229413 (12595)
+2072  Obj 90048.11 Primal inf 26587693 (12498)
+2368  Obj 90048.39 Primal inf 29797800 (12428)
+2664  Obj 90049.037 Primal inf 29418516 (12326)
+2960  Obj 90049.917 Primal inf 30212814 (12234)
+3256  Obj 90051.405 Primal inf 23599768 (12057)
+3552  Obj 90054.691 Primal inf 25923634 (11918)
+3848  Obj 90055.054 Primal inf 22349581 (11773)
+4144  Obj 90059.59 Primal inf 21843378 (11616)
+4440  Obj 90060.031 Primal inf 20728813 (11503)
+4736  Obj 90060.795 Primal inf 20726065 (11418)
+5032  Obj 90061.329 Primal inf 21128129 (11254)
+5328  Obj 90062.05 Primal inf 23807769 (11248)
+5624  Obj 90063.621 Primal inf 22490928 (11015)
+5920  Obj 90066.595 Primal inf 20370262 (10797)
+6216  Obj 90069.519 Primal inf 34125619 (10625)
+6512  Obj 90073.029 Primal inf 31190984 (10355)
+6808  Obj 90074.874 Primal inf 35922875 (10256)
+7104  Obj 90077.677 Primal inf 36533319 (10071)
+7400  Obj 90080.612 Primal inf 27082933 (10003)
+7696  Obj 90083.934 Primal inf 27920512 (9827)
+7992  Obj 90088.067 Primal inf 42613011 (9691)
+8288  Obj 90090.664 Primal inf 42822880 (9502)
+8584  Obj 90093.064 Primal inf 43505490 (9270)
+8880  Obj 90095.626 Primal inf 44164941 (9121)
+9176  Obj 90097.501 Primal inf 41635337 (8888)
+9472  Obj 90100.302 Primal inf 40683644 (8568)
+9768  Obj 90102.374 Primal inf 35908145 (8338)
+10064  Obj 147581.17 Primal inf 35698487 (8186)
+10360  Obj 147584.63 Primal inf 32011402 (8063)
+10656  Obj 166231.5 Primal inf 69896245 (7905)
+10952  Obj 166236.21 Primal inf 77431020 (7760)
+11248  Obj 166241.3 Primal inf 37659649 (7508)
+11544  Obj 166244.48 Primal inf 32881179 (6993)
+11840  Obj 166247 Primal inf 30263386 (6863)
+12136  Obj 167407.83 Primal inf 36671939 (6950)
+12432  Obj 174631.39 Primal inf 40265918 (6847)
+12728  Obj 174638.78 Primal inf 41410222 (6497)
+13024  Obj 233656.15 Primal inf 37952968 (6180)
+13320  Obj 339322.92 Primal inf 19312096 (5950)
+13616  Obj 439031.51 Primal inf 29986022 (5732)
+13912  Obj 572657.29 Primal inf 1.6354388e+08 (5397)
+14208  Obj 797190.31 Primal inf 3.0668829e+09 (5121)
+14504  Obj 1014430 Primal inf 3.0116039e+09 (5201)
+14800  Obj 1124479.1 Primal inf 2.0078386e+08 (4818)
+15096  Obj 1497138.4 Primal inf 4.0937747e+08 (4931)
+15392  Obj 1964554 Primal inf 2.7778759e+08 (4005)
+15688  Obj 2704850.1 Primal inf 9.1617046e+08 (3819)
+15984  Obj 3797401.1 Primal inf 7.8923626e+09 (4151)
+16280  Obj 4419184.5 Primal inf 7.0430692e+08 (3292)
+16576  Obj 5238085.6 Primal inf 1.263514e+08 (2903)
+16872  Obj 6212848.9 Primal inf 1.0322136e+08 (3514)
+17168  Obj 6884908.8 Primal inf 5605404.8 (2332)
+17464  Obj 7399169.8 Primal inf 8922145.5 (2292)
+17760  Obj 7868992 Primal inf 13517694 (1999)
+18056  Obj 8223004.6 Primal inf 553175.46 (1604)
+18352  Obj 8528895.4 Primal inf 631884.41 (1581)
+18648  Obj 8922253.9 Primal inf 378490.61 (1714)
+18944  Obj 9015163.8 Primal inf 161995.4 (1268)
+19240  Obj 9061527 Primal inf 78308.374 (1128)
+19536  Obj 9143511.4 Primal inf 9881.1203 (572)
+19832  Obj 9179628.9 Primal inf 3273.6136 (409)
+20128  Obj 9195544.8 Primal inf 16166.934 (475)
+20424  Obj 9198298.2 Primal inf 373.85584 (146)
+20585  Obj 9199313.7
+20585  Obj 9199288 Dual inf 0.00071792492 (2)
+20587  Obj 9199288
 Optimal - objective value 9199288
-After Postsolve, objective 9199288, infeasibilities - dual 592.18657 (19), primal 5.2517848e-06 (19)
-Presolved model was optimal, full model needs cleaning up
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0  Obj 9199288 Primal inf 6.3133676e-07 (1) Dual inf 1.0000001e+08 (24)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After Postsolve, objective 9199288, infeasibilities - dual 656.99624 (21), primal 5.7318942e-06 (21)
+Presolved model was optimal, full model needs cleaning up
+0  Obj 9199288 Primal inf 1.2635423e-07 (1) Dual inf 1.0000001e+08 (24)
 End of values pass after 0 iterations
-0  Obj 9199288 Primal inf 6.3133676e-07 (1) Dual inf 1.0000001e+08 (24) w.o. free dual inf (22)
-End of values pass after 0 iterations
-0  Obj 9199288 Primal inf 6.3133676e-07 (1) Dual inf 1.0000001e+08 (24) w.o. free dual inf (20)
-End of values pass after 29 iterations
-29  Obj 9199288 Dual inf 2.9700671 (4) w.o. free dual inf (0)
-35  Obj 9199288
+0  Obj 9199288 Primal inf 1.2635423e-07 (1) Dual inf 1.0000001e+08 (24) w.o. free dual inf (22)
+End of values pass after 27 iterations
+27  Obj 9199288 Dual inf 2.6001583 (2) w.o. free dual inf (0)
+31  Obj 9199288
 Optimal - objective value 9199288
-Optimal objective 9199288.041 - 20531 iterations time 7.872, Presolve 0.16
-Total time (CPU seconds):       8.56   (Wallclock seconds):       8.66
+Optimal objective 9199288.041 - 20618 iterations time 8.662, Presolve 0.14
+Total time (CPU seconds):       9.31   (Wallclock seconds):       9.41
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -3074,7 +3075,7 @@ Solver message: Optimal - objective value 9199288.04053955
 <p>Now, we can also plot model outputs, like the calculated power flows on the network map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line_loading</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">lines_t</span><span class="o">.</span><span class="n">p0</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span> <span class="o">/</span> <span class="n">n</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">s_nom</span> <span class="o">/</span> <span class="n">n</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">s_max_pu</span> <span class="o">*</span> <span class="mi">100</span> <span class="c1"># %</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line_loading</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">lines_t</span><span class="o">.</span><span class="n">p0</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span> <span class="o">/</span> <span class="n">n</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">s_nom</span> <span class="o">/</span> <span class="n">n</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">s_max_pu</span> <span class="o">*</span> <span class="mi">100</span>  <span class="c1"># %</span>
 </pre></div>
 </div>
 </div>
@@ -3088,7 +3089,7 @@ Solver message: Optimal - objective value 9199288.04053955
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">EqualEarth</span><span class="p">())</span>
 
 <span class="n">n</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
@@ -3096,25 +3097,25 @@ Solver message: Optimal - objective value 9199288.04053955
     <span class="n">bus_sizes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="n">line_colors</span><span class="o">=</span><span class="n">line_loading</span><span class="p">,</span>
     <span class="n">line_norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span>
-    <span class="n">line_cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span>
-    <span class="n">line_widths</span><span class="o">=</span><span class="n">n</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">s_nom</span> <span class="o">/</span> <span class="mi">1000</span>
-<span class="p">);</span>
+    <span class="n">line_cmap</span><span class="o">=</span><span class="s2">&quot;plasma&quot;</span><span class="p">,</span>
+    <span class="n">line_widths</span><span class="o">=</span><span class="n">n</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">s_nom</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">),</span>
-    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Relative line loading [%]&#39;</span><span class="p">,</span>
-    <span class="n">shrink</span><span class="o">=</span><span class="mf">0.6</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;plasma&quot;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">),</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Relative line loading [%]&quot;</span><span class="p">,</span>
+    <span class="n">shrink</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4022/2878191809.py:13: MatplotlibDeprecationWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2400/2036564067.py:13: MatplotlibDeprecationWarning:
 
 Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f7074af2bd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fdfd6551690&gt;
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
@@ -3122,7 +3123,7 @@ Unable to determine Axes to steal space for Colorbar. Using gca(), but will rais
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/f7f4d91a544527bece05ec1984fac263f90fc132bd120f93f8226542ccd02f37.png" src="_images/f7f4d91a544527bece05ec1984fac263f90fc132bd120f93f8226542ccd02f37.png" />
+<img alt="_images/107fa5fc823298dbc1d8834032e8ec65719ace3aeb3b7b074df6a09a31ee6878.png" src="_images/107fa5fc823298dbc1d8834032e8ec65719ace3aeb3b7b074df6a09a31ee6878.png" />
 </div>
 </div>
 <p>Or plot the hourly dispatch grouped by carrier:</p>
@@ -3141,23 +3142,19 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
     <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;area&quot;</span><span class="p">,</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
     <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20b&#39;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;tab20b&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
-    <span class="n">ncol</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span>
-    <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span>
-<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;GW&quot;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/daa0ae9913dfa1d63a09cee5455b14ab41e949e8ace0165db16c31ea70f49e39.png" src="_images/daa0ae9913dfa1d63a09cee5455b14ab41e949e8ace0165db16c31ea70f49e39.png" />
+<img alt="_images/81b9547114ecc237fc36df14b823b3adb154c74f63098eb0548ea647d6890168.png" src="_images/81b9547114ecc237fc36df14b823b3adb154c74f63098eb0548ea647d6890168.png" />
 </div>
 </div>
 <p>Or plot the aggregate dispatch of the pumped hydro storage units and the state of charge throughout the day:</p>
@@ -3181,39 +3178,37 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;MWh or MW&#39;)
 </pre></div>
 </div>
-<img alt="_images/4c331afbd4b6352c3f270585876687dd803d02c3fb8cc6dc8e89f59561597b0a.png" src="_images/4c331afbd4b6352c3f270585876687dd803d02c3fb8cc6dc8e89f59561597b0a.png" />
+<img alt="_images/2209409d25f656f5dc27633091255cfff7c5e87f18a023b086e545659f0fb0b0.png" src="_images/2209409d25f656f5dc27633091255cfff7c5e87f18a023b086e545659f0fb0b0.png" />
 </div>
 </div>
 <p>Or plot the locational marginal prices (LMPs):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">EqualEarth</span><span class="p">())</span>
 
-<span class="n">norm</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># €/MWh</span>
+<span class="n">norm</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># €/MWh</span>
 
 <span class="n">n</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
     <span class="n">bus_colors</span><span class="o">=</span><span class="n">n</span><span class="o">.</span><span class="n">buses_t</span><span class="o">.</span><span class="n">marginal_price</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
-    <span class="n">bus_cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span>
+    <span class="n">bus_cmap</span><span class="o">=</span><span class="s2">&quot;plasma&quot;</span><span class="p">,</span>
     <span class="n">bus_norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span>
-<span class="p">);</span>
+<span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">),</span>
-    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LMP [€/MWh]&#39;</span><span class="p">,</span>
-    <span class="n">shrink</span><span class="o">=</span><span class="mf">0.6</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;plasma&quot;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;LMP [€/MWh]&quot;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.6</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4022/3349850528.py:13: MatplotlibDeprecationWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2400/909041005.py:13: MatplotlibDeprecationWarning:
 
 Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f70771261d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fdfd65868d0&gt;
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
@@ -3236,16 +3231,16 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: ""
         },
         kernelOptions: {
-            name: "python3",
+            name: "",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = ''</script>
 
                 </article>
               

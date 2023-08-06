@@ -503,7 +503,8 @@ in the <em>objective function</em> and <em>new constraints for their expansion l
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pypsa</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;bmh&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;bmh&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -516,7 +517,7 @@ in the <em>objective function</em> and <em>new constraints for their expansion l
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="mi">2030</span>
 <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://raw.githubusercontent.com/PyPSA/technology-data/master/outputs/costs_</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">.csv&quot;</span>
-<span class="n">costs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">costs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -601,7 +602,9 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 <p>We are also going to need some time series for wind, solar and load. For now, we are going to recycle the time series we used at the beginning of the course. They are given for Germany in the year 2015.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://tubcloud.tu-berlin.de/s/pKttFadrbTKSJKF/download/time-series-lecture-2.csv&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;https://tubcloud.tu-berlin.de/s/pKttFadrbTKSJKF/download/time-series-lecture-2.csv&quot;</span>
+<span class="p">)</span>
 <span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -805,7 +808,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">snapshot_weightings</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,:]</span> <span class="o">=</span> <span class="n">resolution</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">snapshot_weightings</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">resolution</span>
 </pre></div>
 </div>
 </div>
@@ -875,13 +878,20 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 <p>Then, we add all the technologies we are going to include as carriers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carriers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;onwind&quot;</span><span class="p">,</span> <span class="s2">&quot;offwind&quot;</span><span class="p">,</span> <span class="s2">&quot;solar&quot;</span><span class="p">,</span> <span class="s2">&quot;OCGT&quot;</span><span class="p">,</span> <span class="s2">&quot;hydrogen storage underground&quot;</span><span class="p">,</span> <span class="s2">&quot;battery storage&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carriers</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;onwind&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;offwind&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;solar&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;OCGT&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hydrogen storage underground&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;battery storage&quot;</span><span class="p">,</span>
+<span class="p">]</span>
 
 <span class="n">n</span><span class="o">.</span><span class="n">madd</span><span class="p">(</span>
     <span class="s2">&quot;Carrier&quot;</span><span class="p">,</span>
-    <span class="n">carriers</span><span class="p">,</span> 
+    <span class="n">carriers</span><span class="p">,</span>
     <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dodgerblue&quot;</span><span class="p">,</span> <span class="s2">&quot;aquamarine&quot;</span><span class="p">,</span> <span class="s2">&quot;gold&quot;</span><span class="p">,</span> <span class="s2">&quot;indianred&quot;</span><span class="p">,</span> <span class="s2">&quot;magenta&quot;</span><span class="p">,</span> <span class="s2">&quot;yellowgreen&quot;</span><span class="p">],</span>
-    <span class="n">co2_emissions</span><span class="o">=</span><span class="p">[</span><span class="n">costs</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">c</span><span class="p">,</span> <span class="s2">&quot;CO2 intensity&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">carriers</span><span class="p">]</span>
+    <span class="n">co2_emissions</span><span class="o">=</span><span class="p">[</span><span class="n">costs</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">c</span><span class="p">,</span> <span class="s2">&quot;CO2 intensity&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">carriers</span><span class="p">],</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -910,7 +920,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 <p>Let’s have a check whether the data was read-in correctly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">loads_t</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;MW&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">loads_t</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;MW&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -927,7 +937,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
     <span class="s2">&quot;Generator&quot;</span><span class="p">,</span>
     <span class="s2">&quot;OCGT&quot;</span><span class="p">,</span>
-    <span class="n">bus</span><span class="o">=</span><span class="s1">&#39;electricity&#39;</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">,</span>
     <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;OCGT&quot;</span><span class="p">,</span>
     <span class="n">capital_cost</span><span class="o">=</span><span class="n">costs</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;OCGT&quot;</span><span class="p">,</span> <span class="s2">&quot;capital_cost&quot;</span><span class="p">],</span>
     <span class="n">marginal_cost</span><span class="o">=</span><span class="n">costs</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;OCGT&quot;</span><span class="p">,</span> <span class="s2">&quot;marginal_cost&quot;</span><span class="p">],</span>
@@ -945,7 +955,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
     <span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
         <span class="s2">&quot;Generator&quot;</span><span class="p">,</span>
         <span class="n">tech</span><span class="p">,</span>
-        <span class="n">bus</span><span class="o">=</span><span class="s1">&#39;electricity&#39;</span><span class="p">,</span>
+        <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">,</span>
         <span class="n">carrier</span><span class="o">=</span><span class="n">tech</span><span class="p">,</span>
         <span class="n">p_max_pu</span><span class="o">=</span><span class="n">ts</span><span class="p">[</span><span class="n">tech</span><span class="p">],</span>
         <span class="n">capital_cost</span><span class="o">=</span><span class="n">costs</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">tech</span><span class="p">,</span> <span class="s2">&quot;capital_cost&quot;</span><span class="p">],</span>
@@ -960,7 +970,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 <p>So let’s make sure the capacity factors are read-in correctly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p_max_pu</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2015-03&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;CF&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p_max_pu</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2015-03&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;CF&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -977,7 +987,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 <p>Then, we can already solve the model for the first time. At this stage, the model does not have any storage or emission limits implemented. It’s going to look for the least-cost combination of variable renewables and the gas turbine to supply demand.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -985,7 +995,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Cbc solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.15s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.13s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -1004,7 +1014,7 @@ Solver message: Optimal - objective value 27532289223.69249344
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-iyfmot_k.lp -solve -solu /tmp/linopy-solve-6agvk9ex.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-10vmbkii.lp -solve -solu /tmp/linopy-solve-duj1adow.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 9900 (-9814) rows, 7714 (-1050) columns and 23130 (-10864) elements
 Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033155867 ( 6.5156784%) - largest zero change 0
@@ -1040,8 +1050,8 @@ Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033155867
 7708  Obj 2.7532295e+10
 Optimal - objective value 2.7532289e+10
 After Postsolve, objective 2.7532289e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 2.753228922e+10 - 7708 iterations time 0.212, Presolve 0.03
-Total time (CPU seconds):       0.34   (Wallclock seconds):       0.28
+Optimal objective 2.753228922e+10 - 7708 iterations time 0.202, Presolve 0.02
+Total time (CPU seconds):       0.32   (Wallclock seconds):       0.25
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
@@ -1068,7 +1078,7 @@ Total time (CPU seconds):       0.34   (Wallclock seconds):       0.28
 <p>The optimised capacities in GW:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">p_nom_opt</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span> <span class="c1"># GW</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">p_nom_opt</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span>  <span class="c1"># GW</span>
 </pre></div>
 </div>
 </div>
@@ -1086,7 +1096,7 @@ Name: p_nom_opt, dtype: float64
 <p>The total energy generation by technology in GW:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">snapshot_weightings</span><span class="o">.</span><span class="n">generators</span> <span class="o">@</span> <span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span> <span class="c1"># TWh</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">snapshot_weightings</span><span class="o">.</span><span class="n">generators</span> <span class="o">@</span> <span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>  <span class="c1"># TWh</span>
 </pre></div>
 </div>
 </div>
@@ -1104,14 +1114,18 @@ Name: generators, dtype: float64
 <p>While we get the objective value through <code class="docutils literal notranslate"><span class="pre">n.objective</span></code>, in many cases we want to know how the costs are distributed across the technologies</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">opex</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">snapshot_weightings</span><span class="o">.</span><span class="n">generators</span> <span class="o">@</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p</span> <span class="o">*</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">marginal_cost</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span> <span class="c1"># M€/a</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">opex</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">snapshot_weightings</span><span class="o">.</span><span class="n">generators</span> <span class="o">@</span> <span class="p">(</span>
+    <span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p</span> <span class="o">*</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">marginal_cost</span>
+<span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span>
+    <span class="mf">1e6</span>
+<span class="p">)</span>  <span class="c1"># M€/a</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">capex</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">p_nom_opt</span> <span class="o">*</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">capital_cost</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span> <span class="c1"># M€/a</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">capex</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">p_nom_opt</span> <span class="o">*</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">capital_cost</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>  <span class="c1"># M€/a</span>
 </pre></div>
 </div>
 </div>
@@ -1136,7 +1150,7 @@ dtype: float64
 <p>If you have the newest version of PyPSA installed, you can also run the following to determine the total system cost by technology:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">capex</span><span class="p">()</span> <span class="o">+</span> <span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">opex</span><span class="p">(</span><span class="n">aggregate_time</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">capex</span><span class="p">()</span> <span class="o">+</span> <span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">opex</span><span class="p">(</span><span class="n">aggregate_time</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1154,14 +1168,18 @@ dtype: float64
 <p>Possibly, we are also interested in the total emissions:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">emissions</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p</span> <span class="o">/</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">efficiency</span> <span class="o">*</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">carrier</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">carriers</span><span class="o">.</span><span class="n">co2_emissions</span><span class="p">)</span> <span class="c1"># t/h</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">emissions</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p</span>
+    <span class="o">/</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">efficiency</span>
+    <span class="o">*</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">carrier</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">carriers</span><span class="o">.</span><span class="n">co2_emissions</span><span class="p">)</span>
+<span class="p">)</span>  <span class="c1"># t/h</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">snapshot_weightings</span><span class="o">.</span><span class="n">generators</span> <span class="o">@</span> <span class="n">emissions</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span> <span class="c1"># Mt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">snapshot_weightings</span><span class="o">.</span><span class="n">generators</span> <span class="o">@</span> <span class="n">emissions</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>  <span class="c1"># Mt</span>
 </pre></div>
 </div>
 </div>
@@ -1178,36 +1196,36 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_dispatch</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s2">&quot;2015-07&quot;</span><span class="p">):</span>
-    
     <span class="n">p_by_carrier</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">carrier</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span>
-    
+
     <span class="k">if</span> <span class="ow">not</span> <span class="n">n</span><span class="o">.</span><span class="n">storage_units</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
-        <span class="n">sto</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">storage_units_t</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">storage_units</span><span class="o">.</span><span class="n">carrier</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span>
+        <span class="n">sto</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">n</span><span class="o">.</span><span class="n">storage_units_t</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">storage_units</span><span class="o">.</span><span class="n">carrier</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span>
+        <span class="p">)</span>
         <span class="n">p_by_carrier</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">p_by_carrier</span><span class="p">,</span> <span class="n">sto</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    
+
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-    
+
     <span class="n">color</span> <span class="o">=</span> <span class="n">p_by_carrier</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">carriers</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
-    
-    <span class="n">p_by_carrier</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">p_by_carrier</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">time</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span>
+
+    <span class="n">p_by_carrier</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">p_by_carrier</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">time</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span>
         <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
         <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
     <span class="p">)</span>
-    
-    <span class="n">charge</span> <span class="o">=</span> <span class="n">p_by_carrier</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">p_by_carrier</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">time</span><span class="p">]</span>
-    
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">charge</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
 
+    <span class="n">charge</span> <span class="o">=</span> <span class="n">p_by_carrier</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">p_by_carrier</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">time</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">charge</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
         <span class="n">charge</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span>
             <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
             <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
             <span class="n">color</span><span class="o">=</span><span class="n">charge</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">carriers</span><span class="o">.</span><span class="n">color</span><span class="p">),</span>
         <span class="p">)</span>
-    
-    <span class="n">n</span><span class="o">.</span><span class="n">loads_t</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">time</span><span class="p">]</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
 
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">n</span><span class="o">.</span><span class="n">loads_t</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">time</span><span class="p">]</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;GW&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 </pre></div>
@@ -1238,10 +1256,11 @@ at the beginning of the optimisation period must equal the final state of charge
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
     <span class="s2">&quot;StorageUnit&quot;</span><span class="p">,</span>
     <span class="s2">&quot;battery storage&quot;</span><span class="p">,</span>
-    <span class="n">bus</span><span class="o">=</span><span class="s1">&#39;electricity&#39;</span><span class="p">,</span>
+    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">,</span>
     <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;battery storage&quot;</span><span class="p">,</span>
     <span class="n">max_hours</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-    <span class="n">capital_cost</span><span class="o">=</span><span class="n">costs</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;battery inverter&quot;</span><span class="p">,</span> <span class="s2">&quot;capital_cost&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">costs</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;battery storage&quot;</span><span class="p">,</span> <span class="s2">&quot;capital_cost&quot;</span><span class="p">],</span>
+    <span class="n">capital_cost</span><span class="o">=</span><span class="n">costs</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;battery inverter&quot;</span><span class="p">,</span> <span class="s2">&quot;capital_cost&quot;</span><span class="p">]</span>
+    <span class="o">+</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">costs</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;battery storage&quot;</span><span class="p">,</span> <span class="s2">&quot;capital_cost&quot;</span><span class="p">],</span>
     <span class="n">efficiency_store</span><span class="o">=</span><span class="n">costs</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;battery inverter&quot;</span><span class="p">,</span> <span class="s2">&quot;efficiency&quot;</span><span class="p">],</span>
     <span class="n">efficiency_dispatch</span><span class="o">=</span><span class="n">costs</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;battery inverter&quot;</span><span class="p">,</span> <span class="s2">&quot;efficiency&quot;</span><span class="p">],</span>
     <span class="n">p_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -1255,9 +1274,9 @@ at the beginning of the optimisation period must equal the final state of charge
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">capital_costs</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">costs</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;electrolysis&quot;</span><span class="p">,</span> <span class="s2">&quot;capital_cost&quot;</span><span class="p">]</span> <span class="o">+</span>
-    <span class="n">costs</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;fuel cell&quot;</span><span class="p">,</span> <span class="s2">&quot;capital_cost&quot;</span><span class="p">]</span> <span class="o">+</span>
-    <span class="mi">168</span> <span class="o">*</span> <span class="n">costs</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;hydrogen storage underground&quot;</span><span class="p">,</span> <span class="s2">&quot;capital_cost&quot;</span><span class="p">]</span>
+    <span class="n">costs</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;electrolysis&quot;</span><span class="p">,</span> <span class="s2">&quot;capital_cost&quot;</span><span class="p">]</span>
+    <span class="o">+</span> <span class="n">costs</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;fuel cell&quot;</span><span class="p">,</span> <span class="s2">&quot;capital_cost&quot;</span><span class="p">]</span>
+    <span class="o">+</span> <span class="mi">168</span> <span class="o">*</span> <span class="n">costs</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;hydrogen storage underground&quot;</span><span class="p">,</span> <span class="s2">&quot;capital_cost&quot;</span><span class="p">]</span>
 <span class="p">)</span>
 
 <span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
@@ -1279,7 +1298,7 @@ at the beginning of the optimisation period must equal the final state of charge
 <p>Ok, lets run the again, now with storage, and see what’s changed.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1298,13 +1317,13 @@ at the beginning of the optimisation period must equal the final state of charge
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/14 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  43%|████▎     | 6/14 [00:00&lt;00:00, 56.55it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  43%|████▎     | 6/14 [00:00&lt;00:00, 57.45it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  86%|████████▌ | 12/14 [00:00&lt;00:00, 45.83it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  86%|████████▌ | 12/14 [00:00&lt;00:00, 52.19it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 14/14 [00:00&lt;00:00, 40.70it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 14/14 [00:00&lt;00:00, 45.96it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1313,10 +1332,10 @@ at the beginning of the optimisation period must equal the final state of charge
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 132.49it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 159.76it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.43s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.37s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -1332,7 +1351,7 @@ Solver message: Optimal - objective value 27532289223.69249725
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-2bfa2dbr.lp -solve -solu /tmp/linopy-solve-dw2f49ue.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-_xtkhqzp.lp -solve -solu /tmp/linopy-solve-2g6hegf1.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 27420 (-22956) rows, 20856 (-1050) columns and 75690 (-24006) elements
 Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033165059 ( 6.4525769%) - largest zero change 0.00033012146
@@ -1399,8 +1418,8 @@ Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033165059
 21573  Obj 2.7532295e+10
 Optimal - objective value 2.7532289e+10
 After Postsolve, objective 2.7532289e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 2.753228922e+10 - 21573 iterations time 2.982, Presolve 0.04
-Total time (CPU seconds):       3.28   (Wallclock seconds):       3.26
+Optimal objective 2.753228922e+10 - 21573 iterations time 2.872, Presolve 0.04
+Total time (CPU seconds):       3.12   (Wallclock seconds):       3.12
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
@@ -1414,7 +1433,7 @@ Total time (CPU seconds):       3.28   (Wallclock seconds):       3.26
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">p_nom_opt</span> <span class="c1"># MW</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">p_nom_opt</span>  <span class="c1"># MW</span>
 </pre></div>
 </div>
 </div>
@@ -1431,7 +1450,7 @@ Name: p_nom_opt, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">storage_units</span><span class="o">.</span><span class="n">p_nom_opt</span> <span class="c1"># MW</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">storage_units</span><span class="o">.</span><span class="n">p_nom_opt</span>  <span class="c1"># MW</span>
 </pre></div>
 </div>
 </div>
@@ -1464,7 +1483,7 @@ Name: p_nom_opt, dtype: float64
 <p>When we run the model now…</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1483,13 +1502,13 @@ Name: p_nom_opt, dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  40%|████      | 6/15 [00:00&lt;00:00, 59.45it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  47%|████▋     | 7/15 [00:00&lt;00:00, 63.91it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  80%|████████  | 12/15 [00:00&lt;00:00, 47.74it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  93%|█████████▎| 14/15 [00:00&lt;00:00, 45.03it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 43.68it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 48.50it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1498,17 +1517,17 @@ Name: p_nom_opt, dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 133.97it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 160.20it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.42s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.38s
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-8e2cbt0i.lp -solve -solu /tmp/linopy-solve-ogtx8owv.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-vhq3nb5_.lp -solve -solu /tmp/linopy-solve-3t5ynlpu.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 25230 (-25147) rows, 18665 (-3241) columns and 69120 (-32766) elements
 Perturbing problem by 0.001% of 231.23943 - largest nonzero change 0.00030699396 ( 7.1617767%) - largest zero change 0.00030695614
@@ -1578,8 +1597,8 @@ Perturbing problem by 0.001% of 231.23943 - largest nonzero change 0.00030699396
 22061  Obj 6.1044363e+10
 Optimal - objective value 6.1044272e+10
 After Postsolve, objective 6.1044272e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 6.104427161e+10 - 22061 iterations time 5.592, Presolve 0.04
-Total time (CPU seconds):       5.87   (Wallclock seconds):       5.87
+Optimal objective 6.104427161e+10 - 22061 iterations time 5.102, Presolve 0.03
+Total time (CPU seconds):       5.36   (Wallclock seconds):       5.38
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -1603,7 +1622,7 @@ Solver message: Optimal - objective value 61044271610.31913757
 <p>…and inspect the capacities built…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">p_nom_opt</span> <span class="c1"># MW</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">p_nom_opt</span>  <span class="c1"># MW</span>
 </pre></div>
 </div>
 </div>
@@ -1620,7 +1639,7 @@ Name: p_nom_opt, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">storage_units</span><span class="o">.</span><span class="n">p_nom_opt</span> <span class="c1"># MW</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">storage_units</span><span class="o">.</span><span class="n">p_nom_opt</span>  <span class="c1"># MW</span>
 </pre></div>
 </div>
 </div>
@@ -1635,7 +1654,7 @@ Name: p_nom_opt, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">storage_units</span><span class="o">.</span><span class="n">p_nom_opt</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span><span class="o">.</span><span class="n">storage_units</span><span class="o">.</span><span class="n">max_hours</span> <span class="c1"># GWh</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">storage_units</span><span class="o">.</span><span class="n">p_nom_opt</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span><span class="o">.</span><span class="n">storage_units</span><span class="o">.</span><span class="n">max_hours</span>  <span class="c1"># GWh</span>
 </pre></div>
 </div>
 </div>
@@ -1668,8 +1687,8 @@ Attempting to set identical low and high ylims makes transformation singular; au
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">system_cost</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">tsc</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">capex</span><span class="p">()</span> <span class="o">+</span> <span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">opex</span><span class="p">(</span><span class="n">aggregate_time</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">tsc</span><span class="o">.</span><span class="n">droplevel</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span> <span class="c1"># million €/a</span>
+    <span class="n">tsc</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">capex</span><span class="p">()</span> <span class="o">+</span> <span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">opex</span><span class="p">(</span><span class="n">aggregate_time</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tsc</span><span class="o">.</span><span class="n">droplevel</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>  <span class="c1"># million €/a</span>
 </pre></div>
 </div>
 </div>
@@ -1693,12 +1712,12 @@ Attempting to set identical low and high ylims makes transformation singular; au
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>carrier
+battery storage                  2450.821728
+hydrogen storage underground    14718.372895
 OCGT                                0.000000
 offwind                         12591.554095
 onwind                          19741.697969
 solar                           11541.825126
-battery storage                  2450.821728
-hydrogen storage underground    14718.372895
 dtype: float64
 </pre></div>
 </div>
@@ -1707,7 +1726,7 @@ dtype: float64
 <p>This series, we can then process into plots, e.g. a pie chart:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">system_cost</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">system_cost</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1715,7 +1734,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/6b7c18ef0192a92f596ecac50995374bcdee51a490f1e7560f70ae6cb28201ee.png" src="_images/6b7c18ef0192a92f596ecac50995374bcdee51a490f1e7560f70ae6cb28201ee.png" />
+<img alt="_images/e3ad11b4af7399c2d10d3abd139c31bdc23693bb13c2aa44fd8ee08d7c92df87.png" src="_images/e3ad11b4af7399c2d10d3abd139c31bdc23693bb13c2aa44fd8ee08d7c92df87.png" />
 </div>
 </div>
 <p>or use to compute the cost per unit of electricity consumed:</p>
@@ -1728,7 +1747,7 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">system_cost</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">*</span><span class="mf">1e6</span> <span class="o">/</span> <span class="n">demand</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">system_cost</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1e6</span> <span class="o">/</span> <span class="n">demand</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1755,9 +1774,9 @@ dtype: float64
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sensitivity</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">co2</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">0</span><span class="p">]:</span>
+<span class="k">for</span> <span class="n">co2</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">0</span><span class="p">]:</span>
     <span class="n">n</span><span class="o">.</span><span class="n">global_constraints</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;CO2Limit&quot;</span><span class="p">,</span> <span class="s2">&quot;constant&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">co2</span> <span class="o">*</span> <span class="mf">1e6</span>
-    <span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
+    <span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
     <span class="n">sensitivity</span><span class="p">[</span><span class="n">co2</span><span class="p">]</span> <span class="o">=</span> <span class="n">system_cost</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1777,13 +1796,13 @@ dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  40%|████      | 6/15 [00:00&lt;00:00, 58.14it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  47%|████▋     | 7/15 [00:00&lt;00:00, 58.17it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  80%|████████  | 12/15 [00:00&lt;00:00, 48.13it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 45.09it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 43.96it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 45.93it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1792,10 +1811,10 @@ dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 130.36it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 143.98it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.42s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.4s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -1811,7 +1830,7 @@ Solver message: Optimal - objective value 27532289223.69249725
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-5isi_a8g.lp -solve -solu /tmp/linopy-solve-ldofy4ug.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-78lvresj.lp -solve -solu /tmp/linopy-solve-agh6wi4e.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 27421 (-22956) rows, 20856 (-1050) columns and 77880 (-24006) elements
 Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033165059 ( 6.4525769%) - largest zero change 0.00033012146
@@ -1879,8 +1898,8 @@ Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033165059
 22078  Obj 2.7532295e+10
 Optimal - objective value 2.7532289e+10
 After Postsolve, objective 2.7532289e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 2.753228922e+10 - 22078 iterations time 3.922, Presolve 0.05
-Total time (CPU seconds):       4.20   (Wallclock seconds):       4.21
+Optimal objective 2.753228922e+10 - 22078 iterations time 3.712, Presolve 0.04
+Total time (CPU seconds):       3.96   (Wallclock seconds):       3.96
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
@@ -1895,13 +1914,13 @@ Total time (CPU seconds):       4.20   (Wallclock seconds):       4.21
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  40%|████      | 6/15 [00:00&lt;00:00, 59.05it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  47%|████▋     | 7/15 [00:00&lt;00:00, 59.25it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  80%|████████  | 12/15 [00:00&lt;00:00, 47.69it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 45.17it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 43.21it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 45.46it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1910,10 +1929,10 @@ Total time (CPU seconds):       4.20   (Wallclock seconds):       4.21
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 138.49it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 136.97it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.42s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.4s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -1929,7 +1948,7 @@ Solver message: Optimal - objective value 27888335402.39853287
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-yujf7qwf.lp -solve -solu /tmp/linopy-solve-w4yo0q83.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-g2yat0hb.lp -solve -solu /tmp/linopy-solve-4qldxnyd.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 27421 (-22956) rows, 20856 (-1050) columns and 77880 (-24006) elements
 Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033165059 ( 6.4525769%) - largest zero change 0.00033012146
@@ -1995,8 +2014,8 @@ Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033165059
 21266  Obj 2.7888341e+10
 Optimal - objective value 2.7888335e+10
 After Postsolve, objective 2.7888335e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 2.78883354e+10 - 21266 iterations time 8.832, Presolve 0.05
-Total time (CPU seconds):       9.12   (Wallclock seconds):       9.14
+Optimal objective 2.78883354e+10 - 21266 iterations time 8.282, Presolve 0.05
+Total time (CPU seconds):       8.53   (Wallclock seconds):       8.55
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
@@ -2011,13 +2030,13 @@ Total time (CPU seconds):       9.12   (Wallclock seconds):       9.14
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  40%|████      | 6/15 [00:00&lt;00:00, 58.54it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  40%|████      | 6/15 [00:00&lt;00:00, 55.48it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  80%|████████  | 12/15 [00:00&lt;00:00, 49.13it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  80%|████████  | 12/15 [00:00&lt;00:00, 48.54it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 44.78it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 42.70it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -2026,17 +2045,17 @@ Total time (CPU seconds):       9.12   (Wallclock seconds):       9.14
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 136.17it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 105.57it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.41s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.44s
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-esaarb0p.lp -solve -solu /tmp/linopy-solve-6pxdol4n.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-m1d_ij7_.lp -solve -solu /tmp/linopy-solve-3nyqb361.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 27421 (-22956) rows, 20856 (-1050) columns and 77880 (-24006) elements
 Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033165059 ( 6.4525769%) - largest zero change 0.00033012146
@@ -2122,16 +2141,37 @@ Solver message: Optimal - objective value 32192481955.19141006
 24410  Obj 3.219249e+10
 Optimal - objective value 3.2192482e+10
 After Postsolve, objective 3.2192482e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 3.219248196e+10 - 24410 iterations time 11.302, Presolve 0.04
-Total time (CPU seconds):       11.56   (Wallclock seconds):       11.62
+Optimal objective 3.219248196e+10 - 24410 iterations time 11.042, Presolve 0.05
+Total time (CPU seconds):       11.33   (Wallclock seconds):       11.35
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Cbc solver
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  40%|████      | 6/15 [00:00&lt;00:00, 58.11it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  53%|█████▎    | 8/15 [00:00&lt;00:00, 52.96it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">54</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">co2</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">0</span><span class="p">]:</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">co2</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">0</span><span class="p">]:</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">n</span><span class="o">.</span><span class="n">global_constraints</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;CO2Limit&quot;</span><span class="p">,</span> <span class="s2">&quot;constant&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">co2</span> <span class="o">*</span> <span class="mf">1e6</span>
-<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">sensitivity</span><span class="p">[</span><span class="n">co2</span><span class="p">]</span> <span class="o">=</span> <span class="n">system_cost</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
 <span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pypsa/optimization/optimize.py:587,</span> in <span class="ni">OptimizationAccessor.__call__</span><span class="nt">(self, *args, **kwargs)</span>
@@ -2146,48 +2186,210 @@ Total time (CPU seconds):       11.56   (Wallclock seconds):       11.62
 <span class="g g-Whitespace">    </span><span class="mi">569</span> <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;ok&quot;</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">570</span>     <span class="n">assign_solution</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/model.py:1087,</span> in <span class="ni">Model.solve</span><span class="nt">(self, solver_name, io_api, problem_fn, solution_fn, log_fn, basis_fn, warmstart_fn, keep_files, sanitize_zeros, remote, **solver_options)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1085</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1086</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1087</span>     <span class="n">vals</span> <span class="o">=</span> <span class="n">dual</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1088</span> <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1089</span>     <span class="n">vals</span> <span class="o">=</span> <span class="n">dual</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/model.py:1042,</span> in <span class="ni">Model.solve</span><span class="nt">(self, solver_name, io_api, problem_fn, solution_fn, log_fn, basis_fn, warmstart_fn, keep_files, sanitize_zeros, remote, **solver_options)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1040</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1041</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">solvers</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;run_</span><span class="si">{</span><span class="n">solver_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1042</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1043</span>         <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1044</span>         <span class="n">io_api</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1045</span>         <span class="n">problem_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1046</span>         <span class="n">solution_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1047</span>         <span class="n">log_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1048</span>         <span class="n">warmstart_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1049</span>         <span class="n">basis_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1050</span>         <span class="n">keep_files</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1051</span>         <span class="o">**</span><span class="n">solver_options</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1052</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1053</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1054</span>     <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="p">(</span><span class="n">problem_fn</span><span class="p">,</span> <span class="n">solution_fn</span><span class="p">):</span>
 
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/series.py:1033,</span> in <span class="ni">Series.__getitem__</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1030</span>     <span class="n">key</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1031</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_values</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1033</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_with</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/solvers.py:130,</span> in <span class="ni">run_cbc</span><span class="nt">(model, io_api, problem_fn, solution_fn, log_fn, warmstart_fn, basis_fn, keep_files, **solver_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span> <span class="k">if</span> <span class="n">io_api</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">io_api</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;lp&quot;</span><span class="p">,</span> <span class="s2">&quot;mps&quot;</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span>     <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span>         <span class="sa">f</span><span class="s2">&quot;IO setting &#39;</span><span class="si">{</span><span class="n">io_api</span><span class="si">}</span><span class="s2">&#39; not available for cbc solver. &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">127</span>         <span class="s2">&quot;Falling back to `lp`.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">128</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">130</span> <span class="n">problem_fn</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="n">problem_fn</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span> <span class="c1"># printingOptions is about what goes in solution file</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span> <span class="n">command</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;cbc -printingOptions all -import </span><span class="si">{</span><span class="n">problem_fn</span><span class="si">}</span><span class="s2"> &quot;</span>
 
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/series.py:1068,</span> in <span class="ni">Series._get_with</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1064</span> <span class="k">if</span> <span class="n">key_type</span> <span class="o">==</span> <span class="s2">&quot;integer&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1065</span>     <span class="c1"># We need to decide whether to treat this as a positional indexer</span>
-<span class="g g-Whitespace">   </span><span class="mi">1066</span>     <span class="c1">#  (i.e. self.iloc) or label-based (i.e. self.loc)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1067</span>     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">_should_fallback_to_positional</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1068</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1069</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1070</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/io.py:296,</span> in <span class="ni">to_file</span><span class="nt">(m, fn)</span>
+<span class="g g-Whitespace">    </span><span class="mi">293</span> <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">295</span> <span class="n">objective_to_file</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="n">log</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">296</span> <span class="n">constraints_to_file</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="n">log</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">297</span> <span class="n">bounds_to_file</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="n">log</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">298</span> <span class="n">binaries_to_file</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="n">log</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
 
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/indexing.py:1102,</span> in <span class="ni">_LocationIndexer.__getitem__</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1098</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1099</span>     <span class="c1"># we by definition only have the 0th axis</span>
-<span class="g g-Whitespace">   </span><span class="mi">1100</span>     <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis</span> <span class="ow">or</span> <span class="mi">0</span>
-<span class="ne">-&gt; </span><span class="mi">1102</span>     <span class="n">maybe_callable</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="n">apply_if_callable</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1103</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_axis</span><span class="p">(</span><span class="n">maybe_callable</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/io.py:142,</span> in <span class="ni">constraints_to_file</span><span class="nt">(m, f, log, batch_size)</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span> <span class="n">batch</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">142</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">constraints</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">flat</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span>     <span class="n">labels</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">values</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span>     <span class="nb">vars</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">values</span>
 
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/common.py:367,</span> in <span class="ni">apply_if_callable</span><span class="nt">(maybe_callable, obj, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">360</span>     <span class="c1"># everything failed (probably because the argument</span>
-<span class="g g-Whitespace">    </span><span class="mi">361</span>     <span class="c1"># wasn&#39;t actually callable); we return None</span>
-<span class="g g-Whitespace">    </span><span class="mi">362</span>     <span class="c1"># instead of the empty string in this case to allow</span>
-<span class="g g-Whitespace">    </span><span class="mi">363</span>     <span class="c1"># distinguishing between no name and a name of &#39;&#39;</span>
-<span class="g g-Whitespace">    </span><span class="mi">364</span>     <span class="k">return</span> <span class="kc">None</span>
-<span class="ne">--&gt; </span><span class="mi">367</span> <span class="k">def</span> <span class="nf">apply_if_callable</span><span class="p">(</span><span class="n">maybe_callable</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">368</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">369</span><span class="sd">     Evaluate possibly callable input using obj and kwargs if it is callable,</span>
-<span class="g g-Whitespace">    </span><span class="mi">370</span><span class="sd">     otherwise return as it is.</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">376</span><span class="sd">     **kwargs</span>
-<span class="g g-Whitespace">    </span><span class="mi">377</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">378</span>     <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">maybe_callable</span><span class="p">):</span>
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/constraints.py:481,</span> in <span class="ni">Constraint.flat</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">479</span> <span class="n">agg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">coeffs</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">,</span> <span class="n">rhs</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="n">sign</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">480</span> <span class="n">agg</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="s2">&quot;first&quot;</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">agg</span><span class="p">})</span>
+<span class="ne">--&gt; </span><span class="mi">481</span> <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="s2">&quot;vars&quot;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">agg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">483</span> <span class="n">any_nan</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">484</span> <span class="k">if</span> <span class="n">any_nan</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/generic.py:1269,</span> in <span class="ni">DataFrameGroupBy.aggregate</span><span class="nt">(self, func, engine, engine_kwargs, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1266</span> <span class="n">func</span> <span class="o">=</span> <span class="n">maybe_mangle_lambdas</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1268</span> <span class="n">op</span> <span class="o">=</span> <span class="n">GroupByApply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1269</span> <span class="n">result</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">agg</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1270</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">is_dict_like</span><span class="p">(</span><span class="n">func</span><span class="p">)</span> <span class="ow">and</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1271</span>     <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/apply.py:163,</span> in <span class="ni">Apply.agg</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">160</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_str</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">162</span> <span class="k">if</span> <span class="n">is_dict_like</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">163</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">agg_dict_like</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">164</span> <span class="k">elif</span> <span class="n">is_list_like</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">165</span>     <span class="c1"># we require a list, but not a &#39;str&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">166</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">agg_list_like</span><span class="p">()</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/apply.py:420,</span> in <span class="ni">Apply.agg_dict_like</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">417</span>         <span class="n">results</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">colg</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">how</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">how</span> <span class="ow">in</span> <span class="n">arg</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="g g-Whitespace">    </span><span class="mi">418</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">419</span>         <span class="c1"># key used for column selection and output</span>
+<span class="ne">--&gt; </span><span class="mi">420</span>         <span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
+<span class="nn">    421             key: obj._gotitem(key, ndim=1).agg(how) for key, how</span> in <span class="ni">arg.items</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">422</span>         <span class="p">}</span>
+<span class="g g-Whitespace">    </span><span class="mi">424</span> <span class="c1"># set the final keys</span>
+<span class="g g-Whitespace">    </span><span class="mi">425</span> <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">arg</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/apply.py:421,</span> in <span class="ni">&lt;dictcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">417</span>         <span class="n">results</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">colg</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">how</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">how</span> <span class="ow">in</span> <span class="n">arg</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="g g-Whitespace">    </span><span class="mi">418</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">419</span>         <span class="c1"># key used for column selection and output</span>
+<span class="g g-Whitespace">    </span><span class="mi">420</span>         <span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
+<span class="nn">--&gt; 421             key: obj._gotitem(key, ndim=1).agg(how) for key, how</span> in <span class="ni">arg.items</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">422</span>         <span class="p">}</span>
+<span class="g g-Whitespace">    </span><span class="mi">424</span> <span class="c1"># set the final keys</span>
+<span class="g g-Whitespace">    </span><span class="mi">425</span> <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">arg</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/generic.py:232,</span> in <span class="ni">SeriesGroupBy.aggregate</span><span class="nt">(self, func, engine, engine_kwargs, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">229</span>     <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">232</span>     <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">Iterable</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span>     <span class="c1"># Catch instances of lists / tuples</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span>     <span class="c1"># but not the class list / tuple itself.</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span>     <span class="n">func</span> <span class="o">=</span> <span class="n">maybe_mangle_lambdas</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/groupby.py:2263,</span> in <span class="ni">GroupBy.sum</span><span class="nt">(self, numeric_only, min_count, engine, engine_kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2258</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2259</span>     <span class="c1"># If we are grouping on categoricals we want unobserved categories to</span>
+<span class="g g-Whitespace">   </span><span class="mi">2260</span>     <span class="c1"># return zero, rather than the default of NaN which the reindexing in</span>
+<span class="g g-Whitespace">   </span><span class="mi">2261</span>     <span class="c1"># _agg_general() returns. GH #31422</span>
+<span class="g g-Whitespace">   </span><span class="mi">2262</span>     <span class="k">with</span> <span class="n">com</span><span class="o">.</span><span class="n">temp_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;observed&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2263</span>         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agg_general</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2264</span>             <span class="n">numeric_only</span><span class="o">=</span><span class="n">numeric_only</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2265</span>             <span class="n">min_count</span><span class="o">=</span><span class="n">min_count</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2266</span>             <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2267</span>             <span class="n">npfunc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2268</span>         <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2270</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reindex_output</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/groupby.py:1422,</span> in <span class="ni">GroupBy._agg_general</span><span class="nt">(self, numeric_only, min_count, alias, npfunc)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1413</span> <span class="nd">@final</span>
+<span class="g g-Whitespace">   </span><span class="mi">1414</span> <span class="k">def</span> <span class="nf">_agg_general</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1415</span>     <span class="bp">self</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1420</span>     <span class="n">npfunc</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1421</span> <span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1422</span>     <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cython_agg_general</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1423</span>         <span class="n">how</span><span class="o">=</span><span class="n">alias</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1424</span>         <span class="n">alt</span><span class="o">=</span><span class="n">npfunc</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1425</span>         <span class="n">numeric_only</span><span class="o">=</span><span class="n">numeric_only</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1426</span>         <span class="n">min_count</span><span class="o">=</span><span class="n">min_count</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1427</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1428</span>     <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">__finalize__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;groupby&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/groupby.py:1507,</span> in <span class="ni">GroupBy._cython_agg_general</span><span class="nt">(self, how, alt, numeric_only, min_count, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1503</span>         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agg_py_fallback</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="n">alt</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1505</span>     <span class="k">return</span> <span class="n">result</span>
+<span class="ne">-&gt; </span><span class="mi">1507</span> <span class="n">new_mgr</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">grouped_reduce</span><span class="p">(</span><span class="n">array_func</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1508</span> <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrap_agged_manager</span><span class="p">(</span><span class="n">new_mgr</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1509</span> <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrap_aggregated_output</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/internals/base.py:197,</span> in <span class="ni">SingleDataManager.grouped_reduce</span><span class="nt">(self, func)</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span> <span class="k">def</span> <span class="nf">grouped_reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span>     <span class="n">arr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span>
+<span class="ne">--&gt; </span><span class="mi">197</span>     <span class="n">res</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span>     <span class="n">index</span> <span class="o">=</span> <span class="n">default_index</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span>     <span class="n">mgr</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/groupby.py:1490,</span> in <span class="ni">GroupBy._cython_agg_general.&lt;locals&gt;.array_func</span><span class="nt">(values)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1488</span> <span class="k">def</span> <span class="nf">array_func</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ArrayLike</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1489</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1490</span>         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grouper</span><span class="o">.</span><span class="n">_cython_operation</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1491</span>             <span class="s2">&quot;aggregate&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1492</span>             <span class="n">values</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1493</span>             <span class="n">how</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1494</span>             <span class="n">axis</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1495</span>             <span class="n">min_count</span><span class="o">=</span><span class="n">min_count</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1496</span>             <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1497</span>         <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1498</span>     <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1499</span>         <span class="c1"># generally if we have numeric_only=False</span>
+<span class="g g-Whitespace">   </span><span class="mi">1500</span>         <span class="c1"># and non-applicable functions</span>
+<span class="g g-Whitespace">   </span><span class="mi">1501</span>         <span class="c1"># try to python agg</span>
+<span class="g g-Whitespace">   </span><span class="mi">1502</span>         <span class="c1"># TODO: shouldn&#39;t min_count matter?</span>
+<span class="g g-Whitespace">   </span><span class="mi">1503</span>         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agg_py_fallback</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="n">alt</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/ops.py:958,</span> in <span class="ni">BaseGrouper._cython_operation</span><span class="nt">(self, kind, values, how, axis, min_count, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">955</span> <span class="n">cy_op</span> <span class="o">=</span> <span class="n">WrappedCythonOp</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="n">how</span><span class="p">,</span> <span class="n">has_dropped_na</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">has_dropped_na</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">957</span> <span class="n">ids</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">group_info</span>
+<span class="ne">--&gt; </span><span class="mi">958</span> <span class="n">ngroups</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ngroups</span>
+<span class="g g-Whitespace">    </span><span class="mi">959</span> <span class="k">return</span> <span class="n">cy_op</span><span class="o">.</span><span class="n">cython_operation</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">960</span>     <span class="n">values</span><span class="o">=</span><span class="n">values</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">961</span>     <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">965</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">966</span> <span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/_libs/properties.pyx:36,</span> in <span class="ni">pandas._libs.properties.CachedProperty.__get__</span><span class="nt">()</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/ops.py:902,</span> in <span class="ni">BaseGrouper.ngroups</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">899</span> <span class="nd">@final</span>
+<span class="g g-Whitespace">    </span><span class="mi">900</span> <span class="nd">@cache_readonly</span>
+<span class="g g-Whitespace">    </span><span class="mi">901</span> <span class="k">def</span> <span class="nf">ngroups</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">902</span>     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result_index</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/_libs/properties.pyx:36,</span> in <span class="ni">pandas._libs.properties.CachedProperty.__get__</span><span class="nt">()</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/ops.py:915,</span> in <span class="ni">BaseGrouper.result_index</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">912</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">groupings</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">913</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">groupings</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">result_index</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="ne">--&gt; </span><span class="mi">915</span> <span class="n">codes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reconstructed_codes</span>
+<span class="g g-Whitespace">    </span><span class="mi">916</span> <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="n">ping</span><span class="o">.</span><span class="n">result_index</span> <span class="k">for</span> <span class="n">ping</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">groupings</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">917</span> <span class="k">return</span> <span class="n">MultiIndex</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">918</span>     <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span> <span class="n">codes</span><span class="o">=</span><span class="n">codes</span><span class="p">,</span> <span class="n">verify_integrity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">names</span>
+<span class="g g-Whitespace">    </span><span class="mi">919</span> <span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/ops.py:908,</span> in <span class="ni">BaseGrouper.reconstructed_codes</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">906</span> <span class="n">codes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">codes</span>
+<span class="g g-Whitespace">    </span><span class="mi">907</span> <span class="n">ids</span><span class="p">,</span> <span class="n">obs_ids</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">group_info</span>
+<span class="ne">--&gt; </span><span class="mi">908</span> <span class="k">return</span> <span class="n">decons_obs_group_ids</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">obs_ids</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">codes</span><span class="p">,</span> <span class="n">xnull</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/sorting.py:283,</span> in <span class="ni">decons_obs_group_ids</span><span class="nt">(comp_ids, obs_ids, shape, labels, xnull)</span>
+<span class="g g-Whitespace">    </span><span class="mi">279</span>     <span class="n">shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">arr_shape</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">281</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">is_int64_overflow_possible</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span>     <span class="c1"># obs ids are deconstructable! take the fast route!</span>
+<span class="ne">--&gt; </span><span class="mi">283</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">_decons_group_index</span><span class="p">(</span><span class="n">obs_ids</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span>     <span class="k">return</span> <span class="n">out</span> <span class="k">if</span> <span class="n">xnull</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">lift</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="k">else</span> <span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">lift</span><span class="p">)]</span>
+<span class="g g-Whitespace">    </span><span class="mi">286</span> <span class="n">indexer</span> <span class="o">=</span> <span class="n">unique_label_indices</span><span class="p">(</span><span class="n">comp_ids</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/sorting.py:250,</span> in <span class="ni">_decons_group_index</span><span class="nt">(comp_labels, shape)</span>
+<span class="g g-Whitespace">    </span><span class="mi">248</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">))):</span>
+<span class="g g-Whitespace">    </span><span class="mi">249</span>     <span class="n">labels</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">factor</span> <span class="o">*</span> <span class="n">shape</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">//</span> <span class="n">factor</span>
+<span class="ne">--&gt; </span><span class="mi">250</span>     <span class="n">np</span><span class="o">.</span><span class="n">putmask</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">comp_labels</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">251</span>     <span class="n">label_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">252</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">labels</span> <span class="o">*</span> <span class="n">factor</span>
+
+<span class="nn">File &lt;__array_function__ internals&gt;:177,</span> in <span class="ni">putmask</span><span class="nt">(*args, **kwargs)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -2197,26 +2399,20 @@ Total time (CPU seconds):       11.56   (Wallclock seconds):       11.62
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sensitivity</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span> <span class="c1"># billion Euro/a</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sensitivity</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span>  <span class="c1"># billion Euro/a</span>
 <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span>
     <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="n">color</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">carriers</span><span class="o">.</span><span class="n">color</span><span class="p">),</span>
-    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
-    <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">150</span><span class="p">),</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span>
     <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;CO$_2$ emissions [Mt/a]&quot;</span><span class="p">,</span>
     <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;System cost [bn€/a]&quot;</span><span class="p">,</span>
-    <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
 <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa2d1de5910&gt;
-</pre></div>
-</div>
-<img alt="_images/2e3fe29eb4d2e34ca5f7e59353f2d144d3feeb41e1399719ba14426f7bca3296.png" src="_images/2e3fe29eb4d2e34ca5f7e59353f2d144d3feeb41e1399719ba14426f7bca3296.png" />
 </div>
 </div>
 </section>
@@ -2245,16 +2441,16 @@ Total time (CPU seconds):       11.56   (Wallclock seconds):       11.62
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: ""
         },
         kernelOptions: {
-            name: "python3",
+            name: "",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = ''</script>
 
                 </article>
               

@@ -476,12 +476,14 @@ document.write(`
 <p>Say we want to calculate the Laplacian <span class="math notranslate nohighlight">\(L\)</span> of this graph based on its incidence matrix <span class="math notranslate nohighlight">\(K\)</span>. We first need to write down the incidence matrix <span class="math notranslate nohighlight">\(K\)</span> as a <code class="docutils literal notranslate"><span class="pre">np.array</span></code>. Let’s also use the convention that edges are oriented such that they are directed at the node with the higher label value (i.e. from node 1 to node 2, not vice versa).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-<span class="p">])</span><span class="o">.</span><span class="n">T</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">T</span>
 <span class="n">K</span>
 </pre></div>
 </div>
@@ -545,7 +547,7 @@ document.write(`
 <p>with attributes</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s1">&#39;DE&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s2">&quot;DE&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -553,7 +555,7 @@ document.write(`
 <p>or add nodes from a list</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -561,10 +563,12 @@ document.write(`
 <p>We can also add nodes along with node attributes if your container yields 2-tuples of the form <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">node_attribute_dict)</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span>
-    <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;green&quot;</span><span class="p">}),</span>
-<span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">}),</span>
+        <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;green&quot;</span><span class="p">}),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -599,7 +603,7 @@ document.write(`
 <p>or as a 3-tuple with 2 nodes followed by an edge attribute dictionary</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">})])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">})])</span>
 </pre></div>
 </div>
 </div>
@@ -662,7 +666,7 @@ document.write(`
 <p>Access an edge:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -675,7 +679,7 @@ document.write(`
 <p>Access an attribute of an edge:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">][</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">][</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -760,9 +764,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/c2dc660f5d9389241d0b3308a44ce601cc91c78b318934bc3a6dfbfc441509ba.png" src="_images/c2dc660f5d9389241d0b3308a44ce601cc91c78b318934bc3a6dfbfc441509ba.png" />
-</div>
 </div>
 <p>with options for labeling graph elements</p>
 <div class="cell docutils container">
@@ -771,22 +772,17 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/5a7533779369299a6bd6105b4066a211f0d9d31cd235ce8a7162fab21b44ca8b.png" src="_images/5a7533779369299a6bd6105b4066a211f0d9d31cd235ce8a7162fab21b44ca8b.png" />
-</div>
 </div>
 <p>and integration to <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;tmp.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/a308f41a99207a273f5f77b14a0f44241794f4e972c9b3a88ed8c3b4c00faedc.png" src="_images/a308f41a99207a273f5f77b14a0f44241794f4e972c9b3a88ed8c3b4c00faedc.png" />
 </div>
 </div>
 <div class="admonition note">
@@ -805,21 +801,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-</pre></div>
-</div>
-</div>
 </div>
 <p>What are the components that are connected / isolated?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{1, 2, 3, 4}, {6}]
 </pre></div>
 </div>
 </div>
@@ -831,11 +817,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
 </div>
 <p>What is the frequency of degrees in the network?</p>
 <div class="cell docutils container">
@@ -844,25 +825,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 2, 1]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
 <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">degree_histogram</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    1
-1    1
-2    2
-3    1
-dtype: int64
 </pre></div>
 </div>
 </div>
@@ -883,15 +851,6 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1., -1.,  0.,  0.],
-       [ 1.,  0., -1.,  0.],
-       [ 0.,  1.,  1., -1.],
-       [ 0.,  0.,  0.,  1.],
-       [ 0.,  0.,  0.,  0.]])
-</pre></div>
-</div>
-</div>
 </div>
 <p>What is the <em>Laplacian matrix</em>? (Careful, <code class="docutils literal notranslate"><span class="pre">networkx</span></code> will yield a weighted adjacency matrix by default!)</p>
 <div class="cell docutils container">
@@ -901,25 +860,11 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2, -1, -1,  0,  0],
-       [-1,  2, -1,  0,  0],
-       [-1, -1,  3, -1,  0],
-       [ 0,  0, -1,  1,  0],
-       [ 0,  0,  0,  0,  0]])
-</pre></div>
-</div>
-</div>
 </div>
 <p>What is the <em>degree matrix</em>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DegreeView({1: 2, 2: 2, 3: 3, 4: 1, 6: 0})
 </pre></div>
 </div>
 </div>
@@ -933,15 +878,6 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 0, 0, 0, 0],
-       [0, 2, 0, 0, 0],
-       [0, 0, 3, 0, 0],
-       [0, 0, 0, 1, 0],
-       [0, 0, 0, 0, 0]])
-</pre></div>
-</div>
-</div>
 </div>
 <p>Let’s do a few checks using different formulas for the <em>Laplacian matrix</em>:</p>
 <div class="math notranslate nohighlight">
@@ -949,15 +885,6 @@ dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2., -1., -1.,  0.,  0.],
-       [-1.,  2., -1.,  0.,  0.],
-       [-1., -1.,  3., -1.,  0.],
-       [ 0.,  0., -1.,  1.,  0.],
-       [ 0.,  0.,  0.,  0.,  0.]])
 </pre></div>
 </div>
 </div>
@@ -977,15 +904,6 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2, -1, -1,  0,  0],
-       [-1,  2, -1,  0,  0],
-       [-1, -1,  3, -1,  0],
-       [ 0,  0, -1,  1,  0],
-       [ 0,  0,  0,  0,  0]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -998,11 +916,6 @@ dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">cycle_basis</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[2, 3, 1]]
 </pre></div>
 </div>
 </div>
@@ -1021,63 +934,6 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>x</th>
-      <th>y</th>
-    </tr>
-    <tr>
-      <th>Bus</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>8838</th>
-      <td>-2.169800</td>
-      <td>53.243852</td>
-    </tr>
-    <tr>
-      <th>7157</th>
-      <td>11.927347</td>
-      <td>45.403086</td>
-    </tr>
-    <tr>
-      <th>1316</th>
-      <td>14.475861</td>
-      <td>40.761821</td>
-    </tr>
-    <tr>
-      <th>7421</th>
-      <td>4.520127</td>
-      <td>50.488619</td>
-    </tr>
-    <tr>
-      <th>1317</th>
-      <td>14.639282</td>
-      <td>40.688969</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1087,82 +943,11 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>bus0</th>
-      <th>bus1</th>
-      <th>s_nom</th>
-      <th>x_pu</th>
-    </tr>
-    <tr>
-      <th>Line</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>8968</th>
-      <td>1771</td>
-      <td>1774</td>
-      <td>491.556019</td>
-      <td>0.000256</td>
-    </tr>
-    <tr>
-      <th>11229</th>
-      <td>3792</td>
-      <td>3794</td>
-      <td>3396.205223</td>
-      <td>0.000017</td>
-    </tr>
-    <tr>
-      <th>11228</th>
-      <td>3793</td>
-      <td>3794</td>
-      <td>3396.205223</td>
-      <td>0.000012</td>
-    </tr>
-    <tr>
-      <th>11227</th>
-      <td>3793</td>
-      <td>3796</td>
-      <td>3396.205223</td>
-      <td>0.000031</td>
-    </tr>
-    <tr>
-      <th>8929</th>
-      <td>927</td>
-      <td>929</td>
-      <td>491.556019</td>
-      <td>0.000092</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">networkx</span></code> provides a utility function <code class="docutils literal notranslate"><span class="pre">nx.from_pandas_edgelist()</span></code> to build a network from edges listed in a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="s1">&#39;bus0&#39;</span><span class="p">,</span> <span class="s1">&#39;bus1&#39;</span><span class="p">,</span> <span class="n">edge_attr</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x_pu&quot;</span><span class="p">,</span> <span class="s2">&quot;s_nom&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="s2">&quot;bus0&quot;</span><span class="p">,</span> <span class="s2">&quot;bus1&quot;</span><span class="p">,</span> <span class="n">edge_attr</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x_pu&quot;</span><span class="p">,</span> <span class="s2">&quot;s_nom&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1174,21 +959,11 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Graph with 5 nodes and 4 edges
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">degrees</span> <span class="o">=</span> <span class="p">[</span><span class="n">val</span> <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">N</span><span class="o">.</span><span class="n">degree</span><span class="p">()]</span>
 <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">degrees</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.920158550396376
 </pre></div>
 </div>
 </div>
@@ -1213,37 +988,20 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{8838: (-2.16979999999999, 53.243852),
- 7157: (11.9273472385104, 45.403085502256),
- 1316: (14.475861, 40.761821),
- 7421: (4.52012724307074, 50.4886188621382),
- 1317: (14.639282, 40.688969)}
-</pre></div>
-</div>
-</div>
 </div>
 <p>Now, we can draw the European transmission network:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/21c09fa91c9e51f84379dbb5814b02bcb03719afeb387d5521eb50e36057a15c.png" src="_images/21c09fa91c9e51f84379dbb5814b02bcb03719afeb387d5521eb50e36057a15c.png" />
 </div>
 </div>
 <p>You can already see that not all parts of the Network are connected with each other. Ireland, Great Britain, Scandinavia, the Baltics and some Islands in the Mediterranean are not connected to the continental grid. At least not via AC transmission lines. They are through HVDC links and back-to-back converters. These subgraphs denote the different <em>synchronous zones</em> of the European transmission network:</p>
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/ElectricityUCTE.svg" width="600px" /><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">N</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
 </pre></div>
 </div>
 </div>
@@ -1261,16 +1019,13 @@ dtype: int64
 <p>We can now color-code them in the network plot:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;teal&quot;</span><span class="p">,</span> <span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="s2">&quot;black&quot;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sub</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">subgraphs</span><span class="p">):</span>
     <span class="n">sub_pos</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pos</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">sub</span><span class="o">.</span><span class="n">nodes</span><span class="p">}</span>
     <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">sub_pos</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/f6a0bce5f5927d7f01bbc4abba46cb4c12ed53651f54f4ae9967ba91c723706b.png" src="_images/f6a0bce5f5927d7f01bbc4abba46cb4c12ed53651f54f4ae9967ba91c723706b.png" />
 </div>
 </div>
 <p>Let’s checkout the synchronous zone of Ireland. We want to compute the <strong>Power Transfer Distribution Factor (PTDF)</strong> matrix for this area.</p>
@@ -1289,29 +1044,12 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1., -1., -1., ...,  0.,  0.,  0.],
-       [ 0.,  0.,  0., ...,  0.,  0.,  0.],
-       [ 0.,  0.,  0., ...,  0.,  0.,  0.],
-       ...,
-       [ 0.,  0.,  0., ...,  0.,  0.,  0.],
-       [ 0.,  0.,  0., ...,  0.,  0.,  0.],
-       [ 0.,  0.,  0., ...,  1.,  1.,  1.]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f50bff38c10&gt;
-</pre></div>
-</div>
-<img alt="_images/209f56f331c15b68b92158ad6e0bcd78e7edbb99f2cdc6c18871afc3ec18811a.png" src="_images/209f56f331c15b68b92158ad6e0bcd78e7edbb99f2cdc6c18871afc3ec18811a.png" />
 </div>
 </div>
 <p>Unweighted Laplacian:</p>
@@ -1322,17 +1060,6 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 3,  0,  0, ...,  0,  0,  0],
-       [ 0,  3,  0, ..., -1,  0,  0],
-       [ 0,  0,  3, ...,  0,  0,  0],
-       ...,
-       [ 0, -1,  0, ...,  2,  0,  0],
-       [ 0,  0,  0, ...,  0,  3,  0],
-       [ 0,  0,  0, ...,  0,  0,  4]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1340,17 +1067,11 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f50bff69d10&gt;
-</pre></div>
-</div>
-<img alt="_images/ca71afaf2bc3bc05486ea5e47b6a98bd86f24e7744416a62ea2ee71ee7934f13.png" src="_images/ca71afaf2bc3bc05486ea5e47b6a98bd86f24e7744416a62ea2ee71ee7934f13.png" />
-</div>
 </div>
 <p>If we want to calculate the weighted Laplacian <span class="math notranslate nohighlight">\(L = KBK^\top\)</span>, we also need the diagonal matrix <span class="math notranslate nohighlight">\(B\)</span> for the susceptances (i.e inverse of reactances):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_pu</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">IE</span><span class="p">,</span> <span class="s1">&#39;x_pu&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_pu</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">IE</span><span class="p">,</span> <span class="s2">&quot;x_pu&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1375,12 +1096,6 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f50bffd1d10&gt;
-</pre></div>
-</div>
-<img alt="_images/d88fa97a5fc8788154fde2f0e9c9a1c82b224fda55cfa907acb7314e46fcc053.png" src="_images/d88fa97a5fc8788154fde2f0e9c9a1c82b224fda55cfa907acb7314e46fcc053.png" />
-</div>
 </div>
 <p>Now, we can calculate the weighted Laplacian:</p>
 <div class="cell docutils container">
@@ -1403,20 +1118,10 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2250413.8608424626
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2273655.393369115
 </pre></div>
 </div>
 </div>
@@ -1426,12 +1131,6 @@ dtype: int64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu&quot;</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">2e4</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">2e4</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f50bfe5b5d0&gt;
-</pre></div>
-</div>
-<img alt="_images/6df8cd250609dfa55e719abcf491e3b919cb4cf0055c463c9a20290d60a4a91f.png" src="_images/6df8cd250609dfa55e719abcf491e3b919cb4cf0055c463c9a20290d60a4a91f.png" />
 </div>
 </div>
 <p>The weighted Laplacian of the network is not invertible, but we can use the <a class="reference external" href="https://en.wikipedia.org/wiki/Moore%E2%80%93Penrose_inverse">Moore Penrose pseudo-inverse</a></p>
@@ -1447,7 +1146,7 @@ dtype: int64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_nodes</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="n">L_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span><span class="mi">1</span><span class="p">:])</span>
+<span class="n">L_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:])</span>
 <span class="n">L_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_nodes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">L_inv</span><span class="p">))</span>
 <span class="n">L_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_nodes</span><span class="p">),</span> <span class="n">L_inv</span><span class="p">))</span>
 </pre></div>
@@ -1460,20 +1159,10 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L_inv</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0004957770042911583
 </pre></div>
 </div>
 </div>
@@ -1483,12 +1172,6 @@ dtype: int64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">L_inv</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f50bfeeb5d0&gt;
-</pre></div>
-</div>
-<img alt="_images/b227fa45dc11cface9c0f1a8f55437a2873eadc4f8c40b43c4f7bc3905ee4b93.png" src="_images/b227fa45dc11cface9c0f1a8f55437a2873eadc4f8c40b43c4f7bc3905ee4b93.png" />
 </div>
 </div>
 <p>Now, we have all the ingredients to calculate the PTDF matrix</p>
@@ -1509,20 +1192,10 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.9999999999999989
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PTDF</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8416043608137512
 </pre></div>
 </div>
 </div>
@@ -1533,12 +1206,6 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f50c60c38d0&gt;
-</pre></div>
-</div>
-<img alt="_images/049424a4db164b870fd412deadebc266734b00db60744805979ce30b566d02cb.png" src="_images/049424a4db164b870fd412deadebc266734b00db60744805979ce30b566d02cb.png" />
-</div>
 </div>
 <p>This matrix, we can now use to calculate the (linearised) power flow in transmission lines based on nodal power imbalances. Here’s an example:</p>
 <div class="cell docutils container">
@@ -1548,33 +1215,10 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-10.        ,  -9.61538462,  -9.23076923,  -8.84615385,
-        -8.46153846,  -8.07692308,  -7.69230769,  -7.30769231,
-        -6.92307692,  -6.53846154,  -6.15384615,  -5.76923077,
-        -5.38461538,  -5.        ,  -4.61538462,  -4.23076923,
-        -3.84615385,  -3.46153846,  -3.07692308,  -2.69230769,
-        -2.30769231,  -1.92307692,  -1.53846154,  -1.15384615,
-        -0.76923077,  -0.38461538,   0.        ,   0.38461538,
-         0.76923077,   1.15384615,   1.53846154,   1.92307692,
-         2.30769231,   2.69230769,   3.07692308,   3.46153846,
-         3.84615385,   4.23076923,   4.61538462,   5.        ,
-         5.38461538,   5.76923077,   6.15384615,   6.53846154,
-         6.92307692,   7.30769231,   7.69230769,   8.07692308,
-         8.46153846,   8.84615385,   9.23076923,   9.61538462,
-        10.        ])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imbalance</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.197442310920451e-14
 </pre></div>
 </div>
 </div>
@@ -1589,29 +1233,6 @@ dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flows</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ -6.35969332,  12.58858825,   3.77110508,   5.59392533,
-         4.36033437,  -0.33887509,   0.39636027,   8.4147691 ,
-         0.41963986, -13.66855939,  22.51471324,  -5.20702093,
-         2.86990214,  33.7929438 ,  -3.58592287,   6.89327405,
-        -3.17150461,  -7.17880523,  20.29099624,  27.60382971,
-         9.40836368,   5.86831498,  -9.45018661,  12.04791277,
-        -6.02428101,  15.72740784,   3.32877515,   7.53953982,
-         7.94415977,  -1.15303284,  -0.97935403, -19.1889463 ,
-         8.02848396,  15.00661619,   1.92389023,   3.6368439 ,
-         2.24831422, -10.        ,  10.05937809,   4.17139114,
-         5.70985268,   0.37200666,   1.17819977,   1.14123743,
-        -2.73907706,   3.12369244,  -2.73907706,   7.15492444,
-         1.49371735,   6.15182098,   0.3398712 ,  26.69669447,
-        10.12483585,   5.72079165,  -1.76627818,  17.26007807,
-        14.54674309,  -5.41969331,   5.26993691,   5.43065234,
-         1.03916768,   5.94273461,   5.44777714,  17.318725  ,
-        13.72552631,   0.32145363,  -0.98222597,  -3.76346168,
-         8.34091092,   8.85277004,   0.88711249,   0.91533689,
-         0.43385559,   1.16046234,   7.49034518])
 </pre></div>
 </div>
 </div>
@@ -1679,9 +1300,6 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/f830e3ef308aded4d6eed8223bc9970ba6a036a2812b0f78dfd8d1a808024c40.png" src="_images/f830e3ef308aded4d6eed8223bc9970ba6a036a2812b0f78dfd8d1a808024c40.png" />
-</div>
 </details>
 </div>
 </section>
@@ -1709,7 +1327,7 @@ dtype: int64
 <span class="expanded">Hide code cell content</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">subgraphs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># iterate here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">subgraphs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># iterate here</span>
 </pre></div>
 </div>
 </div>
@@ -1726,11 +1344,6 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>286
-</pre></div>
-</div>
-</div>
 </details>
 </div>
 <div class="cell tag_hide-cell docutils container">
@@ -1741,11 +1354,6 @@ dtype: int64
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>408
 </pre></div>
 </div>
 </div>
@@ -1762,11 +1370,6 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-</pre></div>
-</div>
-</div>
 </details>
 </div>
 <div class="cell tag_hide-cell docutils container">
@@ -1780,11 +1383,6 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.8531468531468533
-</pre></div>
-</div>
-</div>
 </details>
 </div>
 <div class="cell tag_hide-cell docutils container">
@@ -1795,11 +1393,6 @@ dtype: int64
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">cycle_basis</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>123
 </pre></div>
 </div>
 </div>
@@ -1829,12 +1422,6 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Frequency&#39;&gt;
-</pre></div>
-</div>
-<img alt="_images/8dbe7589a4a08565185a59cc930e5f4235f94c87b11bb47459f759b8bdbde03c.png" src="_images/8dbe7589a4a08565185a59cc930e5f4235f94c87b11bb47459f759b8bdbde03c.png" />
-</div>
 </details>
 </div>
 <div class="cell tag_hide-cell docutils container">
@@ -1849,12 +1436,6 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
-</pre></div>
-</div>
-<img alt="_images/5d71eb24d2dacd9755deafc12dfcc0e4b0143b2f6402f250197356ce3cb1f5df.png" src="_images/5d71eb24d2dacd9755deafc12dfcc0e4b0143b2f6402f250197356ce3cb1f5df.png" />
-</div>
 </details>
 </div>
 <div class="cell tag_hide-cell docutils container">
@@ -1868,19 +1449,6 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    123.000000
-mean      10.666667
-std       12.942285
-min        3.000000
-25%        3.000000
-50%        5.000000
-75%       10.500000
-max       62.000000
-dtype: float64
-</pre></div>
-</div>
-</div>
 </details>
 </div>
 <div class="cell tag_hide-cell docutils container">
@@ -1891,17 +1459,6 @@ dtype: float64
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 0, 0, ..., 0, 0, 0],
-       [0, 0, 0, ..., 0, 0, 0],
-       [0, 0, 0, ..., 0, 0, 0],
-       ...,
-       [0, 0, 0, ..., 0, 0, 0],
-       [0, 0, 0, ..., 0, 0, 0],
-       [0, 0, 0, ..., 0, 0, 0]])
 </pre></div>
 </div>
 </div>
@@ -1919,17 +1476,6 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1., 1., 0., ..., 0., 0., 0.],
-       [0., 0., 1., ..., 0., 0., 0.],
-       [0., 0., 0., ..., 0., 0., 0.],
-       ...,
-       [0., 0., 0., ..., 0., 0., 0.],
-       [0., 0., 0., ..., 0., 0., 0.],
-       [0., 0., 0., ..., 0., 0., 0.]])
-</pre></div>
-</div>
-</div>
 </details>
 </div>
 <div class="cell tag_hide-cell docutils container">
@@ -1939,7 +1485,7 @@ dtype: float64
 <span class="expanded">Hide code cell content</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_pu</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;x_pu&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_pu</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s2">&quot;x_pu&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">/</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_pu</span><span class="p">]</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
@@ -2048,13 +1594,10 @@ dtype: float64
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sub_pos</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pos</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">}</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">sub_pos</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="n">abs_flows</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/a8a7b825e58fce50a11b03b27d3576b9bccd3cdd9743aa32458447e79c247a8b.png" src="_images/a8a7b825e58fce50a11b03b27d3576b9bccd3cdd9743aa32458447e79c247a8b.png" />
 </div>
 </details>
 </div>
@@ -2070,16 +1613,16 @@ dtype: float64
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: ""
         },
         kernelOptions: {
-            name: "python3",
+            name: "",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = ''</script>
 
                 </article>
               

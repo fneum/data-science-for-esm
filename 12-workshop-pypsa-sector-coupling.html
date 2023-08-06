@@ -452,7 +452,8 @@ document.write(`
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;bmh&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;bmh&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -471,7 +472,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;network-cem.nc&#39;, &lt;http.client.HTTPMessage at 0x7f3a73b01510&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;network-cem.nc&#39;, &lt;http.client.HTTPMessage at 0x7fcaae3ca7d0&gt;)
 </pre></div>
 </div>
 </div>
@@ -698,14 +699,15 @@ Snapshots: 2190
 <p>Add a <code class="docutils literal notranslate"><span class="pre">Link</span></code> for the hydrogen electrolysis:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Link&quot;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;Link&quot;</span><span class="p">,</span>
     <span class="s2">&quot;electrolysis&quot;</span><span class="p">,</span>
     <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">,</span>
     <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;hydrogen&quot;</span><span class="p">,</span>
-    <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;electrolysis&#39;</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;electrolysis&quot;</span><span class="p">,</span>
     <span class="n">p_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">efficiency</span><span class="o">=</span><span class="mf">.7</span><span class="p">,</span>
-    <span class="n">capital_cost</span><span class="o">=</span><span class="mf">50e3</span><span class="p">,</span> <span class="c1"># €/MW/a</span>
+    <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+    <span class="n">capital_cost</span><span class="o">=</span><span class="mf">50e3</span><span class="p">,</span>  <span class="c1"># €/MW/a</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -719,14 +721,15 @@ Snapshots: 2190
 <p>Add a <code class="docutils literal notranslate"><span class="pre">Link</span></code> for the fuel cell which reconverts hydrogen to electricity:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Link&quot;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">&quot;Link&quot;</span><span class="p">,</span>
     <span class="s2">&quot;fuel cell&quot;</span><span class="p">,</span>
     <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;hydrogen&quot;</span><span class="p">,</span>
     <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">,</span>
-    <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;fuel cell&#39;</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;fuel cell&quot;</span><span class="p">,</span>
     <span class="n">p_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">efficiency</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span>
-    <span class="n">capital_cost</span><span class="o">=</span><span class="mf">120e3</span><span class="p">,</span> <span class="c1"># €/MW/a</span>
+    <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">capital_cost</span><span class="o">=</span><span class="mf">120e3</span><span class="p">,</span>  <span class="c1"># €/MW/a</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -744,10 +747,10 @@ Snapshots: 2190
     <span class="s2">&quot;Store&quot;</span><span class="p">,</span>
     <span class="s2">&quot;hydrogen storage&quot;</span><span class="p">,</span>
     <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;hydrogen&quot;</span><span class="p">,</span>
-    <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;hydrogen storage&#39;</span><span class="p">,</span>
-    <span class="n">capital_cost</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="c1"># €/MWh/a</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;hydrogen storage&quot;</span><span class="p">,</span>
+    <span class="n">capital_cost</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span>  <span class="c1"># €/MWh/a</span>
     <span class="n">e_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">e_cyclic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1"># cyclic state of charge</span>
+    <span class="n">e_cyclic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># cyclic state of charge</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -776,13 +779,7 @@ Snapshots: 2190
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-    <span class="s2">&quot;Load&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;hydrogen demand&quot;</span><span class="p">,</span>
-    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;hydrogen&quot;</span><span class="p">,</span>
-    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;hydrogen&quot;</span><span class="p">,</span>
-    <span class="n">p_set</span><span class="o">=</span><span class="n">p_set</span> <span class="c1"># MW</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Load&quot;</span><span class="p">,</span> <span class="s2">&quot;hydrogen demand&quot;</span><span class="p">,</span> <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;hydrogen&quot;</span><span class="p">,</span> <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;hydrogen&quot;</span><span class="p">,</span> <span class="n">p_set</span><span class="o">=</span><span class="n">p_set</span><span class="p">)</span>  <span class="c1"># MW</span>
 </pre></div>
 </div>
 </div>
@@ -826,20 +823,14 @@ Name: 0, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-    <span class="s2">&quot;Load&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;heat demand&quot;</span><span class="p">,</span>
-    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;heat&quot;</span><span class="p">,</span>
-    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;heat&quot;</span><span class="p">,</span>
-    <span class="n">p_set</span><span class="o">=</span><span class="n">p_set</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Load&quot;</span><span class="p">,</span> <span class="s2">&quot;heat demand&quot;</span><span class="p">,</span> <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;heat&quot;</span><span class="p">,</span> <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;heat&quot;</span><span class="p">,</span> <span class="n">p_set</span><span class="o">=</span><span class="n">p_set</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">loads_t</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;GW&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">loads_t</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;GW&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -873,14 +864,16 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://tubcloud.tu-berlin.de/s/S4jRAQMP5Te96jW/download/ninja_weather_country_DE_merra-2_population_weighted.csv&quot;</span>
-<span class="n">temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2015&quot;</span><span class="p">,</span> <span class="s2">&quot;temperature&quot;</span><span class="p">][::</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="s2">&quot;2015&quot;</span><span class="p">,</span> <span class="s2">&quot;temperature&quot;</span>
+<span class="p">][::</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cop</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;COP&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cop</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;COP&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -891,8 +884,8 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">cop</span><span class="p">(</span><span class="n">temp</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;temperature [°C]&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;COP [-]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;temperature [°C]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;COP [-]&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -909,12 +902,12 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
     <span class="s2">&quot;Link&quot;</span><span class="p">,</span>
     <span class="s2">&quot;heat pump&quot;</span><span class="p">,</span>
-    <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;heat pump&#39;</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;heat pump&quot;</span><span class="p">,</span>
     <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">,</span>
     <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;heat&quot;</span><span class="p">,</span>
     <span class="n">efficiency</span><span class="o">=</span><span class="n">cop</span><span class="p">(</span><span class="n">temp</span><span class="p">),</span>
     <span class="n">p_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">capital_cost</span><span class="o">=</span><span class="mf">3e5</span> <span class="c1"># €/MWe/a</span>
+    <span class="n">capital_cost</span><span class="o">=</span><span class="mf">3e5</span><span class="p">,</span>  <span class="c1"># €/MWe/a</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -931,11 +924,11 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
     <span class="s2">&quot;Link&quot;</span><span class="p">,</span>
     <span class="s2">&quot;resistive heater&quot;</span><span class="p">,</span>
-    <span class="n">carrier</span><span class="o">=</span><span class="s1">&#39;resistive heater&#39;</span><span class="p">,</span>
+    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;resistive heater&quot;</span><span class="p">,</span>
     <span class="n">bus0</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">,</span>
     <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;heat&quot;</span><span class="p">,</span>
     <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
-    <span class="n">capital_cost</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span> <span class="c1"># €/MWe/a</span>
+    <span class="n">capital_cost</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span>  <span class="c1"># €/MWe/a</span>
     <span class="n">p_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -973,10 +966,10 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
     <span class="s2">&quot;Store&quot;</span><span class="p">,</span>
     <span class="s2">&quot;gas storage&quot;</span><span class="p">,</span>
     <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;gas storage&quot;</span><span class="p">,</span>
-    <span class="n">e_initial</span><span class="o">=</span><span class="mf">100e6</span><span class="p">,</span> <span class="c1"># MWh</span>
-    <span class="n">e_nom</span><span class="o">=</span><span class="mf">100e6</span><span class="p">,</span> <span class="c1"># MWh</span>
+    <span class="n">e_initial</span><span class="o">=</span><span class="mf">100e6</span><span class="p">,</span>  <span class="c1"># MWh</span>
+    <span class="n">e_nom</span><span class="o">=</span><span class="mf">100e6</span><span class="p">,</span>  <span class="c1"># MWh</span>
     <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span>
-    <span class="n">marginal_cost</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="c1"># €/MWh_th</span>
+    <span class="n">marginal_cost</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>  <span class="c1"># €/MWh_th</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -999,7 +992,7 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
     <span class="n">bus1</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">,</span>
     <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;OCGT&quot;</span><span class="p">,</span>
     <span class="n">p_nom_extendable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">capital_cost</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="c1"># €/MW/a</span>
+    <span class="n">capital_cost</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span>  <span class="c1"># €/MW/a</span>
     <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -1057,7 +1050,7 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_set</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2015-01-01&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;GW&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_set</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2015-01-01&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;GW&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1070,13 +1063,7 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-    <span class="s2">&quot;Load&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;EV demand&quot;</span><span class="p">,</span>
-    <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;EV&quot;</span><span class="p">,</span>
-    <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;EV demand&quot;</span><span class="p">,</span>
-    <span class="n">p_set</span><span class="o">=</span><span class="n">p_set</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Load&quot;</span><span class="p">,</span> <span class="s2">&quot;EV demand&quot;</span><span class="p">,</span> <span class="n">bus</span><span class="o">=</span><span class="s2">&quot;EV&quot;</span><span class="p">,</span> <span class="n">carrier</span><span class="o">=</span><span class="s2">&quot;EV demand&quot;</span><span class="p">,</span> <span class="n">p_set</span><span class="o">=</span><span class="n">p_set</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1084,14 +1071,16 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 <p>Let’s have a quick look at how the heat, electricity, constant hydrogen and electric vehicle demands relate to each other:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">loads_t</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;GW&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">loads</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;hydrogen demand&quot;</span><span class="p">,</span> <span class="s2">&quot;p_set&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;hydrogen demand&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">loads_t</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;GW&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span>
+    <span class="n">n</span><span class="o">.</span><span class="n">loads</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;hydrogen demand&quot;</span><span class="p">,</span> <span class="s2">&quot;p_set&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;hydrogen demand&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;m&quot;</span>
+<span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3a70339650&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fcaacb271d0&gt;
 </pre></div>
 </div>
 <img alt="_images/9e57271f0ef00738c247e973a57736b86ea19dd3df711210e11958ce4ae3e505.png" src="_images/9e57271f0ef00738c247e973a57736b86ea19dd3df711210e11958ce4ae3e505.png" />
@@ -1109,7 +1098,7 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">availability_profile</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2015-01-01&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">availability_profile</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2015-01-01&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1194,7 +1183,7 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dsm_profile</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2015-01-01&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dsm_profile</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2015-01-01&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1223,7 +1212,7 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
 <p>Then, we can solve the fully sector-coupled model altogether including electricity, passenger transport, hydrogen and heating.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1258,16 +1247,13 @@ Index([&#39;fuel cell&#39;, &#39;OCGT&#39;, &#39;CHP&#39;, &#39;V2G&#39;], dtype
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/27 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  37%|███▋      | 10/27 [00:00&lt;00:00, 92.80it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  41%|████      | 11/27 [00:00&lt;00:00, 97.23it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  74%|███████▍  | 20/27 [00:00&lt;00:00, 52.70it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  78%|███████▊  | 21/27 [00:00&lt;00:00, 59.59it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 27/27 [00:00&lt;00:00, 40.79it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 27/27 [00:00&lt;00:00, 45.48it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 27/27 [00:00&lt;00:00, 51.22it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1276,20 +1262,17 @@ Index([&#39;fuel cell&#39;, &#39;OCGT&#39;, &#39;CHP&#39;, &#39;V2G&#39;], dtype
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/12 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 12/12 [00:00&lt;00:00, 113.87it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 12/12 [00:00&lt;00:00, 136.60it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 12/12 [00:00&lt;00:00, 112.69it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.73s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.64s
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-3vqzd96b.lp -solve -solu /tmp/linopy-solve-86vcywis.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-a2f03n9d.lp -solve -solu /tmp/linopy-solve-ntctxvk5.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 36183 (-57998) rows, 27433 (-16378) columns and 93214 (-74376) elements
 Perturbing problem by 0.001% of 231.23943 - largest nonzero change 0.00033121988 ( 6.5288696%) - largest zero change 0.0003303862
@@ -1349,8 +1332,8 @@ Perturbing problem by 0.001% of 231.23943 - largest nonzero change 0.00033121988
 21325  Obj 1.2129045e+11
 Optimal - objective value 1.2129041e+11
 After Postsolve, objective 1.2129041e+11, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 1.212904101e+11 - 21325 iterations time 1.812, Presolve 0.15
-Total time (CPU seconds):       2.24   (Wallclock seconds):       2.27
+Optimal objective 1.212904101e+11 - 21325 iterations time 1.722, Presolve 0.14
+Total time (CPU seconds):       2.17   (Wallclock seconds):       2.16
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -1703,7 +1686,9 @@ Solver message: Optimal - objective value 121290410055.97106934
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="p">()[</span><span class="s2">&quot;Capital Expenditure&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e9</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;bn€/a&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20c&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="p">()[</span><span class="s2">&quot;Capital Expenditure&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e9</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;bn€/a&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;tab20c&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1734,16 +1719,16 @@ Solver message: Optimal - objective value 121290410055.97106934
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: ""
         },
         kernelOptions: {
-            name: "python3",
+            name: "",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = ''</script>
 
                 </article>
               

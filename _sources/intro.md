@@ -77,7 +77,7 @@ command line, it will first search in your environment.
 To install additional packages into your environment:
 
     conda install <package-name>
-    
+
 Some packages are community-maintained (e.g. `conda-forge`) and require you to specify a different "channel":
 
     conda install -c conda-forge <package-name>
@@ -89,7 +89,7 @@ You can deactivate your environment by typing:
 To see all the environments on your system:
 
     conda info --envs
-    
+
 To get a complete summary of all the packages installed in your environment, run
 
     conda list

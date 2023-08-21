@@ -1733,73 +1733,45 @@ Name: capacity, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">40</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">threshold</span> <span class="o">=</span> <span class="mi">1300</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;start_year == 1988 and capacity &gt; @threshold&quot;</span><span class="p">)</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/pandas/core/frame.py:4440,</span> in <span class="ni">DataFrame.query</span><span class="nt">(self, expr, inplace, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4438</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;level&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;level&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="g g-Whitespace">   </span><span class="mi">4439</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">-&gt; </span><span class="mi">4440</span> <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4442</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">4443</span>     <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">res</span><span class="p">]</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/pandas/core/frame.py:4566,</span> in <span class="ni">DataFrame.eval</span><span class="nt">(self, expr, inplace, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4563</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
-<span class="g g-Whitespace">   </span><span class="mi">4564</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;resolvers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;resolvers&quot;</span><span class="p">,</span> <span class="p">()))</span> <span class="o">+</span> <span class="n">resolvers</span>
-<span class="ne">-&gt; </span><span class="mi">4566</span> <span class="k">return</span> <span class="n">_eval</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="n">inplace</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/pandas/core/computation/eval.py:357,</span> in <span class="ni">eval</span><span class="nt">(expr, parser, engine, local_dict, global_dict, resolvers, level, target, inplace)</span>
-<span class="g g-Whitespace">    </span><span class="mi">355</span> <span class="n">eng</span> <span class="o">=</span> <span class="n">ENGINES</span><span class="p">[</span><span class="n">engine</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">356</span> <span class="n">eng_inst</span> <span class="o">=</span> <span class="n">eng</span><span class="p">(</span><span class="n">parsed_expr</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">357</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">eng_inst</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">359</span> <span class="k">if</span> <span class="n">parsed_expr</span><span class="o">.</span><span class="n">assigner</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">360</span>     <span class="k">if</span> <span class="n">multi_line</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/pandas/core/computation/engines.py:81,</span> in <span class="ni">AbstractEngine.evaluate</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">78</span>     <span class="bp">self</span><span class="o">.</span><span class="n">result_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">aligned_axes</span> <span class="o">=</span> <span class="n">align_terms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">expr</span><span class="o">.</span><span class="n">terms</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">80</span> <span class="c1"># make sure no names in resolvers and locals/globals clash</span>
-<span class="ne">---&gt; </span><span class="mi">81</span> <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">82</span> <span class="k">return</span> <span class="n">reconstruct_object</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">83</span>     <span class="bp">self</span><span class="o">.</span><span class="n">result_type</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">aligned_axes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">expr</span><span class="o">.</span><span class="n">terms</span><span class="o">.</span><span class="n">return_type</span>
-<span class="g g-Whitespace">     </span><span class="mi">84</span> <span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/pandas/core/computation/engines.py:121,</span> in <span class="ni">NumExprEngine._evaluate</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">119</span> <span class="n">scope</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">full_scope</span>
-<span class="g g-Whitespace">    </span><span class="mi">120</span> <span class="n">_check_ne_builtin_clash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">expr</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">121</span> <span class="k">return</span> <span class="n">ne</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">local_dict</span><span class="o">=</span><span class="n">scope</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/numexpr/necompiler.py:943,</span> in <span class="ni">evaluate</span><span class="nt">(ex, local_dict, global_dict, out, order, casting, _frame_depth, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">941</span>     <span class="k">return</span> <span class="n">re_evaluate</span><span class="p">(</span><span class="n">local_dict</span><span class="o">=</span><span class="n">local_dict</span><span class="p">,</span> <span class="n">_frame_depth</span><span class="o">=</span><span class="n">_frame_depth</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">942</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">943</span>     <span class="k">raise</span> <span class="n">e</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/numexpr/necompiler.py:851,</span> in <span class="ni">validate</span><span class="nt">(ex, local_dict, global_dict, out, order, casting, _frame_depth, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">849</span> <span class="n">expr_key</span> <span class="o">=</span> <span class="p">(</span><span class="n">ex</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">items</span><span class="p">())))</span>
-<span class="g g-Whitespace">    </span><span class="mi">850</span> <span class="k">if</span> <span class="n">expr_key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_names_cache</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">851</span>     <span class="n">_names_cache</span><span class="p">[</span><span class="n">expr_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">getExprNames</span><span class="p">(</span><span class="n">ex</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">852</span> <span class="n">names</span><span class="p">,</span> <span class="n">ex_uses_vml</span> <span class="o">=</span> <span class="n">_names_cache</span><span class="p">[</span><span class="n">expr_key</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">853</span> <span class="n">arguments</span> <span class="o">=</span> <span class="n">getArguments</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">local_dict</span><span class="p">,</span> <span class="n">global_dict</span><span class="p">,</span> <span class="n">_frame_depth</span><span class="o">=</span><span class="n">_frame_depth</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/numexpr/necompiler.py:714,</span> in <span class="ni">getExprNames</span><span class="nt">(text, context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">713</span> <span class="k">def</span> <span class="nf">getExprNames</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">714</span>     <span class="n">ex</span> <span class="o">=</span> <span class="n">stringToExpression</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="p">{},</span> <span class="n">context</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">715</span>     <span class="n">ast</span> <span class="o">=</span> <span class="n">expressionToAST</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">716</span>     <span class="n">input_order</span> <span class="o">=</span> <span class="n">getInputOrder</span><span class="p">(</span><span class="n">ast</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/numexpr/necompiler.py:274,</span> in <span class="ni">stringToExpression</span><span class="nt">(s, types, context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">272</span> <span class="n">no_whitespace</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">273</span> <span class="k">if</span> <span class="n">_forbidden_re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">no_whitespace</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">274</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Expression </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1"> has forbidden control characters.&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">276</span> <span class="n">old_ctx</span> <span class="o">=</span> <span class="n">expressions</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">get_current_context</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">277</span> <span class="k">try</span><span class="p">:</span>
-
-<span class="ne">ValueError</span>: Expression ((start_year) == (1988)) &amp; ((capacity) &gt; (__pd_eval_local_threshold)) has forbidden control characters.
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>capacity</th>
+      <th>type</th>
+      <th>start_year</th>
+      <th>end_year</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Isar 2</th>
+      <td>1365</td>
+      <td>PWR</td>
+      <td>1988</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="modifying-values">
@@ -1813,6 +1785,91 @@ Name: capacity, dtype: bool
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>capacity</th>
+      <th>type</th>
+      <th>start_year</th>
+      <th>end_year</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Neckarwestheim</th>
+      <td>1269</td>
+      <td>PWR</td>
+      <td>1989</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Isar 2</th>
+      <td>1365</td>
+      <td>PWR</td>
+      <td>1988</td>
+      <td>NaN</td>
+      <td>12.29</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Emsland</th>
+      <td>1290</td>
+      <td>PWR</td>
+      <td>1988</td>
+      <td>2023.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Gundremmingen</th>
+      <td>1288</td>
+      <td>BWR</td>
+      <td>1985</td>
+      <td>2021.0</td>
+      <td>10.40</td>
+      <td>48.51</td>
+    </tr>
+    <tr>
+      <th>Grohnde</th>
+      <td>1361</td>
+      <td>PWR</td>
+      <td>1985</td>
+      <td>2021.0</td>
+      <td>9.41</td>
+      <td>52.03</td>
+    </tr>
+    <tr>
+      <th>Brokdorf</th>
+      <td>1326</td>
+      <td>PWR</td>
+      <td>1986</td>
+      <td>2021.0</td>
+      <td>9.35</td>
+      <td>53.85</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1822,6 +1879,91 @@ Name: capacity, dtype: bool
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>capacity</th>
+      <th>type</th>
+      <th>start_year</th>
+      <th>end_year</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Neckarwestheim</th>
+      <td>1269</td>
+      <td>PWR</td>
+      <td>1989</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>49.04</td>
+    </tr>
+    <tr>
+      <th>Isar 2</th>
+      <td>1365</td>
+      <td>PWR</td>
+      <td>1988</td>
+      <td>NaN</td>
+      <td>12.29</td>
+      <td>48.61</td>
+    </tr>
+    <tr>
+      <th>Emsland</th>
+      <td>1290</td>
+      <td>PWR</td>
+      <td>1988</td>
+      <td>2023.0</td>
+      <td>NaN</td>
+      <td>52.47</td>
+    </tr>
+    <tr>
+      <th>Gundremmingen</th>
+      <td>1288</td>
+      <td>BWR</td>
+      <td>1985</td>
+      <td>2021.0</td>
+      <td>10.40</td>
+      <td>48.51</td>
+    </tr>
+    <tr>
+      <th>Grohnde</th>
+      <td>1361</td>
+      <td>PWR</td>
+      <td>1985</td>
+      <td>2021.0</td>
+      <td>9.41</td>
+      <td>52.03</td>
+    </tr>
+    <tr>
+      <th>Brokdorf</th>
+      <td>1326</td>
+      <td>PWR</td>
+      <td>1986</td>
+      <td>2021.0</td>
+      <td>9.35</td>
+      <td>53.85</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="applying-functions">
@@ -1833,10 +1975,32 @@ Name: capacity, dtype: bool
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neckarwestheim    0.929670
+Isar 2            1.000000
+Emsland           0.945055
+Gundremmingen     0.943590
+Grohnde           0.997070
+Brokdorf          0.971429
+Name: capacity, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">capacity</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">capacity</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neckarwestheim    0.929670
+Isar 2            1.000000
+Emsland           0.945055
+Gundremmingen     0.943590
+Grohnde           0.997070
+Brokdorf          0.971429
+Name: capacity, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1845,6 +2009,17 @@ Name: capacity, dtype: bool
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">capacity</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">capacity</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neckarwestheim    0.929670
+Isar 2            1.000000
+Emsland           0.945055
+Gundremmingen     0.943590
+Grohnde           0.997070
+Brokdorf          0.971429
+Name: capacity, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1860,6 +2035,91 @@ Name: capacity, dtype: bool
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>capacity</th>
+      <th>type</th>
+      <th>start_year</th>
+      <th>end_year</th>
+      <th>lat</th>
+      <th>lon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Neckarwestheim</th>
+      <td>1269</td>
+      <td>PWR</td>
+      <td>1989</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>49.04</td>
+    </tr>
+    <tr>
+      <th>Isar 2</th>
+      <td>1365</td>
+      <td>PWR</td>
+      <td>1988</td>
+      <td>NaN</td>
+      <td>12.29</td>
+      <td>48.61</td>
+    </tr>
+    <tr>
+      <th>Emsland</th>
+      <td>1290</td>
+      <td>PWR</td>
+      <td>1988</td>
+      <td>2023.0</td>
+      <td>NaN</td>
+      <td>52.47</td>
+    </tr>
+    <tr>
+      <th>Gundremmingen</th>
+      <td>1288</td>
+      <td>BWR</td>
+      <td>1985</td>
+      <td>2021.0</td>
+      <td>10.40</td>
+      <td>48.51</td>
+    </tr>
+    <tr>
+      <th>Grohnde</th>
+      <td>1361</td>
+      <td>PWR</td>
+      <td>1985</td>
+      <td>2021.0</td>
+      <td>9.41</td>
+      <td>52.03</td>
+    </tr>
+    <tr>
+      <th>Brokdorf</th>
+      <td>1326</td>
+      <td>PWR</td>
+      <td>1986</td>
+      <td>2021.0</td>
+      <td>9.35</td>
+      <td>53.85</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="replacing-values">
@@ -1871,6 +2131,91 @@ Name: capacity, dtype: bool
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>capacity</th>
+      <th>type</th>
+      <th>start_year</th>
+      <th>end_year</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Neckarwestheim</th>
+      <td>1269</td>
+      <td>Pressurized water reactor</td>
+      <td>1989</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>49.04</td>
+    </tr>
+    <tr>
+      <th>Isar 2</th>
+      <td>1365</td>
+      <td>Pressurized water reactor</td>
+      <td>1988</td>
+      <td>NaN</td>
+      <td>12.29</td>
+      <td>48.61</td>
+    </tr>
+    <tr>
+      <th>Emsland</th>
+      <td>1290</td>
+      <td>Pressurized water reactor</td>
+      <td>1988</td>
+      <td>2023.0</td>
+      <td>NaN</td>
+      <td>52.47</td>
+    </tr>
+    <tr>
+      <th>Gundremmingen</th>
+      <td>1288</td>
+      <td>BWR</td>
+      <td>1985</td>
+      <td>2021.0</td>
+      <td>10.40</td>
+      <td>48.51</td>
+    </tr>
+    <tr>
+      <th>Grohnde</th>
+      <td>1361</td>
+      <td>Pressurized water reactor</td>
+      <td>1985</td>
+      <td>2021.0</td>
+      <td>9.41</td>
+      <td>52.03</td>
+    </tr>
+    <tr>
+      <th>Brokdorf</th>
+      <td>1326</td>
+      <td>Pressurized water reactor</td>
+      <td>1986</td>
+      <td>2021.0</td>
+      <td>9.35</td>
+      <td>53.85</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="plotting">
@@ -1882,12 +2227,24 @@ Name: capacity, dtype: bool
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;start_year&#39;, ylabel=&#39;capacity&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/fb8944e70b014858152f49a00709736e5bb76953bfe1e1e095faaf9dd1aa45e2.png" src="_images/fb8944e70b014858152f49a00709736e5bb76953bfe1e1e095faaf9dd1aa45e2.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">capacity</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="_images/9940873f55713a21865a90dbd7a60e09245b398ff1945a33fdad002c1358b666.png" src="_images/9940873f55713a21865a90dbd7a60e09245b398ff1945a33fdad002c1358b666.png" />
 </div>
 </div>
 </section>
@@ -1903,6 +2260,12 @@ Name: capacity, dtype: bool
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="_images/ded559ce939b8405f9d4e44c757f02ac9ec5bc31e0544fc03a245e8b93b1da23.png" src="_images/ded559ce939b8405f9d4e44c757f02ac9ec5bc31e0544fc03a245e8b93b1da23.png" />
+</div>
 </div>
 <p>We can use Python’s <em>slicing</em> notation inside <code class="docutils literal notranslate"><span class="pre">.loc</span></code> to select a date range.</p>
 <div class="cell docutils container">
@@ -1911,12 +2274,24 @@ Name: capacity, dtype: bool
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="_images/9b8172ce9fbe60f15bddd99fc044971075caef91b710d50190ac36edad3b8ebc.png" src="_images/9b8172ce9fbe60f15bddd99fc044971075caef91b710d50190ac36edad3b8ebc.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2021-05&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="_images/634f623c378a47b90f865119235b958f9e13da9b41e60ceeee5b93253a25c026.png" src="_images/634f623c378a47b90f865119235b958f9e13da9b41e60ceeee5b93253a25c026.png" />
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">pd.TimeIndex</span></code> object has lots of useful attributes</p>
@@ -1926,10 +2301,26 @@ Name: capacity, dtype: bool
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([ 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
+       ...
+       12, 12, 12, 12, 12, 12, 12, 12, 12,  1],
+      dtype=&#39;int32&#39;, length=731)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">day</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10,
+       ...
+       23, 24, 25, 26, 27, 28, 29, 30, 31,  1],
+      dtype=&#39;int32&#39;, length=731)
 </pre></div>
 </div>
 </div>
@@ -1942,12 +2333,28 @@ Name: capacity, dtype: bool
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2021-01-31    0.268746
+2021-02-28    0.698782
+2021-03-31    0.949778
+2021-04-30    0.959332
+2021-05-31    0.709200
+Freq: M, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="_images/ed2621357e364a2a9e1f7b246d6874e4694164e6ed008e17e4dca88067e013ae.png" src="_images/ed2621357e364a2a9e1f7b246d6874e4694164e6ed008e17e4dca88067e013ae.png" />
 </div>
 </div>
 </section>
@@ -1970,10 +2377,152 @@ Name: capacity, dtype: bool
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Fueltype</th>
+      <th>Technology</th>
+      <th>Set</th>
+      <th>Country</th>
+      <th>Capacity</th>
+      <th>Efficiency</th>
+      <th>DateIn</th>
+      <th>DateRetrofit</th>
+      <th>DateOut</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Emsland</td>
+      <td>Nuclear</td>
+      <td>Steam Turbine</td>
+      <td>CHP</td>
+      <td>Germany</td>
+      <td>1336.000000</td>
+      <td>0.33</td>
+      <td>1988.0</td>
+      <td>1988.0</td>
+      <td>2022.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mellach</td>
+      <td>Hard Coal</td>
+      <td>Steam Turbine</td>
+      <td>CHP</td>
+      <td>Austria</td>
+      <td>200.000000</td>
+      <td>NaN</td>
+      <td>1986.0</td>
+      <td>1986.0</td>
+      <td>2020.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Eemshaven</td>
+      <td>Hard Coal</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>Netherlands</td>
+      <td>1604.170304</td>
+      <td>0.58</td>
+      <td>2015.0</td>
+      <td>NaN</td>
+      <td>2029.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Emile Huchet</td>
+      <td>Hard Coal</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>France</td>
+      <td>596.493211</td>
+      <td>NaN</td>
+      <td>1958.0</td>
+      <td>2010.0</td>
+      <td>2022.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Fusina</td>
+      <td>Hard Coal</td>
+      <td>Steam Turbine</td>
+      <td>PP</td>
+      <td>Italy</td>
+      <td>899.810470</td>
+      <td>NaN</td>
+      <td>1964.0</td>
+      <td>NaN</td>
+      <td>2025.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 5404 entries, 0 to 5719
+Data columns (total 18 columns):
+ #   Column               Non-Null Count  Dtype  
+---  ------               --------------  -----  
+ 0   Name                 5404 non-null   object 
+ 1   Fueltype             5404 non-null   object 
+ 2   Technology           4344 non-null   object 
+ 3   Set                  5404 non-null   object 
+ 4   Country              5404 non-null   object 
+ 5   Capacity             5404 non-null   float64
+ 6   Efficiency           527 non-null    float64
+ 7   DateIn               3303 non-null   float64
+ 8   DateRetrofit         1857 non-null   float64
+ 9   DateOut              158 non-null    float64
+ 10  lat                  5404 non-null   float64
+ 11  lon                  5404 non-null   float64
+ 12  Duration             450 non-null    float64
+ 13  Volume_Mm3           5404 non-null   float64
+ 14  DamHeight_m          5404 non-null   float64
+ 15  StorageCapacity_MWh  5404 non-null   float64
+ 16  EIC                  5404 non-null   object 
+ 17  projectID            5404 non-null   object 
+dtypes: float64(11), object(7)
+memory usage: 802.2+ KB
 </pre></div>
 </div>
 </div>
@@ -1984,6 +2533,154 @@ Name: capacity, dtype: bool
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Capacity</th>
+      <th>Efficiency</th>
+      <th>DateIn</th>
+      <th>DateRetrofit</th>
+      <th>DateOut</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>Duration</th>
+      <th>Volume_Mm3</th>
+      <th>DamHeight_m</th>
+      <th>StorageCapacity_MWh</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>5404.000000</td>
+      <td>527.000000</td>
+      <td>3303.000000</td>
+      <td>1857.000000</td>
+      <td>158.000000</td>
+      <td>5404.000000</td>
+      <td>5404.000000</td>
+      <td>450.000000</td>
+      <td>5404.000000</td>
+      <td>5404.000000</td>
+      <td>5.404000e+03</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>150.357016</td>
+      <td>0.485121</td>
+      <td>1981.845292</td>
+      <td>1984.907377</td>
+      <td>2026.784810</td>
+      <td>48.832638</td>
+      <td>8.706691</td>
+      <td>1199.192225</td>
+      <td>13.607419</td>
+      <td>7.730871</td>
+      <td>1.705821e+03</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>399.738819</td>
+      <td>0.179122</td>
+      <td>24.768803</td>
+      <td>24.963034</td>
+      <td>8.157168</td>
+      <td>6.964000</td>
+      <td>8.740303</td>
+      <td>1607.123646</td>
+      <td>171.912937</td>
+      <td>57.241482</td>
+      <td>4.719071e+04</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.187765</td>
+      <td>1899.000000</td>
+      <td>1899.000000</td>
+      <td>2020.000000</td>
+      <td>35.003800</td>
+      <td>-9.422700</td>
+      <td>0.007907</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>5.400000</td>
+      <td>0.359274</td>
+      <td>1964.000000</td>
+      <td>1967.000000</td>
+      <td>2021.000000</td>
+      <td>43.521450</td>
+      <td>2.536165</td>
+      <td>33.605131</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>26.276500</td>
+      <td>0.389400</td>
+      <td>1985.000000</td>
+      <td>1991.000000</td>
+      <td>2024.000000</td>
+      <td>47.727941</td>
+      <td>9.036402</td>
+      <td>635.471429</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>98.751725</td>
+      <td>0.585897</td>
+      <td>2004.000000</td>
+      <td>2005.000000</td>
+      <td>2029.000000</td>
+      <td>51.678898</td>
+      <td>13.158624</td>
+      <td>1852.856250</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>5460.000000</td>
+      <td>0.917460</td>
+      <td>2024.000000</td>
+      <td>2020.000000</td>
+      <td>2051.000000</td>
+      <td>70.689366</td>
+      <td>39.262400</td>
+      <td>16840.000000</td>
+      <td>9500.000000</td>
+      <td>1800.000000</td>
+      <td>3.120000e+06</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Sometimes, we also want to store a DataFrame for later use. There are many different file formats tabular data can be stored in,  including HTML, JSON, Excel, Parquet, Feather, etc. Here, let’s say we want to store the DataFrame as CSV (comma-separated values) file under the name “tmp.csv”.</p>
 <div class="cell docutils container">
@@ -2002,6 +2699,17 @@ Name: capacity, dtype: bool
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Country&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Capacity</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">grouped</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country
+Albania                    1636.208275
+Austria                   18156.520000
+Belgium                   15049.055947
+Bosnia and Herzegovina     2135.500000
+Bulgaria                  10632.486363
+Name: Capacity, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -2026,11 +2734,21 @@ Name: capacity, dtype: bool
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7faeca95ac50&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <p>The length tells us how many groups were found:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">gb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34
 </pre></div>
 </div>
 </div>
@@ -2043,10 +2761,20 @@ Name: capacity, dtype: bool
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">groups</span><span class="o">.</span><span class="n">keys</span><span class="p">())[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Albania&#39;, &#39;Austria&#39;, &#39;Belgium&#39;, &#39;Bosnia and Herzegovina&#39;, &#39;Bulgaria&#39;]
 </pre></div>
 </div>
 </div>
@@ -2058,10 +2786,32 @@ Name: capacity, dtype: bool
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country
+Germany           114551.629396
+France            100340.699420
+Spain              89220.506669
+Italy              80881.107019
+United Kingdom     72735.213406
+Name: Capacity, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gb</span><span class="p">[</span><span class="s2">&quot;DateIn&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country
+Albania                   1976.666667
+Austria                   1973.468085
+Belgium                   1990.377778
+Bosnia and Herzegovina    1978.625000
+Bulgaria                  1974.655172
+Name: DateIn, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -2075,6 +2825,23 @@ we might want to group the capacities by country <strong>and</strong> fuel type.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country         Fueltype   
+Albania         Hydro           1546.353732
+                Oil               89.854543
+Austria         Hard Coal        578.400000
+                Hydro          13270.420000
+                Natural Gas     4307.700000
+                                   ...     
+United Kingdom  Nuclear        11239.000000
+                Oil              100.000000
+                Other             55.000000
+                Waste            498.900000
+                Wind            3401.000000
+Name: Capacity, Length: 168, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <p>By grouping by multiple attributes, our index becomes a <code class="docutils literal notranslate"><span class="pre">pd.MultiIndex</span></code> (a hierarchical index with multiple <em>levels</em>.</p>
 <div class="cell docutils container">
@@ -2083,10 +2850,25 @@ we might want to group the capacities by country <strong>and</strong> fuel type.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MultiIndex([(&#39;Albania&#39;,       &#39;Hydro&#39;),
+            (&#39;Albania&#39;,         &#39;Oil&#39;),
+            (&#39;Austria&#39;,   &#39;Hard Coal&#39;),
+            (&#39;Austria&#39;,       &#39;Hydro&#39;),
+            (&#39;Austria&#39;, &#39;Natural Gas&#39;)],
+           names=[&#39;Country&#39;, &#39;Fueltype&#39;])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">capacities</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.indexes.multi.MultiIndex
 </pre></div>
 </div>
 </div>
@@ -2098,6 +2880,140 @@ we might want to group the capacities by country <strong>and</strong> fuel type.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Country</th>
+      <th>Spain</th>
+      <th>Sweden</th>
+      <th>Switzerland</th>
+      <th>Ukraine</th>
+      <th>United Kingdom</th>
+    </tr>
+    <tr>
+      <th>Fueltype</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Bioenergy</th>
+      <td>20.000000</td>
+      <td>220.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>187.300000</td>
+    </tr>
+    <tr>
+      <th>Geothermal</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Hard Coal</th>
+      <td>9492.767594</td>
+      <td>0.000000</td>
+      <td>NaN</td>
+      <td>16569.050983</td>
+      <td>12059.890974</td>
+    </tr>
+    <tr>
+      <th>Hydro</th>
+      <td>25909.571248</td>
+      <td>13958.718931</td>
+      <td>18459.63</td>
+      <td>4806.212023</td>
+      <td>9645.700000</td>
+    </tr>
+    <tr>
+      <th>Lignite</th>
+      <td>1267.946871</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Natural Gas</th>
+      <td>27372.332000</td>
+      <td>1373.000000</td>
+      <td>55.00</td>
+      <td>7796.000000</td>
+      <td>35548.422432</td>
+    </tr>
+    <tr>
+      <th>Nuclear</th>
+      <td>7117.200000</td>
+      <td>8617.000000</td>
+      <td>3348.00</td>
+      <td>12443.698212</td>
+      <td>11239.000000</td>
+    </tr>
+    <tr>
+      <th>Oil</th>
+      <td>1901.271000</td>
+      <td>1685.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>100.000000</td>
+    </tr>
+    <tr>
+      <th>Other</th>
+      <td>1053.980957</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>55.000000</td>
+    </tr>
+    <tr>
+      <th>Solar</th>
+      <td>3474.003000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Waste</th>
+      <td>388.054000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>498.900000</td>
+    </tr>
+    <tr>
+      <th>Wind</th>
+      <td>11223.380000</td>
+      <td>633.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3401.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="exercises">
@@ -2116,6 +3032,154 @@ we might want to group the capacities by country <strong>and</strong> fuel type.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Capacity</th>
+      <th>Efficiency</th>
+      <th>DateIn</th>
+      <th>DateRetrofit</th>
+      <th>DateOut</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>Duration</th>
+      <th>Volume_Mm3</th>
+      <th>DamHeight_m</th>
+      <th>StorageCapacity_MWh</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>5404.000000</td>
+      <td>527.000000</td>
+      <td>3303.000000</td>
+      <td>1857.000000</td>
+      <td>158.000000</td>
+      <td>5404.000000</td>
+      <td>5404.000000</td>
+      <td>450.000000</td>
+      <td>5404.000000</td>
+      <td>5404.000000</td>
+      <td>5.404000e+03</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>150.357016</td>
+      <td>0.485121</td>
+      <td>1981.845292</td>
+      <td>1984.907377</td>
+      <td>2026.784810</td>
+      <td>48.832638</td>
+      <td>8.706691</td>
+      <td>1199.192225</td>
+      <td>13.607419</td>
+      <td>7.730871</td>
+      <td>1.705821e+03</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>399.738819</td>
+      <td>0.179122</td>
+      <td>24.768803</td>
+      <td>24.963034</td>
+      <td>8.157168</td>
+      <td>6.964000</td>
+      <td>8.740303</td>
+      <td>1607.123646</td>
+      <td>171.912937</td>
+      <td>57.241482</td>
+      <td>4.719071e+04</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.187765</td>
+      <td>1899.000000</td>
+      <td>1899.000000</td>
+      <td>2020.000000</td>
+      <td>35.003800</td>
+      <td>-9.422700</td>
+      <td>0.007907</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>5.400000</td>
+      <td>0.359274</td>
+      <td>1964.000000</td>
+      <td>1967.000000</td>
+      <td>2021.000000</td>
+      <td>43.521450</td>
+      <td>2.536165</td>
+      <td>33.605131</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>26.276500</td>
+      <td>0.389400</td>
+      <td>1985.000000</td>
+      <td>1991.000000</td>
+      <td>2024.000000</td>
+      <td>47.727941</td>
+      <td>9.036402</td>
+      <td>635.471429</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>98.751725</td>
+      <td>0.585897</td>
+      <td>2004.000000</td>
+      <td>2005.000000</td>
+      <td>2029.000000</td>
+      <td>51.678898</td>
+      <td>13.158624</td>
+      <td>1852.856250</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>5460.000000</td>
+      <td>0.917460</td>
+      <td>2024.000000</td>
+      <td>2020.000000</td>
+      <td>2051.000000</td>
+      <td>70.689366</td>
+      <td>39.262400</td>
+      <td>16840.000000</td>
+      <td>9500.000000</td>
+      <td>1800.000000</td>
+      <td>3.120000e+06</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </details>
 </div>
 <p>Provide a list of unique fuel types included in the dataset</p>
@@ -2130,6 +3194,13 @@ we might want to group the capacities by country <strong>and</strong> fuel type.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Nuclear&#39;, &#39;Hard Coal&#39;, &#39;Natural Gas&#39;, &#39;Hydro&#39;, &#39;Lignite&#39;, &#39;Other&#39;,
+       &#39;Oil&#39;, &#39;Bioenergy&#39;, &#39;Wind&#39;, &#39;Solar&#39;, &#39;Geothermal&#39;, &#39;Waste&#39;],
+      dtype=object)
+</pre></div>
+</div>
+</div>
 </details>
 </div>
 <p>Provide a list of unique technologies included in the dataset</p>
@@ -2141,6 +3212,13 @@ we might want to group the capacities by country <strong>and</strong> fuel type.
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">Technology</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Steam Turbine&#39;, &#39;CCGT&#39;, &#39;Pumped Storage&#39;, &#39;Reservoir&#39;,
+       &#39;Run-Of-River&#39;, nan, &#39;Marine&#39;, &#39;Not Found&#39;, &#39;Offshore&#39;, &#39;Onshore&#39;,
+       &#39;Csp&#39;, &#39;not found&#39;, &#39;Combustion Engine&#39;, &#39;CSP&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -2159,6 +3237,302 @@ we might want to group the capacities by country <strong>and</strong> fuel type.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Fueltype</th>
+      <th>Technology</th>
+      <th>Set</th>
+      <th>Country</th>
+      <th>Capacity</th>
+      <th>Efficiency</th>
+      <th>DateIn</th>
+      <th>DateRetrofit</th>
+      <th>DateOut</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>Duration</th>
+      <th>Volume_Mm3</th>
+      <th>DamHeight_m</th>
+      <th>StorageCapacity_MWh</th>
+      <th>EIC</th>
+      <th>projectID</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Mellach</td>
+      <td>Hard Coal</td>
+      <td>Steam Turbine</td>
+      <td>CHP</td>
+      <td>Austria</td>
+      <td>200.000000</td>
+      <td>NaN</td>
+      <td>1986.0</td>
+      <td>1986.0</td>
+      <td>2020.0</td>
+      <td>46.911700</td>
+      <td>15.488300</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'14W-WML-KW-----0'}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-AT-11'}, 'ENTSOE': {'1...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Eemshaven</td>
+      <td>Hard Coal</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>Netherlands</td>
+      <td>1604.170304</td>
+      <td>0.58</td>
+      <td>2015.0</td>
+      <td>NaN</td>
+      <td>2029.0</td>
+      <td>53.440500</td>
+      <td>6.861200</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'49W000000000044-'}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-NL-12'}, 'ENTSOE': {'4...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Emile Huchet</td>
+      <td>Hard Coal</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>France</td>
+      <td>596.493211</td>
+      <td>NaN</td>
+      <td>1958.0</td>
+      <td>2010.0</td>
+      <td>2022.0</td>
+      <td>49.152500</td>
+      <td>6.698100</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'17W100P100P0345B', '17W100P100P0344D'}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-FR-67'}, 'ENTSOE': {'1...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Fusina</td>
+      <td>Hard Coal</td>
+      <td>Steam Turbine</td>
+      <td>PP</td>
+      <td>Italy</td>
+      <td>899.810470</td>
+      <td>NaN</td>
+      <td>1964.0</td>
+      <td>NaN</td>
+      <td>2025.0</td>
+      <td>45.431400</td>
+      <td>12.245800</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'26WIMPI-S05FTSNK'}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-IT-24'}, 'ENTSOE': {'2...</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>Hemweg</td>
+      <td>Hard Coal</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>Netherlands</td>
+      <td>1090.000000</td>
+      <td>NaN</td>
+      <td>2012.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>52.405370</td>
+      <td>4.844820</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'49W000000000045Y'}</td>
+      <td>{'ENTSOE': {'49W000000000045Y'}, 'OPSD': {'OEU...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>5000</th>
+      <td>Ensdorf</td>
+      <td>Hard Coal</td>
+      <td>NaN</td>
+      <td>PP</td>
+      <td>Germany</td>
+      <td>389.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>49.306235</td>
+      <td>6.780411</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'11WD7ENSD2SKW1-4', '11WD7ENSD5SKW3-E'}</td>
+      <td>{'ENTSOE': {'11WD7ENSD2SKW1-4', '11WD7ENSD5SKW...</td>
+    </tr>
+    <tr>
+      <th>5027</th>
+      <td>International Paper Kwidzyn</td>
+      <td>Hard Coal</td>
+      <td>NaN</td>
+      <td>PP</td>
+      <td>Poland</td>
+      <td>111.600000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>53.726353</td>
+      <td>18.932304</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'19W0000000002337'}</td>
+      <td>{'ENTSOE': {'19W0000000002337'}}</td>
+    </tr>
+    <tr>
+      <th>5031</th>
+      <td>Kiel</td>
+      <td>Hard Coal</td>
+      <td>NaN</td>
+      <td>PP</td>
+      <td>Germany</td>
+      <td>323.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>54.323293</td>
+      <td>10.122765</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'11WD2KIKW000301W'}</td>
+      <td>{'ENTSOE': {'11WD2KIKW000301W'}}</td>
+    </tr>
+    <tr>
+      <th>5049</th>
+      <td>Nowa</td>
+      <td>Hard Coal</td>
+      <td>NaN</td>
+      <td>PP</td>
+      <td>Poland</td>
+      <td>155.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>53.649030</td>
+      <td>18.727108</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'19W000000000239W'}</td>
+      <td>{'ENTSOE': {'19W000000000239W'}}</td>
+    </tr>
+    <tr>
+      <th>5354</th>
+      <td>Escatron Gr</td>
+      <td>Hard Coal</td>
+      <td>NaN</td>
+      <td>PP</td>
+      <td>Spain</td>
+      <td>65.000000</td>
+      <td>NaN</td>
+      <td>1990.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>41.296100</td>
+      <td>-0.337600</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan}</td>
+      <td>{'GPD': {'WRI1006466'}}</td>
+    </tr>
+  </tbody>
+</table>
+<p>201 rows × 18 columns</p>
+</div></div></div>
 </details>
 </div>
 <p>Identify the 5 largest coal power plants. In which countries are they located? When were they built?</p>
@@ -2173,6 +3547,175 @@ we might want to group the capacities by country <strong>and</strong> fuel type.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Fueltype</th>
+      <th>Technology</th>
+      <th>Set</th>
+      <th>Country</th>
+      <th>Capacity</th>
+      <th>Efficiency</th>
+      <th>DateIn</th>
+      <th>DateRetrofit</th>
+      <th>DateOut</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>Duration</th>
+      <th>Volume_Mm3</th>
+      <th>DamHeight_m</th>
+      <th>StorageCapacity_MWh</th>
+      <th>EIC</th>
+      <th>projectID</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>392</th>
+      <td>Kozienice</td>
+      <td>Hard Coal</td>
+      <td>NaN</td>
+      <td>PP</td>
+      <td>Poland</td>
+      <td>3682.216205</td>
+      <td>NaN</td>
+      <td>1972.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>51.66470</td>
+      <td>21.46670</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'19W000000000095U', '19W000000000104I'}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-PL-96'}, 'ENTSOE': {'1...</td>
+    </tr>
+    <tr>
+      <th>1001</th>
+      <td>Opole</td>
+      <td>Hard Coal</td>
+      <td>NaN</td>
+      <td>PP</td>
+      <td>Poland</td>
+      <td>3071.893939</td>
+      <td>NaN</td>
+      <td>1993.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>50.75180</td>
+      <td>17.88200</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'19W0000000001292'}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-PL-16'}, 'ENTSOE': {'1...</td>
+    </tr>
+    <tr>
+      <th>1787</th>
+      <td>Krivorozhskaya</td>
+      <td>Hard Coal</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>Ukraine</td>
+      <td>2599.862218</td>
+      <td>NaN</td>
+      <td>1965.0</td>
+      <td>1992.0</td>
+      <td>NaN</td>
+      <td>47.54320</td>
+      <td>33.65830</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan, nan, nan, nan, nan, nan, nan, nan, nan, ...</td>
+      <td>{'GEO': {'GEO-42989'}, 'GPD': {'WRI1005100'}}</td>
+    </tr>
+    <tr>
+      <th>1797</th>
+      <td>Burshtynska Tes</td>
+      <td>Hard Coal</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>Ukraine</td>
+      <td>2120.455000</td>
+      <td>NaN</td>
+      <td>1965.0</td>
+      <td>1984.0</td>
+      <td>NaN</td>
+      <td>49.21038</td>
+      <td>24.66654</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan, nan, nan, nan, nan, nan, nan, nan, nan, ...</td>
+      <td>{'GEO': {'GEO-42991'}, 'GPD': {'WRI1005097'}}</td>
+    </tr>
+    <tr>
+      <th>970</th>
+      <td>Jaworzno</td>
+      <td>Hard Coal</td>
+      <td>Steam Turbine</td>
+      <td>CHP</td>
+      <td>Poland</td>
+      <td>2078.967837</td>
+      <td>NaN</td>
+      <td>1977.0</td>
+      <td>1999.0</td>
+      <td>NaN</td>
+      <td>50.20780</td>
+      <td>19.20970</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'19W0000000000628', '19W0000000000636', '19W0...</td>
+      <td>{'BEYONDCOAL': {'BEYOND-PL-70'}, 'ENTSOE': {'1...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </details>
 </div>
 <p>Identify the power plant with the longest “Name”.</p>
@@ -2185,6 +3728,29 @@ we might want to group the capacities by country <strong>and</strong> fuel type.
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Name</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span>
 <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name                   Kesznyeten Hernadviz Hungary Kesznyeten Hernad...
+Fueltype                                                           Hydro
+Technology                                                  Run-Of-River
+Set                                                                   PP
+Country                                                          Hungary
+Capacity                                                             4.4
+Efficiency                                                           NaN
+DateIn                                                            1945.0
+DateRetrofit                                                      1992.0
+DateOut                                                              NaN
+lat                                                            47.995972
+lon                                                            21.033037
+Duration                                                             NaN
+Volume_Mm3                                                           0.0
+DamHeight_m                                                         14.0
+StorageCapacity_MWh                                                  0.0
+EIC                                                                {nan}
+projectID                   {&#39;JRC&#39;: {&#39;JRC-H2138&#39;}, &#39;GEO&#39;: {&#39;GEO-42677&#39;}}
+Name: 1373, dtype: object
 </pre></div>
 </div>
 </div>
@@ -2203,6 +3769,280 @@ we might want to group the capacities by country <strong>and</strong> fuel type.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Fueltype</th>
+      <th>Technology</th>
+      <th>Set</th>
+      <th>Country</th>
+      <th>Capacity</th>
+      <th>Efficiency</th>
+      <th>DateIn</th>
+      <th>DateRetrofit</th>
+      <th>DateOut</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>Duration</th>
+      <th>Volume_Mm3</th>
+      <th>DamHeight_m</th>
+      <th>StorageCapacity_MWh</th>
+      <th>EIC</th>
+      <th>projectID</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2630</th>
+      <td>Melkoya</td>
+      <td>Natural Gas</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>Norway</td>
+      <td>230.0</td>
+      <td>NaN</td>
+      <td>2007.0</td>
+      <td>2007.0</td>
+      <td>NaN</td>
+      <td>70.689366</td>
+      <td>23.600448</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'50WP00000000456T'}</td>
+      <td>{'ENTSOE': {'50WP00000000456T'}, 'OPSD': {'OEU...</td>
+    </tr>
+    <tr>
+      <th>3188</th>
+      <td>Hammerfest Snohvit Terminal</td>
+      <td>Natural Gas</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>Norway</td>
+      <td>229.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>70.685400</td>
+      <td>23.590000</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan}</td>
+      <td>{'GGPT': {'G410482'}}</td>
+    </tr>
+    <tr>
+      <th>1296</th>
+      <td>Adamselv</td>
+      <td>Hydro</td>
+      <td>Reservoir</td>
+      <td>Store</td>
+      <td>Norway</td>
+      <td>50.4</td>
+      <td>NaN</td>
+      <td>1973.0</td>
+      <td>2007.0</td>
+      <td>NaN</td>
+      <td>70.409578</td>
+      <td>26.701878</td>
+      <td>3348.800000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan}</td>
+      <td>{'OPSD': {'OEU-3106', 'OEU-3105'}, 'JRC': {'JR...</td>
+    </tr>
+    <tr>
+      <th>3022</th>
+      <td>Nedre Porsa</td>
+      <td>Hydro</td>
+      <td>Reservoir</td>
+      <td>Store</td>
+      <td>Norway</td>
+      <td>12.8</td>
+      <td>NaN</td>
+      <td>1959.0</td>
+      <td>1959.0</td>
+      <td>NaN</td>
+      <td>70.401409</td>
+      <td>23.627292</td>
+      <td>1876.875000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan}</td>
+      <td>{'OPSD': {'OEU-4052'}, 'JRC': {'JRC-N297'}}</td>
+    </tr>
+    <tr>
+      <th>2610</th>
+      <td>Kvaenangsbotn</td>
+      <td>Hydro</td>
+      <td>Reservoir</td>
+      <td>Store</td>
+      <td>Norway</td>
+      <td>55.0</td>
+      <td>NaN</td>
+      <td>1965.0</td>
+      <td>1965.0</td>
+      <td>NaN</td>
+      <td>69.720002</td>
+      <td>22.057216</td>
+      <td>323.658182</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan}</td>
+      <td>{'OPSD': {'OEU-3856'}, 'JRC': {'JRC-N226'}}</td>
+    </tr>
+    <tr>
+      <th>615</th>
+      <td>Alta Krv</td>
+      <td>Hydro</td>
+      <td>Reservoir</td>
+      <td>Store</td>
+      <td>Norway</td>
+      <td>165.0</td>
+      <td>NaN</td>
+      <td>1987.0</td>
+      <td>1987.0</td>
+      <td>NaN</td>
+      <td>69.717916</td>
+      <td>23.795677</td>
+      <td>389.700000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'50WP00000000006N'}</td>
+      <td>{'ENTSOE': {'50WP00000000006N'}, 'OPSD': {'OEU...</td>
+    </tr>
+    <tr>
+      <th>2321</th>
+      <td>Smavatna</td>
+      <td>Hydro</td>
+      <td>Reservoir</td>
+      <td>Store</td>
+      <td>Norway</td>
+      <td>18.8</td>
+      <td>NaN</td>
+      <td>1970.0</td>
+      <td>1970.0</td>
+      <td>NaN</td>
+      <td>69.684261</td>
+      <td>22.154025</td>
+      <td>1577.872340</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan}</td>
+      <td>{'OPSD': {'OEU-4353'}, 'JRC': {'JRC-N392'}}</td>
+    </tr>
+    <tr>
+      <th>2790</th>
+      <td>Guolasjohka</td>
+      <td>Hydro</td>
+      <td>Reservoir</td>
+      <td>Store</td>
+      <td>Norway</td>
+      <td>80.0</td>
+      <td>NaN</td>
+      <td>1971.0</td>
+      <td>1971.0</td>
+      <td>NaN</td>
+      <td>69.456759</td>
+      <td>20.909812</td>
+      <td>2811.457500</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan}</td>
+      <td>{'OPSD': {'OEU-3532'}, 'JRC': {'JRC-N123'}}</td>
+    </tr>
+    <tr>
+      <th>2678</th>
+      <td>Melkefoss</td>
+      <td>Hydro</td>
+      <td>Reservoir</td>
+      <td>Store</td>
+      <td>Norway</td>
+      <td>22.0</td>
+      <td>NaN</td>
+      <td>1978.0</td>
+      <td>1978.0</td>
+      <td>NaN</td>
+      <td>69.399382</td>
+      <td>29.787300</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan}</td>
+      <td>{'OPSD': {'OEU-3972'}, 'JRC': {'JRC-N267'}}</td>
+    </tr>
+    <tr>
+      <th>2313</th>
+      <td>Skogfoss</td>
+      <td>Hydro</td>
+      <td>Reservoir</td>
+      <td>Store</td>
+      <td>Norway</td>
+      <td>48.0</td>
+      <td>NaN</td>
+      <td>1964.0</td>
+      <td>1964.0</td>
+      <td>NaN</td>
+      <td>69.372953</td>
+      <td>29.694029</td>
+      <td>2795.833333</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan}</td>
+      <td>{'OPSD': {'OEU-4320'}, 'JRC': {'JRC-N383'}}</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </details>
 </div>
 <p>What is the average “DateIn” of each “Fueltype”? Which type of power plants is the oldest on average?</p>
@@ -2214,6 +4054,24 @@ we might want to group the capacities by country <strong>and</strong> fuel type.
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Fueltype&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">DateIn</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fueltype
+Hydro          1970.639702
+Hard Coal      1977.089005
+Lignite        1977.591837
+Geothermal     1981.000000
+Nuclear        1983.730159
+Oil            1986.774194
+Waste          1996.809524
+Natural Gas    1997.751032
+Other          2000.208333
+Bioenergy      2000.740741
+Wind           2006.227273
+Solar          2010.750000
+Name: DateIn, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -2230,6 +4088,12 @@ we might want to group the capacities by country <strong>and</strong> fuel type.
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">Capacity</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4001</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Frequency&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/8c9ae867caa5c0c3568641bb992b0009121917d0a2e2d6171a7074bc255dd5df.png" src="_images/8c9ae867caa5c0c3568641bb992b0009121917d0a2e2d6171a7074bc255dd5df.png" />
 </div>
 </details>
 </div>
@@ -2248,6 +4112,568 @@ we might want to group the capacities by country <strong>and</strong> fuel type.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Fueltype</th>
+      <th>Bioenergy</th>
+      <th>Geothermal</th>
+      <th>Hard Coal</th>
+      <th>Hydro</th>
+      <th>Lignite</th>
+      <th>Natural Gas</th>
+      <th>Nuclear</th>
+      <th>Oil</th>
+      <th>Other</th>
+      <th>Solar</th>
+      <th>Waste</th>
+      <th>Wind</th>
+    </tr>
+    <tr>
+      <th>Country</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Albania</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Austria</th>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>171</td>
+      <td>0</td>
+      <td>17</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Belgium</th>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>13</td>
+      <td>0</td>
+      <td>26</td>
+      <td>2</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>Bosnia and Herzegovina</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>16</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Bulgaria</th>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>30</td>
+      <td>8</td>
+      <td>6</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Croatia</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>21</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Czech Republic</th>
+      <td>0</td>
+      <td>0</td>
+      <td>9</td>
+      <td>14</td>
+      <td>26</td>
+      <td>5</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Denmark</th>
+      <td>4</td>
+      <td>0</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>13</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Estonia</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Finland</th>
+      <td>40</td>
+      <td>0</td>
+      <td>9</td>
+      <td>105</td>
+      <td>6</td>
+      <td>21</td>
+      <td>2</td>
+      <td>17</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>France</th>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>150</td>
+      <td>0</td>
+      <td>27</td>
+      <td>19</td>
+      <td>7</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Germany</th>
+      <td>42</td>
+      <td>0</td>
+      <td>55</td>
+      <td>730</td>
+      <td>29</td>
+      <td>210</td>
+      <td>7</td>
+      <td>29</td>
+      <td>26</td>
+      <td>0</td>
+      <td>64</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>Greece</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>7</td>
+      <td>12</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Hungary</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>1</td>
+      <td>17</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Ireland</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>6</td>
+      <td>2</td>
+      <td>9</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Italy</th>
+      <td>2</td>
+      <td>24</td>
+      <td>10</td>
+      <td>286</td>
+      <td>0</td>
+      <td>112</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>11</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Latvia</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Lithuania</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Luxembourg</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Moldova</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Montenegro</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Netherlands</th>
+      <td>0</td>
+      <td>0</td>
+      <td>7</td>
+      <td>0</td>
+      <td>0</td>
+      <td>53</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>Norway</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>378</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Poland</th>
+      <td>0</td>
+      <td>0</td>
+      <td>45</td>
+      <td>18</td>
+      <td>5</td>
+      <td>16</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Portugal</th>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>41</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Romania</th>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>119</td>
+      <td>5</td>
+      <td>10</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Serbia</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>13</td>
+      <td>9</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Slovakia</th>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>30</td>
+      <td>3</td>
+      <td>4</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Slovenia</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>28</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Spain</th>
+      <td>1</td>
+      <td>0</td>
+      <td>16</td>
+      <td>361</td>
+      <td>3</td>
+      <td>80</td>
+      <td>5</td>
+      <td>13</td>
+      <td>15</td>
+      <td>189</td>
+      <td>15</td>
+      <td>294</td>
+    </tr>
+    <tr>
+      <th>Sweden</th>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>145</td>
+      <td>0</td>
+      <td>9</td>
+      <td>3</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Switzerland</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>465</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Ukraine</th>
+      <td>0</td>
+      <td>0</td>
+      <td>11</td>
+      <td>8</td>
+      <td>0</td>
+      <td>11</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>United Kingdom</th>
+      <td>7</td>
+      <td>0</td>
+      <td>9</td>
+      <td>100</td>
+      <td>0</td>
+      <td>86</td>
+      <td>8</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>13</td>
+      <td>29</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </details>
 </div>
 </section>

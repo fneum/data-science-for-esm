@@ -533,13 +533,13 @@ document.write(`
 <h2>From structured data to optimisation<a class="headerlink" href="#from-structured-data-to-optimisation" title="Permalink to this heading">#</a></h2>
 <p>The design principle of PyPSA is that basically each component is associated with a set of variables and constraints that will be added to the optimisation model based on the input data stored for the components.</p>
 <p>For an <em>hourly</em> electricity market simulation, PyPSA will solve an optimisation problem that looks like this</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0565aa79-3906-40b4-8296-38c9bbf24f6c">
-<span class="eqno">(8)<a class="headerlink" href="#equation-0565aa79-3906-40b4-8296-38c9bbf24f6c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7f35a5ac-197d-47e2-859b-7d69f0001e6e">
+<span class="eqno">(8)<a class="headerlink" href="#equation-7f35a5ac-197d-47e2-859b-7d69f0001e6e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min_{g_{i,s,t}; f_{\ell,t}; g_{i,r,t,\text{charge}}; g_{i,r,t,\text{discharge}}; e_{i,r,t}} \sum_s o_{s} g_{i,s,t}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-28825b55-cd64-435d-ac5c-7d4537a673f3">
-<span class="eqno">(9)<a class="headerlink" href="#equation-28825b55-cd64-435d-ac5c-7d4537a673f3" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b40931ab-b1a5-4dbe-9d12-537e6f304373">
+<span class="eqno">(9)<a class="headerlink" href="#equation-b40931ab-b1a5-4dbe-9d12-537e6f304373" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp; \leq g_{i,s,t} \leq \hat{g}_{i,s,t} G_{i,s}  &amp; \text{generation limits : generator} \\
 -F_\ell &amp;\leq f_{\ell,t} \leq F_\ell &amp; \text{transmission limits : line}  \\
 d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{i,r,t,\text{charge}} - \sum_\ell K_{i\ell} f_{\ell,t} &amp; \text{KCL : bus} \\
@@ -1247,18 +1247,9 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/cartopy/io/__init__.py:241: DownloadWarning:
-
-Downloading: https://naturalearth.s3.amazonaws.com/50m_cultural/ne_50m_admin_0_boundary_lines_land.zip
-</pre></div>
-</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
 
 facecolor will have no effect as it has been defined as &quot;never&quot;.
-
-/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/cartopy/io/__init__.py:241: DownloadWarning:
-
-Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline.zip
 </pre></div>
 </div>
 <img alt="_images/b8d0175a655bb719c97d90c453fa14bc49912b7e207449b7a0d691ba62bdaf08.png" src="_images/b8d0175a655bb719c97d90c453fa14bc49912b7e207449b7a0d691ba62bdaf08.png" />
@@ -1284,7 +1275,7 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.04s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.05s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
@@ -1579,8 +1570,8 @@ HiGHS run time      :          0.00
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7fea90f046d0&gt;,
- &lt;matplotlib.collections.LineCollection at 0x7fea90f51c90&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f167646d0d0&gt;,
+ &lt;matplotlib.collections.LineCollection at 0x7f1676471a50&gt;)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
@@ -1619,16 +1610,6 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/cartopy/io/__init__.py:241: DownloadWarning:
-
-Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_land.zip
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/cartopy/io/__init__.py:241: DownloadWarning:
-
-Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_ocean.zip
-</pre></div>
-</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
 
 facecolor will have no effect as it has been defined as &quot;never&quot;.

@@ -551,13 +551,13 @@ document.write(`
 <h2>From structured data to optimisation<a class="headerlink" href="#from-structured-data-to-optimisation" title="Permalink to this heading">#</a></h2>
 <p>The design principle of PyPSA is that basically each component is associated with a set of variables and constraints that will be added to the optimisation model based on the input data stored for the components.</p>
 <p>For an <em>hourly</em> electricity market simulation, PyPSA will solve an optimisation problem that looks like this</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5447385f-5dfe-4296-b98d-96ade42f0e3c">
-<span class="eqno">(8)<a class="headerlink" href="#equation-5447385f-5dfe-4296-b98d-96ade42f0e3c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-26ffcb7b-0dd4-4720-9042-845ed5a85873">
+<span class="eqno">(8)<a class="headerlink" href="#equation-26ffcb7b-0dd4-4720-9042-845ed5a85873" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min_{g_{i,s,t}; f_{\ell,t}; g_{i,r,t,\text{charge}}; g_{i,r,t,\text{discharge}}; e_{i,r,t}} \sum_s o_{s} g_{i,s,t}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fc583c37-6d81-4a87-bfef-3cf037616906">
-<span class="eqno">(9)<a class="headerlink" href="#equation-fc583c37-6d81-4a87-bfef-3cf037616906" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-bccd7406-37da-40d0-afea-7fafeca2946d">
+<span class="eqno">(9)<a class="headerlink" href="#equation-bccd7406-37da-40d0-afea-7fafeca2946d" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp; \leq g_{i,s,t} \leq \hat{g}_{i,s,t} G_{i,s}  &amp; \text{generation limits : generator} \\
 -F_\ell &amp;\leq f_{\ell,t} \leq F_\ell &amp; \text{transmission limits : line}  \\
 d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{i,r,t,\text{charge}} - \sum_\ell K_{i\ell} f_{\ell,t} &amp; \text{KCL : bus} \\
@@ -1293,7 +1293,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Cbc solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.06s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.04s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -1312,7 +1312,7 @@ Solver message: Optimal - objective value 1381391.25242450
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-hi6mlg40.lp -solve -solu /tmp/linopy-solve-c1af6099.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-t5f846y3.lp -solve -solu /tmp/linopy-solve-hzp_2gqo.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 1 (-13) rows, 3 (-3) columns and 3 (-16) elements
 0  Obj 949510.03 Primal inf 8500.2009 (1)
@@ -1588,8 +1588,8 @@ Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7fce82348e90&gt;,
- &lt;matplotlib.collections.LineCollection at 0x7fce82350710&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f14da48c1d0&gt;,
+ &lt;matplotlib.collections.LineCollection at 0x7f14da45e5d0&gt;)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
@@ -1887,7 +1887,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Glpk solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.05s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.04s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -1904,8 +1904,8 @@ Solver message: optimal
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GLPSOL--GLPK LP/MIP Solver 5.0
 Parameter(s) specified in the command line:
- --lp /tmp/linopy-problem-qdw0akak.lp --output /tmp/linopy-solve-0a9ysvqw.sol
-Reading problem data from &#39;/tmp/linopy-problem-qdw0akak.lp&#39;...
+ --lp /tmp/linopy-problem-mter1rqh.lp --output /tmp/linopy-solve-9okxxdcz.sol
+Reading problem data from &#39;/tmp/linopy-problem-mter1rqh.lp&#39;...
 14 rows, 6 columns, 19 non-zeros
 78 lines were read
 GLPK Simplex Optimizer 5.0
@@ -1923,7 +1923,7 @@ Size of triangular part is 1
 OPTIMAL LP SOLUTION FOUND
 Time used:   0.0 secs
 Memory used: 0.0 Mb (40404 bytes)
-Writing basic solution to &#39;/tmp/linopy-solve-0a9ysvqw.sol&#39;...
+Writing basic solution to &#39;/tmp/linopy-solve-9okxxdcz.sol&#39;...
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
@@ -2096,7 +2096,7 @@ Writing basic solution to &#39;/tmp/linopy-solve-0a9ysvqw.sol&#39;...
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Glpk solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.06s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.04s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -2113,8 +2113,8 @@ Solver message: optimal
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GLPSOL--GLPK LP/MIP Solver 5.0
 Parameter(s) specified in the command line:
- --lp /tmp/linopy-problem-ksu_kcuj.lp --output /tmp/linopy-solve-xp1arnpn.sol
-Reading problem data from &#39;/tmp/linopy-problem-ksu_kcuj.lp&#39;...
+ --lp /tmp/linopy-problem-otr_dbtu.lp --output /tmp/linopy-solve-n0h4dhfs.sol
+Reading problem data from &#39;/tmp/linopy-problem-otr_dbtu.lp&#39;...
 15 rows, 6 columns, 22 non-zeros
 83 lines were read
 GLPK Simplex Optimizer 5.0
@@ -2131,7 +2131,7 @@ Size of triangular part is 2
 OPTIMAL LP SOLUTION FOUND
 Time used:   0.0 secs
 Memory used: 0.0 Mb (40412 bytes)
-Writing basic solution to &#39;/tmp/linopy-solve-xp1arnpn.sol&#39;...
+Writing basic solution to &#39;/tmp/linopy-solve-n0h4dhfs.sol&#39;...
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
@@ -2283,7 +2283,7 @@ Name: mu, dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Glpk solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.06s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.04s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:linopy.constants:Optimization failed: 
@@ -2297,8 +2297,8 @@ Solver message: undefined
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GLPSOL--GLPK LP/MIP Solver 5.0
 Parameter(s) specified in the command line:
- --lp /tmp/linopy-problem-mz7045ie.lp --output /tmp/linopy-solve-925ne73q.sol
-Reading problem data from &#39;/tmp/linopy-problem-mz7045ie.lp&#39;...
+ --lp /tmp/linopy-problem-9ewnotm4.lp --output /tmp/linopy-solve-0anarhri.sol
+Reading problem data from &#39;/tmp/linopy-problem-9ewnotm4.lp&#39;...
 15 rows, 6 columns, 22 non-zeros
 83 lines were read
 GLPK Simplex Optimizer 5.0
@@ -2317,7 +2317,7 @@ glp_simplex: unable to recover undefined or non-optimal solution
 If you need actual output for non-optimal solution, use --nopresol
 Time used:   0.0 secs
 Memory used: 0.0 Mb (40412 bytes)
-Writing basic solution to &#39;/tmp/linopy-solve-925ne73q.sol&#39;...
+Writing basic solution to &#39;/tmp/linopy-solve-0anarhri.sol&#39;...
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;warning&#39;, &#39;infeasible_or_unbounded&#39;)
@@ -2350,7 +2350,7 @@ Writing basic solution to &#39;/tmp/linopy-solve-925ne73q.sol&#39;...
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Directory tmp does not exist, creating it
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has global_constraints, carriers, buses, lines, generators, loads
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has carriers, generators, global_constraints, lines, buses, loads
 </pre></div>
 </div>
 </div>
@@ -2374,7 +2374,7 @@ Writing basic solution to &#39;/tmp/linopy-solve-925ne73q.sol&#39;...
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has global_constraints, carriers, buses, lines, generators, loads
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has carriers, generators, global_constraints, lines, buses, loads
 </pre></div>
 </div>
 </div>
@@ -2724,7 +2724,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/4fcd6b4ac4b290e90397012d9aa1f2763fb7a3a4ed1fe84806cfcb32b09e2b31.png" src="_images/4fcd6b4ac4b290e90397012d9aa1f2763fb7a3a4ed1fe84806cfcb32b09e2b31.png" />
+<img alt="_images/94f5cfaa5bc43245d5462b0ebd849573fb4dec5dbc4acc6e8dc888cfcbaa7d73.png" src="_images/94f5cfaa5bc43245d5462b0ebd849573fb4dec5dbc4acc6e8dc888cfcbaa7d73.png" />
 </div>
 </div>
 <p>This dataset also includes a few hydro storage units:</p>
@@ -2928,22 +2928,16 @@ Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   7%|▋         | 1/15 [00:00&lt;00:01,  9.40it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  13%|█▎        | 2/15 [00:00&lt;00:01, 10.27it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  13%|█▎        | 2/15 [00:00&lt;00:01,  9.16it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  27%|██▋       | 4/15 [00:00&lt;00:00, 12.72it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  27%|██▋       | 4/15 [00:00&lt;00:00, 11.74it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 25.74it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 23.58it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 17.84it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 17.33it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 19.03it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -2952,113 +2946,116 @@ Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:  29%|██▊       | 2/7 [00:00&lt;00:00, 17.80it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:  43%|████▎     | 3/7 [00:00&lt;00:00, 28.91it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 50.00it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 58.16it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 1.04s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.94s
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-8s4vchte.lp -solve -solu /tmp/linopy-solve-y3qysfa3.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-0tb4__lf.lp -solve -solu /tmp/linopy-solve-1hsyki2e.sol (default strategy 1)
 Option for printingOptions changed from normal to all
-Presolve 14716 (-128252) rows, 26674 (-32966) columns and 103309 (-169773) elements
-Perturbing problem by 0.001% of 5092.8926 - largest nonzero change 0.00095460831 ( 0.0080340673%) - largest zero change 0.00095166908
-0  Obj 384590.32 Primal inf 31005581 (13561) Dual inf 6057.6669 (17)
-298  Obj 90019.216 Primal inf 28510096 (13528)
-596  Obj 90019.651 Primal inf 25154088 (13375)
-894  Obj 90022.467 Primal inf 23785589 (13310)
-1192  Obj 90022.701 Primal inf 21983251 (13118)
-1490  Obj 90022.701 Primal inf 20672544 (12934)
-1788  Obj 90022.716 Primal inf 19794134 (12817)
-2086  Obj 90022.719 Primal inf 20657862 (12716)
-2384  Obj 90023.017 Primal inf 19631424 (12576)
-2682  Obj 90023.173 Primal inf 21089604 (12515)
-2980  Obj 90023.284 Primal inf 20438965 (12430)
-3278  Obj 90024.842 Primal inf 20167248 (12290)
-3576  Obj 90025.939 Primal inf 21094321 (12189)
-3874  Obj 90026.87 Primal inf 19772467 (12063)
-4172  Obj 90027.786 Primal inf 18755712 (11969)
-4470  Obj 90029.339 Primal inf 18814225 (11859)
-4768  Obj 90030.293 Primal inf 19483132 (11752)
-5066  Obj 90032.204 Primal inf 17962829 (11570)
-5364  Obj 90034.116 Primal inf 18666178 (11454)
-5662  Obj 90037.074 Primal inf 17756415 (11263)
-5960  Obj 90039.919 Primal inf 17024980 (11042)
-6258  Obj 90042.759 Primal inf 17554631 (10898)
-6556  Obj 90044.771 Primal inf 17310934 (10753)
-6854  Obj 90047.523 Primal inf 16565282 (10551)
-7152  Obj 90050.816 Primal inf 23547501 (10489)
-7450  Obj 90055.45 Primal inf 21691104 (10205)
-7748  Obj 90058.989 Primal inf 20414058 (10033)
-8046  Obj 90062.116 Primal inf 19329677 (9906)
-8344  Obj 90065.227 Primal inf 16982086 (9671)
-8642  Obj 90068.083 Primal inf 19218447 (9486)
-8940  Obj 121371.86 Primal inf 14600945 (9319)
-9238  Obj 147551.12 Primal inf 15565597 (9152)
-9536  Obj 147554.39 Primal inf 15687629 (9071)
-9834  Obj 147557.51 Primal inf 17051083 (9155)
-10132  Obj 162202.92 Primal inf 13455425 (8634)
-10430  Obj 162207.09 Primal inf 18167748 (8296)
-10728  Obj 162211.68 Primal inf 20791174 (8117)
-11026  Obj 162215.49 Primal inf 21572676 (8106)
-11324  Obj 162220.51 Primal inf 13996601 (7758)
-11622  Obj 162224.94 Primal inf 15942435 (7647)
-11920  Obj 162229.34 Primal inf 14730541 (7343)
-12218  Obj 162235.3 Primal inf 14975155 (7004)
-12516  Obj 162241.52 Primal inf 13213107 (6862)
-12814  Obj 162248.99 Primal inf 16149595 (6746)
-13112  Obj 187542.93 Primal inf 25094342 (6579)
-13410  Obj 279877.36 Primal inf 44548242 (6004)
-13708  Obj 413505.2 Primal inf 33104964 (5740)
-14006  Obj 534199.11 Primal inf 32851104 (5427)
-14304  Obj 695293.03 Primal inf 42446863 (5343)
-14602  Obj 1147107.1 Primal inf 72115604 (4949)
-14900  Obj 1457429.3 Primal inf 56263947 (4661)
-15198  Obj 1888502.1 Primal inf 7681281 (4245)
-15496  Obj 2230403.3 Primal inf 20627393 (4274)
-15794  Obj 2666603.1 Primal inf 13370486 (3724)
-16092  Obj 3311436.3 Primal inf 19158968 (3582)
-16390  Obj 4288148.3 Primal inf 18616281 (3214)
-16688  Obj 4807731.2 Primal inf 26040496 (3141)
-16986  Obj 5269453.8 Primal inf 10105396 (2763)
-17284  Obj 5829597.3 Primal inf 6304133.6 (2681)
-17582  Obj 6472458.9 Primal inf 4168626 (2674)
-17880  Obj 7078633.9 Primal inf 258263.7 (1836)
-18178  Obj 7857459 Primal inf 66830548 (3325)
-18476  Obj 8291110.7 Primal inf 34140642 (3068)
-18774  Obj 8621550.7 Primal inf 776913.47 (1300)
-19072  Obj 8904011.1 Primal inf 495725.66 (1514)
-19370  Obj 9012455.1 Primal inf 1140069.2 (993)
-19668  Obj 9104501.4 Primal inf 2494498.9 (930)
-19966  Obj 9157514.1 Primal inf 9043.2133 (474)
-20264  Obj 9180609.8 Primal inf 15688.215 (473)
-20562  Obj 9196868 Primal inf 6734.2715 (294)
-20860  Obj 9199107.2 Primal inf 3.8285739 (41)
-20901  Obj 9199316.4
-20901  Obj 9199288 Dual inf 0.00011201881 (1)
-20902  Obj 9199288
-Optimal - objective value 9199288
+Presolve 14389 (-128579) rows, 26333 (-33307) columns and 104968 (-170730) elements
+Perturbing problem by 0.001% of 10131.749 - largest nonzero change 0.00099546188 ( 0.0071917653%) - largest zero change 0.00099525013
+0  Obj 384610.24 Primal inf 52775435 (13231) Dual inf 7191.0689 (17)
+296  Obj 90038.984 Primal inf 44084343 (13155)
+592  Obj 90039.084 Primal inf 36848494 (13010)
+888  Obj 90039.409 Primal inf 28087824 (12873)
+1184  Obj 90039.797 Primal inf 27476815 (12799)
+1480  Obj 90047.344 Primal inf 26170748 (12649)
+1776  Obj 90050.169 Primal inf 25290621 (12522)
+2072  Obj 90050.169 Primal inf 23898719 (12407)
+2368  Obj 90050.198 Primal inf 22635608 (12309)
+2664  Obj 90050.199 Primal inf 23875979 (12181)
+2960  Obj 90050.517 Primal inf 22649573 (12050)
+3256  Obj 90051.442 Primal inf 20960470 (11893)
+3552  Obj 90051.938 Primal inf 23014162 (11848)
+3848  Obj 90054.503 Primal inf 21580988 (11722)
+4144  Obj 90055.135 Primal inf 29296700 (11600)
+4440  Obj 90055.724 Primal inf 21262788 (11485)
+4736  Obj 90056.345 Primal inf 22257866 (11488)
+5032  Obj 90057.057 Primal inf 22380935 (11358)
+5328  Obj 90058.128 Primal inf 23347510 (11308)
+5624  Obj 90059.405 Primal inf 23839152 (11142)
+5920  Obj 90061.197 Primal inf 23246726 (10966)
+6216  Obj 90066.075 Primal inf 27062504 (10790)
+6512  Obj 90069.985 Primal inf 25831701 (10562)
+6808  Obj 90073.834 Primal inf 23553542 (10418)
+7104  Obj 90075.69 Primal inf 26727783 (10295)
+7400  Obj 90078.706 Primal inf 26868449 (10184)
+7696  Obj 90081.764 Primal inf 30271755 (10050)
+7992  Obj 90084.955 Primal inf 26703174 (9787)
+8288  Obj 90087.503 Primal inf 27910151 (9534)
+8584  Obj 90089.859 Primal inf 29257342 (9219)
+8880  Obj 90092.309 Primal inf 33502613 (9070)
+9176  Obj 90095.108 Primal inf 23408072 (8821)
+9472  Obj 90098.664 Primal inf 34885651 (8733)
+9768  Obj 90101.664 Primal inf 41440823 (8550)
+10064  Obj 147580.16 Primal inf 46305169 (8470)
+10360  Obj 147583.34 Primal inf 71010951 (8262)
+10656  Obj 166229.88 Primal inf 78361015 (8077)
+10952  Obj 166234.25 Primal inf 74534195 (7958)
+11248  Obj 166237.4 Primal inf 67655089 (7705)
+11544  Obj 166240.01 Primal inf 3.4998084e+08 (7409)
+11840  Obj 166244.53 Primal inf 1.2517637e+08 (7417)
+12136  Obj 166248.2 Primal inf 1.2630536e+08 (6962)
+12432  Obj 197692.12 Primal inf 1.2181034e+08 (6900)
+12728  Obj 197975.91 Primal inf 1.1088322e+08 (6761)
+13024  Obj 209827.56 Primal inf 1.1344405e+08 (6398)
+13320  Obj 215412.73 Primal inf 1.1568966e+08 (6353)
+13616  Obj 222763.32 Primal inf 1.1178556e+08 (5928)
+13912  Obj 347718.97 Primal inf 1.052378e+08 (6119)
+14208  Obj 443573.92 Primal inf 74817828 (5798)
+14504  Obj 547711.49 Primal inf 93239830 (5739)
+14800  Obj 752304.17 Primal inf 60086503 (5390) Dual inf 7.6000455e-17 (2)
+15096  Obj 1149621.4 Primal inf 52799549 (5069) Dual inf 2.5988114e-16 (2)
+15392  Obj 1554724.8 Primal inf 37580421 (4637)
+15688  Obj 1868241.8 Primal inf 67731813 (4403)
+15984  Obj 2516174.3 Primal inf 3.1035484e+08 (4493)
+16280  Obj 2951806.4 Primal inf 2.8966092e+09 (3876)
+16576  Obj 3811173 Primal inf 3.0665158e+09 (3608)
+16872  Obj 4514399.3 Primal inf 3.2784953e+09 (3283)
+17168  Obj 5589464.9 Primal inf 2.6633148e+09 (3004)
+17274  Obj 5804389.8 Primal inf 5.0502518e+08 (3945)
+17570  Obj 6673132.9 Primal inf 37944655 (2421)
+17866  Obj 7250232 Primal inf 1.5992988e+08 (2336) Dual inf 1.9498698e-18 (1)
+18162  Obj 7700041.4 Primal inf 86782629 (2059) Dual inf 1.9498698e-18 (1)
+18458  Obj 8170814.1 Primal inf 2.5036718e+08 (4995) Dual inf 1.9498698e-18 (1)
+18638  Obj 8259141.4 Primal inf 379636.53 (1748)
+18934  Obj 8604439.3 Primal inf 2051500.3 (2011)
+19230  Obj 8919805.7 Primal inf 1033058.3 (1574)
+19526  Obj 9021349.9 Primal inf 7888471.9 (2096)
+19822  Obj 9104764 Primal inf 278913.1 (1604)
+20118  Obj 9154797.8 Primal inf 297249.83 (1110)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After Postsolve, objective 9199288, infeasibilities - dual 536.41271 (19), primal 5.6860405e-06 (19)
-Presolved model was optimal, full model needs cleaning up
-0  Obj 9199288 Dual inf 7.6869569 (22)
-End of values pass after 0 iterations
-0  Obj 9199288 Dual inf 7.6869569 (22) w.o. free dual inf (20)
-End of values pass after 0 iterations
-0  Obj 9199288 Dual inf 7.6869569 (22) w.o. free dual inf (19)
-End of values pass after 34 iterations
-34  Obj 9199288 Dual inf 2.3228316 (3) w.o. free dual inf (0)
-38  Obj 9199288
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20414  Obj 9190515.2 Primal inf 3493.1358 (353)
+20710  Obj 9197960 Primal inf 2035.8919 (172)
+20944  Obj 9199316.4
+20944  Obj 9199288 Dual inf 0.0010437531 (7)
+20949  Obj 9199288
 Optimal - objective value 9199288
-Optimal objective 9199288.041 - 20940 iterations time 8.052, Presolve 0.15
-Total time (CPU seconds):       8.72   (Wallclock seconds):       8.79
+After Postsolve, objective 9199288, infeasibilities - dual 654.30264 (21), primal 5.1088531e-06 (21)
+Presolved model was optimal, full model needs cleaning up
+0  Obj 9199288 Primal inf 7.5769128e-07 (2) Dual inf 2.0000001e+08 (29)
+End of values pass after 0 iterations
+0  Obj 9199288 Primal inf 7.5769128e-07 (2) Dual inf 2.0000001e+08 (29) w.o. free dual inf (27)
+End of values pass after 0 iterations
+0  Obj 9199288 Primal inf 7.5769128e-07 (2) Dual inf 2.0000001e+08 (29) w.o. free dual inf (25)
+End of values pass after 0 iterations
+0  Obj 9199288 Primal inf 7.5769128e-07 (2) Dual inf 2.0000001e+08 (29) w.o. free dual inf (23)
+End of values pass after 37 iterations
+37  Obj 9199288 Dual inf 7.0388619 (6) w.o. free dual inf (0)
+45  Obj 9199288
+Optimal - objective value 9199288
+Optimal objective 9199288.041 - 20994 iterations time 7.752, Presolve 0.14
+Total time (CPU seconds):       8.31   (Wallclock seconds):       8.39
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -3117,12 +3114,12 @@ Solver message: Optimal - objective value 9199288.04053955
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4048/2036564067.py:13: MatplotlibDeprecationWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4080/2036564067.py:13: MatplotlibDeprecationWarning:
 
 Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fce70bc76d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f14c8d63d50&gt;
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
@@ -3130,7 +3127,7 @@ Unable to determine Axes to steal space for Colorbar. Using gca(), but will rais
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/cf4fbc98525dee38096f7f281069e6001b221751c06c085150fa4609811841ab.png" src="_images/cf4fbc98525dee38096f7f281069e6001b221751c06c085150fa4609811841ab.png" />
+<img alt="_images/251c77266a407ca48ed302a2af3424ed9b4e5ae9eb08f71d38f21f0766c092bc.png" src="_images/251c77266a407ca48ed302a2af3424ed9b4e5ae9eb08f71d38f21f0766c092bc.png" />
 </div>
 </div>
 <p>Or plot the hourly dispatch grouped by carrier:</p>
@@ -3161,7 +3158,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2be2478e635a4e8c45aad49b5605fe9dcad9b945d982029279c08534dff3f69e.png" src="_images/2be2478e635a4e8c45aad49b5605fe9dcad9b945d982029279c08534dff3f69e.png" />
+<img alt="_images/fcbbbf75a27c7f90eae91bf3271c54d8241f7e9baca123141ae920b34dd3e50c.png" src="_images/fcbbbf75a27c7f90eae91bf3271c54d8241f7e9baca123141ae920b34dd3e50c.png" />
 </div>
 </div>
 <p>Or plot the aggregate dispatch of the pumped hydro storage units and the state of charge throughout the day:</p>
@@ -3185,7 +3182,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;MWh or MW&#39;)
 </pre></div>
 </div>
-<img alt="_images/775c5c44e4a0ac4f8c0ffe83b5eb06c900533a7b83dcdfa4e3eed68eb8829ad7.png" src="_images/775c5c44e4a0ac4f8c0ffe83b5eb06c900533a7b83dcdfa4e3eed68eb8829ad7.png" />
+<img alt="_images/85e396f335f3323373fda96193aa704abaf4cf1c9dbb7167c3a1a6ad8033da48.png" src="_images/85e396f335f3323373fda96193aa704abaf4cf1c9dbb7167c3a1a6ad8033da48.png" />
 </div>
 </div>
 <p>Or plot the locational marginal prices (LMPs):</p>
@@ -3210,12 +3207,12 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4048/909041005.py:13: MatplotlibDeprecationWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4080/909041005.py:13: MatplotlibDeprecationWarning:
 
 Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fce783dddd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f14d045edd0&gt;
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:

@@ -551,13 +551,13 @@ document.write(`
 <h2>From structured data to optimisation<a class="headerlink" href="#from-structured-data-to-optimisation" title="Permalink to this heading">#</a></h2>
 <p>The design principle of PyPSA is that basically each component is associated with a set of variables and constraints that will be added to the optimisation model based on the input data stored for the components.</p>
 <p>For an <em>hourly</em> electricity market simulation, PyPSA will solve an optimisation problem that looks like this</p>
-<div class="amsmath math notranslate nohighlight" id="equation-26ffcb7b-0dd4-4720-9042-845ed5a85873">
-<span class="eqno">(8)<a class="headerlink" href="#equation-26ffcb7b-0dd4-4720-9042-845ed5a85873" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a646522c-22de-480b-a77e-3bc77097ca74">
+<span class="eqno">(8)<a class="headerlink" href="#equation-a646522c-22de-480b-a77e-3bc77097ca74" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min_{g_{i,s,t}; f_{\ell,t}; g_{i,r,t,\text{charge}}; g_{i,r,t,\text{discharge}}; e_{i,r,t}} \sum_s o_{s} g_{i,s,t}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bccd7406-37da-40d0-afea-7fafeca2946d">
-<span class="eqno">(9)<a class="headerlink" href="#equation-bccd7406-37da-40d0-afea-7fafeca2946d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d0007006-79c5-4760-a9c8-ab50cf48a9f0">
+<span class="eqno">(9)<a class="headerlink" href="#equation-d0007006-79c5-4760-a9c8-ab50cf48a9f0" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp; \leq g_{i,s,t} \leq \hat{g}_{i,s,t} G_{i,s}  &amp; \text{generation limits : generator} \\
 -F_\ell &amp;\leq f_{\ell,t} \leq F_\ell &amp; \text{transmission limits : line}  \\
 d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{i,r,t,\text{charge}} - \sum_\ell K_{i\ell} f_{\ell,t} &amp; \text{KCL : bus} \\
@@ -1293,37 +1293,31 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Cbc solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.04s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
-Status: ok
-Termination condition: optimal
-Solution: 6 primals, 14 duals
-Objective: 1.38e+06
-Solver model: not available
-Solver message: Optimal - objective value 1381391.25242450
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper were not assigned to the network.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
-Version: 2.10.10 
-Build Date: Apr 19 2023 
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-t5f846y3.lp -solve -solu /tmp/linopy-solve-hzp_2gqo.sol (default strategy 1)
-Option for printingOptions changed from normal to all
-Presolve 1 (-13) rows, 3 (-3) columns and 3 (-16) elements
-0  Obj 949510.03 Primal inf 8500.2009 (1)
-1  Obj 1381391.3
-Optimal - objective value 1381391.3
-After Postsolve, objective 1381391.3, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 1381391.252 - 1 iterations time 0.002, Presolve 0.00
-Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pypsa/optimization/optimize.py:587,</span> in <span class="ni">OptimizationAccessor.__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">optimize</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">586</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">587</span>     <span class="k">return</span> <span class="n">optimize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pypsa/optimization/optimize.py:567,</span> in <span class="ni">optimize</span><span class="nt">(n, snapshots, multi_investment_periods, transmission_losses, linearized_unit_commitment, model_kwargs, extra_functionality, assign_all_duals, solver_name, solver_options, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">565</span> <span class="k">if</span> <span class="n">extra_functionality</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">566</span>     <span class="n">extra_functionality</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">sns</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">567</span> <span class="n">status</span><span class="p">,</span> <span class="n">condition</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="n">solver_name</span><span class="p">,</span> <span class="o">**</span><span class="n">solver_options</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span> <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;ok&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">570</span>     <span class="n">assign_solution</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/model.py:1015,</span> in <span class="ni">Model.solve</span><span class="nt">(self, solver_name, io_api, problem_fn, solution_fn, log_fn, basis_fn, warmstart_fn, keep_files, sanitize_zeros, remote, **solver_options)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1012</span>     <span class="n">solver_name</span> <span class="o">=</span> <span class="n">available_solvers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span> <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; Solve problem using </span><span class="si">{</span><span class="n">solver_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> solver&quot;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1015</span> <span class="k">assert</span> <span class="n">solver_name</span> <span class="ow">in</span> <span class="n">available_solvers</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Solver </span><span class="si">{</span><span class="n">solver_name</span><span class="si">}</span><span class="s2"> not installed&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1017</span> <span class="c1"># reset result</span>
+<span class="g g-Whitespace">   </span><span class="mi">1018</span> <span class="bp">self</span><span class="o">.</span><span class="n">reset_solution</span><span class="p">()</span>
+
+<span class="ne">AssertionError</span>: Solver cbc not installed
 </pre></div>
 </div>
 </div>
@@ -1337,52 +1331,6 @@ Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Generator</th>
-      <th>MZ hydro</th>
-      <th>SA coal</th>
-      <th>SA wind</th>
-      <th>SA gas</th>
-      <th>SA oil</th>
-    </tr>
-    <tr>
-      <th>snapshot</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>now</th>
-      <td>1150.0</td>
-      <td>35000.0</td>
-      <td>3000.0</td>
-      <td>1500.0</td>
-      <td>2000.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>or if you prefer it in relation to the generators nominal capacity</p>
 <div class="cell docutils container">
@@ -1391,52 +1339,6 @@ Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Generator</th>
-      <th>MZ hydro</th>
-      <th>SA coal</th>
-      <th>SA wind</th>
-      <th>SA gas</th>
-      <th>SA oil</th>
-    </tr>
-    <tr>
-      <th>snapshot</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>now</th>
-      <td>0.958333</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.1875</td>
-      <td>1.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>You see that the time index has the value ‘now’. This is the default index when no time series data has been specified and the network only covers a single state (e.g. a particular hour).</p>
 <p>Similarly you will find the power flow in transmission lines at</p>
@@ -1446,40 +1348,6 @@ Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Line</th>
-      <th>SA-MZ</th>
-    </tr>
-    <tr>
-      <th>snapshot</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>now</th>
-      <td>-500.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1487,40 +1355,6 @@ Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Line</th>
-      <th>SA-MZ</th>
-    </tr>
-    <tr>
-      <th>snapshot</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>now</th>
-      <td>500.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">p0</span></code> will tell you the flow from <code class="docutils literal notranslate"><span class="pre">bus0</span></code> to <code class="docutils literal notranslate"><span class="pre">bus1</span></code>. <code class="docutils literal notranslate"><span class="pre">p1</span></code> will tell you the flow from <code class="docutils literal notranslate"><span class="pre">bus1</span></code> to <code class="docutils literal notranslate"><span class="pre">bus0</span></code>.</p>
 <p>What about the shadow prices?</p>
@@ -1530,43 +1364,6 @@ Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Bus</th>
-      <th>SA</th>
-      <th>MZ</th>
-    </tr>
-    <tr>
-      <th>snapshot</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>now</th>
-      <td>172.41379</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </section>
 <section id="basic-network-plotting">
@@ -1587,18 +1384,6 @@ Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f14da48c1d0&gt;,
- &lt;matplotlib.collections.LineCollection at 0x7f14da45e5d0&gt;)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
-
-facecolor will have no effect as it has been defined as &quot;never&quot;.
-</pre></div>
-</div>
-<img alt="_images/18e90661e18d254615d717ac7d3d29bc6012f64d2044fe328bfea46404721444.png" src="_images/18e90661e18d254615d717ac7d3d29bc6012f64d2044fe328bfea46404721444.png" />
-</div>
 </div>
 <p>Since we have provided <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> coordinates for our buses, <code class="docutils literal notranslate"><span class="pre">n.plot()</span></code> will try to plot the network on a map by default. Of course, there’s an option to deactivate this behaviour:</p>
 <div class="cell docutils container">
@@ -1606,9 +1391,6 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">geomap</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/7ab960e0c96589a61ae210f4027168072583845911bc561e7c038423c2037981.png" src="_images/7ab960e0c96589a61ae210f4027168072583845911bc561e7c038423c2037981.png" />
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">n.plot()</span></code> function has a variety of styling arguments to tweak the appearance of the buses, the lines and the map in the background:</p>
@@ -1627,14 +1409,6 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
-
-facecolor will have no effect as it has been defined as &quot;never&quot;.
-</pre></div>
-</div>
-<img alt="_images/4a58cbd4c67753b5b70620190ec919f3e638e71619000a7da2af024e67b6b9a6.png" src="_images/4a58cbd4c67753b5b70620190ec919f3e638e71619000a7da2af024e67b6b9a6.png" />
-</div>
 </div>
 <p>Just like with <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> we can also control the projection of the network plot:</p>
 <div class="cell docutils container">
@@ -1645,14 +1419,6 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <span class="n">n</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bus_sizes</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
-
-facecolor will have no effect as it has been defined as &quot;never&quot;.
-</pre></div>
-</div>
-<img alt="_images/a183f91566a587252e9c795cc4dbcdcd6801c539e7a09b60aa69dacdc6c8155b.png" src="_images/a183f91566a587252e9c795cc4dbcdcd6801c539e7a09b60aa69dacdc6c8155b.png" />
 </div>
 </div>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">bus_sizes</span></code> argument of <code class="docutils literal notranslate"><span class="pre">n.plot()</span></code> to display the regional distribution of load. First, we calculate the total load per bus:</p>
@@ -1669,14 +1435,6 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bus
-MZ    0.065
-SA    4.200
-Name: p_set, dtype: float64
-</pre></div>
-</div>
-</div>
 </div>
 <p>The resulting <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> we can pass to <code class="docutils literal notranslate"><span class="pre">n.plot(bus_sizes=...)</span></code>:</p>
 <div class="cell docutils container">
@@ -1685,14 +1443,6 @@ Name: p_set, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
-
-facecolor will have no effect as it has been defined as &quot;never&quot;.
-</pre></div>
-</div>
-<img alt="_images/1439130cf606728fc516ea60a7b013aca107b2768a12572b40521c6dd763deb7.png" src="_images/1439130cf606728fc516ea60a7b013aca107b2768a12572b40521c6dd763deb7.png" />
-</div>
 </div>
 <p>The important point here is, that <code class="docutils literal notranslate"><span class="pre">s</span></code> needs to have entries for all buses, i.e. its index needs to match <code class="docutils literal notranslate"><span class="pre">n.buses.index</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">bus_sizes</span></code> argument of <code class="docutils literal notranslate"><span class="pre">n.plot()</span></code> can be even more powerful. It can produce pie charts, e.g. for the mix of electricity generation at each bus.</p>
@@ -1700,17 +1450,6 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;now&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generator
-MZ hydro     1150.0
-SA coal     35000.0
-SA wind      3000.0
-SA gas       1500.0
-SA oil       2000.0
-Name: now, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1730,17 +1469,6 @@ Name: now, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bus  carrier
-MZ   hydro       1150.0
-SA   coal       35000.0
-     gas         1500.0
-     oil         2000.0
-     wind        3000.0
-Name: now, dtype: float64
-</pre></div>
-</div>
-</div>
 </div>
 <p>… which we can pass to <code class="docutils literal notranslate"><span class="pre">n.plot(bus_sizes=...)</span></code>:</p>
 <div class="cell docutils container">
@@ -1748,14 +1476,6 @@ Name: now, dtype: float64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bus_sizes</span><span class="o">=</span><span class="n">s</span> <span class="o">/</span> <span class="mi">3000</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
-
-facecolor will have no effect as it has been defined as &quot;never&quot;.
-</pre></div>
-</div>
-<img alt="_images/d7e171323c2325b9b80975ecba9757862c2ad1fbde03edf698f907b894a8364f.png" src="_images/d7e171323c2325b9b80975ecba9757862c2ad1fbde03edf698f907b894a8364f.png" />
 </div>
 </div>
 <p><strong>How does this magic work?</strong> The plotting function will look up the colors specified in <code class="docutils literal notranslate"><span class="pre">n.carriers</span></code> for each carrier and match it with the second index-level of <code class="docutils literal notranslate"><span class="pre">s</span></code>.</p>
@@ -1776,161 +1496,13 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>attribute</th>
-      <th>bus0</th>
-      <th>bus1</th>
-      <th>type</th>
-      <th>x</th>
-      <th>r</th>
-      <th>g</th>
-      <th>b</th>
-      <th>s_nom</th>
-      <th>s_nom_extendable</th>
-      <th>s_nom_min</th>
-      <th>...</th>
-      <th>v_ang_max</th>
-      <th>sub_network</th>
-      <th>x_pu</th>
-      <th>r_pu</th>
-      <th>g_pu</th>
-      <th>b_pu</th>
-      <th>x_pu_eff</th>
-      <th>r_pu_eff</th>
-      <th>s_nom_opt</th>
-      <th>v_nom</th>
-    </tr>
-    <tr>
-      <th>Line</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>SA-MZ</th>
-      <td>SA</td>
-      <td>MZ</td>
-      <td></td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>400.0</td>
-      <td>False</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>inf</td>
-      <td>0</td>
-      <td>0.000006</td>
-      <td>0.000006</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.000006</td>
-      <td>0.000006</td>
-      <td>500.0</td>
-      <td>400.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>1 rows × 30 columns</p>
-</div></div></div>
 </div>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Glpk solver
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.04s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
-Status: ok
-Termination condition: optimal
-Solution: 6 primals, 14 duals
-Objective: 1.40e+06
-Solver model: not available
-Solver message: optimal
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper were not assigned to the network.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GLPSOL--GLPK LP/MIP Solver 5.0
-Parameter(s) specified in the command line:
- --lp /tmp/linopy-problem-mter1rqh.lp --output /tmp/linopy-solve-9okxxdcz.sol
-Reading problem data from &#39;/tmp/linopy-problem-mter1rqh.lp&#39;...
-14 rows, 6 columns, 19 non-zeros
-78 lines were read
-GLPK Simplex Optimizer 5.0
-14 rows, 6 columns, 19 non-zeros
-Preprocessing...
-1 row, 4 columns, 4 non-zeros
-Scaling...
- A: min|aij| =  1.000e+00  max|aij| =  1.000e+00  ratio =  1.000e+00
-Problem data seem to be well scaled
-Constructing initial basis...
-Size of triangular part is 1
-      0: obj =   1.008484848e+06 inf =   6.600e+03 (1)
-      1: obj =   1.986415883e+06 inf =   0.000e+00 (0)
-*     3: obj =   1.398632632e+06 inf =   0.000e+00 (0)
-OPTIMAL LP SOLUTION FOUND
-Time used:   0.0 secs
-Memory used: 0.0 Mb (40404 bytes)
-Writing basic solution to &#39;/tmp/linopy-solve-9okxxdcz.sol&#39;...
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
-</pre></div>
-</div>
-</div>
-</details>
 </div>
 <p>You can see that the production of the hydro power plant was reduced and that of the gas power plant increased owing to the reduced transmission capacity.</p>
 <div class="cell docutils container">
@@ -1939,52 +1511,6 @@ Writing basic solution to &#39;/tmp/linopy-solve-9okxxdcz.sol&#39;...
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Generator</th>
-      <th>MZ hydro</th>
-      <th>SA coal</th>
-      <th>SA wind</th>
-      <th>SA gas</th>
-      <th>SA oil</th>
-    </tr>
-    <tr>
-      <th>snapshot</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>now</th>
-      <td>1050.0</td>
-      <td>35000.0</td>
-      <td>3000.0</td>
-      <td>1600.0</td>
-      <td>2000.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </section>
 <section id="global-constraints-for-emission-limits">
@@ -2007,62 +1533,11 @@ Writing basic solution to &#39;/tmp/linopy-solve-9okxxdcz.sol&#39;...
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Generator</th>
-      <th>MZ hydro</th>
-      <th>SA coal</th>
-      <th>SA wind</th>
-      <th>SA gas</th>
-      <th>SA oil</th>
-    </tr>
-    <tr>
-      <th>snapshot</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>now</th>
-      <td>0.0</td>
-      <td>36060.606061</td>
-      <td>NaN</td>
-      <td>551.724138</td>
-      <td>1485.714286</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>Summed up, we get total emissions in tonnes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38098.044484251375
 </pre></div>
 </div>
 </div>
@@ -2082,63 +1557,11 @@ Writing basic solution to &#39;/tmp/linopy-solve-9okxxdcz.sol&#39;...
 </div>
 </div>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Glpk solver
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.04s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
-Status: ok
-Termination condition: optimal
-Solution: 6 primals, 15 duals
-Objective: 2.12e+06
-Solver model: not available
-Solver message: optimal
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper were not assigned to the network.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GLPSOL--GLPK LP/MIP Solver 5.0
-Parameter(s) specified in the command line:
- --lp /tmp/linopy-problem-otr_dbtu.lp --output /tmp/linopy-solve-n0h4dhfs.sol
-Reading problem data from &#39;/tmp/linopy-problem-otr_dbtu.lp&#39;...
-15 rows, 6 columns, 22 non-zeros
-83 lines were read
-GLPK Simplex Optimizer 5.0
-15 rows, 6 columns, 22 non-zeros
-Preprocessing...
-2 rows, 4 columns, 7 non-zeros
-Scaling...
- A: min|aij| =  3.448e-01  max|aij| =  1.030e+00  ratio =  2.988e+00
-Problem data seem to be well scaled
-Constructing initial basis...
-Size of triangular part is 2
-      0: obj =   0.000000000e+00 inf =   3.860e+04 (1)
-      2: obj =   2.120621285e+06 inf =   0.000e+00 (0)
-OPTIMAL LP SOLUTION FOUND
-Time used:   0.0 secs
-Memory used: 0.0 Mb (40412 bytes)
-Writing basic solution to &#39;/tmp/linopy-solve-n0h4dhfs.sol&#39;...
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
-</pre></div>
-</div>
-</div>
-</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2146,52 +1569,6 @@ Writing basic solution to &#39;/tmp/linopy-solve-n0h4dhfs.sol&#39;...
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Generator</th>
-      <th>MZ hydro</th>
-      <th>SA coal</th>
-      <th>SA wind</th>
-      <th>SA gas</th>
-      <th>SA oil</th>
-    </tr>
-    <tr>
-      <th>snapshot</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>now</th>
-      <td>1050.0</td>
-      <td>30603.4</td>
-      <td>3000.0</td>
-      <td>7996.58</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2199,63 +1576,10 @@ Writing basic solution to &#39;/tmp/linopy-solve-n0h4dhfs.sol&#39;...
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Generator</th>
-      <th>MZ hydro</th>
-      <th>SA coal</th>
-      <th>SA wind</th>
-      <th>SA gas</th>
-      <th>SA oil</th>
-    </tr>
-    <tr>
-      <th>snapshot</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>now</th>
-      <td>0.875</td>
-      <td>0.874383</td>
-      <td>1.0</td>
-      <td>0.999572</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">global_constraints</span><span class="o">.</span><span class="n">mu</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GlobalConstraint
-emission_limit   -216.159
-Name: mu, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -2269,62 +1593,11 @@ Name: mu, dtype: float64
 </div>
 </div>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Glpk solver
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.04s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:linopy.constants:Optimization failed: 
-Status: warning
-Termination condition: infeasible_or_unbounded
-Solution: 0 primals, 0 duals
-Objective: nan
-Solver model: not available
-Solver message: undefined
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GLPSOL--GLPK LP/MIP Solver 5.0
-Parameter(s) specified in the command line:
- --lp /tmp/linopy-problem-9ewnotm4.lp --output /tmp/linopy-solve-0anarhri.sol
-Reading problem data from &#39;/tmp/linopy-problem-9ewnotm4.lp&#39;...
-15 rows, 6 columns, 22 non-zeros
-83 lines were read
-GLPK Simplex Optimizer 5.0
-15 rows, 6 columns, 22 non-zeros
-Preprocessing...
-2 rows, 4 columns, 7 non-zeros
-Scaling...
- A: min|aij| =  3.448e-01  max|aij| =  1.030e+00  ratio =  2.988e+00
-Problem data seem to be well scaled
-Constructing initial basis...
-Size of triangular part is 2
-      0: obj =   0.000000000e+00 inf =   3.860e+04 (1)
-      2: obj =   4.250000000e+02 inf =   3.860e+04 (1)
-LP HAS NO PRIMAL FEASIBLE SOLUTION
-glp_simplex: unable to recover undefined or non-optimal solution
-If you need actual output for non-optimal solution, use --nopresol
-Time used:   0.0 secs
-Memory used: 0.0 Mb (40412 bytes)
-Writing basic solution to &#39;/tmp/linopy-solve-0anarhri.sol&#39;...
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;warning&#39;, &#39;infeasible_or_unbounded&#39;)
-</pre></div>
-</div>
-</div>
-</details>
 </div>
 <p>No! Without any additional capacities, we have exhausted our options to reduce CO2 in that hour. The optimiser tells us that the problem is <em>infeasible</em>.</p>
 </section>
@@ -2346,23 +1619,10 @@ Writing basic solution to &#39;/tmp/linopy-solve-0anarhri.sol&#39;...
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Directory tmp does not exist, creating it
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has carriers, generators, global_constraints, lines, buses, loads
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_csv</span> <span class="o">=</span> <span class="n">pypsa</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s2">&quot;tmp&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Imported network tmp has buses, carriers, generators, global_constraints, lines, loads
 </pre></div>
 </div>
 </div>
@@ -2373,20 +1633,10 @@ Writing basic solution to &#39;/tmp/linopy-solve-0anarhri.sol&#39;...
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has carriers, generators, global_constraints, lines, buses, loads
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_nc</span> <span class="o">=</span> <span class="n">pypsa</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s2">&quot;tmp.nc&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Imported network tmp.nc has buses, carriers, generators, global_constraints, lines, loads
 </pre></div>
 </div>
 </div>
@@ -2399,17 +1649,6 @@ Writing basic solution to &#39;/tmp/linopy-solve-0anarhri.sol&#39;...
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">pypsa</span><span class="o">.</span><span class="n">examples</span><span class="o">.</span><span class="n">scigrid_de</span><span class="p">(</span><span class="n">from_master</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.examples:Retrieving network data from https://github.com/PyPSA/PyPSA/raw/master/examples/scigrid-de/scigrid-with-load-gen-trafos.nc
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Importing network from PyPSA version v0.17.1 while current version is v0.25.1. Read the release notes at https://pypsa.readthedocs.io/en/latest/release_notes.html to prepare your network for import.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Imported network scigrid-de.nc has buses, generators, lines, loads, storage_units, transformers
 </pre></div>
 </div>
 </div>
@@ -2430,23 +1669,6 @@ Writing basic solution to &#39;/tmp/linopy-solve-0anarhri.sol&#39;...
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DatetimeIndex([&#39;2011-01-01 00:00:00&#39;, &#39;2011-01-01 01:00:00&#39;,
-               &#39;2011-01-01 02:00:00&#39;, &#39;2011-01-01 03:00:00&#39;,
-               &#39;2011-01-01 04:00:00&#39;, &#39;2011-01-01 05:00:00&#39;,
-               &#39;2011-01-01 06:00:00&#39;, &#39;2011-01-01 07:00:00&#39;,
-               &#39;2011-01-01 08:00:00&#39;, &#39;2011-01-01 09:00:00&#39;,
-               &#39;2011-01-01 10:00:00&#39;, &#39;2011-01-01 11:00:00&#39;,
-               &#39;2011-01-01 12:00:00&#39;, &#39;2011-01-01 13:00:00&#39;,
-               &#39;2011-01-01 14:00:00&#39;, &#39;2011-01-01 15:00:00&#39;,
-               &#39;2011-01-01 16:00:00&#39;, &#39;2011-01-01 17:00:00&#39;,
-               &#39;2011-01-01 18:00:00&#39;, &#39;2011-01-01 19:00:00&#39;,
-               &#39;2011-01-01 20:00:00&#39;, &#39;2011-01-01 21:00:00&#39;,
-               &#39;2011-01-01 22:00:00&#39;, &#39;2011-01-01 23:00:00&#39;],
-              dtype=&#39;datetime64[ns]&#39;, name=&#39;snapshot&#39;, freq=None)
-</pre></div>
-</div>
-</div>
 </div>
 <p>This index will match with any time-varying attributes of components:</p>
 <div class="cell docutils container">
@@ -2455,149 +1677,6 @@ Writing basic solution to &#39;/tmp/linopy-solve-0anarhri.sol&#39;...
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Load</th>
-      <th>1</th>
-      <th>3</th>
-      <th>4</th>
-      <th>6</th>
-      <th>7</th>
-      <th>8</th>
-      <th>9</th>
-      <th>11</th>
-      <th>14</th>
-      <th>16</th>
-      <th>...</th>
-      <th>382_220kV</th>
-      <th>384_220kV</th>
-      <th>385_220kV</th>
-      <th>391_220kV</th>
-      <th>403_220kV</th>
-      <th>404_220kV</th>
-      <th>413_220kV</th>
-      <th>421_220kV</th>
-      <th>450_220kV</th>
-      <th>458_220kV</th>
-    </tr>
-    <tr>
-      <th>snapshot</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2011-01-01 00:00:00</th>
-      <td>231.716206</td>
-      <td>40.613618</td>
-      <td>66.790442</td>
-      <td>196.124424</td>
-      <td>147.804142</td>
-      <td>123.671946</td>
-      <td>83.637404</td>
-      <td>73.280624</td>
-      <td>175.260369</td>
-      <td>298.900165</td>
-      <td>...</td>
-      <td>202.010114</td>
-      <td>222.695091</td>
-      <td>212.621816</td>
-      <td>77.570241</td>
-      <td>16.148970</td>
-      <td>0.092794</td>
-      <td>58.427056</td>
-      <td>67.013686</td>
-      <td>38.449243</td>
-      <td>66.752618</td>
-    </tr>
-    <tr>
-      <th>2011-01-01 01:00:00</th>
-      <td>221.822547</td>
-      <td>38.879526</td>
-      <td>63.938670</td>
-      <td>187.750439</td>
-      <td>141.493303</td>
-      <td>118.391487</td>
-      <td>80.066312</td>
-      <td>70.151738</td>
-      <td>167.777223</td>
-      <td>286.137932</td>
-      <td>...</td>
-      <td>193.384825</td>
-      <td>213.186609</td>
-      <td>203.543436</td>
-      <td>74.258201</td>
-      <td>15.459452</td>
-      <td>0.088831</td>
-      <td>55.932378</td>
-      <td>64.152382</td>
-      <td>36.807564</td>
-      <td>63.902460</td>
-    </tr>
-    <tr>
-      <th>2011-01-01 02:00:00</th>
-      <td>213.127360</td>
-      <td>37.355494</td>
-      <td>61.432348</td>
-      <td>180.390839</td>
-      <td>135.946929</td>
-      <td>113.750678</td>
-      <td>76.927805</td>
-      <td>67.401871</td>
-      <td>161.200550</td>
-      <td>274.921657</td>
-      <td>...</td>
-      <td>185.804364</td>
-      <td>204.829941</td>
-      <td>195.564769</td>
-      <td>71.347365</td>
-      <td>14.853460</td>
-      <td>0.085349</td>
-      <td>53.739893</td>
-      <td>61.637683</td>
-      <td>35.364750</td>
-      <td>61.397558</td>
-    </tr>
-  </tbody>
-</table>
-<p>3 rows × 485 columns</p>
-</div></div></div>
 </div>
 <p>We can use simple <code class="docutils literal notranslate"><span class="pre">pandas</span></code> syntax, to create an overview of the load time series…</p>
 <div class="cell docutils container">
@@ -2605,12 +1684,6 @@ Writing basic solution to &#39;/tmp/linopy-solve-0anarhri.sol&#39;...
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">loads_t</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;MW&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;snapshot&#39;, ylabel=&#39;MW&#39;&gt;
-</pre></div>
-</div>
-<img alt="_images/b1925c3572c4867c13f2bfb1f12ea8bdaaab5c7a713931852e5012d388999376.png" src="_images/b1925c3572c4867c13f2bfb1f12ea8bdaaab5c7a713931852e5012d388999376.png" />
 </div>
 </div>
 <p>… and the capacity factor time series:</p>
@@ -2620,12 +1693,6 @@ Writing basic solution to &#39;/tmp/linopy-solve-0anarhri.sol&#39;...
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;snapshot&#39;, ylabel=&#39;p.u.&#39;&gt;
-</pre></div>
-</div>
-<img alt="_images/1f1cdcf229dff4bcc72e441b3512cf00164c5ecb0c771da47696bf015c5c0cbe.png" src="_images/1f1cdcf229dff4bcc72e441b3512cf00164c5ecb0c771da47696bf015c5c0cbe.png" />
-</div>
 </div>
 <p>We can also inspect the total power plant capacities per technology…</p>
 <div class="cell docutils container">
@@ -2634,12 +1701,6 @@ Writing basic solution to &#39;/tmp/linopy-solve-0anarhri.sol&#39;...
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;GW&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;GW&#39;)
-</pre></div>
-</div>
-<img alt="_images/6a76a26fbf7b78a175afe03cd7ee71e0f47576aa21c0ce1eb3a1be4636af32b7.png" src="_images/6a76a26fbf7b78a175afe03cd7ee71e0f47576aa21c0ce1eb3a1be4636af32b7.png" />
 </div>
 </div>
 <p>… and plot the regional distribution of loads…</p>
@@ -2662,14 +1723,6 @@ Writing basic solution to &#39;/tmp/linopy-solve-0anarhri.sol&#39;...
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
-
-facecolor will have no effect as it has been defined as &quot;never&quot;.
-</pre></div>
-</div>
-<img alt="_images/dd38ab0fdce06a266a383dfb65bb3516e59ef89af675af48974e352bd63b5827.png" src="_images/dd38ab0fdce06a266a383dfb65bb3516e59ef89af675af48974e352bd63b5827.png" />
-</div>
 </div>
 <p>… and power plant capacities:</p>
 <div class="cell docutils container">
@@ -2687,14 +1740,6 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <span class="n">carriers</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">carrier</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;#</span><span class="si">%06x</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mh">0xFFFFFF</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">carriers</span><span class="p">]</span>
 <span class="n">n</span><span class="o">.</span><span class="n">madd</span><span class="p">(</span><span class="s2">&quot;Carrier&quot;</span><span class="p">,</span> <span class="n">carriers</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Gas&#39;, &#39;Hard Coal&#39;, &#39;Run of River&#39;, &#39;Waste&#39;, &#39;Brown Coal&#39;, &#39;Oil&#39;,
-       &#39;Storage Hydro&#39;, &#39;Other&#39;, &#39;Multiple&#39;, &#39;Nuclear&#39;, &#39;Geothermal&#39;,
-       &#39;Wind Offshore&#39;, &#39;Wind Onshore&#39;, &#39;Solar&#39;],
-      dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
@@ -2718,14 +1763,6 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
-
-facecolor will have no effect as it has been defined as &quot;never&quot;.
-</pre></div>
-</div>
-<img alt="_images/94f5cfaa5bc43245d5462b0ebd849573fb4dec5dbc4acc6e8dc888cfcbaa7d73.png" src="_images/94f5cfaa5bc43245d5462b0ebd849573fb4dec5dbc4acc6e8dc888cfcbaa7d73.png" />
-</div>
 </div>
 <p>This dataset also includes a few hydro storage units:</p>
 <div class="cell docutils container">
@@ -2734,347 +1771,14 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>bus</th>
-      <th>p_nom</th>
-      <th>carrier</th>
-      <th>marginal_cost</th>
-      <th>max_hours</th>
-      <th>efficiency_store</th>
-      <th>efficiency_dispatch</th>
-      <th>control</th>
-      <th>type</th>
-      <th>p_nom_extendable</th>
-      <th>...</th>
-      <th>build_year</th>
-      <th>lifetime</th>
-      <th>state_of_charge_initial</th>
-      <th>state_of_charge_initial_per_period</th>
-      <th>state_of_charge_set</th>
-      <th>cyclic_state_of_charge</th>
-      <th>cyclic_state_of_charge_per_period</th>
-      <th>standing_loss</th>
-      <th>inflow</th>
-      <th>p_nom_opt</th>
-    </tr>
-    <tr>
-      <th>StorageUnit</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>100_220kV Pumped Hydro</th>
-      <td>100_220kV</td>
-      <td>144.5</td>
-      <td>Pumped Hydro</td>
-      <td>3.0</td>
-      <td>6.0</td>
-      <td>0.95</td>
-      <td>0.95</td>
-      <td>PQ</td>
-      <td></td>
-      <td>False</td>
-      <td>...</td>
-      <td>0</td>
-      <td>inf</td>
-      <td>0.0</td>
-      <td>False</td>
-      <td>NaN</td>
-      <td>False</td>
-      <td>True</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>114 Pumped Hydro</th>
-      <td>114</td>
-      <td>138.0</td>
-      <td>Pumped Hydro</td>
-      <td>3.0</td>
-      <td>6.0</td>
-      <td>0.95</td>
-      <td>0.95</td>
-      <td>PQ</td>
-      <td></td>
-      <td>False</td>
-      <td>...</td>
-      <td>0</td>
-      <td>inf</td>
-      <td>0.0</td>
-      <td>False</td>
-      <td>NaN</td>
-      <td>False</td>
-      <td>True</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>121 Pumped Hydro</th>
-      <td>121</td>
-      <td>238.0</td>
-      <td>Pumped Hydro</td>
-      <td>3.0</td>
-      <td>6.0</td>
-      <td>0.95</td>
-      <td>0.95</td>
-      <td>PQ</td>
-      <td></td>
-      <td>False</td>
-      <td>...</td>
-      <td>0</td>
-      <td>inf</td>
-      <td>0.0</td>
-      <td>False</td>
-      <td>NaN</td>
-      <td>False</td>
-      <td>True</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>3 rows × 29 columns</p>
-</div></div></div>
 </div>
 <p>So let’s solve the electricity market simulation for January 1, 2011. It’ll take a short moment.</p>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The following transformers have zero r, which could break the linear load flow:
-Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;15&#39;, &#39;18&#39;, &#39;20&#39;, &#39;22&#39;, &#39;24&#39;, &#39;26&#39;, &#39;30&#39;,
-       &#39;32&#39;, &#39;37&#39;, &#39;42&#39;, &#39;46&#39;, &#39;52&#39;, &#39;56&#39;, &#39;61&#39;, &#39;68&#39;, &#39;69&#39;, &#39;74&#39;, &#39;78&#39;, &#39;86&#39;,
-       &#39;87&#39;, &#39;94&#39;, &#39;95&#39;, &#39;96&#39;, &#39;99&#39;, &#39;100&#39;, &#39;104&#39;, &#39;105&#39;, &#39;106&#39;, &#39;107&#39;, &#39;117&#39;,
-       &#39;120&#39;, &#39;123&#39;, &#39;124&#39;, &#39;125&#39;, &#39;128&#39;, &#39;129&#39;, &#39;138&#39;, &#39;143&#39;, &#39;156&#39;, &#39;157&#39;,
-       &#39;159&#39;, &#39;160&#39;, &#39;165&#39;, &#39;184&#39;, &#39;191&#39;, &#39;195&#39;, &#39;201&#39;, &#39;220&#39;, &#39;231&#39;, &#39;232&#39;,
-       &#39;233&#39;, &#39;236&#39;, &#39;247&#39;, &#39;248&#39;, &#39;250&#39;, &#39;251&#39;, &#39;252&#39;, &#39;261&#39;, &#39;263&#39;, &#39;264&#39;,
-       &#39;267&#39;, &#39;272&#39;, &#39;279&#39;, &#39;281&#39;, &#39;282&#39;, &#39;292&#39;, &#39;303&#39;, &#39;307&#39;, &#39;308&#39;, &#39;312&#39;,
-       &#39;315&#39;, &#39;317&#39;, &#39;322&#39;, &#39;332&#39;, &#39;334&#39;, &#39;336&#39;, &#39;338&#39;, &#39;351&#39;, &#39;353&#39;, &#39;360&#39;,
-       &#39;362&#39;, &#39;382&#39;, &#39;384&#39;, &#39;385&#39;, &#39;391&#39;, &#39;403&#39;, &#39;404&#39;, &#39;413&#39;, &#39;421&#39;, &#39;450&#39;,
-       &#39;458&#39;],
-      dtype=&#39;object&#39;, name=&#39;Transformer&#39;)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The following transformers have zero r, which could break the linear load flow:
-Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;15&#39;, &#39;18&#39;, &#39;20&#39;, &#39;22&#39;, &#39;24&#39;, &#39;26&#39;, &#39;30&#39;,
-       &#39;32&#39;, &#39;37&#39;, &#39;42&#39;, &#39;46&#39;, &#39;52&#39;, &#39;56&#39;, &#39;61&#39;, &#39;68&#39;, &#39;69&#39;, &#39;74&#39;, &#39;78&#39;, &#39;86&#39;,
-       &#39;87&#39;, &#39;94&#39;, &#39;95&#39;, &#39;96&#39;, &#39;99&#39;, &#39;100&#39;, &#39;104&#39;, &#39;105&#39;, &#39;106&#39;, &#39;107&#39;, &#39;117&#39;,
-       &#39;120&#39;, &#39;123&#39;, &#39;124&#39;, &#39;125&#39;, &#39;128&#39;, &#39;129&#39;, &#39;138&#39;, &#39;143&#39;, &#39;156&#39;, &#39;157&#39;,
-       &#39;159&#39;, &#39;160&#39;, &#39;165&#39;, &#39;184&#39;, &#39;191&#39;, &#39;195&#39;, &#39;201&#39;, &#39;220&#39;, &#39;231&#39;, &#39;232&#39;,
-       &#39;233&#39;, &#39;236&#39;, &#39;247&#39;, &#39;248&#39;, &#39;250&#39;, &#39;251&#39;, &#39;252&#39;, &#39;261&#39;, &#39;263&#39;, &#39;264&#39;,
-       &#39;267&#39;, &#39;272&#39;, &#39;279&#39;, &#39;281&#39;, &#39;282&#39;, &#39;292&#39;, &#39;303&#39;, &#39;307&#39;, &#39;308&#39;, &#39;312&#39;,
-       &#39;315&#39;, &#39;317&#39;, &#39;322&#39;, &#39;332&#39;, &#39;334&#39;, &#39;336&#39;, &#39;338&#39;, &#39;351&#39;, &#39;353&#39;, &#39;360&#39;,
-       &#39;362&#39;, &#39;382&#39;, &#39;384&#39;, &#39;385&#39;, &#39;391&#39;, &#39;403&#39;, &#39;404&#39;, &#39;413&#39;, &#39;421&#39;, &#39;450&#39;,
-       &#39;458&#39;],
-      dtype=&#39;object&#39;, name=&#39;Transformer&#39;)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Cbc solver
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  13%|█▎        | 2/15 [00:00&lt;00:01, 10.27it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  27%|██▋       | 4/15 [00:00&lt;00:00, 12.72it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 25.74it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 19.03it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:  43%|████▎     | 3/7 [00:00&lt;00:00, 28.91it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 58.16it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.94s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
-Version: 2.10.10 
-Build Date: Apr 19 2023 
-
-command line - cbc -printingOptions all -import /tmp/linopy-problem-0tb4__lf.lp -solve -solu /tmp/linopy-solve-1hsyki2e.sol (default strategy 1)
-Option for printingOptions changed from normal to all
-Presolve 14389 (-128579) rows, 26333 (-33307) columns and 104968 (-170730) elements
-Perturbing problem by 0.001% of 10131.749 - largest nonzero change 0.00099546188 ( 0.0071917653%) - largest zero change 0.00099525013
-0  Obj 384610.24 Primal inf 52775435 (13231) Dual inf 7191.0689 (17)
-296  Obj 90038.984 Primal inf 44084343 (13155)
-592  Obj 90039.084 Primal inf 36848494 (13010)
-888  Obj 90039.409 Primal inf 28087824 (12873)
-1184  Obj 90039.797 Primal inf 27476815 (12799)
-1480  Obj 90047.344 Primal inf 26170748 (12649)
-1776  Obj 90050.169 Primal inf 25290621 (12522)
-2072  Obj 90050.169 Primal inf 23898719 (12407)
-2368  Obj 90050.198 Primal inf 22635608 (12309)
-2664  Obj 90050.199 Primal inf 23875979 (12181)
-2960  Obj 90050.517 Primal inf 22649573 (12050)
-3256  Obj 90051.442 Primal inf 20960470 (11893)
-3552  Obj 90051.938 Primal inf 23014162 (11848)
-3848  Obj 90054.503 Primal inf 21580988 (11722)
-4144  Obj 90055.135 Primal inf 29296700 (11600)
-4440  Obj 90055.724 Primal inf 21262788 (11485)
-4736  Obj 90056.345 Primal inf 22257866 (11488)
-5032  Obj 90057.057 Primal inf 22380935 (11358)
-5328  Obj 90058.128 Primal inf 23347510 (11308)
-5624  Obj 90059.405 Primal inf 23839152 (11142)
-5920  Obj 90061.197 Primal inf 23246726 (10966)
-6216  Obj 90066.075 Primal inf 27062504 (10790)
-6512  Obj 90069.985 Primal inf 25831701 (10562)
-6808  Obj 90073.834 Primal inf 23553542 (10418)
-7104  Obj 90075.69 Primal inf 26727783 (10295)
-7400  Obj 90078.706 Primal inf 26868449 (10184)
-7696  Obj 90081.764 Primal inf 30271755 (10050)
-7992  Obj 90084.955 Primal inf 26703174 (9787)
-8288  Obj 90087.503 Primal inf 27910151 (9534)
-8584  Obj 90089.859 Primal inf 29257342 (9219)
-8880  Obj 90092.309 Primal inf 33502613 (9070)
-9176  Obj 90095.108 Primal inf 23408072 (8821)
-9472  Obj 90098.664 Primal inf 34885651 (8733)
-9768  Obj 90101.664 Primal inf 41440823 (8550)
-10064  Obj 147580.16 Primal inf 46305169 (8470)
-10360  Obj 147583.34 Primal inf 71010951 (8262)
-10656  Obj 166229.88 Primal inf 78361015 (8077)
-10952  Obj 166234.25 Primal inf 74534195 (7958)
-11248  Obj 166237.4 Primal inf 67655089 (7705)
-11544  Obj 166240.01 Primal inf 3.4998084e+08 (7409)
-11840  Obj 166244.53 Primal inf 1.2517637e+08 (7417)
-12136  Obj 166248.2 Primal inf 1.2630536e+08 (6962)
-12432  Obj 197692.12 Primal inf 1.2181034e+08 (6900)
-12728  Obj 197975.91 Primal inf 1.1088322e+08 (6761)
-13024  Obj 209827.56 Primal inf 1.1344405e+08 (6398)
-13320  Obj 215412.73 Primal inf 1.1568966e+08 (6353)
-13616  Obj 222763.32 Primal inf 1.1178556e+08 (5928)
-13912  Obj 347718.97 Primal inf 1.052378e+08 (6119)
-14208  Obj 443573.92 Primal inf 74817828 (5798)
-14504  Obj 547711.49 Primal inf 93239830 (5739)
-14800  Obj 752304.17 Primal inf 60086503 (5390) Dual inf 7.6000455e-17 (2)
-15096  Obj 1149621.4 Primal inf 52799549 (5069) Dual inf 2.5988114e-16 (2)
-15392  Obj 1554724.8 Primal inf 37580421 (4637)
-15688  Obj 1868241.8 Primal inf 67731813 (4403)
-15984  Obj 2516174.3 Primal inf 3.1035484e+08 (4493)
-16280  Obj 2951806.4 Primal inf 2.8966092e+09 (3876)
-16576  Obj 3811173 Primal inf 3.0665158e+09 (3608)
-16872  Obj 4514399.3 Primal inf 3.2784953e+09 (3283)
-17168  Obj 5589464.9 Primal inf 2.6633148e+09 (3004)
-17274  Obj 5804389.8 Primal inf 5.0502518e+08 (3945)
-17570  Obj 6673132.9 Primal inf 37944655 (2421)
-17866  Obj 7250232 Primal inf 1.5992988e+08 (2336) Dual inf 1.9498698e-18 (1)
-18162  Obj 7700041.4 Primal inf 86782629 (2059) Dual inf 1.9498698e-18 (1)
-18458  Obj 8170814.1 Primal inf 2.5036718e+08 (4995) Dual inf 1.9498698e-18 (1)
-18638  Obj 8259141.4 Primal inf 379636.53 (1748)
-18934  Obj 8604439.3 Primal inf 2051500.3 (2011)
-19230  Obj 8919805.7 Primal inf 1033058.3 (1574)
-19526  Obj 9021349.9 Primal inf 7888471.9 (2096)
-19822  Obj 9104764 Primal inf 278913.1 (1604)
-20118  Obj 9154797.8 Primal inf 297249.83 (1110)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20414  Obj 9190515.2 Primal inf 3493.1358 (353)
-20710  Obj 9197960 Primal inf 2035.8919 (172)
-20944  Obj 9199316.4
-20944  Obj 9199288 Dual inf 0.0010437531 (7)
-20949  Obj 9199288
-Optimal - objective value 9199288
-After Postsolve, objective 9199288, infeasibilities - dual 654.30264 (21), primal 5.1088531e-06 (21)
-Presolved model was optimal, full model needs cleaning up
-0  Obj 9199288 Primal inf 7.5769128e-07 (2) Dual inf 2.0000001e+08 (29)
-End of values pass after 0 iterations
-0  Obj 9199288 Primal inf 7.5769128e-07 (2) Dual inf 2.0000001e+08 (29) w.o. free dual inf (27)
-End of values pass after 0 iterations
-0  Obj 9199288 Primal inf 7.5769128e-07 (2) Dual inf 2.0000001e+08 (29) w.o. free dual inf (25)
-End of values pass after 0 iterations
-0  Obj 9199288 Primal inf 7.5769128e-07 (2) Dual inf 2.0000001e+08 (29) w.o. free dual inf (23)
-End of values pass after 37 iterations
-37  Obj 9199288 Dual inf 7.0388619 (6) w.o. free dual inf (0)
-45  Obj 9199288
-Optimal - objective value 9199288
-Optimal objective 9199288.041 - 20994 iterations time 7.752, Presolve 0.14
-Total time (CPU seconds):       8.31   (Wallclock seconds):       8.39
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
-Status: ok
-Termination condition: optimal
-Solution: 59640 primals, 142968 duals
-Objective: 9.20e+06
-Solver model: not available
-Solver message: Optimal - objective value 9199288.04053955
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper, Transformer-fix-s-lower, Transformer-fix-s-upper, StorageUnit-fix-p_dispatch-lower, StorageUnit-fix-p_dispatch-upper, StorageUnit-fix-p_store-lower, StorageUnit-fix-p_store-upper, StorageUnit-fix-state_of_charge-lower, StorageUnit-fix-state_of_charge-upper, Kirchhoff-Voltage-Law, StorageUnit-energy_balance were not assigned to the network.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
-</pre></div>
-</div>
-</div>
-</details>
 </div>
 <p>Now, we can also plot model outputs, like the calculated power flows on the network map.</p>
 <div class="cell docutils container">
@@ -3113,22 +1817,6 @@ Solver message: Optimal - objective value 9199288.04053955
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4080/2036564067.py:13: MatplotlibDeprecationWarning:
-
-Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f14c8d63d50&gt;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
-
-facecolor will have no effect as it has been defined as &quot;never&quot;.
-</pre></div>
-</div>
-<img alt="_images/251c77266a407ca48ed302a2af3424ed9b4e5ae9eb08f71d38f21f0766c092bc.png" src="_images/251c77266a407ca48ed302a2af3424ed9b4e5ae9eb08f71d38f21f0766c092bc.png" />
-</div>
 </div>
 <p>Or plot the hourly dispatch grouped by carrier:</p>
 <div class="cell docutils container">
@@ -3157,9 +1845,6 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/fcbbbf75a27c7f90eae91bf3271c54d8241f7e9baca123141ae920b34dd3e50c.png" src="_images/fcbbbf75a27c7f90eae91bf3271c54d8241f7e9baca123141ae920b34dd3e50c.png" />
-</div>
 </div>
 <p>Or plot the aggregate dispatch of the pumped hydro storage units and the state of charge throughout the day:</p>
 <div class="cell docutils container">
@@ -3177,12 +1862,6 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;MWh or MW&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;MWh or MW&#39;)
-</pre></div>
-</div>
-<img alt="_images/85e396f335f3323373fda96193aa704abaf4cf1c9dbb7167c3a1a6ad8033da48.png" src="_images/85e396f335f3323373fda96193aa704abaf4cf1c9dbb7167c3a1a6ad8033da48.png" />
 </div>
 </div>
 <p>Or plot the locational marginal prices (LMPs):</p>
@@ -3205,22 +1884,6 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4080/909041005.py:13: MatplotlibDeprecationWarning:
-
-Unable to determine Axes to steal space for Colorbar. Using gca(), but will raise in the future. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f14d045edd0&gt;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
-
-facecolor will have no effect as it has been defined as &quot;never&quot;.
-</pre></div>
-</div>
-<img alt="_images/e8dbb88da25fcc4432558dcf869eab14f25ed4aaae7d79f1490da08c4b511b41.png" src="_images/e8dbb88da25fcc4432558dcf869eab14f25ed4aaae7d79f1490da08c4b511b41.png" />
 </div>
 </div>
 </section>

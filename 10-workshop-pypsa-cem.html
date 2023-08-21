@@ -996,66 +996,31 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Cbc solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.15s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
-Status: ok
-Termination condition: optimal
-Solution: 8764 primals, 19714 duals
-Objective: 2.75e+10
-Solver model: not available
-Solver message: Optimal - objective value 27530963951.09072495
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper were not assigned to the network.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
-Version: 2.10.10 
-Build Date: Apr 19 2023 
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-i9qixifu.lp -solve -solu /tmp/linopy-solve-ajx4fln7.sol (default strategy 1)
-Option for printingOptions changed from normal to all
-Presolve 9900 (-9814) rows, 7714 (-1050) columns and 23130 (-10864) elements
-Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033155867 ( 6.5156784%) - largest zero change 0
-0  Obj 0 Primal inf 1.6937954e+08 (2190)
-273  Obj 99289259 Primal inf 1.6143953e+08 (2190)
-546  Obj 1.8929296e+08 Primal inf 1.5545163e+08 (2190)
-819  Obj 3.0534711e+08 Primal inf 1.4853111e+08 (2190)
-1092  Obj 4.3229077e+08 Primal inf 1.4050834e+08 (2190)
-1365  Obj 5.7839109e+08 Primal inf 1.3256861e+08 (2190)
-1638  Obj 7.44638e+08 Primal inf 1.2422418e+08 (2190)
-1911  Obj 9.9448682e+08 Primal inf 1.1699429e+08 (2190)
-2184  Obj 4.3488996e+09 Primal inf 1.0442117e+08 (2109)
-2457  Obj 4.712694e+09 Primal inf 95575591 (2085)
-2730  Obj 5.1031126e+09 Primal inf 88029222 (2054)
-3003  Obj 5.7074219e+09 Primal inf 79560489 (2008)
-3276  Obj 6.5108064e+09 Primal inf 69850183 (1942)
-3549  Obj 7.2875807e+09 Primal inf 63779648 (1875)
-3822  Obj 8.3671716e+09 Primal inf 57114484 (1788)
-4095  Obj 9.4205477e+09 Primal inf 53055330 (1706)
-4368  Obj 1.066625e+10 Primal inf 47537061 (1605)
-4641  Obj 1.1805963e+10 Primal inf 44671707 (1518)
-4914  Obj 1.3092109e+10 Primal inf 40713437 (1421)
-5187  Obj 1.4413592e+10 Primal inf 37766533 (1323)
-5460  Obj 1.588759e+10 Primal inf 32325713 (1211)
-5733  Obj 1.7303428e+10 Primal inf 28297766 (1111)
-6006  Obj 1.8681985e+10 Primal inf 25535904 (1006)
-6279  Obj 2.0051476e+10 Primal inf 21659695 (899)
-6552  Obj 2.1669648e+10 Primal inf 17322881 (786)
-6825  Obj 2.3269068e+10 Primal inf 14052672 (670)
-7098  Obj 2.481751e+10 Primal inf 7484725 (415)
-7371  Obj 2.6399111e+10 Primal inf 3546329.1 (263)
-7644  Obj 2.7528714e+10 Primal inf 44629.752 (81)
-7708  Obj 2.753097e+10
-Optimal - objective value 2.7530964e+10
-After Postsolve, objective 2.7530964e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 2.753096395e+10 - 7708 iterations time 0.172, Presolve 0.02
-Total time (CPU seconds):       0.26   (Wallclock seconds):       0.23
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pypsa/optimization/optimize.py:587,</span> in <span class="ni">OptimizationAccessor.__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">optimize</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">586</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">587</span>     <span class="k">return</span> <span class="n">optimize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pypsa/optimization/optimize.py:567,</span> in <span class="ni">optimize</span><span class="nt">(n, snapshots, multi_investment_periods, transmission_losses, linearized_unit_commitment, model_kwargs, extra_functionality, assign_all_duals, solver_name, solver_options, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">565</span> <span class="k">if</span> <span class="n">extra_functionality</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">566</span>     <span class="n">extra_functionality</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">sns</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">567</span> <span class="n">status</span><span class="p">,</span> <span class="n">condition</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="n">solver_name</span><span class="p">,</span> <span class="o">**</span><span class="n">solver_options</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span> <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;ok&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">570</span>     <span class="n">assign_solution</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/model.py:1015,</span> in <span class="ni">Model.solve</span><span class="nt">(self, solver_name, io_api, problem_fn, solution_fn, log_fn, basis_fn, warmstart_fn, keep_files, sanitize_zeros, remote, **solver_options)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1012</span>     <span class="n">solver_name</span> <span class="o">=</span> <span class="n">available_solvers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span> <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; Solve problem using </span><span class="si">{</span><span class="n">solver_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> solver&quot;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1015</span> <span class="k">assert</span> <span class="n">solver_name</span> <span class="ow">in</span> <span class="n">available_solvers</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Solver </span><span class="si">{</span><span class="n">solver_name</span><span class="si">}</span><span class="s2"> not installed&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1017</span> <span class="c1"># reset result</span>
+<span class="g g-Whitespace">   </span><span class="mi">1018</span> <span class="bp">self</span><span class="o">.</span><span class="n">reset_solution</span><span class="p">()</span>
+
+<span class="ne">AssertionError</span>: Solver cbc not installed
 </pre></div>
 </div>
 </div>
@@ -1070,11 +1035,6 @@ Total time (CPU seconds):       0.26   (Wallclock seconds):       0.23
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27.530963951090726
-</pre></div>
-</div>
-</div>
 </div>
 <p>The optimised capacities in GW:</p>
 <div class="cell docutils container">
@@ -1083,31 +1043,11 @@ Total time (CPU seconds):       0.26   (Wallclock seconds):       0.23
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generator
-OCGT       70.182246
-onwind     -0.000000
-offwind    42.399533
-solar      82.323420
-Name: p_nom_opt, dtype: float64
-</pre></div>
-</div>
-</div>
 </div>
 <p>The total energy generation by technology in GW:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">snapshot_weightings</span><span class="o">.</span><span class="n">generators</span> <span class="o">@</span> <span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>  <span class="c1"># TWh</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generator
-OCGT       258.400419
-onwind       0.000000
-offwind    131.445301
-solar       89.080020
-Name: generators, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1137,31 +1077,11 @@ Name: generators, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generator
-OCGT       16995.471527
-onwind         0.000000
-offwind     6706.035478
-solar       3829.456982
-dtype: float64
-</pre></div>
-</div>
-</div>
 </div>
 <p>If you have the newest version of PyPSA installed, you can also run the following to determine the total system cost by technology:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">capex</span><span class="p">()</span> <span class="o">+</span> <span class="n">n</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">opex</span><span class="p">(</span><span class="n">aggregate_time</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           carrier
-Generator  OCGT       16995.471527
-           offwind     6706.035478
-           onwind         0.000000
-           solar       3829.456982
-dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1181,11 +1101,6 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">snapshot_weightings</span><span class="o">.</span><span class="n">generators</span> <span class="o">@</span> <span class="n">emissions</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>  <span class="c1"># Mt</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>124.78849522416593
 </pre></div>
 </div>
 </div>
@@ -1239,9 +1154,6 @@ dtype: float64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_dispatch</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/9b363e8ab45b703fa0c111de421e34fea7f4a3fa660ad8999a9a905f6d603b46.png" src="_images/9b363e8ab45b703fa0c111de421e34fea7f4a3fa660ad8999a9a905f6d603b46.png" />
 </div>
 </div>
 </section>
@@ -1298,137 +1210,11 @@ at the beginning of the optimisation period must equal the final state of charge
 </div>
 <p>Ok, lets run the again, now with storage, and see what’s changed.</p>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Cbc solver
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/14 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  50%|█████     | 7/14 [00:00&lt;00:00, 62.60it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 14/14 [00:00&lt;00:00, 44.88it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 14/14 [00:00&lt;00:00, 46.72it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 124.13it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.38s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
-Status: ok
-Termination condition: optimal
-Solution: 21906 primals, 50376 duals
-Objective: 2.75e+10
-Solver model: not available
-Solver message: Optimal - objective value 27530963951.09072876
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
-Version: 2.10.10 
-Build Date: Apr 19 2023 
-
-command line - cbc -printingOptions all -import /tmp/linopy-problem-yp5bm5rc.lp -solve -solu /tmp/linopy-solve-mif9tos7.sol (default strategy 1)
-Option for printingOptions changed from normal to all
-Presolve 27420 (-22956) rows, 20856 (-1050) columns and 75690 (-24006) elements
-Perturbing problem by 0.001% of 232.80852 - largest nonzero change 0.00033278527 ( 6.443095%) - largest zero change 0.0003312509
-0  Obj 0 Primal inf 1.7299319e+08 (2190)
-362  Obj 1533.1194 Primal inf 2.0311713e+08 (2526)
-724  Obj 57848.014 Primal inf 2.3613949e+08 (2828)
-1086  Obj 2.8005582e+09 Primal inf 2.6150356e+08 (3052)
-1448  Obj 3.0342168e+09 Primal inf 2.7839747e+08 (3215)
-1810  Obj 3.2850322e+09 Primal inf 2.892485e+08 (3326)
-2172  Obj 3.5802439e+09 Primal inf 2.9350237e+08 (3403)
-2534  Obj 3.9300418e+09 Primal inf 2.9781611e+08 (3464)
-2896  Obj 4.0999946e+09 Primal inf 3.016857e+08 (3509)
-3258  Obj 4.4218284e+09 Primal inf 3.0437211e+08 (3550)
-3620  Obj 4.7280502e+09 Primal inf 2.9352668e+08 (3570)
-3982  Obj 4.8248465e+09 Primal inf 2.9941131e+08 (3605)
-4344  Obj 5.008526e+09 Primal inf 2.8884774e+08 (3616)
-4706  Obj 5.1706973e+09 Primal inf 2.8933913e+08 (3659)
-5068  Obj 5.2476263e+09 Primal inf 2.9505609e+08 (3672)
-5430  Obj 5.4812997e+09 Primal inf 2.7845012e+08 (3671)
-5792  Obj 5.8070267e+09 Primal inf 2.7031312e+08 (3677)
-6154  Obj 6.031559e+09 Primal inf 2.5684759e+08 (3649)
-6516  Obj 6.3725062e+09 Primal inf 2.5031431e+08 (3618)
-6878  Obj 6.5629861e+09 Primal inf 2.391902e+08 (3590)
-7240  Obj 6.997145e+09 Primal inf 2.3028227e+08 (3531)
-7602  Obj 7.319649e+09 Primal inf 2.2595585e+08 (3478)
-7964  Obj 7.9581346e+09 Primal inf 2.1858597e+08 (3462)
-8326  Obj 8.5716818e+09 Primal inf 2.1062592e+08 (3432)
-8688  Obj 9.0443099e+09 Primal inf 2.0443271e+08 (3416)
-9050  Obj 9.6465756e+09 Primal inf 1.9484828e+08 (3370)
-9412  Obj 1.0192838e+10 Primal inf 1.8846609e+08 (3326)
-9774  Obj 1.0721949e+10 Primal inf 1.7803804e+08 (3248)
-10136  Obj 1.1488387e+10 Primal inf 1.6755284e+08 (3195)
-10498  Obj 1.2214466e+10 Primal inf 1.6045584e+08 (3129)
-10860  Obj 1.28859e+10 Primal inf 1.4813822e+08 (3024)
-11222  Obj 1.3954453e+10 Primal inf 1.2966223e+08 (2862)
-11584  Obj 1.5155672e+10 Primal inf 1.2128344e+08 (2711)
-11946  Obj 1.5753268e+10 Primal inf 2.2674791e+08 (4512)
-12308  Obj 1.5760857e+10 Primal inf 2.2740102e+08 (4264)
-12670  Obj 1.6407348e+10 Primal inf 2.5101132e+08 (4328)
-13032  Obj 1.6715096e+10 Primal inf 1.1910976e+09 (6179)
-13394  Obj 1.7158347e+10 Primal inf 1.8827406e+08 (4237)
-13756  Obj 1.7807919e+10 Primal inf 2.7075975e+08 (4263)
-14118  Obj 1.8747642e+10 Primal inf 1.3587532e+08 (4147)
-14480  Obj 1.9536598e+10 Primal inf 4.3615405e+08 (5558)
-14842  Obj 2.0230014e+10 Primal inf 2.8173038e+08 (4003)
-15204  Obj 2.0642846e+10 Primal inf 2.8790984e+08 (4034)
-15566  Obj 2.1389856e+10 Primal inf 1.5683834e+09 (9890)
-15928  Obj 2.1820907e+10 Primal inf 3.8764884e+08 (9976)
-16290  Obj 2.262019e+10 Primal inf 2.5576838e+09 (9050)
-16652  Obj 2.3025958e+10 Primal inf 7.7492779e+08 (11096)
-17014  Obj 2.346369e+10 Primal inf 3.2318347e+08 (6253)
-17376  Obj 2.4082846e+10 Primal inf 47050265 (2791)
-17738  Obj 2.4971745e+10 Primal inf 3.1198558e+08 (4247)
-18100  Obj 2.5451351e+10 Primal inf 1.2211962e+09 (10439)
-18462  Obj 2.6000583e+10 Primal inf 3.3729597e+08 (8575)
-18824  Obj 2.6577289e+10 Primal inf 26436843 (2175)
-19186  Obj 2.6708318e+10 Primal inf 92040103 (2642)
-19548  Obj 2.7131389e+10 Primal inf 92511165 (2923)
-19910  Obj 2.7282606e+10 Primal inf 6.4845444e+08 (5736)
-20272  Obj 2.7462168e+10 Primal inf 15243409 (1717)
-20634  Obj 2.7522821e+10 Primal inf 630595.32 (271)
-20795  Obj 2.753097e+10
-Optimal - objective value 2.7530964e+10
-After Postsolve, objective 2.7530964e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 2.753096395e+10 - 20795 iterations time 2.152, Presolve 0.04
-Total time (CPU seconds):       2.38   (Wallclock seconds):       2.37
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
-</pre></div>
-</div>
-</div>
-</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1436,28 +1222,10 @@ Total time (CPU seconds):       2.38   (Wallclock seconds):       2.37
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generator
-OCGT       70182.246
-onwind        -0.000
-offwind    42399.533
-solar      82323.420
-Name: p_nom_opt, dtype: float64
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">storage_units</span><span class="o">.</span><span class="n">p_nom_opt</span>  <span class="c1"># MW</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>StorageUnit
-battery storage                 0.0
-hydrogen storage underground   -0.0
-Name: p_nom_opt, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1481,163 +1249,16 @@ Name: p_nom_opt, dtype: float64
 </div>
 <p>When we run the model now…</p>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Cbc solver
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  47%|████▋     | 7/15 [00:00&lt;00:00, 63.85it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  93%|█████████▎| 14/15 [00:00&lt;00:00, 44.58it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 48.19it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 125.38it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.39s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
-Version: 2.10.10 
-Build Date: Apr 19 2023 
-
-command line - cbc -printingOptions all -import /tmp/linopy-problem-5lixldas.lp -solve -solu /tmp/linopy-solve-uknoku5p.sol (default strategy 1)
-Option for printingOptions changed from normal to all
-Presolve 25230 (-25147) rows, 18665 (-3241) columns and 69120 (-32766) elements
-Perturbing problem by 0.001% of 232.80852 - largest nonzero change 0.0003084482 ( 7.1472055%) - largest zero change 0.00030841019
-0  Obj 0 Primal inf 1.7299319e+08 (2190)
-351  Obj 1485.0331 Primal inf 2.0215782e+08 (2517)
-702  Obj 19742.419 Primal inf 2.3731013e+08 (2833)
-1053  Obj 1.1539552e+10 Primal inf 2.1548549e+08 (2266)
-1404  Obj 1.723794e+10 Primal inf 2.4173489e+08 (3141)
-1755  Obj 1.7238167e+10 Primal inf 2.714411e+08 (3128)
-2106  Obj 1.7241469e+10 Primal inf 4.7081187e+08 (3183)
-2457  Obj 1.7241728e+10 Primal inf 3.9448973e+08 (3277)
-2808  Obj 1.724188e+10 Primal inf 4.4155116e+08 (3342)
-3159  Obj 1.7241946e+10 Primal inf 4.4590873e+08 (3396)
-3510  Obj 1.7242089e+10 Primal inf 4.9981172e+08 (3386)
-3861  Obj 1.7242646e+10 Primal inf 3.7653676e+08 (3472)
-4212  Obj 1.7248179e+10 Primal inf 4.2947079e+08 (3465)
-4563  Obj 1.7274932e+10 Primal inf 5.0847506e+08 (3517)
-4914  Obj 1.7275065e+10 Primal inf 3.81969e+08 (3581)
-5265  Obj 1.7275248e+10 Primal inf 4.4613797e+08 (3689)
-5616  Obj 1.7275446e+10 Primal inf 5.9105401e+08 (3834)
-5967  Obj 1.7276321e+10 Primal inf 1.0579895e+09 (3781)
-6318  Obj 1.72772e+10 Primal inf 8.6213683e+08 (3891)
-6669  Obj 2.2449658e+10 Primal inf 6.8967082e+08 (3650)
-7020  Obj 2.2469451e+10 Primal inf 7.5849888e+08 (3681)
-7371  Obj 2.2634523e+10 Primal inf 1.53387e+09 (3688)
-7722  Obj 4.0449437e+10 Primal inf 4.8252512e+08 (3699)
-8073  Obj 4.0680376e+10 Primal inf 5.5175944e+08 (3799)
-8424  Obj 4.2967417e+10 Primal inf 4.3671926e+08 (3766)
-8775  Obj 4.2968293e+10 Primal inf 4.6116642e+08 (3841)
-9126  Obj 5.0304915e+10 Primal inf 7.7364436e+08 (3923)
-9477  Obj 5.3975828e+10 Primal inf 5.6839757e+08 (4977)
-9828  Obj 5.3981379e+10 Primal inf 7.985351e+08 (5065)
-10179  Obj 5.4023823e+10 Primal inf 7.3479715e+08 (5030)
-10530  Obj 5.4073799e+10 Primal inf 5.8095645e+08 (4930)
-10881  Obj 5.4078852e+10 Primal inf 7.2070385e+08 (4904)
-11232  Obj 5.408987e+10 Primal inf 5.6359087e+08 (4941)
-11583  Obj 5.4112327e+10 Primal inf 6.5067748e+08 (4892)
-11934  Obj 5.4115342e+10 Primal inf 9.3838508e+08 (5031)
-12285  Obj 5.4133572e+10 Primal inf 6.9693247e+08 (5016)
-12636  Obj 5.4154858e+10 Primal inf 7.0720662e+08 (4979)
-12987  Obj 5.4178585e+10 Primal inf 9.479747e+08 (5004)
-13338  Obj 5.4178958e+10 Primal inf 8.8354643e+08 (5042)
-13689  Obj 5.4179364e+10 Primal inf 6.515473e+08 (4975)
-14040  Obj 5.4337451e+10 Primal inf 6.5595373e+08 (4964)
-14391  Obj 5.4713867e+10 Primal inf 6.2364161e+08 (4981)
-14742  Obj 5.4714025e+10 Primal inf 5.3274787e+08 (4848)
-15093  Obj 5.4725728e+10 Primal inf 2.5515112e+08 (3295)
-15444  Obj 5.4771185e+10 Primal inf 2.7457583e+08 (3755)
-15795  Obj 5.4771579e+10 Primal inf 2.3858246e+08 (3717)
-16146  Obj 5.4932516e+10 Primal inf 3.5747597e+08 (3816)
-16497  Obj 5.530372e+10 Primal inf 1.1352863e+09 (5805)
-16848  Obj 5.7006631e+10 Primal inf 5.2542967e+08 (6274)
-17199  Obj 5.7909823e+10 Primal inf 9.8328363e+08 (5721)
-17550  Obj 5.866339e+10 Primal inf 3.0561362e+09 (6779)
-17901  Obj 5.9581839e+10 Primal inf 1.33683e+09 (6072)
-18252  Obj 5.9841615e+10 Primal inf 2.5722009e+08 (3048)
-18603  Obj 6.0339881e+10 Primal inf 1.4295295e+08 (2972)
-18954  Obj 6.1460322e+10 Primal inf 1.7015795e+09 (5642)
-19305  Obj 6.317921e+10 Primal inf 1.9209446e+08 (3046)
-19656  Obj 6.3234231e+10 Primal inf 3.5380712e+08 (3187)
-20007  Obj 6.353212e+10 Primal inf 3.3859517e+08 (2834)
-20258  Obj 6.4083823e+10 Primal inf 3.7792203e+08 (3273)
-20609  Obj 6.4382987e+10 Primal inf 3.9481719e+08 (3328)
-20960  Obj 6.4459039e+10 Primal inf 37534756 (1748)
-21311  Obj 6.4696884e+10 Primal inf 37352122 (1705)
-21662  Obj 6.4953922e+10 Primal inf 1.8636151e+08 (2376)
-22013  Obj 6.5387368e+10 Primal inf 42078213 (1376)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
-Status: ok
-Termination condition: optimal
-Solution: 21906 primals, 50377 duals
-Objective: 6.55e+10
-Solver model: not available
-Solver message: Optimal - objective value 65542206026.16180420
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22364  Obj 6.5465797e+10 Primal inf 4961499.4 (585)
-22715  Obj 6.552767e+10 Primal inf 23176700 (401)
-23066  Obj 6.5535893e+10 Primal inf 1329847.9 (120)
-23154  Obj 6.5542303e+10
-Optimal - objective value 6.5542206e+10
-After Postsolve, objective 6.5542206e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 6.554220603e+10 - 23154 iterations time 4.562, Presolve 0.04
-Total time (CPU seconds):       4.79   (Wallclock seconds):       4.80
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
-</pre></div>
-</div>
-</div>
-</details>
 </div>
 <p>…and inspect the capacities built…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">p_nom_opt</span>  <span class="c1"># MW</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generator
-OCGT           -0.000
-onwind     220958.960
-offwind     75825.718
-solar      251269.010
-Name: p_nom_opt, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1648,26 +1269,10 @@ Name: p_nom_opt, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>StorageUnit
-battery storage                 35544.217
-hydrogen storage underground    61986.162
-Name: p_nom_opt, dtype: float64
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">storage_units</span><span class="o">.</span><span class="n">p_nom_opt</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span><span class="o">.</span><span class="n">storage_units</span><span class="o">.</span><span class="n">max_hours</span>  <span class="c1"># GWh</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>StorageUnit
-battery storage                   213.265302
-hydrogen storage underground    10413.675216
-dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1678,14 +1283,6 @@ dtype: float64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_dispatch</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/plotting/_matplotlib/core.py:1600: UserWarning:
-
-Attempting to set identical low and high ylims makes transformation singular; automatically expanding.
-</pre></div>
-</div>
-<img alt="_images/bc03f51446e580bf4aadffd15931ee9d600855f149e0f0771cdb0ad8a4328524.png" src="_images/bc03f51446e580bf4aadffd15931ee9d600855f149e0f0771cdb0ad8a4328524.png" />
 </div>
 </div>
 <p>We are also keen to see what technologies constitute the largest cost components. For that we’re going to define a small helper function:</p>
@@ -1715,18 +1312,6 @@ Attempting to set identical low and high ylims makes transformation singular; au
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>carrier
-battery storage                  3427.563007
-hydrogen storage underground    17118.054215
-OCGT                                0.000000
-offwind                         11992.773756
-onwind                          21315.499026
-solar                           11688.315843
-dtype: float64
-</pre></div>
-</div>
-</div>
 </div>
 <p>This series, we can then process into plots, e.g. a pie chart:</p>
 <div class="cell docutils container">
@@ -1734,12 +1319,6 @@ dtype: float64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">system_cost</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
-</pre></div>
-</div>
-<img alt="_images/36773fcdcdc235d7db45158bf5037979457d5db9efa115e62d080da5dfd43dd1.png" src="_images/36773fcdcdc235d7db45158bf5037979457d5db9efa115e62d080da5dfd43dd1.png" />
 </div>
 </div>
 <p>or use to compute the cost per unit of electricity consumed:</p>
@@ -1753,11 +1332,6 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">system_cost</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1e6</span> <span class="o">/</span> <span class="n">demand</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>136.8525438770803
 </pre></div>
 </div>
 </div>
@@ -1777,7 +1351,7 @@ dtype: float64
 <li><p>variation in offshore wind potentials</p></li>
 </ol>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sensitivity</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">co2</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">0</span><span class="p">]:</span>
     <span class="n">n</span><span class="o">.</span><span class="n">global_constraints</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;CO2Limit&quot;</span><span class="p">,</span> <span class="s2">&quot;constant&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">co2</span> <span class="o">*</span> <span class="mf">1e6</span>
@@ -1786,448 +1360,6 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Cbc solver
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  47%|████▋     | 7/15 [00:00&lt;00:00, 63.46it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  93%|█████████▎| 14/15 [00:00&lt;00:00, 45.48it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 49.18it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 126.95it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.38s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
-Status: ok
-Termination condition: optimal
-Solution: 21906 primals, 50377 duals
-Objective: 2.75e+10
-Solver model: not available
-Solver message: Optimal - objective value 27530963951.09072876
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
-Version: 2.10.10 
-Build Date: Apr 19 2023 
-
-command line - cbc -printingOptions all -import /tmp/linopy-problem-uhxzdmg3.lp -solve -solu /tmp/linopy-solve-7r5kfcee.sol (default strategy 1)
-Option for printingOptions changed from normal to all
-Presolve 27421 (-22956) rows, 20856 (-1050) columns and 77880 (-24006) elements
-Perturbing problem by 0.001% of 232.80852 - largest nonzero change 0.00033278527 ( 6.443095%) - largest zero change 0.0003312509
-0  Obj 0 Primal inf 1.7299319e+08 (2190)
-362  Obj 1533.1194 Primal inf 2.0311713e+08 (2526)
-724  Obj 57848.014 Primal inf 2.3613949e+08 (2828)
-1086  Obj 2.8005582e+09 Primal inf 2.6150356e+08 (3052)
-1448  Obj 3.0342168e+09 Primal inf 2.7839747e+08 (3215)
-1810  Obj 3.2850322e+09 Primal inf 2.892485e+08 (3326)
-2172  Obj 3.5802439e+09 Primal inf 2.9350237e+08 (3403)
-2534  Obj 3.9300418e+09 Primal inf 2.9781611e+08 (3464)
-2896  Obj 4.0999946e+09 Primal inf 3.016857e+08 (3509)
-3258  Obj 4.4218284e+09 Primal inf 3.0437211e+08 (3550)
-3620  Obj 4.7280502e+09 Primal inf 2.9352668e+08 (3570)
-3982  Obj 4.8248465e+09 Primal inf 2.9941131e+08 (3605)
-4344  Obj 5.008526e+09 Primal inf 2.8884774e+08 (3616)
-4706  Obj 5.1706973e+09 Primal inf 2.8933913e+08 (3659)
-5068  Obj 5.2476263e+09 Primal inf 2.9505609e+08 (3672)
-5430  Obj 5.4812997e+09 Primal inf 2.7845012e+08 (3671)
-5792  Obj 5.8070267e+09 Primal inf 2.7031312e+08 (3677)
-6154  Obj 6.031559e+09 Primal inf 2.5684759e+08 (3649)
-6516  Obj 6.3725062e+09 Primal inf 2.5031431e+08 (3618)
-6878  Obj 6.5629861e+09 Primal inf 2.391902e+08 (3590)
-7240  Obj 6.997145e+09 Primal inf 2.3028227e+08 (3531)
-7602  Obj 7.319649e+09 Primal inf 2.2595585e+08 (3478)
-7964  Obj 7.9581346e+09 Primal inf 2.1858597e+08 (3462)
-8326  Obj 8.5716818e+09 Primal inf 2.1062592e+08 (3432)
-8688  Obj 9.0443099e+09 Primal inf 2.0443271e+08 (3416)
-9050  Obj 9.6465756e+09 Primal inf 1.9484828e+08 (3370)
-9412  Obj 1.0192838e+10 Primal inf 1.8846609e+08 (3326)
-9774  Obj 1.0721949e+10 Primal inf 1.7803804e+08 (3248)
-10136  Obj 1.1488387e+10 Primal inf 1.6755284e+08 (3195)
-10498  Obj 1.2214466e+10 Primal inf 1.6045584e+08 (3129)
-10860  Obj 1.28859e+10 Primal inf 1.4813822e+08 (3024)
-11222  Obj 1.3954453e+10 Primal inf 1.2966223e+08 (2862)
-11584  Obj 1.5155672e+10 Primal inf 1.2128344e+08 (2711)
-11946  Obj 1.5753268e+10 Primal inf 2.2674791e+08 (4512)
-12308  Obj 1.5760857e+10 Primal inf 2.2740102e+08 (4264)
-12670  Obj 1.6407348e+10 Primal inf 2.5101132e+08 (4328)
-13032  Obj 1.6715096e+10 Primal inf 1.1910976e+09 (6179)
-13394  Obj 1.7158347e+10 Primal inf 1.8827406e+08 (4237)
-13756  Obj 1.7807919e+10 Primal inf 2.7075975e+08 (4263)
-14118  Obj 1.8747642e+10 Primal inf 1.3587532e+08 (4147)
-14480  Obj 1.9536598e+10 Primal inf 4.3615405e+08 (5558)
-14842  Obj 2.0230014e+10 Primal inf 2.8173038e+08 (4003)
-15204  Obj 2.0642846e+10 Primal inf 2.8790984e+08 (4034)
-15566  Obj 2.1389856e+10 Primal inf 1.5835412e+09 (9891)
-15928  Obj 2.1738427e+10 Primal inf 1.1423546e+08 (3541)
-16290  Obj 2.2614195e+10 Primal inf 5.1008176e+08 (6123)
-16652  Obj 2.3265665e+10 Primal inf 56685166 (3166)
-17014  Obj 2.3907691e+10 Primal inf 48172984 (3030)
-17376  Obj 2.4454737e+10 Primal inf 51341640 (3143)
-17738  Obj 2.518625e+10 Primal inf 4.9935247e+08 (5238)
-18100  Obj 2.5449481e+10 Primal inf 2.3483514e+10 (10422)
-18462  Obj 2.6045898e+10 Primal inf 6.4731107e+08 (5008)
-18824  Obj 2.6608591e+10 Primal inf 35728692 (3117)
-19186  Obj 2.6653792e+10 Primal inf 1.2646112e+08 (2554)
-19548  Obj 2.7032136e+10 Primal inf 24540647 (2593)
-19910  Obj 2.7170517e+10 Primal inf 17769485 (2605)
-20272  Obj 2.7306136e+10 Primal inf 8151234.4 (1255)
-20634  Obj 2.7512752e+10 Primal inf 709490.26 (230)
-20860  Obj 2.753097e+10
-Optimal - objective value 2.7530964e+10
-After Postsolve, objective 2.7530964e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 2.753096395e+10 - 20860 iterations time 3.232, Presolve 0.04
-Total time (CPU seconds):       3.46   (Wallclock seconds):       3.47
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Cbc solver
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  47%|████▋     | 7/15 [00:00&lt;00:00, 62.91it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  93%|█████████▎| 14/15 [00:00&lt;00:00, 45.01it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 48.41it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 127.05it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.39s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
-Status: ok
-Termination condition: optimal
-Solution: 21906 primals, 50377 duals
-Objective: 2.79e+10
-Solver model: not available
-Solver message: Optimal - objective value 27856903413.13719559
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
-Version: 2.10.10 
-Build Date: Apr 19 2023 
-
-command line - cbc -printingOptions all -import /tmp/linopy-problem-v3p699zs.lp -solve -solu /tmp/linopy-solve-n5fr6_gp.sol (default strategy 1)
-Option for printingOptions changed from normal to all
-Presolve 27421 (-22956) rows, 20856 (-1050) columns and 77880 (-24006) elements
-Perturbing problem by 0.001% of 232.80852 - largest nonzero change 0.00033278527 ( 6.443095%) - largest zero change 0.0003312509
-0  Obj 0 Primal inf 1.7299319e+08 (2190)
-362  Obj 1533.1194 Primal inf 2.0311713e+08 (2526)
-724  Obj 57848.014 Primal inf 2.3613949e+08 (2828)
-1086  Obj 2.8005582e+09 Primal inf 2.6150356e+08 (3052)
-1448  Obj 3.0342168e+09 Primal inf 2.7839747e+08 (3215)
-1810  Obj 3.2850322e+09 Primal inf 2.892485e+08 (3326)
-2172  Obj 3.5802439e+09 Primal inf 2.9350237e+08 (3403)
-2534  Obj 3.9300418e+09 Primal inf 2.9781611e+08 (3464)
-2896  Obj 4.0999946e+09 Primal inf 3.016857e+08 (3509)
-3258  Obj 4.4218284e+09 Primal inf 3.0437211e+08 (3550)
-3620  Obj 4.7280502e+09 Primal inf 2.9352668e+08 (3570)
-3982  Obj 4.8248465e+09 Primal inf 2.9941131e+08 (3605)
-4344  Obj 5.008526e+09 Primal inf 2.8884774e+08 (3616)
-4706  Obj 5.1706973e+09 Primal inf 2.8933913e+08 (3659)
-5068  Obj 5.2476263e+09 Primal inf 2.9505609e+08 (3672)
-5430  Obj 5.4812997e+09 Primal inf 2.7845012e+08 (3671)
-5792  Obj 5.8070267e+09 Primal inf 2.7031312e+08 (3677)
-6154  Obj 6.031559e+09 Primal inf 2.5684759e+08 (3649)
-6516  Obj 6.3725062e+09 Primal inf 2.5031431e+08 (3618)
-6878  Obj 6.5629861e+09 Primal inf 2.391902e+08 (3590)
-7240  Obj 6.997145e+09 Primal inf 2.3028227e+08 (3531)
-7602  Obj 7.319649e+09 Primal inf 2.2595585e+08 (3478)
-7964  Obj 7.9581346e+09 Primal inf 2.1858597e+08 (3462)
-8326  Obj 8.5716818e+09 Primal inf 2.1062592e+08 (3432)
-8688  Obj 9.0443099e+09 Primal inf 2.0443271e+08 (3416)
-9050  Obj 9.6465756e+09 Primal inf 1.9484828e+08 (3370)
-9412  Obj 1.0192838e+10 Primal inf 1.8846609e+08 (3326)
-9774  Obj 1.0721949e+10 Primal inf 1.7803804e+08 (3248)
-10136  Obj 1.1488387e+10 Primal inf 1.6755284e+08 (3195)
-10498  Obj 1.2214466e+10 Primal inf 1.6045584e+08 (3129)
-10860  Obj 1.28859e+10 Primal inf 1.4813822e+08 (3024)
-11222  Obj 1.3954453e+10 Primal inf 1.3022239e+08 (2863)
-11584  Obj 1.4717764e+10 Primal inf 1.4139479e+08 (4668)
-11946  Obj 1.5079512e+10 Primal inf 1.421727e+08 (4583)
-12308  Obj 1.5417026e+10 Primal inf 1.5117054e+08 (4491)
-12670  Obj 1.5994899e+10 Primal inf 2.013803e+08 (4514)
-13032  Obj 1.6211699e+10 Primal inf 2.9595555e+08 (4549)
-13394  Obj 1.6935939e+10 Primal inf 2.6811258e+08 (4515)
-13756  Obj 1.9381128e+10 Primal inf 2.5509393e+08 (4547)
-14118  Obj 2.0445421e+10 Primal inf 1.0862868e+09 (10555)
-14480  Obj 2.091024e+10 Primal inf 3.1071513e+08 (5383)
-14842  Obj 2.1710661e+10 Primal inf 3.6357781e+08 (9740)
-15204  Obj 2.2475942e+10 Primal inf 3.5841495e+08 (5495)
-15566  Obj 2.305429e+10 Primal inf 1.1577426e+08 (3621)
-15928  Obj 2.3893772e+10 Primal inf 5.4448247e+09 (10171)
-16290  Obj 2.3913506e+10 Primal inf 6.6256191e+08 (6618)
-16652  Obj 2.4998935e+10 Primal inf 8.6839583e+08 (9970)
-17014  Obj 2.5458166e+10 Primal inf 7.1537464e+08 (9626)
-17376  Obj 2.5801951e+10 Primal inf 2.8114878e+08 (10252)
-17738  Obj 2.6275872e+10 Primal inf 47514707 (3106)
-18100  Obj 2.6622845e+10 Primal inf 2.8003786e+08 (5136)
-18462  Obj 2.6946708e+10 Primal inf 4.3611418e+08 (8286)
-18824  Obj 2.7162606e+10 Primal inf 56220218 (8906)
-19186  Obj 2.7414626e+10 Primal inf 12949483 (2472)
-19548  Obj 2.7596522e+10 Primal inf 12313979 (1457)
-19910  Obj 2.7688647e+10 Primal inf 21169528 (2063)
-20272  Obj 2.7761383e+10 Primal inf 4318122.2 (1860)
-20531  Obj 2.7784707e+10 Primal inf 9161929.7 (1717)
-20893  Obj 2.7822078e+10 Primal inf 1038251.4 (496)
-21255  Obj 2.7847334e+10 Primal inf 366417.59 (270)
-21545  Obj 2.7856909e+10
-Optimal - objective value 2.7856903e+10
-After Postsolve, objective 2.7856903e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 2.785690341e+10 - 21545 iterations time 8.322, Presolve 0.04
-Total time (CPU seconds):       8.55   (Wallclock seconds):       8.56
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Cbc solver
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  47%|████▋     | 7/15 [00:00&lt;00:00, 63.59it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  93%|█████████▎| 14/15 [00:00&lt;00:00, 44.91it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 48.60it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 126.20it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.39s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
-Version: 2.10.10 
-Build Date: Apr 19 2023 
-
-command line - cbc -printingOptions all -import /tmp/linopy-problem-tkassstq.lp -solve -solu /tmp/linopy-solve-jub7cx66.sol (default strategy 1)
-Option for printingOptions changed from normal to all
-Presolve 27421 (-22956) rows, 20856 (-1050) columns and 77880 (-24006) elements
-Perturbing problem by 0.001% of 232.80852 - largest nonzero change 0.00033278527 ( 6.443095%) - largest zero change 0.0003312509
-0  Obj 0 Primal inf 1.7299319e+08 (2190)
-362  Obj 1533.1194 Primal inf 2.0311713e+08 (2526)
-724  Obj 57848.014 Primal inf 2.3613949e+08 (2828)
-1086  Obj 2.8005582e+09 Primal inf 2.6150356e+08 (3052)
-1448  Obj 3.0342168e+09 Primal inf 2.7839747e+08 (3215)
-1810  Obj 3.2850322e+09 Primal inf 2.892485e+08 (3326)
-2172  Obj 3.5802439e+09 Primal inf 2.9350237e+08 (3403)
-2534  Obj 3.9300418e+09 Primal inf 2.9781611e+08 (3464)
-2896  Obj 4.0999946e+09 Primal inf 3.016857e+08 (3509)
-3258  Obj 4.4218284e+09 Primal inf 3.0437211e+08 (3550)
-3620  Obj 4.7280502e+09 Primal inf 2.9352668e+08 (3570)
-3982  Obj 4.8248465e+09 Primal inf 2.9941131e+08 (3605)
-4344  Obj 5.008526e+09 Primal inf 2.8884774e+08 (3616)
-4706  Obj 5.1706973e+09 Primal inf 2.8933913e+08 (3659)
-5068  Obj 5.2476263e+09 Primal inf 2.9505609e+08 (3672)
-5430  Obj 5.4812997e+09 Primal inf 2.7845012e+08 (3671)
-5792  Obj 5.8070267e+09 Primal inf 2.7031312e+08 (3677)
-6154  Obj 6.031559e+09 Primal inf 2.5684759e+08 (3649)
-6516  Obj 6.3725062e+09 Primal inf 2.5031431e+08 (3618)
-6878  Obj 6.5629861e+09 Primal inf 2.391902e+08 (3590)
-7240  Obj 6.997145e+09 Primal inf 2.3028227e+08 (3531)
-7602  Obj 7.319649e+09 Primal inf 2.2595585e+08 (3478)
-7964  Obj 7.9581346e+09 Primal inf 2.1858597e+08 (3462)
-8326  Obj 8.5716818e+09 Primal inf 2.1195454e+08 (3433)
-8688  Obj 9.2733313e+09 Primal inf 2.3006355e+08 (4916)
-9050  Obj 1.0074764e+10 Primal inf 2.2648619e+08 (4871)
-9412  Obj 1.010996e+10 Primal inf 2.5448396e+08 (4890)
-9774  Obj 1.050673e+10 Primal inf 2.8517319e+08 (4835)
-10136  Obj 1.152353e+10 Primal inf 3.1166611e+08 (4785)
-10498  Obj 1.318212e+10 Primal inf 3.5589546e+08 (4767)
-10860  Obj 1.3989431e+10 Primal inf 2.3207144e+08 (4321)
-11222  Obj 1.5061416e+10 Primal inf 3.1902287e+08 (4733)
-11584  Obj 1.5061964e+10 Primal inf 3.2956457e+08 (4684)
-11946  Obj 1.5062519e+10 Primal inf 3.4293713e+08 (4649)
-12308  Obj 1.5067344e+10 Primal inf 3.5765146e+08 (4590)
-12670  Obj 1.506822e+10 Primal inf 4.7931661e+08 (4549)
-13032  Obj 1.5099726e+10 Primal inf 4.0525807e+08 (4550)
-13394  Obj 1.5457117e+10 Primal inf 5.7063311e+08 (4683)
-13756  Obj 1.6985238e+10 Primal inf 4.5066302e+08 (4536)
-14118  Obj 1.6997431e+10 Primal inf 5.7238001e+08 (4487)
-14480  Obj 1.8062946e+10 Primal inf 3.9058908e+09 (9866)
-14842  Obj 1.8407806e+10 Primal inf 4.7963632e+08 (4430)
-15204  Obj 2.1008753e+10 Primal inf 1.0229182e+10 (15564)
-15566  Obj 2.246235e+10 Primal inf 4.2420534e+08 (9526)
-15928  Obj 2.3529751e+10 Primal inf 1.982643e+08 (3710)
-16290  Obj 2.4004207e+10 Primal inf 8.4776587e+08 (9582)
-16652  Obj 2.5625073e+10 Primal inf 2.8501364e+08 (9074)
-17014  Obj 2.6473017e+10 Primal inf 4.8862113e+09 (11274)
-17376  Obj 2.6884511e+10 Primal inf 3.9531057e+09 (11899)
-17738  Obj 2.7537869e+10 Primal inf 3.328826e+09 (11039)
-18100  Obj 2.8184578e+10 Primal inf 4.4566052e+08 (10209)
-18462  Obj 2.8721279e+10 Primal inf 1.0838665e+09 (9708)
-18824  Obj 2.9220581e+10 Primal inf 1.2347605e+08 (9194)
-19186  Obj 2.9700908e+10 Primal inf 1.1834513e+09 (16540)
-19548  Obj 2.9984512e+10 Primal inf 55003760 (3009)
-19910  Obj 3.0356788e+10 Primal inf 2.1454346e+08 (8820)
-20272  Obj 3.058234e+10 Primal inf 74480968 (8643)
-20634  Obj 3.0849691e+10 Primal inf 75961140 (2887)
-20996  Obj 3.1154419e+10 Primal inf 1.0947774e+09 (10597)
-21358  Obj 3.1355915e+10 Primal inf 83571161 (3457)
-21720  Obj 3.1463699e+10 Primal inf 58376450 (2624)
-22082  Obj 3.1592262e+10 Primal inf 27676870 (2652)
-22444  Obj 3.1766976e+10 Primal inf 28279966 (2668)
-22806  Obj 3.1948191e+10 Primal inf 5615310.7 (1622)
-23168  Obj 3.2059835e+10 Primal inf 4485765.4 (1061)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
-Status: ok
-Termination condition: optimal
-Solution: 21906 primals, 50377 duals
-Objective: 3.21e+10
-Solver model: not available
-Solver message: Optimal - objective value 32113939119.82577133
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23530  Obj 3.2106209e+10 Primal inf 253501.11 (295)
-23800  Obj 3.2113947e+10
-Optimal - objective value 3.2113939e+10
-After Postsolve, objective 3.2113939e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 3.211393912e+10 - 23800 iterations time 9.492, Presolve 0.04
-Total time (CPU seconds):       9.73   (Wallclock seconds):       9.72
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Cbc solver
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  47%|████▋     | 7/15 [00:00&lt;00:00, 64.18it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  93%|█████████▎| 14/15 [00:00&lt;00:00, 45.23it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 48.91it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 126.71it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.38s
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">54</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">co2</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">0</span><span class="p">]:</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">n</span><span class="o">.</span><span class="n">global_constraints</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;CO2Limit&quot;</span><span class="p">,</span> <span class="s2">&quot;constant&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">co2</span> <span class="o">*</span> <span class="mf">1e6</span>
-<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">sensitivity</span><span class="p">[</span><span class="n">co2</span><span class="p">]</span> <span class="o">=</span> <span class="n">system_cost</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pypsa/optimization/optimize.py:587,</span> in <span class="ni">OptimizationAccessor.__call__</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">585</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">optimize</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">586</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">587</span>     <span class="k">return</span> <span class="n">optimize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pypsa/optimization/optimize.py:567,</span> in <span class="ni">optimize</span><span class="nt">(n, snapshots, multi_investment_periods, transmission_losses, linearized_unit_commitment, model_kwargs, extra_functionality, assign_all_duals, solver_name, solver_options, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">565</span> <span class="k">if</span> <span class="n">extra_functionality</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">566</span>     <span class="n">extra_functionality</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">sns</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">567</span> <span class="n">status</span><span class="p">,</span> <span class="n">condition</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="n">solver_name</span><span class="p">,</span> <span class="o">**</span><span class="n">solver_options</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">569</span> <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;ok&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">570</span>     <span class="n">assign_solution</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/model.py:1042,</span> in <span class="ni">Model.solve</span><span class="nt">(self, solver_name, io_api, problem_fn, solution_fn, log_fn, basis_fn, warmstart_fn, keep_files, sanitize_zeros, remote, **solver_options)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1040</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1041</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">solvers</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;run_</span><span class="si">{</span><span class="n">solver_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1042</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1043</span>         <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1044</span>         <span class="n">io_api</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1045</span>         <span class="n">problem_fn</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1046</span>         <span class="n">solution_fn</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1047</span>         <span class="n">log_fn</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1048</span>         <span class="n">warmstart_fn</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1049</span>         <span class="n">basis_fn</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1050</span>         <span class="n">keep_files</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1051</span>         <span class="o">**</span><span class="n">solver_options</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1052</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1053</span> <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1054</span>     <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="p">(</span><span class="n">problem_fn</span><span class="p">,</span> <span class="n">solution_fn</span><span class="p">):</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/solvers.py:155,</span> in <span class="ni">run_cbc</span><span class="nt">(model, io_api, problem_fn, solution_fn, log_fn, warmstart_fn, basis_fn, keep_files, **solver_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">153</span> <span class="k">if</span> <span class="n">log_fn</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">154</span>     <span class="n">p</span> <span class="o">=</span> <span class="n">sub</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">),</span> <span class="n">stdout</span><span class="o">=</span><span class="n">sub</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">sub</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">155</span>     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">readline</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">156</span>         <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">157</span>     <span class="n">p</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-</div>
-</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

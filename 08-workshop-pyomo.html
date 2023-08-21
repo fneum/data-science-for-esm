@@ -599,8 +599,8 @@ document.write(`
 <p><strong>Constraints</strong> are equality or inequality expressions that constrain the <em>feasible</em> space of the decision variables.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>, constraints are created with the <code class="docutils literal notranslate"><span class="pre">pe.Constraint()</span></code> constructor.</p>
 <p>In the code below, we create three simple constraints in different ways:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-60cc50ab-c868-4d32-9818-a24f39f420d3">
-<span class="eqno">(1)<a class="headerlink" href="#equation-60cc50ab-c868-4d32-9818-a24f39f420d3" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-15fa72d3-223f-4930-a3b1-fc477c2f16c5">
+<span class="eqno">(1)<a class="headerlink" href="#equation-15fa72d3-223f-4930-a3b1-fc477c2f16c5" title="Permalink to this equation">#</a></span>\[\begin{align}
   x &amp; \leq 4 \\
   2x + y &amp; \leq 10 \\
   x + y &amp; \leq 10 \\
@@ -716,36 +716,33 @@ conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
-Version: 2.10.10 
-Build Date: Apr 19 2023 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Could not locate the &#39;cbc&#39; executable, which is required for solver
+cbc
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ApplicationError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">log</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">tee</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-command line - /home/runner/micromamba-root/envs/esm/bin/cbc -printingOptions all -import /tmp/tmpufnqkipp.pyomo.lp -stat=1 -solve -solu /tmp/tmpufnqkipp.pyomo.soln (default strategy 1)
-Option for printingOptions changed from normal to all
- CoinLpIO::readLp(): Maximization problem reformulated as minimization
-Coin0009I Switching back to maximization to get correct duals etc
-Presolve 2 (-1) rows, 2 (0) columns and 4 (-1) elements
-Statistics for presolved model
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pyomo/opt/base/solvers.py:533,</span> in <span class="ni">OptSolver.solve</span><span class="nt">(self, *args, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">530</span> <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">531</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Solve the problem&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">533</span>     <span class="bp">self</span><span class="o">.</span><span class="n">available</span><span class="p">(</span><span class="n">exception_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">534</span>     <span class="c1">#</span>
+<span class="g g-Whitespace">    </span><span class="mi">535</span>     <span class="c1"># If the inputs are models, then validate that they have been</span>
+<span class="g g-Whitespace">    </span><span class="mi">536</span>     <span class="c1"># constructed! Collect suffix names to try and import from solution.</span>
+<span class="g g-Whitespace">    </span><span class="mi">537</span>     <span class="c1">#</span>
+<span class="g g-Whitespace">    </span><span class="mi">538</span>     <span class="kn">from</span> <span class="nn">pyomo.core.base.block</span> <span class="kn">import</span> <span class="n">_BlockData</span>
 
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pyomo/opt/solver/shellcmd.py:141,</span> in <span class="ni">SystemCallSolver.available</span><span class="nt">(self, exception_flag)</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="k">if</span> <span class="n">exception_flag</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span>         <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;No executable found for solver &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">141</span>         <span class="k">raise</span> <span class="n">ApplicationError</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span>     <span class="k">return</span> <span class="kc">False</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span> <span class="k">return</span> <span class="kc">True</span>
 
-Problem has 2 rows, 2 columns (2 with objective) and 4 elements
-Column breakdown:
-1 of type 0.0-&gt;inf, 1 of type 0.0-&gt;up, 0 of type lo-&gt;inf, 
-0 of type lo-&gt;up, 0 of type free, 0 of type fixed, 
-0 of type -inf-&gt;0.0, 0 of type -inf-&gt;up, 0 of type 0.0-&gt;1.0 
-Row breakdown:
-0 of type E 0.0, 0 of type E 1.0, 0 of type E -1.0, 
-0 of type E other, 0 of type G 0.0, 0 of type G 1.0, 
-0 of type G other, 0 of type L 0.0, 0 of type L 1.0, 
-2 of type L other, 0 of type Range 0.0-&gt;1.0, 0 of type Range other, 
-0 of type Free 
-Presolve 2 (-1) rows, 2 (0) columns and 4 (-1) elements
-0  Obj -0 Dual inf 6.999998 (2)
-1  Obj 30
-Optimal - objective value 30
-After Postsolve, objective 30, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 30 - 1 iterations time 0.002, Presolve 0.00
-Total time (CPU seconds):       0.00   (Wallclock seconds):       0.01
+<span class="ne">ApplicationError</span>: No executable found for solver &#39;cbc&#39;
 </pre></div>
 </div>
 </div>
@@ -755,49 +752,6 @@ Total time (CPU seconds):       0.00   (Wallclock seconds):       0.01
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
-# = Solver Results                                         =
-# ==========================================================
-# ----------------------------------------------------------
-#   Problem Information
-# ----------------------------------------------------------
-Problem: 
-- Name: unknown
-  Lower bound: 30.0
-  Upper bound: 30.0
-  Number of objectives: 1
-  Number of constraints: 3
-  Number of variables: 2
-  Number of nonzeros: 2
-  Sense: maximize
-# ----------------------------------------------------------
-#   Solver Information
-# ----------------------------------------------------------
-Solver: 
-- Status: ok
-  User time: -1.0
-  System time: 0.0
-  Wallclock time: 0.01
-  Termination condition: optimal
-  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
-  Statistics: 
-    Branch and bound: 
-      Number of bounded subproblems: None
-      Number of created subproblems: None
-    Black box: 
-      Number of iterations: 1
-  Error rc: 0
-  Time: 0.03999805450439453
-# ----------------------------------------------------------
-#   Solution Information
-# ----------------------------------------------------------
-Solution: 
-- number of solutions: 0
-  number of solutions displayed: 0
 </pre></div>
 </div>
 </div>
@@ -817,11 +771,6 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;ok&#39;, &#39;warning&#39;, &#39;error&#39;, &#39;aborted&#39;, &#39;unknown&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -836,11 +785,6 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30.0
-</pre></div>
-</div>
-</div>
 </div>
 <p>Decision variables</p>
 <div class="cell docutils container">
@@ -849,20 +793,10 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.0
 </pre></div>
 </div>
 </div>
@@ -886,49 +820,6 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
-# = Solver Results                                         =
-# ==========================================================
-# ----------------------------------------------------------
-#   Problem Information
-# ----------------------------------------------------------
-Problem: 
-- Name: unknown
-  Lower bound: 30.0
-  Upper bound: 30.0
-  Number of objectives: 1
-  Number of constraints: 3
-  Number of variables: 2
-  Number of nonzeros: 2
-  Sense: maximize
-# ----------------------------------------------------------
-#   Solver Information
-# ----------------------------------------------------------
-Solver: 
-- Status: ok
-  User time: -1.0
-  System time: 0.0
-  Wallclock time: 0.0
-  Termination condition: optimal
-  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
-  Statistics: 
-    Branch and bound: 
-      Number of bounded subproblems: None
-      Number of created subproblems: None
-    Black box: 
-      Number of iterations: 1
-  Error rc: 0
-  Time: 0.013048887252807617
-# ----------------------------------------------------------
-#   Solution Information
-# ----------------------------------------------------------
-Solution: 
-- number of solutions: 0
-  number of solutions displayed: 0
-</pre></div>
-</div>
-</div>
 </div>
 <p>Then, we can access the shadow prices of individual constraints:</p>
 <div class="cell docutils container">
@@ -937,20 +828,10 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.0
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">c2</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0
 </pre></div>
 </div>
 </div>
@@ -987,13 +868,6 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A : Dimen=1, Size=2, Bounds=(1, 2)
-    Key  : Finite : Members
-    None :   True :   [1:2]
-</pre></div>
-</div>
-</div>
 </div>
 <p>With <code class="docutils literal notranslate"><span class="pre">pe.Set()</span></code> we can also pass more general indices:</p>
 <div class="cell docutils container">
@@ -1007,13 +881,6 @@ Solution:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">B</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>B : Size=1, Index=None, Ordered=Insertion
-    Key  : Dimen : Domain : Size : Members
-    None :     1 :    Any :    2 : {&#39;wind&#39;, &#39;solar&#39;}
 </pre></div>
 </div>
 </div>
@@ -1035,14 +902,6 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x : Size=2, Index=A
-    Key : Lower : Value : Upper : Fixed : Stale : Domain
-      1 :  None :  None :  None : False :  True :  Reals
-      2 :  None :  None :  None : False :  True :  Reals
-</pre></div>
-</div>
-</div>
 </div>
 <p>There are no restrictions as to how many dimensions an indexed variable can have:</p>
 <div class="cell docutils container">
@@ -1055,16 +914,6 @@ Solution:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y : Size=4, Index=y_index
-    Key          : Lower : Value : Upper : Fixed : Stale : Domain
-    (1, &#39;solar&#39;) :  None :  None :  None : False :  True :  Reals
-     (1, &#39;wind&#39;) :  None :  None :  None : False :  True :  Reals
-    (2, &#39;solar&#39;) :  None :  None :  None : False :  True :  Reals
-     (2, &#39;wind&#39;) :  None :  None :  None : False :  True :  Reals
 </pre></div>
 </div>
 </div>
@@ -1091,13 +940,6 @@ Solution:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">c1</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c1 : Size=1, Index=None, Active=True
-    Key  : Lower : Body               : Upper : Active
-    None :  -Inf : z[wind] + z[solar] :  10.0 :   True
 </pre></div>
 </div>
 </div>
@@ -1128,26 +970,11 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c2 : Size=2, Index=A, Active=True
-    Key : Lower : Body                   : Upper : Active
-      1 :   1.0 : y[1,wind] + y[1,solar] :   1.0 :   True
-      2 :   1.0 : y[2,wind] + y[2,solar] :   1.0 :   True
-</pre></div>
-</div>
-</div>
 </div>
 <p>You can access individual constraints of a set of indexed constraints like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">c2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{Member of c2} : Size=2, Index=A, Active=True
-    Key : Lower : Body                   : Upper : Active
-      2 :   1.0 : y[2,wind] + y[2,solar] :   1.0 :   True
 </pre></div>
 </div>
 </div>
@@ -1169,13 +996,13 @@ Solution:
 <section id="single-bidding-zone-single-period">
 <h3>Single bidding zone, single period<a class="headerlink" href="#single-bidding-zone-single-period" title="Permalink to this heading">#</a></h3>
 <p>We want to minimise operational cost of an example electricity system representing South Africa subject to generator limits and meeting the load:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c0354cef-885b-4354-af84-f3beafee7109">
-<span class="eqno">(2)<a class="headerlink" href="#equation-c0354cef-885b-4354-af84-f3beafee7109" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-32a665a4-b7b8-4f18-a13c-238742afb307">
+<span class="eqno">(2)<a class="headerlink" href="#equation-32a665a4-b7b8-4f18-a13c-238742afb307" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \min_{g_s} \sum_s o_s g_s
   \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-560e22c6-088b-4358-b4d0-1da6d9c8e00a">
-<span class="eqno">(3)<a class="headerlink" href="#equation-560e22c6-088b-4358-b4d0-1da6d9c8e00a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3debdab8-1424-45fb-b7f1-a62209e4cb24">
+<span class="eqno">(3)<a class="headerlink" href="#equation-3debdab8-1424-45fb-b7f1-a62209e4cb24" title="Permalink to this equation">#</a></span>\[\begin{align}
     g_s &amp;\leq G_s \\
     g_s &amp;\geq 0 \\
     \sum_s g_s &amp;= d
@@ -1249,13 +1076,6 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cost : Size=1, Index=None, Active=True
-    Key  : Active : Sense    : Expression
-    None :   True : minimize : 30*g[Coal] + 0*g[Wind] + 60*g[Gas] + 80*g[Oil]
-</pre></div>
-</div>
-</div>
 </div>
 <p>subject to the capacity limits of the generators</p>
 <div class="cell docutils container">
@@ -1270,16 +1090,6 @@ Solution:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">generator_limit</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit : Size=4, Index=S, Active=True
-    Key  : Lower : Body    : Upper   : Active
-    Coal :  -Inf : g[Coal] : 35000.0 :   True
-     Gas :  -Inf :  g[Gas] :  8000.0 :   True
-     Oil :  -Inf :  g[Oil] :  2000.0 :   True
-    Wind :  -Inf : g[Wind] :  3000.0 :   True
 </pre></div>
 </div>
 </div>
@@ -1298,61 +1108,11 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>energy_balance : Size=1, Index=None, Active=True
-    Key  : Lower   : Body                                : Upper   : Active
-    None : 42000.0 : g[Coal] + g[Wind] + g[Gas] + g[Oil] : 42000.0 :   True
-</pre></div>
-</div>
-</div>
 </div>
 <p>Then, we solve the problem:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pe</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
-# = Solver Results                                         =
-# ==========================================================
-# ----------------------------------------------------------
-#   Problem Information
-# ----------------------------------------------------------
-Problem: 
-- Name: unknown
-  Lower bound: 1290000.0
-  Upper bound: 1290000.0
-  Number of objectives: 1
-  Number of constraints: 5
-  Number of variables: 4
-  Number of nonzeros: 3
-  Sense: minimize
-# ----------------------------------------------------------
-#   Solver Information
-# ----------------------------------------------------------
-Solver: 
-- Status: ok
-  User time: -1.0
-  System time: 0.0
-  Wallclock time: 0.0
-  Termination condition: optimal
-  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
-  Statistics: 
-    Branch and bound: 
-      Number of bounded subproblems: None
-      Number of created subproblems: None
-    Black box: 
-      Number of iterations: 1
-  Error rc: 0
-  Time: 0.015291690826416016
-# ----------------------------------------------------------
-#   Solution Information
-# ----------------------------------------------------------
-Solution: 
-- number of solutions: 0
-  number of solutions displayed: 0
 </pre></div>
 </div>
 </div>
@@ -1373,26 +1133,12 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coal    35000.0
-Wind     3000.0
-Gas      4000.0
-Oil         0.0
-dtype: float64
-</pre></div>
-</div>
-</div>
 </div>
 <p>And the market clearing price we can read from the shadow price of the energy balance constraint (i.e. the added cost of increasing electricity demand by one unit):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">market_price</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">energy_balance</span><span class="p">]</span>
 <span class="n">market_price</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60.0
 </pre></div>
 </div>
 </div>
@@ -1405,16 +1151,6 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[Coal]   -30.0
-generator_limit[Wind]   -60.0
-generator_limit[Gas]      0.0
-generator_limit[Oil]      0.0
-[None]                   60.0
-dtype: float64
-</pre></div>
-</div>
-</div>
 </div>
 <p>A more targeted alternative for the generator limits:</p>
 <div class="cell docutils container">
@@ -1423,27 +1159,18 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coal   -30.0
-Wind   -60.0
-Gas      0.0
-Oil      0.0
-dtype: float64
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="two-bidding-zones-with-transmission">
 <h3>Two bidding zones with transmission<a class="headerlink" href="#two-bidding-zones-with-transmission" title="Permalink to this heading">#</a></h3>
 <p>Let’s add a spatial dimension, such that the optimisation problem is expanded to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b4fc30cd-9c6c-431d-90d1-2bf916fd14d3">
-<span class="eqno">(4)<a class="headerlink" href="#equation-b4fc30cd-9c6c-431d-90d1-2bf916fd14d3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d21b8e56-b783-4d68-88e0-538e5d02db12">
+<span class="eqno">(4)<a class="headerlink" href="#equation-d21b8e56-b783-4d68-88e0-538e5d02db12" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \min_{g_{i,s}, f_\ell} \sum_s o_{i,s} g_{i,s}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3ba6e4d6-d2e2-4aac-b2e6-ed94d5132967">
-<span class="eqno">(5)<a class="headerlink" href="#equation-3ba6e4d6-d2e2-4aac-b2e6-ed94d5132967" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1c571a44-f4a8-4977-b8c7-25dd7aa5ae4c">
+<span class="eqno">(5)<a class="headerlink" href="#equation-1c571a44-f4a8-4977-b8c7-25dd7aa5ae4c" title="Permalink to this equation">#</a></span>\[\begin{align}
   g_{i,s} &amp;\leq G_{i,s} \\
   g_{i,s} &amp;\geq 0 \\
   \sum_s g_{i,s} - \sum_\ell K_{i\ell} f_\ell &amp;= d_i &amp; \text{KCL} \\
@@ -1560,22 +1287,6 @@ For missing entries, we set the upper limit to zero (e.g. this country-technolog
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit : Size=10, Index=generator_limit_index, Active=True
-    Key                       : Lower : Body                  : Upper   : Active
-       (&#39;Mozambique&#39;, &#39;Coal&#39;) :  -Inf :    g[Mozambique,Coal] :     0.0 :   True
-        (&#39;Mozambique&#39;, &#39;Gas&#39;) :  -Inf :     g[Mozambique,Gas] :     0.0 :   True
-      (&#39;Mozambique&#39;, &#39;Hydro&#39;) :  -Inf :   g[Mozambique,Hydro] :  1200.0 :   True
-        (&#39;Mozambique&#39;, &#39;Oil&#39;) :  -Inf :     g[Mozambique,Oil] :     0.0 :   True
-       (&#39;Mozambique&#39;, &#39;Wind&#39;) :  -Inf :    g[Mozambique,Wind] :     0.0 :   True
-     (&#39;South Africa&#39;, &#39;Coal&#39;) :  -Inf :  g[South Africa,Coal] : 35000.0 :   True
-      (&#39;South Africa&#39;, &#39;Gas&#39;) :  -Inf :   g[South Africa,Gas] :  8000.0 :   True
-    (&#39;South Africa&#39;, &#39;Hydro&#39;) :  -Inf : g[South Africa,Hydro] :     0.0 :   True
-      (&#39;South Africa&#39;, &#39;Oil&#39;) :  -Inf :   g[South Africa,Oil] :  2000.0 :   True
-     (&#39;South Africa&#39;, &#39;Wind&#39;) :  -Inf :  g[South Africa,Wind] :  3000.0 :   True
-</pre></div>
-</div>
-</div>
 </div>
 <p>The energy balance constraint is replaced by KCL, where we take into account local generation as well as incoming or outgoing flows.</p>
 <p>We also need the incidence matrix of this network (here it’s very simple!) and assume some direction for the flow variable. Here, we picked the orientation from South Africa to Mozambique. This means that if the values for the flow variable <code class="docutils literal notranslate"><span class="pre">m.f</span></code> are positive South Africa exports to Mozambique and vice versa if the variable takes negative values.</p>
@@ -1595,14 +1306,6 @@ For missing entries, we set the upper limit to zero (e.g. this country-technolog
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kcl : Size=2, Index=countries, Active=True
-    Key          : Lower   : Body                                                                                                                : Upper   : Active
-      Mozambique :   650.0 :           g[Mozambique,Gas] + g[Mozambique,Hydro] + g[Mozambique,Oil] + g[Mozambique,Wind] + g[Mozambique,Coal] + f :   650.0 :   True
-    South Africa : 42000.0 : g[South Africa,Gas] + g[South Africa,Hydro] + g[South Africa,Oil] + g[South Africa,Wind] + g[South Africa,Coal] - f : 42000.0 :   True
-</pre></div>
-</div>
-</div>
 </div>
 <p>We also need to constrain the transmission flows to the line’s rated capacity. Here, we use a 3-tuple to specify upper and lower bounds in one go.</p>
 <div class="cell docutils container">
@@ -1618,61 +1321,11 @@ For missing entries, we set the upper limit to zero (e.g. this country-technolog
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>line_limit : Size=1, Index=None, Active=True
-    Key  : Lower  : Body : Upper : Active
-    None : -500.0 :    f : 500.0 :   True
-</pre></div>
-</div>
-</div>
 </div>
 <p>Then, we can solve and inspect results:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pe</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
-# = Solver Results                                         =
-# ==========================================================
-# ----------------------------------------------------------
-#   Problem Information
-# ----------------------------------------------------------
-Problem: 
-- Name: unknown
-  Lower bound: 1260000.0
-  Upper bound: 1260000.0
-  Number of objectives: 1
-  Number of constraints: 14
-  Number of variables: 11
-  Number of nonzeros: 3
-  Sense: minimize
-# ----------------------------------------------------------
-#   Solver Information
-# ----------------------------------------------------------
-Solver: 
-- Status: ok
-  User time: -1.0
-  System time: 0.0
-  Wallclock time: 0.0
-  Termination condition: optimal
-  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
-  Statistics: 
-    Branch and bound: 
-      Number of bounded subproblems: None
-      Number of created subproblems: None
-    Black box: 
-      Number of iterations: 1
-  Error rc: 0
-  Time: 0.014149904251098633
-# ----------------------------------------------------------
-#   Solution Information
-# ----------------------------------------------------------
-Solution: 
-- number of solutions: 0
-  number of solutions displayed: 0
 </pre></div>
 </div>
 </div>
@@ -1683,11 +1336,6 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1260000.0
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1695,52 +1343,6 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Coal</th>
-      <th>Gas</th>
-      <th>Hydro</th>
-      <th>Oil</th>
-      <th>Wind</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Mozambique</th>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1150.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>South Africa</th>
-      <td>35000.0</td>
-      <td>3500.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>3000.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1748,33 +1350,10 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-500.0
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[South Africa,Gas]       0.0
-generator_limit[South Africa,Hydro]   -60.0
-generator_limit[South Africa,Oil]       0.0
-generator_limit[South Africa,Wind]    -60.0
-generator_limit[South Africa,Coal]    -30.0
-generator_limit[Mozambique,Gas]         0.0
-generator_limit[Mozambique,Hydro]       0.0
-generator_limit[Mozambique,Oil]         0.0
-generator_limit[Mozambique,Wind]        0.0
-generator_limit[Mozambique,Coal]        0.0
-kcl[South Africa]                      60.0
-kcl[Mozambique]                         0.0
-[None]                                 60.0
-dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1794,49 +1373,6 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
-# = Solver Results                                         =
-# ==========================================================
-# ----------------------------------------------------------
-#   Problem Information
-# ----------------------------------------------------------
-Problem: 
-- Name: unknown
-  Lower bound: 1287000.0
-  Upper bound: 1287000.0
-  Number of objectives: 1
-  Number of constraints: 12
-  Number of variables: 11
-  Number of nonzeros: 2
-  Sense: minimize
-# ----------------------------------------------------------
-#   Solver Information
-# ----------------------------------------------------------
-Solver: 
-- Status: ok
-  User time: -1.0
-  System time: 0.0
-  Wallclock time: 0.0
-  Termination condition: optimal
-  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
-  Statistics: 
-    Branch and bound: 
-      Number of bounded subproblems: None
-      Number of created subproblems: None
-    Black box: 
-      Number of iterations: 1
-  Error rc: 0
-  Time: 0.012357950210571289
-# ----------------------------------------------------------
-#   Solution Information
-# ----------------------------------------------------------
-Solution: 
-- number of solutions: 0
-  number of solutions displayed: 0
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1844,61 +1380,10 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Coal</th>
-      <th>Gas</th>
-      <th>Hydro</th>
-      <th>Oil</th>
-      <th>Wind</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Mozambique</th>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1200.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>South Africa</th>
-      <td>34000.0</td>
-      <td>4450.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>3000.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">cost</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1287000.0
 </pre></div>
 </div>
 </div>
@@ -1907,13 +1392,13 @@ Solution:
 <section id="single-bidding-zone-with-several-periods">
 <h3>Single bidding zone with several periods<a class="headerlink" href="#single-bidding-zone-with-several-periods" title="Permalink to this heading">#</a></h3>
 <p>In this example, we consider multiple time periods (labelled [1,2,3,4]) to represent variable wind generation and changing load.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2c3256cc-fe17-4f0d-8bf2-fcb76db297aa">
-<span class="eqno">(6)<a class="headerlink" href="#equation-2c3256cc-fe17-4f0d-8bf2-fcb76db297aa" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-47259141-3003-4399-9486-06bc6b4bcd5b">
+<span class="eqno">(6)<a class="headerlink" href="#equation-47259141-3003-4399-9486-06bc6b4bcd5b" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \min_{g_{s,t}} \sum_s o_{s} g_{s,t}
   \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0a5146a5-40a6-4eff-b788-6a1db6bf6bdc">
-<span class="eqno">(7)<a class="headerlink" href="#equation-0a5146a5-40a6-4eff-b788-6a1db6bf6bdc" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b7fbbd8e-9386-4a46-850e-99cf070dd126">
+<span class="eqno">(7)<a class="headerlink" href="#equation-b7fbbd8e-9386-4a46-850e-99cf070dd126" title="Permalink to this equation">#</a></span>\[\begin{align}
     g_{s,t} &amp;\leq \hat{g}_{s,t} G_{i,s} \\
     g_{s,t} &amp;\geq 0 \\
     \sum_s g_{s,t} &amp;= d_t
@@ -1974,28 +1459,6 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit : Size=16, Index=generator_limit_index, Active=True
-    Key         : Lower : Body      : Upper   : Active
-    (&#39;Coal&#39;, 1) :  -Inf : g[Coal,1] : 35000.0 :   True
-    (&#39;Coal&#39;, 2) :  -Inf : g[Coal,2] : 35000.0 :   True
-    (&#39;Coal&#39;, 3) :  -Inf : g[Coal,3] : 35000.0 :   True
-    (&#39;Coal&#39;, 4) :  -Inf : g[Coal,4] : 35000.0 :   True
-     (&#39;Gas&#39;, 1) :  -Inf :  g[Gas,1] :  8000.0 :   True
-     (&#39;Gas&#39;, 2) :  -Inf :  g[Gas,2] :  8000.0 :   True
-     (&#39;Gas&#39;, 3) :  -Inf :  g[Gas,3] :  8000.0 :   True
-     (&#39;Gas&#39;, 4) :  -Inf :  g[Gas,4] :  8000.0 :   True
-     (&#39;Oil&#39;, 1) :  -Inf :  g[Oil,1] :  2000.0 :   True
-     (&#39;Oil&#39;, 2) :  -Inf :  g[Oil,2] :  2000.0 :   True
-     (&#39;Oil&#39;, 3) :  -Inf :  g[Oil,3] :  2000.0 :   True
-     (&#39;Oil&#39;, 4) :  -Inf :  g[Oil,4] :  2000.0 :   True
-    (&#39;Wind&#39;, 1) :  -Inf : g[Wind,1] :   900.0 :   True
-    (&#39;Wind&#39;, 2) :  -Inf : g[Wind,2] :  1800.0 :   True
-    (&#39;Wind&#39;, 3) :  -Inf : g[Wind,3] :  1200.0 :   True
-    (&#39;Wind&#39;, 4) :  -Inf : g[Wind,4] :  1500.0 :   True
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2012,66 +1475,12 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>energy_balance : Size=4, Index=T, Active=True
-    Key : Lower   : Body                                        : Upper   : Active
-      1 : 42000.0 : g[Coal,1] + g[Wind,1] + g[Gas,1] + g[Oil,1] : 42000.0 :   True
-      2 : 43000.0 : g[Coal,2] + g[Wind,2] + g[Gas,2] + g[Oil,2] : 43000.0 :   True
-      3 : 45000.0 : g[Coal,3] + g[Wind,3] + g[Gas,3] + g[Oil,3] : 45000.0 :   True
-      4 : 46000.0 : g[Coal,4] + g[Wind,4] + g[Gas,4] + g[Oil,4] : 46000.0 :   True
-</pre></div>
-</div>
-</div>
 </div>
 <p>Now, we can solve. Let’s also time how long it takes to solve this problem with a small IPython tool.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 1 -r 1
 <span class="n">pe</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
-# = Solver Results                                         =
-# ==========================================================
-# ----------------------------------------------------------
-#   Problem Information
-# ----------------------------------------------------------
-Problem: 
-- Name: unknown
-  Lower bound: 6082000.0
-  Upper bound: 6082000.0
-  Number of objectives: 1
-  Number of constraints: 20
-  Number of variables: 16
-  Number of nonzeros: 12
-  Sense: minimize
-# ----------------------------------------------------------
-#   Solver Information
-# ----------------------------------------------------------
-Solver: 
-- Status: ok
-  User time: -1.0
-  System time: 0.0
-  Wallclock time: 0.0
-  Termination condition: optimal
-  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
-  Statistics: 
-    Branch and bound: 
-      Number of bounded subproblems: None
-      Number of created subproblems: None
-    Black box: 
-      Number of iterations: 4
-  Error rc: 0
-  Time: 0.012728452682495117
-# ----------------------------------------------------------
-#   Solution Information
-# ----------------------------------------------------------
-Solution: 
-- number of solutions: 0
-  number of solutions displayed: 0
-27.6 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -2082,40 +1491,10 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6082000.0
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[Coal,1]   -30.0
-generator_limit[Coal,2]   -30.0
-generator_limit[Coal,3]   -50.0
-generator_limit[Coal,4]   -50.0
-generator_limit[Wind,1]   -60.0
-generator_limit[Wind,2]   -60.0
-generator_limit[Wind,3]   -80.0
-generator_limit[Wind,4]   -80.0
-generator_limit[Gas,1]      0.0
-generator_limit[Gas,2]      0.0
-generator_limit[Gas,3]    -20.0
-generator_limit[Gas,4]    -20.0
-generator_limit[Oil,1]      0.0
-generator_limit[Oil,2]      0.0
-generator_limit[Oil,3]      0.0
-generator_limit[Oil,4]      0.0
-energy_balance[1]          60.0
-energy_balance[2]          60.0
-energy_balance[3]          80.0
-energy_balance[4]          80.0
-dtype: float64
 </pre></div>
 </div>
 </div>
@@ -2126,63 +1505,6 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Coal</th>
-      <th>Gas</th>
-      <th>Oil</th>
-      <th>Wind</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>35000.0</td>
-      <td>6100.0</td>
-      <td>0.0</td>
-      <td>900.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>35000.0</td>
-      <td>6200.0</td>
-      <td>0.0</td>
-      <td>1800.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>35000.0</td>
-      <td>8000.0</td>
-      <td>800.0</td>
-      <td>1200.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>35000.0</td>
-      <td>8000.0</td>
-      <td>1500.0</td>
-      <td>1500.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </section>
 <section id="single-bidding-zone-with-several-periods-and-storage">
@@ -2237,16 +1559,6 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>storage_consistency : Size=4, Index=T, Active=True
-    Key : Lower : Body                                                                        : Upper : Active
-      1 :   0.0 :                                                                      soc[1] :   0.0 :   True
-      2 :   0.0 : soc[2] - (0.99999*soc[1] + 0.9*charge[2] - 1.1111111111111112*discharge[2]) :   0.0 :   True
-      3 :   0.0 : soc[3] - (0.99999*soc[2] + 0.9*charge[3] - 1.1111111111111112*discharge[3]) :   0.0 :   True
-      4 :   0.0 : soc[4] - (0.99999*soc[3] + 0.9*charge[4] - 1.1111111111111112*discharge[4]) :   0.0 :   True
-</pre></div>
-</div>
-</div>
 </div>
 <p>And we also need to modify the energy balance to include the contributions of storage discharging and charging.</p>
 <p>For that, we should first remove the existing energy balance constraint, which we seek to overwrite.</p>
@@ -2272,58 +1584,10 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
-# = Solver Results                                         =
-# ==========================================================
-# ----------------------------------------------------------
-#   Problem Information
-# ----------------------------------------------------------
-Problem: 
-- Name: unknown
-  Lower bound: 6017200.656
-  Upper bound: 6017200.656
-  Number of objectives: 1
-  Number of constraints: 24
-  Number of variables: 28
-  Number of nonzeros: 12
-  Sense: minimize
-# ----------------------------------------------------------
-#   Solver Information
-# ----------------------------------------------------------
-Solver: 
-- Status: ok
-  User time: -1.0
-  System time: 0.0
-  Wallclock time: 0.0
-  Termination condition: optimal
-  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
-  Statistics: 
-    Branch and bound: 
-      Number of bounded subproblems: None
-      Number of created subproblems: None
-    Black box: 
-      Number of iterations: 9
-  Error rc: 0
-  Time: 0.013467788696289062
-# ----------------------------------------------------------
-#   Solution Information
-# ----------------------------------------------------------
-Solution: 
-- number of solutions: 0
-  number of solutions displayed: 0
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">cost</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6017200.656
 </pre></div>
 </div>
 </div>
@@ -2334,76 +1598,10 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Coal</th>
-      <th>Gas</th>
-      <th>Oil</th>
-      <th>Wind</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>35000.0</td>
-      <td>5100.0</td>
-      <td>0.0000</td>
-      <td>900.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>35000.0</td>
-      <td>7200.0</td>
-      <td>0.0000</td>
-      <td>1800.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>35000.0</td>
-      <td>8000.0</td>
-      <td>0.0000</td>
-      <td>1200.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>35000.0</td>
-      <td>8000.0</td>
-      <td>1490.0082</td>
-      <td>1500.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">charge</span><span class="o">.</span><span class="n">get_values</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1       0.0
-2    1000.0
-3       0.0
-4       0.0
-dtype: float64
 </pre></div>
 </div>
 </div>
@@ -2414,15 +1612,6 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1    1000.0000
-2       0.0000
-3     800.0000
-4       9.9918
-dtype: float64
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2430,48 +1619,10 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1      0.000000
-2    900.000000
-3     11.102111
-4      0.000000
-dtype: float64
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">m</span><span class="o">.</span><span class="n">dual</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[Coal,1]   -30.00000
-generator_limit[Coal,2]   -30.00000
-generator_limit[Coal,3]   -49.99920
-generator_limit[Coal,4]   -50.00000
-generator_limit[Wind,1]   -60.00000
-generator_limit[Wind,2]   -60.00000
-generator_limit[Wind,3]   -79.99920
-generator_limit[Wind,4]   -80.00000
-generator_limit[Gas,1]      0.00000
-generator_limit[Gas,2]      0.00000
-generator_limit[Gas,3]    -19.99920
-generator_limit[Gas,4]    -20.00000
-generator_limit[Oil,1]      0.00000
-generator_limit[Oil,2]      0.00000
-generator_limit[Oil,3]      0.00000
-generator_limit[Oil,4]      0.00000
-storage_consistency[1]    -71.99784
-storage_consistency[2]    -71.99856
-storage_consistency[3]    -71.99928
-storage_consistency[4]    -72.00000
-energy_balance[1]          60.00000
-energy_balance[2]          60.00000
-energy_balance[3]          79.99920
-energy_balance[4]          80.00000
-dtype: float64
 </pre></div>
 </div>
 </div>

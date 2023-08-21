@@ -1,4 +1,17 @@
 Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/nbclient/client.py", line 778, in _async_poll_for_reply
+    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 182, in ensure_async
+    result = await obj
+             ^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/jupyter_client/channels.py", line 315, in get_msg
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
   File "/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
   File "/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
@@ -12,54 +25,18 @@ Traceback (most recent call last):
            ^^^^^^^^^^^^^^^
   File "/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
-    await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-n.optimize(solver_name="cbc")
-------------------
-
------ stderr -----
-WARNING:pypsa.components:The following links have bus0 which are not defined:
-Index(['electrolysis', 'heat pump', 'resistive heater', 'EV charger'], dtype='object', name='Link')
------ stderr -----
-WARNING:pypsa.components:The following links have bus1 which are not defined:
-Index(['fuel cell', 'OCGT', 'CHP', 'V2G'], dtype='object', name='Link')
------ stderr -----
-WARNING:pypsa.components:The following links have bus0 which are not defined:
-Index(['electrolysis', 'heat pump', 'resistive heater', 'EV charger'], dtype='object', name='Link')
------ stderr -----
-WARNING:pypsa.components:The following links have bus1 which are not defined:
-Index(['fuel cell', 'OCGT', 'CHP', 'V2G'], dtype='object', name='Link')
------ stderr -----
-INFO:linopy.model: Solve problem using Cbc solver
-------------------
-
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mAssertionError[0m                            Traceback (most recent call last)
-Cell [0;32mIn[50], line 1[0m
-[0;32m----> 1[0m [43mn[49m[38;5;241;43m.[39;49m[43moptimize[49m[43m([49m[43msolver_name[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mcbc[39;49m[38;5;124;43m"[39;49m[43m)[49m
-
-File [0;32m/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:587[0m, in [0;36mOptimizationAccessor.__call__[0;34m(self, *args, **kwargs)[0m
-[1;32m    585[0m [38;5;129m@wraps[39m(optimize)
-[1;32m    586[0m [38;5;28;01mdef[39;00m [38;5;21m__call__[39m([38;5;28mself[39m, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs):
-[0;32m--> 587[0m     [38;5;28;01mreturn[39;00m [43moptimize[49m[43m([49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_parent[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
-
-File [0;32m/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:567[0m, in [0;36moptimize[0;34m(n, snapshots, multi_investment_periods, transmission_losses, linearized_unit_commitment, model_kwargs, extra_functionality, assign_all_duals, solver_name, solver_options, **kwargs)[0m
-[1;32m    565[0m [38;5;28;01mif[39;00m extra_functionality:
-[1;32m    566[0m     extra_functionality(n, sns)
-[0;32m--> 567[0m status, condition [38;5;241m=[39m [43mm[49m[38;5;241;43m.[39;49m[43msolve[49m[43m([49m[43msolver_name[49m[38;5;241;43m=[39;49m[43msolver_name[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43msolver_options[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
-[1;32m    569[0m [38;5;28;01mif[39;00m status [38;5;241m==[39m [38;5;124m"[39m[38;5;124mok[39m[38;5;124m"[39m:
-[1;32m    570[0m     assign_solution(n)
-
-File [0;32m/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/linopy/model.py:1015[0m, in [0;36mModel.solve[0;34m(self, solver_name, io_api, problem_fn, solution_fn, log_fn, basis_fn, warmstart_fn, keep_files, sanitize_zeros, remote, **solver_options)[0m
-[1;32m   1012[0m     solver_name [38;5;241m=[39m available_solvers[[38;5;241m0[39m]
-[1;32m   1014[0m logger[38;5;241m.[39minfo([38;5;124mf[39m[38;5;124m"[39m[38;5;124m Solve problem using [39m[38;5;132;01m{[39;00msolver_name[38;5;241m.[39mtitle()[38;5;132;01m}[39;00m[38;5;124m solver[39m[38;5;124m"[39m)
-[0;32m-> 1015[0m [38;5;28;01massert[39;00m solver_name [38;5;129;01min[39;00m available_solvers, [38;5;124mf[39m[38;5;124m"[39m[38;5;124mSolver [39m[38;5;132;01m{[39;00msolver_name[38;5;132;01m}[39;00m[38;5;124m not installed[39m[38;5;124m"[39m
-[1;32m   1017[0m [38;5;66;03m# reset result[39;00m
-[1;32m   1018[0m [38;5;28mself[39m[38;5;241m.[39mreset_solution()
-
-[0;31mAssertionError[0m: Solver cbc not installed
+  File "/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/nbclient/client.py", line 1001, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/nbclient/client.py", line 802, in _async_poll_for_reply
+    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/nbclient/client.py", line 852, in _async_handle_timeout
+    raise CellTimeoutError.error_from_timeout_and_cell(
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+n.optimize(solver_name="highs")
+-------------------
 

@@ -226,24 +226,6 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/fneum/data-science-for-esm/main?urlpath=tree/data-science-for-esm/09-workshop-pypsa.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="btn__text-container">Binder</span>
-</a>
-</li>
-      
-      
-      
-      
       <li><a href="https://colab.research.google.com/github/fneum/data-science-for-esm/blob/main/data-science-for-esm/09-workshop-pypsa.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
@@ -551,13 +533,13 @@ document.write(`
 <h2>From structured data to optimisation<a class="headerlink" href="#from-structured-data-to-optimisation" title="Permalink to this heading">#</a></h2>
 <p>The design principle of PyPSA is that basically each component is associated with a set of variables and constraints that will be added to the optimisation model based on the input data stored for the components.</p>
 <p>For an <em>hourly</em> electricity market simulation, PyPSA will solve an optimisation problem that looks like this</p>
-<div class="amsmath math notranslate nohighlight" id="equation-510889a9-7aa6-4b72-82dc-9a510b14df1a">
-<span class="eqno">(8)<a class="headerlink" href="#equation-510889a9-7aa6-4b72-82dc-9a510b14df1a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e9b322a1-4dc6-48c1-8595-8c26fc7595af">
+<span class="eqno">(8)<a class="headerlink" href="#equation-e9b322a1-4dc6-48c1-8595-8c26fc7595af" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min_{g_{i,s,t}; f_{\ell,t}; g_{i,r,t,\text{charge}}; g_{i,r,t,\text{discharge}}; e_{i,r,t}} \sum_s o_{s} g_{i,s,t}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8f842949-e989-49a3-a803-85785c8fab6b">
-<span class="eqno">(9)<a class="headerlink" href="#equation-8f842949-e989-49a3-a803-85785c8fab6b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6910ceef-2992-4ded-aad4-cbc628ac4b50">
+<span class="eqno">(9)<a class="headerlink" href="#equation-6910ceef-2992-4ded-aad4-cbc628ac4b50" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp; \leq g_{i,s,t} \leq \hat{g}_{i,s,t} G_{i,s}  &amp; \text{generation limits : generator} \\
 -F_\ell &amp;\leq f_{\ell,t} \leq F_\ell &amp; \text{transmission limits : line}  \\
 d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{i,r,t,\text{charge}} - \sum_\ell K_{i\ell} f_{\ell,t} &amp; \text{KCL : bus} \\
@@ -1289,7 +1271,7 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 <p>The <code class="docutils literal notranslate"><span class="pre">n.optimize()</span></code> function can take a variety of arguments. The most relevant for the moment is the choice of the solver. We already know the different solvers from the introduction to <code class="docutils literal notranslate"><span class="pre">pyomo</span></code> (e.g. “cbc”, “glpk”, “gurobi” etc.). They need to be installed on your computer, to use them here!</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;highs&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1299,34 +1281,40 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Cbc solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:587,</span> in <span class="ni">OptimizationAccessor.__call__</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">585</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">optimize</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">586</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">587</span>     <span class="k">return</span> <span class="n">optimize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:567,</span> in <span class="ni">optimize</span><span class="nt">(n, snapshots, multi_investment_periods, transmission_losses, linearized_unit_commitment, model_kwargs, extra_functionality, assign_all_duals, solver_name, solver_options, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">565</span> <span class="k">if</span> <span class="n">extra_functionality</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">566</span>     <span class="n">extra_functionality</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">sns</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">567</span> <span class="n">status</span><span class="p">,</span> <span class="n">condition</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="n">solver_name</span><span class="p">,</span> <span class="o">**</span><span class="n">solver_options</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">569</span> <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;ok&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">570</span>     <span class="n">assign_solution</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/linopy/model.py:1015,</span> in <span class="ni">Model.solve</span><span class="nt">(self, solver_name, io_api, problem_fn, solution_fn, log_fn, basis_fn, warmstart_fn, keep_files, sanitize_zeros, remote, **solver_options)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1012</span>     <span class="n">solver_name</span> <span class="o">=</span> <span class="n">available_solvers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1014</span> <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; Solve problem using </span><span class="si">{</span><span class="n">solver_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> solver&quot;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1015</span> <span class="k">assert</span> <span class="n">solver_name</span> <span class="ow">in</span> <span class="n">available_solvers</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Solver </span><span class="si">{</span><span class="n">solver_name</span><span class="si">}</span><span class="s2"> not installed&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1017</span> <span class="c1"># reset result</span>
-<span class="g g-Whitespace">   </span><span class="mi">1018</span> <span class="bp">self</span><span class="o">.</span><span class="n">reset_solution</span><span class="p">()</span>
-
-<span class="ne">AssertionError</span>: Solver cbc not installed
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.04s
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 6 primals, 14 duals
+Objective: 1.38e+06
+Solver model: available
+Solver message: optimal
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper were not assigned to the network.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running HiGHS 1.5.3 [date: 2023-05-16, git hash: 594fa5a9d-dirty]
+Copyright (c) 2023 HiGHS under MIT licence terms
+Presolving model
+1 rows, 2 cols, 2 nonzeros
+0 rows, 0 cols, 0 nonzeros
+Presolve : Reductions: rows 0(-14); columns 0(-6); elements 0(-19) - Reduced to empty
+Solving the original LP from the solution after postsolve
+Model   status      : Optimal
+Objective value     :  1.3813912524e+06
+HiGHS run time      :          0.00
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
 </pre></div>
 </div>
 </div>
@@ -1340,6 +1328,52 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Generator</th>
+      <th>MZ hydro</th>
+      <th>SA coal</th>
+      <th>SA wind</th>
+      <th>SA gas</th>
+      <th>SA oil</th>
+    </tr>
+    <tr>
+      <th>snapshot</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>now</th>
+      <td>1150.0</td>
+      <td>35000.0</td>
+      <td>3000.0</td>
+      <td>1500.0</td>
+      <td>2000.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>or if you prefer it in relation to the generators nominal capacity</p>
 <div class="cell docutils container">
@@ -1348,6 +1382,52 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Generator</th>
+      <th>MZ hydro</th>
+      <th>SA coal</th>
+      <th>SA wind</th>
+      <th>SA gas</th>
+      <th>SA oil</th>
+    </tr>
+    <tr>
+      <th>snapshot</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>now</th>
+      <td>0.958333</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.1875</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>You see that the time index has the value ‘now’. This is the default index when no time series data has been specified and the network only covers a single state (e.g. a particular hour).</p>
 <p>Similarly you will find the power flow in transmission lines at</p>
@@ -1357,6 +1437,40 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Line</th>
+      <th>SA-MZ</th>
+    </tr>
+    <tr>
+      <th>snapshot</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>now</th>
+      <td>-500.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1364,6 +1478,40 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Line</th>
+      <th>SA-MZ</th>
+    </tr>
+    <tr>
+      <th>snapshot</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>now</th>
+      <td>500.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">p0</span></code> will tell you the flow from <code class="docutils literal notranslate"><span class="pre">bus0</span></code> to <code class="docutils literal notranslate"><span class="pre">bus1</span></code>. <code class="docutils literal notranslate"><span class="pre">p1</span></code> will tell you the flow from <code class="docutils literal notranslate"><span class="pre">bus1</span></code> to <code class="docutils literal notranslate"><span class="pre">bus0</span></code>.</p>
 <p>What about the shadow prices?</p>
@@ -1373,6 +1521,43 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Bus</th>
+      <th>SA</th>
+      <th>MZ</th>
+    </tr>
+    <tr>
+      <th>snapshot</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>now</th>
+      <td>172.413793</td>
+      <td>-0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="basic-network-plotting">
@@ -1393,6 +1578,18 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7fbcaa395dd0&gt;,
+ &lt;matplotlib.collections.LineCollection at 0x7fbcaa3fefd0&gt;)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
+
+facecolor will have no effect as it has been defined as &quot;never&quot;.
+</pre></div>
+</div>
+<img alt="_images/18e90661e18d254615d717ac7d3d29bc6012f64d2044fe328bfea46404721444.png" src="_images/18e90661e18d254615d717ac7d3d29bc6012f64d2044fe328bfea46404721444.png" />
+</div>
 </div>
 <p>Since we have provided <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> coordinates for our buses, <code class="docutils literal notranslate"><span class="pre">n.plot()</span></code> will try to plot the network on a map by default. Of course, there’s an option to deactivate this behaviour:</p>
 <div class="cell docutils container">
@@ -1400,6 +1597,9 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">geomap</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7ab960e0c96589a61ae210f4027168072583845911bc561e7c038423c2037981.png" src="_images/7ab960e0c96589a61ae210f4027168072583845911bc561e7c038423c2037981.png" />
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">n.plot()</span></code> function has a variety of styling arguments to tweak the appearance of the buses, the lines and the map in the background:</p>
@@ -1418,6 +1618,24 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/cartopy/io/__init__.py:241: DownloadWarning:
+
+Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_land.zip
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/cartopy/io/__init__.py:241: DownloadWarning:
+
+Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_ocean.zip
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
+
+facecolor will have no effect as it has been defined as &quot;never&quot;.
+</pre></div>
+</div>
+<img alt="_images/45b22ee04f28b88381856b3eda9fa8006ddab0d6894bd4b61eccb54026d19a9a.png" src="_images/45b22ee04f28b88381856b3eda9fa8006ddab0d6894bd4b61eccb54026d19a9a.png" />
+</div>
 </div>
 <p>Just like with <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> we can also control the projection of the network plot:</p>
 <div class="cell docutils container">
@@ -1428,6 +1646,14 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 <span class="n">n</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bus_sizes</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
+
+facecolor will have no effect as it has been defined as &quot;never&quot;.
+</pre></div>
+</div>
+<img alt="_images/a183f91566a587252e9c795cc4dbcdcd6801c539e7a09b60aa69dacdc6c8155b.png" src="_images/a183f91566a587252e9c795cc4dbcdcd6801c539e7a09b60aa69dacdc6c8155b.png" />
 </div>
 </div>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">bus_sizes</span></code> argument of <code class="docutils literal notranslate"><span class="pre">n.plot()</span></code> to display the regional distribution of load. First, we calculate the total load per bus:</p>
@@ -1444,6 +1670,14 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bus
+MZ    0.065
+SA    4.200
+Name: p_set, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <p>The resulting <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> we can pass to <code class="docutils literal notranslate"><span class="pre">n.plot(bus_sizes=...)</span></code>:</p>
 <div class="cell docutils container">
@@ -1452,6 +1686,14 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
+
+facecolor will have no effect as it has been defined as &quot;never&quot;.
+</pre></div>
+</div>
+<img alt="_images/1439130cf606728fc516ea60a7b013aca107b2768a12572b40521c6dd763deb7.png" src="_images/1439130cf606728fc516ea60a7b013aca107b2768a12572b40521c6dd763deb7.png" />
+</div>
 </div>
 <p>The important point here is, that <code class="docutils literal notranslate"><span class="pre">s</span></code> needs to have entries for all buses, i.e. its index needs to match <code class="docutils literal notranslate"><span class="pre">n.buses.index</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">bus_sizes</span></code> argument of <code class="docutils literal notranslate"><span class="pre">n.plot()</span></code> can be even more powerful. It can produce pie charts, e.g. for the mix of electricity generation at each bus.</p>
@@ -1459,6 +1701,17 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">generators_t</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;now&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generator
+MZ hydro     1150.0
+SA coal     35000.0
+SA wind      3000.0
+SA gas       1500.0
+SA oil       2000.0
+Name: now, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1478,6 +1731,17 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bus  carrier
+MZ   hydro       1150.0
+SA   coal       35000.0
+     gas         1500.0
+     oil         2000.0
+     wind        3000.0
+Name: now, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <p>… which we can pass to <code class="docutils literal notranslate"><span class="pre">n.plot(bus_sizes=...)</span></code>:</p>
 <div class="cell docutils container">
@@ -1485,6 +1749,14 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bus_sizes</span><span class="o">=</span><span class="n">s</span> <span class="o">/</span> <span class="mi">3000</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
+
+facecolor will have no effect as it has been defined as &quot;never&quot;.
+</pre></div>
+</div>
+<img alt="_images/d7e171323c2325b9b80975ecba9757862c2ad1fbde03edf698f907b894a8364f.png" src="_images/d7e171323c2325b9b80975ecba9757862c2ad1fbde03edf698f907b894a8364f.png" />
 </div>
 </div>
 <p><strong>How does this magic work?</strong> The plotting function will look up the colors specified in <code class="docutils literal notranslate"><span class="pre">n.carriers</span></code> for each carrier and match it with the second index-level of <code class="docutils literal notranslate"><span class="pre">s</span></code>.</p>
@@ -1505,13 +1777,146 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>attribute</th>
+      <th>bus0</th>
+      <th>bus1</th>
+      <th>type</th>
+      <th>x</th>
+      <th>r</th>
+      <th>g</th>
+      <th>b</th>
+      <th>s_nom</th>
+      <th>s_nom_extendable</th>
+      <th>s_nom_min</th>
+      <th>...</th>
+      <th>v_ang_max</th>
+      <th>sub_network</th>
+      <th>x_pu</th>
+      <th>r_pu</th>
+      <th>g_pu</th>
+      <th>b_pu</th>
+      <th>x_pu_eff</th>
+      <th>r_pu_eff</th>
+      <th>s_nom_opt</th>
+      <th>v_nom</th>
+    </tr>
+    <tr>
+      <th>Line</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>SA-MZ</th>
+      <td>SA</td>
+      <td>MZ</td>
+      <td></td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>400.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>inf</td>
+      <td>0</td>
+      <td>0.000006</td>
+      <td>0.000006</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000006</td>
+      <td>0.000006</td>
+      <td>500.0</td>
+      <td>400.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1 rows × 30 columns</p>
+</div></div></div>
 </div>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Glpk solver
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">41</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:587,</span> in <span class="ni">OptimizationAccessor.__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">optimize</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">586</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">587</span>     <span class="k">return</span> <span class="n">optimize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:567,</span> in <span class="ni">optimize</span><span class="nt">(n, snapshots, multi_investment_periods, transmission_losses, linearized_unit_commitment, model_kwargs, extra_functionality, assign_all_duals, solver_name, solver_options, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">565</span> <span class="k">if</span> <span class="n">extra_functionality</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">566</span>     <span class="n">extra_functionality</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">sns</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">567</span> <span class="n">status</span><span class="p">,</span> <span class="n">condition</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="n">solver_name</span><span class="p">,</span> <span class="o">**</span><span class="n">solver_options</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span> <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;ok&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">570</span>     <span class="n">assign_solution</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/linopy/model.py:1015,</span> in <span class="ni">Model.solve</span><span class="nt">(self, solver_name, io_api, problem_fn, solution_fn, log_fn, basis_fn, warmstart_fn, keep_files, sanitize_zeros, remote, **solver_options)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1012</span>     <span class="n">solver_name</span> <span class="o">=</span> <span class="n">available_solvers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span> <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; Solve problem using </span><span class="si">{</span><span class="n">solver_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> solver&quot;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1015</span> <span class="k">assert</span> <span class="n">solver_name</span> <span class="ow">in</span> <span class="n">available_solvers</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Solver </span><span class="si">{</span><span class="n">solver_name</span><span class="si">}</span><span class="s2"> not installed&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1017</span> <span class="c1"># reset result</span>
+<span class="g g-Whitespace">   </span><span class="mi">1018</span> <span class="bp">self</span><span class="o">.</span><span class="n">reset_solution</span><span class="p">()</span>
+
+<span class="ne">AssertionError</span>: Solver glpk not installed
+</pre></div>
+</div>
+</div>
+</details>
 </div>
 <p>You can see that the production of the hydro power plant was reduced and that of the gas power plant increased owing to the reduced transmission capacity.</p>
 <div class="cell docutils container">
@@ -1784,7 +2189,7 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
 <p>So let’s solve the electricity market simulation for January 1, 2011. It’ll take a short moment.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;highs&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1907,16 +2312,16 @@ Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: ""
+            mode: "python"
         },
         kernelOptions: {
-            name: "",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = ''</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               

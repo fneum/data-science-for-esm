@@ -18,17 +18,17 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-n.optimize(solver_name="cbc")
+n.optimize()
 ------------------
 
 ----- stderr -----
-INFO:linopy.model: Solve problem using Cbc solver
+INFO:linopy.model: Solve problem using Glpk solver
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mAssertionError[0m                            Traceback (most recent call last)
-Cell [0;32mIn[21], line 1[0m
-[0;32m----> 1[0m [43mn[49m[38;5;241;43m.[39;49m[43moptimize[49m[43m([49m[43msolver_name[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mcbc[39;49m[38;5;124;43m"[39;49m[43m)[49m
+Cell [0;32mIn[41], line 1[0m
+[0;32m----> 1[0m [43mn[49m[38;5;241;43m.[39;49m[43moptimize[49m[43m([49m[43m)[49m
 
 File [0;32m/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:587[0m, in [0;36mOptimizationAccessor.__call__[0;34m(self, *args, **kwargs)[0m
 [1;32m    585[0m [38;5;129m@wraps[39m(optimize)
@@ -49,5 +49,5 @@ File [0;32m/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/
 [1;32m   1017[0m [38;5;66;03m# reset result[39;00m
 [1;32m   1018[0m [38;5;28mself[39m[38;5;241m.[39mreset_solution()
 
-[0;31mAssertionError[0m: Solver cbc not installed
+[0;31mAssertionError[0m: Solver glpk not installed
 

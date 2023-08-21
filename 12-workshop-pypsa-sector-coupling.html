@@ -226,24 +226,6 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/fneum/data-science-for-esm/main?urlpath=tree/data-science-for-esm/12-workshop-pypsa-sector-coupling.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="btn__text-container">Binder</span>
-</a>
-</li>
-      
-      
-      
-      
       <li><a href="https://colab.research.google.com/github/fneum/data-science-for-esm/blob/main/data-science-for-esm/12-workshop-pypsa-sector-coupling.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
@@ -473,7 +455,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;network-cem.nc&#39;, &lt;http.client.HTTPMessage at 0x7f37f9e76990&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;network-cem.nc&#39;, &lt;http.client.HTTPMessage at 0x7f6b2bf94610&gt;)
 </pre></div>
 </div>
 </div>
@@ -1081,7 +1063,7 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f37f8bf4310&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6b25ae7c10&gt;
 </pre></div>
 </div>
 <img alt="_images/8246d399cfeada5e46f7e41f5f96d242c3cdc8ee6081aeb314f2ad7dc9a9f928.png" src="_images/8246d399cfeada5e46f7e41f5f96d242c3cdc8ee6081aeb314f2ad7dc9a9f928.png" />
@@ -1213,7 +1195,7 @@ telling us what share of electric vehicles is plugged-in <strong>at home</strong
 <p>Then, we can solve the fully sector-coupled model altogether including electricity, passenger transport, hydrogen and heating.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;highs&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1239,34 +1221,43 @@ Index([&#39;electrolysis&#39;, &#39;heat pump&#39;, &#39;resistive heater&#39;, 
 Index([&#39;fuel cell&#39;, &#39;OCGT&#39;, &#39;CHP&#39;, &#39;V2G&#39;], dtype=&#39;object&#39;, name=&#39;Link&#39;)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Cbc solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">50</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:587,</span> in <span class="ni">OptimizationAccessor.__call__</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">585</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">optimize</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">586</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">587</span>     <span class="k">return</span> <span class="n">optimize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:567,</span> in <span class="ni">optimize</span><span class="nt">(n, snapshots, multi_investment_periods, transmission_losses, linearized_unit_commitment, model_kwargs, extra_functionality, assign_all_duals, solver_name, solver_options, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">565</span> <span class="k">if</span> <span class="n">extra_functionality</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">566</span>     <span class="n">extra_functionality</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">sns</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">567</span> <span class="n">status</span><span class="p">,</span> <span class="n">condition</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="n">solver_name</span><span class="p">,</span> <span class="o">**</span><span class="n">solver_options</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">569</span> <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;ok&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">570</span>     <span class="n">assign_solution</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/linopy/model.py:1015,</span> in <span class="ni">Model.solve</span><span class="nt">(self, solver_name, io_api, problem_fn, solution_fn, log_fn, basis_fn, warmstart_fn, keep_files, sanitize_zeros, remote, **solver_options)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1012</span>     <span class="n">solver_name</span> <span class="o">=</span> <span class="n">available_solvers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1014</span> <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; Solve problem using </span><span class="si">{</span><span class="n">solver_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> solver&quot;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1015</span> <span class="k">assert</span> <span class="n">solver_name</span> <span class="ow">in</span> <span class="n">available_solvers</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Solver </span><span class="si">{</span><span class="n">solver_name</span><span class="si">}</span><span class="s2"> not installed&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1017</span> <span class="c1"># reset result</span>
-<span class="g g-Whitespace">   </span><span class="mi">1018</span> <span class="bp">self</span><span class="o">.</span><span class="n">reset_solution</span><span class="p">()</span>
-
-<span class="ne">AssertionError</span>: Solver cbc not installed
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/27 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  37%|███▋      | 10/27 [00:00&lt;00:00, 93.43it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  74%|███████▍  | 20/27 [00:00&lt;00:00, 51.33it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 27/27 [00:00&lt;00:00, 40.52it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 27/27 [00:00&lt;00:00, 45.09it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/12 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:  83%|████████▎ | 10/12 [00:00&lt;00:00, 97.12it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 12/12 [00:00&lt;00:00, 96.98it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.75s
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
 </pre></div>
 </div>
 </div>
@@ -1308,16 +1299,16 @@ Index([&#39;fuel cell&#39;, &#39;OCGT&#39;, &#39;CHP&#39;, &#39;V2G&#39;], dtype
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: ""
+            mode: "python"
         },
         kernelOptions: {
-            name: "",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = ''</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               

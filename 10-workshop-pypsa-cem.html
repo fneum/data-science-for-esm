@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
@@ -44,6 +44,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -69,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Preparation for Group Assignment" href="11-workshop-groupwork.html" />
     <link rel="prev" title="Introduction to pypsa" href="09-workshop-pypsa.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -442,13 +443,13 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="capacity-expansion-planning-with-pypsa">
-<h1>Capacity Expansion Planning with <code class="docutils literal notranslate"><span class="pre">pypsa</span></code><a class="headerlink" href="#capacity-expansion-planning-with-pypsa" title="Permalink to this headline">#</a></h1>
+<h1>Capacity Expansion Planning with <code class="docutils literal notranslate"><span class="pre">pypsa</span></code><a class="headerlink" href="#capacity-expansion-planning-with-pypsa" title="Permalink to this heading">#</a></h1>
 <img src="https://github.com/fneum/data-science-for-esm/raw/main/data-science-for-esm/pypsa-logo.png" width="300px" /><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Also in this tutorial, you might want to refer to the PyPSA documentation: <a class="reference external" href="https://pypsa.readthedocs.io">https://pypsa.readthedocs.io</a>.</p>
 </div>
 <section id="from-electricity-market-modelling-to-capacity-expansion-planning">
-<h2>From electricity market modelling to capacity expansion planning<a class="headerlink" href="#from-electricity-market-modelling-to-capacity-expansion-planning" title="Permalink to this headline">#</a></h2>
+<h2>From electricity market modelling to capacity expansion planning<a class="headerlink" href="#from-electricity-market-modelling-to-capacity-expansion-planning" title="Permalink to this heading">#</a></h2>
 <p>Review the problem formulation of the electricity market model. Below you can find an adapted version
 where the capacity limits have been promoted to <strong>decision variables</strong> with corresponding terms
 in the <em>objective function</em> and <em>new constraints for their expansion limits</em> (e.g. wind and solar potentials). This is known as <strong>capacity expansion problem</strong>.</p>
@@ -511,7 +512,7 @@ in the <em>objective function</em> and <em>new constraints for their expansion l
 </div>
 </section>
 <section id="prerequisites-handling-technology-data-and-costs">
-<h2>Prerequisites: handling technology data and costs<a class="headerlink" href="#prerequisites-handling-technology-data-and-costs" title="Permalink to this headline">#</a></h2>
+<h2>Prerequisites: handling technology data and costs<a class="headerlink" href="#prerequisites-handling-technology-data-and-costs" title="Permalink to this heading">#</a></h2>
 <p>We maintain a database (<a class="github reference external" href="https://github.com/PyPSA/technology-data">PyPSA/technology-data</a>) which collects assumptions and projections for energy system technologies (such as costs, efficiencies, lifetimes, etc.) for given years, which we can load into a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>. This requires some pre-processing to load (e.g. converting units, setting defaults, re-arranging dimensions):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -598,7 +599,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 </div>
 </section>
 <section id="loading-time-series-data">
-<h2>Loading time series data<a class="headerlink" href="#loading-time-series-data" title="Permalink to this headline">#</a></h2>
+<h2>Loading time series data<a class="headerlink" href="#loading-time-series-data" title="Permalink to this heading">#</a></h2>
 <p>We are also going to need some time series for wind, solar and load. For now, we are going to recycle the time series we used at the beginning of the course. They are given for Germany in the year 2015.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -690,7 +691,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 </div>
 </section>
 <section id="simple-capacity-expansion-planning-example">
-<h2>Simple capacity expansion planning example<a class="headerlink" href="#simple-capacity-expansion-planning-example" title="Permalink to this headline">#</a></h2>
+<h2>Simple capacity expansion planning example<a class="headerlink" href="#simple-capacity-expansion-planning-example" title="Permalink to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>See also <a class="reference external" href="https://model.energy">https://model.energy</a>.</p>
@@ -698,7 +699,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 <p><strong>In this tutorial, we want to build a replica of <a class="reference external" href="https://model.energy">model.energy</a>.</strong> This tool calculates the cost of meeting a constant electricity demand from a combination of wind power, solar power and storage for different regions of the world.</p>
 <p>We deviate from <a class="reference external" href="https://model.energy">model.energy</a> by including offshore wind generation and electricity demand profiles rather than a constant electricity demand. Also, we are going to start with Germany only. You can adapt the code to other countries as an exercise.</p>
 <section id="model-initialisation">
-<h3>Model Initialisation<a class="headerlink" href="#model-initialisation" title="Permalink to this headline">#</a></h3>
+<h3>Model Initialisation<a class="headerlink" href="#model-initialisation" title="Permalink to this heading">#</a></h3>
 <p>For building the model, we start again by initialising an empty network.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -874,7 +875,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 </div>
 </section>
 <section id="adding-components">
-<h3>Adding Components<a class="headerlink" href="#adding-components" title="Permalink to this headline">#</a></h3>
+<h3>Adding Components<a class="headerlink" href="#adding-components" title="Permalink to this heading">#</a></h3>
 <p>Then, we add all the technologies we are going to include as carriers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -983,7 +984,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 </div>
 </section>
 <section id="model-run">
-<h3>Model Run<a class="headerlink" href="#model-run" title="Permalink to this headline">#</a></h3>
+<h3>Model Run<a class="headerlink" href="#model-run" title="Permalink to this heading">#</a></h3>
 <p>Then, we can already solve the model for the first time. At this stage, the model does not have any storage or emission limits implemented. It’s going to look for the least-cost combination of variable renewables and the gas turbine to supply demand.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -995,7 +996,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Cbc solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.13s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.18s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -1004,7 +1005,7 @@ Termination condition: optimal
 Solution: 8764 primals, 19714 duals
 Objective: 2.75e+10
 Solver model: not available
-Solver message: Optimal - objective value 27532289223.69249344
+Solver message: Optimal - objective value 27530963951.09072495
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper were not assigned to the network.
@@ -1014,7 +1015,7 @@ Solver message: Optimal - objective value 27532289223.69249344
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-10vmbkii.lp -solve -solu /tmp/linopy-solve-duj1adow.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-husy75_o.lp -solve -solu /tmp/linopy-solve-gt99is8z.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 9900 (-9814) rows, 7714 (-1050) columns and 23130 (-10864) elements
 Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033155867 ( 6.5156784%) - largest zero change 0
@@ -1026,32 +1027,32 @@ Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033155867
 1365  Obj 5.7839109e+08 Primal inf 1.3256861e+08 (2190)
 1638  Obj 7.44638e+08 Primal inf 1.2422418e+08 (2190)
 1911  Obj 9.9448682e+08 Primal inf 1.1699429e+08 (2190)
-2184  Obj 4.349048e+09 Primal inf 1.0442117e+08 (2109)
-2457  Obj 4.7128424e+09 Primal inf 95575591 (2085)
-2730  Obj 5.103261e+09 Primal inf 88029222 (2054)
-3003  Obj 5.7075703e+09 Primal inf 79560489 (2008)
-3276  Obj 6.5109548e+09 Primal inf 69850183 (1942)
-3549  Obj 7.2877291e+09 Primal inf 63779648 (1875)
-3822  Obj 8.36732e+09 Primal inf 57114484 (1788)
-4095  Obj 9.4206961e+09 Primal inf 53055330 (1706)
-4368  Obj 1.0666399e+10 Primal inf 47537061 (1605)
-4641  Obj 1.1806111e+10 Primal inf 44671707 (1518)
-4914  Obj 1.3092257e+10 Primal inf 40713437 (1421)
-5187  Obj 1.441374e+10 Primal inf 37766533 (1323)
-5460  Obj 1.5887738e+10 Primal inf 32325713 (1211)
-5733  Obj 1.7303577e+10 Primal inf 28297766 (1111)
-6006  Obj 1.8682133e+10 Primal inf 25535904 (1006)
-6279  Obj 2.0051625e+10 Primal inf 21659695 (899)
-6552  Obj 2.1669797e+10 Primal inf 17322881 (786)
-6825  Obj 2.3269216e+10 Primal inf 14052672 (670)
-7098  Obj 2.4817852e+10 Primal inf 7484725 (415)
-7371  Obj 2.6399461e+10 Primal inf 3546329.1 (263)
-7644  Obj 2.7530103e+10 Primal inf 43091.304 (79)
-7708  Obj 2.7532295e+10
-Optimal - objective value 2.7532289e+10
-After Postsolve, objective 2.7532289e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 2.753228922e+10 - 7708 iterations time 0.202, Presolve 0.02
-Total time (CPU seconds):       0.32   (Wallclock seconds):       0.25
+2184  Obj 4.3488996e+09 Primal inf 1.0442117e+08 (2109)
+2457  Obj 4.712694e+09 Primal inf 95575591 (2085)
+2730  Obj 5.1031126e+09 Primal inf 88029222 (2054)
+3003  Obj 5.7074219e+09 Primal inf 79560489 (2008)
+3276  Obj 6.5108064e+09 Primal inf 69850183 (1942)
+3549  Obj 7.2875807e+09 Primal inf 63779648 (1875)
+3822  Obj 8.3671716e+09 Primal inf 57114484 (1788)
+4095  Obj 9.4205477e+09 Primal inf 53055330 (1706)
+4368  Obj 1.066625e+10 Primal inf 47537061 (1605)
+4641  Obj 1.1805963e+10 Primal inf 44671707 (1518)
+4914  Obj 1.3092109e+10 Primal inf 40713437 (1421)
+5187  Obj 1.4413592e+10 Primal inf 37766533 (1323)
+5460  Obj 1.588759e+10 Primal inf 32325713 (1211)
+5733  Obj 1.7303428e+10 Primal inf 28297766 (1111)
+6006  Obj 1.8681985e+10 Primal inf 25535904 (1006)
+6279  Obj 2.0051476e+10 Primal inf 21659695 (899)
+6552  Obj 2.1669648e+10 Primal inf 17322881 (786)
+6825  Obj 2.3269068e+10 Primal inf 14052672 (670)
+7098  Obj 2.481751e+10 Primal inf 7484725 (415)
+7371  Obj 2.6399111e+10 Primal inf 3546329.1 (263)
+7644  Obj 2.7528714e+10 Primal inf 44629.752 (81)
+7708  Obj 2.753097e+10
+Optimal - objective value 2.7530964e+10
+After Postsolve, objective 2.7530964e+10, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 2.753096395e+10 - 7708 iterations time 0.212, Presolve 0.02
+Total time (CPU seconds):       0.33   (Wallclock seconds):       0.29
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
@@ -1061,7 +1062,7 @@ Total time (CPU seconds):       0.32   (Wallclock seconds):       0.25
 </div>
 </section>
 <section id="model-evaluation">
-<h3>Model Evaluation<a class="headerlink" href="#model-evaluation" title="Permalink to this headline">#</a></h3>
+<h3>Model Evaluation<a class="headerlink" href="#model-evaluation" title="Permalink to this heading">#</a></h3>
 <p>The total system cost in billion Euros per year:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1070,7 +1071,7 @@ Total time (CPU seconds):       0.32   (Wallclock seconds):       0.25
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27.532289223692494
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27.530963951090726
 </pre></div>
 </div>
 </div>
@@ -1138,10 +1139,10 @@ Name: generators, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generator
-OCGT       16995.624257
+OCGT       16995.471527
 onwind         0.000000
-offwind     6707.003125
-solar       3829.661877
+offwind     6706.035478
+solar       3829.456982
 dtype: float64
 </pre></div>
 </div>
@@ -1156,10 +1157,10 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           carrier
-Generator  OCGT       16995.624257
-           offwind     6707.003125
+Generator  OCGT       16995.471527
+           offwind     6706.035478
            onwind         0.000000
-           solar       3829.661877
+           solar       3829.456982
 dtype: float64
 </pre></div>
 </div>
@@ -1184,14 +1185,14 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>126.04898507491518
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>124.78849522416593
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="plotting-optimal-dispatch">
-<h3>Plotting Optimal Dispatch<a class="headerlink" href="#plotting-optimal-dispatch" title="Permalink to this headline">#</a></h3>
+<h3>Plotting Optimal Dispatch<a class="headerlink" href="#plotting-optimal-dispatch" title="Permalink to this heading">#</a></h3>
 <p>This function takes the network object <code class="docutils literal notranslate"><span class="pre">n</span></code> as an argument and, optionally, a time frame. We want to plot the load time series, and stacked area charts for electricity feed-in and storage charging. Technologies should be coloured by their color defined in <code class="docutils literal notranslate"><span class="pre">n.carriers</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1246,7 +1247,7 @@ dtype: float64
 </section>
 </section>
 <section id="adding-storage-units">
-<h2>Adding Storage Units<a class="headerlink" href="#adding-storage-units" title="Permalink to this headline">#</a></h2>
+<h2>Adding Storage Units<a class="headerlink" href="#adding-storage-units" title="Permalink to this heading">#</a></h2>
 <p>Alright, but there are a few important components missing for a system with high shares of renewables? What about short-term storage options (e.g. batteries) and long-term storage options (e.g. hydrogen storage)? Let’s add them too.</p>
 <p>First, the battery storage. We are going to assume a fixed energy-to-power ratio of 6 hours, i.e. if fully charged, the battery can discharge at full capacity for 6 hours.
 For the capital cost, we have to factor in both the capacity and energy cost of the storage. We are also going to enforce a cyclic state-of-charge condition, i.e. the state of charge
@@ -1317,13 +1318,13 @@ at the beginning of the optimisation period must equal the final state of charge
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/14 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  43%|████▎     | 6/14 [00:00&lt;00:00, 57.45it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  43%|████▎     | 6/14 [00:00&lt;00:00, 54.20it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  86%|████████▌ | 12/14 [00:00&lt;00:00, 52.19it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  86%|████████▌ | 12/14 [00:00&lt;00:00, 49.01it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 14/14 [00:00&lt;00:00, 45.96it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 14/14 [00:00&lt;00:00, 42.68it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1332,10 +1333,10 @@ at the beginning of the optimisation period must equal the final state of charge
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 159.76it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 124.91it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.37s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.41s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -1344,82 +1345,80 @@ Termination condition: optimal
 Solution: 21906 primals, 50376 duals
 Objective: 2.75e+10
 Solver model: not available
-Solver message: Optimal - objective value 27532289223.69249725
+Solver message: Optimal - objective value 27530963951.09072876
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-_xtkhqzp.lp -solve -solu /tmp/linopy-solve-2g6hegf1.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-g33lufjw.lp -solve -solu /tmp/linopy-solve-521djbid.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 27420 (-22956) rows, 20856 (-1050) columns and 75690 (-24006) elements
-Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033165059 ( 6.4525769%) - largest zero change 0.00033012146
-0  Obj 0 Primal inf 1.7358713e+08 (2190)
-362  Obj 1543.4857 Primal inf 2.0321318e+08 (2527)
-724  Obj 19832.97 Primal inf 2.3881486e+08 (2849)
-1086  Obj 68606166 Primal inf 2.6347822e+08 (3076)
-1448  Obj 1.5756001e+08 Primal inf 2.9079848e+08 (3241)
-1810  Obj 3.0625936e+09 Primal inf 2.8688716e+08 (3331)
-2172  Obj 3.3794089e+09 Primal inf 2.9465038e+08 (3413)
-2534  Obj 3.6678922e+09 Primal inf 3.01542e+08 (3466)
-2896  Obj 4.0392432e+09 Primal inf 3.0363182e+08 (3516)
-3258  Obj 4.1872803e+09 Primal inf 3.0117201e+08 (3557)
-3620  Obj 4.3128171e+09 Primal inf 2.9846672e+08 (3585)
-3982  Obj 4.44975e+09 Primal inf 3.0299305e+08 (3632)
-4344  Obj 4.5004666e+09 Primal inf 3.1235367e+08 (3669)
-4706  Obj 4.7258007e+09 Primal inf 2.9736591e+08 (3697)
-5068  Obj 5.0632555e+09 Primal inf 2.9474655e+08 (3711)
-5430  Obj 5.2500656e+09 Primal inf 2.8280721e+08 (3710)
-5792  Obj 5.5452757e+09 Primal inf 2.7516092e+08 (3709)
-6154  Obj 5.745717e+09 Primal inf 2.6300869e+08 (3681)
-6516  Obj 6.1572954e+09 Primal inf 2.5425807e+08 (3643)
-6878  Obj 6.6298093e+09 Primal inf 2.4477174e+08 (3607)
-7240  Obj 6.8733334e+09 Primal inf 2.29993e+08 (3523)
-7602  Obj 7.3288347e+09 Primal inf 2.245302e+08 (3509)
-7964  Obj 7.8478549e+09 Primal inf 2.1860265e+08 (3480)
-8326  Obj 8.3921361e+09 Primal inf 2.1376705e+08 (3443)
-8688  Obj 8.5549342e+09 Primal inf 2.0865676e+08 (3419)
-9050  Obj 9.4246121e+09 Primal inf 2.00783e+08 (3382)
-9412  Obj 9.983999e+09 Primal inf 1.997405e+08 (3360)
-9774  Obj 1.0702389e+10 Primal inf 1.8388731e+08 (3286)
-10136  Obj 1.1418148e+10 Primal inf 1.7173676e+08 (3222)
-10498  Obj 1.2127245e+10 Primal inf 1.6006885e+08 (3145)
-10860  Obj 1.2818885e+10 Primal inf 1.3977635e+08 (3006)
-11222  Obj 1.3703578e+10 Primal inf 1.2937387e+08 (2873)
-11584  Obj 1.4620667e+10 Primal inf 1.1227258e+08 (2693)
-11946  Obj 1.5429609e+10 Primal inf 1.2031809e+08 (4507)
-12308  Obj 1.5510581e+10 Primal inf 2.3557398e+08 (5964)
-12670  Obj 1.5860941e+10 Primal inf 8.5380587e+08 (6057)
-13032  Obj 1.6376397e+10 Primal inf 1.5397174e+08 (4220)
-13394  Obj 1.6866099e+10 Primal inf 2.9585181e+08 (5851)
-13756  Obj 1.7496187e+10 Primal inf 2.4097312e+08 (5549)
-14118  Obj 1.7635827e+10 Primal inf 1.8795567e+09 (5682)
-14480  Obj 1.8545574e+10 Primal inf 2.7283125e+08 (5471)
-14842  Obj 1.9031068e+10 Primal inf 2.9126375e+08 (5362)
-15204  Obj 1.9605184e+10 Primal inf 1.3436363e+08 (3999)
-15566  Obj 2.0272803e+10 Primal inf 4.4288402e+08 (10167)
-15928  Obj 2.0613056e+10 Primal inf 2.3474442e+08 (3458)
-16290  Obj 2.1641938e+10 Primal inf 2.7270698e+08 (3555)
-16652  Obj 2.2491233e+10 Primal inf 4.2529333e+08 (5063)
-17014  Obj 2.3009694e+10 Primal inf 4.4977536e+08 (4744)
-17376  Obj 2.3601616e+10 Primal inf 5.2367705e+08 (11024)
-17738  Obj 2.4020182e+10 Primal inf 2.1400865e+08 (5310)
-18100  Obj 2.4575821e+10 Primal inf 7.0158694e+08 (10392)
-18462  Obj 2.5407455e+10 Primal inf 47945778 (3136)
-18824  Obj 2.5947169e+10 Primal inf 1.0700285e+08 (11848)
-19186  Obj 2.6334845e+10 Primal inf 6.262312e+08 (10013)
-19548  Obj 2.6769875e+10 Primal inf 4.5778274e+08 (10155)
-19910  Obj 2.7015558e+10 Primal inf 22865751 (2879)
-20272  Obj 2.7165525e+10 Primal inf 37071774 (8227)
-20634  Obj 2.7301647e+10 Primal inf 28187054 (1985)
-20996  Obj 2.7428264e+10 Primal inf 2.937843e+08 (7259)
-21358  Obj 2.75167e+10 Primal inf 722300.6 (1003)
-21573  Obj 2.7532295e+10
-Optimal - objective value 2.7532289e+10
-After Postsolve, objective 2.7532289e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 2.753228922e+10 - 21573 iterations time 2.872, Presolve 0.04
-Total time (CPU seconds):       3.12   (Wallclock seconds):       3.12
+Perturbing problem by 0.001% of 232.80852 - largest nonzero change 0.00033278527 ( 6.443095%) - largest zero change 0.0003312509
+0  Obj 0 Primal inf 1.7299319e+08 (2190)
+362  Obj 1533.1194 Primal inf 2.0311713e+08 (2526)
+724  Obj 57848.014 Primal inf 2.3613949e+08 (2828)
+1086  Obj 2.8005582e+09 Primal inf 2.6150356e+08 (3052)
+1448  Obj 3.0342168e+09 Primal inf 2.7839747e+08 (3215)
+1810  Obj 3.2850322e+09 Primal inf 2.892485e+08 (3326)
+2172  Obj 3.5802439e+09 Primal inf 2.9350237e+08 (3403)
+2534  Obj 3.9300418e+09 Primal inf 2.9781611e+08 (3464)
+2896  Obj 4.0999946e+09 Primal inf 3.016857e+08 (3509)
+3258  Obj 4.4218284e+09 Primal inf 3.0437211e+08 (3550)
+3620  Obj 4.7280502e+09 Primal inf 2.9352668e+08 (3570)
+3982  Obj 4.8248465e+09 Primal inf 2.9941131e+08 (3605)
+4344  Obj 5.008526e+09 Primal inf 2.8884774e+08 (3616)
+4706  Obj 5.1706973e+09 Primal inf 2.8933913e+08 (3659)
+5068  Obj 5.2476263e+09 Primal inf 2.9505609e+08 (3672)
+5430  Obj 5.4812997e+09 Primal inf 2.7845012e+08 (3671)
+5792  Obj 5.8070267e+09 Primal inf 2.7031312e+08 (3677)
+6154  Obj 6.031559e+09 Primal inf 2.5684759e+08 (3649)
+6516  Obj 6.3725062e+09 Primal inf 2.5031431e+08 (3618)
+6878  Obj 6.5629861e+09 Primal inf 2.391902e+08 (3590)
+7240  Obj 6.997145e+09 Primal inf 2.3028227e+08 (3531)
+7602  Obj 7.319649e+09 Primal inf 2.2595585e+08 (3478)
+7964  Obj 7.9581346e+09 Primal inf 2.1858597e+08 (3462)
+8326  Obj 8.5716818e+09 Primal inf 2.1062592e+08 (3432)
+8688  Obj 9.0443099e+09 Primal inf 2.0443271e+08 (3416)
+9050  Obj 9.6465756e+09 Primal inf 1.9484828e+08 (3370)
+9412  Obj 1.0192838e+10 Primal inf 1.8846609e+08 (3326)
+9774  Obj 1.0721949e+10 Primal inf 1.7803804e+08 (3248)
+10136  Obj 1.1488387e+10 Primal inf 1.6755284e+08 (3195)
+10498  Obj 1.2214466e+10 Primal inf 1.6045584e+08 (3129)
+10860  Obj 1.28859e+10 Primal inf 1.4813822e+08 (3024)
+11222  Obj 1.3954453e+10 Primal inf 1.2966223e+08 (2862)
+11584  Obj 1.5155672e+10 Primal inf 1.2128344e+08 (2711)
+11946  Obj 1.5753268e+10 Primal inf 2.2674791e+08 (4512)
+12308  Obj 1.5760857e+10 Primal inf 2.2740102e+08 (4264)
+12670  Obj 1.6407348e+10 Primal inf 2.5101132e+08 (4328)
+13032  Obj 1.6715096e+10 Primal inf 1.1910976e+09 (6179)
+13394  Obj 1.7158347e+10 Primal inf 1.8827406e+08 (4237)
+13756  Obj 1.7807919e+10 Primal inf 2.7075975e+08 (4263)
+14118  Obj 1.8747642e+10 Primal inf 1.3587532e+08 (4147)
+14480  Obj 1.9536598e+10 Primal inf 4.3615405e+08 (5558)
+14842  Obj 2.0230014e+10 Primal inf 2.8173038e+08 (4003)
+15204  Obj 2.0642846e+10 Primal inf 2.8790984e+08 (4034)
+15566  Obj 2.1389856e+10 Primal inf 1.5683834e+09 (9890)
+15928  Obj 2.1820907e+10 Primal inf 3.8764884e+08 (9976)
+16290  Obj 2.262019e+10 Primal inf 2.5576838e+09 (9050)
+16652  Obj 2.3025958e+10 Primal inf 7.7492779e+08 (11096)
+17014  Obj 2.346369e+10 Primal inf 3.2318347e+08 (6253)
+17376  Obj 2.4082846e+10 Primal inf 47050265 (2791)
+17738  Obj 2.4971745e+10 Primal inf 3.1198558e+08 (4247)
+18100  Obj 2.5451351e+10 Primal inf 1.2211962e+09 (10439)
+18462  Obj 2.6000583e+10 Primal inf 3.3729597e+08 (8575)
+18824  Obj 2.6577289e+10 Primal inf 26436843 (2175)
+19186  Obj 2.6708318e+10 Primal inf 92040103 (2642)
+19548  Obj 2.7131389e+10 Primal inf 92511165 (2923)
+19910  Obj 2.7282606e+10 Primal inf 6.4845444e+08 (5736)
+20272  Obj 2.7462168e+10 Primal inf 15243409 (1717)
+20634  Obj 2.7522821e+10 Primal inf 630595.32 (271)
+20795  Obj 2.753097e+10
+Optimal - objective value 2.7530964e+10
+After Postsolve, objective 2.7530964e+10, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 2.753096395e+10 - 20795 iterations time 2.362, Presolve 0.04
+Total time (CPU seconds):       2.61   (Wallclock seconds):       2.62
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
@@ -1457,7 +1456,7 @@ Name: p_nom_opt, dtype: float64
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>StorageUnit
 battery storage                 0.0
-hydrogen storage underground    0.0
+hydrogen storage underground   -0.0
 Name: p_nom_opt, dtype: float64
 </pre></div>
 </div>
@@ -1465,7 +1464,7 @@ Name: p_nom_opt, dtype: float64
 </div>
 <p><strong>Nothing!</strong> The objective value is the same, and no storage is built.</p>
 <section id="adding-emission-limits">
-<h3>Adding emission limits<a class="headerlink" href="#adding-emission-limits" title="Permalink to this headline">#</a></h3>
+<h3>Adding emission limits<a class="headerlink" href="#adding-emission-limits" title="Permalink to this heading">#</a></h3>
 <p>The gas power plant offers sufficient and cheap enough backup capacity to run in periods of low wind and solar generation. But what happens if this source of flexibility disappears. Let’s model a 100% renewable electricity system by adding a CO<span class="math notranslate nohighlight">\(_2\)</span> emission limit as global constraint:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1502,13 +1501,13 @@ Name: p_nom_opt, dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  47%|████▋     | 7/15 [00:00&lt;00:00, 63.91it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  47%|████▋     | 7/15 [00:00&lt;00:00, 59.49it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  93%|█████████▎| 14/15 [00:00&lt;00:00, 45.03it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 45.05it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 48.50it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 45.96it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1517,97 +1516,103 @@ Name: p_nom_opt, dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 160.20it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 124.88it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.38s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.41s
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-vhq3nb5_.lp -solve -solu /tmp/linopy-solve-3t5ynlpu.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-y0mzrts1.lp -solve -solu /tmp/linopy-solve-akq2ipkq.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 25230 (-25147) rows, 18665 (-3241) columns and 69120 (-32766) elements
-Perturbing problem by 0.001% of 231.23943 - largest nonzero change 0.00030699396 ( 7.1617767%) - largest zero change 0.00030695614
-0  Obj 0 Primal inf 1.8152884e+08 (2190)
-351  Obj 1546.51 Primal inf 2.0873427e+08 (2519)
-702  Obj 2874.2512 Primal inf 2.417313e+08 (2837)
-1053  Obj 1.7441828e+10 Primal inf 2.5610731e+08 (3141)
-1404  Obj 1.7441837e+10 Primal inf 2.7336886e+08 (3226)
-1755  Obj 1.7442144e+10 Primal inf 2.9390083e+08 (3273)
-2106  Obj 1.746325e+10 Primal inf 3.1024338e+08 (3355)
-2457  Obj 2.610895e+10 Primal inf 3.4626519e+08 (3374)
-2808  Obj 2.6109385e+10 Primal inf 2.9024368e+08 (3382)
-3159  Obj 2.6109744e+10 Primal inf 2.7803287e+08 (3417)
-3510  Obj 2.6109992e+10 Primal inf 3.1269462e+08 (3490)
-3861  Obj 2.6141746e+10 Primal inf 3.6961916e+08 (3613)
-4212  Obj 2.6152772e+10 Primal inf 3.4007139e+08 (3545)
-4563  Obj 2.6152951e+10 Primal inf 4.7109268e+08 (3549)
-4914  Obj 2.616564e+10 Primal inf 3.6930343e+08 (3545)
-5265  Obj 2.6180648e+10 Primal inf 3.7264903e+08 (3529)
-5616  Obj 2.6194775e+10 Primal inf 4.0993813e+08 (3569)
-5967  Obj 3.7271398e+10 Primal inf 4.9623681e+08 (9179)
-6318  Obj 3.7756864e+10 Primal inf 3.2948445e+08 (3083)
-6669  Obj 3.7757255e+10 Primal inf 2.5923758e+08 (3043)
-7020  Obj 3.7757389e+10 Primal inf 2.8304033e+08 (3108)
-7371  Obj 3.7757405e+10 Primal inf 3.3811533e+08 (3190)
-7722  Obj 3.7757576e+10 Primal inf 3.6652752e+08 (3165)
-8073  Obj 3.7757725e+10 Primal inf 3.2014589e+08 (3169)
-8424  Obj 3.7757882e+10 Primal inf 3.0897342e+08 (3157)
-8775  Obj 3.7757988e+10 Primal inf 3.9030276e+08 (3202)
-9126  Obj 3.7764759e+10 Primal inf 3.3507342e+08 (3259)
-9477  Obj 3.7764838e+10 Primal inf 4.3040296e+08 (3232)
-9828  Obj 3.7765009e+10 Primal inf 4.3497963e+08 (3233)
-10179  Obj 3.7765263e+10 Primal inf 3.0513715e+08 (3157)
-10530  Obj 3.7795521e+10 Primal inf 1.9304819e+09 (9399)
-10881  Obj 3.9389549e+10 Primal inf 7.8146183e+08 (8928)
-11232  Obj 4.0717169e+10 Primal inf 4.8400617e+08 (3732)
-11583  Obj 4.1097055e+10 Primal inf 4.6196815e+08 (4163)
-11934  Obj 4.4709587e+10 Primal inf 2.7701395e+09 (9949)
-12285  Obj 5.0342291e+10 Primal inf 7.8502487e+08 (8944)
-12636  Obj 5.1034803e+10 Primal inf 4.5876414e+08 (8628)
-12987  Obj 5.1727529e+10 Primal inf 1.2671306e+09 (6522)
-13338  Obj 5.353119e+10 Primal inf 1.8199642e+09 (6744)
-13689  Obj 5.3801985e+10 Primal inf 3.1495943e+09 (11808)
-14040  Obj 5.4021244e+10 Primal inf 8.7513523e+08 (11465)
-14391  Obj 5.4158683e+10 Primal inf 2.4805648e+08 (3241)
-14742  Obj 5.4172602e+10 Primal inf 3.5987363e+08 (3467)
-15093  Obj 5.4187738e+10 Primal inf 2.7076411e+08 (3756)
-15444  Obj 5.6120792e+10 Primal inf 2.988424e+08 (4073)
-15795  Obj 5.6280346e+10 Primal inf 4.4831009e+08 (5804)
-16146  Obj 5.6617776e+10 Primal inf 7.1084335e+08 (5821)
-16497  Obj 5.6814359e+10 Primal inf 3.2371012e+08 (8367)
-16848  Obj 5.713718e+10 Primal inf 3.4091791e+08 (5125)
-17199  Obj 5.7154957e+10 Primal inf 1.0650485e+09 (6065)
-17550  Obj 5.7581527e+10 Primal inf 5.282295e+08 (5469)
-17901  Obj 5.7664951e+10 Primal inf 2.7357485e+08 (3164)
-18252  Obj 5.8175181e+10 Primal inf 6.2703202e+08 (5417)
-18603  Obj 5.867082e+10 Primal inf 5.691256e+08 (5316)
-18954  Obj 5.9454153e+10 Primal inf 1.4086683e+09 (6121)
-19305  Obj 5.9475266e+10 Primal inf 8.2078323e+08 (3755)
-19656  Obj 5.9502135e+10 Primal inf 6.2755562e+08 (3627)
-20007  Obj 5.9724299e+10 Primal inf 28995934 (1493)
-20328  Obj 5.9788884e+10 Primal inf 1.6269939e+09 (6487)
-20679  Obj 5.993445e+10 Primal inf 2.0215213e+09 (6275)
-21030  Obj 6.0816501e+10 Primal inf 1.229411e+08 (1884)
-21381  Obj 6.0960551e+10 Primal inf 9.0720175e+08 (4323)
-21732  Obj 6.1034832e+10 Primal inf 10991004 (514)
-22061  Obj 6.1044363e+10
-Optimal - objective value 6.1044272e+10
-After Postsolve, objective 6.1044272e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 6.104427161e+10 - 22061 iterations time 5.102, Presolve 0.03
-Total time (CPU seconds):       5.36   (Wallclock seconds):       5.38
+Perturbing problem by 0.001% of 232.80852 - largest nonzero change 0.0003084482 ( 7.1472055%) - largest zero change 0.00030841019
+0  Obj 0 Primal inf 1.7299319e+08 (2190)
+351  Obj 1485.0331 Primal inf 2.0215782e+08 (2517)
+702  Obj 19742.419 Primal inf 2.3731013e+08 (2833)
+1053  Obj 1.1539552e+10 Primal inf 2.1548549e+08 (2266)
+1404  Obj 1.723794e+10 Primal inf 2.4173489e+08 (3141)
+1755  Obj 1.7238167e+10 Primal inf 2.714411e+08 (3128)
+2106  Obj 1.7241469e+10 Primal inf 4.7081187e+08 (3183)
+2457  Obj 1.7241728e+10 Primal inf 3.9448973e+08 (3277)
+2808  Obj 1.724188e+10 Primal inf 4.4155116e+08 (3342)
+3159  Obj 1.7241946e+10 Primal inf 4.4590873e+08 (3396)
+3510  Obj 1.7242089e+10 Primal inf 4.9981172e+08 (3386)
+3861  Obj 1.7242646e+10 Primal inf 3.7653676e+08 (3472)
+4212  Obj 1.7248179e+10 Primal inf 4.2947079e+08 (3465)
+4563  Obj 1.7274932e+10 Primal inf 5.0847506e+08 (3517)
+4914  Obj 1.7275065e+10 Primal inf 3.81969e+08 (3581)
+5265  Obj 1.7275248e+10 Primal inf 4.4613797e+08 (3689)
+5616  Obj 1.7275446e+10 Primal inf 5.9105401e+08 (3834)
+5967  Obj 1.7276321e+10 Primal inf 1.0579895e+09 (3781)
+6318  Obj 1.72772e+10 Primal inf 8.6213683e+08 (3891)
+6669  Obj 2.2449658e+10 Primal inf 6.8967082e+08 (3650)
+7020  Obj 2.2469451e+10 Primal inf 7.5849888e+08 (3681)
+7371  Obj 2.2634523e+10 Primal inf 1.53387e+09 (3688)
+7722  Obj 4.0449437e+10 Primal inf 4.8252512e+08 (3699)
+8073  Obj 4.0680376e+10 Primal inf 5.5175944e+08 (3799)
+8424  Obj 4.2967417e+10 Primal inf 4.3671926e+08 (3766)
+8775  Obj 4.2968293e+10 Primal inf 4.6116642e+08 (3841)
+9126  Obj 5.0304915e+10 Primal inf 7.7364436e+08 (3923)
+9477  Obj 5.3975828e+10 Primal inf 5.6839757e+08 (4977)
+9828  Obj 5.3981379e+10 Primal inf 7.985351e+08 (5065)
+10179  Obj 5.4023823e+10 Primal inf 7.3479715e+08 (5030)
+10530  Obj 5.4073799e+10 Primal inf 5.8095645e+08 (4930)
+10881  Obj 5.4078852e+10 Primal inf 7.2070385e+08 (4904)
+11232  Obj 5.408987e+10 Primal inf 5.6359087e+08 (4941)
+11583  Obj 5.4112327e+10 Primal inf 6.5067748e+08 (4892)
+11934  Obj 5.4115342e+10 Primal inf 9.3838508e+08 (5031)
+12285  Obj 5.4133572e+10 Primal inf 6.9693247e+08 (5016)
+12636  Obj 5.4154858e+10 Primal inf 7.0720662e+08 (4979)
+12987  Obj 5.4178585e+10 Primal inf 9.479747e+08 (5004)
+13338  Obj 5.4178958e+10 Primal inf 8.8354643e+08 (5042)
+13689  Obj 5.4179364e+10 Primal inf 6.515473e+08 (4975)
+14040  Obj 5.4337451e+10 Primal inf 6.5595373e+08 (4964)
+14391  Obj 5.4713867e+10 Primal inf 6.2364161e+08 (4981)
+14742  Obj 5.4714025e+10 Primal inf 5.3274787e+08 (4848)
+15093  Obj 5.4725728e+10 Primal inf 2.5515112e+08 (3295)
+15444  Obj 5.4771185e+10 Primal inf 2.7457583e+08 (3755)
+15795  Obj 5.4771579e+10 Primal inf 2.3858246e+08 (3717)
+16146  Obj 5.4932516e+10 Primal inf 3.5747597e+08 (3816)
+16497  Obj 5.530372e+10 Primal inf 1.1352863e+09 (5805)
+16848  Obj 5.7006631e+10 Primal inf 5.2542967e+08 (6274)
+17199  Obj 5.7909823e+10 Primal inf 9.8328363e+08 (5721)
+17550  Obj 5.866339e+10 Primal inf 3.0561362e+09 (6779)
+17901  Obj 5.9581839e+10 Primal inf 1.33683e+09 (6072)
+18252  Obj 5.9841615e+10 Primal inf 2.5722009e+08 (3048)
+18603  Obj 6.0339881e+10 Primal inf 1.4295295e+08 (2972)
+18954  Obj 6.1460322e+10 Primal inf 1.7015795e+09 (5642)
+19305  Obj 6.317921e+10 Primal inf 1.9209446e+08 (3046)
+19656  Obj 6.3234231e+10 Primal inf 3.5380712e+08 (3187)
+20007  Obj 6.353212e+10 Primal inf 3.3859517e+08 (2834)
+20258  Obj 6.4083823e+10 Primal inf 3.7792203e+08 (3273)
+20609  Obj 6.4382987e+10 Primal inf 3.9481719e+08 (3328)
+20960  Obj 6.4459039e+10 Primal inf 37534756 (1748)
+21311  Obj 6.4696884e+10 Primal inf 37352122 (1705)
+21662  Obj 6.4953922e+10 Primal inf 1.8636151e+08 (2376)
+22013  Obj 6.5387368e+10 Primal inf 42078213 (1376)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
 Status: ok
 Termination condition: optimal
 Solution: 21906 primals, 50377 duals
-Objective: 6.10e+10
+Objective: 6.55e+10
 Solver model: not available
-Solver message: Optimal - objective value 61044271610.31913757
+Solver message: Optimal - objective value 65542206026.16180420
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22364  Obj 6.5465797e+10 Primal inf 4961499.4 (585)
+22715  Obj 6.552767e+10 Primal inf 23176700 (401)
+23066  Obj 6.5535893e+10 Primal inf 1329847.9 (120)
+23154  Obj 6.5542303e+10
+Optimal - objective value 6.5542206e+10
+After Postsolve, objective 6.5542206e+10, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 6.554220603e+10 - 23154 iterations time 5.192, Presolve 0.04
+Total time (CPU seconds):       5.42   (Wallclock seconds):       5.43
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
@@ -1628,10 +1633,10 @@ Solver message: Optimal - objective value 61044271610.31913757
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generator
-OCGT           -0.00
-onwind     204721.81
-offwind     79600.83
-solar      248107.69
+OCGT           -0.000
+onwind     220958.960
+offwind     75825.718
+solar      251269.010
 Name: p_nom_opt, dtype: float64
 </pre></div>
 </div>
@@ -1645,8 +1650,8 @@ Name: p_nom_opt, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>StorageUnit
-battery storage                 25414.245
-hydrogen storage underground    53296.658
+battery storage                 35544.217
+hydrogen storage underground    61986.162
 Name: p_nom_opt, dtype: float64
 </pre></div>
 </div>
@@ -1660,8 +1665,8 @@ Name: p_nom_opt, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>StorageUnit
-battery storage                  152.485470
-hydrogen storage underground    8953.838544
+battery storage                   213.265302
+hydrogen storage underground    10413.675216
 dtype: float64
 </pre></div>
 </div>
@@ -1680,7 +1685,7 @@ dtype: float64
 Attempting to set identical low and high ylims makes transformation singular; automatically expanding.
 </pre></div>
 </div>
-<img alt="_images/e2ee12d720c6b89111b22ea1860ce91d3ea233f75aa5924b517c88a1548bb0c4.png" src="_images/e2ee12d720c6b89111b22ea1860ce91d3ea233f75aa5924b517c88a1548bb0c4.png" />
+<img alt="_images/bc03f51446e580bf4aadffd15931ee9d600855f149e0f0771cdb0ad8a4328524.png" src="_images/bc03f51446e580bf4aadffd15931ee9d600855f149e0f0771cdb0ad8a4328524.png" />
 </div>
 </div>
 <p>We are also keen to see what technologies constitute the largest cost components. For that we’re going to define a small helper function:</p>
@@ -1712,12 +1717,12 @@ Attempting to set identical low and high ylims makes transformation singular; au
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>carrier
-battery storage                  2450.821728
-hydrogen storage underground    14718.372895
+battery storage                  3427.563007
+hydrogen storage underground    17118.054215
 OCGT                                0.000000
-offwind                         12591.554095
-onwind                          19741.697969
-solar                           11541.825126
+offwind                         11992.773756
+onwind                          21315.499026
+solar                           11688.315843
 dtype: float64
 </pre></div>
 </div>
@@ -1734,7 +1739,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/e3ad11b4af7399c2d10d3abd139c31bdc23693bb13c2aa44fd8ee08d7c92df87.png" src="_images/e3ad11b4af7399c2d10d3abd139c31bdc23693bb13c2aa44fd8ee08d7c92df87.png" />
+<img alt="_images/36773fcdcdc235d7db45158bf5037979457d5db9efa115e62d080da5dfd43dd1.png" src="_images/36773fcdcdc235d7db45158bf5037979457d5db9efa115e62d080da5dfd43dd1.png" />
 </div>
 </div>
 <p>or use to compute the cost per unit of electricity consumed:</p>
@@ -1752,7 +1757,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>127.46082892309398
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>136.8525438770803
 </pre></div>
 </div>
 </div>
@@ -1764,7 +1769,7 @@ dtype: float64
 </section>
 </section>
 <section id="sensitivity-analysis">
-<h2>Sensitivity Analysis<a class="headerlink" href="#sensitivity-analysis" title="Permalink to this headline">#</a></h2>
+<h2>Sensitivity Analysis<a class="headerlink" href="#sensitivity-analysis" title="Permalink to this heading">#</a></h2>
 <p>Sensitivity analyses constitute a core activity of energy system modelling. Below, you can find sensitivity analyses regarding the</p>
 <ol class="arabic simple">
 <li><p>variation in allowed CO<span class="math notranslate nohighlight">\(_2\)</span> emissions</p></li>
@@ -1796,13 +1801,13 @@ dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  47%|████▋     | 7/15 [00:00&lt;00:00, 58.17it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  40%|████      | 6/15 [00:00&lt;00:00, 55.60it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 45.09it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  80%|████████  | 12/15 [00:00&lt;00:00, 50.30it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 45.93it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 45.50it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1811,10 +1816,10 @@ dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 143.98it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 129.97it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.4s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.41s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -1823,83 +1828,80 @@ Termination condition: optimal
 Solution: 21906 primals, 50377 duals
 Objective: 2.75e+10
 Solver model: not available
-Solver message: Optimal - objective value 27532289223.69249725
+Solver message: Optimal - objective value 27530963951.09072876
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-78lvresj.lp -solve -solu /tmp/linopy-solve-agh6wi4e.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-wo5rin9v.lp -solve -solu /tmp/linopy-solve-u1bsoefn.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 27421 (-22956) rows, 20856 (-1050) columns and 77880 (-24006) elements
-Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033165059 ( 6.4525769%) - largest zero change 0.00033012146
-0  Obj 0 Primal inf 1.7358713e+08 (2190)
-362  Obj 1543.4857 Primal inf 2.0321318e+08 (2527)
-724  Obj 19832.97 Primal inf 2.3881486e+08 (2849)
-1086  Obj 68606166 Primal inf 2.6347822e+08 (3076)
-1448  Obj 1.5756001e+08 Primal inf 2.9079848e+08 (3241)
-1810  Obj 3.0625936e+09 Primal inf 2.8688716e+08 (3331)
-2172  Obj 3.3794089e+09 Primal inf 2.9465038e+08 (3413)
-2534  Obj 3.6678922e+09 Primal inf 3.01542e+08 (3466)
-2896  Obj 4.0392432e+09 Primal inf 3.0363182e+08 (3516)
-3258  Obj 4.1872803e+09 Primal inf 3.0117201e+08 (3557)
-3620  Obj 4.3128171e+09 Primal inf 2.9846672e+08 (3585)
-3982  Obj 4.44975e+09 Primal inf 3.0299305e+08 (3632)
-4344  Obj 4.5004666e+09 Primal inf 3.1235367e+08 (3669)
-4706  Obj 4.7258007e+09 Primal inf 2.9736591e+08 (3697)
-5068  Obj 5.0632555e+09 Primal inf 2.9474655e+08 (3711)
-5430  Obj 5.2500656e+09 Primal inf 2.8280721e+08 (3710)
-5792  Obj 5.5452757e+09 Primal inf 2.7516092e+08 (3709)
-6154  Obj 5.745717e+09 Primal inf 2.6300869e+08 (3681)
-6516  Obj 6.1572954e+09 Primal inf 2.5425807e+08 (3643)
-6878  Obj 6.6298093e+09 Primal inf 2.4477174e+08 (3607)
-7240  Obj 6.8733334e+09 Primal inf 2.29993e+08 (3523)
-7602  Obj 7.3288347e+09 Primal inf 2.245302e+08 (3509)
-7964  Obj 7.8478549e+09 Primal inf 2.1860265e+08 (3480)
-8326  Obj 8.3921361e+09 Primal inf 2.1376705e+08 (3443)
-8688  Obj 8.5549342e+09 Primal inf 2.0865676e+08 (3419)
-9050  Obj 9.4246121e+09 Primal inf 2.00783e+08 (3382)
-9412  Obj 9.983999e+09 Primal inf 1.997405e+08 (3360)
-9774  Obj 1.0702389e+10 Primal inf 1.8388731e+08 (3286)
-10136  Obj 1.1418148e+10 Primal inf 1.7173676e+08 (3222)
-10498  Obj 1.2127245e+10 Primal inf 1.6006885e+08 (3145)
-10860  Obj 1.2818885e+10 Primal inf 1.3977635e+08 (3006)
-11222  Obj 1.3703578e+10 Primal inf 1.2937387e+08 (2873)
-11584  Obj 1.4620667e+10 Primal inf 1.1227258e+08 (2693)
-11946  Obj 1.5429609e+10 Primal inf 1.2031809e+08 (4507)
-12308  Obj 1.5510581e+10 Primal inf 2.3557398e+08 (5964)
-12670  Obj 1.5860941e+10 Primal inf 8.5380587e+08 (6057)
-13032  Obj 1.6376397e+10 Primal inf 1.5397174e+08 (4220)
-13394  Obj 1.6866099e+10 Primal inf 2.9585181e+08 (5851)
-13756  Obj 1.7496187e+10 Primal inf 2.4097312e+08 (5549)
-14118  Obj 1.7635827e+10 Primal inf 1.8795567e+09 (5682)
-14480  Obj 1.8545574e+10 Primal inf 2.7283125e+08 (5471)
-14842  Obj 1.9031068e+10 Primal inf 2.9126375e+08 (5362)
-15204  Obj 1.9605184e+10 Primal inf 1.3436363e+08 (3999)
-15566  Obj 2.0272803e+10 Primal inf 4.6068034e+08 (10168)
-15928  Obj 2.0613056e+10 Primal inf 2.3474442e+08 (3458)
-16290  Obj 2.1641938e+10 Primal inf 2.7270698e+08 (3555)
-16652  Obj 2.2487055e+10 Primal inf 1.4957687e+08 (9472)
-17014  Obj 2.3099606e+10 Primal inf 6.8323035e+08 (6069)
-17376  Obj 2.3759526e+10 Primal inf 1.3148284e+08 (4210)
-17738  Obj 2.4122438e+10 Primal inf 5.6933951e+08 (10228)
-18100  Obj 2.467883e+10 Primal inf 8.254048e+08 (5579)
-18462  Obj 2.5273746e+10 Primal inf 2.7603008e+08 (4062)
-18824  Obj 2.5795064e+10 Primal inf 96874603 (3412)
-19186  Obj 2.6020775e+10 Primal inf 2.4085295e+08 (4166)
-19548  Obj 2.6395807e+10 Primal inf 1.7226387e+08 (3295)
-19910  Obj 2.6569161e+10 Primal inf 66965020 (9368)
-20272  Obj 2.6777608e+10 Primal inf 1.2718694e+08 (5078)
-20634  Obj 2.7108624e+10 Primal inf 51515515 (10161)
-20996  Obj 2.7221626e+10 Primal inf 27119258 (2392)
-21358  Obj 2.7364144e+10 Primal inf 70956385 (2886)
-21720  Obj 2.7455693e+10 Primal inf 1676940 (340)
-22078  Obj 2.7532295e+10
-Optimal - objective value 2.7532289e+10
-After Postsolve, objective 2.7532289e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 2.753228922e+10 - 22078 iterations time 3.712, Presolve 0.04
-Total time (CPU seconds):       3.96   (Wallclock seconds):       3.96
+Perturbing problem by 0.001% of 232.80852 - largest nonzero change 0.00033278527 ( 6.443095%) - largest zero change 0.0003312509
+0  Obj 0 Primal inf 1.7299319e+08 (2190)
+362  Obj 1533.1194 Primal inf 2.0311713e+08 (2526)
+724  Obj 57848.014 Primal inf 2.3613949e+08 (2828)
+1086  Obj 2.8005582e+09 Primal inf 2.6150356e+08 (3052)
+1448  Obj 3.0342168e+09 Primal inf 2.7839747e+08 (3215)
+1810  Obj 3.2850322e+09 Primal inf 2.892485e+08 (3326)
+2172  Obj 3.5802439e+09 Primal inf 2.9350237e+08 (3403)
+2534  Obj 3.9300418e+09 Primal inf 2.9781611e+08 (3464)
+2896  Obj 4.0999946e+09 Primal inf 3.016857e+08 (3509)
+3258  Obj 4.4218284e+09 Primal inf 3.0437211e+08 (3550)
+3620  Obj 4.7280502e+09 Primal inf 2.9352668e+08 (3570)
+3982  Obj 4.8248465e+09 Primal inf 2.9941131e+08 (3605)
+4344  Obj 5.008526e+09 Primal inf 2.8884774e+08 (3616)
+4706  Obj 5.1706973e+09 Primal inf 2.8933913e+08 (3659)
+5068  Obj 5.2476263e+09 Primal inf 2.9505609e+08 (3672)
+5430  Obj 5.4812997e+09 Primal inf 2.7845012e+08 (3671)
+5792  Obj 5.8070267e+09 Primal inf 2.7031312e+08 (3677)
+6154  Obj 6.031559e+09 Primal inf 2.5684759e+08 (3649)
+6516  Obj 6.3725062e+09 Primal inf 2.5031431e+08 (3618)
+6878  Obj 6.5629861e+09 Primal inf 2.391902e+08 (3590)
+7240  Obj 6.997145e+09 Primal inf 2.3028227e+08 (3531)
+7602  Obj 7.319649e+09 Primal inf 2.2595585e+08 (3478)
+7964  Obj 7.9581346e+09 Primal inf 2.1858597e+08 (3462)
+8326  Obj 8.5716818e+09 Primal inf 2.1062592e+08 (3432)
+8688  Obj 9.0443099e+09 Primal inf 2.0443271e+08 (3416)
+9050  Obj 9.6465756e+09 Primal inf 1.9484828e+08 (3370)
+9412  Obj 1.0192838e+10 Primal inf 1.8846609e+08 (3326)
+9774  Obj 1.0721949e+10 Primal inf 1.7803804e+08 (3248)
+10136  Obj 1.1488387e+10 Primal inf 1.6755284e+08 (3195)
+10498  Obj 1.2214466e+10 Primal inf 1.6045584e+08 (3129)
+10860  Obj 1.28859e+10 Primal inf 1.4813822e+08 (3024)
+11222  Obj 1.3954453e+10 Primal inf 1.2966223e+08 (2862)
+11584  Obj 1.5155672e+10 Primal inf 1.2128344e+08 (2711)
+11946  Obj 1.5753268e+10 Primal inf 2.2674791e+08 (4512)
+12308  Obj 1.5760857e+10 Primal inf 2.2740102e+08 (4264)
+12670  Obj 1.6407348e+10 Primal inf 2.5101132e+08 (4328)
+13032  Obj 1.6715096e+10 Primal inf 1.1910976e+09 (6179)
+13394  Obj 1.7158347e+10 Primal inf 1.8827406e+08 (4237)
+13756  Obj 1.7807919e+10 Primal inf 2.7075975e+08 (4263)
+14118  Obj 1.8747642e+10 Primal inf 1.3587532e+08 (4147)
+14480  Obj 1.9536598e+10 Primal inf 4.3615405e+08 (5558)
+14842  Obj 2.0230014e+10 Primal inf 2.8173038e+08 (4003)
+15204  Obj 2.0642846e+10 Primal inf 2.8790984e+08 (4034)
+15566  Obj 2.1389856e+10 Primal inf 1.5835412e+09 (9891)
+15928  Obj 2.1738427e+10 Primal inf 1.1423546e+08 (3541)
+16290  Obj 2.2614195e+10 Primal inf 5.1008176e+08 (6123)
+16652  Obj 2.3265665e+10 Primal inf 56685166 (3166)
+17014  Obj 2.3907691e+10 Primal inf 48172984 (3030)
+17376  Obj 2.4454737e+10 Primal inf 51341640 (3143)
+17738  Obj 2.518625e+10 Primal inf 4.9935247e+08 (5238)
+18100  Obj 2.5449481e+10 Primal inf 2.3483514e+10 (10422)
+18462  Obj 2.6045898e+10 Primal inf 6.4731107e+08 (5008)
+18824  Obj 2.6608591e+10 Primal inf 35728692 (3117)
+19186  Obj 2.6653792e+10 Primal inf 1.2646112e+08 (2554)
+19548  Obj 2.7032136e+10 Primal inf 24540647 (2593)
+19910  Obj 2.7170517e+10 Primal inf 17769485 (2605)
+20272  Obj 2.7306136e+10 Primal inf 8151234.4 (1255)
+20634  Obj 2.7512752e+10 Primal inf 709490.26 (230)
+20860  Obj 2.753097e+10
+Optimal - objective value 2.7530964e+10
+After Postsolve, objective 2.7530964e+10, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 2.753096395e+10 - 20860 iterations time 3.402, Presolve 0.04
+Total time (CPU seconds):       3.68   (Wallclock seconds):       3.66
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
@@ -1914,13 +1916,13 @@ Total time (CPU seconds):       3.96   (Wallclock seconds):       3.96
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  47%|████▋     | 7/15 [00:00&lt;00:00, 59.25it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  40%|████      | 6/15 [00:00&lt;00:00, 59.52it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 45.17it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  80%|████████  | 12/15 [00:00&lt;00:00, 47.80it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 45.46it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 43.77it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1929,10 +1931,10 @@ Total time (CPU seconds):       3.96   (Wallclock seconds):       3.96
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 136.97it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 109.30it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.4s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.43s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -1941,81 +1943,82 @@ Termination condition: optimal
 Solution: 21906 primals, 50377 duals
 Objective: 2.79e+10
 Solver model: not available
-Solver message: Optimal - objective value 27888335402.39853287
+Solver message: Optimal - objective value 27856903413.13719559
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-g2yat0hb.lp -solve -solu /tmp/linopy-solve-4qldxnyd.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-3rc9n2yi.lp -solve -solu /tmp/linopy-solve-il71r5l2.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 27421 (-22956) rows, 20856 (-1050) columns and 77880 (-24006) elements
-Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033165059 ( 6.4525769%) - largest zero change 0.00033012146
-0  Obj 0 Primal inf 1.7358713e+08 (2190)
-362  Obj 1543.4857 Primal inf 2.0321318e+08 (2527)
-724  Obj 19832.97 Primal inf 2.3881486e+08 (2849)
-1086  Obj 68606166 Primal inf 2.6347822e+08 (3076)
-1448  Obj 1.5756001e+08 Primal inf 2.9079848e+08 (3241)
-1810  Obj 3.0625936e+09 Primal inf 2.8688716e+08 (3331)
-2172  Obj 3.3794089e+09 Primal inf 2.9465038e+08 (3413)
-2534  Obj 3.6678922e+09 Primal inf 3.01542e+08 (3466)
-2896  Obj 4.0392432e+09 Primal inf 3.0363182e+08 (3516)
-3258  Obj 4.1872803e+09 Primal inf 3.0117201e+08 (3557)
-3620  Obj 4.3128171e+09 Primal inf 2.9846672e+08 (3585)
-3982  Obj 4.44975e+09 Primal inf 3.0299305e+08 (3632)
-4344  Obj 4.5004666e+09 Primal inf 3.1235367e+08 (3669)
-4706  Obj 4.7258007e+09 Primal inf 2.9736591e+08 (3697)
-5068  Obj 5.0632555e+09 Primal inf 2.9474655e+08 (3711)
-5430  Obj 5.2500656e+09 Primal inf 2.8280721e+08 (3710)
-5792  Obj 5.5452757e+09 Primal inf 2.7516092e+08 (3709)
-6154  Obj 5.745717e+09 Primal inf 2.6300869e+08 (3681)
-6516  Obj 6.1572954e+09 Primal inf 2.5425807e+08 (3643)
-6878  Obj 6.6298093e+09 Primal inf 2.4477174e+08 (3607)
-7240  Obj 6.8733334e+09 Primal inf 2.29993e+08 (3523)
-7602  Obj 7.3288347e+09 Primal inf 2.245302e+08 (3509)
-7964  Obj 7.8478549e+09 Primal inf 2.1860265e+08 (3480)
-8326  Obj 8.3921361e+09 Primal inf 2.1376705e+08 (3443)
-8688  Obj 8.5549342e+09 Primal inf 2.0865676e+08 (3419)
-9050  Obj 9.4246121e+09 Primal inf 2.00783e+08 (3382)
-9412  Obj 9.983999e+09 Primal inf 1.997405e+08 (3360)
-9774  Obj 1.0702389e+10 Primal inf 1.8388731e+08 (3286)
-10136  Obj 1.1418148e+10 Primal inf 1.7173676e+08 (3222)
-10498  Obj 1.2127245e+10 Primal inf 1.6006885e+08 (3145)
-10860  Obj 1.2818885e+10 Primal inf 1.3977635e+08 (3006)
-11222  Obj 1.3703578e+10 Primal inf 1.303274e+08 (2874)
-11584  Obj 1.4261462e+10 Primal inf 1.3194711e+08 (4638)
-11946  Obj 1.4923753e+10 Primal inf 1.5222116e+08 (4582)
-12308  Obj 1.5684444e+10 Primal inf 1.8615517e+08 (4567)
-12670  Obj 1.6526259e+10 Primal inf 1.1338243e+09 (10832)
-13032  Obj 1.7171331e+10 Primal inf 1.7069725e+08 (4459)
-13394  Obj 1.811913e+10 Primal inf 4.7515257e+09 (10829)
-13756  Obj 1.8974925e+10 Primal inf 2.3219815e+08 (4484)
-14118  Obj 2.0521033e+10 Primal inf 2.7350643e+08 (4499)
-14480  Obj 2.052164e+10 Primal inf 2.8355946e+08 (4445)
-14842  Obj 2.0569709e+10 Primal inf 3.9244397e+08 (4517)
-15204  Obj 2.2770223e+10 Primal inf 1.9841368e+08 (4383)
-15566  Obj 2.3916082e+10 Primal inf 1.706964e+09 (4879)
-15928  Obj 2.4406063e+10 Primal inf 5.5719277e+08 (11376)
-16290  Obj 2.5141317e+10 Primal inf 1.7990424e+08 (5351)
-16652  Obj 2.5704689e+10 Primal inf 80248899 (2875)
-17014  Obj 2.6156494e+10 Primal inf 6.3246481e+08 (8628)
-17376  Obj 2.666511e+10 Primal inf 1.7832882e+08 (10118)
-17738  Obj 2.6994086e+10 Primal inf 3.8239105e+08 (5998)
-18100  Obj 2.7122772e+10 Primal inf 1.3433181e+08 (2329)
-18462  Obj 2.7272245e+10 Primal inf 16053984 (8780)
-18824  Obj 2.735923e+10 Primal inf 24206498 (2073)
-19186  Obj 2.7525905e+10 Primal inf 34639125 (3542)
-19548  Obj 2.7725026e+10 Primal inf 7786364.3 (2286)
-19910  Obj 2.7825704e+10 Primal inf 2429938.7 (8155)
-20272  Obj 2.7833595e+10 Primal inf 72846171 (1750)
-20634  Obj 2.7852605e+10 Primal inf 764655.6 (573)
-20996  Obj 2.7882262e+10 Primal inf 466342.81 (319)
-21266  Obj 2.7888341e+10
-Optimal - objective value 2.7888335e+10
-After Postsolve, objective 2.7888335e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 2.78883354e+10 - 21266 iterations time 8.282, Presolve 0.05
-Total time (CPU seconds):       8.53   (Wallclock seconds):       8.55
+Perturbing problem by 0.001% of 232.80852 - largest nonzero change 0.00033278527 ( 6.443095%) - largest zero change 0.0003312509
+0  Obj 0 Primal inf 1.7299319e+08 (2190)
+362  Obj 1533.1194 Primal inf 2.0311713e+08 (2526)
+724  Obj 57848.014 Primal inf 2.3613949e+08 (2828)
+1086  Obj 2.8005582e+09 Primal inf 2.6150356e+08 (3052)
+1448  Obj 3.0342168e+09 Primal inf 2.7839747e+08 (3215)
+1810  Obj 3.2850322e+09 Primal inf 2.892485e+08 (3326)
+2172  Obj 3.5802439e+09 Primal inf 2.9350237e+08 (3403)
+2534  Obj 3.9300418e+09 Primal inf 2.9781611e+08 (3464)
+2896  Obj 4.0999946e+09 Primal inf 3.016857e+08 (3509)
+3258  Obj 4.4218284e+09 Primal inf 3.0437211e+08 (3550)
+3620  Obj 4.7280502e+09 Primal inf 2.9352668e+08 (3570)
+3982  Obj 4.8248465e+09 Primal inf 2.9941131e+08 (3605)
+4344  Obj 5.008526e+09 Primal inf 2.8884774e+08 (3616)
+4706  Obj 5.1706973e+09 Primal inf 2.8933913e+08 (3659)
+5068  Obj 5.2476263e+09 Primal inf 2.9505609e+08 (3672)
+5430  Obj 5.4812997e+09 Primal inf 2.7845012e+08 (3671)
+5792  Obj 5.8070267e+09 Primal inf 2.7031312e+08 (3677)
+6154  Obj 6.031559e+09 Primal inf 2.5684759e+08 (3649)
+6516  Obj 6.3725062e+09 Primal inf 2.5031431e+08 (3618)
+6878  Obj 6.5629861e+09 Primal inf 2.391902e+08 (3590)
+7240  Obj 6.997145e+09 Primal inf 2.3028227e+08 (3531)
+7602  Obj 7.319649e+09 Primal inf 2.2595585e+08 (3478)
+7964  Obj 7.9581346e+09 Primal inf 2.1858597e+08 (3462)
+8326  Obj 8.5716818e+09 Primal inf 2.1062592e+08 (3432)
+8688  Obj 9.0443099e+09 Primal inf 2.0443271e+08 (3416)
+9050  Obj 9.6465756e+09 Primal inf 1.9484828e+08 (3370)
+9412  Obj 1.0192838e+10 Primal inf 1.8846609e+08 (3326)
+9774  Obj 1.0721949e+10 Primal inf 1.7803804e+08 (3248)
+10136  Obj 1.1488387e+10 Primal inf 1.6755284e+08 (3195)
+10498  Obj 1.2214466e+10 Primal inf 1.6045584e+08 (3129)
+10860  Obj 1.28859e+10 Primal inf 1.4813822e+08 (3024)
+11222  Obj 1.3954453e+10 Primal inf 1.3022239e+08 (2863)
+11584  Obj 1.4717764e+10 Primal inf 1.4139479e+08 (4668)
+11946  Obj 1.5079512e+10 Primal inf 1.421727e+08 (4583)
+12308  Obj 1.5417026e+10 Primal inf 1.5117054e+08 (4491)
+12670  Obj 1.5994899e+10 Primal inf 2.013803e+08 (4514)
+13032  Obj 1.6211699e+10 Primal inf 2.9595555e+08 (4549)
+13394  Obj 1.6935939e+10 Primal inf 2.6811258e+08 (4515)
+13756  Obj 1.9381128e+10 Primal inf 2.5509393e+08 (4547)
+14118  Obj 2.0445421e+10 Primal inf 1.0862868e+09 (10555)
+14480  Obj 2.091024e+10 Primal inf 3.1071513e+08 (5383)
+14842  Obj 2.1710661e+10 Primal inf 3.6357781e+08 (9740)
+15204  Obj 2.2475942e+10 Primal inf 3.5841495e+08 (5495)
+15566  Obj 2.305429e+10 Primal inf 1.1577426e+08 (3621)
+15928  Obj 2.3893772e+10 Primal inf 5.4448247e+09 (10171)
+16290  Obj 2.3913506e+10 Primal inf 6.6256191e+08 (6618)
+16652  Obj 2.4998935e+10 Primal inf 8.6839583e+08 (9970)
+17014  Obj 2.5458166e+10 Primal inf 7.1537464e+08 (9626)
+17376  Obj 2.5801951e+10 Primal inf 2.8114878e+08 (10252)
+17738  Obj 2.6275872e+10 Primal inf 47514707 (3106)
+18100  Obj 2.6622845e+10 Primal inf 2.8003786e+08 (5136)
+18462  Obj 2.6946708e+10 Primal inf 4.3611418e+08 (8286)
+18824  Obj 2.7162606e+10 Primal inf 56220218 (8906)
+19186  Obj 2.7414626e+10 Primal inf 12949483 (2472)
+19548  Obj 2.7596522e+10 Primal inf 12313979 (1457)
+19910  Obj 2.7688647e+10 Primal inf 21169528 (2063)
+20272  Obj 2.7761383e+10 Primal inf 4318122.2 (1860)
+20531  Obj 2.7784707e+10 Primal inf 9161929.7 (1717)
+20893  Obj 2.7822078e+10 Primal inf 1038251.4 (496)
+21255  Obj 2.7847334e+10 Primal inf 366417.59 (270)
+21545  Obj 2.7856909e+10
+Optimal - objective value 2.7856903e+10
+After Postsolve, objective 2.7856903e+10, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 2.785690341e+10 - 21545 iterations time 8.122, Presolve 0.04
+Total time (CPU seconds):       8.37   (Wallclock seconds):       8.36
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
@@ -2030,13 +2033,13 @@ Total time (CPU seconds):       8.53   (Wallclock seconds):       8.55
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  40%|████      | 6/15 [00:00&lt;00:00, 55.48it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  40%|████      | 6/15 [00:00&lt;00:00, 55.90it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  80%|████████  | 12/15 [00:00&lt;00:00, 48.54it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  80%|████████  | 12/15 [00:00&lt;00:00, 46.15it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 42.70it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 41.51it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -2045,7 +2048,7 @@ Total time (CPU seconds):       8.53   (Wallclock seconds):       8.55
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 105.57it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 117.07it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.44s
@@ -2055,94 +2058,92 @@ Total time (CPU seconds):       8.53   (Wallclock seconds):       8.55
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-m1d_ij7_.lp -solve -solu /tmp/linopy-solve-3nyqb361.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-jffn8565.lp -solve -solu /tmp/linopy-solve-y4gcia93.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 27421 (-22956) rows, 20856 (-1050) columns and 77880 (-24006) elements
-Perturbing problem by 0.001% of 231.67376 - largest nonzero change 0.00033165059 ( 6.4525769%) - largest zero change 0.00033012146
-0  Obj 0 Primal inf 1.7358713e+08 (2190)
-362  Obj 1543.4857 Primal inf 2.0321318e+08 (2527)
-724  Obj 19832.97 Primal inf 2.3881486e+08 (2849)
-1086  Obj 68606166 Primal inf 2.6347822e+08 (3076)
-1448  Obj 1.5756001e+08 Primal inf 2.9079848e+08 (3241)
-1810  Obj 3.0625936e+09 Primal inf 2.8688716e+08 (3331)
-2172  Obj 3.3794089e+09 Primal inf 2.9465038e+08 (3413)
-2534  Obj 3.6678922e+09 Primal inf 3.01542e+08 (3466)
-2896  Obj 4.0392432e+09 Primal inf 3.0363182e+08 (3516)
-3258  Obj 4.1872803e+09 Primal inf 3.0117201e+08 (3557)
-3620  Obj 4.3128171e+09 Primal inf 2.9846672e+08 (3585)
-3982  Obj 4.44975e+09 Primal inf 3.0299305e+08 (3632)
-4344  Obj 4.5004666e+09 Primal inf 3.1235367e+08 (3669)
-4706  Obj 4.7258007e+09 Primal inf 2.9736591e+08 (3697)
-5068  Obj 5.0632555e+09 Primal inf 2.9474655e+08 (3711)
-5430  Obj 5.2500656e+09 Primal inf 2.8280721e+08 (3710)
-5792  Obj 5.5452757e+09 Primal inf 2.7516092e+08 (3709)
-6154  Obj 5.745717e+09 Primal inf 2.6300869e+08 (3681)
-6516  Obj 6.1572954e+09 Primal inf 2.5425807e+08 (3643)
-6878  Obj 6.6298093e+09 Primal inf 2.4477174e+08 (3607)
-7240  Obj 6.8733334e+09 Primal inf 2.29993e+08 (3523)
-7602  Obj 7.3288347e+09 Primal inf 2.245302e+08 (3509)
-7964  Obj 7.8478549e+09 Primal inf 2.1860265e+08 (3480)
-8326  Obj 8.3921361e+09 Primal inf 2.1554735e+08 (3444)
-8688  Obj 8.9605578e+09 Primal inf 2.2113968e+08 (4886)
-9050  Obj 9.1631249e+09 Primal inf 2.3531385e+08 (4873)
-9412  Obj 9.9255584e+09 Primal inf 2.4937662e+08 (4862)
-9774  Obj 1.1051789e+10 Primal inf 2.6537144e+08 (4842)
-10136  Obj 1.2444448e+10 Primal inf 3.3466986e+08 (4832)
-10498  Obj 1.2445043e+10 Primal inf 3.6173524e+08 (4764)
-10860  Obj 1.319728e+10 Primal inf 2.7791782e+08 (3614)
-11222  Obj 1.3941682e+10 Primal inf 2.7579123e+09 (10531)
-11584  Obj 1.4386488e+10 Primal inf 2.747948e+08 (4326)
-11946  Obj 1.4393479e+10 Primal inf 3.2903564e+08 (4319)
-12308  Obj 1.4410583e+10 Primal inf 3.3692406e+08 (4347)
-12670  Obj 1.4570312e+10 Primal inf 2.8860554e+09 (10142)
-13032  Obj 1.4944089e+10 Primal inf 3.4327131e+08 (4469)
-13394  Obj 1.6080015e+10 Primal inf 4.3454531e+08 (4482)
-13756  Obj 1.8571402e+10 Primal inf 5.0816655e+08 (4434)
-14118  Obj 2.0591245e+10 Primal inf 2.9769126e+08 (4793)
-14480  Obj 2.1531187e+10 Primal inf 2.3896842e+08 (4553)
-14842  Obj 2.2147872e+10 Primal inf 3.8332803e+08 (4432)
-15204  Obj 2.390307e+10 Primal inf 2.9270981e+08 (4385)
-15566  Obj 2.4293357e+10 Primal inf 1.5208712e+08 (4688)
-15928  Obj 2.4955818e+10 Primal inf 4.1040416e+08 (10289)
-16290  Obj 2.5678498e+10 Primal inf 3.6954849e+09 (12414)
-16652  Obj 2.6088002e+10 Primal inf 4.8394454e+08 (10411)
-17014  Obj 2.6530054e+10 Primal inf 7.422039e+09 (11852)
-17376  Obj 2.7082901e+10 Primal inf 2.1514694e+08 (9400)
-17738  Obj 2.7162898e+10 Primal inf 1.2934618e+08 (3897)
-18100  Obj 2.765611e+10 Primal inf 2.7362431e+08 (9267)
-18462  Obj 2.8059599e+10 Primal inf 1.4264649e+08 (9350)
-18824  Obj 2.8496325e+10 Primal inf 2.9349415e+08 (14402)
-19186  Obj 2.8905819e+10 Primal inf 3.3711798e+08 (4997)
-19548  Obj 2.9321363e+10 Primal inf 1.0049102e+08 (3819)
-19910  Obj 2.9689786e+10 Primal inf 67558342 (3380)
-20272  Obj 2.9846163e+10 Primal inf 68764222 (8586)
-20634  Obj 3.019256e+10 Primal inf 3.9610126e+09 (9655)
-20996  Obj 3.0559724e+10 Primal inf 1.4524404e+09 (9498)
-21358  Obj 3.1012442e+10 Primal inf 3.096173e+08 (8823)
-21720  Obj 3.1223699e+10 Primal inf 1.0591685e+08 (8644)
-22082  Obj 3.1462258e+10 Primal inf 21406930 (1998)
-22444  Obj 3.1636109e+10 Primal inf 32762038 (2299)
-22806  Obj 3.1767644e+10 Primal inf 3.9105729e+08 (8718)
+Perturbing problem by 0.001% of 232.80852 - largest nonzero change 0.00033278527 ( 6.443095%) - largest zero change 0.0003312509
+0  Obj 0 Primal inf 1.7299319e+08 (2190)
+362  Obj 1533.1194 Primal inf 2.0311713e+08 (2526)
+724  Obj 57848.014 Primal inf 2.3613949e+08 (2828)
+1086  Obj 2.8005582e+09 Primal inf 2.6150356e+08 (3052)
+1448  Obj 3.0342168e+09 Primal inf 2.7839747e+08 (3215)
+1810  Obj 3.2850322e+09 Primal inf 2.892485e+08 (3326)
+2172  Obj 3.5802439e+09 Primal inf 2.9350237e+08 (3403)
+2534  Obj 3.9300418e+09 Primal inf 2.9781611e+08 (3464)
+2896  Obj 4.0999946e+09 Primal inf 3.016857e+08 (3509)
+3258  Obj 4.4218284e+09 Primal inf 3.0437211e+08 (3550)
+3620  Obj 4.7280502e+09 Primal inf 2.9352668e+08 (3570)
+3982  Obj 4.8248465e+09 Primal inf 2.9941131e+08 (3605)
+4344  Obj 5.008526e+09 Primal inf 2.8884774e+08 (3616)
+4706  Obj 5.1706973e+09 Primal inf 2.8933913e+08 (3659)
+5068  Obj 5.2476263e+09 Primal inf 2.9505609e+08 (3672)
+5430  Obj 5.4812997e+09 Primal inf 2.7845012e+08 (3671)
+5792  Obj 5.8070267e+09 Primal inf 2.7031312e+08 (3677)
+6154  Obj 6.031559e+09 Primal inf 2.5684759e+08 (3649)
+6516  Obj 6.3725062e+09 Primal inf 2.5031431e+08 (3618)
+6878  Obj 6.5629861e+09 Primal inf 2.391902e+08 (3590)
+7240  Obj 6.997145e+09 Primal inf 2.3028227e+08 (3531)
+7602  Obj 7.319649e+09 Primal inf 2.2595585e+08 (3478)
+7964  Obj 7.9581346e+09 Primal inf 2.1858597e+08 (3462)
+8326  Obj 8.5716818e+09 Primal inf 2.1195454e+08 (3433)
+8688  Obj 9.2733313e+09 Primal inf 2.3006355e+08 (4916)
+9050  Obj 1.0074764e+10 Primal inf 2.2648619e+08 (4871)
+9412  Obj 1.010996e+10 Primal inf 2.5448396e+08 (4890)
+9774  Obj 1.050673e+10 Primal inf 2.8517319e+08 (4835)
+10136  Obj 1.152353e+10 Primal inf 3.1166611e+08 (4785)
+10498  Obj 1.318212e+10 Primal inf 3.5589546e+08 (4767)
+10860  Obj 1.3989431e+10 Primal inf 2.3207144e+08 (4321)
+11222  Obj 1.5061416e+10 Primal inf 3.1902287e+08 (4733)
+11584  Obj 1.5061964e+10 Primal inf 3.2956457e+08 (4684)
+11946  Obj 1.5062519e+10 Primal inf 3.4293713e+08 (4649)
+12308  Obj 1.5067344e+10 Primal inf 3.5765146e+08 (4590)
+12670  Obj 1.506822e+10 Primal inf 4.7931661e+08 (4549)
+13032  Obj 1.5099726e+10 Primal inf 4.0525807e+08 (4550)
+13394  Obj 1.5457117e+10 Primal inf 5.7063311e+08 (4683)
+13756  Obj 1.6985238e+10 Primal inf 4.5066302e+08 (4536)
+14118  Obj 1.6997431e+10 Primal inf 5.7238001e+08 (4487)
+14480  Obj 1.8062946e+10 Primal inf 3.9058908e+09 (9866)
+14842  Obj 1.8407806e+10 Primal inf 4.7963632e+08 (4430)
+15204  Obj 2.1008753e+10 Primal inf 1.0229182e+10 (15564)
+15566  Obj 2.246235e+10 Primal inf 4.2420534e+08 (9526)
+15928  Obj 2.3529751e+10 Primal inf 1.982643e+08 (3710)
+16290  Obj 2.4004207e+10 Primal inf 8.4776587e+08 (9582)
+16652  Obj 2.5625073e+10 Primal inf 2.8501364e+08 (9074)
+17014  Obj 2.6473017e+10 Primal inf 4.8862113e+09 (11274)
+17376  Obj 2.6884511e+10 Primal inf 3.9531057e+09 (11899)
+17738  Obj 2.7537869e+10 Primal inf 3.328826e+09 (11039)
+18100  Obj 2.8184578e+10 Primal inf 4.4566052e+08 (10209)
+18462  Obj 2.8721279e+10 Primal inf 1.0838665e+09 (9708)
+18824  Obj 2.9220581e+10 Primal inf 1.2347605e+08 (9194)
+19186  Obj 2.9700908e+10 Primal inf 1.1834513e+09 (16540)
+19548  Obj 2.9984512e+10 Primal inf 55003760 (3009)
+19910  Obj 3.0356788e+10 Primal inf 2.1454346e+08 (8820)
+20272  Obj 3.058234e+10 Primal inf 74480968 (8643)
+20634  Obj 3.0849691e+10 Primal inf 75961140 (2887)
+20996  Obj 3.1154419e+10 Primal inf 1.0947774e+09 (10597)
+21358  Obj 3.1355915e+10 Primal inf 83571161 (3457)
+21720  Obj 3.1463699e+10 Primal inf 58376450 (2624)
+22082  Obj 3.1592262e+10 Primal inf 27676870 (2652)
+22444  Obj 3.1766976e+10 Primal inf 28279966 (2668)
+22806  Obj 3.1948191e+10 Primal inf 5615310.7 (1622)
+23168  Obj 3.2059835e+10 Primal inf 4485765.4 (1061)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
 Status: ok
 Termination condition: optimal
 Solution: 21906 primals, 50377 duals
-Objective: 3.22e+10
+Objective: 3.21e+10
 Solver model: not available
-Solver message: Optimal - objective value 32192481955.19141006
+Solver message: Optimal - objective value 32113939119.82577133
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23168  Obj 3.1969679e+10 Primal inf 11376558 (1717)
-23530  Obj 3.2064348e+10 Primal inf 4211493.9 (1230)
-23892  Obj 3.2147845e+10 Primal inf 1647035.2 (824)
-24254  Obj 3.2186696e+10 Primal inf 549876.55 (348)
-24410  Obj 3.219249e+10
-Optimal - objective value 3.2192482e+10
-After Postsolve, objective 3.2192482e+10, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 3.219248196e+10 - 24410 iterations time 11.042, Presolve 0.05
-Total time (CPU seconds):       11.33   (Wallclock seconds):       11.35
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23530  Obj 3.2106209e+10 Primal inf 253501.11 (295)
+23800  Obj 3.2113947e+10
+Optimal - objective value 3.2113939e+10
+After Postsolve, objective 3.2113939e+10, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 3.211393912e+10 - 23800 iterations time 9.512, Presolve 0.03
+Total time (CPU seconds):       9.77   (Wallclock seconds):       9.81
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
@@ -2157,13 +2158,25 @@ Total time (CPU seconds):       11.33   (Wallclock seconds):       11.35
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  40%|████      | 6/15 [00:00&lt;00:00, 58.11it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  40%|████      | 6/15 [00:00&lt;00:00, 56.25it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  53%|█████▎    | 8/15 [00:00&lt;00:00, 52.96it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  80%|████████  | 12/15 [00:00&lt;00:00, 50.10it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 46.55it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 136.14it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.4s
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -2203,193 +2216,12 @@ Total time (CPU seconds):       11.33   (Wallclock seconds):       11.35
 <span class="g g-Whitespace">   </span><span class="mi">1053</span> <span class="k">finally</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">1054</span>     <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="p">(</span><span class="n">problem_fn</span><span class="p">,</span> <span class="n">solution_fn</span><span class="p">):</span>
 
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/solvers.py:130,</span> in <span class="ni">run_cbc</span><span class="nt">(model, io_api, problem_fn, solution_fn, log_fn, warmstart_fn, basis_fn, keep_files, **solver_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">124</span> <span class="k">if</span> <span class="n">io_api</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">io_api</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;lp&quot;</span><span class="p">,</span> <span class="s2">&quot;mps&quot;</span><span class="p">]:</span>
-<span class="g g-Whitespace">    </span><span class="mi">125</span>     <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">126</span>         <span class="sa">f</span><span class="s2">&quot;IO setting &#39;</span><span class="si">{</span><span class="n">io_api</span><span class="si">}</span><span class="s2">&#39; not available for cbc solver. &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">127</span>         <span class="s2">&quot;Falling back to `lp`.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">128</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">130</span> <span class="n">problem_fn</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="n">problem_fn</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">132</span> <span class="c1"># printingOptions is about what goes in solution file</span>
-<span class="g g-Whitespace">    </span><span class="mi">133</span> <span class="n">command</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;cbc -printingOptions all -import </span><span class="si">{</span><span class="n">problem_fn</span><span class="si">}</span><span class="s2"> &quot;</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/io.py:296,</span> in <span class="ni">to_file</span><span class="nt">(m, fn)</span>
-<span class="g g-Whitespace">    </span><span class="mi">293</span> <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">295</span> <span class="n">objective_to_file</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="n">log</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">296</span> <span class="n">constraints_to_file</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="n">log</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">297</span> <span class="n">bounds_to_file</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="n">log</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">298</span> <span class="n">binaries_to_file</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="n">log</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/io.py:142,</span> in <span class="ni">constraints_to_file</span><span class="nt">(m, f, log, batch_size)</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span> <span class="n">batch</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">142</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">constraints</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">flat</span>
-<span class="g g-Whitespace">    </span><span class="mi">144</span>     <span class="n">labels</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">values</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span>     <span class="nb">vars</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">values</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/constraints.py:481,</span> in <span class="ni">Constraint.flat</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">479</span> <span class="n">agg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">coeffs</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">,</span> <span class="n">rhs</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="n">sign</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">480</span> <span class="n">agg</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="s2">&quot;first&quot;</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">agg</span><span class="p">})</span>
-<span class="ne">--&gt; </span><span class="mi">481</span> <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="s2">&quot;vars&quot;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">agg</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">483</span> <span class="n">any_nan</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">484</span> <span class="k">if</span> <span class="n">any_nan</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/generic.py:1269,</span> in <span class="ni">DataFrameGroupBy.aggregate</span><span class="nt">(self, func, engine, engine_kwargs, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1266</span> <span class="n">func</span> <span class="o">=</span> <span class="n">maybe_mangle_lambdas</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1268</span> <span class="n">op</span> <span class="o">=</span> <span class="n">GroupByApply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1269</span> <span class="n">result</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">agg</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1270</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">is_dict_like</span><span class="p">(</span><span class="n">func</span><span class="p">)</span> <span class="ow">and</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1271</span>     <span class="k">return</span> <span class="n">result</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/apply.py:163,</span> in <span class="ni">Apply.agg</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">160</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_str</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">162</span> <span class="k">if</span> <span class="n">is_dict_like</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">163</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">agg_dict_like</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">164</span> <span class="k">elif</span> <span class="n">is_list_like</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">165</span>     <span class="c1"># we require a list, but not a &#39;str&#39;</span>
-<span class="g g-Whitespace">    </span><span class="mi">166</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">agg_list_like</span><span class="p">()</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/apply.py:420,</span> in <span class="ni">Apply.agg_dict_like</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">417</span>         <span class="n">results</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">colg</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">how</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">how</span> <span class="ow">in</span> <span class="n">arg</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
-<span class="g g-Whitespace">    </span><span class="mi">418</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">419</span>         <span class="c1"># key used for column selection and output</span>
-<span class="ne">--&gt; </span><span class="mi">420</span>         <span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
-<span class="nn">    421             key: obj._gotitem(key, ndim=1).agg(how) for key, how</span> in <span class="ni">arg.items</span><span class="nt">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">422</span>         <span class="p">}</span>
-<span class="g g-Whitespace">    </span><span class="mi">424</span> <span class="c1"># set the final keys</span>
-<span class="g g-Whitespace">    </span><span class="mi">425</span> <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">arg</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/apply.py:421,</span> in <span class="ni">&lt;dictcomp&gt;</span><span class="nt">(.0)</span>
-<span class="g g-Whitespace">    </span><span class="mi">417</span>         <span class="n">results</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">colg</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">how</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">how</span> <span class="ow">in</span> <span class="n">arg</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
-<span class="g g-Whitespace">    </span><span class="mi">418</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">419</span>         <span class="c1"># key used for column selection and output</span>
-<span class="g g-Whitespace">    </span><span class="mi">420</span>         <span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
-<span class="nn">--&gt; 421             key: obj._gotitem(key, ndim=1).agg(how) for key, how</span> in <span class="ni">arg.items</span><span class="nt">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">422</span>         <span class="p">}</span>
-<span class="g g-Whitespace">    </span><span class="mi">424</span> <span class="c1"># set the final keys</span>
-<span class="g g-Whitespace">    </span><span class="mi">425</span> <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">arg</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/generic.py:232,</span> in <span class="ni">SeriesGroupBy.aggregate</span><span class="nt">(self, func, engine, engine_kwargs, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">229</span>     <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="g g-Whitespace">    </span><span class="mi">231</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">232</span>     <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">234</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">Iterable</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">235</span>     <span class="c1"># Catch instances of lists / tuples</span>
-<span class="g g-Whitespace">    </span><span class="mi">236</span>     <span class="c1"># but not the class list / tuple itself.</span>
-<span class="g g-Whitespace">    </span><span class="mi">237</span>     <span class="n">func</span> <span class="o">=</span> <span class="n">maybe_mangle_lambdas</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/groupby.py:2263,</span> in <span class="ni">GroupBy.sum</span><span class="nt">(self, numeric_only, min_count, engine, engine_kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2258</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2259</span>     <span class="c1"># If we are grouping on categoricals we want unobserved categories to</span>
-<span class="g g-Whitespace">   </span><span class="mi">2260</span>     <span class="c1"># return zero, rather than the default of NaN which the reindexing in</span>
-<span class="g g-Whitespace">   </span><span class="mi">2261</span>     <span class="c1"># _agg_general() returns. GH #31422</span>
-<span class="g g-Whitespace">   </span><span class="mi">2262</span>     <span class="k">with</span> <span class="n">com</span><span class="o">.</span><span class="n">temp_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;observed&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">2263</span>         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agg_general</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">2264</span>             <span class="n">numeric_only</span><span class="o">=</span><span class="n">numeric_only</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2265</span>             <span class="n">min_count</span><span class="o">=</span><span class="n">min_count</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2266</span>             <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2267</span>             <span class="n">npfunc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2268</span>         <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2270</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reindex_output</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/groupby.py:1422,</span> in <span class="ni">GroupBy._agg_general</span><span class="nt">(self, numeric_only, min_count, alias, npfunc)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1413</span> <span class="nd">@final</span>
-<span class="g g-Whitespace">   </span><span class="mi">1414</span> <span class="k">def</span> <span class="nf">_agg_general</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1415</span>     <span class="bp">self</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1420</span>     <span class="n">npfunc</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1421</span> <span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1422</span>     <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cython_agg_general</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1423</span>         <span class="n">how</span><span class="o">=</span><span class="n">alias</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1424</span>         <span class="n">alt</span><span class="o">=</span><span class="n">npfunc</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1425</span>         <span class="n">numeric_only</span><span class="o">=</span><span class="n">numeric_only</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1426</span>         <span class="n">min_count</span><span class="o">=</span><span class="n">min_count</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1427</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1428</span>     <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">__finalize__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;groupby&quot;</span><span class="p">)</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/groupby.py:1507,</span> in <span class="ni">GroupBy._cython_agg_general</span><span class="nt">(self, how, alt, numeric_only, min_count, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1503</span>         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agg_py_fallback</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="n">alt</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1505</span>     <span class="k">return</span> <span class="n">result</span>
-<span class="ne">-&gt; </span><span class="mi">1507</span> <span class="n">new_mgr</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">grouped_reduce</span><span class="p">(</span><span class="n">array_func</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1508</span> <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrap_agged_manager</span><span class="p">(</span><span class="n">new_mgr</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1509</span> <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrap_aggregated_output</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/internals/base.py:197,</span> in <span class="ni">SingleDataManager.grouped_reduce</span><span class="nt">(self, func)</span>
-<span class="g g-Whitespace">    </span><span class="mi">195</span> <span class="k">def</span> <span class="nf">grouped_reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">196</span>     <span class="n">arr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span>
-<span class="ne">--&gt; </span><span class="mi">197</span>     <span class="n">res</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">198</span>     <span class="n">index</span> <span class="o">=</span> <span class="n">default_index</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">200</span>     <span class="n">mgr</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/groupby.py:1490,</span> in <span class="ni">GroupBy._cython_agg_general.&lt;locals&gt;.array_func</span><span class="nt">(values)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1488</span> <span class="k">def</span> <span class="nf">array_func</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ArrayLike</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1489</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1490</span>         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grouper</span><span class="o">.</span><span class="n">_cython_operation</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1491</span>             <span class="s2">&quot;aggregate&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1492</span>             <span class="n">values</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1493</span>             <span class="n">how</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1494</span>             <span class="n">axis</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1495</span>             <span class="n">min_count</span><span class="o">=</span><span class="n">min_count</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1496</span>             <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1497</span>         <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1498</span>     <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1499</span>         <span class="c1"># generally if we have numeric_only=False</span>
-<span class="g g-Whitespace">   </span><span class="mi">1500</span>         <span class="c1"># and non-applicable functions</span>
-<span class="g g-Whitespace">   </span><span class="mi">1501</span>         <span class="c1"># try to python agg</span>
-<span class="g g-Whitespace">   </span><span class="mi">1502</span>         <span class="c1"># TODO: shouldn&#39;t min_count matter?</span>
-<span class="g g-Whitespace">   </span><span class="mi">1503</span>         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agg_py_fallback</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="n">alt</span><span class="p">)</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/ops.py:958,</span> in <span class="ni">BaseGrouper._cython_operation</span><span class="nt">(self, kind, values, how, axis, min_count, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">955</span> <span class="n">cy_op</span> <span class="o">=</span> <span class="n">WrappedCythonOp</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="n">how</span><span class="p">,</span> <span class="n">has_dropped_na</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">has_dropped_na</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">957</span> <span class="n">ids</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">group_info</span>
-<span class="ne">--&gt; </span><span class="mi">958</span> <span class="n">ngroups</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ngroups</span>
-<span class="g g-Whitespace">    </span><span class="mi">959</span> <span class="k">return</span> <span class="n">cy_op</span><span class="o">.</span><span class="n">cython_operation</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">960</span>     <span class="n">values</span><span class="o">=</span><span class="n">values</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">961</span>     <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">965</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">966</span> <span class="p">)</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/_libs/properties.pyx:36,</span> in <span class="ni">pandas._libs.properties.CachedProperty.__get__</span><span class="nt">()</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/ops.py:902,</span> in <span class="ni">BaseGrouper.ngroups</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">899</span> <span class="nd">@final</span>
-<span class="g g-Whitespace">    </span><span class="mi">900</span> <span class="nd">@cache_readonly</span>
-<span class="g g-Whitespace">    </span><span class="mi">901</span> <span class="k">def</span> <span class="nf">ngroups</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">902</span>     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result_index</span><span class="p">)</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/_libs/properties.pyx:36,</span> in <span class="ni">pandas._libs.properties.CachedProperty.__get__</span><span class="nt">()</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/ops.py:915,</span> in <span class="ni">BaseGrouper.result_index</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">912</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">groupings</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">913</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">groupings</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">result_index</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="ne">--&gt; </span><span class="mi">915</span> <span class="n">codes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reconstructed_codes</span>
-<span class="g g-Whitespace">    </span><span class="mi">916</span> <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="n">ping</span><span class="o">.</span><span class="n">result_index</span> <span class="k">for</span> <span class="n">ping</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">groupings</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">917</span> <span class="k">return</span> <span class="n">MultiIndex</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">918</span>     <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span> <span class="n">codes</span><span class="o">=</span><span class="n">codes</span><span class="p">,</span> <span class="n">verify_integrity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">names</span>
-<span class="g g-Whitespace">    </span><span class="mi">919</span> <span class="p">)</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/groupby/ops.py:908,</span> in <span class="ni">BaseGrouper.reconstructed_codes</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">906</span> <span class="n">codes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">codes</span>
-<span class="g g-Whitespace">    </span><span class="mi">907</span> <span class="n">ids</span><span class="p">,</span> <span class="n">obs_ids</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">group_info</span>
-<span class="ne">--&gt; </span><span class="mi">908</span> <span class="k">return</span> <span class="n">decons_obs_group_ids</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">obs_ids</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">codes</span><span class="p">,</span> <span class="n">xnull</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/sorting.py:283,</span> in <span class="ni">decons_obs_group_ids</span><span class="nt">(comp_ids, obs_ids, shape, labels, xnull)</span>
-<span class="g g-Whitespace">    </span><span class="mi">279</span>     <span class="n">shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">arr_shape</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">281</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">is_int64_overflow_possible</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">282</span>     <span class="c1"># obs ids are deconstructable! take the fast route!</span>
-<span class="ne">--&gt; </span><span class="mi">283</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">_decons_group_index</span><span class="p">(</span><span class="n">obs_ids</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">284</span>     <span class="k">return</span> <span class="n">out</span> <span class="k">if</span> <span class="n">xnull</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">lift</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="k">else</span> <span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">lift</span><span class="p">)]</span>
-<span class="g g-Whitespace">    </span><span class="mi">286</span> <span class="n">indexer</span> <span class="o">=</span> <span class="n">unique_label_indices</span><span class="p">(</span><span class="n">comp_ids</span><span class="p">)</span>
-
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pandas/core/sorting.py:250,</span> in <span class="ni">_decons_group_index</span><span class="nt">(comp_labels, shape)</span>
-<span class="g g-Whitespace">    </span><span class="mi">248</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">))):</span>
-<span class="g g-Whitespace">    </span><span class="mi">249</span>     <span class="n">labels</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">factor</span> <span class="o">*</span> <span class="n">shape</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">//</span> <span class="n">factor</span>
-<span class="ne">--&gt; </span><span class="mi">250</span>     <span class="n">np</span><span class="o">.</span><span class="n">putmask</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">comp_labels</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">251</span>     <span class="n">label_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">252</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">labels</span> <span class="o">*</span> <span class="n">factor</span>
-
-<span class="nn">File &lt;__array_function__ internals&gt;:177,</span> in <span class="ni">putmask</span><span class="nt">(*args, **kwargs)</span>
+<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/linopy/solvers.py:155,</span> in <span class="ni">run_cbc</span><span class="nt">(model, io_api, problem_fn, solution_fn, log_fn, warmstart_fn, basis_fn, keep_files, **solver_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">153</span> <span class="k">if</span> <span class="n">log_fn</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">154</span>     <span class="n">p</span> <span class="o">=</span> <span class="n">sub</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">),</span> <span class="n">stdout</span><span class="o">=</span><span class="n">sub</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">sub</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">155</span>     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">readline</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">156</span>         <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">157</span>     <span class="n">p</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -2417,7 +2249,7 @@ Total time (CPU seconds):       11.33   (Wallclock seconds):       11.35
 </div>
 </section>
 <section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <p>Explore the model by changing the assumptions and available technologies. Here are a few inspirations:</p>
 <ul class="simple">
 <li><p>Rerun the model with cost assumptions for 2050.</p></li>

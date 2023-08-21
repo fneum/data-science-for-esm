@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
@@ -44,6 +44,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -69,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Interactive Visualisation and Dashboards" href="13-workshop-interactive-visualisation.html" />
     <link rel="prev" title="Preparation for Group Assignment" href="11-workshop-groupwork.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -432,7 +433,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sector-coupling-with-pypsa">
-<h1>Sector-Coupling with <code class="docutils literal notranslate"><span class="pre">pypsa</span></code><a class="headerlink" href="#sector-coupling-with-pypsa" title="Permalink to this headline">#</a></h1>
+<h1>Sector-Coupling with <code class="docutils literal notranslate"><span class="pre">pypsa</span></code><a class="headerlink" href="#sector-coupling-with-pypsa" title="Permalink to this heading">#</a></h1>
 <img src="https://github.com/fneum/data-science-for-esm/raw/main/data-science-for-esm/pypsa-logo.png" width="300px" /><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Also in this tutorial, you might want to refer to the PyPSA documentation: <a class="reference external" href="https://pypsa.readthedocs.io">https://pypsa.readthedocs.io</a>.</p>
@@ -472,14 +473,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;network-cem.nc&#39;, &lt;http.client.HTTPMessage at 0x7fcaae3ca7d0&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;network-cem.nc&#39;, &lt;http.client.HTTPMessage at 0x7f86512a2a90&gt;)
 </pre></div>
 </div>
 </div>
 </details>
 </div>
 <section id="previous-capacity-expansion-model">
-<h2>Previous Capacity Expansion Model<a class="headerlink" href="#previous-capacity-expansion-model" title="Permalink to this headline">#</a></h2>
+<h2>Previous Capacity Expansion Model<a class="headerlink" href="#previous-capacity-expansion-model" title="Permalink to this heading">#</a></h2>
 <p>To explore sector-coupling options with PyPSA, let’s load the capacity expansion model we built for the electricity system and add sector-coupling technologies and demands on top.</p>
 <p>This example has single node for Germany and 4-hourly temporal resolution for a year. It has wind and solar solar generation, an OCGT generator as well as battery and hydrogen storage to supply a fixed electricity demand.</p>
 <p>Some sector-coupling technologies have multiple ouputs (e.g. CHP plants producing heat and power). By default, PyPSA links have only one input (<code class="docutils literal notranslate"><span class="pre">bus0</span></code>)
@@ -678,7 +679,7 @@ Snapshots: 2190
 </div>
 </section>
 <section id="hydrogen-production">
-<h2>Hydrogen Production<a class="headerlink" href="#hydrogen-production" title="Permalink to this headline">#</a></h2>
+<h2>Hydrogen Production<a class="headerlink" href="#hydrogen-production" title="Permalink to this heading">#</a></h2>
 <p>The following example shows how to model the components of hydrogen storage separately, i.e. electrolysis, fuel cell and storage.</p>
 <p>First, let’s remove the simplified hydrogen storage representation:</p>
 <div class="cell docutils container">
@@ -786,7 +787,7 @@ Snapshots: 2190
 </div>
 </section>
 <section id="heat-demand">
-<h2>Heat Demand<a class="headerlink" href="#heat-demand" title="Permalink to this headline">#</a></h2>
+<h2>Heat Demand<a class="headerlink" href="#heat-demand" title="Permalink to this heading">#</a></h2>
 <p>For the heat demand, we create another bus and connect a load with the heat demand time series to it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -843,7 +844,7 @@ Name: 0, dtype: float64
 </div>
 </section>
 <section id="heat-pumps">
-<h2>Heat pumps<a class="headerlink" href="#heat-pumps" title="Permalink to this headline">#</a></h2>
+<h2>Heat pumps<a class="headerlink" href="#heat-pumps" title="Permalink to this heading">#</a></h2>
 <p>To model heat pumps, first we have to calculate the <strong>coefficient of performance (COP)</strong> profile based on the temperature profile of the heat source.</p>
 <p>In the example below, we calculate the COP for an air-sourced heat pump with a sink temperature of 55° C and a population-weighted ambient temperature profile for Germany.</p>
 <p>The heat pump performance is given by the following function:</p>
@@ -942,7 +943,7 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 </div>
 </section>
 <section id="combined-heat-and-power-chp">
-<h2>Combined Heat-and-Power (CHP)<a class="headerlink" href="#combined-heat-and-power-chp" title="Permalink to this headline">#</a></h2>
+<h2>Combined Heat-and-Power (CHP)<a class="headerlink" href="#combined-heat-and-power-chp" title="Permalink to this heading">#</a></h2>
 <p>In the following, we are going to add gas-fired combined heat-and-power plants (CHPs). Today, these would use fossil gas, but in the example below we assume green methane with relatively high marginal costs. Since we have no other net emission technology, we can remove the CO<span class="math notranslate nohighlight">\(_2\)</span> limit.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1030,7 +1031,7 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 </div>
 </section>
 <section id="electric-vehicles">
-<h2>Electric Vehicles<a class="headerlink" href="#electric-vehicles" title="Permalink to this headline">#</a></h2>
+<h2>Electric Vehicles<a class="headerlink" href="#electric-vehicles" title="Permalink to this heading">#</a></h2>
 <p>To model electric vehicles, we first create another bus for the electric vehicles.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1080,7 +1081,7 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fcaacb271d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f8637fa9b10&gt;
 </pre></div>
 </div>
 <img alt="_images/9e57271f0ef00738c247e973a57736b86ea19dd3df711210e11958ce4ae3e505.png" src="_images/9e57271f0ef00738c247e973a57736b86ea19dd3df711210e11958ce4ae3e505.png" />
@@ -1247,13 +1248,16 @@ Index([&#39;fuel cell&#39;, &#39;OCGT&#39;, &#39;CHP&#39;, &#39;V2G&#39;], dtype
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/27 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  41%|████      | 11/27 [00:00&lt;00:00, 97.23it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  37%|███▋      | 10/27 [00:00&lt;00:00, 80.61it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  78%|███████▊  | 21/27 [00:00&lt;00:00, 59.59it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  70%|███████   | 19/27 [00:00&lt;00:00, 47.77it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 27/27 [00:00&lt;00:00, 51.22it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  93%|█████████▎| 25/27 [00:00&lt;00:00, 42.14it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 27/27 [00:00&lt;00:00, 43.65it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1262,17 +1266,20 @@ Index([&#39;fuel cell&#39;, &#39;OCGT&#39;, &#39;CHP&#39;, &#39;V2G&#39;], dtype
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/12 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 12/12 [00:00&lt;00:00, 136.60it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 12/12 [00:00&lt;00:00, 114.54it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.64s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 12/12 [00:00&lt;00:00, 113.43it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.75s
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to the CBC MILP Solver 
 Version: 2.10.10 
 Build Date: Apr 19 2023 
 
-command line - cbc -printingOptions all -import /tmp/linopy-problem-a2f03n9d.lp -solve -solu /tmp/linopy-solve-ntctxvk5.sol (default strategy 1)
+command line - cbc -printingOptions all -import /tmp/linopy-problem-s11byqwh.lp -solve -solu /tmp/linopy-solve-2y15w8gw.sol (default strategy 1)
 Option for printingOptions changed from normal to all
 Presolve 36183 (-57998) rows, 27433 (-16378) columns and 93214 (-74376) elements
 Perturbing problem by 0.001% of 231.23943 - largest nonzero change 0.00033121988 ( 6.5288696%) - largest zero change 0.0003303862
@@ -1332,8 +1339,8 @@ Perturbing problem by 0.001% of 231.23943 - largest nonzero change 0.00033121988
 21325  Obj 1.2129045e+11
 Optimal - objective value 1.2129041e+11
 After Postsolve, objective 1.2129041e+11, infeasibilities - dual 0 (0), primal 0 (0)
-Optimal objective 1.212904101e+11 - 21325 iterations time 1.722, Presolve 0.14
-Total time (CPU seconds):       2.17   (Wallclock seconds):       2.16
+Optimal objective 1.212904101e+11 - 21325 iterations time 1.852, Presolve 0.13
+Total time (CPU seconds):       2.33   (Wallclock seconds):       2.34
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -1701,7 +1708,7 @@ Solver message: Optimal - objective value 121290410055.97106934
 </div>
 </section>
 <section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <p>Here are a few things you can do to explore this system:</p>
 <ul class="simple">
 <li><p>exclude one of transport sector, heating sector, hydrogen demand and investigate what impact it has on system operation and investments</p></li>

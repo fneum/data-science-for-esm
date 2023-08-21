@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Introduction to pyomo &#8212; Data Science for Energy System Modelling</title>
   
@@ -599,8 +599,8 @@ document.write(`
 <p><strong>Constraints</strong> are equality or inequality expressions that constrain the <em>feasible</em> space of the decision variables.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>, constraints are created with the <code class="docutils literal notranslate"><span class="pre">pe.Constraint()</span></code> constructor.</p>
 <p>In the code below, we create three simple constraints in different ways:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-15fa72d3-223f-4930-a3b1-fc477c2f16c5">
-<span class="eqno">(1)<a class="headerlink" href="#equation-15fa72d3-223f-4930-a3b1-fc477c2f16c5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2bd7ee1b-9ed7-4e1d-abd4-d478efb310ac">
+<span class="eqno">(1)<a class="headerlink" href="#equation-2bd7ee1b-9ed7-4e1d-abd4-d478efb310ac" title="Permalink to this equation">#</a></span>\[\begin{align}
   x &amp; \leq 4 \\
   2x + y &amp; \leq 10 \\
   x + y &amp; \leq 10 \\
@@ -725,7 +725,7 @@ cbc
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">log</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">tee</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pyomo/opt/base/solvers.py:533,</span> in <span class="ni">OptSolver.solve</span><span class="nt">(self, *args, **kwds)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/pyomo/opt/base/solvers.py:533,</span> in <span class="ni">OptSolver.solve</span><span class="nt">(self, *args, **kwds)</span>
 <span class="g g-Whitespace">    </span><span class="mi">530</span> <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">531</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Solve the problem&quot;&quot;&quot;</span>
 <span class="ne">--&gt; </span><span class="mi">533</span>     <span class="bp">self</span><span class="o">.</span><span class="n">available</span><span class="p">(</span><span class="n">exception_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -735,7 +735,7 @@ cbc
 <span class="g g-Whitespace">    </span><span class="mi">537</span>     <span class="c1">#</span>
 <span class="g g-Whitespace">    </span><span class="mi">538</span>     <span class="kn">from</span> <span class="nn">pyomo.core.base.block</span> <span class="kn">import</span> <span class="n">_BlockData</span>
 
-<span class="nn">File ~/micromamba-root/envs/esm/lib/python3.11/site-packages/pyomo/opt/solver/shellcmd.py:141,</span> in <span class="ni">SystemCallSolver.available</span><span class="nt">(self, exception_flag)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/pyomo/opt/solver/shellcmd.py:141,</span> in <span class="ni">SystemCallSolver.available</span><span class="nt">(self, exception_flag)</span>
 <span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="k">if</span> <span class="n">exception_flag</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">140</span>         <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;No executable found for solver &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span>
 <span class="ne">--&gt; </span><span class="mi">141</span>         <span class="k">raise</span> <span class="n">ApplicationError</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
@@ -996,13 +996,13 @@ cbc
 <section id="single-bidding-zone-single-period">
 <h3>Single bidding zone, single period<a class="headerlink" href="#single-bidding-zone-single-period" title="Permalink to this heading">#</a></h3>
 <p>We want to minimise operational cost of an example electricity system representing South Africa subject to generator limits and meeting the load:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-32a665a4-b7b8-4f18-a13c-238742afb307">
-<span class="eqno">(2)<a class="headerlink" href="#equation-32a665a4-b7b8-4f18-a13c-238742afb307" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5dc54aff-98c4-4a95-9c79-ee2ebc5779c1">
+<span class="eqno">(2)<a class="headerlink" href="#equation-5dc54aff-98c4-4a95-9c79-ee2ebc5779c1" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \min_{g_s} \sum_s o_s g_s
   \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3debdab8-1424-45fb-b7f1-a62209e4cb24">
-<span class="eqno">(3)<a class="headerlink" href="#equation-3debdab8-1424-45fb-b7f1-a62209e4cb24" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0dd8eb3b-e621-4b4b-b09d-74c320cff2a4">
+<span class="eqno">(3)<a class="headerlink" href="#equation-0dd8eb3b-e621-4b4b-b09d-74c320cff2a4" title="Permalink to this equation">#</a></span>\[\begin{align}
     g_s &amp;\leq G_s \\
     g_s &amp;\geq 0 \\
     \sum_s g_s &amp;= d
@@ -1164,13 +1164,13 @@ cbc
 <section id="two-bidding-zones-with-transmission">
 <h3>Two bidding zones with transmission<a class="headerlink" href="#two-bidding-zones-with-transmission" title="Permalink to this heading">#</a></h3>
 <p>Let’s add a spatial dimension, such that the optimisation problem is expanded to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d21b8e56-b783-4d68-88e0-538e5d02db12">
-<span class="eqno">(4)<a class="headerlink" href="#equation-d21b8e56-b783-4d68-88e0-538e5d02db12" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0da7e727-89b4-482f-a5af-0746dd746760">
+<span class="eqno">(4)<a class="headerlink" href="#equation-0da7e727-89b4-482f-a5af-0746dd746760" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \min_{g_{i,s}, f_\ell} \sum_s o_{i,s} g_{i,s}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1c571a44-f4a8-4977-b8c7-25dd7aa5ae4c">
-<span class="eqno">(5)<a class="headerlink" href="#equation-1c571a44-f4a8-4977-b8c7-25dd7aa5ae4c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-155d313e-751e-4a90-9f42-1c0d40d81dc3">
+<span class="eqno">(5)<a class="headerlink" href="#equation-155d313e-751e-4a90-9f42-1c0d40d81dc3" title="Permalink to this equation">#</a></span>\[\begin{align}
   g_{i,s} &amp;\leq G_{i,s} \\
   g_{i,s} &amp;\geq 0 \\
   \sum_s g_{i,s} - \sum_\ell K_{i\ell} f_\ell &amp;= d_i &amp; \text{KCL} \\
@@ -1392,13 +1392,13 @@ For missing entries, we set the upper limit to zero (e.g. this country-technolog
 <section id="single-bidding-zone-with-several-periods">
 <h3>Single bidding zone with several periods<a class="headerlink" href="#single-bidding-zone-with-several-periods" title="Permalink to this heading">#</a></h3>
 <p>In this example, we consider multiple time periods (labelled [1,2,3,4]) to represent variable wind generation and changing load.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-47259141-3003-4399-9486-06bc6b4bcd5b">
-<span class="eqno">(6)<a class="headerlink" href="#equation-47259141-3003-4399-9486-06bc6b4bcd5b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-24914757-6f18-4fdb-a290-7b0dc961d493">
+<span class="eqno">(6)<a class="headerlink" href="#equation-24914757-6f18-4fdb-a290-7b0dc961d493" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \min_{g_{s,t}} \sum_s o_{s} g_{s,t}
   \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b7fbbd8e-9386-4a46-850e-99cf070dd126">
-<span class="eqno">(7)<a class="headerlink" href="#equation-b7fbbd8e-9386-4a46-850e-99cf070dd126" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-92804c97-a33a-4d51-a913-e56464e76766">
+<span class="eqno">(7)<a class="headerlink" href="#equation-92804c97-a33a-4d51-a913-e56464e76766" title="Permalink to this equation">#</a></span>\[\begin{align}
     g_{s,t} &amp;\leq \hat{g}_{s,t} G_{i,s} \\
     g_{s,t} &amp;\geq 0 \\
     \sum_s g_{s,t} &amp;= d_t

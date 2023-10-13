@@ -591,8 +591,8 @@ document.write(`
 <p><strong>Constraints</strong> are equality or inequality expressions that constrain the <em>feasible</em> space of the decision variables.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>, constraints are created with the <code class="docutils literal notranslate"><span class="pre">pe.Constraint()</span></code> constructor.</p>
 <p>In the code below, we create three simple constraints in different ways:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-31c9fe10-f1c1-4f2f-b050-ea15f7cdf3cd">
-<span class="eqno">(1)<a class="headerlink" href="#equation-31c9fe10-f1c1-4f2f-b050-ea15f7cdf3cd" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-831f5477-8c9d-4857-8d8b-b03cf5bbd8f5">
+<span class="eqno">(1)<a class="headerlink" href="#equation-831f5477-8c9d-4857-8d8b-b03cf5bbd8f5" title="Permalink to this equation">#</a></span>\[\begin{align}
   x &amp; \leq 4 \\
   2x + y &amp; \leq 10 \\
   x + y &amp; \leq 10 \\
@@ -1124,13 +1124,13 @@ Solution:
 <section id="single-bidding-zone-single-period">
 <h3>Single bidding zone, single period<a class="headerlink" href="#single-bidding-zone-single-period" title="Permalink to this heading">#</a></h3>
 <p>We want to minimise operational cost of an example electricity system representing South Africa subject to generator limits and meeting the load:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9924bfbf-9038-4708-84cc-7725404891d6">
-<span class="eqno">(2)<a class="headerlink" href="#equation-9924bfbf-9038-4708-84cc-7725404891d6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a849380d-5cb2-49ee-b23a-ec976852a5e2">
+<span class="eqno">(2)<a class="headerlink" href="#equation-a849380d-5cb2-49ee-b23a-ec976852a5e2" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \min_{g_s} \sum_s o_s g_s
   \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-66e515d9-0821-475b-91e3-3e8b9d425d6a">
-<span class="eqno">(3)<a class="headerlink" href="#equation-66e515d9-0821-475b-91e3-3e8b9d425d6a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a6837868-56f2-4ed1-9e03-51d0e845e187">
+<span class="eqno">(3)<a class="headerlink" href="#equation-a6837868-56f2-4ed1-9e03-51d0e845e187" title="Permalink to this equation">#</a></span>\[\begin{align}
     g_s &amp;\leq G_s \\
     g_s &amp;\geq 0 \\
     \sum_s g_s &amp;= d
@@ -1381,13 +1381,13 @@ dtype: float64
 <section id="two-bidding-zones-with-transmission">
 <h3>Two bidding zones with transmission<a class="headerlink" href="#two-bidding-zones-with-transmission" title="Permalink to this heading">#</a></h3>
 <p>Let’s add a spatial dimension, such that the optimisation problem is expanded to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-66a51f60-a3f4-4e53-bebe-e99ab0ee2a2d">
-<span class="eqno">(4)<a class="headerlink" href="#equation-66a51f60-a3f4-4e53-bebe-e99ab0ee2a2d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d3698530-e23b-4a00-bd5e-7c006b2a1a54">
+<span class="eqno">(4)<a class="headerlink" href="#equation-d3698530-e23b-4a00-bd5e-7c006b2a1a54" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \min_{g_{i,s}, f_\ell} \sum_s o_{i,s} g_{i,s}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2d074e64-4ee8-4f3b-9d91-2adbd04e4369">
-<span class="eqno">(5)<a class="headerlink" href="#equation-2d074e64-4ee8-4f3b-9d91-2adbd04e4369" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4317958f-b930-454a-bd63-46353ba7240e">
+<span class="eqno">(5)<a class="headerlink" href="#equation-4317958f-b930-454a-bd63-46353ba7240e" title="Permalink to this equation">#</a></span>\[\begin{align}
   g_{i,s} &amp;\leq G_{i,s} \\
   g_{i,s} &amp;\geq 0 \\
   \sum_s g_{i,s} - \sum_\ell K_{i\ell} f_\ell &amp;= d_i &amp; \text{KCL} \\
@@ -1542,8 +1542,8 @@ For missing entries, we set the upper limit to zero (e.g. this country-technolog
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kcl : Size=2, Index=countries, Active=True
     Key          : Lower   : Body                                                                                                                : Upper   : Active
-      Mozambique :   650.0 :           g[Mozambique,Wind] + g[Mozambique,Hydro] + g[Mozambique,Coal] + g[Mozambique,Oil] + g[Mozambique,Gas] + f :   650.0 :   True
-    South Africa : 42000.0 : g[South Africa,Wind] + g[South Africa,Hydro] + g[South Africa,Coal] + g[South Africa,Oil] + g[South Africa,Gas] - f : 42000.0 :   True
+      Mozambique :   650.0 :           g[Mozambique,Gas] + g[Mozambique,Wind] + g[Mozambique,Oil] + g[Mozambique,Hydro] + g[Mozambique,Coal] + f :   650.0 :   True
+    South Africa : 42000.0 : g[South Africa,Gas] + g[South Africa,Wind] + g[South Africa,Oil] + g[South Africa,Hydro] + g[South Africa,Coal] - f : 42000.0 :   True
 </pre></div>
 </div>
 </div>
@@ -1694,16 +1694,16 @@ Solution:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[South Africa,Wind]    -60.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[South Africa,Gas]      -0.0
+generator_limit[South Africa,Wind]    -60.0
+generator_limit[South Africa,Oil]      -0.0
 generator_limit[South Africa,Hydro]   -60.0
 generator_limit[South Africa,Coal]    -30.0
-generator_limit[South Africa,Oil]      -0.0
-generator_limit[South Africa,Gas]      -0.0
+generator_limit[Mozambique,Gas]        -0.0
 generator_limit[Mozambique,Wind]       -0.0
+generator_limit[Mozambique,Oil]        -0.0
 generator_limit[Mozambique,Hydro]      -0.0
 generator_limit[Mozambique,Coal]       -0.0
-generator_limit[Mozambique,Oil]        -0.0
-generator_limit[Mozambique,Gas]        -0.0
 kcl[South Africa]                      60.0
 kcl[Mozambique]                        -0.0
 [None]                                 60.0
@@ -1829,13 +1829,13 @@ Solution:
 <section id="single-bidding-zone-with-several-periods">
 <h3>Single bidding zone with several periods<a class="headerlink" href="#single-bidding-zone-with-several-periods" title="Permalink to this heading">#</a></h3>
 <p>In this example, we consider multiple time periods (labelled [1,2,3,4]) to represent variable wind generation and changing load.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-78f33bc2-63e2-4b02-9695-9d60239328a6">
-<span class="eqno">(6)<a class="headerlink" href="#equation-78f33bc2-63e2-4b02-9695-9d60239328a6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a66d2c37-1b50-4ed8-829e-f96751ff2362">
+<span class="eqno">(6)<a class="headerlink" href="#equation-a66d2c37-1b50-4ed8-829e-f96751ff2362" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \min_{g_{s,t}} \sum_s o_{s} g_{s,t}
   \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7d7c0a3c-f85d-40c9-8571-3651342c752f">
-<span class="eqno">(7)<a class="headerlink" href="#equation-7d7c0a3c-f85d-40c9-8571-3651342c752f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d49bfb58-d8a6-4d87-bc91-df751e101c9d">
+<span class="eqno">(7)<a class="headerlink" href="#equation-d49bfb58-d8a6-4d87-bc91-df751e101c9d" title="Permalink to this equation">#</a></span>\[\begin{align}
     g_{s,t} &amp;\leq \hat{g}_{s,t} G_{i,s} \\
     g_{s,t} &amp;\geq 0 \\
     \sum_s g_{s,t} &amp;= d_t
@@ -1982,7 +1982,7 @@ Solver:
 Solution: 
 - number of solutions: 0
   number of solutions displayed: 0
-5.5 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+3.8 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -2186,7 +2186,9 @@ dtype: float64
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running HiGHS 1.5.3 [date: 2023-05-16, git hash: 594fa5a9d-dirty]
 Copyright (c) 2023 HiGHS under MIT licence terms
-# ==========================================================
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
 # = Solver Results                                         =
 # ==========================================================
 # ----------------------------------------------------------

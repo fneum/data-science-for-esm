@@ -2,16 +2,16 @@
 
 Welcome to the website accompanying the course [Data Science for Energy System Modelling](https://moseskonto.tu-berlin.de/moses/modultransfersystem/bolognamodule/beschreibung/anzeigen.html;jsessionid=DQfixqzzpn1XIg5N1GG7S9um4EDykZn99AHmH6Fj.moseskonto?number=31027&version=1&sprache=2). This course is being developed by [Dr. Fabian Neumann](https://neumann.fyi) and offered as part of the curriculum of the [Department of Digital Transformation of Energy Systems at TU Berlin](https://www.tu.berlin/ensys).
 
-On this website you will find practical introductions to many Python packages that are useful for dealing with energy data and building energy system models. Course materials other than practical introductions to Python packages for students at TU Berlin are provided on [ISIS](https://isis.tu-berlin.de/course/view.php?id=30525).
+On this website you will find practical introductions to many Python packages that are useful for dealing with energy data and building energy system models. Course materials other than practical introductions to Python packages for students at TU Berlin are provided on [ISIS](https://isis.tu-berlin.de/course/view.php?id=35495).
 
 The course covers tutorials and examples for getting started with Python, `numpy`, `matplotlib`, `pandas`, `geopandas`, `cartopy`, `rasterio`, `atlite`, `networkx`, `pyomo`, `pypsa`, `plotly`, `hvplot`, and `streamlit`. Topics covered include:
 
 - time series analysis (e.g. wind and solar production)
-- tabular data (e.g. LNG terminals)
+- tabular data (e.g. LNG terminals, power plants, industrial sites)
 - geographical data (e.g. location of power plants)
 - data visualisation
 - converting weather data to renewable generation
-- land eligibility analysis (e.g. where to build wind turbines)
+- land eligibility analysis (e.g. where can we build wind turbines)
 - optimisation
 - electricity market modelling
 - power flow modelling (linearised)
@@ -44,7 +44,7 @@ Follow the link above to obtain a one-click installers for your operating system
 
 For **Linux and MacOS users**, you can access the command line by opening the _terminal_ program.
 
-For **Windows users**, you should first install Anaconda (described above) or Miniconda (described below), which gives you access to the "Anaconda Prompt" desktop application. (Instructions for this are given on the [Anaconda Website](https://docs.anaconda.com/anaconda/user-guide/getting-started/#write-a-python-program-using-anaconda-prompt-or-terminal).)
+For **Windows users**, you should first install Anaconda (described above) or miniconda/micromamba (described below), which gives you access to the "Anaconda Prompt" desktop application. (Instructions for this are given on the [Anaconda Website](https://docs.anaconda.com/anaconda/user-guide/getting-started/#write-a-python-program-using-anaconda-prompt-or-terminal).)
 
 From the Anaconda Prompt, you should be able to run `conda` and other shell commands.
 
@@ -55,6 +55,18 @@ lightweight alternative installation methods (like `micromamba` and `miniconda`.
 
 1. [Micromamba Installation](https://mamba.readthedocs.io/en/latest/installation.html#micromamba)
 2. [Miniconda Installation](https://docs.conda.io/en/latest/miniconda.html)
+
+### Installing Python without a package manager
+
+If you do not wish to install a package manager (not recommended), an
+alternative is to directly install official Python distributions.
+
+A good tutorial for this can be found [here](https://realpython.com/installing-python/).
+
+### Using Python without a local installation
+
+You can even start the course without a local Python installation using online services like  [Google Colab (colab.google)](https://colab.google) which provide an online Python version 
+in a [Jupyter Notebook](jupyter.org/) environment.
 
 ## Managing environments with `conda`
 
@@ -128,83 +140,52 @@ instead of `conda`. Everything will be faster.
 
 ## Python environment for this course: `esm-2023`
 
-The latest environment specification for this course lives at <https://raw.githubusercontent.com/fneum/data-science-for-esm/main/environment.yaml>.
+## With `conda` or `mamba`
 
-Copy and paste the following `environment.yml` file somewhere on your local hard drive:
+The latest environment specification for this course can be downloaded under the following link as a [`YAML`-file](https://en.wikipedia.org/wiki/YAML):
 
-    name: esm-2023
-    channels:
-    - conda-forge
-    dependencies:
-    - python>=3.11
-    - pip
+https://github.com/fneum/data-science-for-esm/blob/main/environment.yaml
 
-    # main packages
-    - numpy
-    - scipy
-    - pandas>=1.4
-    - geopandas>=0.11.0
-    - xarray
-    - networkx
-    - yaml
-    - pyomo
-    - netcdf4
-    - pypsa>=0.22.1
-    - atlite>=0.2.10
-    - powerplantmatching>=0.5.6
-    - rasterio!=1.2.10
+There is a download button at the top-right corner.
 
-    # interactive python
-    - ipython
-    - jupyterlab
+After navigating to the folder where the `environment.yaml` file is stored,
+you can reate this environment using `conda` or `mamba` (faster)
 
-    # reading excel tables
-    - tabula-py
-    - xlrd
-    - lxml
-    - pytables
-    - pyxlsb
-    - openpyxl
+    conda env create -f environment.yml
 
-    # geodata utilities
-    - fiona
-    - shapely>2
-    - proj
-    - geopy
-    - pyepsg
-    - cartopy
-    - descartes
-    - country_converter
+or
 
-    # plotting
-    - matplotlib>=3.5
-    - plotly
-    - hvplot
-    - holoviews
-    - geoviews
-    - graphviz
-
-    # solvers
-    - coincbc
-    - glpk
-
-    # publishing
-    - jupyter-book
-    - ghp-import
-
-
-
-Create this environment using mamba
-
-    mamba env create -f path/to/environment.yml
+    mamba create -f environment.yml
 
 Activate this environment
 
-    conda activate esm-2023
+    mamba activate esm-2023
 
 This environment should be sufficient for all of your work in this course.
 
-## What is JupyterLab?
+The environment has to be activated whenever you open a new terminal,
+*before* starting a new Jupyter window with
+
+    jupyter lab
+
+### With `pip`
+
+If you want to use `pip` for managing your environment, download
+
+https://github.com/fneum/data-science-for-esm/blob/main/requirements.txt
+
+There is a download button at the top-right corner.
+
+After navigating to the folder where the `requirements.txt` file is stored,
+you can install the required packages with
+
+    pip install -r requirements.txt
+
+This should allow you to start a new Jupyter window:
+
+    jupyter lab
+
+## JupyterLab and Jupyter Notebooks
 
 [JupyterLab](https://jupyterlab.readthedocs.io) will be our primary method for
 interacting with the computer. JupyterLab contains a complete environment for

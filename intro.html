@@ -376,12 +376,18 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-the-package-manager-conda">Installing the package manager <code class="docutils literal notranslate"><span class="pre">conda</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anaconda-python-distribution">Anaconda Python distribution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lightweight-alternatives-micromamba-and-miniconda">Lightweight alternatives: micromamba and miniconda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-python-without-a-package-manager">Installing Python without a package manager</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-without-a-local-installation">Using Python without a local installation</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-environments-with-conda">Managing environments with <code class="docutils literal notranslate"><span class="pre">conda</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#speeding-things-up-with-mamba">Speeding things up with Mamba</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-environment-for-this-course-esm-2023">Python environment for this course: <code class="docutils literal notranslate"><span class="pre">esm-2023</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-jupyterlab">What is JupyterLab?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-conda-or-mamba">With <code class="docutils literal notranslate"><span class="pre">conda</span></code> or <code class="docutils literal notranslate"><span class="pre">mamba</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-pip">With <code class="docutils literal notranslate"><span class="pre">pip</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab-and-jupyter-notebooks">JupyterLab and Jupyter Notebooks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown-syntax">Markdown Syntax</a></li>
 </ul>
             </nav>
@@ -397,15 +403,15 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="welcome">
 <h1>Welcome<a class="headerlink" href="#welcome" title="Permalink to this heading">#</a></h1>
 <p>Welcome to the website accompanying the course <a class="reference external" href="https://moseskonto.tu-berlin.de/moses/modultransfersystem/bolognamodule/beschreibung/anzeigen.html;jsessionid=DQfixqzzpn1XIg5N1GG7S9um4EDykZn99AHmH6Fj.moseskonto?number=31027&amp;version=1&amp;sprache=2">Data Science for Energy System Modelling</a>. This course is being developed by <a class="reference external" href="https://neumann.fyi">Dr. Fabian Neumann</a> and offered as part of the curriculum of the <a class="reference external" href="https://www.tu.berlin/ensys">Department of Digital Transformation of Energy Systems at TU Berlin</a>.</p>
-<p>On this website you will find practical introductions to many Python packages that are useful for dealing with energy data and building energy system models. Course materials other than practical introductions to Python packages for students at TU Berlin are provided on <a class="reference external" href="https://isis.tu-berlin.de/course/view.php?id=30525">ISIS</a>.</p>
+<p>On this website you will find practical introductions to many Python packages that are useful for dealing with energy data and building energy system models. Course materials other than practical introductions to Python packages for students at TU Berlin are provided on <a class="reference external" href="https://isis.tu-berlin.de/course/view.php?id=35495">ISIS</a>.</p>
 <p>The course covers tutorials and examples for getting started with Python, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">geopandas</span></code>, <code class="docutils literal notranslate"><span class="pre">cartopy</span></code>, <code class="docutils literal notranslate"><span class="pre">rasterio</span></code>, <code class="docutils literal notranslate"><span class="pre">atlite</span></code>, <code class="docutils literal notranslate"><span class="pre">networkx</span></code>, <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>, <code class="docutils literal notranslate"><span class="pre">pypsa</span></code>, <code class="docutils literal notranslate"><span class="pre">plotly</span></code>, <code class="docutils literal notranslate"><span class="pre">hvplot</span></code>, and <code class="docutils literal notranslate"><span class="pre">streamlit</span></code>. Topics covered include:</p>
 <ul class="simple">
 <li><p>time series analysis (e.g. wind and solar production)</p></li>
-<li><p>tabular data (e.g. LNG terminals)</p></li>
+<li><p>tabular data (e.g. LNG terminals, power plants, industrial sites)</p></li>
 <li><p>geographical data (e.g. location of power plants)</p></li>
 <li><p>data visualisation</p></li>
 <li><p>converting weather data to renewable generation</p></li>
-<li><p>land eligibility analysis (e.g. where to build wind turbines)</p></li>
+<li><p>land eligibility analysis (e.g. where can we build wind turbines)</p></li>
 <li><p>optimisation</p></li>
 <li><p>electricity market modelling</p></li>
 <li><p>power flow modelling (linearised)</p></li>
@@ -436,7 +442,7 @@ packages which are guaranteed to work together.</p>
 <a class="reference external" href="https://www.anaconda.com/download/">Anaconda Python Distribution</a>.
 Follow the link above to obtain a one-click installers for your operating system.</p>
 <p>For <strong>Linux and MacOS users</strong>, you can access the command line by opening the <em>terminal</em> program.</p>
-<p>For <strong>Windows users</strong>, you should first install Anaconda (described above) or Miniconda (described below), which gives you access to the “Anaconda Prompt” desktop application. (Instructions for this are given on the <a class="reference external" href="https://docs.anaconda.com/anaconda/user-guide/getting-started/#write-a-python-program-using-anaconda-prompt-or-terminal">Anaconda Website</a>.)</p>
+<p>For <strong>Windows users</strong>, you should first install Anaconda (described above) or miniconda/micromamba (described below), which gives you access to the “Anaconda Prompt” desktop application. (Instructions for this are given on the <a class="reference external" href="https://docs.anaconda.com/anaconda/user-guide/getting-started/#write-a-python-program-using-anaconda-prompt-or-terminal">Anaconda Website</a>.)</p>
 <p>From the Anaconda Prompt, you should be able to run <code class="docutils literal notranslate"><span class="pre">conda</span></code> and other shell commands.</p>
 </section>
 <section id="lightweight-alternatives-micromamba-and-miniconda">
@@ -447,6 +453,17 @@ lightweight alternative installation methods (like <code class="docutils literal
 <li><p><a class="reference external" href="https://mamba.readthedocs.io/en/latest/installation.html#micromamba">Micromamba Installation</a></p></li>
 <li><p><a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda Installation</a></p></li>
 </ol>
+</section>
+<section id="installing-python-without-a-package-manager">
+<h3>Installing Python without a package manager<a class="headerlink" href="#installing-python-without-a-package-manager" title="Permalink to this heading">#</a></h3>
+<p>If you do not wish to install a package manager (not recommended), an
+alternative is to directly install official Python distributions.</p>
+<p>A good tutorial for this can be found <a class="reference external" href="https://realpython.com/installing-python/">here</a>.</p>
+</section>
+<section id="using-python-without-a-local-installation">
+<h3>Using Python without a local installation<a class="headerlink" href="#using-python-without-a-local-installation" title="Permalink to this heading">#</a></h3>
+<p>You can even start the course without a local Python installation using online services like  <a class="reference external" href="https://colab.google">Google Colab (colab.google)</a> which provide an online Python version
+in a <span class="xref myst">Jupyter Notebook</span> environment.</p>
 </section>
 </section>
 <section id="managing-environments-with-conda">
@@ -518,81 +535,49 @@ instead of <code class="docutils literal notranslate"><span class="pre">conda</s
 </section>
 <section id="python-environment-for-this-course-esm-2023">
 <h2>Python environment for this course: <code class="docutils literal notranslate"><span class="pre">esm-2023</span></code><a class="headerlink" href="#python-environment-for-this-course-esm-2023" title="Permalink to this heading">#</a></h2>
-<p>The latest environment specification for this course lives at <a class="reference external" href="https://raw.githubusercontent.com/fneum/data-science-for-esm/main/environment.yaml">https://raw.githubusercontent.com/fneum/data-science-for-esm/main/environment.yaml</a>.</p>
-<p>Copy and paste the following <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file somewhere on your local hard drive:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>name: esm-2023
-channels:
-- conda-forge
-dependencies:
-- python&gt;=3.11
-- pip
-
-# main packages
-- numpy
-- scipy
-- pandas&gt;=1.4
-- geopandas&gt;=0.11.0
-- xarray
-- networkx
-- yaml
-- pyomo
-- netcdf4
-- pypsa&gt;=0.22.1
-- atlite&gt;=0.2.10
-- powerplantmatching&gt;=0.5.6
-- rasterio!=1.2.10
-
-# interactive python
-- ipython
-- jupyterlab
-
-# reading excel tables
-- tabula-py
-- xlrd
-- lxml
-- pytables
-- pyxlsb
-- openpyxl
-
-# geodata utilities
-- fiona
-- shapely&gt;2
-- proj
-- geopy
-- pyepsg
-- cartopy
-- descartes
-- country_converter
-
-# plotting
-- matplotlib&gt;=3.5
-- plotly
-- hvplot
-- holoviews
-- geoviews
-- graphviz
-
-# solvers
-- coincbc
-- glpk
-
-# publishing
-- jupyter-book
-- ghp-import
+</section>
+<section id="with-conda-or-mamba">
+<h2>With <code class="docutils literal notranslate"><span class="pre">conda</span></code> or <code class="docutils literal notranslate"><span class="pre">mamba</span></code><a class="headerlink" href="#with-conda-or-mamba" title="Permalink to this heading">#</a></h2>
+<p>The latest environment specification for this course can be downloaded under the following link as a <a class="reference external" href="https://en.wikipedia.org/wiki/YAML"><code class="docutils literal notranslate"><span class="pre">YAML</span></code>-file</a>:</p>
+<p><a class="github reference external" href="https://github.com/fneum/data-science-for-esm/blob/main/environment.yaml">fneum/data-science-for-esm</a></p>
+<p>There is a download button at the top-right corner.</p>
+<p>After navigating to the folder where the <code class="docutils literal notranslate"><span class="pre">environment.yaml</span></code> file is stored,
+you can reate this environment using <code class="docutils literal notranslate"><span class="pre">conda</span></code> or <code class="docutils literal notranslate"><span class="pre">mamba</span></code> (faster)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda env create -f environment.yml
 </pre></div>
 </div>
-<p>Create this environment using mamba</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mamba env create -f path/to/environment.yml
+<p>or</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mamba create -f environment.yml
 </pre></div>
 </div>
 <p>Activate this environment</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda activate esm-2023
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mamba activate esm-2023
 </pre></div>
 </div>
 <p>This environment should be sufficient for all of your work in this course.</p>
+<p>The environment has to be activated whenever you open a new terminal,
+<em>before</em> starting a new Jupyter window with</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>jupyter lab
+</pre></div>
+</div>
+<section id="with-pip">
+<h3>With <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#with-pip" title="Permalink to this heading">#</a></h3>
+<p>If you want to use <code class="docutils literal notranslate"><span class="pre">pip</span></code> for managing your environment, download</p>
+<p><a class="github reference external" href="https://github.com/fneum/data-science-for-esm/blob/main/requirements.txt">fneum/data-science-for-esm</a></p>
+<p>There is a download button at the top-right corner.</p>
+<p>After navigating to the folder where the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file is stored,
+you can install the required packages with</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install -r requirements.txt
+</pre></div>
+</div>
+<p>This should allow you to start a new Jupyter window:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>jupyter lab
+</pre></div>
+</div>
 </section>
-<section id="what-is-jupyterlab">
-<h2>What is JupyterLab?<a class="headerlink" href="#what-is-jupyterlab" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="jupyterlab-and-jupyter-notebooks">
+<h2>JupyterLab and Jupyter Notebooks<a class="headerlink" href="#jupyterlab-and-jupyter-notebooks" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://jupyterlab.readthedocs.io">JupyterLab</a> will be our primary method for
 interacting with the computer. JupyterLab contains a complete environment for
 interactive data science which runs in your web browser.</p>
@@ -679,12 +664,18 @@ Here are some useful references on Markdown syntax.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-the-package-manager-conda">Installing the package manager <code class="docutils literal notranslate"><span class="pre">conda</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anaconda-python-distribution">Anaconda Python distribution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lightweight-alternatives-micromamba-and-miniconda">Lightweight alternatives: micromamba and miniconda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-python-without-a-package-manager">Installing Python without a package manager</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-without-a-local-installation">Using Python without a local installation</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-environments-with-conda">Managing environments with <code class="docutils literal notranslate"><span class="pre">conda</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#speeding-things-up-with-mamba">Speeding things up with Mamba</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-environment-for-this-course-esm-2023">Python environment for this course: <code class="docutils literal notranslate"><span class="pre">esm-2023</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-jupyterlab">What is JupyterLab?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-conda-or-mamba">With <code class="docutils literal notranslate"><span class="pre">conda</span></code> or <code class="docutils literal notranslate"><span class="pre">mamba</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-pip">With <code class="docutils literal notranslate"><span class="pre">pip</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab-and-jupyter-notebooks">JupyterLab and Jupyter Notebooks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown-syntax">Markdown Syntax</a></li>
 </ul>
   </nav></div>

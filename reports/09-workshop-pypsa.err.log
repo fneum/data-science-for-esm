@@ -18,48 +18,69 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-n.optimize()
+fig = plt.figure(figsize=(7, 7))
+ax = plt.axes(projection=ccrs.EqualEarth())
+
+n.plot(
+    ax=ax,
+    bus_sizes=0,
+    line_colors=line_loading,
+    line_norm=norm,
+    line_cmap="plasma",
+    line_widths=n.lines.s_nom / 1000,
+)
+
+plt.colorbar(
+    plt.cm.ScalarMappable(cmap="plasma", norm=norm),
+    label="Relative line loading [%]",
+    shrink=0.6,
+)
 ------------------
 
 ----- stderr -----
-/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
+/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
 
-the `pandas.MultiIndex` object(s) passed as 'Generator' coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, 'dim')` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
-
-/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
-
-the `pandas.MultiIndex` object(s) passed as 'Line' coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, 'dim')` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
-
-/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
-
-the `pandas.MultiIndex` object(s) passed as 'Line' coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, 'dim')` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
-
-INFO:linopy.model: Solve problem using Glpk solver
+facecolor will have no effect as it has been defined as "never".
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mAssertionError[0m                            Traceback (most recent call last)
-Cell [0;32mIn[41], line 1[0m
-[0;32m----> 1[0m [43mn[49m[38;5;241;43m.[39;49m[43moptimize[49m[43m([49m[43m)[49m
+[0;31mValueError[0m                                Traceback (most recent call last)
+Cell [0;32mIn[72], line 13[0m
+[1;32m      2[0m ax [38;5;241m=[39m plt[38;5;241m.[39maxes(projection[38;5;241m=[39mccrs[38;5;241m.[39mEqualEarth())
+[1;32m      4[0m n[38;5;241m.[39mplot(
+[1;32m      5[0m     ax[38;5;241m=[39max,
+[1;32m      6[0m     bus_sizes[38;5;241m=[39m[38;5;241m0[39m,
+[0;32m   (...)[0m
+[1;32m     10[0m     line_widths[38;5;241m=[39mn[38;5;241m.[39mlines[38;5;241m.[39ms_nom [38;5;241m/[39m [38;5;241m1000[39m,
+[1;32m     11[0m )
+[0;32m---> 13[0m [43mplt[49m[38;5;241;43m.[39;49m[43mcolorbar[49m[43m([49m
+[1;32m     14[0m [43m    [49m[43mplt[49m[38;5;241;43m.[39;49m[43mcm[49m[38;5;241;43m.[39;49m[43mScalarMappable[49m[43m([49m[43mcmap[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mplasma[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[43mnorm[49m[38;5;241;43m=[39;49m[43mnorm[49m[43m)[49m[43m,[49m
+[1;32m     15[0m [43m    [49m[43mlabel[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mRelative line loading [[39;49m[38;5;124;43m%[39;49m[38;5;124;43m][39;49m[38;5;124;43m"[39;49m[43m,[49m
+[1;32m     16[0m [43m    [49m[43mshrink[49m[38;5;241;43m=[39;49m[38;5;241;43m0.6[39;49m[43m,[49m
+[1;32m     17[0m [43m)[49m
 
-File [0;32m/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:585[0m, in [0;36mOptimizationAccessor.__call__[0;34m(self, *args, **kwargs)[0m
-[1;32m    583[0m [38;5;129m@wraps[39m(optimize)
-[1;32m    584[0m [38;5;28;01mdef[39;00m [38;5;21m__call__[39m([38;5;28mself[39m, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs):
-[0;32m--> 585[0m     [38;5;28;01mreturn[39;00m [43moptimize[49m[43m([49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_parent[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+File [0;32m/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/matplotlib/pyplot.py:2326[0m, in [0;36mcolorbar[0;34m(mappable, cax, ax, **kwargs)[0m
+[1;32m   2321[0m     [38;5;28;01mif[39;00m mappable [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[1;32m   2322[0m         [38;5;28;01mraise[39;00m [38;5;167;01mRuntimeError[39;00m([38;5;124m'[39m[38;5;124mNo mappable was found to use for colorbar [39m[38;5;124m'[39m
+[1;32m   2323[0m                            [38;5;124m'[39m[38;5;124mcreation. First define a mappable such as [39m[38;5;124m'[39m
+[1;32m   2324[0m                            [38;5;124m'[39m[38;5;124man image (with imshow) or a contour set ([39m[38;5;124m'[39m
+[1;32m   2325[0m                            [38;5;124m'[39m[38;5;124mwith contourf).[39m[38;5;124m'[39m)
+[0;32m-> 2326[0m ret [38;5;241m=[39m [43mgcf[49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[43mcolorbar[49m[43m([49m[43mmappable[49m[43m,[49m[43m [49m[43mcax[49m[38;5;241;43m=[39;49m[43mcax[49m[43m,[49m[43m [49m[43max[49m[38;5;241;43m=[39;49m[43max[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   2327[0m [38;5;28;01mreturn[39;00m ret
 
-File [0;32m/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:565[0m, in [0;36moptimize[0;34m(n, snapshots, multi_investment_periods, transmission_losses, linearized_unit_commitment, model_kwargs, extra_functionality, assign_all_duals, solver_name, solver_options, **kwargs)[0m
-[1;32m    563[0m [38;5;28;01mif[39;00m extra_functionality:
-[1;32m    564[0m     extra_functionality(n, sns)
-[0;32m--> 565[0m status, condition [38;5;241m=[39m [43mm[49m[38;5;241;43m.[39;49m[43msolve[49m[43m([49m[43msolver_name[49m[38;5;241;43m=[39;49m[43msolver_name[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43msolver_options[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
-[1;32m    567[0m [38;5;28;01mif[39;00m status [38;5;241m==[39m [38;5;124m"[39m[38;5;124mok[39m[38;5;124m"[39m:
-[1;32m    568[0m     assign_solution(n)
+File [0;32m/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/matplotlib/figure.py:1285[0m, in [0;36mFigureBase.colorbar[0;34m(self, mappable, cax, ax, use_gridspec, **kwargs)[0m
+[1;32m   1283[0m [38;5;28;01mif[39;00m cax [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[1;32m   1284[0m     [38;5;28;01mif[39;00m ax [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[0;32m-> 1285[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[1;32m   1286[0m             [38;5;124m'[39m[38;5;124mUnable to determine Axes to steal space for Colorbar. [39m[38;5;124m'[39m
+[1;32m   1287[0m             [38;5;124m'[39m[38;5;124mEither provide the *cax* argument to use as the Axes for [39m[38;5;124m'[39m
+[1;32m   1288[0m             [38;5;124m'[39m[38;5;124mthe Colorbar, provide the *ax* argument to steal space [39m[38;5;124m'[39m
+[1;32m   1289[0m             [38;5;124m'[39m[38;5;124mfrom it, or add *mappable* to an Axes.[39m[38;5;124m'[39m)
+[1;32m   1290[0m     fig [38;5;241m=[39m (  [38;5;66;03m# Figure of first axes; logic copied from make_axes.[39;00m
+[1;32m   1291[0m         [[38;5;241m*[39max[38;5;241m.[39mflat] [38;5;28;01mif[39;00m [38;5;28misinstance[39m(ax, np[38;5;241m.[39mndarray)
+[1;32m   1292[0m         [38;5;28;01melse[39;00m [[38;5;241m*[39max] [38;5;28;01mif[39;00m np[38;5;241m.[39miterable(ax)
+[1;32m   1293[0m         [38;5;28;01melse[39;00m [ax])[[38;5;241m0[39m][38;5;241m.[39mfigure
+[1;32m   1294[0m     current_ax [38;5;241m=[39m fig[38;5;241m.[39mgca()
 
-File [0;32m/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/model.py:1015[0m, in [0;36mModel.solve[0;34m(self, solver_name, io_api, problem_fn, solution_fn, log_fn, basis_fn, warmstart_fn, keep_files, sanitize_zeros, remote, **solver_options)[0m
-[1;32m   1012[0m     solver_name [38;5;241m=[39m available_solvers[[38;5;241m0[39m]
-[1;32m   1014[0m logger[38;5;241m.[39minfo([38;5;124mf[39m[38;5;124m"[39m[38;5;124m Solve problem using [39m[38;5;132;01m{[39;00msolver_name[38;5;241m.[39mtitle()[38;5;132;01m}[39;00m[38;5;124m solver[39m[38;5;124m"[39m)
-[0;32m-> 1015[0m [38;5;28;01massert[39;00m solver_name [38;5;129;01min[39;00m available_solvers, [38;5;124mf[39m[38;5;124m"[39m[38;5;124mSolver [39m[38;5;132;01m{[39;00msolver_name[38;5;132;01m}[39;00m[38;5;124m not installed[39m[38;5;124m"[39m
-[1;32m   1017[0m [38;5;66;03m# reset result[39;00m
-[1;32m   1018[0m [38;5;28mself[39m[38;5;241m.[39mreset_solution()
-
-[0;31mAssertionError[0m: Solver glpk not installed
+[0;31mValueError[0m: Unable to determine Axes to steal space for Colorbar. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
 

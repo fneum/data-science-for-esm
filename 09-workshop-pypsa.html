@@ -465,10 +465,9 @@ document.write(`
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you have not yet set up Python on your computer, you can execute this tutorial in your browser via Google Colab. Click on the rocket in the top right corner and launch “Colab”. If you have not yet set up Python on your computer, you can execute this tutorial in your browser via <a class="reference external" href="https://colab.research.google.com/">Google Colab</a>. Click on the rocket in the top right corner and launch “Colab”. If that doesn’t work download the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file and import it in <a class="reference external" href="https://colab.research.google.com/">Google Colab</a>.</p>
+<p>If you have not yet set up Python on your computer, you can execute this tutorial in your browser via <a class="reference external" href="https://colab.research.google.com/">Google Colab</a>. Click on the rocket in the top right corner and launch “Colab”. If that doesn’t work download the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file and import it in <a class="reference external" href="https://colab.research.google.com/">Google Colab</a>.</p>
 <p>Then install the following packages by executing the following command in a Jupyter cell at the top of the notebook.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>!apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>libgeos-dev
-!pip<span class="w"> </span>install<span class="w"> </span>pypsa<span class="w"> </span>matplotlib<span class="w"> </span>cartopy
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>!pip<span class="w"> </span>install<span class="w"> </span>pypsa<span class="w"> </span>matplotlib<span class="w"> </span>cartopy<span class="w"> </span>highspy
 </pre></div>
 </div>
 </div>
@@ -543,13 +542,13 @@ document.write(`
 <h2>From structured data to optimisation<a class="headerlink" href="#from-structured-data-to-optimisation" title="Permalink to this heading">#</a></h2>
 <p>The design principle of PyPSA is that basically each component is associated with a set of variables and constraints that will be added to the optimisation model based on the input data stored for the components.</p>
 <p>For an <em>hourly</em> electricity market simulation, PyPSA will solve an optimisation problem that looks like this</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f71826bc-6af1-4967-a84a-d112f63121a3">
-<span class="eqno">(8)<a class="headerlink" href="#equation-f71826bc-6af1-4967-a84a-d112f63121a3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4b25ce17-c57c-414d-b0ef-b31fa2fcb28b">
+<span class="eqno">(8)<a class="headerlink" href="#equation-4b25ce17-c57c-414d-b0ef-b31fa2fcb28b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min_{g_{i,s,t}; f_{\ell,t}; g_{i,r,t,\text{charge}}; g_{i,r,t,\text{discharge}}; e_{i,r,t}} \sum_s o_{s} g_{i,s,t}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3e68eccc-5362-4119-b9cb-a53fab6974cf">
-<span class="eqno">(9)<a class="headerlink" href="#equation-3e68eccc-5362-4119-b9cb-a53fab6974cf" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0f9d53dd-7f94-4b12-9029-416760f98b92">
+<span class="eqno">(9)<a class="headerlink" href="#equation-0f9d53dd-7f94-4b12-9029-416760f98b92" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp; \leq g_{i,s,t} \leq \hat{g}_{i,s,t} G_{i,s}  &amp; \text{generation limits : generator} \\
 -F_\ell &amp;\leq f_{\ell,t} \leq F_\ell &amp; \text{transmission limits : line}  \\
 d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{i,r,t,\text{charge}} - \sum_\ell K_{i\ell} f_{\ell,t} &amp; \text{KCL : bus} \\
@@ -1297,7 +1296,7 @@ the `pandas.MultiIndex` object(s) passed as &#39;Line&#39; coordinate(s) or data
 INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.02s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.03s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
@@ -1592,8 +1591,8 @@ HiGHS run time      :          0.00
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f1623562590&gt;,
- &lt;matplotlib.collections.LineCollection at 0x7f162354cb10&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7fbfe9088610&gt;,
+ &lt;matplotlib.collections.LineCollection at 0x7fbfe9083850&gt;)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
@@ -1878,7 +1877,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </div>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;highs&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1900,34 +1899,40 @@ the `pandas.MultiIndex` object(s) passed as &#39;Line&#39; coordinate(s) or data
 
 the `pandas.MultiIndex` object(s) passed as &#39;Line&#39; coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, &#39;dim&#39;)` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
 
-INFO:linopy.model: Solve problem using Glpk solver
+INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">41</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:585,</span> in <span class="ni">OptimizationAccessor.__call__</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">583</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">optimize</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">584</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">585</span>     <span class="k">return</span> <span class="n">optimize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:565,</span> in <span class="ni">optimize</span><span class="nt">(n, snapshots, multi_investment_periods, transmission_losses, linearized_unit_commitment, model_kwargs, extra_functionality, assign_all_duals, solver_name, solver_options, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">563</span> <span class="k">if</span> <span class="n">extra_functionality</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">564</span>     <span class="n">extra_functionality</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">sns</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">565</span> <span class="n">status</span><span class="p">,</span> <span class="n">condition</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="n">solver_name</span><span class="p">,</span> <span class="o">**</span><span class="n">solver_options</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">567</span> <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;ok&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">568</span>     <span class="n">assign_solution</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/model.py:1015,</span> in <span class="ni">Model.solve</span><span class="nt">(self, solver_name, io_api, problem_fn, solution_fn, log_fn, basis_fn, warmstart_fn, keep_files, sanitize_zeros, remote, **solver_options)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1012</span>     <span class="n">solver_name</span> <span class="o">=</span> <span class="n">available_solvers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1014</span> <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; Solve problem using </span><span class="si">{</span><span class="n">solver_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> solver&quot;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1015</span> <span class="k">assert</span> <span class="n">solver_name</span> <span class="ow">in</span> <span class="n">available_solvers</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Solver </span><span class="si">{</span><span class="n">solver_name</span><span class="si">}</span><span class="s2"> not installed&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1017</span> <span class="c1"># reset result</span>
-<span class="g g-Whitespace">   </span><span class="mi">1018</span> <span class="bp">self</span><span class="o">.</span><span class="n">reset_solution</span><span class="p">()</span>
-
-<span class="ne">AssertionError</span>: Solver glpk not installed
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.02s
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 6 primals, 14 duals
+Objective: 1.40e+06
+Solver model: available
+Solver message: optimal
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper were not assigned to the network.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running HiGHS 1.5.3 [date: 2023-05-16, git hash: 594fa5a9d-dirty]
+Copyright (c) 2023 HiGHS under MIT licence terms
+Presolving model
+1 rows, 2 cols, 2 nonzeros
+0 rows, 0 cols, 0 nonzeros
+Presolve : Reductions: rows 0(-14); columns 0(-6); elements 0(-19) - Reduced to empty
+Solving the original LP from the solution after postsolve
+Model   status      : Optimal
+Objective value     :  1.3986326317e+06
+HiGHS run time      :          0.00
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
 </pre></div>
 </div>
 </div>
@@ -1940,6 +1945,52 @@ INFO:linopy.model: Solve problem using Glpk solver
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Generator</th>
+      <th>MZ hydro</th>
+      <th>SA coal</th>
+      <th>SA wind</th>
+      <th>SA gas</th>
+      <th>SA oil</th>
+    </tr>
+    <tr>
+      <th>snapshot</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>now</th>
+      <td>1050.0</td>
+      <td>35000.0</td>
+      <td>3000.0</td>
+      <td>1600.0</td>
+      <td>2000.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="global-constraints-for-emission-limits">
@@ -1962,11 +2013,62 @@ INFO:linopy.model: Solve problem using Glpk solver
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Generator</th>
+      <th>MZ hydro</th>
+      <th>SA coal</th>
+      <th>SA wind</th>
+      <th>SA gas</th>
+      <th>SA oil</th>
+    </tr>
+    <tr>
+      <th>snapshot</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>now</th>
+      <td>0.0</td>
+      <td>36060.606061</td>
+      <td>NaN</td>
+      <td>551.724138</td>
+      <td>1485.714286</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Summed up, we get total emissions in tonnes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38098.044484251375
 </pre></div>
 </div>
 </div>
@@ -1986,11 +2088,68 @@ INFO:linopy.model: Solve problem using Glpk solver
 </div>
 </div>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;highs&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
+
+the `pandas.MultiIndex` object(s) passed as &#39;Generator&#39; coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, &#39;dim&#39;)` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
+
+/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
+
+the `pandas.MultiIndex` object(s) passed as &#39;Line&#39; coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, &#39;dim&#39;)` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
+
+/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
+
+the `pandas.MultiIndex` object(s) passed as &#39;Line&#39; coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, &#39;dim&#39;)` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
+
+INFO:linopy.model: Solve problem using Highs solver
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.03s
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 6 primals, 15 duals
+Objective: 2.12e+06
+Solver model: available
+Solver message: optimal
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper were not assigned to the network.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running HiGHS 1.5.3 [date: 2023-05-16, git hash: 594fa5a9d-dirty]
+Copyright (c) 2023 HiGHS under MIT licence terms
+Presolving model
+2 rows, 3 cols, 6 nonzeros
+1 rows, 2 cols, 2 nonzeros
+0 rows, 0 cols, 0 nonzeros
+Presolve : Reductions: rows 0(-15); columns 0(-6); elements 0(-22) - Reduced to empty
+Solving the original LP from the solution after postsolve
+Model   status      : Optimal
+Objective value     :  2.1206212849e+06
+HiGHS run time      :          0.00
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
+</pre></div>
+</div>
+</div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1998,6 +2157,52 @@ INFO:linopy.model: Solve problem using Glpk solver
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Generator</th>
+      <th>MZ hydro</th>
+      <th>SA coal</th>
+      <th>SA wind</th>
+      <th>SA gas</th>
+      <th>SA oil</th>
+    </tr>
+    <tr>
+      <th>snapshot</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>now</th>
+      <td>1050.0</td>
+      <td>30603.423345</td>
+      <td>3000.0</td>
+      <td>7996.576655</td>
+      <td>-0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2005,10 +2210,63 @@ INFO:linopy.model: Solve problem using Glpk solver
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Generator</th>
+      <th>MZ hydro</th>
+      <th>SA coal</th>
+      <th>SA wind</th>
+      <th>SA gas</th>
+      <th>SA oil</th>
+    </tr>
+    <tr>
+      <th>snapshot</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>now</th>
+      <td>0.875</td>
+      <td>0.874384</td>
+      <td>1.0</td>
+      <td>0.999572</td>
+      <td>-0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">global_constraints</span><span class="o">.</span><span class="n">mu</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GlobalConstraint
+emission_limit   -216.158537
+Name: mu, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -2022,11 +2280,62 @@ INFO:linopy.model: Solve problem using Glpk solver
 </div>
 </div>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;highs&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
+
+the `pandas.MultiIndex` object(s) passed as &#39;Generator&#39; coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, &#39;dim&#39;)` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
+
+/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
+
+the `pandas.MultiIndex` object(s) passed as &#39;Line&#39; coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, &#39;dim&#39;)` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
+
+/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
+
+the `pandas.MultiIndex` object(s) passed as &#39;Line&#39; coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, &#39;dim&#39;)` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Highs solver
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.03s
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:linopy.constants:Optimization failed: 
+Status: warning
+Termination condition: infeasible
+Solution: 0 primals, 0 duals
+Objective: nan
+Solver model: available
+Solver message: infeasible
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running HiGHS 1.5.3 [date: 2023-05-16, git hash: 594fa5a9d-dirty]
+Copyright (c) 2023 HiGHS under MIT licence terms
+Presolving model
+Problem status detected on presolve: Infeasible
+Model   status      : Infeasible
+Objective value     :  0.0000000000e+00
+HiGHS run time      :          0.00
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;warning&#39;, &#39;infeasible&#39;)
+</pre></div>
+</div>
+</div>
+</details>
 </div>
 <p>No! Without any additional capacities, we have exhausted our options to reduce CO2 in that hour. The optimiser tells us that the problem is <em>infeasible</em>.</p>
 </section>
@@ -2048,10 +2357,23 @@ INFO:linopy.model: Solve problem using Glpk solver
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Directory tmp does not exist, creating it
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has buses, loads, carriers, generators, lines, global_constraints
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_csv</span> <span class="o">=</span> <span class="n">pypsa</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s2">&quot;tmp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Imported network tmp has buses, carriers, generators, global_constraints, lines, loads
 </pre></div>
 </div>
 </div>
@@ -2062,10 +2384,20 @@ INFO:linopy.model: Solve problem using Glpk solver
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has buses, loads, carriers, generators, lines, global_constraints
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_nc</span> <span class="o">=</span> <span class="n">pypsa</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s2">&quot;tmp.nc&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Imported network tmp.nc has buses, carriers, generators, global_constraints, lines, loads
 </pre></div>
 </div>
 </div>
@@ -2078,6 +2410,17 @@ INFO:linopy.model: Solve problem using Glpk solver
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">pypsa</span><span class="o">.</span><span class="n">examples</span><span class="o">.</span><span class="n">scigrid_de</span><span class="p">(</span><span class="n">from_master</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.examples:Retrieving network data from https://github.com/PyPSA/PyPSA/raw/master/examples/scigrid-de/scigrid-with-load-gen-trafos.nc
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Importing network from PyPSA version v0.17.1 while current version is v0.25.2. Read the release notes at https://pypsa.readthedocs.io/en/latest/release_notes.html to prepare your network for import.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Imported network scigrid-de.nc has buses, generators, lines, loads, storage_units, transformers
 </pre></div>
 </div>
 </div>
@@ -2098,6 +2441,23 @@ INFO:linopy.model: Solve problem using Glpk solver
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DatetimeIndex([&#39;2011-01-01 00:00:00&#39;, &#39;2011-01-01 01:00:00&#39;,
+               &#39;2011-01-01 02:00:00&#39;, &#39;2011-01-01 03:00:00&#39;,
+               &#39;2011-01-01 04:00:00&#39;, &#39;2011-01-01 05:00:00&#39;,
+               &#39;2011-01-01 06:00:00&#39;, &#39;2011-01-01 07:00:00&#39;,
+               &#39;2011-01-01 08:00:00&#39;, &#39;2011-01-01 09:00:00&#39;,
+               &#39;2011-01-01 10:00:00&#39;, &#39;2011-01-01 11:00:00&#39;,
+               &#39;2011-01-01 12:00:00&#39;, &#39;2011-01-01 13:00:00&#39;,
+               &#39;2011-01-01 14:00:00&#39;, &#39;2011-01-01 15:00:00&#39;,
+               &#39;2011-01-01 16:00:00&#39;, &#39;2011-01-01 17:00:00&#39;,
+               &#39;2011-01-01 18:00:00&#39;, &#39;2011-01-01 19:00:00&#39;,
+               &#39;2011-01-01 20:00:00&#39;, &#39;2011-01-01 21:00:00&#39;,
+               &#39;2011-01-01 22:00:00&#39;, &#39;2011-01-01 23:00:00&#39;],
+              dtype=&#39;datetime64[ns]&#39;, name=&#39;snapshot&#39;, freq=None)
+</pre></div>
+</div>
+</div>
 </div>
 <p>This index will match with any time-varying attributes of components:</p>
 <div class="cell docutils container">
@@ -2106,6 +2466,149 @@ INFO:linopy.model: Solve problem using Glpk solver
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Load</th>
+      <th>1</th>
+      <th>3</th>
+      <th>4</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>11</th>
+      <th>14</th>
+      <th>16</th>
+      <th>...</th>
+      <th>382_220kV</th>
+      <th>384_220kV</th>
+      <th>385_220kV</th>
+      <th>391_220kV</th>
+      <th>403_220kV</th>
+      <th>404_220kV</th>
+      <th>413_220kV</th>
+      <th>421_220kV</th>
+      <th>450_220kV</th>
+      <th>458_220kV</th>
+    </tr>
+    <tr>
+      <th>snapshot</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2011-01-01 00:00:00</th>
+      <td>231.716206</td>
+      <td>40.613618</td>
+      <td>66.790442</td>
+      <td>196.124424</td>
+      <td>147.804142</td>
+      <td>123.671946</td>
+      <td>83.637404</td>
+      <td>73.280624</td>
+      <td>175.260369</td>
+      <td>298.900165</td>
+      <td>...</td>
+      <td>202.010114</td>
+      <td>222.695091</td>
+      <td>212.621816</td>
+      <td>77.570241</td>
+      <td>16.148970</td>
+      <td>0.092794</td>
+      <td>58.427056</td>
+      <td>67.013686</td>
+      <td>38.449243</td>
+      <td>66.752618</td>
+    </tr>
+    <tr>
+      <th>2011-01-01 01:00:00</th>
+      <td>221.822547</td>
+      <td>38.879526</td>
+      <td>63.938670</td>
+      <td>187.750439</td>
+      <td>141.493303</td>
+      <td>118.391487</td>
+      <td>80.066312</td>
+      <td>70.151738</td>
+      <td>167.777223</td>
+      <td>286.137932</td>
+      <td>...</td>
+      <td>193.384825</td>
+      <td>213.186609</td>
+      <td>203.543436</td>
+      <td>74.258201</td>
+      <td>15.459452</td>
+      <td>0.088831</td>
+      <td>55.932378</td>
+      <td>64.152382</td>
+      <td>36.807564</td>
+      <td>63.902460</td>
+    </tr>
+    <tr>
+      <th>2011-01-01 02:00:00</th>
+      <td>213.127360</td>
+      <td>37.355494</td>
+      <td>61.432348</td>
+      <td>180.390839</td>
+      <td>135.946929</td>
+      <td>113.750678</td>
+      <td>76.927805</td>
+      <td>67.401871</td>
+      <td>161.200550</td>
+      <td>274.921657</td>
+      <td>...</td>
+      <td>185.804364</td>
+      <td>204.829941</td>
+      <td>195.564769</td>
+      <td>71.347365</td>
+      <td>14.853460</td>
+      <td>0.085349</td>
+      <td>53.739893</td>
+      <td>61.637683</td>
+      <td>35.364750</td>
+      <td>61.397558</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 485 columns</p>
+</div></div></div>
 </div>
 <p>We can use simple <code class="docutils literal notranslate"><span class="pre">pandas</span></code> syntax, to create an overview of the load time series…</p>
 <div class="cell docutils container">
@@ -2113,6 +2616,12 @@ INFO:linopy.model: Solve problem using Glpk solver
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">loads_t</span><span class="o">.</span><span class="n">p_set</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;MW&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;snapshot&#39;, ylabel=&#39;MW&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/aaed0216d9a015bb7f374068f3546a7cc1b6cc6e1f51887a52a398802e8b2a99.png" src="_images/aaed0216d9a015bb7f374068f3546a7cc1b6cc6e1f51887a52a398802e8b2a99.png" />
 </div>
 </div>
 <p>… and the capacity factor time series:</p>
@@ -2122,6 +2631,12 @@ INFO:linopy.model: Solve problem using Glpk solver
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;snapshot&#39;, ylabel=&#39;p.u.&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/e4a1937492bbaa3082b031316ba5291d8879f06a24a369ffaa5f38ffdc4c413a.png" src="_images/e4a1937492bbaa3082b031316ba5291d8879f06a24a369ffaa5f38ffdc4c413a.png" />
+</div>
 </div>
 <p>We can also inspect the total power plant capacities per technology…</p>
 <div class="cell docutils container">
@@ -2130,6 +2645,12 @@ INFO:linopy.model: Solve problem using Glpk solver
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;GW&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;GW&#39;)
+</pre></div>
+</div>
+<img alt="_images/06ca04325868d7a3e28e5834314b7520711f267645a85b829a8e2e0fb3eee925.png" src="_images/06ca04325868d7a3e28e5834314b7520711f267645a85b829a8e2e0fb3eee925.png" />
 </div>
 </div>
 <p>… and plot the regional distribution of loads…</p>
@@ -2152,6 +2673,14 @@ INFO:linopy.model: Solve problem using Glpk solver
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
+
+facecolor will have no effect as it has been defined as &quot;never&quot;.
+</pre></div>
+</div>
+<img alt="_images/beb5f065ee28ccc2220bb4dfb949aea5ef6a73bb8fc3dfaab942ebb8feacf4e6.png" src="_images/beb5f065ee28ccc2220bb4dfb949aea5ef6a73bb8fc3dfaab942ebb8feacf4e6.png" />
+</div>
 </div>
 <p>… and power plant capacities:</p>
 <div class="cell docutils container">
@@ -2169,6 +2698,14 @@ INFO:linopy.model: Solve problem using Glpk solver
 <span class="n">carriers</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">carrier</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;#</span><span class="si">%06x</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mh">0xFFFFFF</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">carriers</span><span class="p">]</span>
 <span class="n">n</span><span class="o">.</span><span class="n">madd</span><span class="p">(</span><span class="s2">&quot;Carrier&quot;</span><span class="p">,</span> <span class="n">carriers</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Gas&#39;, &#39;Hard Coal&#39;, &#39;Run of River&#39;, &#39;Waste&#39;, &#39;Brown Coal&#39;, &#39;Oil&#39;,
+       &#39;Storage Hydro&#39;, &#39;Other&#39;, &#39;Multiple&#39;, &#39;Nuclear&#39;, &#39;Geothermal&#39;,
+       &#39;Wind Offshore&#39;, &#39;Wind Onshore&#39;, &#39;Solar&#39;],
+      dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
@@ -2192,6 +2729,14 @@ INFO:linopy.model: Solve problem using Glpk solver
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
+
+facecolor will have no effect as it has been defined as &quot;never&quot;.
+</pre></div>
+</div>
+<img alt="_images/548ff31fb06ae6fc550e468e9b3ab6315c5a18f80e6120f11d363bf552324f5c.png" src="_images/548ff31fb06ae6fc550e468e9b3ab6315c5a18f80e6120f11d363bf552324f5c.png" />
+</div>
 </div>
 <p>This dataset also includes a few hydro storage units:</p>
 <div class="cell docutils container">
@@ -2200,14 +2745,303 @@ INFO:linopy.model: Solve problem using Glpk solver
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>bus</th>
+      <th>p_nom</th>
+      <th>carrier</th>
+      <th>marginal_cost</th>
+      <th>max_hours</th>
+      <th>efficiency_store</th>
+      <th>efficiency_dispatch</th>
+      <th>control</th>
+      <th>type</th>
+      <th>p_nom_extendable</th>
+      <th>...</th>
+      <th>build_year</th>
+      <th>lifetime</th>
+      <th>state_of_charge_initial</th>
+      <th>state_of_charge_initial_per_period</th>
+      <th>state_of_charge_set</th>
+      <th>cyclic_state_of_charge</th>
+      <th>cyclic_state_of_charge_per_period</th>
+      <th>standing_loss</th>
+      <th>inflow</th>
+      <th>p_nom_opt</th>
+    </tr>
+    <tr>
+      <th>StorageUnit</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>100_220kV Pumped Hydro</th>
+      <td>100_220kV</td>
+      <td>144.5</td>
+      <td>Pumped Hydro</td>
+      <td>3.0</td>
+      <td>6.0</td>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>PQ</td>
+      <td></td>
+      <td>False</td>
+      <td>...</td>
+      <td>0</td>
+      <td>inf</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>True</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>114 Pumped Hydro</th>
+      <td>114</td>
+      <td>138.0</td>
+      <td>Pumped Hydro</td>
+      <td>3.0</td>
+      <td>6.0</td>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>PQ</td>
+      <td></td>
+      <td>False</td>
+      <td>...</td>
+      <td>0</td>
+      <td>inf</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>True</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>121 Pumped Hydro</th>
+      <td>121</td>
+      <td>238.0</td>
+      <td>Pumped Hydro</td>
+      <td>3.0</td>
+      <td>6.0</td>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>PQ</td>
+      <td></td>
+      <td>False</td>
+      <td>...</td>
+      <td>0</td>
+      <td>inf</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>True</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 29 columns</p>
+</div></div></div>
 </div>
 <p>So let’s solve the electricity market simulation for January 1, 2011. It’ll take a short moment.</p>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;highs&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The following transformers have zero r, which could break the linear load flow:
+Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;15&#39;, &#39;18&#39;, &#39;20&#39;, &#39;22&#39;, &#39;24&#39;, &#39;26&#39;, &#39;30&#39;,
+       &#39;32&#39;, &#39;37&#39;, &#39;42&#39;, &#39;46&#39;, &#39;52&#39;, &#39;56&#39;, &#39;61&#39;, &#39;68&#39;, &#39;69&#39;, &#39;74&#39;, &#39;78&#39;, &#39;86&#39;,
+       &#39;87&#39;, &#39;94&#39;, &#39;95&#39;, &#39;96&#39;, &#39;99&#39;, &#39;100&#39;, &#39;104&#39;, &#39;105&#39;, &#39;106&#39;, &#39;107&#39;, &#39;117&#39;,
+       &#39;120&#39;, &#39;123&#39;, &#39;124&#39;, &#39;125&#39;, &#39;128&#39;, &#39;129&#39;, &#39;138&#39;, &#39;143&#39;, &#39;156&#39;, &#39;157&#39;,
+       &#39;159&#39;, &#39;160&#39;, &#39;165&#39;, &#39;184&#39;, &#39;191&#39;, &#39;195&#39;, &#39;201&#39;, &#39;220&#39;, &#39;231&#39;, &#39;232&#39;,
+       &#39;233&#39;, &#39;236&#39;, &#39;247&#39;, &#39;248&#39;, &#39;250&#39;, &#39;251&#39;, &#39;252&#39;, &#39;261&#39;, &#39;263&#39;, &#39;264&#39;,
+       &#39;267&#39;, &#39;272&#39;, &#39;279&#39;, &#39;281&#39;, &#39;282&#39;, &#39;292&#39;, &#39;303&#39;, &#39;307&#39;, &#39;308&#39;, &#39;312&#39;,
+       &#39;315&#39;, &#39;317&#39;, &#39;322&#39;, &#39;332&#39;, &#39;334&#39;, &#39;336&#39;, &#39;338&#39;, &#39;351&#39;, &#39;353&#39;, &#39;360&#39;,
+       &#39;362&#39;, &#39;382&#39;, &#39;384&#39;, &#39;385&#39;, &#39;391&#39;, &#39;403&#39;, &#39;404&#39;, &#39;413&#39;, &#39;421&#39;, &#39;450&#39;,
+       &#39;458&#39;],
+      dtype=&#39;object&#39;, name=&#39;Transformer&#39;)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The following transformers have zero r, which could break the linear load flow:
+Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;15&#39;, &#39;18&#39;, &#39;20&#39;, &#39;22&#39;, &#39;24&#39;, &#39;26&#39;, &#39;30&#39;,
+       &#39;32&#39;, &#39;37&#39;, &#39;42&#39;, &#39;46&#39;, &#39;52&#39;, &#39;56&#39;, &#39;61&#39;, &#39;68&#39;, &#39;69&#39;, &#39;74&#39;, &#39;78&#39;, &#39;86&#39;,
+       &#39;87&#39;, &#39;94&#39;, &#39;95&#39;, &#39;96&#39;, &#39;99&#39;, &#39;100&#39;, &#39;104&#39;, &#39;105&#39;, &#39;106&#39;, &#39;107&#39;, &#39;117&#39;,
+       &#39;120&#39;, &#39;123&#39;, &#39;124&#39;, &#39;125&#39;, &#39;128&#39;, &#39;129&#39;, &#39;138&#39;, &#39;143&#39;, &#39;156&#39;, &#39;157&#39;,
+       &#39;159&#39;, &#39;160&#39;, &#39;165&#39;, &#39;184&#39;, &#39;191&#39;, &#39;195&#39;, &#39;201&#39;, &#39;220&#39;, &#39;231&#39;, &#39;232&#39;,
+       &#39;233&#39;, &#39;236&#39;, &#39;247&#39;, &#39;248&#39;, &#39;250&#39;, &#39;251&#39;, &#39;252&#39;, &#39;261&#39;, &#39;263&#39;, &#39;264&#39;,
+       &#39;267&#39;, &#39;272&#39;, &#39;279&#39;, &#39;281&#39;, &#39;282&#39;, &#39;292&#39;, &#39;303&#39;, &#39;307&#39;, &#39;308&#39;, &#39;312&#39;,
+       &#39;315&#39;, &#39;317&#39;, &#39;322&#39;, &#39;332&#39;, &#39;334&#39;, &#39;336&#39;, &#39;338&#39;, &#39;351&#39;, &#39;353&#39;, &#39;360&#39;,
+       &#39;362&#39;, &#39;382&#39;, &#39;384&#39;, &#39;385&#39;, &#39;391&#39;, &#39;403&#39;, &#39;404&#39;, &#39;413&#39;, &#39;421&#39;, &#39;450&#39;,
+       &#39;458&#39;],
+      dtype=&#39;object&#39;, name=&#39;Transformer&#39;)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
+
+the `pandas.MultiIndex` object(s) passed as &#39;Generator&#39; coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, &#39;dim&#39;)` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
+
+/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
+
+the `pandas.MultiIndex` object(s) passed as &#39;StorageUnit&#39; coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, &#39;dim&#39;)` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
+
+/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
+
+the `pandas.MultiIndex` object(s) passed as &#39;StorageUnit&#39; coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, &#39;dim&#39;)` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
+
+/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
+
+the `pandas.MultiIndex` object(s) passed as &#39;Line&#39; coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, &#39;dim&#39;)` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
+
+/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
+
+the `pandas.MultiIndex` object(s) passed as &#39;Line&#39; coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, &#39;dim&#39;)` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
+
+/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
+
+the `pandas.MultiIndex` object(s) passed as &#39;Transformer&#39; coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, &#39;dim&#39;)` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
+
+/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
+
+the `pandas.MultiIndex` object(s) passed as &#39;Transformer&#39; coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, &#39;dim&#39;)` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Highs solver
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   7%|▋         | 1/15 [00:00&lt;00:01,  8.93it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  13%|█▎        | 2/15 [00:00&lt;00:01,  8.58it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  27%|██▋       | 4/15 [00:00&lt;00:00, 11.07it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 24.82it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 18.61it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:  29%|██▊       | 2/7 [00:00&lt;00:00, 17.20it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 51.13it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.97s
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running HiGHS 1.5.3 [date: 2023-05-16, git hash: 594fa5a9d-dirty]
+Copyright (c) 2023 HiGHS under MIT licence terms
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 59640 primals, 142968 duals
+Objective: 9.20e+06
+Solver model: available
+Solver message: optimal
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Presolving model
+18737 rows, 44750 cols, 119462 nonzeros
+13983 rows, 39900 cols, 112389 nonzeros
+12821 rows, 31890 cols, 103455 nonzeros
+12791 rows, 31763 cols, 103379 nonzeros
+Presolve : Reductions: rows 12791(-130177); columns 31763(-27877); elements 103379(-163631)
+Solving the presolved LP
+Using EKK dual simplex solver - serial
+  Iteration        Objective     Infeasibilities num(sum)
+          0     0.0000000000e+00 Ph1: 0(0) 0s
+      17008     9.1963536574e+06 Pr: 187(55479.8) 5s
+      17343     9.1992880405e+06 Pr: 0(0); Du: 0(1.24256e-12) 6s
+      17343     9.1992880405e+06 Pr: 0(0); Du: 0(1.24256e-12) 6s
+Solving the original LP from the solution after postsolve
+Model   status      : Optimal
+Simplex   iterations: 17343
+Objective value     :  9.1992880405e+06
+HiGHS run time      :          6.15
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper, Transformer-fix-s-lower, Transformer-fix-s-upper, StorageUnit-fix-p_dispatch-lower, StorageUnit-fix-p_dispatch-upper, StorageUnit-fix-p_store-lower, StorageUnit-fix-p_store-upper, StorageUnit-fix-state_of_charge-lower, StorageUnit-fix-state_of_charge-upper, Kirchhoff-Voltage-Law, StorageUnit-energy_balance were not assigned to the network.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
+</pre></div>
+</div>
+</div>
+</details>
 </div>
 <p>Now, we can also plot model outputs, like the calculated power flows on the network map.</p>
 <div class="cell docutils container">
@@ -2245,6 +3079,56 @@ INFO:linopy.model: Solve problem using Glpk solver
 <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">72</span><span class="p">],</span> <span class="n">line</span> <span class="mi">13</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">EqualEarth</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">n</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">bus_sizes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">line_widths</span><span class="o">=</span><span class="n">n</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">s_nom</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">13</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;plasma&quot;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">),</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Relative line loading [%]&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="n">shrink</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/matplotlib/pyplot.py:2326,</span> in <span class="ni">colorbar</span><span class="nt">(mappable, cax, ax, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2321</span>     <span class="k">if</span> <span class="n">mappable</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2322</span>         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;No mappable was found to use for colorbar &#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">2323</span>                            <span class="s1">&#39;creation. First define a mappable such as &#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">2324</span>                            <span class="s1">&#39;an image (with imshow) or a contour set (&#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">2325</span>                            <span class="s1">&#39;with contourf).&#39;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2326</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">mappable</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2327</span> <span class="k">return</span> <span class="n">ret</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/matplotlib/figure.py:1285,</span> in <span class="ni">FigureBase.colorbar</span><span class="nt">(self, mappable, cax, ax, use_gridspec, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1283</span> <span class="k">if</span> <span class="n">cax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1284</span>     <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1285</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1286</span>             <span class="s1">&#39;Unable to determine Axes to steal space for Colorbar. &#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1287</span>             <span class="s1">&#39;Either provide the *cax* argument to use as the Axes for &#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1288</span>             <span class="s1">&#39;the Colorbar, provide the *ax* argument to steal space &#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1289</span>             <span class="s1">&#39;from it, or add *mappable* to an Axes.&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1290</span>     <span class="n">fig</span> <span class="o">=</span> <span class="p">(</span>  <span class="c1"># Figure of first axes; logic copied from make_axes.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1291</span>         <span class="p">[</span><span class="o">*</span><span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1292</span>         <span class="k">else</span> <span class="p">[</span><span class="o">*</span><span class="n">ax</span><span class="p">]</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">iterable</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1293</span>         <span class="k">else</span> <span class="p">[</span><span class="n">ax</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">figure</span>
+<span class="g g-Whitespace">   </span><span class="mi">1294</span>     <span class="n">current_ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+<span class="ne">ValueError</span>: Unable to determine Axes to steal space for Colorbar. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
+
+facecolor will have no effect as it has been defined as &quot;never&quot;.
+</pre></div>
+</div>
+<img alt="_images/b0e1558cabd2e6d01a7ae769b742a71fe364bafd638b94e1072d501b4b907bec.png" src="_images/b0e1558cabd2e6d01a7ae769b742a71fe364bafd638b94e1072d501b4b907bec.png" />
 </div>
 </div>
 <p>Or plot the hourly dispatch grouped by carrier:</p>

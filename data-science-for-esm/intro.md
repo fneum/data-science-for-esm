@@ -65,7 +65,7 @@ A good tutorial for this can be found [here](https://realpython.com/installing-p
 
 ### Using Python without a local installation
 
-You can even start the course without a local Python installation using online services like  [Google Colab (colab.google)](https://colab.google) which provide an online Python version 
+You can even start the course without a local Python installation using online services like  [Google Colab (colab.google)](https://colab.google) which provide an online Python version
 in a [Jupyter Notebook](jupyter.org/) environment.
 
 ## Managing environments with `conda`

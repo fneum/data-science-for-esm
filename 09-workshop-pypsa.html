@@ -542,13 +542,13 @@ document.write(`
 <h2>From structured data to optimisation<a class="headerlink" href="#from-structured-data-to-optimisation" title="Permalink to this heading">#</a></h2>
 <p>The design principle of PyPSA is that basically each component is associated with a set of variables and constraints that will be added to the optimisation model based on the input data stored for the components.</p>
 <p>For an <em>hourly</em> electricity market simulation, PyPSA will solve an optimisation problem that looks like this</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4b25ce17-c57c-414d-b0ef-b31fa2fcb28b">
-<span class="eqno">(8)<a class="headerlink" href="#equation-4b25ce17-c57c-414d-b0ef-b31fa2fcb28b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-53e7a277-8aed-4b86-9e6e-dd22a3454b9d">
+<span class="eqno">(8)<a class="headerlink" href="#equation-53e7a277-8aed-4b86-9e6e-dd22a3454b9d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min_{g_{i,s,t}; f_{\ell,t}; g_{i,r,t,\text{charge}}; g_{i,r,t,\text{discharge}}; e_{i,r,t}} \sum_s o_{s} g_{i,s,t}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0f9d53dd-7f94-4b12-9029-416760f98b92">
-<span class="eqno">(9)<a class="headerlink" href="#equation-0f9d53dd-7f94-4b12-9029-416760f98b92" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-64b240ef-76db-45f6-9167-388de9f60953">
+<span class="eqno">(9)<a class="headerlink" href="#equation-64b240ef-76db-45f6-9167-388de9f60953" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp; \leq g_{i,s,t} \leq \hat{g}_{i,s,t} G_{i,s}  &amp; \text{generation limits : generator} \\
 -F_\ell &amp;\leq f_{\ell,t} \leq F_\ell &amp; \text{transmission limits : line}  \\
 d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{i,r,t,\text{charge}} - \sum_\ell K_{i\ell} f_{\ell,t} &amp; \text{KCL : bus} \\
@@ -1591,8 +1591,8 @@ HiGHS run time      :          0.00
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7fbfe9088610&gt;,
- &lt;matplotlib.collections.LineCollection at 0x7fbfe9083850&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f567c72add0&gt;,
+ &lt;matplotlib.collections.LineCollection at 0x7f56809fb710&gt;)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
@@ -1902,7 +1902,7 @@ the `pandas.MultiIndex` object(s) passed as &#39;Line&#39; coordinate(s) or data
 INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.02s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.03s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
@@ -2110,8 +2110,9 @@ the `pandas.MultiIndex` object(s) passed as &#39;Line&#39; coordinate(s) or data
 /opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
 
 the `pandas.MultiIndex` object(s) passed as &#39;Line&#39; coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, &#39;dim&#39;)` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
-
-INFO:linopy.model: Solve problem using Highs solver
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.03s
@@ -2302,9 +2303,8 @@ the `pandas.MultiIndex` object(s) passed as &#39;Line&#39; coordinate(s) or data
 /opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
 
 the `pandas.MultiIndex` object(s) passed as &#39;Line&#39; coordinate(s) or data variable(s) will no longer be implicitly promoted and wrapped into multiple indexed coordinates in the future (i.e., one coordinate for each multi-index level + one dimension coordinate). If you want to keep this behavior, you need to first wrap it explicitly using `mindex_coords = xarray.Coordinates.from_pandas_multiindex(mindex_obj, &#39;dim&#39;)` and pass it as coordinates, e.g., `xarray.Dataset(coords=mindex_coords)`, `dataset.assign_coords(mindex_coords)` or `dataarray.assign_coords(mindex_coords)`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Highs solver
+
+INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.03s
@@ -2735,7 +2735,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/548ff31fb06ae6fc550e468e9b3ab6315c5a18f80e6120f11d363bf552324f5c.png" src="_images/548ff31fb06ae6fc550e468e9b3ab6315c5a18f80e6120f11d363bf552324f5c.png" />
+<img alt="_images/cc242f4f04fdb9f73effe25a9d601a1aa40cffaea45b0adf7a02e599ffcd40b7.png" src="_images/cc242f4f04fdb9f73effe25a9d601a1aa40cffaea45b0adf7a02e599ffcd40b7.png" />
 </div>
 </div>
 <p>This dataset also includes a few hydro storage units:</p>
@@ -2968,19 +2968,22 @@ the `pandas.MultiIndex` object(s) passed as &#39;Transformer&#39; coordinate(s) 
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   7%|▋         | 1/15 [00:00&lt;00:01,  8.93it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   7%|▋         | 1/15 [00:00&lt;00:01,  7.75it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  13%|█▎        | 2/15 [00:00&lt;00:01,  8.58it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  13%|█▎        | 2/15 [00:00&lt;00:01,  7.50it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  27%|██▋       | 4/15 [00:00&lt;00:00, 11.07it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  27%|██▋       | 4/15 [00:00&lt;00:01,  9.65it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 24.82it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 21.45it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 18.61it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 16.67it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 15.70it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -2989,13 +2992,13 @@ the `pandas.MultiIndex` object(s) passed as &#39;Transformer&#39; coordinate(s) 
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:  29%|██▊       | 2/7 [00:00&lt;00:00, 17.20it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:  29%|██▊       | 2/7 [00:00&lt;00:00, 15.11it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 51.13it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 45.14it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.97s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 1.14s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
@@ -3015,23 +3018,22 @@ Solver message: optimal
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Presolving model
-18737 rows, 44750 cols, 119462 nonzeros
-13983 rows, 39900 cols, 112389 nonzeros
-12821 rows, 31890 cols, 103455 nonzeros
-12791 rows, 31763 cols, 103379 nonzeros
-Presolve : Reductions: rows 12791(-130177); columns 31763(-27877); elements 103379(-163631)
+18737 rows, 44750 cols, 127906 nonzeros
+13367 rows, 39186 cols, 119347 nonzeros
+12981 rows, 31957 cols, 111346 nonzeros
+Presolve : Reductions: rows 12981(-129987); columns 31957(-27683); elements 111346(-164208)
 Solving the presolved LP
 Using EKK dual simplex solver - serial
   Iteration        Objective     Infeasibilities num(sum)
           0     0.0000000000e+00 Ph1: 0(0) 0s
-      17008     9.1963536574e+06 Pr: 187(55479.8) 5s
-      17343     9.1992880405e+06 Pr: 0(0); Du: 0(1.24256e-12) 6s
-      17343     9.1992880405e+06 Pr: 0(0); Du: 0(1.24256e-12) 6s
+      15837     8.9523593200e+06 Pr: 795(1.10131e+06); Du: 0(1.6523e-07) 5s
+      17686     9.1992880405e+06 Pr: 0(0); Du: 0(4.55686e-12) 8s
+      17686     9.1992880405e+06 Pr: 0(0); Du: 0(4.55686e-12) 8s
 Solving the original LP from the solution after postsolve
 Model   status      : Optimal
-Simplex   iterations: 17343
+Simplex   iterations: 17686
 Objective value     :  9.1992880405e+06
-HiGHS run time      :          6.15
+HiGHS run time      :          8.32
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper, Transformer-fix-s-lower, Transformer-fix-s-upper, StorageUnit-fix-p_dispatch-lower, StorageUnit-fix-p_dispatch-upper, StorageUnit-fix-p_store-lower, StorageUnit-fix-p_store-upper, StorageUnit-fix-state_of_charge-lower, StorageUnit-fix-state_of_charge-upper, Kirchhoff-Voltage-Law, StorageUnit-energy_balance were not assigned to the network.
@@ -3128,7 +3130,7 @@ HiGHS run time      :          6.15
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/b0e1558cabd2e6d01a7ae769b742a71fe364bafd638b94e1072d501b4b907bec.png" src="_images/b0e1558cabd2e6d01a7ae769b742a71fe364bafd638b94e1072d501b4b907bec.png" />
+<img alt="_images/342311d7454097ee57aafb699ec38f5393d085256bb6c2c465b6dfcd100bd5c8.png" src="_images/342311d7454097ee57aafb699ec38f5393d085256bb6c2c465b6dfcd100bd5c8.png" />
 </div>
 </div>
 <p>Or plot the hourly dispatch grouped by carrier:</p>

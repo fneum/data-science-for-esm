@@ -465,7 +465,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;network-cem.nc&#39;, &lt;http.client.HTTPMessage at 0x7f41191cd050&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;network-cem.nc&#39;, &lt;http.client.HTTPMessage at 0x7f5bcc5f5cd0&gt;)
 </pre></div>
 </div>
 </div>
@@ -475,132 +475,11 @@ document.write(`
 <h2>Previous Capacity Expansion Model<a class="headerlink" href="#previous-capacity-expansion-model" title="Permalink to this heading">#</a></h2>
 <p>To explore sector-coupling options with PyPSA, let’s load the capacity expansion model we built for the electricity system and add sector-coupling technologies and demands on top.</p>
 <p>This example has single node for Germany and 4-hourly temporal resolution for a year. It has wind and solar solar generation, an OCGT generator as well as battery and hydrogen storage to supply a fixed electricity demand.</p>
-<p>Some sector-coupling technologies have multiple ouputs (e.g. CHP plants producing heat and power). By default, PyPSA links have only one input (<code class="docutils literal notranslate"><span class="pre">bus0</span></code>)
-and one output (<code class="docutils literal notranslate"><span class="pre">bus1</span></code>) with a given efficieny (<code class="docutils literal notranslate"><span class="pre">efficiency</span></code>). Thus, we have to tell PyPSA that links can have multiple outputs by <strong>overriding the component attributes</strong>.</p>
+<p>Some sector-coupling technologies have multiple ouputs (e.g. CHP plants producing heat and power). PyPSA can automatically handle links have more than one input (<code class="docutils literal notranslate"><span class="pre">bus0</span></code>)
+and/or output (i.e. <code class="docutils literal notranslate"><span class="pre">bus1</span></code>, <code class="docutils literal notranslate"><span class="pre">bus2</span></code>, <code class="docutils literal notranslate"><span class="pre">bus3</span></code>) with a given efficieny (<code class="docutils literal notranslate"><span class="pre">efficiency</span></code>, <code class="docutils literal notranslate"><span class="pre">efficiency2</span></code>, <code class="docutils literal notranslate"><span class="pre">efficiency3</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">override_component_attrs</span> <span class="o">=</span> <span class="n">pypsa</span><span class="o">.</span><span class="n">descriptors</span><span class="o">.</span><span class="n">Dict</span><span class="p">(</span>
-    <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pypsa</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">component_attrs</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">override_component_attrs</span><span class="p">[</span><span class="s2">&quot;Link&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;bus2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-    <span class="s2">&quot;2nd bus&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Input (optional)&quot;</span><span class="p">,</span>
-<span class="p">]</span>
-<span class="n">override_component_attrs</span><span class="p">[</span><span class="s2">&quot;Link&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;efficiency2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;static or series&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;per unit&quot;</span><span class="p">,</span>
-    <span class="mf">1.0</span><span class="p">,</span>
-    <span class="s2">&quot;2nd bus efficiency&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Input (optional)&quot;</span><span class="p">,</span>
-<span class="p">]</span>
-<span class="n">override_component_attrs</span><span class="p">[</span><span class="s2">&quot;Link&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;p2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;series&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;MW&quot;</span><span class="p">,</span>
-    <span class="mf">0.0</span><span class="p">,</span>
-    <span class="s2">&quot;2nd bus output&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Output&quot;</span><span class="p">,</span>
-<span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">override_component_attrs</span><span class="p">[</span><span class="s2">&quot;Link&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>type</th>
-      <th>unit</th>
-      <th>default</th>
-      <th>description</th>
-      <th>status</th>
-    </tr>
-    <tr>
-      <th>attribute</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>mu_ramp_limit_up</th>
-      <td>series</td>
-      <td>currency/MWh</td>
-      <td>0</td>
-      <td>Shadow price of upper ramp up limit</td>
-      <td>Output</td>
-    </tr>
-    <tr>
-      <th>mu_ramp_limit_down</th>
-      <td>series</td>
-      <td>currency/MWh</td>
-      <td>0</td>
-      <td>Shadow price of lower ramp down limit</td>
-      <td>Output</td>
-    </tr>
-    <tr>
-      <th>bus2</th>
-      <td>string</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2nd bus</td>
-      <td>Input (optional)</td>
-    </tr>
-    <tr>
-      <th>efficiency2</th>
-      <td>static or series</td>
-      <td>per unit</td>
-      <td>1.0</td>
-      <td>2nd bus efficiency</td>
-      <td>Input (optional)</td>
-    </tr>
-    <tr>
-      <th>p2</th>
-      <td>series</td>
-      <td>MW</td>
-      <td>0.0</td>
-      <td>2nd bus output</td>
-      <td>Output</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">pypsa</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s2">&quot;network-cem.nc&quot;</span><span class="p">,</span> <span class="n">override_component_attrs</span><span class="o">=</span><span class="n">override_component_attrs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">pypsa</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s2">&quot;network-cem.nc&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1073,7 +952,7 @@ COP(\Delta T) = 6.81 - 0.121 \Delta T + 0.00063^\Delta T^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f410b4bbb10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5bbe899910&gt;
 </pre></div>
 </div>
 <img alt="_images/ea6c08fb38ba5e63f8a92052361f740455804f0f27bd25dbae70264108780975.png" src="_images/ea6c08fb38ba5e63f8a92052361f740455804f0f27bd25dbae70264108780975.png" />
@@ -1223,12 +1102,20 @@ Index([&#39;electrolysis&#39;, &#39;heat pump&#39;, &#39;resistive heater&#39;, 
 Index([&#39;fuel cell&#39;, &#39;OCGT&#39;, &#39;CHP&#39;, &#39;V2G&#39;], dtype=&#39;object&#39;, name=&#39;Link&#39;)
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The following links have bus2 which are not defined:
+Index([&#39;electrolysis&#39;, &#39;fuel cell&#39;, &#39;heat pump&#39;, &#39;resistive heater&#39;, &#39;OCGT&#39;], dtype=&#39;object&#39;, name=&#39;Link&#39;)
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The following links have bus0 which are not defined:
 Index([&#39;electrolysis&#39;, &#39;heat pump&#39;, &#39;resistive heater&#39;, &#39;EV charger&#39;], dtype=&#39;object&#39;, name=&#39;Link&#39;)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The following links have bus1 which are not defined:
 Index([&#39;fuel cell&#39;, &#39;OCGT&#39;, &#39;CHP&#39;, &#39;V2G&#39;], dtype=&#39;object&#39;, name=&#39;Link&#39;)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.components:The following links have bus2 which are not defined:
+Index([&#39;electrolysis&#39;, &#39;fuel cell&#39;, &#39;heat pump&#39;, &#39;resistive heater&#39;, &#39;OCGT&#39;], dtype=&#39;object&#39;, name=&#39;Link&#39;)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.5/x64/lib/python3.11/site-packages/linopy/expressions.py:176: FutureWarning:
@@ -1269,16 +1156,13 @@ the `pandas.MultiIndex` object(s) passed as &#39;Link&#39; coordinate(s) or data
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/27 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  37%|███▋      | 10/27 [00:00&lt;00:00, 83.61it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  41%|████      | 11/27 [00:00&lt;00:00, 101.14it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  70%|███████   | 19/27 [00:00&lt;00:00, 45.32it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  81%|████████▏ | 22/27 [00:00&lt;00:00, 58.05it/s] 
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  93%|█████████▎| 25/27 [00:00&lt;00:00, 40.03it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 27/27 [00:00&lt;00:00, 41.10it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 27/27 [00:00&lt;00:00, 49.25it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1287,13 +1171,13 @@ the `pandas.MultiIndex` object(s) passed as &#39;Link&#39; coordinate(s) or data
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/12 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:  83%|████████▎ | 10/12 [00:00&lt;00:00, 97.36it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 12/12 [00:00&lt;00:00, 110.71it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 12/12 [00:00&lt;00:00, 97.87it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 12/12 [00:00&lt;00:00, 109.80it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.81s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.69s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
@@ -1308,6 +1192,329 @@ the `pandas.MultiIndex` object(s) passed as &#39;Link&#39; coordinate(s) or data
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Capacity Factor</th>
+      <th>Capital Expenditure</th>
+      <th>Curtailment</th>
+      <th>Dispatch</th>
+      <th>Installed Capacity</th>
+      <th>Market Value</th>
+      <th>Operational Expenditure</th>
+      <th>Optimal Capacity</th>
+      <th>Revenue</th>
+      <th>Supply</th>
+      <th>Withdrawal</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>carrier</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="3" valign="top">Generator</th>
+      <th>offwind</th>
+      <td>0.159939</td>
+      <td>3.606999e+09</td>
+      <td>4.053516e+07</td>
+      <td>3.196011e+07</td>
+      <td>0.0</td>
+      <td>1.128794e+02</td>
+      <td>6.392023e+05</td>
+      <td>2.281124e+04</td>
+      <td>3.607639e+09</td>
+      <td>3.196011e+07</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>onwind</th>
+      <td>0.012838</td>
+      <td>3.303204e+10</td>
+      <td>5.809284e+08</td>
+      <td>3.866098e+07</td>
+      <td>0.0</td>
+      <td>8.557525e+02</td>
+      <td>5.219232e+07</td>
+      <td>3.437762e+05</td>
+      <td>3.308423e+10</td>
+      <td>3.866098e+07</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>solar</th>
+      <td>0.063811</td>
+      <td>3.532292e+10</td>
+      <td>4.016830e+08</td>
+      <td>4.245393e+08</td>
+      <td>0.0</td>
+      <td>8.321293e+01</td>
+      <td>4.245393e+06</td>
+      <td>7.594874e+05</td>
+      <td>3.532716e+10</td>
+      <td>4.245393e+08</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">Link</th>
+      <th>CHP</th>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>EV charger</th>
+      <td>0.107556</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+      <td>-4.145635e+08</td>
+      <td>440000.0</td>
+      <td>-0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>4.400000e+05</td>
+      <td>0.000000e+00</td>
+      <td>3.731071e+08</td>
+      <td>-4.145635e+08</td>
+    </tr>
+    <tr>
+      <th>OCGT</th>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>V2G</th>
+      <td>0.064557</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+      <td>-2.488295e+08</td>
+      <td>440000.0</td>
+      <td>-0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>4.400000e+05</td>
+      <td>0.000000e+00</td>
+      <td>2.239466e+08</td>
+      <td>-2.488295e+08</td>
+    </tr>
+    <tr>
+      <th>electrolysis</th>
+      <td>1.000000</td>
+      <td>3.905135e+09</td>
+      <td>NaN</td>
+      <td>-6.841796e+08</td>
+      <td>0.0</td>
+      <td>-0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>7.810270e+04</td>
+      <td>0.000000e+00</td>
+      <td>4.789257e+08</td>
+      <td>-6.841796e+08</td>
+    </tr>
+    <tr>
+      <th>fuel cell</th>
+      <td>inf</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+      <td>2.910383e-11</td>
+      <td>0.0</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>2.910383e-11</td>
+      <td>-1.455192e-11</td>
+    </tr>
+    <tr>
+      <th>heat pump</th>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>resistive heater</th>
+      <td>0.330618</td>
+      <td>2.277568e+09</td>
+      <td>NaN</td>
+      <td>-6.596325e+08</td>
+      <td>0.0</td>
+      <td>-0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>2.277568e+05</td>
+      <td>0.000000e+00</td>
+      <td>5.936692e+08</td>
+      <td>-6.596325e+08</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">Load</th>
+      <th>-</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-4.789257e+08</td>
+      <td>NaN</td>
+      <td>-2.403456e+02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.151077e+11</td>
+      <td>0.000000e+00</td>
+      <td>-4.789257e+08</td>
+    </tr>
+    <tr>
+      <th>EV demand</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-1.242776e+08</td>
+      <td>NaN</td>
+      <td>-0.000000e+00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>-1.242776e+08</td>
+    </tr>
+    <tr>
+      <th>heat</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-5.936692e+08</td>
+      <td>NaN</td>
+      <td>-3.836426e+00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.277568e+09</td>
+      <td>0.000000e+00</td>
+      <td>-5.936692e+08</td>
+    </tr>
+    <tr>
+      <th>hydrogen</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-4.789257e+08</td>
+      <td>NaN</td>
+      <td>-8.153947e+00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.905135e+09</td>
+      <td>0.000000e+00</td>
+      <td>-4.789257e+08</td>
+    </tr>
+    <tr>
+      <th>StorageUnit</th>
+      <th>battery storage</th>
+      <td>0.101662</td>
+      <td>4.308868e+10</td>
+      <td>0.000000e+00</td>
+      <td>-1.623469e+07</td>
+      <td>0.0</td>
+      <td>-2.654112e+03</td>
+      <td>0.000000e+00</td>
+      <td>4.468159e+05</td>
+      <td>4.308868e+10</td>
+      <td>1.908404e+08</td>
+      <td>-2.070751e+08</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Store</th>
+      <th>EV battery</th>
+      <td>0.149772</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>1000000.0</td>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>1.000000e+06</td>
+      <td>0.000000e+00</td>
+      <td>2.760000e+08</td>
+      <td>-2.760000e+08</td>
+    </tr>
+    <tr>
+      <th>gas storage</th>
+      <td>1.000000</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>100000000.0</td>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>1.000000e+08</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>hydrogen storage</th>
+      <td>inf</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+      <td>8.904478e-08</td>
+      <td>0.0</td>
+      <td>-6.555531e-12</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>-5.837358e-19</td>
+      <td>8.908683e-08</td>
+      <td>-4.204626e-11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1316,6 +1523,12 @@ the `pandas.MultiIndex` object(s) passed as &#39;Link&#39; coordinate(s) or data
 <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;None,carrier&#39;, ylabel=&#39;bn€/a&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/dd1b8eea4e9fd95e315b925109898c1b0a05ab1eea9048559b7e15ff07a17e95.png" src="_images/dd1b8eea4e9fd95e315b925109898c1b0a05ab1eea9048559b7e15ff07a17e95.png" />
 </div>
 </div>
 </section>
@@ -1338,16 +1551,16 @@ the `pandas.MultiIndex` object(s) passed as &#39;Link&#39; coordinate(s) or data
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: ""
+            mode: "python"
         },
         kernelOptions: {
-            name: "",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = ''</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               

@@ -4,7 +4,7 @@ Welcome to the website accompanying the course [Data Science for Energy System M
 
 On this website you will find practical introductions to many Python packages that are useful for dealing with energy data and building energy system models. Course materials other than practical introductions to Python packages for students at TU Berlin are provided on [ISIS](https://isis.tu-berlin.de/course/view.php?id=35495).
 
-The course covers tutorials and examples for getting started with Python, `numpy`, `matplotlib`, `pandas`, `geopandas`, `cartopy`, `rasterio`, `atlite`, `networkx`, `pyomo`, `pypsa`, `plotly`, `hvplot`, and `streamlit`. Topics covered include:
+The course covers tutorials and examples for getting started with Python, `numpy`, `matplotlib`, `pandas`, `geopandas`, `cartopy`, `rasterio`,  `pysheds`, `atlite`, `networkx`, `pyomo`, `pypsa`, `plotly`, `hvplot`, and `streamlit`. Topics covered include:
 
 - time series analysis (e.g. wind and solar production)
 - tabular data (e.g. LNG terminals, power plants, industrial sites)

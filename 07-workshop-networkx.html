@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Introduction to pyomo" href="08-workshop-pyomo.html" />
-    <link rel="prev" title="Introduction to rasterio and atlite" href="06-workshop-atlite.html" />
+    <link rel="prev" title="Introduction to pysheds" href="05-workshop-pysheds.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,8 +175,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="02-workshop-numpy.html">Introduction to <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="03-workshop-pandas.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="04-workshop-geopandas.html">Introduction to <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> and <code class="docutils literal notranslate"><span class="pre">cartopy</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="05-workshop-pysheds.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pysheds</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="06-workshop-atlite.html">Introduction to <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> and <code class="docutils literal notranslate"><span class="pre">atlite</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-workshop-pysheds.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pysheds</span></code></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to <code class="docutils literal notranslate"><span class="pre">networkx</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="08-workshop-pyomo.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pyomo</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="09-workshop-pypsa.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pypsa</span></code></a></li>
@@ -468,7 +468,15 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Say we want to calculate the Laplacian <span class="math notranslate nohighlight">\(L\)</span> of this graph based on its incidence matrix <span class="math notranslate nohighlight">\(K\)</span>. We first need to write down the incidence matrix <span class="math notranslate nohighlight">\(K\)</span> as a <code class="docutils literal notranslate"><span class="pre">np.array</span></code>. Let’s also use the convention that edges are oriented such that they are directed at the node with the higher label value (i.e. from node 1 to node 2, not vice versa).</p>
+<p>Say we want to calculate the Laplacian <span class="math notranslate nohighlight">\(L\)</span> of this graph based on its incidence
+matrix <span class="math notranslate nohighlight">\(K\)</span>, which is an <span class="math notranslate nohighlight">\(N\times N\)</span> matrix defined as <span class="math notranslate nohighlight">\(L=KK^\top\)</span> for an
+undirected graph. The Laplacian matrix of a graph is a representation that
+captures the connectivity and structure of the graph by quantifying the
+difference between the degree of each vertex and the adjacency relationships
+with its neighbouring vertices. We first need to write down the incidence matrix
+<span class="math notranslate nohighlight">\(K\)</span> as a <code class="docutils literal notranslate"><span class="pre">np.array</span></code>. Let’s also use the convention that edges are oriented such
+that they are directed at the node with the higher label value (i.e. from node 1
+to node 2, not vice versa).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
@@ -1024,6 +1032,11 @@ document.write(`
 </div>
 </div>
 <p>Let’s checkout the synchronous zone of Ireland. We want to compute the <strong>Power Transfer Distribution Factor (PTDF)</strong> matrix for this area.</p>
+<p>The <strong>PTDF</strong> matrix measures the sensitivity of power flows in each transmission line relative to incremental changes in nodal power injections or withdrawals throughout the electricity network. It is a matrix representation showing how changes in power injections or withdrawals at various nodes in a power grid affect the flow in each of its transmission lines. It is an alternative formulation for linearised power flow to the cycle-based approache from the lecture.</p>
+<div class="math notranslate nohighlight">
+\[f_\ell = \frac{1}{x_\ell}\sum_{i,j} K_{i\ell}  (L^{-1})_{ij} p_j\]</div>
+<div class="math notranslate nohighlight">
+\[f_\ell = \sum_j \text{PTDF}_{\ell j} p_j\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">IE</span> <span class="o">=</span> <span class="n">subgraphs</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
@@ -1063,7 +1076,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>If we want to calculate the weighted Laplacian <span class="math notranslate nohighlight">\(L = KBK^\top\)</span>, we also need the diagonal matrix <span class="math notranslate nohighlight">\(B\)</span> for the susceptances (i.e inverse of reactances):</p>
+<p>If we want to calculate the weighted Laplacian <span class="math notranslate nohighlight">\(L = KBK^\top\)</span>, we also need the diagonal matrix <span class="math notranslate nohighlight">\(B\)</span> for the susceptances (i.e inverse of reactances; <span class="math notranslate nohighlight">\(1/x_\ell\)</span>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_pu</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">IE</span><span class="p">,</span> <span class="s2">&quot;x_pu&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
@@ -1109,20 +1122,6 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu&quot;</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">2e4</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">2e4</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1150,47 +1149,15 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L_inv</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L_inv</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">L_inv</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>Now, we have all the ingredients to calculate the PTDF matrix</p>
-<div class="math notranslate nohighlight">
-\[f_\ell = \frac{1}{x_\ell}\sum_{i,j} K_{i\ell}  (L^{-1})_{ij} p_j\]</div>
-<div class="math notranslate nohighlight">
-\[f_\ell = \sum_j \text{PTDF}_{\ell j} p_j\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PTDF</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">L_inv</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PTDF</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PTDF</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1630,12 +1597,12 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="06-workshop-atlite.html"
+       href="05-workshop-pysheds.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction to <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> and <code class="docutils literal notranslate"><span class="pre">atlite</span></code></p>
+        <p class="prev-next-title">Introduction to <code class="docutils literal notranslate"><span class="pre">pysheds</span></code></p>
       </div>
     </a>
     <a class="right-next"

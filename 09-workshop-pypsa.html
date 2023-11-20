@@ -175,8 +175,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="02-workshop-numpy.html">Introduction to <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="03-workshop-pandas.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="04-workshop-geopandas.html">Introduction to <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> and <code class="docutils literal notranslate"><span class="pre">cartopy</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="05-workshop-pysheds.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pysheds</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="06-workshop-atlite.html">Introduction to <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> and <code class="docutils literal notranslate"><span class="pre">atlite</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-workshop-pysheds.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pysheds</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="07-workshop-networkx.html">Introduction to <code class="docutils literal notranslate"><span class="pre">networkx</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="08-workshop-pyomo.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pyomo</span></code></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to <code class="docutils literal notranslate"><span class="pre">pypsa</span></code></a></li>
@@ -544,13 +544,13 @@ document.write(`
 <h2>From structured data to optimisation<a class="headerlink" href="#from-structured-data-to-optimisation" title="Permalink to this heading">#</a></h2>
 <p>The design principle of PyPSA is that basically each component is associated with a set of variables and constraints that will be added to the optimisation model based on the input data stored for the components.</p>
 <p>For an <em>hourly</em> electricity market simulation, PyPSA will solve an optimisation problem that looks like this</p>
-<div class="amsmath math notranslate nohighlight" id="equation-afe0b18b-e869-4500-8299-c6c9a588a84f">
-<span class="eqno">(8)<a class="headerlink" href="#equation-afe0b18b-e869-4500-8299-c6c9a588a84f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9c87f114-9dd0-4d96-a9ca-fa017295aeb5">
+<span class="eqno">(8)<a class="headerlink" href="#equation-9c87f114-9dd0-4d96-a9ca-fa017295aeb5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min_{g_{i,s,t}; f_{\ell,t}; g_{i,r,t,\text{charge}}; g_{i,r,t,\text{discharge}}; e_{i,r,t}} \sum_s o_{s} g_{i,s,t}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e1fa2d55-9285-431c-a300-18e706245c8c">
-<span class="eqno">(9)<a class="headerlink" href="#equation-e1fa2d55-9285-431c-a300-18e706245c8c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d81612af-ef1f-43b1-be0e-4c69ec711c31">
+<span class="eqno">(9)<a class="headerlink" href="#equation-d81612af-ef1f-43b1-be0e-4c69ec711c31" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp; \leq g_{i,s,t} \leq \hat{g}_{i,s,t} G_{i,s}  &amp; \text{generation limits : generator} \\
 -F_\ell &amp;\leq f_{\ell,t} \leq F_\ell &amp; \text{transmission limits : line}  \\
 d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{i,r,t,\text{charge}} - \sum_\ell K_{i\ell} f_{\ell,t} &amp; \text{KCL : bus} \\
@@ -1263,7 +1263,7 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/3fc5ed2ce4f101794b3f005bf5047ae4b38a41f1b7789a22f382b35436655615.png" src="_images/3fc5ed2ce4f101794b3f005bf5047ae4b38a41f1b7789a22f382b35436655615.png" />
+<img alt="_images/f2b880d5196fb475ab3f6b742adc4718dc21130532475bd85bd3fe395d2f90f4.png" src="_images/f2b880d5196fb475ab3f6b742adc4718dc21130532475bd85bd3fe395d2f90f4.png" />
 </div>
 </div>
 </section>
@@ -1286,7 +1286,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.04s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.02s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
@@ -1581,8 +1581,8 @@ HiGHS run time      :          0.00
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f85c79c0210&gt;,
- &lt;matplotlib.collections.LineCollection at 0x7f85c79d8550&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f1efabd8190&gt;,
+ &lt;matplotlib.collections.LineCollection at 0x7f1efab8c150&gt;)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.6/x64/lib/python3.11/site-packages/cartopy/mpl/style.py:76: UserWarning:
@@ -1590,7 +1590,7 @@ HiGHS run time      :          0.00
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/9d1b7ceab719bba9fdad62cd3ead7a2ff7104a655e47b9421f6997c73bf0e8eb.png" src="_images/9d1b7ceab719bba9fdad62cd3ead7a2ff7104a655e47b9421f6997c73bf0e8eb.png" />
+<img alt="_images/727d9b32c3876ec4a0d59af267b31019a7304153340a1060f60e6fdb961f7377.png" src="_images/727d9b32c3876ec4a0d59af267b31019a7304153340a1060f60e6fdb961f7377.png" />
 </div>
 </div>
 <p>Since we have provided <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> coordinates for our buses, <code class="docutils literal notranslate"><span class="pre">n.plot()</span></code> will try to plot the network on a map by default. Of course, there’s an option to deactivate this behaviour:</p>
@@ -1601,7 +1601,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7806fcf4777786824740af2a62f6734f43380eb90f5b42ae339207f4b04e1922.png" src="_images/7806fcf4777786824740af2a62f6734f43380eb90f5b42ae339207f4b04e1922.png" />
+<img alt="_images/60740770a55af5a17dd8069b1349edee7983d022acda6bb02918f72f2c22dcf3.png" src="_images/60740770a55af5a17dd8069b1349edee7983d022acda6bb02918f72f2c22dcf3.png" />
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">n.plot()</span></code> function has a variety of styling arguments to tweak the appearance of the buses, the lines and the map in the background:</p>
@@ -1626,7 +1626,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/87bfc90063a6f1cb65131867f360f6177281aebbd96e3f156899d1a78cc49c18.png" src="_images/87bfc90063a6f1cb65131867f360f6177281aebbd96e3f156899d1a78cc49c18.png" />
+<img alt="_images/736efac3b953ed61bb0e93d33e9cb9ab498b2c29ddae963d386c7b6e57e29cfe.png" src="_images/736efac3b953ed61bb0e93d33e9cb9ab498b2c29ddae963d386c7b6e57e29cfe.png" />
 </div>
 </div>
 <p>Just like with <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> we can also control the projection of the network plot:</p>
@@ -1645,7 +1645,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/d2957ec4ca53169c58ed7e4eb83bcc704dd4db2cecb5d02ff6294b538c1c224f.png" src="_images/d2957ec4ca53169c58ed7e4eb83bcc704dd4db2cecb5d02ff6294b538c1c224f.png" />
+<img alt="_images/9aba6d8e95aebc91ac2558118f3d5d48504d3a2a642c116ffef6dbaea89dd909.png" src="_images/9aba6d8e95aebc91ac2558118f3d5d48504d3a2a642c116ffef6dbaea89dd909.png" />
 </div>
 </div>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">bus_sizes</span></code> argument of <code class="docutils literal notranslate"><span class="pre">n.plot()</span></code> to display the regional distribution of load. First, we calculate the total load per bus:</p>
@@ -1684,7 +1684,7 @@ Name: p_set, dtype: float64
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/8b1e44d69c1fbb5c977996a287099ac0dfb2376c030ec251e2051bfcb3789b83.png" src="_images/8b1e44d69c1fbb5c977996a287099ac0dfb2376c030ec251e2051bfcb3789b83.png" />
+<img alt="_images/13f8d28872d4b112dac94f672f150efa5a9c1cf6e70a3d2ae436d6e20e718cfb.png" src="_images/13f8d28872d4b112dac94f672f150efa5a9c1cf6e70a3d2ae436d6e20e718cfb.png" />
 </div>
 </div>
 <p>The important point here is, that <code class="docutils literal notranslate"><span class="pre">s</span></code> needs to have entries for all buses, i.e. its index needs to match <code class="docutils literal notranslate"><span class="pre">n.buses.index</span></code>.</p>
@@ -1748,7 +1748,7 @@ Name: now, dtype: float64
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/4c58b834d520ce8f2e163f46561bbb43182e0bf18f682ff8f38112098150bc5f.png" src="_images/4c58b834d520ce8f2e163f46561bbb43182e0bf18f682ff8f38112098150bc5f.png" />
+<img alt="_images/1eb9e50a786137390c64075c096dad04ca7852cabfc6aa7f792a01cbe4a8066d.png" src="_images/1eb9e50a786137390c64075c096dad04ca7852cabfc6aa7f792a01cbe4a8066d.png" />
 </div>
 </div>
 <p><strong>How does this magic work?</strong> The plotting function will look up the colors specified in <code class="docutils literal notranslate"><span class="pre">n.carriers</span></code> for each carrier and match it with the second index-level of <code class="docutils literal notranslate"><span class="pre">s</span></code>.</p>
@@ -1880,7 +1880,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.03s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.02s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
@@ -2080,7 +2080,7 @@ HiGHS run time      :          0.00
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.04s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.02s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
@@ -2260,7 +2260,7 @@ Name: mu, dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.04s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.02s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
@@ -2314,7 +2314,7 @@ HiGHS run time      :          0.00
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Directory tmp does not exist, creating it
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has carriers, loads, global_constraints, lines, buses, generators
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has buses, carriers, loads, generators, lines, global_constraints
 </pre></div>
 </div>
 </div>
@@ -2338,7 +2338,7 @@ HiGHS run time      :          0.00
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has carriers, loads, global_constraints, lines, buses, generators
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has buses, carriers, loads, generators, lines, global_constraints
 </pre></div>
 </div>
 </div>
@@ -2574,7 +2574,7 @@ HiGHS run time      :          0.00
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;snapshot&#39;, ylabel=&#39;MW&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/23807b5f70a5b6089bb252c2d6513f3d84c14ca63937a15531686efb8223b63d.png" src="_images/23807b5f70a5b6089bb252c2d6513f3d84c14ca63937a15531686efb8223b63d.png" />
+<img alt="_images/e78a218aa10c7666d36f0925101901e9bb152dd6b7fd41d713cbb994d6e5bcab.png" src="_images/e78a218aa10c7666d36f0925101901e9bb152dd6b7fd41d713cbb994d6e5bcab.png" />
 </div>
 </div>
 <p>… and the capacity factor time series:</p>
@@ -2588,7 +2588,7 @@ HiGHS run time      :          0.00
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;snapshot&#39;, ylabel=&#39;p.u.&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/c53e2313666d659aaf6d6b2c59f61eb193fe9e4379e77689edf833f085ee6ce7.png" src="_images/c53e2313666d659aaf6d6b2c59f61eb193fe9e4379e77689edf833f085ee6ce7.png" />
+<img alt="_images/041c91e4049848903f8ffa80bc6f6ffe544be40c36d1dcd10f5738fa88e8241b.png" src="_images/041c91e4049848903f8ffa80bc6f6ffe544be40c36d1dcd10f5738fa88e8241b.png" />
 </div>
 </div>
 <p>We can also inspect the total power plant capacities per technology…</p>
@@ -2603,7 +2603,7 @@ HiGHS run time      :          0.00
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;GW&#39;)
 </pre></div>
 </div>
-<img alt="_images/6bc6b43cc21d866df2fd745277b048cc36d64122e84ccd741ded392d5d1c23b2.png" src="_images/6bc6b43cc21d866df2fd745277b048cc36d64122e84ccd741ded392d5d1c23b2.png" />
+<img alt="_images/0c3deadbca5399f262e762a9aa97c8d7941546274cab32f6d54be2015873ece5.png" src="_images/0c3deadbca5399f262e762a9aa97c8d7941546274cab32f6d54be2015873ece5.png" />
 </div>
 </div>
 <p>… and plot the regional distribution of loads…</p>
@@ -2632,7 +2632,7 @@ HiGHS run time      :          0.00
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/e07bb1ae937582d6dd6d644cb2a172a85f77c21b52b0f647c8e4d5708bf56829.png" src="_images/e07bb1ae937582d6dd6d644cb2a172a85f77c21b52b0f647c8e4d5708bf56829.png" />
+<img alt="_images/5dd5d806c2aff9e26d3115e411d2cb7ed450932d49daf1eff00fd39d5a13f1be.png" src="_images/5dd5d806c2aff9e26d3115e411d2cb7ed450932d49daf1eff00fd39d5a13f1be.png" />
 </div>
 </div>
 <p>… and power plant capacities:</p>
@@ -2688,7 +2688,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/261973c200065fc842bae7f705a8a55a96bdd6063d4372e1674aaa8b0a28119f.png" src="_images/261973c200065fc842bae7f705a8a55a96bdd6063d4372e1674aaa8b0a28119f.png" />
+<img alt="_images/e354877d6e057cfcdb006e6b0a74e821f2eab829a2e3eb3699e509fa0dbdac41.png" src="_images/e354877d6e057cfcdb006e6b0a74e821f2eab829a2e3eb3699e509fa0dbdac41.png" />
 </div>
 </div>
 <p>This dataset also includes a few hydro storage units:</p>
@@ -2892,25 +2892,16 @@ Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   7%|▋         | 1/15 [00:00&lt;00:01,  7.48it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  13%|█▎        | 2/15 [00:00&lt;00:01, 12.65it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  13%|█▎        | 2/15 [00:00&lt;00:01,  7.12it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  27%|██▋       | 4/15 [00:00&lt;00:00, 15.87it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  20%|██        | 3/15 [00:00&lt;00:01,  7.99it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 33.53it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  33%|███▎      | 5/15 [00:00&lt;00:00, 11.75it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 19.79it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:01&lt;00:00, 16.26it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:01&lt;00:00, 14.74it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 26.39it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -2919,13 +2910,10 @@ Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/7 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:  29%|██▊       | 2/7 [00:00&lt;00:00, 14.47it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 73.85it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 7/7 [00:00&lt;00:00, 42.40it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 1.22s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.69s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
@@ -2933,7 +2921,6 @@ Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running HiGHS 1.5.3 [date: 2023-05-16, git hash: 594fa5a9d-dirty]
 Copyright (c) 2023 HiGHS under MIT licence terms
-Presolving model
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -2945,7 +2932,11 @@ Solver model: available
 Solver message: optimal
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18737 rows, 44750 cols, 113266 nonzeros
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper, Transformer-fix-s-lower, Transformer-fix-s-upper, StorageUnit-fix-p_dispatch-lower, StorageUnit-fix-p_dispatch-upper, StorageUnit-fix-p_store-lower, StorageUnit-fix-p_store-upper, StorageUnit-fix-state_of_charge-lower, StorageUnit-fix-state_of_charge-upper, Kirchhoff-Voltage-Law, StorageUnit-energy_balance were not assigned to the network.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Presolving model
+18737 rows, 44750 cols, 113266 nonzeros
 13174 rows, 38993 cols, 104901 nonzeros
 12711 rows, 31697 cols, 97392 nonzeros
 Presolve : Reductions: rows 12711(-130257); columns 31697(-27943); elements 97392(-163906)
@@ -2953,17 +2944,13 @@ Solving the presolved LP
 Using EKK dual simplex solver - serial
   Iteration        Objective     Infeasibilities num(sum)
           0     0.0000000000e+00 Ph1: 0(0) 0s
-      15986     9.0308383326e+06 Pr: 503(407376) 5s
-      17270     9.1992880405e+06 Pr: 0(0); Du: 0(7.41905e-13) 7s
-      17270     9.1992880405e+06 Pr: 0(0); Du: 0(7.41905e-13) 7s
+      17270     9.1992880405e+06 Pr: 0(0); Du: 0(7.41905e-13) 4s
+      17270     9.1992880405e+06 Pr: 0(0); Du: 0(7.41905e-13) 4s
 Solving the original LP from the solution after postsolve
 Model   status      : Optimal
 Simplex   iterations: 17270
 Objective value     :  9.1992880405e+06
-HiGHS run time      :          7.56
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper, Transformer-fix-s-lower, Transformer-fix-s-upper, StorageUnit-fix-p_dispatch-lower, StorageUnit-fix-p_dispatch-upper, StorageUnit-fix-p_store-lower, StorageUnit-fix-p_store-upper, StorageUnit-fix-state_of_charge-lower, StorageUnit-fix-state_of_charge-upper, Kirchhoff-Voltage-Law, StorageUnit-energy_balance were not assigned to the network.
+HiGHS run time      :          4.57
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
@@ -3057,7 +3044,7 @@ HiGHS run time      :          7.56
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/1d9eeca62f57ee33a89cacd305e0cd0c239d9fa16e073ed3d21757f5991f1256.png" src="_images/1d9eeca62f57ee33a89cacd305e0cd0c239d9fa16e073ed3d21757f5991f1256.png" />
+<img alt="_images/ad2f3bf426a38926882887cf6b24605d8043d6efcbda81c7f26dffaea3bf6460.png" src="_images/ad2f3bf426a38926882887cf6b24605d8043d6efcbda81c7f26dffaea3bf6460.png" />
 </div>
 </div>
 <p>Or plot the hourly dispatch grouped by carrier:</p>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Capacity Expansion Planning with pypsa &#8212; Data Science for Energy System Modelling</title>
   
@@ -19,53 +18,49 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '10-workshop-pypsa-cem';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Preparation for Group Assignment" href="11-workshop-groupwork.html" />
@@ -82,7 +77,6 @@ const thebe_selector_output = ".output, .cell_output"
   <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -122,20 +116,15 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <header>
   
-    <div class="bd-header navbar navbar-expand-lg bd-navbar">
-    </div>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
-  </header>
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -169,7 +158,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -448,13 +448,13 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="capacity-expansion-planning-with-pypsa">
-<h1>Capacity Expansion Planning with <code class="docutils literal notranslate"><span class="pre">pypsa</span></code><a class="headerlink" href="#capacity-expansion-planning-with-pypsa" title="Permalink to this heading">#</a></h1>
+<h1>Capacity Expansion Planning with <code class="docutils literal notranslate"><span class="pre">pypsa</span></code><a class="headerlink" href="#capacity-expansion-planning-with-pypsa" title="Link to this heading">#</a></h1>
 <img src="https://github.com/fneum/data-science-for-esm/raw/main/data-science-for-esm/pypsa-logo.png" width="300px" /><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Also in this tutorial, you might want to refer to the PyPSA documentation: <a class="reference external" href="https://pypsa.readthedocs.io">https://pypsa.readthedocs.io</a>.</p>
 </div>
 <section id="from-electricity-market-modelling-to-capacity-expansion-planning">
-<h2>From electricity market modelling to capacity expansion planning<a class="headerlink" href="#from-electricity-market-modelling-to-capacity-expansion-planning" title="Permalink to this heading">#</a></h2>
+<h2>From electricity market modelling to capacity expansion planning<a class="headerlink" href="#from-electricity-market-modelling-to-capacity-expansion-planning" title="Link to this heading">#</a></h2>
 <p>Review the problem formulation of the electricity market model. Below you can find an adapted version
 where the capacity limits have been promoted to <strong>decision variables</strong> with corresponding terms
 in the <em>objective function</em> and <em>new constraints for their expansion limits</em> (e.g. wind and solar potentials). This is known as <strong>capacity expansion problem</strong>.</p>
@@ -517,7 +517,7 @@ in the <em>objective function</em> and <em>new constraints for their expansion l
 </div>
 </section>
 <section id="prerequisites-handling-technology-data-and-costs">
-<h2>Prerequisites: handling technology data and costs<a class="headerlink" href="#prerequisites-handling-technology-data-and-costs" title="Permalink to this heading">#</a></h2>
+<h2>Prerequisites: handling technology data and costs<a class="headerlink" href="#prerequisites-handling-technology-data-and-costs" title="Link to this heading">#</a></h2>
 <p>We maintain a database (<a class="github reference external" href="https://github.com/PyPSA/technology-data">PyPSA/technology-data</a>) which collects assumptions and projections for energy system technologies (such as costs, efficiencies, lifetimes, etc.) for given years, which we can load into a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>. This requires some pre-processing to load (e.g. converting units, setting defaults, re-arranging dimensions):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -604,7 +604,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 </div>
 </section>
 <section id="loading-time-series-data">
-<h2>Loading time series data<a class="headerlink" href="#loading-time-series-data" title="Permalink to this heading">#</a></h2>
+<h2>Loading time series data<a class="headerlink" href="#loading-time-series-data" title="Link to this heading">#</a></h2>
 <p>We are also going to need some time series for wind, solar and load. For now, we are going to recycle the time series we used at the beginning of the course. They are given for Germany in the year 2015.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -693,10 +693,17 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2404/1888544052.py:2: FutureWarning:
+
+&#39;H&#39; is deprecated and will be removed in a future version, please use &#39;h&#39; instead.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="simple-capacity-expansion-planning-example">
-<h2>Simple capacity expansion planning example<a class="headerlink" href="#simple-capacity-expansion-planning-example" title="Permalink to this heading">#</a></h2>
+<h2>Simple capacity expansion planning example<a class="headerlink" href="#simple-capacity-expansion-planning-example" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>See also <a class="reference external" href="https://model.energy">https://model.energy</a>.</p>
@@ -704,7 +711,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 <p><strong>In this tutorial, we want to build a replica of <a class="reference external" href="https://model.energy">model.energy</a>.</strong> This tool calculates the cost of meeting a constant electricity demand from a combination of wind power, solar power and storage for different regions of the world.</p>
 <p>We deviate from <a class="reference external" href="https://model.energy">model.energy</a> by including offshore wind generation and electricity demand profiles rather than a constant electricity demand. Also, we are going to start with Germany only. You can adapt the code to other countries as an exercise.</p>
 <section id="model-initialisation">
-<h3>Model Initialisation<a class="headerlink" href="#model-initialisation" title="Permalink to this heading">#</a></h3>
+<h3>Model Initialisation<a class="headerlink" href="#model-initialisation" title="Link to this heading">#</a></h3>
 <p>For building the model, we start again by initialising an empty network.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -747,7 +754,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
                &#39;2015-12-31 00:00:00&#39;, &#39;2015-12-31 04:00:00&#39;,
                &#39;2015-12-31 08:00:00&#39;, &#39;2015-12-31 12:00:00&#39;,
                &#39;2015-12-31 16:00:00&#39;, &#39;2015-12-31 20:00:00&#39;],
-              dtype=&#39;datetime64[ns]&#39;, name=&#39;snapshot&#39;, length=2190, freq=&#39;4H&#39;)
+              dtype=&#39;datetime64[ns]&#39;, name=&#39;snapshot&#39;, length=2190, freq=&#39;4h&#39;)
 </pre></div>
 </div>
 </div>
@@ -880,7 +887,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 </div>
 </section>
 <section id="adding-components">
-<h3>Adding Components<a class="headerlink" href="#adding-components" title="Permalink to this heading">#</a></h3>
+<h3>Adding Components<a class="headerlink" href="#adding-components" title="Link to this heading">#</a></h3>
 <p>Then, we add all the technologies we are going to include as carriers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -934,7 +941,7 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;snapshot&#39;, ylabel=&#39;MW&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/1cb5a32368d5e370674e338f8a3c512015eb7af186e484f143ff7ef3350affe1.png" src="_images/1cb5a32368d5e370674e338f8a3c512015eb7af186e484f143ff7ef3350affe1.png" />
+<img alt="_images/247c8c16ae6b9d2ddbbddf3cc2632e3c2469f2153e3f839c4f11084fd9df2310.png" src="_images/247c8c16ae6b9d2ddbbddf3cc2632e3c2469f2153e3f839c4f11084fd9df2310.png" />
 </div>
 </div>
 <p>We are going to add one dispatchable generation technology to the model. This is an open-cycle gas turbine (OCGT) with CO<span class="math notranslate nohighlight">\(_2\)</span> emissions of 0.2 t/MWh<span class="math notranslate nohighlight">\(_{th}\)</span>.</p>
@@ -984,12 +991,12 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;snapshot&#39;, ylabel=&#39;CF&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/61ee5329bed5a535fedb626b4a08ae4161893b397a9776f509d708bad45a3b31.png" src="_images/61ee5329bed5a535fedb626b4a08ae4161893b397a9776f509d708bad45a3b31.png" />
+<img alt="_images/05ac5a69c84c821e501b2c1c0943eb3a6bdbfb25560676b1be46bc5be3b75329.png" src="_images/05ac5a69c84c821e501b2c1c0943eb3a6bdbfb25560676b1be46bc5be3b75329.png" />
 </div>
 </div>
 </section>
 <section id="model-run">
-<h3>Model Run<a class="headerlink" href="#model-run" title="Permalink to this heading">#</a></h3>
+<h3>Model Run<a class="headerlink" href="#model-run" title="Link to this heading">#</a></h3>
 <p>Then, we can already solve the model for the first time. At this stage, the model does not have any storage or emission limits implemented. It’s going to look for the least-cost combination of variable renewables and the gas turbine to supply demand.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -998,67 +1005,10 @@ a(r, n) = \frac{r}{1-(1+r)^{-n}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-INFO:linopy.model: Solve problem using Highs solver
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.11s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.12s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
@@ -1073,7 +1023,16 @@ Solver model: available
 Solver message: optimal
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper were not assigned to the network.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:357: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper were not assigned to the network.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running HiGHS 1.5.3 [date: 2023-05-16, git hash: 594fa5a9d-dirty]
@@ -1101,7 +1060,7 @@ HiGHS run time      :          0.16
 </div>
 </section>
 <section id="model-evaluation">
-<h3>Model Evaluation<a class="headerlink" href="#model-evaluation" title="Permalink to this heading">#</a></h3>
+<h3>Model Evaluation<a class="headerlink" href="#model-evaluation" title="Link to this heading">#</a></h3>
 <p>The total system cost in billion Euros per year:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1195,7 +1154,7 @@ dtype: float64
 </div>
 </section>
 <section id="plotting-optimal-dispatch">
-<h3>Plotting Optimal Dispatch<a class="headerlink" href="#plotting-optimal-dispatch" title="Permalink to this heading">#</a></h3>
+<h3>Plotting Optimal Dispatch<a class="headerlink" href="#plotting-optimal-dispatch" title="Link to this heading">#</a></h3>
 <p>This function takes the network object <code class="docutils literal notranslate"><span class="pre">n</span></code> as an argument and, optionally, a time frame. We want to plot the load time series, and stacked area charts for electricity feed-in and storage charging. Technologies should be coloured by their color defined in <code class="docutils literal notranslate"><span class="pre">n.carriers</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1244,18 +1203,18 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2646/1878495093.py:2: FutureWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2404/1878495093.py:2: FutureWarning:
 
 DataFrame.groupby with axis=1 is deprecated. Do `frame.T.groupby(...)` without axis instead.
 </pre></div>
 </div>
-<img alt="_images/80794c8b41843c470881e3eb8456e7800645fa5e20af8c179995781f8113d795.png" src="_images/80794c8b41843c470881e3eb8456e7800645fa5e20af8c179995781f8113d795.png" />
+<img alt="_images/b4b4bda34fe122e45e3278462730c1b5717d28c3e5566b561109014964f40aeb.png" src="_images/b4b4bda34fe122e45e3278462730c1b5717d28c3e5566b561109014964f40aeb.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="adding-storage-units">
-<h2>Adding Storage Units<a class="headerlink" href="#adding-storage-units" title="Permalink to this heading">#</a></h2>
+<h2>Adding Storage Units<a class="headerlink" href="#adding-storage-units" title="Link to this heading">#</a></h2>
 <p>Alright, but there are a few important components missing for a system with high shares of renewables? What about short-term storage options (e.g. batteries) and long-term storage options (e.g. hydrogen storage)? Let’s add them too.</p>
 <p>First, the battery storage. We are going to assume a fixed energy-to-power ratio of 6 hours, i.e. if fully charged, the battery can discharge at full capacity for 6 hours.
 For the capital cost, we have to factor in both the capacity and energy cost of the storage. We are also going to enforce a cyclic state-of-charge condition, i.e. the state of charge
@@ -1317,165 +1276,7 @@ at the beginning of the optimisation period must equal the final state of charge
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-INFO:linopy.model: Solve problem using Highs solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
@@ -1484,10 +1285,10 @@ INFO:linopy.model: Solve problem using Highs solver
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/14 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  57%|█████▋    | 8/14 [00:00&lt;00:00, 79.46it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  57%|█████▋    | 8/14 [00:00&lt;00:00, 74.22it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 14/14 [00:00&lt;00:00, 61.79it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 14/14 [00:00&lt;00:00, 56.45it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1496,10 +1297,10 @@ INFO:linopy.model: Solve problem using Highs solver
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/6 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 6/6 [00:00&lt;00:00, 154.57it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 6/6 [00:00&lt;00:00, 144.63it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.28s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.31s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
@@ -1518,7 +1319,16 @@ Solver model: available
 Solver message: optimal
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:357: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Presolving model
@@ -1528,13 +1338,13 @@ Presolve : Reductions: rows 27420(-22956); columns 20856(-1050); elements 75690(
 Solving the presolved LP
 Using EKK dual simplex solver - serial
   Iteration        Objective     Infeasibilities num(sum)
-          0     0.0000000000e+00 Pr: 2190(1.43191e+09) 0s
-      27008     2.9707818396e+10 Pr: 0(0); Du: 0(2.72262e-12) 2s
+          0     0.0000000000e+00 Pr: 2190(1.44598e+09) 0s
+      26304     2.9707818396e+10 Pr: 0(0); Du: 0(2.67377e-13) 3s
 Solving the original LP from the solution after postsolve
 Model   status      : Optimal
-Simplex   iterations: 27008
+Simplex   iterations: 26304
 Objective value     :  2.9707818396e+10
-HiGHS run time      :          2.54
+HiGHS run time      :          3.41
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
@@ -1577,7 +1387,7 @@ Name: p_nom_opt, dtype: float64
 </div>
 <p><strong>Nothing!</strong> The objective value is the same, and no storage is built.</p>
 <section id="adding-emission-limits">
-<h3>Adding emission limits<a class="headerlink" href="#adding-emission-limits" title="Permalink to this heading">#</a></h3>
+<h3>Adding emission limits<a class="headerlink" href="#adding-emission-limits" title="Link to this heading">#</a></h3>
 <p>The gas power plant offers sufficient and cheap enough backup capacity to run in periods of low wind and solar generation. But what happens if this source of flexibility disappears. Let’s model a 100% renewable electricity system by adding a CO<span class="math notranslate nohighlight">\(_2\)</span> emission limit as global constraint:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1605,175 +1415,7 @@ Name: p_nom_opt, dtype: float64
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-INFO:linopy.model: Solve problem using Highs solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
@@ -1782,10 +1424,10 @@ INFO:linopy.model: Solve problem using Highs solver
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  60%|██████    | 9/15 [00:00&lt;00:00, 81.41it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  53%|█████▎    | 8/15 [00:00&lt;00:00, 73.75it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 65.58it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 58.18it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1794,10 +1436,10 @@ INFO:linopy.model: Solve problem using Highs solver
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/6 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 6/6 [00:00&lt;00:00, 152.49it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 6/6 [00:00&lt;00:00, 141.14it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.29s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.32s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
@@ -1806,33 +1448,44 @@ INFO:linopy.model: Solve problem using Highs solver
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running HiGHS 1.5.3 [date: 2023-05-16, git hash: 594fa5a9d-dirty]
 Copyright (c) 2023 HiGHS under MIT licence terms
 Presolving model
-25230 rows, 18665 cols, 69120 nonzeros
-25230 rows, 18665 cols, 69120 nonzeros
-Presolve : Reductions: rows 25230(-25147); columns 18665(-3241); elements 69120(-32766)
-Solving the presolved LP
-Using EKK dual simplex solver - serial
-  Iteration        Objective     Infeasibilities num(sum)
-          0     0.0000000000e+00 Pr: 2190(1.32502e+09) 0s
-      12614     1.7259174995e+10 Pr: 5117(8.18071e+12); Du: 0(4.93933e-09) 5s
-      23432     6.5542941965e+10 Pr: 0(0); Du: 0(1.42457e-07) 10s
-      23432     6.5542206026e+10 Pr: 0(0) 10s
-Solving the original LP from the solution after postsolve
-Model   status      : Optimal
-Simplex   iterations: 23432
-Objective value     :  6.5542206026e+10
-HiGHS run time      :         10.70
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
 Status: ok
 Termination condition: optimal
 Solution: 21906 primals, 50377 duals
-Objective: 6.55e+10
+Objective: 6.76e+10
 Solver model: available
 Solver message: optimal
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:357: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25230 rows, 18665 cols, 69120 nonzeros
+25230 rows, 18665 cols, 69120 nonzeros
+Presolve : Reductions: rows 25230(-25147); columns 18665(-3241); elements 69120(-32766)
+Solving the presolved LP
+Using EKK dual simplex solver - serial
+  Iteration        Objective     Infeasibilities num(sum)
+          0     0.0000000000e+00 Pr: 2190(1.33928e+09) 0s
+      12201     1.8547195030e+10 Pr: 5098(5.93813e+12); Du: 0(6.69079e-08) 5s
+      22546     6.7623468308e+10 Pr: 229(4.14527e+08); Du: 0(3.53862e-08) 10s
+      22895     6.7640396892e+10 Pr: 0(0); Du: 0(8.39433e-14) 10s
+Solving the original LP from the solution after postsolve
+Model   status      : Optimal
+Simplex   iterations: 22895
+Objective value     :  6.7640396892e+10
+HiGHS run time      :         10.59
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
@@ -1851,9 +1504,9 @@ Solver message: optimal
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generator
 OCGT           -0.000000
-onwind     220958.961317
-offwind     75825.717685
-solar      251269.009694
+onwind     238605.594241
+offwind     77890.677352
+solar      246665.103691
 Name: p_nom_opt, dtype: float64
 </pre></div>
 </div>
@@ -1867,8 +1520,8 @@ Name: p_nom_opt, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>StorageUnit
-battery storage                 35544.217482
-hydrogen storage underground    61986.162254
+battery storage                 33115.553868
+hydrogen storage underground    59216.038241
 Name: p_nom_opt, dtype: float64
 </pre></div>
 </div>
@@ -1882,8 +1535,8 @@ Name: p_nom_opt, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>StorageUnit
-battery storage                   213.265305
-hydrogen storage underground    10413.675259
+battery storage                  198.693323
+hydrogen storage underground    9948.294425
 dtype: float64
 </pre></div>
 </div>
@@ -1897,20 +1550,20 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2646/1878495093.py:2: FutureWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2404/1878495093.py:2: FutureWarning:
 
 DataFrame.groupby with axis=1 is deprecated. Do `frame.T.groupby(...)` without axis instead.
 
-/tmp/ipykernel_2646/1878495093.py:6: FutureWarning:
+/tmp/ipykernel_2404/1878495093.py:6: FutureWarning:
 
 DataFrame.groupby with axis=1 is deprecated. Do `frame.T.groupby(...)` without axis instead.
 
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/pandas/plotting/_matplotlib/core.py:1608: UserWarning:
+/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/pandas/plotting/_matplotlib/core.py:1794: UserWarning:
 
 Attempting to set identical low and high ylims makes transformation singular; automatically expanding.
 </pre></div>
 </div>
-<img alt="_images/44b5dfad8f37ad43f04a750e95ee27f1c25c3fddf29b0ee790eefed2f81add04.png" src="_images/44b5dfad8f37ad43f04a750e95ee27f1c25c3fddf29b0ee790eefed2f81add04.png" />
+<img alt="_images/69bb08078e8012513a58e55d20a232ea498d6191410d3c7ca32367f4b11216f7.png" src="_images/69bb08078e8012513a58e55d20a232ea498d6191410d3c7ca32367f4b11216f7.png" />
 </div>
 </div>
 <p>We are also keen to see what technologies constitute the largest cost components. For that we’re going to define a small helper function:</p>
@@ -1932,9 +1585,9 @@ Attempting to set identical low and high ylims makes transformation singular; au
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>carrier
 OCGT                                     NaN
-offwind                         11992.773707
-onwind                          21315.499152
-solar                           11688.315828
+offwind                         12319.353144
+onwind                          23016.912337
+solar                           11474.149796
 battery storage                          NaN
 hydrogen storage underground             NaN
 dtype: float64
@@ -1953,7 +1606,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/694327e37008109c0597845567c7803cdfb1b198cb02ba109188a8518a737514.png" src="_images/694327e37008109c0597845567c7803cdfb1b198cb02ba109188a8518a737514.png" />
+<img alt="_images/5de1fc029d2b5211bc891e81779e6a3dafe6010fca98fd11640f651d599030d7.png" src="_images/5de1fc029d2b5211bc891e81779e6a3dafe6010fca98fd11640f651d599030d7.png" />
 </div>
 </div>
 <p>or use to compute the cost per unit of electricity consumed:</p>
@@ -1971,7 +1624,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>93.95316419431764
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>97.74044568518126
 </pre></div>
 </div>
 </div>
@@ -1983,7 +1636,7 @@ dtype: float64
 </section>
 </section>
 <section id="sensitivity-analysis">
-<h2>Sensitivity Analysis<a class="headerlink" href="#sensitivity-analysis" title="Permalink to this heading">#</a></h2>
+<h2>Sensitivity Analysis<a class="headerlink" href="#sensitivity-analysis" title="Link to this heading">#</a></h2>
 <p>Sensitivity analyses constitute a core activity of energy system modelling. Below, you can find sensitivity analyses regarding the</p>
 <ol class="arabic simple">
 <li><p>variation in allowed CO<span class="math notranslate nohighlight">\(_2\)</span> emissions</p></li>
@@ -2006,169 +1659,7 @@ dtype: float64
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-INFO:linopy.model: Solve problem using Highs solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
@@ -2177,10 +1668,10 @@ INFO:linopy.model: Solve problem using Highs solver
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  60%|██████    | 9/15 [00:00&lt;00:00, 80.17it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  53%|█████▎    | 8/15 [00:00&lt;00:00, 72.51it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 64.74it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 57.99it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -2189,10 +1680,10 @@ INFO:linopy.model: Solve problem using Highs solver
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/6 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 6/6 [00:00&lt;00:00, 157.14it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 6/6 [00:00&lt;00:00, 141.82it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.29s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.32s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
@@ -2200,252 +1691,20 @@ INFO:linopy.model: Solve problem using Highs solver
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running HiGHS 1.5.3 [date: 2023-05-16, git hash: 594fa5a9d-dirty]
 Copyright (c) 2023 HiGHS under MIT licence terms
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
-Status: ok
-Termination condition: optimal
-Solution: 21906 primals, 50377 duals
-Objective: 2.97e+10
-Solver model: available
-Solver message: optimal
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Presolving model
+Presolving model
 27421 rows, 20856 cols, 77880 nonzeros
 27421 rows, 20856 cols, 77880 nonzeros
 Presolve : Reductions: rows 27421(-22956); columns 20856(-1050); elements 77880(-24006)
 Solving the presolved LP
 Using EKK dual simplex solver - serial
   Iteration        Objective     Infeasibilities num(sum)
-          0     0.0000000000e+00 Pr: 2190(1.43191e+09) 0s
-      26541     2.9707818396e+10 Pr: 0(0); Du: 0(4.94637e-12) 3s
+          0     0.0000000000e+00 Pr: 2190(1.44598e+09) 0s
+      27403     2.9707818396e+10 Pr: 0(0) 3s
 Solving the original LP from the solution after postsolve
 Model   status      : Optimal
-Simplex   iterations: 26541
+Simplex   iterations: 27403
 Objective value     :  2.9707818396e+10
-HiGHS run time      :          3.07
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-INFO:linopy.model: Solve problem using Highs solver
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  60%|██████    | 9/15 [00:00&lt;00:00, 81.62it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 65.72it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/6 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 6/6 [00:00&lt;00:00, 159.02it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.28s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running HiGHS 1.5.3 [date: 2023-05-16, git hash: 594fa5a9d-dirty]
-Copyright (c) 2023 HiGHS under MIT licence terms
-Presolving model
-27421 rows, 20856 cols, 77880 nonzeros
-27421 rows, 20856 cols, 77880 nonzeros
-Presolve : Reductions: rows 27421(-22956); columns 20856(-1050); elements 77880(-24006)
-Solving the presolved LP
-Using EKK dual simplex solver - serial
-  Iteration        Objective     Infeasibilities num(sum)
-          0     0.0000000000e+00 Pr: 2190(1.43191e+09) 0s
-      19010     2.5691046205e+10 Pr: 4831(7.99695e+10); Du: 0(6.8527e-07) 5s
-      29608     2.9749883211e+10 Pr: 0(0); Du: 0(1.18556e-11) 8s
-      29608     2.9749883211e+10 Pr: 0(0); Du: 0(1.18556e-11) 8s
-Solving the original LP from the solution after postsolve
-Model   status      : Optimal
-Simplex   iterations: 29608
-Objective value     :  2.9749883211e+10
-HiGHS run time      :          8.84
+HiGHS run time      :          3.54
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -2457,178 +1716,19 @@ Solver model: available
 Solver message: optimal
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:357: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-INFO:linopy.model: Solve problem using Highs solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
@@ -2637,10 +1737,10 @@ INFO:linopy.model: Solve problem using Highs solver
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  60%|██████    | 9/15 [00:00&lt;00:00, 80.85it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  53%|█████▎    | 8/15 [00:00&lt;00:00, 73.91it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 65.35it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 58.54it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -2649,10 +1749,10 @@ INFO:linopy.model: Solve problem using Highs solver
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/6 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 6/6 [00:00&lt;00:00, 156.63it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 6/6 [00:00&lt;00:00, 140.34it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.29s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.32s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
@@ -2667,196 +1767,38 @@ Presolve : Reductions: rows 27421(-22956); columns 20856(-1050); elements 77880(
 Solving the presolved LP
 Using EKK dual simplex solver - serial
   Iteration        Objective     Infeasibilities num(sum)
-          0     0.0000000000e+00 Pr: 2190(1.43191e+09) 0s
-      16719     2.7749444671e+10 Pr: 3607(1.94751e+10); Du: 0(7.21786e-07) 5s
-      27604     3.2972244773e+10 Pr: 2407(1.2457e+10); Du: 0(1.24322e-07) 10s
-      29126     3.3060429019e+10 Pr: 0(0); Du: 0(1.59872e-14) 11s
-      29126     3.3060429019e+10 Pr: 0(0); Du: 0(1.59872e-14) 11s
+          0     0.0000000000e+00 Pr: 2190(1.44598e+09) 0s
+      20271     2.6673361669e+10 Pr: 4890(3.17466e+10); Du: 0(5.31422e-07) 5s
+      29014     2.9749883211e+10 Pr: 0(0) 10s
 Solving the original LP from the solution after postsolve
 Model   status      : Optimal
-Simplex   iterations: 29126
-Objective value     :  3.3060429019e+10
-HiGHS run time      :         11.10
+Simplex   iterations: 29014
+Objective value     :  2.9749883211e+10
+HiGHS run time      :         10.22
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
 Status: ok
 Termination condition: optimal
 Solution: 21906 primals, 50377 duals
-Objective: 3.31e+10
+Objective: 2.97e+10
 Solver model: available
 Solver message: optimal
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:357: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-ext-p-lower, Generator-ext-p-upper, StorageUnit-ext-p_dispatch-lower, StorageUnit-ext-p_dispatch-upper, StorageUnit-ext-p_store-lower, StorageUnit-ext-p_store-upper, StorageUnit-ext-state_of_charge-lower, StorageUnit-ext-state_of_charge-upper, StorageUnit-energy_balance were not assigned to the network.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-/opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/xarray/core/utils.py:494: FutureWarning:
-
-The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-
-INFO:linopy.model: Solve problem using Highs solver
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io:Writing objective.
@@ -2865,10 +1807,10 @@ INFO:linopy.model: Solve problem using Highs solver
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  60%|██████    | 9/15 [00:00&lt;00:00, 81.35it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  53%|█████▎    | 8/15 [00:00&lt;00:00, 74.09it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 65.54it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 59.40it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -2877,13 +1819,82 @@ INFO:linopy.model: Solve problem using Highs solver
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/6 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 6/6 [00:00&lt;00:00, 156.75it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 6/6 [00:00&lt;00:00, 146.90it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.28s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.31s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running HiGHS 1.5.3 [date: 2023-05-16, git hash: 594fa5a9d-dirty]
+Copyright (c) 2023 HiGHS under MIT licence terms
+Presolving model
+27421 rows, 20856 cols, 77880 nonzeros
+27421 rows, 20856 cols, 77880 nonzeros
+Presolve : Reductions: rows 27421(-22956); columns 20856(-1050); elements 77880(-24006)
+Solving the presolved LP
+Using EKK dual simplex solver - serial
+  Iteration        Objective     Infeasibilities num(sum)
+          0     0.0000000000e+00 Pr: 2190(1.44598e+09) 0s
+      14619     2.2110833873e+10 Pr: 4344(7.65021e+10); Du: 0(2.33588e-07) 5s
+      21638     3.0881159037e+10 Pr: 14530(1.02626e+11); Du: 0(1.77815e-07) 10s
+      25081     3.3060429019e+10 Pr: 0(0); Du: 0(3.55271e-15) 13s
+      25081     3.3060429019e+10 Pr: 0(0); Du: 0(3.55271e-15) 13s
+Solving the original LP from the solution after postsolve
+Model   status      : Optimal
+Simplex   iterations: 25081
+Objective value     :  3.3060429019e+10
+HiGHS run time      :         13.16
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">51</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">co2</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">0</span><span class="p">]:</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">n</span><span class="o">.</span><span class="n">global_constraints</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;CO2Limit&quot;</span><span class="p">,</span> <span class="s2">&quot;constant&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">co2</span> <span class="o">*</span> <span class="mf">1e6</span>
+<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">n</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="s2">&quot;highs&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">sensitivity</span><span class="p">[</span><span class="n">co2</span><span class="p">]</span> <span class="o">=</span> <span class="n">system_cost</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:598,</span> in <span class="ni">OptimizationAccessor.__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">596</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">optimize</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">597</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">598</span>     <span class="k">return</span> <span class="n">optimize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/pypsa/optimization/optimize.py:578,</span> in <span class="ni">optimize</span><span class="nt">(n, snapshots, multi_investment_periods, transmission_losses, linearized_unit_commitment, model_kwargs, extra_functionality, assign_all_duals, solver_name, solver_options, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">576</span> <span class="k">if</span> <span class="n">extra_functionality</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">577</span>     <span class="n">extra_functionality</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">sns</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">578</span> <span class="n">status</span><span class="p">,</span> <span class="n">condition</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">solver_name</span><span class="o">=</span><span class="n">solver_name</span><span class="p">,</span> <span class="o">**</span><span class="n">solver_options</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">580</span> <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;ok&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">581</span>     <span class="n">assign_solution</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/linopy/model.py:1055,</span> in <span class="ni">Model.solve</span><span class="nt">(self, solver_name, io_api, problem_fn, solution_fn, log_fn, basis_fn, warmstart_fn, keep_files, env, sanitize_zeros, remote, **solver_options)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1053</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1054</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">solvers</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;run_</span><span class="si">{</span><span class="n">solver_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1055</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1056</span>         <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1057</span>         <span class="n">io_api</span><span class="o">=</span><span class="n">io_api</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1058</span>         <span class="n">problem_fn</span><span class="o">=</span><span class="n">problem_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1059</span>         <span class="n">solution_fn</span><span class="o">=</span><span class="n">solution_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1060</span>         <span class="n">log_fn</span><span class="o">=</span><span class="n">log_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1061</span>         <span class="n">warmstart_fn</span><span class="o">=</span><span class="n">warmstart_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1062</span>         <span class="n">basis_fn</span><span class="o">=</span><span class="n">basis_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1063</span>         <span class="n">keep_files</span><span class="o">=</span><span class="n">keep_files</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1064</span>         <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1065</span>         <span class="o">**</span><span class="n">solver_options</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1066</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1067</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1068</span>     <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="p">(</span><span class="n">problem_fn</span><span class="p">,</span> <span class="n">solution_fn</span><span class="p">):</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/linopy/solvers.py:424,</span> in <span class="ni">run_highs</span><span class="nt">(model, io_api, problem_fn, solution_fn, log_fn, warmstart_fn, basis_fn, keep_files, env, **solver_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">421</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">solver_options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">422</span>     <span class="n">h</span><span class="o">.</span><span class="n">setOptionValue</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">424</span> <span class="n">h</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">426</span> <span class="n">condition</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">modelStatusToString</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">getModelStatus</span><span class="p">())</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">427</span> <span class="n">termination_condition</span> <span class="o">=</span> <span class="n">CONDITION_MAP</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">condition</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -2906,16 +1917,10 @@ INFO:linopy.model: Solve problem using Highs solver
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f96183439d0&gt;
-</pre></div>
-</div>
-<img alt="_images/daf1d06f5e18f90396e5680876fee4d3a4d8672866946364ea44fa45a15c1c29.png" src="_images/daf1d06f5e18f90396e5680876fee4d3a4d8672866946364ea44fa45a15c1c29.png" />
-</div>
 </div>
 </section>
 <section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <p>Explore the model by changing the assumptions and available technologies. Here are a few inspirations:</p>
 <ul class="simple">
 <li><p>Rerun the model with cost assumptions for 2050.</p></li>
@@ -2939,16 +1944,16 @@ INFO:linopy.model: Solve problem using Highs solver
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: ""
         },
         kernelOptions: {
-            name: "python3",
+            name: "",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = ''</script>
 
                 </article>
               
@@ -3059,8 +2064,8 @@ By Fabian Neumann
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

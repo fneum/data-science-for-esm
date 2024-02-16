@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Introduction to pyomo &#8212; Data Science for Energy System Modelling</title>
   
@@ -19,53 +18,49 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '08-workshop-pyomo';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Introduction to pypsa" href="09-workshop-pypsa.html" />
@@ -82,7 +77,6 @@ const thebe_selector_output = ".output, .cell_output"
   <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -122,20 +116,15 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <header>
   
-    <div class="bd-header navbar navbar-expand-lg bd-navbar">
-    </div>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
-  </header>
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -169,7 +158,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -462,7 +462,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-pyomo">
-<h1>Introduction to <code class="docutils literal notranslate"><span class="pre">pyomo</span></code><a class="headerlink" href="#introduction-to-pyomo" title="Permalink to this heading">#</a></h1>
+<h1>Introduction to <code class="docutils literal notranslate"><span class="pre">pyomo</span></code><a class="headerlink" href="#introduction-to-pyomo" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This material is in part adapted from the following resources:</p>
@@ -502,7 +502,7 @@ document.write(`
 </div>
 </div>
 <section id="basic-components">
-<h2>Basic Components<a class="headerlink" href="#basic-components" title="Permalink to this heading">#</a></h2>
+<h2>Basic Components<a class="headerlink" href="#basic-components" title="Link to this heading">#</a></h2>
 <p>Almost all Pyomo objects exist within the <code class="docutils literal notranslate"><span class="pre">pyomo.environ</span></code> namespace:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -536,7 +536,7 @@ document.write(`
 <p>Pyomo distinguishes between <em>concrete</em> and <em>abstract</em> models. The difference is that <em>concrete</em> models have real-valued input parameters in the building stage, whereas <em>abstract</em> models are initially build with placeholders for the input parameters.</p>
 </div>
 <section id="decision-variables">
-<h3>Decision Variables<a class="headerlink" href="#decision-variables" title="Permalink to this heading">#</a></h3>
+<h3>Decision Variables<a class="headerlink" href="#decision-variables" title="Link to this heading">#</a></h3>
 <p><strong>Variables</strong> are the unknowns of an optimisation problems and are intended to be given values by solving an optimisation problem.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>, decision variables are created with the <code class="docutils literal notranslate"><span class="pre">pe.Var()</span></code> constructor.</p>
 <p>In the code below, we create two decision variables:</p>
@@ -565,7 +565,7 @@ document.write(`
 </div>
 </section>
 <section id="objectives">
-<h3>Objectives<a class="headerlink" href="#objectives" title="Permalink to this heading">#</a></h3>
+<h3>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h3>
 <p>An <strong>objective</strong> is a function of variables that returns a value that an optimization package attempts to maximize or minimize.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>, objectives are created with the <code class="docutils literal notranslate"><span class="pre">pe.Objective()</span></code> constructor.</p>
 <p>In the code below, we create a simple objective function:</p>
@@ -600,12 +600,12 @@ document.write(`
 </div>
 </section>
 <section id="constraints">
-<h3>Constraints<a class="headerlink" href="#constraints" title="Permalink to this heading">#</a></h3>
+<h3>Constraints<a class="headerlink" href="#constraints" title="Link to this heading">#</a></h3>
 <p><strong>Constraints</strong> are equality or inequality expressions that constrain the <em>feasible</em> space of the decision variables.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>, constraints are created with the <code class="docutils literal notranslate"><span class="pre">pe.Constraint()</span></code> constructor.</p>
 <p>In the code below, we create three simple constraints in different ways:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4a8ed19a-025e-43ac-9fd5-c87e14e4f5ef">
-<span class="eqno">(1)<a class="headerlink" href="#equation-4a8ed19a-025e-43ac-9fd5-c87e14e4f5ef" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-89c5c806-f7b3-4cb9-8d10-31562082b2e1">
+<span class="eqno">(1)<a class="headerlink" href="#equation-89c5c806-f7b3-4cb9-8d10-31562082b2e1" title="Permalink to this equation">#</a></span>\[\begin{align}
   x &amp; \leq 4 \\
   2x + y &amp; \leq 10 \\
   x + y &amp; \leq 10 \\
@@ -676,9 +676,9 @@ document.write(`
 </section>
 </section>
 <section id="solving-optimisation-problems">
-<h2>Solving optimisation problems<a class="headerlink" href="#solving-optimisation-problems" title="Permalink to this heading">#</a></h2>
+<h2>Solving optimisation problems<a class="headerlink" href="#solving-optimisation-problems" title="Link to this heading">#</a></h2>
 <section id="solver-installation">
-<h3>Solver installation<a class="headerlink" href="#solver-installation" title="Permalink to this heading">#</a></h3>
+<h3>Solver installation<a class="headerlink" href="#solver-installation" title="Link to this heading">#</a></h3>
 <p>Solvers are needed to compute solutions to the optimization models developed using Pyomo.</p>
 <p>There exists a large variety of solvers. In many cases, they specialise in certain problem types or solving algorithms, e.g. linear or nonlinear problems.</p>
 <ul class="simple">
@@ -699,7 +699,7 @@ document.write(`
 </div>
 </section>
 <section id="calling-solvers-from-pyomo">
-<h3>Calling solvers from <code class="docutils literal notranslate"><span class="pre">pyomo</span></code><a class="headerlink" href="#calling-solvers-from-pyomo" title="Permalink to this heading">#</a></h3>
+<h3>Calling solvers from <code class="docutils literal notranslate"><span class="pre">pyomo</span></code><a class="headerlink" href="#calling-solvers-from-pyomo" title="Link to this heading">#</a></h3>
 <p>First, we create an instance of a solver (aka optimiser):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -800,9 +800,9 @@ Solution:
 </section>
 </section>
 <section id="retrieving-optimisation-results">
-<h2>Retrieving optimisation results<a class="headerlink" href="#retrieving-optimisation-results" title="Permalink to this heading">#</a></h2>
+<h2>Retrieving optimisation results<a class="headerlink" href="#retrieving-optimisation-results" title="Link to this heading">#</a></h2>
 <section id="primal-values">
-<h3>Primal Values<a class="headerlink" href="#primal-values" title="Permalink to this heading">#</a></h3>
+<h3>Primal Values<a class="headerlink" href="#primal-values" title="Link to this heading">#</a></h3>
 <p>Objective value:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -843,7 +843,7 @@ Solution:
 </div>
 </section>
 <section id="dual-values-aka-shadow-prices">
-<h3>Dual values (aka shadow prices)<a class="headerlink" href="#dual-values-aka-shadow-prices" title="Permalink to this heading">#</a></h3>
+<h3>Dual values (aka shadow prices)<a class="headerlink" href="#dual-values-aka-shadow-prices" title="Link to this heading">#</a></h3>
 <p>Access to dual values in scripts is similar to accessing primal variable values, except that dual values are not captured by default so additional directives are needed <strong>before</strong> optimization to signal that duals are desired.</p>
 <p>To signal that duals are desired, declare a <strong>Suffix</strong> (another <code class="docutils literal notranslate"><span class="pre">pyomo</span></code> component) with the name “dual” on the model.</p>
 <div class="cell docutils container">
@@ -921,7 +921,7 @@ Solution:
 </section>
 </section>
 <section id="indexed-components-and-sets">
-<h2>Indexed Components and Sets<a class="headerlink" href="#indexed-components-and-sets" title="Permalink to this heading">#</a></h2>
+<h2>Indexed Components and Sets<a class="headerlink" href="#indexed-components-and-sets" title="Link to this heading">#</a></h2>
 <p>Let’s first create a fresh model instance:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -934,7 +934,7 @@ Solution:
 <p>While constructing them, all non-keyword arguments are assumed to represent indices.</p>
 <p>The indices can be any iterable object.</p>
 <section id="sets-and-range-sets">
-<h3>Sets and Range Sets<a class="headerlink" href="#sets-and-range-sets" title="Permalink to this heading">#</a></h3>
+<h3>Sets and Range Sets<a class="headerlink" href="#sets-and-range-sets" title="Link to this heading">#</a></h3>
 <p>In many cases, it will be useful to make use of another basic <code class="docutils literal notranslate"><span class="pre">pyomo</span></code> component: the <strong>set</strong>, which is constructed by <code class="docutils literal notranslate"><span class="pre">pe.Set()</span></code> or <code class="docutils literal notranslate"><span class="pre">pe.RangeSet()</span></code>. These objects are handled very similarly to variables, constraints and objectives.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">pe.RangeSet</span></code> will create a numbered index, starting from the value 1.</p>
 <div class="cell docutils container">
@@ -983,7 +983,7 @@ Solution:
 </div>
 </section>
 <section id="indexed-variables">
-<h3>Indexed Variables<a class="headerlink" href="#indexed-variables" title="Permalink to this heading">#</a></h3>
+<h3>Indexed Variables<a class="headerlink" href="#indexed-variables" title="Link to this heading">#</a></h3>
 <p>We can then use these sets to create <code class="docutils literal notranslate"><span class="pre">pyomo</span></code> components, like variables:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1042,7 +1042,7 @@ Solution:
 </div>
 </section>
 <section id="list-comprehension-on-indexed-variables">
-<h3>List comprehension on indexed variables<a class="headerlink" href="#list-comprehension-on-indexed-variables" title="Permalink to this heading">#</a></h3>
+<h3>List comprehension on indexed variables<a class="headerlink" href="#list-comprehension-on-indexed-variables" title="Link to this heading">#</a></h3>
 <p>List comprehensions are quite useful to process indexed variables in a compact format:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1067,7 +1067,7 @@ Solution:
 </div>
 </section>
 <section id="indexed-constraints">
-<h3>Indexed Constraints<a class="headerlink" href="#indexed-constraints" title="Permalink to this heading">#</a></h3>
+<h3>Indexed Constraints<a class="headerlink" href="#indexed-constraints" title="Link to this heading">#</a></h3>
 <p>Pyomo used the concept of <em>construction rules</em> to specify indexed constraints, rather than <code class="docutils literal notranslate"><span class="pre">expr=...</span></code>.</p>
 <p>When building indexed constraints, particular indices are passed as argument to a rule (function) that returns an expression for each index.</p>
 <div class="cell docutils container">
@@ -1128,17 +1128,17 @@ Solution:
 </section>
 </section>
 <section id="electricity-market-examples">
-<h2>Electricity Market Examples<a class="headerlink" href="#electricity-market-examples" title="Permalink to this heading">#</a></h2>
+<h2>Electricity Market Examples<a class="headerlink" href="#electricity-market-examples" title="Link to this heading">#</a></h2>
 <section id="single-bidding-zone-single-period">
-<h3>Single bidding zone, single period<a class="headerlink" href="#single-bidding-zone-single-period" title="Permalink to this heading">#</a></h3>
+<h3>Single bidding zone, single period<a class="headerlink" href="#single-bidding-zone-single-period" title="Link to this heading">#</a></h3>
 <p>We want to minimise operational cost of an example electricity system representing South Africa subject to generator limits and meeting the load:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-821eebc5-a827-428c-83d7-3356a4dd0bfa">
-<span class="eqno">(2)<a class="headerlink" href="#equation-821eebc5-a827-428c-83d7-3356a4dd0bfa" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f1833c21-3094-4e65-bd03-42379993fc22">
+<span class="eqno">(2)<a class="headerlink" href="#equation-f1833c21-3094-4e65-bd03-42379993fc22" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \min_{g_s} \sum_s o_s g_s
   \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7b99b9b0-0b15-4984-9fb7-578e44f22699">
-<span class="eqno">(3)<a class="headerlink" href="#equation-7b99b9b0-0b15-4984-9fb7-578e44f22699" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b8da172b-60c8-4d26-abf2-e0171bf68855">
+<span class="eqno">(3)<a class="headerlink" href="#equation-b8da172b-60c8-4d26-abf2-e0171bf68855" title="Permalink to this equation">#</a></span>\[\begin{align}
     g_s &amp;\leq G_s \\
     g_s &amp;\geq 0 \\
     \sum_s g_s &amp;= d
@@ -1317,6 +1317,18 @@ Solution:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2249/4080736814.py:1: DeprecationWarning: 
+Pyarrow will become a required dependency of pandas in the next major release of pandas (pandas 3.0),
+(to allow more performant data types, such as the Arrow string type, and better interoperability with other libraries)
+but was not found to be installed on your system.
+If this would cause problems for you,
+please provide us feedback at https://github.com/pandas-dev/pandas/issues/54466
+        
+  import pandas as pd
+</pre></div>
+</div>
+</div>
 </div>
 <p>This is the optimal generator dispatch (in MW):</p>
 <div class="cell docutils container">
@@ -1387,15 +1399,15 @@ dtype: float64
 </div>
 </section>
 <section id="two-bidding-zones-with-transmission">
-<h3>Two bidding zones with transmission<a class="headerlink" href="#two-bidding-zones-with-transmission" title="Permalink to this heading">#</a></h3>
+<h3>Two bidding zones with transmission<a class="headerlink" href="#two-bidding-zones-with-transmission" title="Link to this heading">#</a></h3>
 <p>Let’s add a spatial dimension, such that the optimisation problem is expanded to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-be63977f-8023-4550-be67-3e7491bbaaa2">
-<span class="eqno">(4)<a class="headerlink" href="#equation-be63977f-8023-4550-be67-3e7491bbaaa2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0afc6a44-85be-4ed0-b5bc-a6582f4ecf2c">
+<span class="eqno">(4)<a class="headerlink" href="#equation-0afc6a44-85be-4ed0-b5bc-a6582f4ecf2c" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \min_{g_{i,s}, f_\ell} \sum_s o_{i,s} g_{i,s}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-55bdc415-e77b-44ec-99b0-469a36c310ff">
-<span class="eqno">(5)<a class="headerlink" href="#equation-55bdc415-e77b-44ec-99b0-469a36c310ff" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d454ec02-00f5-49e3-b49f-28770bdc4fd5">
+<span class="eqno">(5)<a class="headerlink" href="#equation-d454ec02-00f5-49e3-b49f-28770bdc4fd5" title="Permalink to this equation">#</a></span>\[\begin{align}
   g_{i,s} &amp;\leq G_{i,s} \\
   g_{i,s} &amp;\geq 0 \\
   \sum_s g_{i,s} - \sum_\ell K_{i\ell} f_\ell &amp;= d_i &amp; \text{KCL} \\
@@ -1550,8 +1562,8 @@ For missing entries, we set the upper limit to zero (e.g. this country-technolog
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kcl : Size=2, Index=countries, Active=True
     Key          : Lower   : Body                                                                                                                : Upper   : Active
-      Mozambique :   650.0 :           g[Mozambique,Oil] + g[Mozambique,Hydro] + g[Mozambique,Wind] + g[Mozambique,Gas] + g[Mozambique,Coal] + f :   650.0 :   True
-    South Africa : 42000.0 : g[South Africa,Oil] + g[South Africa,Hydro] + g[South Africa,Wind] + g[South Africa,Gas] + g[South Africa,Coal] - f : 42000.0 :   True
+      Mozambique :   650.0 :           g[Mozambique,Gas] + g[Mozambique,Coal] + g[Mozambique,Oil] + g[Mozambique,Wind] + g[Mozambique,Hydro] + f :   650.0 :   True
+    South Africa : 42000.0 : g[South Africa,Gas] + g[South Africa,Coal] + g[South Africa,Oil] + g[South Africa,Wind] + g[South Africa,Hydro] - f : 42000.0 :   True
 </pre></div>
 </div>
 </div>
@@ -1702,16 +1714,16 @@ Solution:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[South Africa,Oil]      -0.0
-generator_limit[South Africa,Hydro]   -60.0
-generator_limit[South Africa,Wind]    -60.0
-generator_limit[South Africa,Gas]      -0.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[South Africa,Gas]      -0.0
 generator_limit[South Africa,Coal]    -30.0
-generator_limit[Mozambique,Oil]        -0.0
-generator_limit[Mozambique,Hydro]      -0.0
-generator_limit[Mozambique,Wind]       -0.0
+generator_limit[South Africa,Oil]      -0.0
+generator_limit[South Africa,Wind]    -60.0
+generator_limit[South Africa,Hydro]   -60.0
 generator_limit[Mozambique,Gas]        -0.0
 generator_limit[Mozambique,Coal]       -0.0
+generator_limit[Mozambique,Oil]        -0.0
+generator_limit[Mozambique,Wind]       -0.0
+generator_limit[Mozambique,Hydro]      -0.0
 kcl[South Africa]                      60.0
 kcl[Mozambique]                        -0.0
 [None]                                 60.0
@@ -1835,15 +1847,15 @@ Solution:
 </div>
 </section>
 <section id="single-bidding-zone-with-several-periods">
-<h3>Single bidding zone with several periods<a class="headerlink" href="#single-bidding-zone-with-several-periods" title="Permalink to this heading">#</a></h3>
+<h3>Single bidding zone with several periods<a class="headerlink" href="#single-bidding-zone-with-several-periods" title="Link to this heading">#</a></h3>
 <p>In this example, we consider multiple time periods (labelled [1,2,3,4]) to represent variable wind generation and changing load.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1a39093e-1d66-495b-bd44-e92a9e150d31">
-<span class="eqno">(6)<a class="headerlink" href="#equation-1a39093e-1d66-495b-bd44-e92a9e150d31" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-61d54aeb-c9d4-419e-a192-bf7733226fb7">
+<span class="eqno">(6)<a class="headerlink" href="#equation-61d54aeb-c9d4-419e-a192-bf7733226fb7" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \min_{g_{s,t}} \sum_s o_{s} g_{s,t}
   \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7ee19628-c082-490e-97db-44b26bc8b8a7">
-<span class="eqno">(7)<a class="headerlink" href="#equation-7ee19628-c082-490e-97db-44b26bc8b8a7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9137d929-c9cd-4f5f-b18f-4755de60e494">
+<span class="eqno">(7)<a class="headerlink" href="#equation-9137d929-c9cd-4f5f-b18f-4755de60e494" title="Permalink to this equation">#</a></span>\[\begin{align}
     g_{s,t} &amp;\leq \hat{g}_{s,t} G_{i,s} \\
     g_{s,t} &amp;\geq 0 \\
     \sum_s g_{s,t} &amp;= d_t
@@ -1990,7 +2002,7 @@ Solver:
 Solution: 
 - number of solutions: 0
   number of solutions displayed: 0
-3.41 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+4.08 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -2105,7 +2117,7 @@ dtype: float64
 </div>
 </section>
 <section id="single-bidding-zone-with-several-periods-and-storage">
-<h3>Single bidding zone with several periods and storage<a class="headerlink" href="#single-bidding-zone-with-several-periods-and-storage" title="Permalink to this heading">#</a></h3>
+<h3>Single bidding zone with several periods and storage<a class="headerlink" href="#single-bidding-zone-with-several-periods-and-storage" title="Link to this heading">#</a></h3>
 <p>Now, we want to expand the optimisation model with a storage unit to do price arbitrage to reduce oil consumption.</p>
 <p>We have been given the following characteristics of the storage:</p>
 <div class="cell docutils container">
@@ -2390,7 +2402,7 @@ dtype: float64
 </div>
 </section>
 <section id="exercise">
-<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h3>
+<h3>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Using the conversion efficiencies and specific emissions from the lecture slides, add a constraint that limits the total emissions in the four periods to 50% of the unconstrained optimal solution. How does the optimal objective value and the generator dispatch change?</p></li>
 <li><p>Reimplement the storage consistency constraint such that the initial state of charge is not zero but corresponds to the state of charge in the final period of the optimisation horizon.</p></li>
@@ -2543,8 +2555,8 @@ By Fabian Neumann
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Introduction to pandas &#8212; Data Science for Energy System Modelling</title>
   
@@ -19,51 +18,47 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = '03-workshop-pandas';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Introduction to geopandas and cartopy" href="04-workshop-geopandas.html" />
@@ -80,7 +75,6 @@ const thebe_selector_output = ".output, .cell_output"
   <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -120,20 +114,15 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <header>
   
-    <div class="bd-header navbar navbar-expand-lg bd-navbar">
-    </div>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
-  </header>
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -167,7 +156,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -447,7 +447,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-pandas">
-<h1>Introduction to <code class="docutils literal notranslate"><span class="pre">pandas</span></code><a class="headerlink" href="#introduction-to-pandas" title="Permalink to this heading">#</a></h1>
+<h1>Introduction to <code class="docutils literal notranslate"><span class="pre">pandas</span></code><a class="headerlink" href="#introduction-to-pandas" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This material is mostly adapted from the following resources:</p>
@@ -487,9 +487,21 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2008/2162656668.py:1: DeprecationWarning: 
+Pyarrow will become a required dependency of pandas in the next major release of pandas (pandas 3.0),
+(to allow more performant data types, such as the Arrow string type, and better interoperability with other libraries)
+but was not found to be installed on your system.
+If this would cause problems for you,
+please provide us feedback at https://github.com/pandas-dev/pandas/issues/54466
+        
+  import pandas as pd
+</pre></div>
+</div>
+</div>
 </div>
 <section id="pandas-data-structures-series">
-<h2>Pandas Data Structures: Series<a class="headerlink" href="#pandas-data-structures-series" title="Permalink to this heading">#</a></h2>
+<h2>Pandas Data Structures: Series<a class="headerlink" href="#pandas-data-structures-series" title="Link to this heading">#</a></h2>
 <p>A Series represents a one-dimensional array of data. The main difference between a Series and numpy array is that a Series has an <strong>index</strong>. The index contains the labels that we use to access the data.</p>
 <p>There are many ways to <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/dsintro.html#series">create a Series</a>. We will just show a few. The core constructor is <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html"><code class="docutils literal notranslate"><span class="pre">pd.Series()</span></code></a>.</p>
 <p>(Data are from Wikipedia’s <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_power_stations_in_Germany#Nuclear">List of power stations in Germany</a>.)</p>
@@ -648,7 +660,7 @@ dtype: int64
 </div>
 </section>
 <section id="pandas-data-structures-dataframe">
-<h2>Pandas Data Structures: DataFrame<a class="headerlink" href="#pandas-data-structures-dataframe" title="Permalink to this heading">#</a></h2>
+<h2>Pandas Data Structures: DataFrame<a class="headerlink" href="#pandas-data-structures-dataframe" title="Link to this heading">#</a></h2>
 <p>There is a lot more to Series, but they are limit to a single <strong>column</strong>. A more useful Pandas data structure is the <strong>DataFrame</strong>. A DataFrame is basically a bunch of series that share the same index. It’s a lot like a table in a spreadsheet.</p>
 <p>The core constructor is <code class="docutils literal notranslate"><span class="pre">pd.DataFrame()</span></code></p>
 <p>Below we create a DataFrame.</p>
@@ -1301,7 +1313,7 @@ Name: capacity, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2353/532230991.py:2: FutureWarning: DataFrame.fillna with &#39;method&#39; is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2008/532230991.py:2: FutureWarning: DataFrame.fillna with &#39;method&#39; is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
   df.fillna(method=&quot;bfill&quot;)
 </pre></div>
 </div>
@@ -1357,7 +1369,7 @@ Name: capacity, dtype: float64
 </div>
 </section>
 <section id="sorting-data">
-<h2>Sorting Data<a class="headerlink" href="#sorting-data" title="Permalink to this heading">#</a></h2>
+<h2>Sorting Data<a class="headerlink" href="#sorting-data" title="Link to this heading">#</a></h2>
 <p>We can also sort the entries in dataframes, e.g. alphabetically by index or numerically by column values</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1476,7 +1488,7 @@ Name: capacity, dtype: float64
 <p>If we make a calculation using columns from the DataFrame, it will keep the same index:</p>
 </section>
 <section id="merging-data">
-<h2>Merging Data<a class="headerlink" href="#merging-data" title="Permalink to this heading">#</a></h2>
+<h2>Merging Data<a class="headerlink" href="#merging-data" title="Link to this heading">#</a></h2>
 <p>Pandas supports a wide range of methods for merging different datasets. These are described extensively in the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/merging.html">documentation</a>. Here we just give a few examples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1562,7 +1574,7 @@ Name: capacity, dtype: float64
 </div>
 </section>
 <section id="filtering-data">
-<h2>Filtering Data<a class="headerlink" href="#filtering-data" title="Permalink to this heading">#</a></h2>
+<h2>Filtering Data<a class="headerlink" href="#filtering-data" title="Link to this heading">#</a></h2>
 <p>We can also filter a DataFrame using a boolean series obtained from a condition. This is very useful to build subsets of the DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1802,7 +1814,7 @@ Name: capacity, dtype: bool
 </div>
 </section>
 <section id="modifying-values">
-<h2>Modifying Values<a class="headerlink" href="#modifying-values" title="Permalink to this heading">#</a></h2>
+<h2>Modifying Values<a class="headerlink" href="#modifying-values" title="Link to this heading">#</a></h2>
 <p>In many cases, we want to modify values in a dataframe based on some rule. To modify values, we need to use <code class="docutils literal notranslate"><span class="pre">.loc</span></code> or <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1994,7 +2006,7 @@ Name: capacity, dtype: bool
 </div>
 </section>
 <section id="applying-functions">
-<h2>Applying Functions<a class="headerlink" href="#applying-functions" title="Permalink to this heading">#</a></h2>
+<h2>Applying Functions<a class="headerlink" href="#applying-functions" title="Link to this heading">#</a></h2>
 <p>Sometimes it can be useful apply a function to all values of a column/row. For instance, we might be interested in normalised capacities relative to the largest nuclear power plant:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2054,7 +2066,7 @@ Name: capacity, dtype: float64
 <p>But <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> and <code class="docutils literal notranslate"><span class="pre">.map()</span></code> often give you more flexibility.</p>
 </section>
 <section id="renaming-indices-and-columns">
-<h2>Renaming Indices and Columns<a class="headerlink" href="#renaming-indices-and-columns" title="Permalink to this heading">#</a></h2>
+<h2>Renaming Indices and Columns<a class="headerlink" href="#renaming-indices-and-columns" title="Link to this heading">#</a></h2>
 <p>Sometimes it can be useful to rename columns:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2150,7 +2162,7 @@ Name: capacity, dtype: float64
 </div>
 </section>
 <section id="replacing-values">
-<h2>Replacing Values<a class="headerlink" href="#replacing-values" title="Permalink to this heading">#</a></h2>
+<h2>Replacing Values<a class="headerlink" href="#replacing-values" title="Link to this heading">#</a></h2>
 <p>Sometimes it can be useful to replace values:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2246,7 +2258,7 @@ Name: capacity, dtype: float64
 </div>
 </section>
 <section id="plotting">
-<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this heading">#</a></h2>
+<h2>Plotting<a class="headerlink" href="#plotting" title="Link to this heading">#</a></h2>
 <p>DataFrames have all kinds of <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/visualization.html">useful plotting</a> built in. Note that we do not even have to import <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> for this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2258,7 +2270,7 @@ Name: capacity, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;start_year&#39;, ylabel=&#39;capacity&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/f9dcac3db23e2a19d645f9eb6f35c0edf7d006e960a868c7f597e24ccc0fba25.png" src="_images/f9dcac3db23e2a19d645f9eb6f35c0edf7d006e960a868c7f597e24ccc0fba25.png" />
+<img alt="_images/61159e7f2db066de523ced06055440a8d3a00fbe56fa19591db34395db67af13.png" src="_images/61159e7f2db066de523ced06055440a8d3a00fbe56fa19591db34395db67af13.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2271,12 +2283,12 @@ Name: capacity, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/685e4d02b84294d57a6b4f461b33ff19fb76318401ad7657848dd0ab1084c96b.png" src="_images/685e4d02b84294d57a6b4f461b33ff19fb76318401ad7657848dd0ab1084c96b.png" />
+<img alt="_images/a34abaf6008f930be4df2dac56e46ca2a3509babf471a48b58e344aedabfad8a.png" src="_images/a34abaf6008f930be4df2dac56e46ca2a3509babf471a48b58e344aedabfad8a.png" />
 </div>
 </div>
 </section>
 <section id="time-indexes">
-<h2>Time Indexes<a class="headerlink" href="#time-indexes" title="Permalink to this heading">#</a></h2>
+<h2>Time Indexes<a class="headerlink" href="#time-indexes" title="Link to this heading">#</a></h2>
 <p>Indexes are very powerful. They are a big part of why Pandas is so useful. There are different indices for different types of data. Time Indexes are especially great when handling time-dependent data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2291,7 +2303,7 @@ Name: capacity, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/cbebf478accdb7fcd93b3cd3922ca4a88b0cb4d8e56e7e80076e7ee95bba63d1.png" src="_images/cbebf478accdb7fcd93b3cd3922ca4a88b0cb4d8e56e7e80076e7ee95bba63d1.png" />
+<img alt="_images/987bde5bf40fc39c8a07778f1dce2a92a9a941a5241a23510cbdf0f6af9647c8.png" src="_images/987bde5bf40fc39c8a07778f1dce2a92a9a941a5241a23510cbdf0f6af9647c8.png" />
 </div>
 </div>
 <p>We can use Python’s <em>slicing</em> notation inside <code class="docutils literal notranslate"><span class="pre">.loc</span></code> to select a date range.</p>
@@ -2305,7 +2317,7 @@ Name: capacity, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/f99da6e993aa750f788230ab148a22de4be926bdc29345530f8aab46776d8fc8.png" src="_images/f99da6e993aa750f788230ab148a22de4be926bdc29345530f8aab46776d8fc8.png" />
+<img alt="_images/a86a445273097625273f76f57f4652d565c61efcc800e902964fa64aed3ddb28.png" src="_images/a86a445273097625273f76f57f4652d565c61efcc800e902964fa64aed3ddb28.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2318,7 +2330,7 @@ Name: capacity, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/b49f0e60fbc7ba8512b2175bcd6e65ffde831e4663df947d529161c25fc276dc.png" src="_images/b49f0e60fbc7ba8512b2175bcd6e65ffde831e4663df947d529161c25fc276dc.png" />
+<img alt="_images/6c840af58de26b3846aa39d55cea15c83c24ea05de91d8299cb3451e591f2db3.png" src="_images/6c840af58de26b3846aa39d55cea15c83c24ea05de91d8299cb3451e591f2db3.png" />
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">pd.TimeIndex</span></code> object has lots of useful attributes</p>
@@ -2361,12 +2373,16 @@ Name: capacity, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2008/3719689167.py:1: FutureWarning: &#39;M&#39; is deprecated and will be removed in a future version, please use &#39;ME&#39; instead.
+  ts.resample(&quot;M&quot;).mean().head()
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2021-01-31    0.268746
 2021-02-28    0.698782
 2021-03-31    0.949778
 2021-04-30    0.959332
 2021-05-31    0.709200
-Freq: M, dtype: float64
+Freq: ME, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -2378,15 +2394,19 @@ Freq: M, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2008/2719797856.py:1: FutureWarning: &#39;M&#39; is deprecated and will be removed in a future version, please use &#39;ME&#39; instead.
+  ts.resample(&quot;M&quot;).mean().plot()
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/fcf260c0f528c5c714605ff2e0853c272d66771d58114999345b7c1690475463.png" src="_images/fcf260c0f528c5c714605ff2e0853c272d66771d58114999345b7c1690475463.png" />
+<img alt="_images/66a8f4548f8e347ad3d317636f1d091e558bebbe5dd189effbda97c540ae146c.png" src="_images/66a8f4548f8e347ad3d317636f1d091e558bebbe5dd189effbda97c540ae146c.png" />
 </div>
 </div>
 </section>
 <section id="reading-and-writing-files">
-<h2>Reading and Writing Files<a class="headerlink" href="#reading-and-writing-files" title="Permalink to this heading">#</a></h2>
+<h2>Reading and Writing Files<a class="headerlink" href="#reading-and-writing-files" title="Link to this heading">#</a></h2>
 <p>To read data into pandas, we can use for instance the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html"><code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code></a> function. This function is incredibly powerful and complex with a multitude of settings. You can use it to extract data from almost any text file.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> function can take a path to a local file as an input, or even a link to an online text file.</p>
 <p>Let’s import a slightly larger dataset about the power plant fleet in Europe_</p>
@@ -2451,19 +2471,58 @@ Freq: M, dtype: float64
   <tbody>
     <tr>
       <th>0</th>
-      <td>Doel</td>
-      <td>Nuclear</td>
+      <td>Borssele</td>
+      <td>Hard Coal</td>
       <td>Steam Turbine</td>
       <td>PP</td>
-      <td>Belgium</td>
-      <td>2911.0</td>
+      <td>Netherlands</td>
+      <td>485.0</td>
       <td>NaN</td>
-      <td>1975.0</td>
+      <td>1973.0</td>
       <td>NaN</td>
-      <td>2025.0</td>
+      <td>2034.0</td>
     </tr>
     <tr>
       <th>1</th>
+      <td>Sainte Croix</td>
+      <td>Hydro</td>
+      <td>Reservoir</td>
+      <td>Store</td>
+      <td>France</td>
+      <td>132.3</td>
+      <td>NaN</td>
+      <td>1974.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Pied De Borne</td>
+      <td>Hydro</td>
+      <td>Reservoir</td>
+      <td>Store</td>
+      <td>France</td>
+      <td>109.4</td>
+      <td>NaN</td>
+      <td>1965.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Pouget</td>
+      <td>Hydro</td>
+      <td>Reservoir</td>
+      <td>Store</td>
+      <td>France</td>
+      <td>446.9</td>
+      <td>NaN</td>
+      <td>1951.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
       <td>Pragneres</td>
       <td>Hydro</td>
       <td>Reservoir</td>
@@ -2472,45 +2531,6 @@ Freq: M, dtype: float64
       <td>189.2</td>
       <td>NaN</td>
       <td>1953.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Rhinau</td>
-      <td>Hydro</td>
-      <td>Run-Of-River</td>
-      <td>PP</td>
-      <td>France</td>
-      <td>152.0</td>
-      <td>NaN</td>
-      <td>1963.0</td>
-      <td>2016.0</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Saint Chamas</td>
-      <td>Hydro</td>
-      <td>Reservoir</td>
-      <td>Store</td>
-      <td>France</td>
-      <td>159.0</td>
-      <td>NaN</td>
-      <td>1965.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Saint Esteve</td>
-      <td>Hydro</td>
-      <td>Reservoir</td>
-      <td>Store</td>
-      <td>France</td>
-      <td>141.0</td>
-      <td>NaN</td>
-      <td>1963.0</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
@@ -2526,30 +2546,30 @@ Freq: M, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Index: 6279 entries, 0 to 6567
+Index: 6374 entries, 0 to 6616
 Data columns (total 18 columns):
  #   Column               Non-Null Count  Dtype  
 ---  ------               --------------  -----  
- 0   Name                 6279 non-null   object 
- 1   Fueltype             6279 non-null   object 
- 2   Technology           5624 non-null   object 
- 3   Set                  6279 non-null   object 
- 4   Country              6279 non-null   object 
- 5   Capacity             6279 non-null   float64
- 6   Efficiency           523 non-null    float64
- 7   DateIn               4345 non-null   float64
- 8   DateRetrofit         1855 non-null   float64
- 9   DateOut              169 non-null    float64
- 10  lat                  6279 non-null   float64
- 11  lon                  6279 non-null   float64
- 12  Duration             453 non-null    float64
- 13  Volume_Mm3           6279 non-null   float64
- 14  DamHeight_m          6279 non-null   float64
- 15  StorageCapacity_MWh  6279 non-null   float64
- 16  EIC                  6279 non-null   object 
- 17  projectID            6279 non-null   object 
+ 0   Name                 6374 non-null   object 
+ 1   Fueltype             6374 non-null   object 
+ 2   Technology           5702 non-null   object 
+ 3   Set                  6374 non-null   object 
+ 4   Country              6374 non-null   object 
+ 5   Capacity             6374 non-null   float64
+ 6   Efficiency           542 non-null    float64
+ 7   DateIn               4450 non-null   float64
+ 8   DateRetrofit         1871 non-null   float64
+ 9   DateOut              349 non-null    float64
+ 10  lat                  6374 non-null   float64
+ 11  lon                  6374 non-null   float64
+ 12  Duration             452 non-null    float64
+ 13  Volume_Mm3           6374 non-null   float64
+ 14  DamHeight_m          6374 non-null   float64
+ 15  StorageCapacity_MWh  6374 non-null   float64
+ 16  EIC                  6374 non-null   object 
+ 17  projectID            6374 non-null   object 
 dtypes: float64(11), object(7)
-memory usage: 932.0+ KB
+memory usage: 946.1+ KB
 </pre></div>
 </div>
 </div>
@@ -2595,53 +2615,53 @@ memory usage: 932.0+ KB
   <tbody>
     <tr>
       <th>count</th>
-      <td>6279.000000</td>
-      <td>523.000000</td>
-      <td>4345.000000</td>
-      <td>1855.000000</td>
-      <td>169.000000</td>
-      <td>6279.000000</td>
-      <td>6279.000000</td>
-      <td>453.000000</td>
-      <td>6279.000000</td>
-      <td>6279.000000</td>
-      <td>6279.000000</td>
+      <td>6374.000000</td>
+      <td>542.000000</td>
+      <td>4450.000000</td>
+      <td>1871.000000</td>
+      <td>349.000000</td>
+      <td>6374.000000</td>
+      <td>6374.000000</td>
+      <td>452.000000</td>
+      <td>6374.000000</td>
+      <td>6374.000000</td>
+      <td>6374.000000</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>134.859949</td>
-      <td>0.487393</td>
-      <td>1981.334638</td>
-      <td>1984.904043</td>
-      <td>2027.171598</td>
-      <td>48.913630</td>
-      <td>7.870294</td>
-      <td>1198.921576</td>
-      <td>7.353734</td>
-      <td>4.999447</td>
-      <td>416.397834</td>
+      <td>141.550081</td>
+      <td>0.480459</td>
+      <td>1982.047416</td>
+      <td>1984.920363</td>
+      <td>2020.418338</td>
+      <td>48.915773</td>
+      <td>7.879248</td>
+      <td>1201.563456</td>
+      <td>7.128439</td>
+      <td>4.872220</td>
+      <td>410.191716</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>374.901552</td>
-      <td>0.179273</td>
-      <td>98.830534</td>
-      <td>25.008638</td>
-      <td>8.853982</td>
-      <td>6.873412</td>
-      <td>9.095917</td>
-      <td>1602.640969</td>
-      <td>139.453384</td>
-      <td>47.628853</td>
-      <td>9337.663223</td>
+      <td>391.501198</td>
+      <td>0.179431</td>
+      <td>88.218795</td>
+      <td>24.935544</td>
+      <td>9.537422</td>
+      <td>6.850656</td>
+      <td>9.083968</td>
+      <td>1603.428940</td>
+      <td>138.334742</td>
+      <td>47.251297</td>
+      <td>9267.942691</td>
     </tr>
     <tr>
       <th>min</th>
       <td>0.000000</td>
-      <td>0.187765</td>
+      <td>0.140228</td>
       <td>0.000000</td>
       <td>1899.000000</td>
-      <td>2020.000000</td>
+      <td>1996.000000</td>
       <td>32.742000</td>
       <td>-17.055700</td>
       <td>0.007907</td>
@@ -2651,14 +2671,14 @@ memory usage: 932.0+ KB
     </tr>
     <tr>
       <th>25%</th>
-      <td>9.450000</td>
-      <td>0.361350</td>
+      <td>9.800000</td>
+      <td>0.356400</td>
       <td>1966.000000</td>
       <td>1967.000000</td>
-      <td>2021.000000</td>
-      <td>43.462200</td>
-      <td>0.702997</td>
-      <td>33.854167</td>
+      <td>2015.000000</td>
+      <td>43.472075</td>
+      <td>0.740450</td>
+      <td>34.009337</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
@@ -2666,27 +2686,27 @@ memory usage: 932.0+ KB
     <tr>
       <th>50%</th>
       <td>26.000000</td>
-      <td>0.390400</td>
-      <td>1995.000000</td>
+      <td>0.385710</td>
+      <td>1994.000000</td>
       <td>1991.000000</td>
-      <td>2024.000000</td>
-      <td>48.119746</td>
-      <td>8.586662</td>
-      <td>640.476190</td>
+      <td>2019.000000</td>
+      <td>48.133707</td>
+      <td>8.545323</td>
+      <td>641.151139</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>82.746294</td>
-      <td>0.588751</td>
+      <td>86.000000</td>
+      <td>0.580829</td>
       <td>2008.000000</td>
       <td>2005.000000</td>
-      <td>2030.000000</td>
-      <td>52.435150</td>
-      <td>13.140173</td>
-      <td>1833.300000</td>
+      <td>2023.000000</td>
+      <td>52.420000</td>
+      <td>13.098021</td>
+      <td>1839.818750</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
@@ -2695,7 +2715,7 @@ memory usage: 932.0+ KB
       <th>max</th>
       <td>6000.000000</td>
       <td>0.917460</td>
-      <td>2022.000000</td>
+      <td>2023.000000</td>
       <td>2020.000000</td>
       <td>2051.000000</td>
       <td>70.689366</td>
@@ -2719,7 +2739,7 @@ memory usage: 932.0+ KB
 </div>
 </section>
 <section id="groupby-functionality">
-<h2>Groupby Functionality<a class="headerlink" href="#groupby-functionality" title="Permalink to this heading">#</a></h2>
+<h2>Groupby Functionality<a class="headerlink" href="#groupby-functionality" title="Link to this heading">#</a></h2>
 <p>Both <code class="docutils literal notranslate"><span class="pre">Series</span></code> and <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> objects have a <code class="docutils literal notranslate"><span class="pre">groupby</span></code> method. It accepts a variety of arguments, but the simplest way to think about it is that you pass another series, whose unique values are used to split the original object into different groups. <code class="docutils literal notranslate"><span class="pre">groupby</span></code> is an amazingly powerful but also complex function.</p>
 <p>Here’s an example which retrieves the total generation capacity per country.</p>
 <div class="cell docutils container">
@@ -2732,10 +2752,10 @@ memory usage: 932.0+ KB
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country
 Albania                    1833.208275
-Austria                   18308.520000
-Belgium                   14963.055947
+Austria                   19341.820000
+Belgium                   16446.458999
 Bosnia and Herzegovina     4038.500000
-Bulgaria                  10307.086363
+Bulgaria                  11687.086363
 Name: Capacity, dtype: float64
 </pre></div>
 </div>
@@ -2762,7 +2782,7 @@ Name: Capacity, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f8a0b979c50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f5099ef2190&gt;
 </pre></div>
 </div>
 </div>
@@ -2815,11 +2835,11 @@ Name: Capacity, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country
-Germany           104103.829396
-France             99814.567520
-United Kingdom     96807.213406
-Spain              86164.389040
-Italy              82333.866461
+Germany           124029.715396
+United Kingdom    115460.839493
+France            106315.562084
+Spain              88423.920012
+Italy              82028.366461
 Name: Capacity, dtype: float64
 </pre></div>
 </div>
@@ -2834,10 +2854,10 @@ Name: Capacity, dtype: float64
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country
 Albania                   1981.000000
-Austria                   1972.195804
-Belgium                   1992.607143
-Bosnia and Herzegovina    1979.809524
-Bulgaria                  1977.833333
+Austria                   1971.917808
+Belgium                   1989.830508
+Bosnia and Herzegovina    1979.047619
+Bulgaria                  1977.156250
 Name: DateIn, dtype: float64
 </pre></div>
 </div>
@@ -2853,19 +2873,19 @@ we might want to group the capacities by country <strong>and</strong> fuel type.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country         Fueltype   
-Albania         Hydro           1743.353732
-                Oil               89.854543
-Austria         Hard Coal        578.400000
-                Hydro          13100.420000
-                Natural Gas     4553.700000
-                                   ...     
-United Kingdom  Oil              100.000000
-                Other             55.000000
-                Solar           2077.000000
-                Waste            498.900000
-                Wind           21650.000000
-Name: Capacity, Length: 189, dtype: float64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country         Fueltype 
+Albania         Hydro         1743.353732
+                Oil             89.854543
+Austria         Hard Coal     1128.400000
+                Hydro        13462.420000
+                Lignite        522.000000
+                                 ...     
+United Kingdom  Oil            100.000000
+                Other           55.000000
+                Solar         2199.000000
+                Waste          288.900000
+                Wind         21720.000000
+Name: Capacity, Length: 186, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -2878,11 +2898,11 @@ Name: Capacity, Length: 189, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MultiIndex([(&#39;Albania&#39;,       &#39;Hydro&#39;),
-            (&#39;Albania&#39;,         &#39;Oil&#39;),
-            (&#39;Austria&#39;,   &#39;Hard Coal&#39;),
-            (&#39;Austria&#39;,       &#39;Hydro&#39;),
-            (&#39;Austria&#39;, &#39;Natural Gas&#39;)],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MultiIndex([(&#39;Albania&#39;,     &#39;Hydro&#39;),
+            (&#39;Albania&#39;,       &#39;Oil&#39;),
+            (&#39;Austria&#39;, &#39;Hard Coal&#39;),
+            (&#39;Austria&#39;,     &#39;Hydro&#39;),
+            (&#39;Austria&#39;,   &#39;Lignite&#39;)],
            names=[&#39;Country&#39;, &#39;Fueltype&#39;])
 </pre></div>
 </div>
@@ -2948,7 +2968,7 @@ Name: Capacity, Length: 189, dtype: float64
       <td>220.000000</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>589.300000</td>
+      <td>766.000000</td>
     </tr>
     <tr>
       <th>Geothermal</th>
@@ -2960,23 +2980,23 @@ Name: Capacity, Length: 189, dtype: float64
     </tr>
     <tr>
       <th>Hard Coal</th>
-      <td>8474.678478</td>
-      <td>141.000000</td>
+      <td>10031.678478</td>
+      <td>291.000000</td>
       <td>NaN</td>
-      <td>25817.0</td>
-      <td>16461.890974</td>
+      <td>26663.0</td>
+      <td>34968.017061</td>
     </tr>
     <tr>
       <th>Hydro</th>
       <td>26080.361248</td>
       <td>13979.686625</td>
-      <td>19401.73</td>
+      <td>19346.76</td>
       <td>6346.0</td>
       <td>9735.700000</td>
     </tr>
     <tr>
       <th>Lignite</th>
-      <td>1355.400000</td>
+      <td>1755.400000</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2984,19 +3004,19 @@ Name: Capacity, Length: 189, dtype: float64
     </tr>
     <tr>
       <th>Natural Gas</th>
-      <td>24333.532000</td>
+      <td>23432.532000</td>
       <td>1091.000000</td>
       <td>NaN</td>
       <td>1290.0</td>
-      <td>34400.422432</td>
+      <td>32470.222432</td>
     </tr>
     <tr>
       <th>Nuclear</th>
-      <td>7117.200000</td>
+      <td>7704.200000</td>
       <td>8617.000000</td>
       <td>3348.00</td>
       <td>13835.0</td>
-      <td>11239.000000</td>
+      <td>13158.000000</td>
     </tr>
     <tr>
       <th>Oil</th>
@@ -3008,7 +3028,7 @@ Name: Capacity, Length: 189, dtype: float64
     </tr>
     <tr>
       <th>Other</th>
-      <td>1008.409314</td>
+      <td>91.143286</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3016,11 +3036,11 @@ Name: Capacity, Length: 189, dtype: float64
     </tr>
     <tr>
       <th>Solar</th>
-      <td>4011.903000</td>
+      <td>5318.200000</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>539.0</td>
-      <td>2077.000000</td>
+      <td>2199.000000</td>
     </tr>
     <tr>
       <th>Waste</th>
@@ -3028,15 +3048,15 @@ Name: Capacity, Length: 189, dtype: float64
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>498.900000</td>
+      <td>288.900000</td>
     </tr>
     <tr>
       <th>Wind</th>
-      <td>11473.580000</td>
+      <td>11701.080000</td>
       <td>1546.000000</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>21650.000000</td>
+      <td>21720.000000</td>
     </tr>
   </tbody>
 </table>
@@ -3044,9 +3064,9 @@ Name: Capacity, Length: 189, dtype: float64
 </div>
 </section>
 <section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <section id="power-plants-data">
-<h3>Power Plants Data<a class="headerlink" href="#power-plants-data" title="Permalink to this heading">#</a></h3>
+<h3>Power Plants Data<a class="headerlink" href="#power-plants-data" title="Link to this heading">#</a></h3>
 <p>Run the function <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> on the DataFrame that includes the power plant database:</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
@@ -3094,53 +3114,53 @@ Name: Capacity, Length: 189, dtype: float64
   <tbody>
     <tr>
       <th>count</th>
-      <td>6279.000000</td>
-      <td>523.000000</td>
-      <td>4345.000000</td>
-      <td>1855.000000</td>
-      <td>169.000000</td>
-      <td>6279.000000</td>
-      <td>6279.000000</td>
-      <td>453.000000</td>
-      <td>6279.000000</td>
-      <td>6279.000000</td>
-      <td>6279.000000</td>
+      <td>6374.000000</td>
+      <td>542.000000</td>
+      <td>4450.000000</td>
+      <td>1871.000000</td>
+      <td>349.000000</td>
+      <td>6374.000000</td>
+      <td>6374.000000</td>
+      <td>452.000000</td>
+      <td>6374.000000</td>
+      <td>6374.000000</td>
+      <td>6374.000000</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>134.859949</td>
-      <td>0.487393</td>
-      <td>1981.334638</td>
-      <td>1984.904043</td>
-      <td>2027.171598</td>
-      <td>48.913630</td>
-      <td>7.870294</td>
-      <td>1198.921576</td>
-      <td>7.353734</td>
-      <td>4.999447</td>
-      <td>416.397834</td>
+      <td>141.550081</td>
+      <td>0.480459</td>
+      <td>1982.047416</td>
+      <td>1984.920363</td>
+      <td>2020.418338</td>
+      <td>48.915773</td>
+      <td>7.879248</td>
+      <td>1201.563456</td>
+      <td>7.128439</td>
+      <td>4.872220</td>
+      <td>410.191716</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>374.901552</td>
-      <td>0.179273</td>
-      <td>98.830534</td>
-      <td>25.008638</td>
-      <td>8.853982</td>
-      <td>6.873412</td>
-      <td>9.095917</td>
-      <td>1602.640969</td>
-      <td>139.453384</td>
-      <td>47.628853</td>
-      <td>9337.663223</td>
+      <td>391.501198</td>
+      <td>0.179431</td>
+      <td>88.218795</td>
+      <td>24.935544</td>
+      <td>9.537422</td>
+      <td>6.850656</td>
+      <td>9.083968</td>
+      <td>1603.428940</td>
+      <td>138.334742</td>
+      <td>47.251297</td>
+      <td>9267.942691</td>
     </tr>
     <tr>
       <th>min</th>
       <td>0.000000</td>
-      <td>0.187765</td>
+      <td>0.140228</td>
       <td>0.000000</td>
       <td>1899.000000</td>
-      <td>2020.000000</td>
+      <td>1996.000000</td>
       <td>32.742000</td>
       <td>-17.055700</td>
       <td>0.007907</td>
@@ -3150,14 +3170,14 @@ Name: Capacity, Length: 189, dtype: float64
     </tr>
     <tr>
       <th>25%</th>
-      <td>9.450000</td>
-      <td>0.361350</td>
+      <td>9.800000</td>
+      <td>0.356400</td>
       <td>1966.000000</td>
       <td>1967.000000</td>
-      <td>2021.000000</td>
-      <td>43.462200</td>
-      <td>0.702997</td>
-      <td>33.854167</td>
+      <td>2015.000000</td>
+      <td>43.472075</td>
+      <td>0.740450</td>
+      <td>34.009337</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
@@ -3165,27 +3185,27 @@ Name: Capacity, Length: 189, dtype: float64
     <tr>
       <th>50%</th>
       <td>26.000000</td>
-      <td>0.390400</td>
-      <td>1995.000000</td>
+      <td>0.385710</td>
+      <td>1994.000000</td>
       <td>1991.000000</td>
-      <td>2024.000000</td>
-      <td>48.119746</td>
-      <td>8.586662</td>
-      <td>640.476190</td>
+      <td>2019.000000</td>
+      <td>48.133707</td>
+      <td>8.545323</td>
+      <td>641.151139</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>82.746294</td>
-      <td>0.588751</td>
+      <td>86.000000</td>
+      <td>0.580829</td>
       <td>2008.000000</td>
       <td>2005.000000</td>
-      <td>2030.000000</td>
-      <td>52.435150</td>
-      <td>13.140173</td>
-      <td>1833.300000</td>
+      <td>2023.000000</td>
+      <td>52.420000</td>
+      <td>13.098021</td>
+      <td>1839.818750</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
@@ -3194,7 +3214,7 @@ Name: Capacity, Length: 189, dtype: float64
       <th>max</th>
       <td>6000.000000</td>
       <td>0.917460</td>
-      <td>2022.000000</td>
+      <td>2023.000000</td>
       <td>2020.000000</td>
       <td>2051.000000</td>
       <td>70.689366</td>
@@ -3222,9 +3242,9 @@ Name: Capacity, Length: 189, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Nuclear&#39;, &#39;Hydro&#39;, &#39;Hard Coal&#39;, &#39;Natural Gas&#39;, &#39;Lignite&#39;,
-       &#39;Bioenergy&#39;, &#39;Oil&#39;, &#39;Wind&#39;, &#39;Other&#39;, &#39;Waste&#39;, &#39;Solar&#39;,
-       &#39;Geothermal&#39;], dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Hard Coal&#39;, &#39;Hydro&#39;, &#39;Nuclear&#39;, &#39;Natural Gas&#39;, &#39;Lignite&#39;,
+       &#39;Bioenergy&#39;, &#39;Oil&#39;, &#39;Wind&#39;, &#39;Other&#39;, &#39;Solar&#39;, &#39;Geothermal&#39;,
+       &#39;Waste&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -3243,11 +3263,10 @@ Name: Capacity, Length: 189, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Steam Turbine&#39;, &#39;Reservoir&#39;, &#39;Run-Of-River&#39;, &#39;Pumped Storage&#39;,
-       &#39;CCGT&#39;, &#39;Offshore&#39;, &#39;Onshore&#39;, &#39;Marine&#39;, &#39;Unknown&#39;, nan,
-       &#39;Not Found&#39;, &#39;Pv&#39;, &#39;Offshore Mount Unknown&#39;, &#39;Offshore Hard Mount&#39;,
-       &#39;Offshore Floating&#39;, &#39;Csp&#39;, &#39;CSP&#39;, &#39;Combustion Engine&#39;],
-      dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Steam Turbine&#39;, &#39;Reservoir&#39;, &#39;Pumped Storage&#39;, &#39;Run-Of-River&#39;,
+       &#39;CCGT&#39;, &#39;Onshore&#39;, &#39;Offshore&#39;, &#39;Unknown&#39;, &#39;Marine&#39;, &#39;Not Found&#39;,
+       nan, &#39;Csp&#39;, &#39;Pv&#39;, &#39;Offshore Mount Unknown&#39;, &#39;Offshore Hard Mount&#39;,
+       &#39;Assumed Pv&#39;, &#39;CSP&#39;, &#39;Combustion Engine&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -3328,91 +3347,28 @@ Name: Capacity, Length: 189, dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>47</th>
-      <td>Mellach</td>
-      <td>Hard Coal</td>
-      <td>Steam Turbine</td>
-      <td>CHP</td>
-      <td>Austria</td>
-      <td>200.000000</td>
-      <td>NaN</td>
-      <td>1986.0</td>
-      <td>1986.0</td>
-      <td>2020.0</td>
-      <td>46.9117</td>
-      <td>15.4883</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>{'14W-WML-KW-----0'}</td>
-      <td>{'BEYONDCOAL': {'BEYOND-AT-11'}, 'ENTSOE': {'1...</td>
-    </tr>
-    <tr>
-      <th>49</th>
-      <td>Emile Huchet</td>
-      <td>Hard Coal</td>
-      <td>CCGT</td>
-      <td>PP</td>
-      <td>France</td>
-      <td>596.493211</td>
-      <td>NaN</td>
-      <td>1958.0</td>
-      <td>2010.0</td>
-      <td>2022.0</td>
-      <td>49.1525</td>
-      <td>6.6981</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>{'17W100P100P0344D', '17W100P100P0345B'}</td>
-      <td>{'BEYONDCOAL': {'BEYOND-FR-67'}, 'ENTSOE': {'1...</td>
-    </tr>
-    <tr>
-      <th>50</th>
-      <td>Sulcis</td>
+      <th>0</th>
+      <td>Borssele</td>
       <td>Hard Coal</td>
       <td>Steam Turbine</td>
       <td>PP</td>
-      <td>Italy</td>
-      <td>543.942804</td>
+      <td>Netherlands</td>
+      <td>485.000000</td>
       <td>NaN</td>
-      <td>1986.0</td>
-      <td>2001.0</td>
-      <td>2025.0</td>
-      <td>39.1953</td>
-      <td>8.4000</td>
+      <td>1973.0</td>
+      <td>NaN</td>
+      <td>2034.0</td>
+      <td>51.4332</td>
+      <td>3.7160</td>
       <td>NaN</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>{'26WIMPI-S20SCLC8'}</td>
-      <td>{'BEYONDCOAL': {'BEYOND-IT-20'}, 'ENTSOE': {'2...</td>
+      <td>{'49W000000000054X'}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-NL-2'}, 'ENTSOE': {'49...</td>
     </tr>
     <tr>
-      <th>51</th>
-      <td>Monfalcone</td>
-      <td>Hard Coal</td>
-      <td>Steam Turbine</td>
-      <td>PP</td>
-      <td>Italy</td>
-      <td>309.770817</td>
-      <td>NaN</td>
-      <td>1965.0</td>
-      <td>NaN</td>
-      <td>2025.0</td>
-      <td>45.7967</td>
-      <td>13.5456</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>{'26WIMPI-S06MTNFA'}</td>
-      <td>{'BEYONDCOAL': {'BEYOND-IT-13'}, 'ENTSOE': {'2...</td>
-    </tr>
-    <tr>
-      <th>52</th>
+      <th>44</th>
       <td>Fusina</td>
       <td>Hard Coal</td>
       <td>Steam Turbine</td>
@@ -3431,6 +3387,69 @@ Name: Capacity, Length: 189, dtype: float64
       <td>0.0</td>
       <td>{'26WIMPI-S05FTSNK'}</td>
       <td>{'BEYONDCOAL': {'BEYOND-IT-24'}, 'ENTSOE': {'2...</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>Bastardo</td>
+      <td>Hard Coal</td>
+      <td>Steam Turbine</td>
+      <td>PP</td>
+      <td>Italy</td>
+      <td>138.290543</td>
+      <td>NaN</td>
+      <td>1989.0</td>
+      <td>NaN</td>
+      <td>2025.0</td>
+      <td>42.8933</td>
+      <td>12.5397</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'26WIMPI-S10BSTRJ'}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-IT-10'}, 'ENTSOE': {'2...</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>Brindisi Sud</td>
+      <td>Hard Coal</td>
+      <td>Steam Turbine</td>
+      <td>PP</td>
+      <td>Italy</td>
+      <td>1825.435174</td>
+      <td>NaN</td>
+      <td>1991.0</td>
+      <td>NaN</td>
+      <td>2025.0</td>
+      <td>40.5639</td>
+      <td>18.0322</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'26WIMPI-S16BSCRY'}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-IT-2'}, 'ENTSOE': {'26...</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>Monfalcone</td>
+      <td>Hard Coal</td>
+      <td>Steam Turbine</td>
+      <td>PP</td>
+      <td>Italy</td>
+      <td>309.770817</td>
+      <td>NaN</td>
+      <td>1965.0</td>
+      <td>NaN</td>
+      <td>2025.0</td>
+      <td>45.7967</td>
+      <td>13.5456</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'26WIMPI-S06MTNFA'}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-IT-13'}, 'ENTSOE': {'2...</td>
     </tr>
     <tr>
       <th>...</th>
@@ -3454,28 +3473,7 @@ Name: Capacity, Length: 189, dtype: float64
       <td>...</td>
     </tr>
     <tr>
-      <th>6561</th>
-      <td>Teplarna Ceskoslovenske Armady Csa</td>
-      <td>Hard Coal</td>
-      <td>NaN</td>
-      <td>PP</td>
-      <td>Czech Republic</td>
-      <td>22.126487</td>
-      <td>NaN</td>
-      <td>1952.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>49.8443</td>
-      <td>18.4960</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>{nan}</td>
-      <td>{'BEYONDCOAL': {'BEYOND-CZ-16'}}</td>
-    </tr>
-    <tr>
-      <th>6562</th>
+      <th>6607</th>
       <td>Ulm Magirusstrasse</td>
       <td>Hard Coal</td>
       <td>NaN</td>
@@ -3496,7 +3494,7 @@ Name: Capacity, Length: 189, dtype: float64
       <td>{'BEYONDCOAL': {'BEYOND-DE-216'}}</td>
     </tr>
     <tr>
-      <th>6563</th>
+      <th>6608</th>
       <td>Vitkovice</td>
       <td>Hard Coal</td>
       <td>NaN</td>
@@ -3517,7 +3515,28 @@ Name: Capacity, Length: 189, dtype: float64
       <td>{'BEYONDCOAL': {'BEYOND-CZ-31'}}</td>
     </tr>
     <tr>
-      <th>6564</th>
+      <th>6609</th>
+      <td>Voerde</td>
+      <td>Hard Coal</td>
+      <td>NaN</td>
+      <td>PP</td>
+      <td>Germany</td>
+      <td>0.000000</td>
+      <td>NaN</td>
+      <td>1982.0</td>
+      <td>NaN</td>
+      <td>2017.0</td>
+      <td>51.5762</td>
+      <td>6.6841</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-DE-222'}}</td>
+    </tr>
+    <tr>
+      <th>6611</th>
       <td>Wilhelmshaven New</td>
       <td>Hard Coal</td>
       <td>NaN</td>
@@ -3538,7 +3557,7 @@ Name: Capacity, Length: 189, dtype: float64
       <td>{'BEYONDCOAL': {'BEYOND-DE-247'}}</td>
     </tr>
     <tr>
-      <th>6565</th>
+      <th>6612</th>
       <td>Zabrze</td>
       <td>Hard Coal</td>
       <td>NaN</td>
@@ -3560,7 +3579,7 @@ Name: Capacity, Length: 189, dtype: float64
     </tr>
   </tbody>
 </table>
-<p>219 rows × 18 columns</p>
+<p>282 rows × 18 columns</p>
 </div></div></div>
 </details>
 </div>
@@ -3638,7 +3657,49 @@ Name: Capacity, Length: 189, dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>401</th>
+      <th>1492</th>
+      <td>Longannet</td>
+      <td>Hard Coal</td>
+      <td>Steam Turbine</td>
+      <td>PP</td>
+      <td>United Kingdom</td>
+      <td>4856.000000</td>
+      <td>NaN</td>
+      <td>1970.0</td>
+      <td>NaN</td>
+      <td>2016.0</td>
+      <td>56.050000</td>
+      <td>-3.681200</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan, nan, nan, nan, nan}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-UK-87'}, 'GEM': {'G106...</td>
+    </tr>
+    <tr>
+      <th>1493</th>
+      <td>Kingsnorth</td>
+      <td>Hard Coal</td>
+      <td>Steam Turbine</td>
+      <td>PP</td>
+      <td>United Kingdom</td>
+      <td>3772.000000</td>
+      <td>NaN</td>
+      <td>1970.0</td>
+      <td>NaN</td>
+      <td>2012.0</td>
+      <td>51.418500</td>
+      <td>0.603800</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan, nan, nan, nan, nan, nan}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-UK-60'}, 'GEM': {'G105...</td>
+    </tr>
+    <tr>
+      <th>390</th>
       <td>Kozienice</td>
       <td>Hard Coal</td>
       <td>Steam Turbine</td>
@@ -3659,7 +3720,7 @@ Name: Capacity, Length: 189, dtype: float64
       <td>{'BEYONDCOAL': {'BEYOND-PL-96'}, 'ENTSOE': {'1...</td>
     </tr>
     <tr>
-      <th>1424</th>
+      <th>1441</th>
       <td>Burshtyn</td>
       <td>Hard Coal</td>
       <td>Steam Turbine</td>
@@ -3677,10 +3738,10 @@ Name: Capacity, Length: 189, dtype: float64
       <td>0.0</td>
       <td>0.0</td>
       <td>{nan, nan, nan, nan, nan, nan, nan, nan, nan, ...</td>
-      <td>{'GEM': {'G101124', 'G101128', 'G101132', 'G10...</td>
+      <td>{'GEM': {'G101131', 'G101126', 'G101123', 'G10...</td>
     </tr>
     <tr>
-      <th>514</th>
+      <th>508</th>
       <td>Opole</td>
       <td>Hard Coal</td>
       <td>Steam Turbine</td>
@@ -3699,48 +3760,6 @@ Name: Capacity, Length: 189, dtype: float64
       <td>0.0</td>
       <td>{'19W0000000001292'}</td>
       <td>{'BEYONDCOAL': {'BEYOND-PL-16'}, 'ENTSOE': {'1...</td>
-    </tr>
-    <tr>
-      <th>2819</th>
-      <td>Prydniprovska</td>
-      <td>Hard Coal</td>
-      <td>Steam Turbine</td>
-      <td>PP</td>
-      <td>Ukraine</td>
-      <td>2455.000000</td>
-      <td>NaN</td>
-      <td>1958.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>48.405291</td>
-      <td>35.111749</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>{nan, nan, nan, nan, nan, nan, nan, nan, nan, ...</td>
-      <td>{'GEM': {'G108178', 'G108173', 'G108180', 'G10...</td>
-    </tr>
-    <tr>
-      <th>2240</th>
-      <td>Loan</td>
-      <td>Hard Coal</td>
-      <td>Steam Turbine</td>
-      <td>PP</td>
-      <td>United Kingdom</td>
-      <td>2400.000000</td>
-      <td>NaN</td>
-      <td>2011.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>56.049465</td>
-      <td>-3.682265</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>{'48WSTN00000LOAND'}</td>
-      <td>{'ENTSOE': {'48WSTN00000LOAND'}, 'GEM': {'G106...</td>
     </tr>
   </tbody>
 </table>
@@ -3779,7 +3798,7 @@ DamHeight_m                                                         14.0
 StorageCapacity_MWh                                                  0.0
 EIC                                                                {nan}
 projectID                   {&#39;JRC&#39;: {&#39;JRC-H2138&#39;}, &#39;GEO&#39;: {&#39;GEO-42677&#39;}}
-Name: 3792, dtype: object
+Name: 3863, dtype: object
 </pre></div>
 </div>
 </div>
@@ -3860,7 +3879,7 @@ Name: 3792, dtype: object
   </thead>
   <tbody>
     <tr>
-      <th>4384</th>
+      <th>4469</th>
       <td>Melkoya</td>
       <td>Natural Gas</td>
       <td>CCGT</td>
@@ -3899,10 +3918,10 @@ Name: 3792, dtype: object
       <td>0.0</td>
       <td>0.0</td>
       <td>{nan}</td>
-      <td>{'OPSD': {'OEU-3106', 'OEU-3105'}, 'JRC': {'JR...</td>
+      <td>{'OPSD': {'OEU-3105', 'OEU-3106'}, 'JRC': {'JR...</td>
     </tr>
     <tr>
-      <th>3646</th>
+      <th>3647</th>
       <td>Nedre Porsa</td>
       <td>Hydro</td>
       <td>Reservoir</td>
@@ -3923,7 +3942,7 @@ Name: 3792, dtype: object
       <td>{'OPSD': {'OEU-4052'}, 'JRC': {'JRC-N297'}}</td>
     </tr>
     <tr>
-      <th>3674</th>
+      <th>3724</th>
       <td>Kvaenangsbotn</td>
       <td>Hydro</td>
       <td>Reservoir</td>
@@ -3944,7 +3963,7 @@ Name: 3792, dtype: object
       <td>{'OPSD': {'OEU-3856'}, 'JRC': {'JRC-N226'}}</td>
     </tr>
     <tr>
-      <th>228</th>
+      <th>236</th>
       <td>Alta Krv</td>
       <td>Hydro</td>
       <td>Reservoir</td>
@@ -3962,10 +3981,10 @@ Name: 3792, dtype: object
       <td>0.0</td>
       <td>0.0</td>
       <td>{'50WP00000000006N'}</td>
-      <td>{'ENTSOE': {'50WP00000000006N'}, 'OPSD': {'OEU...</td>
+      <td>{'ENTSOE': {'50WP00000000006N'}, 'GEM': {'G602...</td>
     </tr>
     <tr>
-      <th>3585</th>
+      <th>3632</th>
       <td>Smavatna</td>
       <td>Hydro</td>
       <td>Reservoir</td>
@@ -3986,13 +4005,13 @@ Name: 3792, dtype: object
       <td>{'OPSD': {'OEU-4353'}, 'JRC': {'JRC-N392'}}</td>
     </tr>
     <tr>
-      <th>1016</th>
-      <td>Guolasjohka</td>
+      <th>1072</th>
+      <td>Guolas</td>
       <td>Hydro</td>
       <td>Reservoir</td>
       <td>Store</td>
       <td>Norway</td>
-      <td>80.0</td>
+      <td>82.0</td>
       <td>NaN</td>
       <td>1971.0</td>
       <td>1971.0</td>
@@ -4004,10 +4023,10 @@ Name: 3792, dtype: object
       <td>0.0</td>
       <td>0.0</td>
       <td>{nan}</td>
-      <td>{'OPSD': {'OEU-3532'}, 'GEM': {'G602944'}, 'JR...</td>
+      <td>{'GEM': {'G602944'}, 'OPSD': {'OEU-3532'}, 'JR...</td>
     </tr>
     <tr>
-      <th>3651</th>
+      <th>3700</th>
       <td>Melkefoss</td>
       <td>Hydro</td>
       <td>Reservoir</td>
@@ -4028,7 +4047,7 @@ Name: 3792, dtype: object
       <td>{'OPSD': {'OEU-3972'}, 'JRC': {'JRC-N267'}}</td>
     </tr>
     <tr>
-      <th>3555</th>
+      <th>3601</th>
       <td>Skogfoss</td>
       <td>Hydro</td>
       <td>Reservoir</td>
@@ -4049,7 +4068,7 @@ Name: 3792, dtype: object
       <td>{'OPSD': {'OEU-4320'}, 'JRC': {'JRC-N383'}}</td>
     </tr>
     <tr>
-      <th>3529</th>
+      <th>3576</th>
       <td>Skibotn</td>
       <td>Hydro</td>
       <td>Reservoir</td>
@@ -4088,18 +4107,18 @@ Name: 3792, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fueltype
-Hydro          1966.738082
-Hard Coal      1974.771429
-Lignite        1975.240385
-Nuclear        1983.214286
-Oil            1986.262295
-Wind           1990.869258
-Natural Gas    1995.114490
-Waste          1996.809524
+Hydro          1966.744212
+Hard Coal      1971.894928
+Lignite        1974.901639
+Nuclear        1979.196970
+Oil            1985.650794
+Other          1994.406250
+Wind           1994.562609
+Natural Gas    1995.177419
+Waste          1997.038961
 Geothermal     1999.833333
-Other          2000.367347
-Bioenergy      2001.575342
-Solar          2013.204301
+Bioenergy      2000.851351
+Solar          2013.311321
 Name: DateIn, dtype: float64
 </pre></div>
 </div>
@@ -4122,7 +4141,7 @@ Name: DateIn, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Frequency&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/be459d07858b1fff545a13e2689fb76752e6d7a29570a3d15d323ed03847c0ca.png" src="_images/be459d07858b1fff545a13e2689fb76752e6d7a29570a3d15d323ed03847c0ca.png" />
+<img alt="_images/e902a1b8538ebd9952017c17bbcbc834cd33c1883e53475bda067f10dc1dae8f.png" src="_images/e902a1b8538ebd9952017c17bbcbc834cd33c1883e53475bda067f10dc1dae8f.png" />
 </div>
 </details>
 </div>
@@ -4209,10 +4228,10 @@ Name: DateIn, dtype: float64
       <th>Austria</th>
       <td>0</td>
       <td>0</td>
-      <td>2</td>
+      <td>4</td>
       <td>172</td>
-      <td>0</td>
-      <td>12</td>
+      <td>2</td>
+      <td>11</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -4222,12 +4241,12 @@ Name: DateIn, dtype: float64
     </tr>
     <tr>
       <th>Belgium</th>
-      <td>2</td>
-      <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>6</td>
       <td>13</td>
       <td>0</td>
-      <td>25</td>
+      <td>24</td>
       <td>2</td>
       <td>9</td>
       <td>0</td>
@@ -4254,7 +4273,7 @@ Name: DateIn, dtype: float64
       <th>Bulgaria</th>
       <td>0</td>
       <td>0</td>
-      <td>3</td>
+      <td>5</td>
       <td>30</td>
       <td>8</td>
       <td>1</td>
@@ -4284,31 +4303,31 @@ Name: DateIn, dtype: float64
       <th>Czech Republic</th>
       <td>0</td>
       <td>0</td>
-      <td>9</td>
-      <td>14</td>
-      <td>26</td>
-      <td>4</td>
-      <td>2</td>
+      <td>10</td>
+      <td>0</td>
+      <td>23</td>
       <td>0</td>
       <td>0</td>
-      <td>3</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>Denmark</th>
-      <td>4</td>
+      <td>3</td>
       <td>0</td>
-      <td>9</td>
+      <td>12</td>
       <td>0</td>
       <td>0</td>
       <td>4</td>
       <td>0</td>
       <td>1</td>
-      <td>2</td>
+      <td>1</td>
       <td>3</td>
       <td>0</td>
-      <td>13</td>
+      <td>12</td>
     </tr>
     <tr>
       <th>Estonia</th>
@@ -4323,52 +4342,52 @@ Name: DateIn, dtype: float64
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>8</td>
+      <td>9</td>
     </tr>
     <tr>
       <th>Finland</th>
-      <td>41</td>
+      <td>37</td>
       <td>0</td>
-      <td>9</td>
+      <td>14</td>
       <td>105</td>
       <td>6</td>
-      <td>18</td>
+      <td>21</td>
       <td>2</td>
-      <td>17</td>
-      <td>4</td>
+      <td>16</td>
+      <td>3</td>
       <td>0</td>
       <td>0</td>
-      <td>12</td>
+      <td>13</td>
     </tr>
     <tr>
       <th>France</th>
       <td>0</td>
       <td>0</td>
-      <td>4</td>
-      <td>150</td>
+      <td>13</td>
+      <td>149</td>
       <td>0</td>
       <td>13</td>
-      <td>19</td>
-      <td>6</td>
+      <td>20</td>
+      <td>7</td>
       <td>2</td>
-      <td>3</td>
+      <td>5</td>
       <td>0</td>
-      <td>156</td>
+      <td>164</td>
     </tr>
     <tr>
       <th>Germany</th>
-      <td>42</td>
+      <td>46</td>
       <td>0</td>
-      <td>56</td>
+      <td>71</td>
       <td>731</td>
-      <td>29</td>
-      <td>190</td>
-      <td>0</td>
-      <td>29</td>
-      <td>26</td>
-      <td>50</td>
-      <td>64</td>
-      <td>27</td>
+      <td>32</td>
+      <td>202</td>
+      <td>9</td>
+      <td>31</td>
+      <td>25</td>
+      <td>55</td>
+      <td>60</td>
+      <td>28</td>
     </tr>
     <tr>
       <th>Greece</th>
@@ -4376,7 +4395,7 @@ Name: DateIn, dtype: float64
       <td>0</td>
       <td>0</td>
       <td>20</td>
-      <td>7</td>
+      <td>9</td>
       <td>10</td>
       <td>0</td>
       <td>3</td>
@@ -4389,14 +4408,14 @@ Name: DateIn, dtype: float64
       <th>Hungary</th>
       <td>1</td>
       <td>0</td>
-      <td>2</td>
+      <td>5</td>
       <td>4</td>
       <td>1</td>
       <td>12</td>
       <td>1</td>
       <td>1</td>
       <td>0</td>
-      <td>4</td>
+      <td>3</td>
       <td>0</td>
       <td>2</td>
     </tr>
@@ -4413,22 +4432,22 @@ Name: DateIn, dtype: float64
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>22</td>
+      <td>21</td>
     </tr>
     <tr>
       <th>Italy</th>
       <td>6</td>
       <td>24</td>
-      <td>13</td>
+      <td>15</td>
       <td>288</td>
       <td>0</td>
-      <td>95</td>
+      <td>93</td>
       <td>0</td>
       <td>2</td>
       <td>2</td>
       <td>23</td>
       <td>0</td>
-      <td>134</td>
+      <td>138</td>
     </tr>
     <tr>
       <th>Latvia</th>
@@ -4453,7 +4472,7 @@ Name: DateIn, dtype: float64
       <td>2</td>
       <td>0</td>
       <td>2</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -4509,16 +4528,16 @@ Name: DateIn, dtype: float64
       <th>Netherlands</th>
       <td>0</td>
       <td>0</td>
-      <td>6</td>
+      <td>7</td>
       <td>0</td>
       <td>0</td>
       <td>32</td>
-      <td>1</td>
+      <td>0</td>
       <td>1</td>
       <td>3</td>
       <td>4</td>
       <td>0</td>
-      <td>12</td>
+      <td>17</td>
     </tr>
     <tr>
       <th>Norway</th>
@@ -4533,15 +4552,15 @@ Name: DateIn, dtype: float64
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>Poland</th>
       <td>0</td>
       <td>0</td>
-      <td>47</td>
+      <td>50</td>
       <td>18</td>
-      <td>5</td>
+      <td>7</td>
       <td>9</td>
       <td>0</td>
       <td>1</td>
@@ -4570,8 +4589,8 @@ Name: DateIn, dtype: float64
       <td>0</td>
       <td>0</td>
       <td>3</td>
-      <td>120</td>
-      <td>5</td>
+      <td>119</td>
+      <td>13</td>
       <td>7</td>
       <td>1</td>
       <td>0</td>
@@ -4600,9 +4619,9 @@ Name: DateIn, dtype: float64
       <td>0</td>
       <td>0</td>
       <td>2</td>
-      <td>30</td>
+      <td>29</td>
       <td>3</td>
-      <td>3</td>
+      <td>4</td>
       <td>2</td>
       <td>0</td>
       <td>0</td>
@@ -4616,7 +4635,7 @@ Name: DateIn, dtype: float64
       <td>0</td>
       <td>1</td>
       <td>28</td>
-      <td>2</td>
+      <td>3</td>
       <td>2</td>
       <td>1</td>
       <td>0</td>
@@ -4629,22 +4648,22 @@ Name: DateIn, dtype: float64
       <th>Spain</th>
       <td>1</td>
       <td>0</td>
-      <td>15</td>
+      <td>18</td>
       <td>361</td>
-      <td>3</td>
-      <td>54</td>
-      <td>5</td>
+      <td>6</td>
+      <td>52</td>
+      <td>7</td>
       <td>13</td>
-      <td>14</td>
-      <td>190</td>
+      <td>1</td>
+      <td>203</td>
       <td>15</td>
-      <td>295</td>
+      <td>297</td>
     </tr>
     <tr>
       <th>Sweden</th>
       <td>2</td>
       <td>0</td>
-      <td>1</td>
+      <td>2</td>
       <td>144</td>
       <td>0</td>
       <td>4</td>
@@ -4687,17 +4706,17 @@ Name: DateIn, dtype: float64
     </tr>
     <tr>
       <th>United Kingdom</th>
-      <td>17</td>
+      <td>18</td>
       <td>0</td>
-      <td>12</td>
+      <td>20</td>
       <td>101</td>
       <td>0</td>
-      <td>69</td>
+      <td>67</td>
       <td>8</td>
       <td>1</td>
       <td>1</td>
-      <td>61</td>
-      <td>13</td>
+      <td>64</td>
+      <td>10</td>
       <td>349</td>
     </tr>
   </tbody>
@@ -4707,7 +4726,7 @@ Name: DateIn, dtype: float64
 </div>
 </section>
 <section id="time-series-analysis">
-<h3>Time Series Analysis<a class="headerlink" href="#time-series-analysis" title="Permalink to this heading">#</a></h3>
+<h3>Time Series Analysis<a class="headerlink" href="#time-series-analysis" title="Link to this heading">#</a></h3>
 <p>Read in the time series from the second lecture into a DataFrame.</p>
 <p>The file is available at <a class="reference external" href="https://tubcloud.tu-berlin.de/s/pKttFadrbTKSJKF/download/time-series-lecture-2.csv">https://tubcloud.tu-berlin.de/s/pKttFadrbTKSJKF/download/time-series-lecture-2.csv</a>. and includes hourly time series for Germany in 2015 for:</p>
 <ol class="arabic simple">
@@ -4932,8 +4951,8 @@ By Fabian Neumann
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

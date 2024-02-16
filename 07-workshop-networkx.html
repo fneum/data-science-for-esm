@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Introduction to networkx &#8212; Data Science for Energy System Modelling</title>
   
@@ -19,53 +18,49 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '07-workshop-networkx';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Introduction to pyomo" href="08-workshop-pyomo.html" />
@@ -82,7 +77,6 @@ const thebe_selector_output = ".output, .cell_output"
   <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -122,20 +116,15 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <header>
   
-    <div class="bd-header navbar navbar-expand-lg bd-navbar">
-    </div>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
-  </header>
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -169,7 +158,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -445,7 +445,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-networkx">
-<h1>Introduction to <code class="docutils literal notranslate"><span class="pre">networkx</span></code><a class="headerlink" href="#introduction-to-networkx" title="Permalink to this heading">#</a></h1>
+<h1>Introduction to <code class="docutils literal notranslate"><span class="pre">networkx</span></code><a class="headerlink" href="#introduction-to-networkx" title="Link to this heading">#</a></h1>
 <p><strong>NetworkX: Network Analysis in Python</strong></p>
 <img src="https://networkx.org/_static/networkx_logo.svg" width="400px" />
 <blockquote>
@@ -471,7 +471,7 @@ document.write(`
 </div>
 <p>Let’s perform some network analysis on this simple graph:</p>
 <img src="https://raw.githubusercontent.com/fneum/data-science-for-esm/main/data-science-for-esm/network.png" width="300px" /><section id="network-analysis-with-numpy">
-<h2>Network Analysis with <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.<a class="headerlink" href="#network-analysis-with-numpy" title="Permalink to this heading">#</a></h2>
+<h2>Network Analysis with <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.<a class="headerlink" href="#network-analysis-with-numpy" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -531,7 +531,7 @@ to node 2, not vice versa).</p>
 <p>This is all fine for small graphs, but inconvient for larger graphs. Let’s take the help some Python packages have to offer…</p>
 </section>
 <section id="making-our-life-easier-with-networkx">
-<h2>Making our life easier with <code class="docutils literal notranslate"><span class="pre">networkx</span></code><a class="headerlink" href="#making-our-life-easier-with-networkx" title="Permalink to this heading">#</a></h2>
+<h2>Making our life easier with <code class="docutils literal notranslate"><span class="pre">networkx</span></code><a class="headerlink" href="#making-our-life-easier-with-networkx" title="Link to this heading">#</a></h2>
 <p>First, let’s import the library. It is commonly imported under the alias <code class="docutils literal notranslate"><span class="pre">nx</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -549,7 +549,7 @@ to node 2, not vice versa).</p>
 </div>
 </div>
 <section id="nodes">
-<h3>Nodes<a class="headerlink" href="#nodes" title="Permalink to this heading">#</a></h3>
+<h3>Nodes<a class="headerlink" href="#nodes" title="Link to this heading">#</a></h3>
 <p>We can add one node at a time,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -589,7 +589,7 @@ to node 2, not vice versa).</p>
 </div>
 </section>
 <section id="edges">
-<h3>Edges<a class="headerlink" href="#edges" title="Permalink to this heading">#</a></h3>
+<h3>Edges<a class="headerlink" href="#edges" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">G</span></code> can also be grown by adding one edge at a time,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -624,7 +624,7 @@ to node 2, not vice versa).</p>
 </div>
 </section>
 <section id="examining-elements-of-a-graph">
-<h3>Examining elements of a graph<a class="headerlink" href="#examining-elements-of-a-graph" title="Permalink to this heading">#</a></h3>
+<h3>Examining elements of a graph<a class="headerlink" href="#examining-elements-of-a-graph" title="Link to this heading">#</a></h3>
 <p>We can examine the nodes and edges.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -676,7 +676,7 @@ to node 2, not vice versa).</p>
 </div>
 </section>
 <section id="accessing-graph-elements">
-<h3>Accessing graph elements<a class="headerlink" href="#accessing-graph-elements" title="Permalink to this heading">#</a></h3>
+<h3>Accessing graph elements<a class="headerlink" href="#accessing-graph-elements" title="Link to this heading">#</a></h3>
 <p>Access an edge:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -718,7 +718,7 @@ to node 2, not vice versa).</p>
 </div>
 </section>
 <section id="removing-elements">
-<h3>Removing elements<a class="headerlink" href="#removing-elements" title="Permalink to this heading">#</a></h3>
+<h3>Removing elements<a class="headerlink" href="#removing-elements" title="Link to this heading">#</a></h3>
 <p>One can remove nodes and edges from the graph in a similar fashion to adding. Use methods <code class="docutils literal notranslate"><span class="pre">G.remove_node()</span></code>, <code class="docutils literal notranslate"><span class="pre">G.remove_nodes_from()</span></code>, <code class="docutils literal notranslate"><span class="pre">G.remove_edge()</span></code> and <code class="docutils literal notranslate"><span class="pre">G.remove_edges_from()</span></code>, e.g.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -736,7 +736,7 @@ to node 2, not vice versa).</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/networkx/classes/graph.py:1118,</span> in <span class="ni">Graph.remove_edge</span><span class="nt">(self, u, v)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/networkx/classes/graph.py:1118,</span> in <span class="ni">Graph.remove_edge</span><span class="nt">(self, u, v)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1117</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">1118</span>     <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span>
 <span class="g g-Whitespace">   </span><span class="mi">1119</span>     <span class="k">if</span> <span class="n">u</span> <span class="o">!=</span> <span class="n">v</span><span class="p">:</span>  <span class="c1"># self-loop needs only one entry removed</span>
@@ -749,7 +749,7 @@ to node 2, not vice versa).</p>
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">G</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.7/x64/lib/python3.11/site-packages/networkx/classes/graph.py:1122,</span> in <span class="ni">Graph.remove_edge</span><span class="nt">(self, u, v)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/networkx/classes/graph.py:1122,</span> in <span class="ni">Graph.remove_edge</span><span class="nt">(self, u, v)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1120</span>         <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">]</span>
 <span class="g g-Whitespace">   </span><span class="mi">1121</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">1122</span>     <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The edge </span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> is not in the graph&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
@@ -770,7 +770,7 @@ to node 2, not vice versa).</p>
 </div>
 </section>
 <section id="visualising-graphs">
-<h3>Visualising graphs<a class="headerlink" href="#visualising-graphs" title="Permalink to this heading">#</a></h3>
+<h3>Visualising graphs<a class="headerlink" href="#visualising-graphs" title="Link to this heading">#</a></h3>
 <p>A basic drawing function for networks is also available in <code class="docutils literal notranslate"><span class="pre">networkx</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -806,7 +806,7 @@ to node 2, not vice versa).</p>
 </div>
 </section>
 <section id="analysing-graphs">
-<h3>Analysing graphs<a class="headerlink" href="#analysing-graphs" title="Permalink to this heading">#</a></h3>
+<h3>Analysing graphs<a class="headerlink" href="#analysing-graphs" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">networkx</span></code> library comes with many functions to analyse graphs. Here are a few examples we’re going to need for linearised power flow calculations in electricity transmission networks:</p>
 <p>Are all nodes in the network connected with each other?</p>
 <div class="cell docutils container">
@@ -938,7 +938,7 @@ to node 2, not vice versa).</p>
 </section>
 </section>
 <section id="linearised-power-flow-in-the-european-transmission-network">
-<h2>Linearised power flow in the European transmission network<a class="headerlink" href="#linearised-power-flow-in-the-european-transmission-network" title="Permalink to this heading">#</a></h2>
+<h2>Linearised power flow in the European transmission network<a class="headerlink" href="#linearised-power-flow-in-the-european-transmission-network" title="Link to this heading">#</a></h2>
 <p>In this example, we are going to load a slightly simplified dataset of the European high-voltage transmission network. In this dataset, HVDC links and back-to-back converters have been left out, and the data only shows AC transmission lines.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1212,7 +1212,7 @@ to node 2, not vice versa).</p>
 </div>
 </section>
 <section id="exercise-1">
-<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h2>
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h2>
 <p>Build the following graph in <code class="docutils literal notranslate"><span class="pre">networkx</span></code> using the functions to add graphs. The weight of each edge should correspond to the sum of the node labels it connects.</p>
 <img src="https://github.com/fneum/data-science-for-esm/raw/main/data-science-for-esm/example-graph.png" width="500px" /><div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
@@ -1277,7 +1277,7 @@ to node 2, not vice versa).</p>
 </div>
 </section>
 <section id="exercise-2">
-<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h2>
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h2>
 <p>For each subgraph (each represents a synchronous zone), determine</p>
 <ul class="simple">
 <li><p>the number of transmission lines (aka edges) and buses (aka nodes)</p></li>
@@ -1703,8 +1703,8 @@ By Fabian Neumann
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

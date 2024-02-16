@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Introduction to numpy and matplotlib &#8212; Data Science for Energy System Modelling</title>
   
@@ -19,53 +18,49 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '02-workshop-numpy';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Introduction to pandas" href="03-workshop-pandas.html" />
@@ -82,7 +77,6 @@ const thebe_selector_output = ".output, .cell_output"
   <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -122,20 +116,15 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <header>
   
-    <div class="bd-header navbar navbar-expand-lg bd-navbar">
-    </div>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
-  </header>
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -169,7 +158,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -458,7 +458,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-numpy-and-matplotlib">
-<h1>Introduction to <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code><a class="headerlink" href="#introduction-to-numpy-and-matplotlib" title="Permalink to this heading">#</a></h1>
+<h1>Introduction to <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code><a class="headerlink" href="#introduction-to-numpy-and-matplotlib" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This material is mostly adapted from the following resources:</p>
@@ -498,7 +498,7 @@ document.write(`
 </div>
 </div>
 <section id="importing-a-package">
-<h2>Importing a Package<a class="headerlink" href="#importing-a-package" title="Permalink to this heading">#</a></h2>
+<h2>Importing a Package<a class="headerlink" href="#importing-a-package" title="Link to this heading">#</a></h2>
 <p>This will be our first experience with <em>importing</em> a package.</p>
 <p>Usually we import <code class="docutils literal notranslate"><span class="pre">numpy</span></code> with the <em>alias</em> <code class="docutils literal notranslate"><span class="pre">np</span></code>.</p>
 <div class="cell docutils container">
@@ -510,7 +510,7 @@ document.write(`
 </div>
 </section>
 <section id="ndarrays">
-<h2>NDArrays<a class="headerlink" href="#ndarrays" title="Permalink to this heading">#</a></h2>
+<h2>NDArrays<a class="headerlink" href="#ndarrays" title="Link to this heading">#</a></h2>
 <p>NDarrays (short for n-dimensional arrays) are a key data structure in <code class="docutils literal notranslate"><span class="pre">numpy</span></code>. NDarrays are similar to Python lists, but they allow for fast, efficient computations on large arrays and matrices of numerical data. NDarrays can have any number of dimensions, and are used for a wide range of numerical and scientific computing tasks, including linear algebra, statistical analysis, and image processing.</p>
 <p>Thus, the main differences between a numpy array and a <code class="docutils literal notranslate"><span class="pre">list</span></code> are the following:</p>
 <ul class="simple">
@@ -592,7 +592,7 @@ document.write(`
 </div>
 </section>
 <section id="array-creation">
-<h2>Array Creation<a class="headerlink" href="#array-creation" title="Permalink to this heading">#</a></h2>
+<h2>Array Creation<a class="headerlink" href="#array-creation" title="Link to this heading">#</a></h2>
 <p>There are lots of ways to create arrays.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -646,11 +646,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.28050889, 0.13229087],
-       [0.4348265 , 0.03558428],
-       [0.71561187, 0.3755213 ],
-       [0.9709272 , 0.60771412],
-       [0.41347761, 0.54348867]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.61905874, 0.13077526],
+       [0.44646766, 0.80933122],
+       [0.72300089, 0.61956096],
+       [0.08264577, 0.05073826],
+       [0.67017696, 0.48061404]])
 </pre></div>
 </div>
 </div>
@@ -744,7 +744,7 @@ For instance, <code class="docutils literal notranslate"><span class="pre">meshg
 </div>
 </section>
 <section id="indexing">
-<h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this heading">#</a></h2>
+<h2>Indexing<a class="headerlink" href="#indexing" title="Link to this heading">#</a></h2>
 <p>Basic indexing in <code class="docutils literal notranslate"><span class="pre">numpy</span></code> is similar to lists.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -801,7 +801,7 @@ For instance, <code class="docutils literal notranslate"><span class="pre">meshg
 </div>
 </section>
 <section id="visualizing-arrays-with-matplotlib">
-<h2>Visualizing Arrays with Matplotlib<a class="headerlink" href="#visualizing-arrays-with-matplotlib" title="Permalink to this heading">#</a></h2>
+<h2>Visualizing Arrays with Matplotlib<a class="headerlink" href="#visualizing-arrays-with-matplotlib" title="Link to this heading">#</a></h2>
 <p>Let’s create a slightly bigger array:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -835,7 +835,7 @@ For instance, <code class="docutils literal notranslate"><span class="pre">meshg
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/60d3d92ee4713752d3aca578e9a6f1d6dbf1551121adf04c682b2af318934633.png" src="_images/60d3d92ee4713752d3aca578e9a6f1d6dbf1551121adf04c682b2af318934633.png" />
+<img alt="_images/e2a68825f0ce280c895ddc97945053532d50f6c17007cf2cf445dce1eb3648da.png" src="_images/e2a68825f0ce280c895ddc97945053532d50f6c17007cf2cf445dce1eb3648da.png" />
 </div>
 </div>
 <p>There are many ways to visualize 2D data.
@@ -847,16 +847,16 @@ He we use <code class="docutils literal notranslate"><span class="pre">pcolormes
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/80c6a766f0c4df7673d015c85f74b58b86edcbdf08f485b943bcad7f788f1424.png" src="_images/80c6a766f0c4df7673d015c85f74b58b86edcbdf08f485b943bcad7f788f1424.png" />
+<img alt="_images/52eedf5e66a615e5573eb03bd64b411af5830182cc259532628f7bb7a0d22bba.png" src="_images/52eedf5e66a615e5573eb03bd64b411af5830182cc259532628f7bb7a0d22bba.png" />
 </div>
 </div>
 </section>
 <section id="array-operations">
-<h2>Array Operations<a class="headerlink" href="#array-operations" title="Permalink to this heading">#</a></h2>
+<h2>Array Operations<a class="headerlink" href="#array-operations" title="Link to this heading">#</a></h2>
 <p>There is a huge number of operations available on arrays.</p>
 <p>All the familiar arithemtic operators are applied on an element-by-element basis.</p>
 <section id="basic-math">
-<h3>Basic Math<a class="headerlink" href="#basic-math" title="Permalink to this heading">#</a></h3>
+<h3>Basic Math<a class="headerlink" href="#basic-math" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">yy</span><span class="p">)</span>
@@ -871,10 +871,10 @@ He we use <code class="docutils literal notranslate"><span class="pre">pcolormes
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7f6ef4057050&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7f24ed3d2590&gt;
 </pre></div>
 </div>
-<img alt="_images/ee73a447f14dd9b98557b231971cb4941b5c970cdb00226499ab84afe040fedf.png" src="_images/ee73a447f14dd9b98557b231971cb4941b5c970cdb00226499ab84afe040fedf.png" />
+<img alt="_images/43524111cef0cf342e0ed6384f44f65e1545035ee3d4458ac7ded252ac39325f.png" src="_images/43524111cef0cf342e0ed6384f44f65e1545035ee3d4458ac7ded252ac39325f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -910,7 +910,7 @@ He we use <code class="docutils literal notranslate"><span class="pre">pcolormes
 </section>
 </section>
 <section id="broadcasting">
-<h2>Broadcasting<a class="headerlink" href="#broadcasting" title="Permalink to this heading">#</a></h2>
+<h2>Broadcasting<a class="headerlink" href="#broadcasting" title="Link to this heading">#</a></h2>
 <p>Not all the arrays we want to work with will have the same size!</p>
 <p><strong>Broadcasting</strong> is a powerful feature in <code class="docutils literal notranslate"><span class="pre">numpy</span></code> that allows you to perform operations on arrays of different shapes and sizes. It automatically expands the smaller array to match the dimensions of the larger array, without actually making copies of the data, so that element-wise operations can be performed. This is done by following a set of rules that determine how the shapes of the arrays align.</p>
 <p>Broadcasting allows you to vectorize operations and avoid explicit loops, leading to more concise and efficient code. It’s particularly useful when working with large data sets, as it helps optimize memory usage and computational speed.</p>
@@ -954,15 +954,15 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7f6ef41015d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7f24ed4a89d0&gt;
 </pre></div>
 </div>
-<img alt="_images/8239a1ec4779a5dba7752d8025507eea7b6e8f6c033eca18cf96adb3b2bca96e.png" src="_images/8239a1ec4779a5dba7752d8025507eea7b6e8f6c033eca18cf96adb3b2bca96e.png" />
+<img alt="_images/4738b4f47d53b28e15f1096bb23a0e0ff949cf4f84024192a77479e9bc470821.png" src="_images/4738b4f47d53b28e15f1096bb23a0e0ff949cf4f84024192a77479e9bc470821.png" />
 </div>
 </div>
 </section>
 <section id="reduction-operations">
-<h2>Reduction Operations<a class="headerlink" href="#reduction-operations" title="Permalink to this heading">#</a></h2>
+<h2>Reduction Operations<a class="headerlink" href="#reduction-operations" title="Link to this heading">#</a></h2>
 <p>In data science, we usually start with a lot of data and want to reduce it down in order to make plots of summary tables.</p>
 <p>There are many different reduction operations. The table below lists the most common functions:</p>
 <table class="table">
@@ -1051,10 +1051,10 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6ef436a7d0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f24ef50f3d0&gt;]
 </pre></div>
 </div>
-<img alt="_images/dc8b59f73e368163eba6fff10961b1d5c979249e4e523f5849139d0dd9d011bf.png" src="_images/dc8b59f73e368163eba6fff10961b1d5c979249e4e523f5849139d0dd9d011bf.png" />
+<img alt="_images/342fb5cc48fc5483025e095041f02897c87a51bf65e193b0822606c59f6b1c60.png" src="_images/342fb5cc48fc5483025e095041f02897c87a51bf65e193b0822606c59f6b1c60.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1064,15 +1064,15 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6ef4153150&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f24ef6b73d0&gt;]
 </pre></div>
 </div>
-<img alt="_images/099c337579eaca8eca48373f04b6130371e20e4abd9f77727d711b5d5cc4f0ae.png" src="_images/099c337579eaca8eca48373f04b6130371e20e4abd9f77727d711b5d5cc4f0ae.png" />
+<img alt="_images/c9020debd02c75a0d12314cc58c39499c461061c47603bf57cb72f126a05af49.png" src="_images/c9020debd02c75a0d12314cc58c39499c461061c47603bf57cb72f126a05af49.png" />
 </div>
 </div>
 </section>
 <section id="figures-and-axes">
-<h2>Figures and Axes<a class="headerlink" href="#figures-and-axes" title="Permalink to this heading">#</a></h2>
+<h2>Figures and Axes<a class="headerlink" href="#figures-and-axes" title="Link to this heading">#</a></h2>
 <p>The <em>figure</em> is the highest level of organization of <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> objects.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1106,11 +1106,11 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b6832ba6879e968121b544a3c59c20a10b30799c18179e355b72f44452b2b66a.png" src="_images/b6832ba6879e968121b544a3c59c20a10b30799c18179e355b72f44452b2b66a.png" />
+<img alt="_images/f732fb1e265fa40ad2c9b5569da817181d6965b79d4302a84d7a7f30c4b15ea6.png" src="_images/f732fb1e265fa40ad2c9b5569da817181d6965b79d4302a84d7a7f30c4b15ea6.png" />
 </div>
 </div>
 <section id="subplots">
-<h3>Subplots<a class="headerlink" href="#subplots" title="Permalink to this heading">#</a></h3>
+<h3>Subplots<a class="headerlink" href="#subplots" title="Link to this heading">#</a></h3>
 <p>Subplot syntax is a more convenient way to specify the creation of multiple axes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1119,7 +1119,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0e55f04f3a11297b3d321ceabb0d3a600a2789a4914902578a1590cc0e0de83f.png" src="_images/0e55f04f3a11297b3d321ceabb0d3a600a2789a4914902578a1590cc0e0de83f.png" />
+<img alt="_images/de9ae71e4db8687c1ddb920f3ac8679364abc7ece96cd02fa3f38170ccbb25fa.png" src="_images/de9ae71e4db8687c1ddb920f3ac8679364abc7ece96cd02fa3f38170ccbb25fa.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1141,7 +1141,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/378e116767a5c27a26eed4f31370002be189e0f7dddb0be495f9014206cb3515.png" src="_images/378e116767a5c27a26eed4f31370002be189e0f7dddb0be495f9014206cb3515.png" />
+<img alt="_images/9870e90f216e31050a12ef3a9f6e337e8dd89b17cc8f6f81d8aa39f357788dff.png" src="_images/9870e90f216e31050a12ef3a9f6e337e8dd89b17cc8f6f81d8aa39f357788dff.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1159,7 +1159,7 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </section>
 </section>
 <section id="drawing-into-axes">
-<h2>Drawing into Axes<a class="headerlink" href="#drawing-into-axes" title="Permalink to this heading">#</a></h2>
+<h2>Drawing into Axes<a class="headerlink" href="#drawing-into-axes" title="Link to this heading">#</a></h2>
 <p>All plots are drawn into axes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1181,10 +1181,10 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6ee0e6b890&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f24ed3c73d0&gt;]
 </pre></div>
 </div>
-<img alt="_images/a4fb09567d1d8965ecdca97207d02d14ca142eac13272959547d39a3312479c3.png" src="_images/a4fb09567d1d8965ecdca97207d02d14ca142eac13272959547d39a3312479c3.png" />
+<img alt="_images/c667c8f2d8c189d831ec076d89ad1dce11b640d53ae940892532c78c35cfda56.png" src="_images/c667c8f2d8c189d831ec076d89ad1dce11b640d53ae940892532c78c35cfda56.png" />
 </div>
 </div>
 <p>This does the same thing as</p>
@@ -1195,10 +1195,10 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6ee0ebb890&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f24ed23f790&gt;]
 </pre></div>
 </div>
-<img alt="_images/a4fb09567d1d8965ecdca97207d02d14ca142eac13272959547d39a3312479c3.png" src="_images/a4fb09567d1d8965ecdca97207d02d14ca142eac13272959547d39a3312479c3.png" />
+<img alt="_images/c667c8f2d8c189d831ec076d89ad1dce11b640d53ae940892532c78c35cfda56.png" src="_images/c667c8f2d8c189d831ec076d89ad1dce11b640d53ae940892532c78c35cfda56.png" />
 </div>
 </div>
 <p>This starts to matter when we have multiple axes to manage.</p>
@@ -1212,15 +1212,15 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6ee0dbc590&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f24ed3c67d0&gt;]
 </pre></div>
 </div>
-<img alt="_images/0d8836d55f02887753b8134333f2179f6508efe9802e7308482bc03cce75d8df.png" src="_images/0d8836d55f02887753b8134333f2179f6508efe9802e7308482bc03cce75d8df.png" />
+<img alt="_images/7e9f24aa4a613569e95e69f9bdfceed7ce1ca1afd96bd0720b8935003f3fdc8d.png" src="_images/7e9f24aa4a613569e95e69f9bdfceed7ce1ca1afd96bd0720b8935003f3fdc8d.png" />
 </div>
 </div>
 </section>
 <section id="labeling-plots">
-<h2>Labeling Plots<a class="headerlink" href="#labeling-plots" title="Permalink to this heading">#</a></h2>
+<h2>Labeling Plots<a class="headerlink" href="#labeling-plots" title="Link to this heading">#</a></h2>
 <p>Labeling plots is very important! We want to know what data is shown and what the units are. <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> offers some functions to label graphics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1237,12 +1237,12 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/16dbc1075f9ae11e5f55652581a533f2c7330ce7f3b626e7e3abc2da591b3ad8.png" src="_images/16dbc1075f9ae11e5f55652581a533f2c7330ce7f3b626e7e3abc2da591b3ad8.png" />
+<img alt="_images/c617744cf08edcfb38901c8f3419fe6ee9b32a5cfc62e5a0192cd8a27728e368.png" src="_images/c617744cf08edcfb38901c8f3419fe6ee9b32a5cfc62e5a0192cd8a27728e368.png" />
 </div>
 </div>
 </section>
 <section id="customizing-plots">
-<h2>Customizing Plots<a class="headerlink" href="#customizing-plots" title="Permalink to this heading">#</a></h2>
+<h2>Customizing Plots<a class="headerlink" href="#customizing-plots" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -1251,11 +1251,11 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6ef4347290&gt;,
- &lt;matplotlib.lines.Line2D at 0x7f6ef437b750&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f24ed2156d0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x7f24ed23e890&gt;]
 </pre></div>
 </div>
-<img alt="_images/a140ea1495f99f5c895283f83b8df9d665ee5f7a4dbbc237f8cdff14d2cc89af.png" src="_images/a140ea1495f99f5c895283f83b8df9d665ee5f7a4dbbc237f8cdff14d2cc89af.png" />
+<img alt="_images/a055fa811420a825d9a8c7f69f68c59830405ced7a69af4d5f2c052239ee1de7.png" src="_images/a055fa811420a825d9a8c7f69f68c59830405ced7a69af4d5f2c052239ee1de7.png" />
 </div>
 </div>
 <p>It’s simple to switch axes</p>
@@ -1267,15 +1267,15 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6ee0d50d10&gt;,
- &lt;matplotlib.lines.Line2D at 0x7f6ee0caae10&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f24ed025810&gt;,
+ &lt;matplotlib.lines.Line2D at 0x7f24ed054710&gt;]
 </pre></div>
 </div>
-<img alt="_images/4d96a3c7a835a490101e378231e91a0fb02f5551f92a1c61e4bd05d9f8af8e57.png" src="_images/4d96a3c7a835a490101e378231e91a0fb02f5551f92a1c61e4bd05d9f8af8e57.png" />
+<img alt="_images/8a23c8e03d0a92bf84062a3296fdee8d3a9d2c110c6ea06b2ddeee6ba595ec22.png" src="_images/8a23c8e03d0a92bf84062a3296fdee8d3a9d2c110c6ea06b2ddeee6ba595ec22.png" />
 </div>
 </div>
 <section id="line-styles">
-<h3>Line Styles<a class="headerlink" href="#line-styles" title="Permalink to this heading">#</a></h3>
+<h3>Line Styles<a class="headerlink" href="#line-styles" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -1285,15 +1285,15 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6ee0b28710&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f24ecee00d0&gt;]
 </pre></div>
 </div>
-<img alt="_images/6700975db688a7f8e147ac88fd280a69987696c5a050f715ed5118c0fb4d11fb.png" src="_images/6700975db688a7f8e147ac88fd280a69987696c5a050f715ed5118c0fb4d11fb.png" />
+<img alt="_images/cc59946d87ab6d8e87d58cb45cdc9720c3cf81a0f649548f78a0edb05c93e06c.png" src="_images/cc59946d87ab6d8e87d58cb45cdc9720c3cf81a0f649548f78a0edb05c93e06c.png" />
 </div>
 </div>
 </section>
 <section id="colors">
-<h3>Colors<a class="headerlink" href="#colors" title="Permalink to this heading">#</a></h3>
+<h3>Colors<a class="headerlink" href="#colors" title="Link to this heading">#</a></h3>
 <p>As described in the <a class="reference external" href="https://matplotlib.org/stable/api/colors_api.html">colors documentation</a>, there are some special codes for commonly used colors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1304,15 +1304,15 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6ee0b95c50&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f24ecf64850&gt;]
 </pre></div>
 </div>
-<img alt="_images/0f56422494a2df517b28bd0035bfb95f76e0094a0bb9ccf83a0a02cca56fa23b.png" src="_images/0f56422494a2df517b28bd0035bfb95f76e0094a0bb9ccf83a0a02cca56fa23b.png" />
+<img alt="_images/7bb44a6282ef659426237c460e5f210b74fb8a1a0de7f0bb73da1a5f38ceb407.png" src="_images/7bb44a6282ef659426237c460e5f210b74fb8a1a0de7f0bb73da1a5f38ceb407.png" />
 </div>
 </div>
 </section>
 <section id="markers">
-<h3>Markers<a class="headerlink" href="#markers" title="Permalink to this heading">#</a></h3>
+<h3>Markers<a class="headerlink" href="#markers" title="Link to this heading">#</a></h3>
 <p>There are <a class="reference external" href="https://matplotlib.org/api/markers_api.html">lots of different markers</a> availabile in matplotlib!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1323,15 +1323,15 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6ee0a23c90&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f24ecde2ed0&gt;]
 </pre></div>
 </div>
-<img alt="_images/28f52b98b8d467e01dde0f8678819f4293129b96e2751b42cdf66963a1a05701.png" src="_images/28f52b98b8d467e01dde0f8678819f4293129b96e2751b42cdf66963a1a05701.png" />
+<img alt="_images/58938258eac62c5d3fb7757ba0ec57fdf42a857d771bff5d3ec643b730a10859.png" src="_images/58938258eac62c5d3fb7757ba0ec57fdf42a857d771bff5d3ec643b730a10859.png" />
 </div>
 </div>
 </section>
 <section id="axis-limits">
-<h3>Axis Limits<a class="headerlink" href="#axis-limits" title="Permalink to this heading">#</a></h3>
+<h3>Axis Limits<a class="headerlink" href="#axis-limits" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -1345,13 +1345,13 @@ If the last two dimensions have the same length, then the two arrays can be broa
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-3.0, 3.0)
 </pre></div>
 </div>
-<img alt="_images/4b0e060a8fc776914ee9f253a290fd632f8992c4bfc154588bb8a94340b41be3.png" src="_images/4b0e060a8fc776914ee9f253a290fd632f8992c4bfc154588bb8a94340b41be3.png" />
+<img alt="_images/52310729cd0c41ab25cbff098eb38f13780abe88922a926d69bd8d28c2c2dd5e.png" src="_images/52310729cd0c41ab25cbff098eb38f13780abe88922a926d69bd8d28c2c2dd5e.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="scatter-plots">
-<h2>Scatter Plots<a class="headerlink" href="#scatter-plots" title="Permalink to this heading">#</a></h2>
+<h2>Scatter Plots<a class="headerlink" href="#scatter-plots" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -1362,16 +1362,16 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f6ef42254d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f24eccd2550&gt;
 </pre></div>
 </div>
-<img alt="_images/ac7cd73fd92a40b9666fe12db15ba11bfd61e5aeda251faf7ac05dd9494ba3dc.png" src="_images/ac7cd73fd92a40b9666fe12db15ba11bfd61e5aeda251faf7ac05dd9494ba3dc.png" />
+<img alt="_images/18fc44499083da5be586a8387df42bdb2f4dd3d09bc6496f51ded75d3b0770d8.png" src="_images/18fc44499083da5be586a8387df42bdb2f4dd3d09bc6496f51ded75d3b0770d8.png" />
 </div>
 </div>
 <p>There are many different colormaps available in matplotlib: <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">https://matplotlib.org/stable/tutorials/colors/colormaps.html</a></p>
 </section>
 <section id="bar-plots">
-<h2>Bar Plots<a class="headerlink" href="#bar-plots" title="Permalink to this heading">#</a></h2>
+<h2>Bar Plots<a class="headerlink" href="#bar-plots" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Reuter West&quot;</span><span class="p">,</span> <span class="s2">&quot;Mitte&quot;</span><span class="p">,</span> <span class="s2">&quot;Lichterfelde&quot;</span><span class="p">]</span>
@@ -1387,12 +1387,12 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/85d7a1c15a8186220870ceb41e965fd22d184b9b4225b0e4a5d6c617a83dc4d0.png" src="_images/85d7a1c15a8186220870ceb41e965fd22d184b9b4225b0e4a5d6c617a83dc4d0.png" />
+<img alt="_images/ef6ae42e533175c2334bec75da2da26b014d39e50b2a6d5bcf2394a064fa5ab6.png" src="_images/ef6ae42e533175c2334bec75da2da26b014d39e50b2a6d5bcf2394a064fa5ab6.png" />
 </div>
 </div>
 </section>
 <section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <p>Import <code class="docutils literal notranslate"><span class="pre">numpy</span></code> under the alias <code class="docutils literal notranslate"><span class="pre">np</span></code>.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
@@ -1523,17 +1523,17 @@ If the last two dimensions have the same length, then the two arrays can be broa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[ 0.30463807,  0.78779554, -0.53909044],
-        [-0.65947578,  0.26922848,  0.8046943 ],
-        [ 0.39773702,  0.47842482,  0.08438729]],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[ 0.43413382, -0.46725239,  0.1131887 ],
+        [ 1.26394691, -0.70006977, -1.17166675],
+        [ 0.61739776, -0.1969628 , -0.55029706]],
 
-       [[-0.37629261,  1.36852523,  0.21569231],
-        [-1.29749975,  0.35441519, -1.34780702],
-        [-0.95947521, -1.64083103, -1.85186418]],
+       [[ 0.84760984, -0.3710244 , -0.49043835],
+        [ 0.38079283, -0.43648938,  0.01979822],
+        [-0.50221182, -1.6133924 ,  1.1069187 ]],
 
-       [[-1.15782758,  1.72111488, -0.01927784],
-        [-0.57454042, -0.68203627,  1.0021924 ],
-        [-1.29377467, -0.15679335, -0.0877585 ]]])
+       [[ 0.44940465, -0.43011686,  0.65163979],
+        [ 1.43499558,  1.00690584, -1.08992476],
+        [-1.07596229, -0.13401523, -1.44283107]]])
 </pre></div>
 </div>
 </div>
@@ -1896,8 +1896,8 @@ By Fabian Neumann
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

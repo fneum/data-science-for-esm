@@ -4,7 +4,7 @@ Welcome to the website accompanying the course [Data Science for Energy System M
 
 On this website you will find practical introductions to many Python packages that are useful for dealing with energy data and building energy system models. Course materials other than practical introductions to Python packages for students at TU Berlin are provided on [ISIS](https://isis.tu-berlin.de/course/view.php?id=35495).
 
-The course covers tutorials and examples for getting started with Python, `numpy`, `matplotlib`, `pandas`, `geopandas`, `cartopy`, `rasterio`,  `pysheds`, `atlite`, `networkx`, `pyomo`, `pypsa`, `plotly`, `hvplot`, and `streamlit`. Topics covered include:
+The course covers tutorials and examples for getting started with Python, `numpy`, `matplotlib`, `pandas`, `geopandas`, `cartopy`, `rasterio`,  `pysheds`, `atlite`, `networkx`, `linopy`, `pypsa`, `plotly`, `hvplot`, and `streamlit`. Topics covered include:
 
 - time series analysis (e.g. wind and solar production)
 - tabular data (e.g. LNG terminals, power plants, industrial sites)
@@ -18,6 +18,7 @@ The course covers tutorials and examples for getting started with Python, `numpy
 - capacity expansion planning
 - sector-coupling
 - interactive visualisation and dashboarding
+
 ## Python
 
 :::{note}
@@ -44,24 +45,16 @@ Follow the link above to obtain a one-click installers for your operating system
 
 For **Linux and MacOS users**, you can access the command line by opening the _terminal_ program.
 
-For **Windows users**, you should first install Anaconda (described above) or miniconda/micromamba (described below), which gives you access to the "Anaconda Prompt" desktop application. (Instructions for this are given on the [Anaconda Website](https://docs.anaconda.com/anaconda/user-guide/getting-started/#write-a-python-program-using-anaconda-prompt-or-terminal).)
+For **Windows users**, you should first install Anaconda (described above) or miniconda (described below), which gives you access to the "Anaconda Prompt" desktop application. (Instructions for this are given on the [Anaconda Website](https://docs.anaconda.com/anaconda/user-guide/getting-started/#write-a-python-program-using-anaconda-prompt-or-terminal).)
 
 From the Anaconda Prompt, you should be able to run `conda` and other shell commands.
 
-### Lightweight alternatives: micromamba and miniconda
+### Lightweight alternative: `miniconda`
 
-If you don't want to download a large file like the Anaconda Python Distribution (ca. 800 MB), there are
-lightweight alternative installation methods (like `micromamba` and `miniconda`.
+If you don't want to download a large file like the Anaconda Python Distribution (ca. 800 MB), there is a
+lightweight alternative installation called `miniconda`.
 
-1. [Micromamba Installation](https://mamba.readthedocs.io/en/latest/installation.html#micromamba)
-2. [Miniconda Installation](https://docs.conda.io/en/latest/miniconda.html)
-
-### Installing Python without a package manager
-
-If you do not wish to install a package manager (not recommended), an
-alternative is to directly install official Python distributions.
-
-A good tutorial for this can be found [here](https://realpython.com/installing-python/).
+- [Miniconda Installation](https://docs.conda.io/en/latest/miniconda.html)
 
 ### Using Python without a local installation
 
@@ -73,6 +66,10 @@ in a [Jupyter Notebook](jupyter.org/) environment.
 Python coupled with a package manager provides a way to make isolated,
 reproducible _environments_ where you have fine-tuned control over all packages
 and configuration.
+
+First, ensure that your conda installation is up to date:
+
+    conda update -n base -c conda-forge conda
 
 To create a conda environment, you execute the following command:
 
@@ -116,31 +113,12 @@ configuration can be installed by executing
 
     conda env create -f my_environment.yml
 
-Below we will see an example of an environment file.
-
 For extensive documentation on using environments, please see
 [the conda documentation](https://conda.io/docs/using/envs.html).
 
-## Speeding things up with Mamba
+## Python environment for this course: `esm-2024`
 
-In order to put together an actual Python environment from your package specifications,
-`conda` has to solve a difficult puzzle, to ensure that the combination of packages is mutually compatible.
-Each package specified has certain dependencies on other packages.
-Moreover, each version of one package requires certain minimum versions of other
-packages.
-Other packages in your environment may have different or incompatible versions.
-The default implementation of `conda` can be very slow.
-Fortunately, there is a much faster alternative called [mamba](https://mamba.readthedocs.io/en/latest/index.html).
-To install it, just run:
-
-    conda install -n base -c conda-forge mamba
-
-Now you can install environments and packages as before, but using the `mamba` command
-instead of `conda`. Everything will be faster.
-
-## Python environment for this course: `esm-2023`
-
-## With `conda` or `mamba`
+## With `conda`
 
 The latest environment specification for this course can be downloaded under the following link as a [`YAML`-file](https://en.wikipedia.org/wiki/YAML):
 
@@ -149,17 +127,13 @@ https://github.com/fneum/data-science-for-esm/blob/main/environment.yaml
 There is a download button at the top-right corner.
 
 After navigating to the folder where the `environment.yaml` file is stored,
-you can reate this environment using `conda` or `mamba` (faster)
+you can reate this environment using `conda` (faster)
 
     conda env create -f environment.yml
 
-or
-
-    mamba create -f environment.yml
-
 Activate this environment
 
-    mamba activate esm-2023
+    conda activate esm-2023
 
 This environment should be sufficient for all of your work in this course.
 

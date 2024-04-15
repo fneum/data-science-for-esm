@@ -604,8 +604,8 @@ document.write(`
 <p><strong>Constraints</strong> are equality or inequality expressions that constrain the <em>feasible</em> space of the decision variables.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>, constraints are created with the <code class="docutils literal notranslate"><span class="pre">pe.Constraint()</span></code> constructor.</p>
 <p>In the code below, we create three simple constraints in different ways:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-89c5c806-f7b3-4cb9-8d10-31562082b2e1">
-<span class="eqno">(1)<a class="headerlink" href="#equation-89c5c806-f7b3-4cb9-8d10-31562082b2e1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ffb75b48-0232-45b5-b3f4-361227247f79">
+<span class="eqno">(1)<a class="headerlink" href="#equation-ffb75b48-0232-45b5-b3f4-361227247f79" title="Permalink to this equation">#</a></span>\[\begin{align}
   x &amp; \leq 4 \\
   2x + y &amp; \leq 10 \\
   x + y &amp; \leq 10 \\
@@ -1132,13 +1132,13 @@ Solution:
 <section id="single-bidding-zone-single-period">
 <h3>Single bidding zone, single period<a class="headerlink" href="#single-bidding-zone-single-period" title="Link to this heading">#</a></h3>
 <p>We want to minimise operational cost of an example electricity system representing South Africa subject to generator limits and meeting the load:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f1833c21-3094-4e65-bd03-42379993fc22">
-<span class="eqno">(2)<a class="headerlink" href="#equation-f1833c21-3094-4e65-bd03-42379993fc22" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-47c0b89f-812b-446d-a253-3d28b4981b8a">
+<span class="eqno">(2)<a class="headerlink" href="#equation-47c0b89f-812b-446d-a253-3d28b4981b8a" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \min_{g_s} \sum_s o_s g_s
   \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b8da172b-60c8-4d26-abf2-e0171bf68855">
-<span class="eqno">(3)<a class="headerlink" href="#equation-b8da172b-60c8-4d26-abf2-e0171bf68855" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2cea2def-d6f8-42d6-a4ca-2a3e0dc867e5">
+<span class="eqno">(3)<a class="headerlink" href="#equation-2cea2def-d6f8-42d6-a4ca-2a3e0dc867e5" title="Permalink to this equation">#</a></span>\[\begin{align}
     g_s &amp;\leq G_s \\
     g_s &amp;\geq 0 \\
     \sum_s g_s &amp;= d
@@ -1317,18 +1317,6 @@ Solution:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2249/4080736814.py:1: DeprecationWarning: 
-Pyarrow will become a required dependency of pandas in the next major release of pandas (pandas 3.0),
-(to allow more performant data types, such as the Arrow string type, and better interoperability with other libraries)
-but was not found to be installed on your system.
-If this would cause problems for you,
-please provide us feedback at https://github.com/pandas-dev/pandas/issues/54466
-        
-  import pandas as pd
-</pre></div>
-</div>
-</div>
 </div>
 <p>This is the optimal generator dispatch (in MW):</p>
 <div class="cell docutils container">
@@ -1401,13 +1389,13 @@ dtype: float64
 <section id="two-bidding-zones-with-transmission">
 <h3>Two bidding zones with transmission<a class="headerlink" href="#two-bidding-zones-with-transmission" title="Link to this heading">#</a></h3>
 <p>Let’s add a spatial dimension, such that the optimisation problem is expanded to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0afc6a44-85be-4ed0-b5bc-a6582f4ecf2c">
-<span class="eqno">(4)<a class="headerlink" href="#equation-0afc6a44-85be-4ed0-b5bc-a6582f4ecf2c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4835cb0e-a606-4c4e-8286-7cd982dee3ae">
+<span class="eqno">(4)<a class="headerlink" href="#equation-4835cb0e-a606-4c4e-8286-7cd982dee3ae" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \min_{g_{i,s}, f_\ell} \sum_s o_{i,s} g_{i,s}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d454ec02-00f5-49e3-b49f-28770bdc4fd5">
-<span class="eqno">(5)<a class="headerlink" href="#equation-d454ec02-00f5-49e3-b49f-28770bdc4fd5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b650ec13-1308-41c6-b106-93528977d8a1">
+<span class="eqno">(5)<a class="headerlink" href="#equation-b650ec13-1308-41c6-b106-93528977d8a1" title="Permalink to this equation">#</a></span>\[\begin{align}
   g_{i,s} &amp;\leq G_{i,s} \\
   g_{i,s} &amp;\geq 0 \\
   \sum_s g_{i,s} - \sum_\ell K_{i\ell} f_\ell &amp;= d_i &amp; \text{KCL} \\
@@ -1562,8 +1550,8 @@ For missing entries, we set the upper limit to zero (e.g. this country-technolog
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kcl : Size=2, Index=countries, Active=True
     Key          : Lower   : Body                                                                                                                : Upper   : Active
-      Mozambique :   650.0 :           g[Mozambique,Gas] + g[Mozambique,Coal] + g[Mozambique,Oil] + g[Mozambique,Wind] + g[Mozambique,Hydro] + f :   650.0 :   True
-    South Africa : 42000.0 : g[South Africa,Gas] + g[South Africa,Coal] + g[South Africa,Oil] + g[South Africa,Wind] + g[South Africa,Hydro] - f : 42000.0 :   True
+      Mozambique :   650.0 :           g[Mozambique,Wind] + g[Mozambique,Oil] + g[Mozambique,Hydro] + g[Mozambique,Gas] + g[Mozambique,Coal] + f :   650.0 :   True
+    South Africa : 42000.0 : g[South Africa,Wind] + g[South Africa,Oil] + g[South Africa,Hydro] + g[South Africa,Gas] + g[South Africa,Coal] - f : 42000.0 :   True
 </pre></div>
 </div>
 </div>
@@ -1714,16 +1702,16 @@ Solution:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[South Africa,Gas]      -0.0
-generator_limit[South Africa,Coal]    -30.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[South Africa,Wind]    -60.0
 generator_limit[South Africa,Oil]      -0.0
-generator_limit[South Africa,Wind]    -60.0
 generator_limit[South Africa,Hydro]   -60.0
+generator_limit[South Africa,Gas]      -0.0
+generator_limit[South Africa,Coal]    -30.0
+generator_limit[Mozambique,Wind]       -0.0
+generator_limit[Mozambique,Oil]        -0.0
+generator_limit[Mozambique,Hydro]      -0.0
 generator_limit[Mozambique,Gas]        -0.0
 generator_limit[Mozambique,Coal]       -0.0
-generator_limit[Mozambique,Oil]        -0.0
-generator_limit[Mozambique,Wind]       -0.0
-generator_limit[Mozambique,Hydro]      -0.0
 kcl[South Africa]                      60.0
 kcl[Mozambique]                        -0.0
 [None]                                 60.0
@@ -1849,13 +1837,13 @@ Solution:
 <section id="single-bidding-zone-with-several-periods">
 <h3>Single bidding zone with several periods<a class="headerlink" href="#single-bidding-zone-with-several-periods" title="Link to this heading">#</a></h3>
 <p>In this example, we consider multiple time periods (labelled [1,2,3,4]) to represent variable wind generation and changing load.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-61d54aeb-c9d4-419e-a192-bf7733226fb7">
-<span class="eqno">(6)<a class="headerlink" href="#equation-61d54aeb-c9d4-419e-a192-bf7733226fb7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4d3fbdb9-f579-4404-93a5-bc8ae3c64c10">
+<span class="eqno">(6)<a class="headerlink" href="#equation-4d3fbdb9-f579-4404-93a5-bc8ae3c64c10" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \min_{g_{s,t}} \sum_s o_{s} g_{s,t}
   \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9137d929-c9cd-4f5f-b18f-4755de60e494">
-<span class="eqno">(7)<a class="headerlink" href="#equation-9137d929-c9cd-4f5f-b18f-4755de60e494" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b6ae6c35-052b-496e-aca3-f367a80c5c15">
+<span class="eqno">(7)<a class="headerlink" href="#equation-b6ae6c35-052b-496e-aca3-f367a80c5c15" title="Permalink to this equation">#</a></span>\[\begin{align}
     g_{s,t} &amp;\leq \hat{g}_{s,t} G_{i,s} \\
     g_{s,t} &amp;\geq 0 \\
     \sum_s g_{s,t} &amp;= d_t
@@ -2002,7 +1990,7 @@ Solver:
 Solution: 
 - number of solutions: 0
   number of solutions displayed: 0
-4.08 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+4.13 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -2206,7 +2194,9 @@ dtype: float64
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running HiGHS 1.5.3 [date: 2023-05-16, git hash: 594fa5a9d-dirty]
 Copyright (c) 2023 HiGHS under MIT licence terms
-# ==========================================================
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
 # = Solver Results                                         =
 # ==========================================================
 # ----------------------------------------------------------
@@ -2531,7 +2521,7 @@ By Fabian Neumann
 
   <p class="copyright">
     
-      © Copyright 2022-2023.
+      © Copyright 2022-2024.
       <br/>
     
   </p>

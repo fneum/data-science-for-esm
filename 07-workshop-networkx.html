@@ -736,10 +736,10 @@ to node 2, not vice versa).</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/networkx/classes/graph.py:1118,</span> in <span class="ni">Graph.remove_edge</span><span class="nt">(self, u, v)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1117</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1118</span>     <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1119</span>     <span class="k">if</span> <span class="n">u</span> <span class="o">!=</span> <span class="n">v</span><span class="p">:</span>  <span class="c1"># self-loop needs only one entry removed</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/networkx/classes/graph.py:1127,</span> in <span class="ni">Graph.remove_edge</span><span class="nt">(self, u, v)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1126</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1127</span>     <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1128</span>     <span class="k">if</span> <span class="n">u</span> <span class="o">!=</span> <span class="n">v</span><span class="p">:</span>  <span class="c1"># self-loop needs only one entry removed</span>
 
 <span class="ne">KeyError</span>: 5
 
@@ -749,10 +749,11 @@ to node 2, not vice versa).</p>
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">G</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/networkx/classes/graph.py:1122,</span> in <span class="ni">Graph.remove_edge</span><span class="nt">(self, u, v)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1120</span>         <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1121</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1122</span>     <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The edge </span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> is not in the graph&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/networkx/classes/graph.py:1131,</span> in <span class="ni">Graph.remove_edge</span><span class="nt">(self, u, v)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1129</span>         <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1130</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1131</span>     <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The edge </span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> is not in the graph&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+<span class="g g-Whitespace">   </span><span class="mi">1132</span> <span class="n">nx</span><span class="o">.</span><span class="n">_clear_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
 <span class="ne">NetworkXError</span>: The edge 2-5 is not in the graph
 </pre></div>
@@ -1679,7 +1680,7 @@ By Fabian Neumann
 
   <p class="copyright">
     
-      © Copyright 2022-2023.
+      © Copyright 2022-2024.
       <br/>
     
   </p>

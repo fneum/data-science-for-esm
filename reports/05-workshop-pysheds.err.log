@@ -37,6 +37,10 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-from pysheds.grid import Grid
+from urllib.request import urlretrieve
+from os.path import basename
+
+url = "https://tubcloud.tu-berlin.de/s/ZPiZjX3Nzc6R6RX/download/output_COP30.tif"
+urlretrieve(url, basename(url))
 -------------------
 

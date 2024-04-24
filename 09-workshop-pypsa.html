@@ -42,7 +42,7 @@
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -555,13 +555,13 @@ document.write(`
 <h2>From structured data to optimisation<a class="headerlink" href="#from-structured-data-to-optimisation" title="Link to this heading">#</a></h2>
 <p>The design principle of PyPSA is that basically each component is associated with a set of variables and constraints that will be added to the optimisation model based on the input data stored for the components.</p>
 <p>For an <em>hourly</em> electricity market simulation, PyPSA will solve an optimisation problem that looks like this</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2d3ab4db-7bf4-4eca-a233-cdd5215c03fb">
-<span class="eqno">(8)<a class="headerlink" href="#equation-2d3ab4db-7bf4-4eca-a233-cdd5215c03fb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d9fc10bf-13ab-4feb-90ca-f29eebf15e34">
+<span class="eqno">(8)<a class="headerlink" href="#equation-d9fc10bf-13ab-4feb-90ca-f29eebf15e34" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min_{g_{i,s,t}; f_{\ell,t}; g_{i,r,t,\text{charge}}; g_{i,r,t,\text{discharge}}; e_{i,r,t}} \sum_s o_{s} g_{i,s,t}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-96d11edc-d2b0-476b-898e-118c61c6097f">
-<span class="eqno">(9)<a class="headerlink" href="#equation-96d11edc-d2b0-476b-898e-118c61c6097f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-eb6f3ba2-a6e1-420b-96b2-5391b3705c04">
+<span class="eqno">(9)<a class="headerlink" href="#equation-eb6f3ba2-a6e1-420b-96b2-5391b3705c04" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp; \leq g_{i,s,t} \leq \hat{g}_{i,s,t} G_{i,s}  &amp; \text{generation limits : generator} \\
 -F_\ell &amp;\leq f_{\ell,t} \leq F_\ell &amp; \text{transmission limits : line}  \\
 d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{i,r,t,\text{charge}} - \sum_\ell K_{i\ell} f_{\ell,t} &amp; \text{KCL : bus} \\
@@ -1601,8 +1601,8 @@ HiGHS run time      :          0.00
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f6d9c01b010&gt;,
- &lt;matplotlib.collections.LineCollection at 0x7f6d9c3abf10&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f017d7d0090&gt;,
+ &lt;matplotlib.collections.LineCollection at 0x7f017d7ddb90&gt;)
 </pre></div>
 </div>
 <img alt="_images/7d532d8cbfbee8c0f8a7d34b0971231ad6591f5380d90b85140658c5098dfa6d.png" src="_images/7d532d8cbfbee8c0f8a7d34b0971231ad6591f5380d90b85140658c5098dfa6d.png" />
@@ -2329,7 +2329,7 @@ HiGHS run time      :          0.00
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Directory tmp does not exist, creating it
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has loads, buses, lines, global_constraints, carriers, generators
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has lines, loads, carriers, buses, generators, global_constraints
 </pre></div>
 </div>
 </div>
@@ -2353,7 +2353,7 @@ HiGHS run time      :          0.00
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has loads, buses, lines, global_constraints, carriers, generators
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has lines, loads, carriers, buses, generators, global_constraints
 </pre></div>
 </div>
 </div>
@@ -2703,7 +2703,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/2e927e6eb35d3a0c30e8a1840492fbd9ca6ae7cbe582e4a56ae71d82ad751294.png" src="_images/2e927e6eb35d3a0c30e8a1840492fbd9ca6ae7cbe582e4a56ae71d82ad751294.png" />
+<img alt="_images/b132905473153e68cc4e178229ed2fef63b69b2612ff313823b43b28796cea43.png" src="_images/b132905473153e68cc4e178229ed2fef63b69b2612ff313823b43b28796cea43.png" />
 </div>
 </div>
 <p>This dataset also includes a few hydro storage units:</p>
@@ -2907,16 +2907,16 @@ Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  13%|█▎        | 2/15 [00:00&lt;00:01, 12.49it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  13%|█▎        | 2/15 [00:00&lt;00:01, 12.86it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  27%|██▋       | 4/15 [00:00&lt;00:00, 15.72it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  27%|██▋       | 4/15 [00:00&lt;00:00, 16.18it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 32.78it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 33.97it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 26.04it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 26.69it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -2925,10 +2925,10 @@ Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/6 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 6/6 [00:00&lt;00:00, 64.12it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 6/6 [00:00&lt;00:00, 63.79it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.69s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.68s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
@@ -2937,21 +2937,20 @@ Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running HiGHS 1.5.3 [date: 2023-05-16, git hash: 594fa5a9d-dirty]
 Copyright (c) 2023 HiGHS under MIT licence terms
 Presolving model
-18737 rows, 44750 cols, 113266 nonzeros
-13174 rows, 38993 cols, 104901 nonzeros
-12711 rows, 31697 cols, 97392 nonzeros
-Presolve : Reductions: rows 12711(-130257); columns 31697(-27943); elements 97392(-163906)
+18737 rows, 44750 cols, 115742 nonzeros
+13209 rows, 39028 cols, 107511 nonzeros
+12712 rows, 31688 cols, 99693 nonzeros
+Presolve : Reductions: rows 12712(-130256); columns 31688(-27952); elements 99693(-163933)
 Solving the presolved LP
 Using EKK dual simplex solver - serial
   Iteration        Objective     Infeasibilities num(sum)
           0     0.0000000000e+00 Ph1: 0(0) 0s
-      17270     9.1992880405e+06 Pr: 0(0); Du: 0(7.41905e-13) 4s
-      17270     9.1992880405e+06 Pr: 0(0); Du: 0(7.41905e-13) 4s
+      17079     9.1992880405e+06 Pr: 0(0); Du: 0(3.02869e-13) 4s
 Solving the original LP from the solution after postsolve
 Model   status      : Optimal
-Simplex   iterations: 17270
+Simplex   iterations: 17079
 Objective value     :  9.1992880405e+06
-HiGHS run time      :          4.66
+HiGHS run time      :          4.28
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -3057,7 +3056,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <span class="ne">ValueError</span>: Unable to determine Axes to steal space for Colorbar. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
 </pre></div>
 </div>
-<img alt="_images/554e881dd04d68ab311c9700b8bd16b9eccc43831d05d0f15d9848a22bc2ff12.png" src="_images/554e881dd04d68ab311c9700b8bd16b9eccc43831d05d0f15d9848a22bc2ff12.png" />
+<img alt="_images/5b4c07d1b733a8e925fa0530f0eaf6bc1e4bc2049eb4da984250646791a0357b.png" src="_images/5b4c07d1b733a8e925fa0530f0eaf6bc1e4bc2049eb4da984250646791a0357b.png" />
 </div>
 </div>
 <p>Or plot the hourly dispatch grouped by carrier:</p>

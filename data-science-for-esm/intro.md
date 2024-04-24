@@ -123,11 +123,11 @@ There is a download button at the top-right corner.
 After navigating to the folder where the `environment.yaml` file is stored,
 you can reate this environment using `conda` (faster)
 
-    conda env create -f environment.yml
+    conda env create -f environment.yaml
 
 Activate this environment
 
-    conda activate esm-2023
+    conda activate esm-2024
 
 This environment should be sufficient for all of your work in this course.
 

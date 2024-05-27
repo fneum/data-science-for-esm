@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -555,13 +555,13 @@ document.write(`
 <h2>From structured data to optimisation<a class="headerlink" href="#from-structured-data-to-optimisation" title="Link to this heading">#</a></h2>
 <p>The design principle of PyPSA is that basically each component is associated with a set of variables and constraints that will be added to the optimisation model based on the input data stored for the components.</p>
 <p>For an <em>hourly</em> electricity market simulation, PyPSA will solve an optimisation problem that looks like this</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d9fc10bf-13ab-4feb-90ca-f29eebf15e34">
-<span class="eqno">(8)<a class="headerlink" href="#equation-d9fc10bf-13ab-4feb-90ca-f29eebf15e34" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-77e33422-57a9-4373-b270-3c469e7c19e7">
+<span class="eqno">(8)<a class="headerlink" href="#equation-77e33422-57a9-4373-b270-3c469e7c19e7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min_{g_{i,s,t}; f_{\ell,t}; g_{i,r,t,\text{charge}}; g_{i,r,t,\text{discharge}}; e_{i,r,t}} \sum_s o_{s} g_{i,s,t}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eb6f3ba2-a6e1-420b-96b2-5391b3705c04">
-<span class="eqno">(9)<a class="headerlink" href="#equation-eb6f3ba2-a6e1-420b-96b2-5391b3705c04" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b5decc7f-2db5-47a7-9982-937b7f1c03fe">
+<span class="eqno">(9)<a class="headerlink" href="#equation-b5decc7f-2db5-47a7-9982-937b7f1c03fe" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp; \leq g_{i,s,t} \leq \hat{g}_{i,s,t} G_{i,s}  &amp; \text{generation limits : generator} \\
 -F_\ell &amp;\leq f_{\ell,t} \leq F_\ell &amp; \text{transmission limits : line}  \\
 d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{i,r,t,\text{charge}} - \sum_\ell K_{i\ell} f_{\ell,t} &amp; \text{KCL : bus} \\
@@ -1278,7 +1278,7 @@ d_{i,t} &amp;= \sum_s g_{i,s,t} + \sum_r g_{i,r,t,\text{discharge}} - \sum_r g_{
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/2532539e329ef939241750e04e586610fe63bbdc3ad58741e219bcac03b35067.png" src="_images/2532539e329ef939241750e04e586610fe63bbdc3ad58741e219bcac03b35067.png" />
+<img alt="_images/85eda9742ec89f8969d9df0ac9f4c228edb68d2389739c2b579fe19c68e2a075.png" src="_images/85eda9742ec89f8969d9df0ac9f4c228edb68d2389739c2b579fe19c68e2a075.png" />
 </div>
 </div>
 </section>
@@ -1601,11 +1601,11 @@ HiGHS run time      :          0.00
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f017d7d0090&gt;,
- &lt;matplotlib.collections.LineCollection at 0x7f017d7ddb90&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.collections.PatchCollection at 0x7f904a467490&gt;,
+ &lt;matplotlib.collections.LineCollection at 0x7f904a4664d0&gt;)
 </pre></div>
 </div>
-<img alt="_images/7d532d8cbfbee8c0f8a7d34b0971231ad6591f5380d90b85140658c5098dfa6d.png" src="_images/7d532d8cbfbee8c0f8a7d34b0971231ad6591f5380d90b85140658c5098dfa6d.png" />
+<img alt="_images/a1f6957fa96a99250447723c44923fad9c839ad6e070a4783347e00eb00b94a0.png" src="_images/a1f6957fa96a99250447723c44923fad9c839ad6e070a4783347e00eb00b94a0.png" />
 </div>
 </div>
 <p>Since we have provided <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> coordinates for our buses, <code class="docutils literal notranslate"><span class="pre">n.plot()</span></code> will try to plot the network on a map by default. Of course, there’s an option to deactivate this behaviour:</p>
@@ -1616,7 +1616,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3bf38f2ddc3ebeba67e650c67e5e73ecbf77aceaf7bdf5b992b4eefef3902ece.png" src="_images/3bf38f2ddc3ebeba67e650c67e5e73ecbf77aceaf7bdf5b992b4eefef3902ece.png" />
+<img alt="_images/48708d621e9cf784c06c7b153f54ffe9fb8cc2c2cd57e8127e0e920fc903a81f.png" src="_images/48708d621e9cf784c06c7b153f54ffe9fb8cc2c2cd57e8127e0e920fc903a81f.png" />
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">n.plot()</span></code> function has a variety of styling arguments to tweak the appearance of the buses, the lines and the map in the background:</p>
@@ -1641,7 +1641,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/d4493529ec3350e5f69daf194e89158675ef852ca28da70d9de543e7a3f90da2.png" src="_images/d4493529ec3350e5f69daf194e89158675ef852ca28da70d9de543e7a3f90da2.png" />
+<img alt="_images/42408bf8e98c1c14f75bbe23e198a3eb631d175a41731e12fc9ae0be0558829f.png" src="_images/42408bf8e98c1c14f75bbe23e198a3eb631d175a41731e12fc9ae0be0558829f.png" />
 </div>
 </div>
 <p>Just like with <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> we can also control the projection of the network plot:</p>
@@ -1660,7 +1660,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/a09bbc400da69c5eeeac5832c5654dd3bfff43c0465cee86f2b5f2013b1f6420.png" src="_images/a09bbc400da69c5eeeac5832c5654dd3bfff43c0465cee86f2b5f2013b1f6420.png" />
+<img alt="_images/ae9154909da85b918353e00098e5247b811efb8ccc423b9757e629b7e175bcfb.png" src="_images/ae9154909da85b918353e00098e5247b811efb8ccc423b9757e629b7e175bcfb.png" />
 </div>
 </div>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">bus_sizes</span></code> argument of <code class="docutils literal notranslate"><span class="pre">n.plot()</span></code> to display the regional distribution of load. First, we calculate the total load per bus:</p>
@@ -1699,7 +1699,7 @@ Name: p_set, dtype: float64
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/7cfa59fd3011f43492a4a54768ce5258fece3a73517b974c7715b52cafe389d6.png" src="_images/7cfa59fd3011f43492a4a54768ce5258fece3a73517b974c7715b52cafe389d6.png" />
+<img alt="_images/e14fe7f5891ebec57d6ef1df4066217462aaa5e94b58de3731b20520aac1678d.png" src="_images/e14fe7f5891ebec57d6ef1df4066217462aaa5e94b58de3731b20520aac1678d.png" />
 </div>
 </div>
 <p>The important point here is, that <code class="docutils literal notranslate"><span class="pre">s</span></code> needs to have entries for all buses, i.e. its index needs to match <code class="docutils literal notranslate"><span class="pre">n.buses.index</span></code>.</p>
@@ -1763,7 +1763,7 @@ Name: now, dtype: float64
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/77e4fadf3f1d723df382b221295e7eef29599af8eb0aa34acea19864135d8859.png" src="_images/77e4fadf3f1d723df382b221295e7eef29599af8eb0aa34acea19864135d8859.png" />
+<img alt="_images/5717ee99f088ecb3155e24b0da01956c2349692617461d9c6279d0b3b879394f.png" src="_images/5717ee99f088ecb3155e24b0da01956c2349692617461d9c6279d0b3b879394f.png" />
 </div>
 </div>
 <p><strong>How does this magic work?</strong> The plotting function will look up the colors specified in <code class="docutils literal notranslate"><span class="pre">n.carriers</span></code> for each carrier and match it with the second index-level of <code class="docutils literal notranslate"><span class="pre">s</span></code>.</p>
@@ -2329,7 +2329,7 @@ HiGHS run time      :          0.00
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Directory tmp does not exist, creating it
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has lines, loads, carriers, buses, generators, global_constraints
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp has buses, lines, carriers, loads, global_constraints, generators
 </pre></div>
 </div>
 </div>
@@ -2353,7 +2353,7 @@ HiGHS run time      :          0.00
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has lines, loads, carriers, buses, generators, global_constraints
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Exported network tmp.nc has buses, lines, carriers, loads, global_constraints, generators
 </pre></div>
 </div>
 </div>
@@ -2385,7 +2385,7 @@ HiGHS run time      :          0.00
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.examples:Retrieving network data from https://github.com/PyPSA/PyPSA/raw/master/examples/scigrid-de/scigrid-with-load-gen-trafos.nc
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Importing network from PyPSA version v0.17.1 while current version is v0.27.1. Read the release notes at https://pypsa.readthedocs.io/en/latest/release_notes.html to prepare your network for import.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:pypsa.io:Importing network from PyPSA version v0.17.1 while current version is v0.28.0. Read the release notes at https://pypsa.readthedocs.io/en/latest/release_notes.html to prepare your network for import.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.io:Imported network scigrid-de.nc has buses, generators, lines, loads, storage_units, transformers
@@ -2589,7 +2589,7 @@ HiGHS run time      :          0.00
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;snapshot&#39;, ylabel=&#39;MW&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/dceb87b0be0c819b4e039839460239433b36ef6188ba2d44ec8d360108bc63fc.png" src="_images/dceb87b0be0c819b4e039839460239433b36ef6188ba2d44ec8d360108bc63fc.png" />
+<img alt="_images/51c768312edbae167b61d8319cf49637e0439299ade962be7fdefc88d6167f07.png" src="_images/51c768312edbae167b61d8319cf49637e0439299ade962be7fdefc88d6167f07.png" />
 </div>
 </div>
 <p>… and the capacity factor time series:</p>
@@ -2603,7 +2603,7 @@ HiGHS run time      :          0.00
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;snapshot&#39;, ylabel=&#39;p.u.&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/c4197232af01c27368b51412018f019997ac16f5123e4b9309238a3f39547a1c.png" src="_images/c4197232af01c27368b51412018f019997ac16f5123e4b9309238a3f39547a1c.png" />
+<img alt="_images/7aae1459ea69bb4713a8e2fda0d0d32ffe65e854c04bb3022cd1634aeafa9887.png" src="_images/7aae1459ea69bb4713a8e2fda0d0d32ffe65e854c04bb3022cd1634aeafa9887.png" />
 </div>
 </div>
 <p>We can also inspect the total power plant capacities per technology…</p>
@@ -2618,7 +2618,7 @@ HiGHS run time      :          0.00
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;GW&#39;)
 </pre></div>
 </div>
-<img alt="_images/ef8795800170f837dc7fb20e0ffdb2019df3ddf7dcd8641450f289f4ed2804d7.png" src="_images/ef8795800170f837dc7fb20e0ffdb2019df3ddf7dcd8641450f289f4ed2804d7.png" />
+<img alt="_images/f6118e745916f9556bcfdf1c32c00b894a4b3dc3ac497abcb5dba4add50f65e8.png" src="_images/f6118e745916f9556bcfdf1c32c00b894a4b3dc3ac497abcb5dba4add50f65e8.png" />
 </div>
 </div>
 <p>… and plot the regional distribution of loads…</p>
@@ -2647,7 +2647,7 @@ HiGHS run time      :          0.00
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/a0f7abad333fcce1bae2cf688237d29b7b9966322efc89b9398c6e22b2f4683f.png" src="_images/a0f7abad333fcce1bae2cf688237d29b7b9966322efc89b9398c6e22b2f4683f.png" />
+<img alt="_images/cb80e8a77f6c22be798c0a59f4809ee8659c00afecb9a9b9e0590a8dbf34e38e.png" src="_images/cb80e8a77f6c22be798c0a59f4809ee8659c00afecb9a9b9e0590a8dbf34e38e.png" />
 </div>
 </div>
 <p>… and power plant capacities:</p>
@@ -2703,7 +2703,7 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 facecolor will have no effect as it has been defined as &quot;never&quot;.
 </pre></div>
 </div>
-<img alt="_images/b132905473153e68cc4e178229ed2fef63b69b2612ff313823b43b28796cea43.png" src="_images/b132905473153e68cc4e178229ed2fef63b69b2612ff313823b43b28796cea43.png" />
+<img alt="_images/75dd1622b23e402e31d2beb9b7939a3dcc92b1650bb356fc6e922661e75fefb4.png" src="_images/75dd1622b23e402e31d2beb9b7939a3dcc92b1650bb356fc6e922661e75fefb4.png" />
 </div>
 </div>
 <p>This dataset also includes a few hydro storage units:</p>
@@ -2907,16 +2907,16 @@ Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:   0%|          | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  13%|█▎        | 2/15 [00:00&lt;00:01, 12.86it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  13%|█▎        | 2/15 [00:00&lt;00:01, 12.78it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  27%|██▋       | 4/15 [00:00&lt;00:00, 16.18it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  27%|██▋       | 4/15 [00:00&lt;00:00, 16.08it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 33.97it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.:  87%|████████▋ | 13/15 [00:00&lt;00:00, 34.25it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 26.69it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing constraints.: 100%|██████████| 15/15 [00:00&lt;00:00, 27.15it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -2925,10 +2925,10 @@ Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.:   0%|          | 0/6 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 6/6 [00:00&lt;00:00, 63.79it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing continuous variables.: 100%|██████████| 6/6 [00:00&lt;00:00, 65.32it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.68s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.io: Writing time: 0.67s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.solvers:Log file at /tmp/highs.log.
@@ -2936,21 +2936,6 @@ Index([&#39;2&#39;, &#39;5&#39;, &#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running HiGHS 1.5.3 [date: 2023-05-16, git hash: 594fa5a9d-dirty]
 Copyright (c) 2023 HiGHS under MIT licence terms
-Presolving model
-18737 rows, 44750 cols, 115742 nonzeros
-13209 rows, 39028 cols, 107511 nonzeros
-12712 rows, 31688 cols, 99693 nonzeros
-Presolve : Reductions: rows 12712(-130256); columns 31688(-27952); elements 99693(-163933)
-Solving the presolved LP
-Using EKK dual simplex solver - serial
-  Iteration        Objective     Infeasibilities num(sum)
-          0     0.0000000000e+00 Ph1: 0(0) 0s
-      17079     9.1992880405e+06 Pr: 0(0); Du: 0(3.02869e-13) 4s
-Solving the original LP from the solution after postsolve
-Model   status      : Optimal
-Simplex   iterations: 17079
-Objective value     :  9.1992880405e+06
-HiGHS run time      :          4.28
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:linopy.constants: Optimization successful: 
@@ -2963,6 +2948,24 @@ Solver message: optimal
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Line-fix-s-lower, Line-fix-s-upper, Transformer-fix-s-lower, Transformer-fix-s-upper, StorageUnit-fix-p_dispatch-lower, StorageUnit-fix-p_dispatch-upper, StorageUnit-fix-p_store-lower, StorageUnit-fix-p_store-upper, StorageUnit-fix-state_of_charge-lower, StorageUnit-fix-state_of_charge-upper, Kirchhoff-Voltage-Law, StorageUnit-energy_balance were not assigned to the network.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Presolving model
+18737 rows, 44750 cols, 113266 nonzeros
+13174 rows, 38993 cols, 104901 nonzeros
+12711 rows, 31697 cols, 97392 nonzeros
+Presolve : Reductions: rows 12711(-130257); columns 31697(-27943); elements 97392(-163906)
+Solving the presolved LP
+Using EKK dual simplex solver - serial
+  Iteration        Objective     Infeasibilities num(sum)
+          0     0.0000000000e+00 Ph1: 0(0) 0s
+      17270     9.1992880405e+06 Pr: 0(0); Du: 0(7.41905e-13) 4s
+      17270     9.1992880405e+06 Pr: 0(0); Du: 0(7.41905e-13) 4s
+Solving the original LP from the solution after postsolve
+Model   status      : Optimal
+Simplex   iterations: 17270
+Objective value     :  9.1992880405e+06
+HiGHS run time      :          4.51
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ok&#39;, &#39;optimal&#39;)
@@ -3030,33 +3033,33 @@ facecolor will have no effect as it has been defined as &quot;never&quot;.
 <span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="n">shrink</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
 <span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/matplotlib/pyplot.py:2341,</span> in <span class="ni">colorbar</span><span class="nt">(mappable, cax, ax, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2336</span>     <span class="k">if</span> <span class="n">mappable</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2337</span>         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;No mappable was found to use for colorbar &#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">2338</span>                            <span class="s1">&#39;creation. First define a mappable such as &#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">2339</span>                            <span class="s1">&#39;an image (with imshow) or a contour set (&#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">2340</span>                            <span class="s1">&#39;with contourf).&#39;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2341</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">mappable</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2342</span> <span class="k">return</span> <span class="n">ret</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/matplotlib/pyplot.py:2430,</span> in <span class="ni">colorbar</span><span class="nt">(mappable, cax, ax, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2425</span>     <span class="k">if</span> <span class="n">mappable</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2426</span>         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;No mappable was found to use for colorbar &#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">2427</span>                            <span class="s1">&#39;creation. First define a mappable such as &#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">2428</span>                            <span class="s1">&#39;an image (with imshow) or a contour set (&#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">2429</span>                            <span class="s1">&#39;with contourf).&#39;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2430</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">mappable</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2431</span> <span class="k">return</span> <span class="n">ret</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/matplotlib/figure.py:1285,</span> in <span class="ni">FigureBase.colorbar</span><span class="nt">(self, mappable, cax, ax, use_gridspec, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1283</span> <span class="k">if</span> <span class="n">cax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1284</span>     <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1285</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1286</span>             <span class="s1">&#39;Unable to determine Axes to steal space for Colorbar. &#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1287</span>             <span class="s1">&#39;Either provide the *cax* argument to use as the Axes for &#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1288</span>             <span class="s1">&#39;the Colorbar, provide the *ax* argument to steal space &#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1289</span>             <span class="s1">&#39;from it, or add *mappable* to an Axes.&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1290</span>     <span class="n">fig</span> <span class="o">=</span> <span class="p">(</span>  <span class="c1"># Figure of first axes; logic copied from make_axes.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1291</span>         <span class="p">[</span><span class="o">*</span><span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1292</span>         <span class="k">else</span> <span class="p">[</span><span class="o">*</span><span class="n">ax</span><span class="p">]</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">iterable</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1293</span>         <span class="k">else</span> <span class="p">[</span><span class="n">ax</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">figure</span>
-<span class="g g-Whitespace">   </span><span class="mi">1294</span>     <span class="n">current_ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/matplotlib/figure.py:1213,</span> in <span class="ni">FigureBase.colorbar</span><span class="nt">(self, mappable, cax, ax, use_gridspec, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1211</span> <span class="k">if</span> <span class="n">cax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1212</span>     <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1213</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1214</span>             <span class="s1">&#39;Unable to determine Axes to steal space for Colorbar. &#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1215</span>             <span class="s1">&#39;Either provide the *cax* argument to use as the Axes for &#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1216</span>             <span class="s1">&#39;the Colorbar, provide the *ax* argument to steal space &#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1217</span>             <span class="s1">&#39;from it, or add *mappable* to an Axes.&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1218</span>     <span class="n">fig</span> <span class="o">=</span> <span class="p">(</span>  <span class="c1"># Figure of first Axes; logic copied from make_axes.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1219</span>         <span class="p">[</span><span class="o">*</span><span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1220</span>         <span class="k">else</span> <span class="p">[</span><span class="o">*</span><span class="n">ax</span><span class="p">]</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">iterable</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1221</span>         <span class="k">else</span> <span class="p">[</span><span class="n">ax</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">figure</span>
+<span class="g g-Whitespace">   </span><span class="mi">1222</span>     <span class="n">current_ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 
 <span class="ne">ValueError</span>: Unable to determine Axes to steal space for Colorbar. Either provide the *cax* argument to use as the Axes for the Colorbar, provide the *ax* argument to steal space from it, or add *mappable* to an Axes.
 </pre></div>
 </div>
-<img alt="_images/5b4c07d1b733a8e925fa0530f0eaf6bc1e4bc2049eb4da984250646791a0357b.png" src="_images/5b4c07d1b733a8e925fa0530f0eaf6bc1e4bc2049eb4da984250646791a0357b.png" />
+<img alt="_images/d65d30d217ac37a4259691051fd41c628b1563eb2acaf519f7c7e62485078477.png" src="_images/d65d30d217ac37a4259691051fd41c628b1563eb2acaf519f7c7e62485078477.png" />
 </div>
 </div>
 <p>Or plot the hourly dispatch grouped by carrier:</p>

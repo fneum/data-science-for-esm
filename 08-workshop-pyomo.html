@@ -63,8 +63,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Introduction to pypsa" href="09-workshop-pypsa.html" />
-    <link rel="prev" title="Introduction to networkx" href="07-workshop-networkx.html" />
+    <link rel="prev" title="Interactive Visualisation and Dashboards" href="13-workshop-interactive-visualisation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -187,12 +186,13 @@
 <li class="toctree-l1"><a class="reference internal" href="06-workshop-atlite.html">Introduction to <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> and <code class="docutils literal notranslate"><span class="pre">atlite</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="05-workshop-pysheds.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pysheds</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="07-workshop-networkx.html">Introduction to <code class="docutils literal notranslate"><span class="pre">networkx</span></code></a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to <code class="docutils literal notranslate"><span class="pre">pyomo</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="14-workshop-linopy.html">Introduction to <code class="docutils literal notranslate"><span class="pre">linopy</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="09-workshop-pypsa.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pypsa</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="10-workshop-pypsa-cem.html">Capacity Expansion Planning with <code class="docutils literal notranslate"><span class="pre">pypsa</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="11-workshop-groupwork.html">Preparation for Group Assignment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12-workshop-pypsa-sector-coupling.html">Sector-Coupling with <code class="docutils literal notranslate"><span class="pre">pypsa</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="13-workshop-interactive-visualisation.html">Interactive Visualisation and Dashboards</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to <code class="docutils literal notranslate"><span class="pre">pyomo</span></code></a></li>
 </ul>
 
     </div>
@@ -604,8 +604,8 @@ document.write(`
 <p><strong>Constraints</strong> are equality or inequality expressions that constrain the <em>feasible</em> space of the decision variables.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>, constraints are created with the <code class="docutils literal notranslate"><span class="pre">pe.Constraint()</span></code> constructor.</p>
 <p>In the code below, we create three simple constraints in different ways:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-45f897ad-8a8f-43e1-9ebf-de48870d1086">
-<span class="eqno">(1)<a class="headerlink" href="#equation-45f897ad-8a8f-43e1-9ebf-de48870d1086" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5a29d16a-582c-445c-aac4-72d1a2f9740f">
+<span class="eqno">(14)<a class="headerlink" href="#equation-5a29d16a-582c-445c-aac4-72d1a2f9740f" title="Permalink to this equation">#</a></span>\[\begin{align}
   x &amp; \leq 4 \\
   2x + y &amp; \leq 10 \\
   x + y &amp; \leq 10 \\
@@ -1132,13 +1132,13 @@ Solution:
 <section id="single-bidding-zone-single-period">
 <h3>Single bidding zone, single period<a class="headerlink" href="#single-bidding-zone-single-period" title="Link to this heading">#</a></h3>
 <p>We want to minimise operational cost of an example electricity system representing South Africa subject to generator limits and meeting the load:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-012edde8-7426-4d17-8e19-54ca6822faab">
-<span class="eqno">(2)<a class="headerlink" href="#equation-012edde8-7426-4d17-8e19-54ca6822faab" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-776eae59-4cb0-49e5-892a-cd4263c731c4">
+<span class="eqno">(15)<a class="headerlink" href="#equation-776eae59-4cb0-49e5-892a-cd4263c731c4" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \min_{g_s} \sum_s o_s g_s
   \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a6ffedaf-0b3f-4570-96e9-92b408850392">
-<span class="eqno">(3)<a class="headerlink" href="#equation-a6ffedaf-0b3f-4570-96e9-92b408850392" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7d5c0c11-9fbf-41b6-8653-6493d490e6d0">
+<span class="eqno">(16)<a class="headerlink" href="#equation-7d5c0c11-9fbf-41b6-8653-6493d490e6d0" title="Permalink to this equation">#</a></span>\[\begin{align}
     g_s &amp;\leq G_s \\
     g_s &amp;\geq 0 \\
     \sum_s g_s &amp;= d
@@ -1389,13 +1389,13 @@ dtype: float64
 <section id="two-bidding-zones-with-transmission">
 <h3>Two bidding zones with transmission<a class="headerlink" href="#two-bidding-zones-with-transmission" title="Link to this heading">#</a></h3>
 <p>Let’s add a spatial dimension, such that the optimisation problem is expanded to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-630e8dad-eb80-4550-89a0-e9864754629c">
-<span class="eqno">(4)<a class="headerlink" href="#equation-630e8dad-eb80-4550-89a0-e9864754629c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2d7c6614-9111-40dd-8dc3-c2ff9a86309b">
+<span class="eqno">(17)<a class="headerlink" href="#equation-2d7c6614-9111-40dd-8dc3-c2ff9a86309b" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \min_{g_{i,s}, f_\ell} \sum_s o_{i,s} g_{i,s}
 \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7e90deb7-eb29-4687-a64a-28c8256dd6be">
-<span class="eqno">(5)<a class="headerlink" href="#equation-7e90deb7-eb29-4687-a64a-28c8256dd6be" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f716d10b-31d5-42c0-bf85-4911d2f3ea08">
+<span class="eqno">(18)<a class="headerlink" href="#equation-f716d10b-31d5-42c0-bf85-4911d2f3ea08" title="Permalink to this equation">#</a></span>\[\begin{align}
   g_{i,s} &amp;\leq G_{i,s} \\
   g_{i,s} &amp;\geq 0 \\
   \sum_s g_{i,s} - \sum_\ell K_{i\ell} f_\ell &amp;= d_i &amp; \text{KCL} \\
@@ -1550,8 +1550,8 @@ For missing entries, we set the upper limit to zero (e.g. this country-technolog
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kcl : Size=2, Index=countries, Active=True
     Key          : Lower   : Body                                                                                                                : Upper   : Active
-      Mozambique :   650.0 :           g[Mozambique,Hydro] + g[Mozambique,Coal] + g[Mozambique,Oil] + g[Mozambique,Wind] + g[Mozambique,Gas] + f :   650.0 :   True
-    South Africa : 42000.0 : g[South Africa,Hydro] + g[South Africa,Coal] + g[South Africa,Oil] + g[South Africa,Wind] + g[South Africa,Gas] - f : 42000.0 :   True
+      Mozambique :   650.0 :           g[Mozambique,Coal] + g[Mozambique,Oil] + g[Mozambique,Gas] + g[Mozambique,Hydro] + g[Mozambique,Wind] + f :   650.0 :   True
+    South Africa : 42000.0 : g[South Africa,Coal] + g[South Africa,Oil] + g[South Africa,Gas] + g[South Africa,Hydro] + g[South Africa,Wind] - f : 42000.0 :   True
 </pre></div>
 </div>
 </div>
@@ -1702,16 +1702,16 @@ Solution:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[South Africa,Hydro]   -60.0
-generator_limit[South Africa,Coal]    -30.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator_limit[South Africa,Coal]    -30.0
 generator_limit[South Africa,Oil]      -0.0
-generator_limit[South Africa,Wind]    -60.0
 generator_limit[South Africa,Gas]      -0.0
-generator_limit[Mozambique,Hydro]      -0.0
+generator_limit[South Africa,Hydro]   -60.0
+generator_limit[South Africa,Wind]    -60.0
 generator_limit[Mozambique,Coal]       -0.0
 generator_limit[Mozambique,Oil]        -0.0
-generator_limit[Mozambique,Wind]       -0.0
 generator_limit[Mozambique,Gas]        -0.0
+generator_limit[Mozambique,Hydro]      -0.0
+generator_limit[Mozambique,Wind]       -0.0
 kcl[South Africa]                      60.0
 kcl[Mozambique]                        -0.0
 [None]                                 60.0
@@ -1837,13 +1837,13 @@ Solution:
 <section id="single-bidding-zone-with-several-periods">
 <h3>Single bidding zone with several periods<a class="headerlink" href="#single-bidding-zone-with-several-periods" title="Link to this heading">#</a></h3>
 <p>In this example, we consider multiple time periods (labelled [1,2,3,4]) to represent variable wind generation and changing load.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-431701e5-9ab5-4f22-9764-27d1f6b7b5e9">
-<span class="eqno">(6)<a class="headerlink" href="#equation-431701e5-9ab5-4f22-9764-27d1f6b7b5e9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5215ebbf-c899-418d-9b29-96357f418e95">
+<span class="eqno">(19)<a class="headerlink" href="#equation-5215ebbf-c899-418d-9b29-96357f418e95" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \min_{g_{s,t}} \sum_s o_{s} g_{s,t}
   \end{equation}\]</div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-05464fb7-22f7-416e-8575-bfd659276be0">
-<span class="eqno">(7)<a class="headerlink" href="#equation-05464fb7-22f7-416e-8575-bfd659276be0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d6712886-2b75-4441-8600-3b527a99ad29">
+<span class="eqno">(20)<a class="headerlink" href="#equation-d6712886-2b75-4441-8600-3b527a99ad29" title="Permalink to this equation">#</a></span>\[\begin{align}
     g_{s,t} &amp;\leq \hat{g}_{s,t} G_{i,s} \\
     g_{s,t} &amp;\geq 0 \\
     \sum_s g_{s,t} &amp;= d_t
@@ -1990,7 +1990,7 @@ Solver:
 Solution: 
 - number of solutions: 0
   number of solutions displayed: 0
-3.64 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+3.95 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -2431,22 +2431,13 @@ dtype: float64
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="07-workshop-networkx.html"
+       href="13-workshop-interactive-visualisation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction to <code class="docutils literal notranslate"><span class="pre">networkx</span></code></p>
+        <p class="prev-next-title">Interactive Visualisation and Dashboards</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="09-workshop-pypsa.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to <code class="docutils literal notranslate"><span class="pre">pypsa</span></code></p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

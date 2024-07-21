@@ -6,7 +6,7 @@
 1. [GH Workflows Deployment](#gh-workflows-deployment) -->
 
 
-<font color="red">Build Your Own Content</font>
+<font color="red">Educators Build Your Own Content</font>
 ===============================================
 <!-- ###### List of Abbreviation[^bignote] -->
 
@@ -49,11 +49,11 @@ Python and `*.ipynb` are optimally used in an [IDE](https://github.com/microsoft
 
 ---
 
-Creating a new fork of this repository
+Create a new fork of this repository
 =====================================================================
-> **Note:** The first step is forking the repository, having the below in mind.
+<!-- > **Note:** The first step is forking the repository, having the below in mind.
 
-Before forking this repository please have the following in mind:
+Before forking this repository please have the following in mind: -->
 * In the <strong><b><mark>Create a new fork</mark></b></strong> pop-up menu, shown in the figure below, <ins>>deselect</ins> the default **Copy the `main` branch only** option. 
     
 By doing so, you will reduce further branch creation, required by the workflow.
@@ -102,7 +102,7 @@ GitHub Pages Setup
 
 * In the **GitHub Pages**, go to the **Branch** section, and change the selection from `None` to `gh-pages` `/root`.
 
-Once the branch has been selected, a URL will be provided (<ins>please give it a moment</ins>), at the top: **Your site is live at [https://"owner".github.io/data-science-for-esm](https://open-energy-transition.github.io/data-science-for-esm/)**
+Once the branch has been selected, a URL will be provided (<ins>give it a minute</ins>), at the top: **Your site is live at [https://"owner".github.io/data-science-for-esm](https://open-energy-transition.github.io/data-science-for-esm/)**
 
 <center>
 <figure>

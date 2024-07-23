@@ -11,7 +11,7 @@
 <!-- ###### List of Abbreviation[^bignote] -->
 
 
-This section assists academics, and alike, in build their content, by modifying this repository, or the original [Dr. F. Neumann's repository][fneum]. Dr. Neumann's repository is used as ane example in the figures below.
+This section helps academics, and alike, in building their own content, by modifying this repository, or the original [Dr. F. Neumann's repository][fneum]. Dr. Neumann's repository is used as ane example in the figures below.
 
 > **Goal:** *To create a course page for your own knowledge dissemination, like OET has done, follow this guide.*
 
@@ -156,6 +156,8 @@ Please use the provided files as templates, as this will assist you in content c
 * Please modify `*.ipynb` and `.md` files as seen fit. They are the core-content.
 * Upon each content update, there is a chain of git to-do commands, resulting in the website update:
 ~~~
+git clone
+# make changes to content
 git status
 git add .
 git commit -m 'new changes applied'

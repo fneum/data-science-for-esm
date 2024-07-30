@@ -145,7 +145,7 @@ Further explanation of this command, i.e. `jupyter-book build`, as well as the o
 
 Content Modification Setup
 =========================================================
-Please use the provided files as templates, as this will assist you in content creating, reducing the time in searching for the answers.
+Use the provided files as templates. This will assist you in content creating, reducing the time in searching for the answers.
 
 > **Note:** `jupyter-book build` builds content from the *markdown* and jupyter notebook files, hence their content needs modifying.
 

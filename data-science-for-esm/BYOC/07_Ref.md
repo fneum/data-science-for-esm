@@ -5,8 +5,9 @@ Further References and Citation
 1. Jupyter-book
     * https://jupyterbook.org/en/stable/start/build.html
     * https://jupyterbook.org/en/stable/structure/toc.html
-1. Markdown
-    * https://jupyterbook.org/en/stable/reference/cheatsheet.html#ordered-list
+1. MyST
+    * https://jupyterbook.org/en/stable/reference/cheatsheet.html
+    * https://myst-parser.readthedocs.io/en/latest/syntax/typography.html#syntax-core
     * https://executablebooks.github.io/cookiecutter-jupyter-book/notebooks.html
 1. PyPSA-Earth:
     * https://pypsa-eur.readthedocs.io/en/latest/introduction.html

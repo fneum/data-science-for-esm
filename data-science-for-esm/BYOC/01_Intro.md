@@ -44,7 +44,7 @@ Python and `*.ipynb` are optimally used in an [IDE][VSCode]. Our recommendation 
 <!-- # Internal Doc References -->
 [gh_actions]:           https://github.com/peaceiris/actions-gh-pages
 [gh_actions_python]:    https://github.com/peaceiris/actions-gh-pages?tab=readme-ov-file#%EF%B8%8F-static-site-generators-with-python
-[venv]:                  https://github.com/open-energy-transition/data-science-for-esm/blob/e52f7980165928a7cd90826ee0bf8cd3fb407892/environment.yaml
+[venv]:                 https://github.com/open-energy-transition/data-science-for-esm/blob/e52f7980165928a7cd90826ee0bf8cd3fb407892/environment.yaml
 [dependencies]:         https://github.com/open-energy-transition/data-science-for-esm/blob/e52f7980165928a7cd90826ee0bf8cd3fb407892/requirements.txt
 [PyPSA-Earth]:          https://pypsa-earth.readthedocs.io/en/latest/installation.html
 [VSCode]:               https://github.com/microsoft/vscode

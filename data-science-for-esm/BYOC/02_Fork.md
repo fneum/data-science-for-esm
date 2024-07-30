@@ -13,24 +13,23 @@ By doing so, you will reduce further branch creation, required by the workflow.
     <a href='https://github.com/fneum/data-science-for-esm/fork'>
     <img src='https://github.com/open-energy-transition/data-science-for-esm/raw/stanford/data-science-for-esm/_images/03_fork_option.png' alt='' width='95%' style='vertical-align:middle;border:5px solid goldenrod;margin:20px 0px' />
     </a>
-    <figcaption>Clicking on the image above will lead directly to the <strong><b><mark>Create a new fork</mark></b></strong> menu</figcaption>
+    <figcaption>Clicking on the image above will lead directly to the <strong><b><mark>Create a new fork</mark></b></strong></figcaption>
 </figure>
 </center>
 :::
 
-> **Note:** The key point is to have/keep the `stanford` branch in your fork. This is fully tested using the `stanford` branch
+> **Note:** The key point is to have at least one branch, other than `gh-pages`, in your fork. This has been tested using both the `main` and the `side branches`.
 
 In this workflow:
-* Your source code is in the `stanford` branch
-* Your published website is in the `gh-pages` branch
-
-* Alternatively, the `stanford` branch can be created locally: 
+* Published website is in the `gh-pages` branch
+* Source code is in a arbitrary `branch` defined by the user - any other than `gh-pages`
+* The arbitrary `branch` can be created locally: 
 ~~~
-git switch -c stanford
-git push origin stanford
+git switch -c branch
+git push origin branch
 ~~~
 
-* However, this is to be skipped if adhering to the **Note** above.
+<!-- * However, this is to be skipped if adhering to the **Note** above. -->
 * `gh-pages` branch will be automatically generated, as defined by the workflow, hence its creation is not required.
 * It is also **not** required to have the `gh-pages` locally, once generated, as it hosts only the static site build files, which are taken care of by the workflow.
 

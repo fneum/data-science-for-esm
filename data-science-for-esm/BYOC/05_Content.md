@@ -8,10 +8,10 @@ Use the provided files as templates. This will assist you in content creating, r
 * Please keep in mind that, when changing images and modifying files, the referencing throughout `.md` and `.ipynb` files needs changing as well.
 * The `.ipynb` and `.md` content files are to be located in the root of the `data-science-for--esm` folder, and specified in the `_toc.yml`.
     * If not being placed in the root, the workflow will be unable to find the files specified in the `_toc.yml`, resulting in the unsuccessful deployment, and unaccessible `github.io`.
-* Please modify `*.ipynb` and `.md` files as seen fit. They are the core-content.
-* Upon each content update, there is a chain of git to-do commands, resulting in the website update:
+* Modify `*.ipynb` and `.md` files as seen fit. They are the core-content.
+* For any content change, there is a chain of git to-do commands, for a website update:
 ~~~
-git clone
+git clone https://github.com/"owner"/data-science-for-esm.git
 # make changes to the content
 git status
 git add .

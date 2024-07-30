@@ -2,6 +2,9 @@ Introduction
 =========================================================
 <!-- ###### List of Abbreviation[^bignote] -->
 
+<!-- ```{contents}
+:local:
+``` -->
 
 This section helps academics, and alike, in building their own content, by modifying this repository. This repository is used as ane example in the figures below.
 

@@ -1,4 +1,4 @@
-Create a new fork
+Create a New Fork
 =================
 <!-- > **Note:** The first step is forking the repository, having the below in mind.
 

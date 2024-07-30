@@ -3,7 +3,7 @@ Create a New Fork
 <!-- > **Note:** The first step is forking the repository, having the below in mind.
 
 Before forking this repository please have the following in mind: -->
-* In the <strong><b><mark>Create a new fork</mark></b></strong> pop-up menu, shown in the figure below, <ins>>deselect</ins> the default **Copy the `main` branch only** option. 
+* In the <strong><b><mark>Create a new fork</mark></b></strong> pop-up menu, shown in the figure below, <ins>deselect</ins> the default **Copy the `main` branch only** option. 
     
 By doing so, you will reduce further branch creation, required by the workflow.
 

@@ -20,3 +20,10 @@ Further explanation of this command, i.e. `jupyter-book build`, as well as the o
 1. [Build your book](https://jupyterbook.org/en/stable/start/build.html)
 1. [Build from the command line](https://jupyterbook.org/en/stable/basics/build.html)
 1. [Structure the Table of Contents](https://jupyterbook.org/en/stable/structure/toc.html)
+
+
+[^1]: The workflow has been successfully tested using the `stanford` branch, while, when using the `main` branch, we experienced some issues, which are currently being investigated.
+
+
+<!-- # Internal Doc References -->
+[deploy]:               https://github.com/open-energy-transition/data-science-for-esm/blob/ef394898e3100e2bd2d074a8b2da89235355cd4e/.github/workflows/deploy.yml#L4-L7

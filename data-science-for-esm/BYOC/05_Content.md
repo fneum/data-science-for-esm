@@ -23,4 +23,4 @@ Both `_config.yml`, as well as the `_toc.yml` are to remain in the root of the `
 
 * In the `data-science-for-esm/_toc.yml` [file](https://github.com/open-energy-transition/data-science-for-esm/blob/37c3ef84651a12ee947573dfedd6c4b7786731bc/data-science-for-esm/_toc.yml), a sequence of files to be included in the GitHub Page is defined, and further used by the `jupyter-build book` command.
 
-After a successful run, the TOC displayed in the menu, located on the left side of the page.
+After a successful run, the TOC displayed will be displayed in the left-side menu.

@@ -1,6 +1,9 @@
 <!-- Relevant References for further reading -->
+Further Reading and Citation
+=============================
+
 References
-----------
+-----------
 
 1. Jupyter-book
     * https://jupyterbook.org/en/stable/start/build.html
@@ -23,7 +26,7 @@ References
 
 
 Citation
---------
+---------
 <!-- <mark style="background-color: peachpuff; color: black"> -->
 *Kindly [reference][OET] us, in case using our materials, e.g. the workflow presented here.
 This way, your success is our success also.*

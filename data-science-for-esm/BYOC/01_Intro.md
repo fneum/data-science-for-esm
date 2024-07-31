@@ -12,15 +12,16 @@ This section helps academics, and alike, in building their own content, by modif
 
 * Its primary purpose is to guide you on how to generate a GitHub page, to be used for learning material, i.e. lectures, or similar.
 * It can also be purpose for anything else, for that matter.
-* This setup draws from the [peaceiris actions-gh-pages][gh_actions], in specific using the [Static Site Generator with Python][gh_actions_python].
-    * *This serves only as a reference, as the the full explanation is below.*
+* This setup uses the [cookiecutter-jupyter-book](https://github.com/executablebooks/cookiecutter-jupyter-book/tree/main)[^1][^2] workflow.
 
-By following these instructions, one is able to create his own website, alike this one, with a tailor-made content, quickly and with ease. Albeit, there are two or three things to keep in mind when doing so. Please read on.
+> **Note:** *This serves only as a reference, as the the full explanation is below.*
+
+By following these instructions, one is able to create his own website, alike this one, with a tailor-made content, quickly and with ease. Albeit, there are two or three things to keep in mind when doing so, specified below.
 
 
 Requirements
 -------------
-Have in mind that that for a successful workflow run, the [correct python environment][venv], with all the [python package dependencies][dependencies] satisfied, is required. Our suggestion is the package manager `conda` or `mamba`, for which further details, and installation instructions, are provided in the [documentation of PyPSA-Earth creators][PyPSA-Earth].
+For a successful workflow run, the [correct python environment][venv], with all the [python package dependencies][dependencies] satisfied, is required. Our suggestion is the package manager `conda` or `mamba`, for which further details, and installation instructions, are provided in the [documentation of PyPSA-Earth creators][PyPSA-Earth].
 
 * There is no need for the BAU:
 
@@ -40,10 +41,10 @@ sudo apt install python3-pip -y
 pip install highspy
 ~~~
 
-Python and `*.ipynb` are optimally used in an [IDE][VSCode]. Our recommendation is VSCode, used by the [PyPSA developers][PyPSA-Earth], due to its ease of use, and being open-source.
+Python and Jupyter Notebooks (`.ipynb`) are optimally used in an [IDE][VSCode]. Our recommendation is VSCode, used by the [PyPSA developers][PyPSA-Earth], due to its ease of use, and being open-source.
 
-
-
+[^1]: [More details also here](https://executablebooks.github.io/cookiecutter-jupyter-book/intro.html)[^2]
+[^2]: These serves only as a reference, as the the full explanation is below
 <!-- # Internal Doc References -->
 [gh_actions]:           https://github.com/peaceiris/actions-gh-pages
 [gh_actions_python]:    https://github.com/peaceiris/actions-gh-pages?tab=readme-ov-file#%EF%B8%8F-static-site-generators-with-python

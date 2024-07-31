@@ -1,13 +1,12 @@
-GitHub Pages Setup
-==================
+GitHub Pages Setting
+=====================
+In your fork of this repository, there is a single GitHub Setting which needs modifying:
 
-In the created forked repository, there is a single setting which needs modifying:
-
-* In the your own forked repository `"owner"/data-science-for-energy-system-modelling`, go to the GitHub **Settings** -> **Pages**.
+* In the GitHub repository `"owner"/data-science-for-energy-system-modelling`, go to the GitHub **Settings** -> **Pages**.
 
 * In the **GitHub Pages**, go to the **Branch** section, and change the selection from `None` to `gh-pages` `/root`.
 
-Once the branch has been selected, at the top the page a URL will be provided (<ins>give it a a couple of minutes</ins>): **Your site is live at [https://*owner*.github.io/data-science-for-esm](https://fneum.github.io/data-science-for-esm/intro.html)**
+Once the branch has been selected, at the top of the page a URL will be provided (*give it a a couple of minutes*): **Your site is live at [https://*owner*.github.io/data-science-for-esm](https://fneum.github.io/data-science-for-esm/intro.html)**
 
 <center>
 <figure>
@@ -17,5 +16,11 @@ Once the branch has been selected, at the top the page a URL will be provided (<
     <figcaption>Clicking on the image above will lead directly to the our <strong><b><mark>GitHub Pages</mark></b></strong> settings menu</figcaption>
 </figure>
 </center>
+
+Clone the forked `data-science-for-esm` repository:
+```
+git clone https://github.com/"owner"/data-science-for-esm.git
+cd ./data-science-for-esm
+```
 
 <!-- This GitHub is the go to location for disseminating any material, be it Jupyter Notebooks, slides, videos, markdown text explanations, or links to your other resources.  -->

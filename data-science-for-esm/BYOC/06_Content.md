@@ -1,4 +1,4 @@
-Modify Content
+Modify the Content
 ===============
 Use these files as the template of your content. They will reduce the development time for your subject matter.
 

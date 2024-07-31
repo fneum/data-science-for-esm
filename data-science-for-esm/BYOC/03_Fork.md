@@ -9,7 +9,8 @@ In the <strong><b><mark>Create a new fork</mark></b></strong> pop-up menu, shown
     
 By doing so, you will reduce further branch creation, required by the workflow.
 
-:::{note}
+:::{admonition} Fork this repository!
+:class: tip
 <center>
 <figure>
     <a href='https://github.com/fneum/data-science-for-esm/fork'>

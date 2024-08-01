@@ -2,11 +2,12 @@ GitHub Pages Setting
 =====================
 In your fork of this repository, there is a single GitHub Setting which needs modifying:
 
-* In the GitHub repository `"owner"/data-science-for-energy-system-modelling`, go to the GitHub **Settings** -> **Pages**.
+* In the GitHub repository `https://github.com/<user>/data-science-for-esm/tree/main`, go to the GitHub **Settings** -> **Pages**.
 
 * In the **GitHub Pages**, go to the **Branch** section, and change the selection from `None` to `gh-pages` `/root`.
 
-Once the branch has been selected, at the top of the page a URL will be provided (*give it a a couple of minutes*): **Your site is live at [https://<user>.github.io/<myonlinebook>](https://fneum.github.io/data-science-for-esm/intro.html)**
+Once the branch has been selected, at the top of the page a URL will be provided (*give it a a couple of minutes*):
+* **Your site is live at [`https://<user>.github.io/data-science-for-esm`](https://fneum.github.io/data-science-for-esm/intro.html)**
 
 <center>
 <figure>
@@ -19,7 +20,7 @@ Once the branch has been selected, at the top of the page a URL will be provided
 
 Clone the forked `data-science-for-esm` repository:
 ```
-git clone https://github.com/"owner"/data-science-for-esm.git
+git clone https://github.com/<user>/data-science-for-esm.git
 cd ./data-science-for-esm
 ```
 

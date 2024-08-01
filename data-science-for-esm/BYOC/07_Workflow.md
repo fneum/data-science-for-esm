@@ -15,7 +15,7 @@ The workflow deployment itself is tracked by the status indicator in the reposit
 
 Upon deployment, indicated by the deploy status:
 * successful: a green thick <strong><b><font color='green'>🗸</font></strong></b>
-    * you should be able to see the changes taking place, after a few minutes, at the specified `https://<user>.github.io/<myonlinebook>`[^1]
+    * you should be able to see the changes taking place, after a few minutes, at the specified `https://<user>.github.io/data-science-for-esm`[^1]
 * unsuccessful: a red cross mark <font color="red">🗶</font>, indicating an error in the `_toc.yml`, or one of the content files
     * indicating an error in the `_toc.yml`, or one of the content files, which need revision.
 

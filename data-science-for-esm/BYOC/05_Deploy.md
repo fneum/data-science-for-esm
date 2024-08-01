@@ -40,7 +40,7 @@ Further explanation of this command, i.e. `jupyter-book build`, as well as the o
 
 
 [^1]: In this example it is the `main` branch.
-[^2]: The workflow has been successfully tested using the `main` branch, as well as the side-branches, once the specification of the branch and the permissions are set in the `deploy.yml`, as explained above.
+[^2]: <span style="font-size:.75em;">The workflow has been successfully tested using the `main` branch, as well as the side-branches, once the specification of the branch and the permissions are set in the `deploy.yml`, as explained above.</span>
 
 
 <!-- # Internal Doc References -->

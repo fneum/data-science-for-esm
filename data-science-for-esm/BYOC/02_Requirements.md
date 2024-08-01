@@ -1,6 +1,8 @@
 Requirements
 =============
-For a successful workflow run, the [correct python environment][venv], with all the [python package dependencies][dependencies] satisfied, is required. Our suggestion is the package manager `conda` or `mamba`, for which further details, and installation instructions, are provided in the [documentation of PyPSA-Earth creators][PyPSA-Earth].
+For a successful workflow run, the [correct python environment][venv], with all the [python package dependencies][dependencies] included, is a requirement.
+
+Our suggestion is the package manager `conda` or `mamba`, which for installation instructions are provided in the [documentation of PyPSA-Earth creators][PyPSA-Earth].
 
 * There is no need for the BAU:
 

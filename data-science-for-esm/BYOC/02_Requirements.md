@@ -22,7 +22,13 @@ sudo apt install python3-pip -y
 pip install highspy
 ~~~
 
-Python and Jupyter Notebooks (`.ipynb`) are optimally used in an [IDE][VSCode]. Our recommendation is VSCode, used by the [PyPSA developers][PyPSA-Earth], due to its ease of use, and being open-source.
+Python and Jupyter Notebooks (`.ipynb`) are optimally used in an IDE.
+
+Our recommendation is [VSCode][VSCode], together with the `Jupyter` extension[^1].
+
+
+[^1]:   <b><font color='red'>Also used by the [PyPSA developers][PyPSA-Earth], due to its simplicity, and being open-source.</font></b>
+
 
 
 <!-- # Internal Doc References -->

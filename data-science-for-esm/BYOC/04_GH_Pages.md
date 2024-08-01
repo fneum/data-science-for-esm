@@ -6,7 +6,7 @@ In your fork of this repository, there is a single GitHub Setting which needs mo
 
 * In the **GitHub Pages**, go to the **Branch** section, and change the selection from `None` to `gh-pages` `/root`.
 
-Once the branch has been selected, at the top of the page a URL will be provided (*give it a a couple of minutes*): **Your site is live at [https://*owner*.github.io/data-science-for-esm](https://fneum.github.io/data-science-for-esm/intro.html)**
+Once the branch has been selected, at the top of the page a URL will be provided (*give it a a couple of minutes*): **Your site is live at [https://<user>.github.io/<myonlinebook>](https://fneum.github.io/data-science-for-esm/intro.html)**
 
 <center>
 <figure>

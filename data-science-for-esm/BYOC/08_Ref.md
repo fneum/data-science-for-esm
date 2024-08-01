@@ -5,12 +5,50 @@ Further Reading and Citation
 References
 -----------
 
-1. Jupyter-book
+::::{tab-set}
+
+:::{tab-item} Jupyter-book
+1. https://jupyterbook.org/en/stable/start/build.html
+1. https://jupyterbook.org/en/stable/structure/toc.html
+:::
+
+:::{tab-item} MyST
+1. https://jupyterbook.org/en/stable/reference/cheatsheet.html
+1. https://myst-parser.readthedocs.io/en/latest/syntax/admonitions.html
+1. https://executablebooks.github.io/cookiecutter-jupyter-book/notebooks.html
+:::
+
+:::{tab-item} PyPSA-Earth
+* https://pypsa-eur.readthedocs.io/en/latest/introduction.html
+:::
+
+::::
+
+::::{tab-set}
+
+:::{tab-item} OET
+1. https://openenergytransition.org/about-us.html#theory-of-change
+1. https://open-energy-transition.github.io/handbook/
+:::
+
+:::{tab-item} Data Science for Energy System Modelling
+1. https://www.tu.berlin/ensys
+1. https://fneum.github.io/data-science-for-esm/09-workshop-pypsa.html
+1. https://moseskonto.tu-berlin.de/moses/modultransfersystem/bolognamodule/beschreibung/anzeigen.html;jsessionid=DQfixqzzpn1XIg5N1GG7S9um4EDykZn99AHmH6Fj.moseskonto?number=31027&version=1&sprache=2
+:::
+
+:::{tab-item} Dr. Fabian Neumann
+* https://www.neumann.fyi/
+:::
+
+::::
+
+<!-- 1. Jupyter-book
     * https://jupyterbook.org/en/stable/start/build.html
     * https://jupyterbook.org/en/stable/structure/toc.html
 1. MyST
     * https://jupyterbook.org/en/stable/reference/cheatsheet.html
-    * https://myst-parser.readthedocs.io/en/latest/syntax/typography.html#syntax-core
+    * https://myst-parser.readthedocs.io/en/latest/syntax/admonitions.html
     * https://executablebooks.github.io/cookiecutter-jupyter-book/notebooks.html
 1. PyPSA-Earth:
     * https://pypsa-eur.readthedocs.io/en/latest/introduction.html
@@ -22,7 +60,7 @@ References
     * https://fneum.github.io/data-science-for-esm/09-workshop-pypsa.html
     * https://moseskonto.tu-berlin.de/moses/modultransfersystem/bolognamodule/beschreibung/anzeigen.html;jsessionid=DQfixqzzpn1XIg5N1GG7S9um4EDykZn99AHmH6Fj.moseskonto?number=31027&version=1&sprache=2
 1. Dr. Fabian Neumann
-    * https://www.neumann.fyi/
+    * https://www.neumann.fyi/ -->
 
 
 Citation
@@ -30,5 +68,8 @@ Citation
 <!-- <mark style="background-color: peachpuff; color: black"> -->
 *Kindly [reference][OET] us, in case using our materials, e.g. the workflow presented here.
 This way, your success is our success also.*
+
+_Best,
+<br />OET Team_
 
 [OET]:  https://openenergytransition.org/

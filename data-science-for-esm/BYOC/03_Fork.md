@@ -39,7 +39,7 @@ git push origin branch
 
 > **Note:** The remote `gh-pages`, itself, hosts the required `.html`, `.css`, `.js`, and the other files, used for generating the `github.io` website. There is no requirement in having this branch locally.
 
-These will be re-generated, upon a successful workflow execution, every time `git push` is performed, in the prior specified git branch. Branch specification is provided in the [Deployment Settings](./04_Deploy.md#deployment-setup).
+These will be re-generated, upon a successful workflow execution, every time `git push` is performed, in the prior specified git branch. Branch specification is provided in the [Deployment Settings](./05_Deploy.md#deployment-settings).
 
 <!-- of the forked repository, in the `.github/workflows/deploy.yml` ([link][07]) file which will contain the required `HTML`, `css`, `.js`, and other files
 is used for generating the required `HTML`, `css`, `.js`, as well as the other files - other than the `gh-pages`

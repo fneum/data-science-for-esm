@@ -18,7 +18,7 @@ This section helps academics, and alike, in building their own content, by modif
 
 By following these instructions, one is able to create his own website, alike this one, with a tailor-made content, quickly and with ease. Albeit, there are two or three things to keep in mind when doing so, specified below.
 
-> TOC:
+<!-- > TOC:
 ---
 ***
 ___
@@ -27,23 +27,27 @@ ___
 ^^^
 1. [Create Fork](./03_Fork.md)
 +++
-:::
+::: -->
 
 
 :::{list-table}
 :header-rows: 1
 * - TOC
 * - [Requirements](./02_Requirements.md)
-* - [Create Fork](./03_Fork.md)
-
+* - [Create a New Fork](./03_Fork.md)
+* - [GitHub Pages Setting](./04_GH_Pages.md)
+* - [Deployment Settings](./05_Deploy.md)
+* - [Modify the Content](./06_Content.md)
+* - [GitHub Workflow Deployment](./07_Workflow.md)
+* - [Further Reading and Citation](./08_Ref.md)
 :::
 
 :::{admonition} TOC
 :class: seealso
-<!-- :class: dropdown -->
+:class: dropdown
 
 |Table of Content|
-|:---------------------------------------------:|
+|:---------------------------------------------|
 | [Requirements](./02_Requirements.md)          |
 | [Create a New Fork](./03_Fork.md)             |
 | [GitHub Pages Setting](./04_GH_Pages.md)      |
@@ -52,19 +56,6 @@ ___
 | [GitHub Workflow Deployment](./07_Workflow.md)|
 | [Further Reading and Citation](./08_Ref.md)   |
 :::
-
-::::{tab-set}
-
-:::{tab-item} Label1
-Content 1
-:::
-
-:::{tab-item} Label2
-Content 2
-:::
-
-::::
-
 
 [^1]: [More details also here](https://executablebooks.github.io/cookiecutter-jupyter-book/intro.html)[^2]
 [^2]: These serves only as a reference, as the the full explanation is below

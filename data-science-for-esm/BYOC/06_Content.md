@@ -7,7 +7,10 @@ Use these files as the template of your content. They will reduce the developmen
 `jupyter-book build` builds Jupyter Book off of <mark>Jupyter Notebook</mark> and <mark>markdown</mark> files.
 <!-- > <br />
 \ -->
-> For the full list of the available file formats go to [JupyterBook](https://jupyterbook.org/en/stable/file-types/index.html).
+:::{admonition} Supported files
+:class: tip
+For the full list of the available file formats go to [JupyterBook](https://jupyterbook.org/en/stable/file-types/index.html).
+:::
 :::
 
 :::{note}
@@ -17,9 +20,9 @@ Jupyter Notebook files can contain markdown. For more refer to [MyST](https://ex
 :::
 
 * The website logo, as well as the other figures can be placed in the `data-science-for-esm/_images/` folder.
-* When changing images and modifying files, the referencing throughout the `.md` and the `.ipynb` files needs changing also[^1].
-* The `.ipynb` and `.md` content files are to be located in the root of the cloned `data-science-for-esm` folder, or a subfolder, and specified accordingly in the `_toc.yml`.
-    * If not being placed in the root folder, or subfolder, the workflow will be unable to find the files specified in the `_toc.yml`, resulting in the unsuccessful deployment, and unaccessible `github.io`.
+* When changing images and modifying content files, the referencing throughout the `.md` and the `.ipynb` files needs changing also[^1].
+* The `.ipynb` and `.md` content files are to be located in the root of the cloned `data-science-for-esm`, or a subfolder, and specified accordingly in the `_toc.yml`.
+    * If not being placed in the root folder, or subfolder, the workflow will be unable to find the files specified by the `_toc.yml`, resulting in the unsuccessful deployment, and unaccessible `github.io`.
 * Modify `.ipynb` and `.md` files as seen fit. They are the core-content.
 * For any content change, there is a chain of git to-do commands, for a website update:
 ~~~
@@ -39,3 +42,4 @@ After a successful run, the TOC displayed will be displayed in the left-side men
 
 
 [^1]: Otherwise it results in a broken workflow deployment.
+[^2]: 

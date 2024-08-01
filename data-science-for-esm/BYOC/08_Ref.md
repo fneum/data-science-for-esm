@@ -70,6 +70,6 @@ Citation
 This way, your success is our success also.*
 
 _Best,
-<br />OET Team_
+<br />The OET Team_
 
 [OET]:  https://openenergytransition.org/

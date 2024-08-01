@@ -12,9 +12,9 @@ This section helps academics, and alike, in building their own content, by modif
 
 * Its primary purpose is to guide you on how to generate a GitHub page, to be used for learning material, i.e. lectures, or similar.
 * It can also be purpose for anything else, for that matter.
-* This setup uses the [cookiecutter-jupyter-book][cookiecutter][^1][^2] workflow.
+* This setup uses the [cookiecutter-jupyter-book][cookiecutter][^1] workflow.
 
-> **Note:** *This serves only as a reference, as the the full explanation is below.*
+<!-- > **Note:** *This serves only as a reference, as the the full explanation is below.* -->
 
 By following these instructions, one is able to create his own website, alike this one, with a tailor-made content, quickly and with ease. Albeit, there are two or three things to keep in mind when doing so, specified below.
 
@@ -30,7 +30,7 @@ ___
 ::: -->
 
 
-:::{list-table}
+<!-- :::{list-table}
 :header-rows: 1
 * - TOC
 * - [Requirements](./02_Requirements.md)
@@ -40,7 +40,7 @@ ___
 * - [Modify the Content](./06_Content.md)
 * - [GitHub Workflow Deployment](./07_Workflow.md)
 * - [Further Reading and Citation](./08_Ref.md)
-:::
+::: -->
 
 :::{admonition} TOC
 :class: seealso
@@ -57,12 +57,12 @@ ___
 | [Further Reading and Citation](./08_Ref.md)   |
 :::
 
-[^1]: [More details also here](https://executablebooks.github.io/cookiecutter-jupyter-book/intro.html)[^2]
-[^2]: These serves only as a reference, as the the full explanation is below
+<!-- [^1]: [More details also here](https://executablebooks.github.io/cookiecutter-jupyter-book/intro.html)[^2] -->
+[^1]: <strong><font color='red'>These serves only as a reference, as the the full explanation is here!</font></strong>
 
 
 
 <!-- # Internal Doc References -->
-[cookiecutter]:          https://github.com/open-energy-transition/data-science-for-esm/blob/e52f7980165928a7cd90826ee0bf8cd3fb407892/environment.yaml
+[cookiecutter]:          https://executablebooks.github.io/cookiecutter-jupyter-book/intro.html
 <!-- [gh_actions]:           https://github.com/peaceiris/actions-gh-pages
 [gh_actions_python]:    https://github.com/peaceiris/actions-gh-pages?tab=readme-ov-file#%EF%B8%8F-static-site-generators-with-python -->

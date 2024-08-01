@@ -41,7 +41,17 @@ git push origin branch
 
 These will be re-generated, upon a successful workflow execution, every time `git push` is performed, in the prior specified git branch. Branch specification is provided in the [Deployment Settings](./05_Deploy.md#deployment-settings).
 
+:::{admonition} Fork Strategy
+:class: seealso
+In case you would like to contribute to the [upstream][fneum], we suggest using a fork strategy detailed in the [OET's handbook][OET].
+:::
+
 <!-- of the forked repository, in the `.github/workflows/deploy.yml` ([link][07]) file which will contain the required `HTML`, `css`, `.js`, and other files
 is used for generating the required `HTML`, `css`, `.js`, as well as the other files - other than the `gh-pages`
 
 - on preexisting knowledge disseminating the gained expertise by OET, and TU Berlin, to help .   Welcome to the website accompanying the course [Data Science for Energy System Modelling][04]. This course is being developed by [Dr. F. Neumann][05] and offered as part of the curriculum of the [Department of Digital Transformation of Energy Systems at TU Berlin][06]. -->
+
+
+
+[fneum]:    https://github.com/fneum/data-science-for-esm
+[OET]:      https://open-energy-transition.github.io/handbook/docs/Engineering/SoftForkStrategy/#contributing-oet-changes-to-upstream-via-cherry-picking

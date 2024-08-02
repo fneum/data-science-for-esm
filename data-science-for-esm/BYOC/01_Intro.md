@@ -1,5 +1,5 @@
-Introduction
-=========================================================
+Educators Build Your Own Content
+=================================
 <!-- ###### List of Abbreviation[^bignote] -->
 
 <!-- ```{contents}

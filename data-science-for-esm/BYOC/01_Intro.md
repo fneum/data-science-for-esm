@@ -6,7 +6,7 @@ Educators Build Your Own Content
 :local:
 ``` -->
 
-This section helps academics, and alike, in building their own content, by modifying this repository. This repository is used as ane example in the figures below.
+This section helps academics, and alike, in building their own [Jupyter Book][JupyterBook] content, by modifying this repository. This repository is used as an example in the figures that follow.
 
 > **Goal:** *To create a course page for your own knowledge dissemination, like this one, follow this guide.*
 
@@ -47,7 +47,7 @@ ___
 :class: dropdown
 
 |Table of Content|
-|:---------------------------------------------|
+|:----------------------------------------------|
 | [Requirements](./02_Requirements.md)          |
 | [Create a New Fork](./03_Fork.md)             |
 | [GitHub Pages Setting](./04_GH_Pages.md)      |
@@ -57,12 +57,13 @@ ___
 | [Further Reading and Citation](./08_Ref.md)   |
 :::
 
-<!-- [^1]: [More details also here](https://executablebooks.github.io/cookiecutter-jupyter-book/intro.html)[^2] -->
+<!-- [^1]: [More details also here](https://jupyterbook.org/en/stable/start/create.html) -->
 [^1]: <strong><font color='red'>These serves only as a reference, as the the full explanation is here!</font></strong>
 
 
 
 <!-- # Internal Doc References -->
-[cookiecutter]:          https://executablebooks.github.io/cookiecutter-jupyter-book/intro.html
+[JupyterBook]:  https://jupyterbook.org/en/stable/start/create.html
+[cookiecutter]: https://executablebooks.github.io/cookiecutter-jupyter-book/intro.html
 <!-- [gh_actions]:           https://github.com/peaceiris/actions-gh-pages
 [gh_actions_python]:    https://github.com/peaceiris/actions-gh-pages?tab=readme-ov-file#%EF%B8%8F-static-site-generators-with-python -->

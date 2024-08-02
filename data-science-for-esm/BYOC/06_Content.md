@@ -37,7 +37,7 @@ git push origin main
 
 * Both the `_config.yml`, as well as the `_toc.yml` are to remain in the root of the `data-science-for esm` folder.
 
-* The details of the website, such as the author, logo, and other relevant GitHub and Google Collab links, are defined in the `_config.yml`[^3]:
+* The metadata of the website, such as the author, logo, and other relevant GitHub and Google Collab links, are to be defined in the `_config.yml`[^3]:
     * Use the already provided `_toc.yml` and `_config.yml` files as a template, and follow their structure.
 
 * In the `data-science-for-esm/_toc.yml` [file](https://github.com/fneum/data-science-for-esm/blob/bc6e35f5c007a33972d23d1df7e26c59f2a875dd/data-science-for-esm/_toc.yml), a sequence of files to be included in the GitHub Page is defined, and further used by the `jupyter-build book` command.

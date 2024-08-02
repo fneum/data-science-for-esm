@@ -10,21 +10,17 @@ author: Fabian Neumann                        # The author of the book
 copyright: "2022-2024"                     # Copyright year to be placed in the footer
 logo: logo.png                          # A path to the book logo
 
+only_build_toc_files: true
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
-exclude_patterns: [content/*, ./content/*.ipynb]
-only_build_toc_files: true
 execute:
   execute_notebooks: force
+# exclude_patterns: [content/*, ./content/*.ipynb]
 
 # Define the name of the latex output file for PDF builds
 latex:
   latex_documents:
     targetname: book.tex
-
-output:
-  html_document:
-    number_sections: false
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
@@ -41,6 +37,7 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  home_page_in_navbar: true
 
 launch_buttons:
   colab_url: "https://colab.research.google.com"

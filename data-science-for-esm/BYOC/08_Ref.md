@@ -1,9 +1,6 @@
 <!-- Relevant References for further reading -->
-Further Reading and Citation
-=============================
-
 References
------------
+=============================
 
 ::::{tab-set}
 
@@ -31,7 +28,7 @@ References
 1. https://open-energy-transition.github.io/handbook/
 :::
 
-:::{tab-item} Data Science for Energy System Modelling
+:::{tab-item} Data Science for ESM
 * https://www.tu.berlin/ensys
 <!-- 1. https://moseskonto.tu-berlin.de/moses/modultransfersystem/bolognamodule/beschreibung/anzeigen.html;jsessionid=DQfixqzzpn1XIg5N1GG7S9um4EDykZn99AHmH6Fj.moseskonto?number=31027&version=1&sprache=2 -->
 <!-- 1. https://fneum.github.io/data-science-for-esm/09-workshop-pypsa.html -->
@@ -63,13 +60,14 @@ References
     * https://www.neumann.fyi/ -->
 
 
-Citation
----------
+<!-- Citation
+--------- -->
 <!-- <mark style="background-color: peachpuff; color: black"> -->
-*Kindly [reference][OET] us, in case using our materials, e.g. the workflow presented here.
-This way, your success is our success also.*
-
+<!-- *Kindly [reference][OET] us, in case using our materials, e.g. the workflow presented here.
+This way, your success is our success also.* -->
+\
+\
 _Best,
-<br />The OET Team_
+<br />The [OET Team][OET]_
 
-[OET]:  https://openenergytransition.org/
+[OET]:  https://openenergytransition.org/about-us.html#team

@@ -24,7 +24,7 @@ pip install highspy
 
 Python and Jupyter Notebooks (`.ipynb`) are optimally used in an IDE.
 
-Our recommendation is [VSCode][VSCode], together with the `Jupyter` extension[^1].
+Our recommendation is [VSCode][VSCode][^1], together with the `Jupyter` [extension][Jupyter].
 
 
 [^1]:   <b><font color='red'>Also used by the [PyPSA developers][PyPSA-Earth], due to its simplicity, and being open-source.</font></b>
@@ -32,7 +32,8 @@ Our recommendation is [VSCode][VSCode], together with the `Jupyter` extension[^1
 
 
 <!-- # Internal Doc References -->
-[venv]:                 https://github.com/open-energy-transition/data-science-for-esm/blob/e52f7980165928a7cd90826ee0bf8cd3fb407892/environment.yaml
-[dependencies]:         https://github.com/open-energy-transition/data-science-for-esm/blob/e52f7980165928a7cd90826ee0bf8cd3fb407892/requirements.txt
-[PyPSA-Earth]:          https://pypsa-earth.readthedocs.io/en/latest/installation.html
-[VSCode]:               https://github.com/microsoft/vscode
+[venv]:         https://github.com/open-energy-transition/data-science-for-esm/blob/e52f7980165928a7cd90826ee0bf8cd3fb407892/environment.yaml
+[dependencies]: https://github.com/open-energy-transition/data-science-for-esm/blob/e52f7980165928a7cd90826ee0bf8cd3fb407892/requirements.txt
+[PyPSA-Earth]:  https://pypsa-earth.readthedocs.io/en/latest/installation.html
+[VSCode]:       https://github.com/microsoft/vscode
+[Jupyter]:      https://medium.com/@claudia.nikel/how-to-setup-a-jupyter-notebook-in-vs-code-w-virtual-env-kernels-install-packages-884cf643375e

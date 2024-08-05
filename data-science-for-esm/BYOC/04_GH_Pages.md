@@ -2,7 +2,7 @@ GitHub Pages Setting
 =====================
 In your fork of this repository, there is a single GitHub Setting which needs modifying:
 
-* In the GitHub repository `https://github.com/<user>/data-science-for-esm/tree/main`, go to the GitHub **Settings** -> **Pages**.
+* In the GitHub repository `https://github.com/<user>/data-science-for-esm`, go to the GitHub **Settings** -> **Pages**.
 
 * In the **GitHub Pages** heading, go to the **Branch** section, and change the selection from `None` to `gh-pages` `/root`.
 

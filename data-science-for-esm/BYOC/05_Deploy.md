@@ -38,6 +38,14 @@ Further explanation of this command, i.e. `jupyter-book build`, as well as the o
 1. [Build from the command line](https://jupyterbook.org/en/stable/basics/build.html)
 1. [Structure the Table of Contents](https://jupyterbook.org/en/stable/structure/toc.html)
 
+Content (feature) branch
+-------------------------
+Albeit, there is one very valid reason to deploy from a non-main branch, i.e. so-called `feature_branch`.
+
+The reason for doing so is to keep the `main` branch of your forked repository synchronized/identical to `main` branch of upstream. point is main is used as a source in all our projects to get a stable working version of the model. For example, to get a working version of PyPSA-Earth, people clone the main and use the code directly from there. If there has been some experimenting in main, and something got broken, they often disappoint in us (or in open source modelling in general) and do not try again.
+
+That is the major reason why we are always very careful with introducing any changes into upstream main, and trying to do that is the possibly clean way. The most clean approach we found by now is keeping the local main completely the same as main of the upstream, including git history. In particular, that facilitates comparing the fork and the upstream, when reviewing the contributions, and allows you to "reset" your fork, when something went wrong. [The latter is really handy -- saying from the experience!]
+
 
 [^1]: In this example it is the `main` branch.
 [^2]: <span style="font-size:.8em;">The workflow has been successfully tested using the `main` branch, as well as the side-branches, once accordingly modifying the branch and the permissions in the `deploy.yml`, as explained above.</span>

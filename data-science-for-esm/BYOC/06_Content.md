@@ -1,23 +1,31 @@
 Modify the Content
 ===============
-Use these files as the template of your content, as they will reduce your content development time.
 
-:::{note}
+Anatomy of a Jupyter Book
+--------------------------
+There are three things that you need in order to build a [Jupyter Book][jupyter-book]:
+* A configuration file ([_config.yml][fneum_content])
+* A table of contents file ([_toc.yml][fneum_toc])
+* Your book’s [source files][content]
+
+
+::::{note}
 :tags: ["full-width"]
 `jupyter-book build` builds Jupyter Book off of <mark>Jupyter Notebook</mark> and <mark>markdown</mark> files.
 <!-- > <br />
 \ -->
 :::{admonition} Supported files
 :class: tip
-For the full list of the available file formats go to [JupyterBook](https://jupyterbook.org/en/stable/file-types/index.html).
-:::
+For the full list of the available file formats go to the [JupyterBook](https://jupyterbook.org/en/stable/file-types/index.html).
 :::
 
-:::{note}
-:tags: ["raises-exception"]
-:tags: ["margin"]
-Jupyter Notebook files can also contain markdown. For more refer to [MyST](https://executablebooks.github.io/cookiecutter-jupyter-book/notebooks.html).
+:::{admonition} Jupyter Notebook
+:class: tip
+Jupyter Notebook files can also contain markdown. For more refer to the [MyST](https://executablebooks.github.io/cookiecutter-jupyter-book/notebooks.html).
 :::
+::::
+
+Use the files presented here as the template of your book, as they will reduce your content development time.
 
 * The website logo, as well as the other figures can be placed in the `data-science-for-esm/_images/` [folder][_images_folder].
 * **When changing the images and modifying the content files, the referencing throughout the `.md` and the `.ipynb` files needs changing as well[^1].**
@@ -52,6 +60,10 @@ After a successful run, the TOC will be displayed in the left-side menu of the w
 
 
 
+[jupyter-book]:     https://jupyterbook.org/en/stable/start/create.html#
+[fneum_content]:    https://github.com/fneum/data-science-for-esm/blob/bc6e35f5c007a33972d23d1df7e26c59f2a875dd/data-science-for-esm/_config.yml
+[fneum_toc]:        https://github.com/fneum/data-science-for-esm/blob/bc6e35f5c007a33972d23d1df7e26c59f2a875dd/data-science-for-esm/_toc.yml
+[content]:          https://jupyterbook.org/en/stable/file-types/index.html
 [_images_folder]:   https://github.com/open-energy-transition/data-science-for-esm/tree/ce07272ac531acdbe4b6e18110c5fbc70f3b03c0/data-science-for-esm/_images
 [here_1]:           https://jupyterbook.org/en/stable/structure/configure.html
 [here_2]:           https://jupyterbook.org/en/stable/structure/toc.html

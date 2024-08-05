@@ -8,7 +8,10 @@ Educators Build Your Own Content
 
 This section helps academics, and alike, in building their own [Jupyter Book][JupyterBook] content, by modifying this repository. This repository is used as an example in the figures that follow.
 
-> **Goal:** *To create a course page for your own knowledge dissemination, like this one, follow this guide.*
+:::{admonition} Empowerment
+:class: tip
+**To create a course page like this one, follow this guide.**
+:::
 
 * Its primary purpose is to guide you on how to generate a GitHub page, to be used for learning material, i.e. lectures, or similar.
 * It can also be purpose for anything else, for that matter.
@@ -16,7 +19,7 @@ This section helps academics, and alike, in building their own [Jupyter Book][Ju
 
 <!-- > **Note:** *This serves only as a reference, as the the full explanation is below.* -->
 
-By following these instructions, one is able to create his own website, alike this one, with a tailor-made content, quickly and with ease. Albeit, there are two or three things to keep in mind when doing so, specified below.
+By following these instructions, one is able to create his own website, alike this one, with a tailor-made content, quickly and with ease. Albeit, there are two or three things to keep in mind when doing so, in the text that follows.
 
 <!-- > TOC:
 ---

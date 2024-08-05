@@ -31,7 +31,7 @@ To have the content changes be reflected in the website, there is a chain of git
 # make changes to the content
 git status
 git add .
-git commit -m'new changes applied'
+git commit -m 'new changes applied'
 git push origin main
 ~~~
 

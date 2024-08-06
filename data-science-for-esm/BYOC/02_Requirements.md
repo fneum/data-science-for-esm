@@ -2,15 +2,17 @@ Requirements
 =============
 For a successful workflow run, the [correct python environment][venv], with all of the [python package dependencies][dependencies] included, is required[^1].
 
-Our suggestion is the package manager `conda` or `mamba`, which for installation instructions are provided in the [documentation of PyPSA-Earth creators][PyPSA-Earth].
+Our suggestion is the package manager `mamba` (or `conda`), which for installation instructions are provided in the [Miniforge GitHub repository][mamba_install], as well as in the [PyPSA-Earth documentation][PyPSA-Earth].
 
 * There is no need for the BAU:
 
 ~~~
+mamba create -n 'new_venv'
+mamba activate new_venv
 pip install -r requirements.txt
 ~~~
 
-since the
+when installing the package dependencies, since the
 
 ~~~
 mamba env create -f envs/environment.yaml
@@ -35,6 +37,7 @@ Our recommendation is [VSCode][VSCode][^2], together with the `Jupyter` [extensi
 <!-- # Internal Doc References -->
 [venv]:         https://github.com/open-energy-transition/data-science-for-esm/blob/e52f7980165928a7cd90826ee0bf8cd3fb407892/environment.yaml
 [dependencies]: https://github.com/open-energy-transition/data-science-for-esm/blob/e52f7980165928a7cd90826ee0bf8cd3fb407892/requirements.txt
+[mamba_install]: https://github.com/conda-forge/miniforge?tab=readme-ov-file
 [PyPSA-Earth]:  https://pypsa-earth.readthedocs.io/en/latest/installation.html
 [VSCode]:       https://github.com/microsoft/vscode
 [Jupyter]:      https://medium.com/@claudia.nikel/how-to-setup-a-jupyter-notebook-in-vs-code-w-virtual-env-kernels-install-packages-884cf643375e

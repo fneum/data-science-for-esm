@@ -4,7 +4,7 @@ In [Deployment Settings](./05_Deploy.md#deployment-settings) we defined the depl
 
 You are free to use any branch, other than the `gh-pages`, keeping in mind that only upon the `git push`, the workflow will be triggered.
 
-The workflow deployment itself is tracked by the status indicator in the repository, in this case a beige-brown dot <strong><b><font color='peru'>⏺</font></strong></b>, which if clicked on, will show the running status, and the deployment details. As mentioned, the deployment takes minutes to finish, depending on the content files, i.e. the python commands in the Jupyter Notebooks.
+The workflow deployment itself is tracked by your repository's status indicator, in this case a beige-brown dot <strong><b><font color='peru'>⏺</font></strong></b>, which if clicked on, will show the running status, and the deployment details. As mentioned, the deployment takes minutes to finish, depending on the content files, i.e. the python commands in the Jupyter Notebooks.
 
 <center>
 <figure>

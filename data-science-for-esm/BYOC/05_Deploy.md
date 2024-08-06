@@ -33,22 +33,27 @@ This setup uses the `main` branch in the workflow, but it can also be any other 
 
 The deployment itself is the `jupyter-build book data-science-for-esm` [command][command]. This command is in charge generating the HTML code from the data provided in the data-science-for-esm [folder][folder].
 
-Further explanation of this command, i.e. `jupyter-book build`, as well as the other commands is provided in the [README.md](https://github.com/open-energy-transition/data-science-for-esm/blob/37c3ef84651a12ee947573dfedd6c4b7786731bc/README.md) file. A more detailed explanation is to be found at the following references:
+Further explanation of this command, i.e. the `jupyter-book build`, as well as the other commands is provided in the [README.md](https://github.com/open-energy-transition/data-science-for-esm/blob/37c3ef84651a12ee947573dfedd6c4b7786731bc/README.md) file. A more detailed explanation is to be found at the following Jupyter Book references:
 <!-- 1. [Build your book](https://jupyterbook.org/en/stable/start/build.html) -->
 1. [Build from the command line](https://jupyterbook.org/en/stable/basics/build.html)
 1. [Structure the Table of Contents](https://jupyterbook.org/en/stable/structure/toc.html)
 
 Content (i.e. feature) branch
 -------------------------
-There is one very valid reason for deploying your website from a non-main branch, i.e. commonly termed `feature` branch[^3].
+There is a very valid reason for deploying your website from a non-main branch though, i.e. commonly termed `feature` branch[^3].
 
-The argument for doing so is to keep the `main` branch of your forked repository `https://github.com/<user>/data-science-for-esm/tree/main` synchronized/identical to `main` branch of upstream `https://github.com/fneum/data-science-for-esm/tree/main/data-science-for-esm`.
+The argument for doing so is to keep the `main` branch of your forked repository `https://github.com/<user>/data-science-for-esm` synchronized/identical to `main` branch of the upstream `https://github.com/fneum/data-science-for-esm` repository.
 
-In particular, that facilitates comparing the fork and the upstream, retrieving updates/patches, and also allows you to "reset" your fork, if/when something has gone completely wrong.
+In particular, this approach facilitates comparing the fork and the upstream, retrieving updates/patches, and also allows you to "reset" your fork, if/when something has gone completely wrong with the content development.
 
+A simple workflow of keeping you fork's `main` up-to-date with the upstream `main` is:
 ~~~
 git remote add upstream https://github.com/fneum/data-science-for-esm
 git pull upstream main
+~~~
+Furthermore, you might want to merge the `main` branch updates, obtained by synchronizing with the upstream, to your Jupyter Book `content_branch`:
+
+~~~
 git switch content_branch # alternatively you can also do: git checkout content_branch
 git cherry-pick <last main branch commit hash>
 ~~~
@@ -61,7 +66,7 @@ git cherry-pick --continue
 In order to save these changes, follow the instructions in [Modify the Content](./06_Content.md#modify-the-content) section.
 
 [^1]: In this example it is the `main` branch.
-[^2]: <span style="font-size:.8em;">The workflow has been successfully tested using the `main` branch, as well as the side-branches, once accordingly modifying the branch and the permissions in the `deploy.yml`, as explained above.</span>
+[^2]: <span style="font-size:.8em;">The workflow has been successfully tested using the `main` branch, as well as the side-branches, once correctly specifying the branch, and the permissions, in the `deploy.yml`, as explained above.</span>
 [^3]: In this material the `feature` branch is termed `content_branch`
 
 <!-- # Internal Doc References -->

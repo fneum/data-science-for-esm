@@ -6,7 +6,7 @@ Educators Build Your Own Content
 :local:
 ``` -->
 
-This section helps academics, and alike, in building their own [Jupyter Book][JupyterBook] content, by modifying this repository. This repository is used as an example in the figures that follow.
+This section helps academics, and alike, in building their own custom website, which is based on a [Jupyter Book][JupyterBook] customized website. This repository is used as an example in the figures that follow.
 
 :::{admonition} Empowerment
 :class: tip
@@ -14,12 +14,12 @@ This section helps academics, and alike, in building their own [Jupyter Book][Ju
 :::
 
 * Its primary purpose is to guide you on how to generate a GitHub page, to be used for learning material, i.e. lectures, or similar.
-* It can also be purpose for anything else, for that matter.
-* This setup uses the [cookiecutter-jupyter-book][cookiecutter][^1] workflow.
+* Its purpose can be anything else, for that matter.
+* This setup uses the the [Github Pages action][gh_actions_python], executed on the [cookiecutter-jupyter-book][cookiecutter][^1] content.
 
 <!-- > **Note:** *This serves only as a reference, as the the full explanation is below.* -->
 
-By following these instructions, one is able to create his own website, alike this one, with a tailor-made content, quickly and with ease. Albeit, there are two or three things to keep in mind when doing so, in the text that follows.
+By following these instructions, one is able to create his own website, alike this one, with a tailor-made content, quickly and with ease. Albeit, there are two or three things to keep in mind when doing so. These are specified in the following text:
 
 <!-- > TOC:
 ---
@@ -45,11 +45,11 @@ ___
 * - [Further Reading and Citation](./08_Ref.md)
 ::: -->
 
-:::{admonition} TOC
+:::{admonition} Table of Content
 :class: seealso
 :class: dropdown
 
-|Table of Content|
+|TOC                                            |
 |:----------------------------------------------|
 | [Requirements](./02_Requirements.md)          |
 | [Create a New Fork](./03_Fork.md)             |
@@ -68,5 +68,5 @@ ___
 <!-- # Internal Doc References -->
 [JupyterBook]:  https://jupyterbook.org/en/stable/start/create.html
 [cookiecutter]: https://executablebooks.github.io/cookiecutter-jupyter-book/intro.html
-<!-- [gh_actions]:           https://github.com/peaceiris/actions-gh-pages
-[gh_actions_python]:    https://github.com/peaceiris/actions-gh-pages?tab=readme-ov-file#%EF%B8%8F-static-site-generators-with-python -->
+<!-- [gh_actions]:           https://github.com/peaceiris/actions-gh-pages -->
+[gh_actions_python]:    https://github.com/peaceiris/actions-gh-pages?tab=readme-ov-file#%EF%B8%8F-static-site-generators-with-python

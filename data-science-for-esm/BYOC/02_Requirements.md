@@ -1,6 +1,6 @@
 Requirements
 =============
-For a successful workflow run, the [correct python environment][venv], with all of the [python package dependencies][dependencies] included, is a requirement.
+For a successful workflow run, the [correct python environment][venv], with all of the [python package dependencies][dependencies] included, is required[^1].
 
 Our suggestion is the package manager `conda` or `mamba`, which for installation instructions are provided in the [documentation of PyPSA-Earth creators][PyPSA-Earth].
 
@@ -24,10 +24,11 @@ pip install highspy
 
 Python and Jupyter Notebooks (`.ipynb`) are optimally used in an IDE.
 
-Our recommendation is [VSCode][VSCode][^1], together with the `Jupyter` [extension][Jupyter].
+Our recommendation is [VSCode][VSCode][^2], together with the `Jupyter` [extension][Jupyter].
 
 
-[^1]:   <b><font color='red'>Also used by the [PyPSA developers][PyPSA-Earth], due to its simplicity, and being open-source.</font></b>
+[^1]: Yours Python venv can very, all depending on the Jupyter Notebooks' content.
+[^2]:   <b><font color='red'>Also used by the [PyPSA developers][PyPSA-Earth], due to its simplicity, and being open-source.</font></b>
 
 
 

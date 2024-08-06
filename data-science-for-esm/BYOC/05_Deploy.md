@@ -38,20 +38,31 @@ Further explanation of this command, i.e. `jupyter-book build`, as well as the o
 1. [Build from the command line](https://jupyterbook.org/en/stable/basics/build.html)
 1. [Structure the Table of Contents](https://jupyterbook.org/en/stable/structure/toc.html)
 
-Content (feature) branch
+Content (i.e. feature) branch
 -------------------------
-There is one very valid reason for deploying from a non-main branch, i.e. so-called `feature_branch`.
+There is one very valid reason for deploying your website from a non-main branch, i.e. commonly termed `feature` branch[^3].
 
-The reason for doing so is to keep the `main` branch of your forked repository `https://github.com/<user>/data-science-for-esm/tree/main` synchronized/identical to `main` branch of upstream `https://github.com/fneum/data-science-for-esm/tree/main/data-science-for-esm`.
+The argument for doing so is to keep the `main` branch of your forked repository `https://github.com/<user>/data-science-for-esm/tree/main` synchronized/identical to `main` branch of upstream `https://github.com/fneum/data-science-for-esm/tree/main/data-science-for-esm`.
 
-In particular, that facilitates comparing the fork and the upstream, retrieving updates/patches, and also allows you to "reset" your fork, when something went wrong.
+In particular, that facilitates comparing the fork and the upstream, retrieving updates/patches, and also allows you to "reset" your fork, if/when something has gone completely wrong.
 
+~~~
+git remote add upstream https://github.com/fneum/data-science-for-esm
+git pull upstream main
+git switch content_branch # alternatively you can also do: git checkout content_branch
+git cherry-pick <last main branch commit hash>
+~~~
 
+* At this point, if there are conflicts, resolve them manually, while keeping in mind that “incoming” refers to the changes obtained from the upstream using `git pull` and “HEAD” refers current state of the `content_branch`:
+```
+git cherry-pick --continue
+```
 
+In order to save these changes, follow the instructions in [Modify the Content](./06_Content.md#modify-the-content) section.
 
 [^1]: In this example it is the `main` branch.
 [^2]: <span style="font-size:.8em;">The workflow has been successfully tested using the `main` branch, as well as the side-branches, once accordingly modifying the branch and the permissions in the `deploy.yml`, as explained above.</span>
-
+[^3]: In this material the `feature` branch is termed `content_branch`
 
 <!-- # Internal Doc References -->
 [deploy_1]: https://github.com/open-energy-transition/data-science-for-esm/blob/ef394898e3100e2bd2d074a8b2da89235355cd4e/.github/workflows/deploy.yml#L4-L7

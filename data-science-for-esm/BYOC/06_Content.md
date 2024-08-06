@@ -1,6 +1,9 @@
-Modify the Content
-===============
-
+<!-- Modify the Content
+=============== -->
+<!-- ```{contents}
+:local:
+:depth: 1
+``` -->
 Anatomy of a Jupyter Book
 --------------------------
 There are three things that you need in order to build a [Jupyter Book][jupyter-book]:
@@ -28,9 +31,14 @@ Jupyter Notebook files can also contain markdown. For more refer to the [MyST](h
 Use the files presented here as the template of your book, as they will reduce your content development time.
 
 * The website logo, as well as the other figures can be placed in the `data-science-for-esm/_images/` [folder][_images_folder].
-* **When changing the images and modifying the content files, the referencing throughout the `.md` and the `.ipynb` files needs changing as well[^1].**
 * The `.ipynb` and the `.md` content files are to be located in the root, or a subfolder, of the cloned `data-science-for-esm`, and specified accordingly in the `_toc.yml`[^2].
+
+
+Modify the Content
+===================
+
 * **<ins>Modify the `.ipynb` and the `.md` files as seen fit. They are the core-content.</ins>**
+* **When changing the images and modifying the content files, the referencing throughout the `.md` and the `.ipynb` files needs changing as well[^1].**
 
 To have the content changes be reflected in the website, there is a chain of git to-do commands:
 
@@ -40,7 +48,7 @@ To have the content changes be reflected in the website, there is a chain of git
 git status
 git add .
 git commit -m 'new changes applied'
-git push origin main
+git push origin content_branch
 ~~~
 
 * Both the `_config.yml`, as well as the `_toc.yml` are to remain in the root of the `data-science-for esm` folder.

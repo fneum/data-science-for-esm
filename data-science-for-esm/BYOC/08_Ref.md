@@ -5,14 +5,16 @@ References
 ::::{tab-set}
 
 :::{tab-item} Jupyter-book
-1. https://jupyterbook.org/en/stable/start/build.html
+1. https://jupyterbook.org/en/stable/start/create.html
 1. https://jupyterbook.org/en/stable/structure/toc.html
+1. https://jupyterbook.org/en/stable/structure/configure.html
+1. https://jupyterbook.org/en/stable/customize/config.html
 :::
 
-:::{tab-item} MyST
+:::{tab-item} Markdown
 1. https://jupyterbook.org/en/stable/reference/cheatsheet.html
 1. https://myst-parser.readthedocs.io/en/latest/syntax/admonitions.html
-1. https://executablebooks.github.io/cookiecutter-jupyter-book/notebooks.html
+1. https://www.markdownguide.org/extended-syntax/
 :::
 
 :::{tab-item} PyPSA-Earth

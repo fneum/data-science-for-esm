@@ -12,7 +12,7 @@ As mentioned, the deployment takes minutes to finish, depending on the content f
 <center>
 <figure>
     <!-- <a href='https://github.com/open-energy-transition/data-science-for-esm/settings/pages'> -->
-    <img src='https://raw.githubusercontent.com/open-energy-transition/data-science-for-esm/stanford/data-science-for-esm/_images/05_deployment_status.png' width='85%'style='vertical-align:middle;border:5px solid paleturquoise;margin:30px 30px' />
+    <img src='https://raw.githubusercontent.com/mdzzg/data-science-for-esm/mdzzg/data-science-for-esm/_images/05_deployment_status.png' width='85%'style='vertical-align:middle;border:5px solid paleturquoise;margin:30px 30px' />
     <!-- </a> -->
     <figcaption>Deployment status upon <code>git push</code> to the branch specified in the <mark>deploy.yml</mark> file</figcaption>
 </figure>

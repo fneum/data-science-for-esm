@@ -6,15 +6,18 @@
 ``` -->
 <span style="font-size:2.25em;">Anatomy of a Jupyter Book</span>
 <!-- -------------------------- -->
-There are three things that you need in order to build a [Jupyter Book][jupyter-book]:
+**Three things** are needed for building a [Jupyter Book][jupyter-book]:
 * A configuration file ([_config.yml][fneum_content])
 * A table of contents file ([_toc.yml][fneum_toc])
 * Your book’s [source files][content]
 
 
-::::{note}
+::::{important}
 :tags: ["full-width"]
-`jupyter-book build` builds Jupyter Book off of <mark>Jupyter Notebook</mark> and <mark>markdown</mark> files.
+<!-- :class: attention -->
+`jupyter-book build` builds Jupyter Book off of a content source:
+* <b><mark>Jupyter Notebook</mark></b> and
+* <b><mark>Markdown</mark></b> files.
 <!-- > <br />
 \ -->
 :::{admonition} Supported files

@@ -31,7 +31,7 @@ permissions:
 
 This setup uses the `main` branch in the workflow, but it can also be any other newly created side-branch. Upon the `git push`, the [workflow](./07_Workflow.md#github-workflow-deployment) will be triggered.
 
-The deployment deployment itself is the `jupyter-build book data-science-for-esm` [command][command]. This command is in charge generating the HTML code from the data provided in the data-science-for-esm [folder][folder].
+The deployment itself is the `jupyter-build book data-science-for-esm` [command][command]. This command is in charge generating the HTML code from the data provided in the data-science-for-esm [folder][folder].
 
 Further explanation of this command, i.e. `jupyter-book build`, as well as the other commands is provided in the [README.md](https://github.com/open-energy-transition/data-science-for-esm/blob/37c3ef84651a12ee947573dfedd6c4b7786731bc/README.md) file. A more detailed explanation is to be found at the following references:
 <!-- 1. [Build your book](https://jupyterbook.org/en/stable/start/build.html) -->

@@ -24,13 +24,13 @@ By doing so, you will reduce further branch creation, required by the workflow.
 > **Note:** The key point is to have at least one branch, beside the `gh-pages`, in your fork. This has been tested using both the `main`, as well as the `side branches`.
 
 In this workflow:
-* the published website is in the `gh-pages` branch,
-* the source code is in a arbitrary `branch` defined by the user - any other than `gh-pages`,
+* the published website static site content (`jupyter-book build` output) is in the `gh-pages` branch,
+* the source code (i.e. Jupyter Book input) is in a arbitrary `branch` defined by the user - any other than `gh-pages`,
 
 The arbitrary `branch` can be created locally: 
 ~~~
-git switch -c branch
-git push origin branch
+git switch -c content_branch
+git push origin content_branch
 ~~~
 
 <!-- * However, this is to be skipped if adhering to the **Note** above. -->
@@ -41,10 +41,10 @@ git push origin branch
 
 These will be re-generated, upon a successful workflow execution, every time `git push` is performed, in the prior specified git branch. Branch specification is provided in the [Deployment Settings](./05_Deploy.md#deployment-settings).
 
-:::{admonition} Fork Strategy
-:class: seealso
-In case you would like to contribute to the [upstream][fneum], we suggest using a fork strategy detailed in the [OET's handbook][OET].
-:::
+<!-- :::{admonition} Fork Strategy -->
+<!-- :class: seealso -->
+<!-- In case you would like to contribute to the [upstream][fneum], we suggest using a fork strategy detailed in the [OET's handbook][OET]. -->
+<!-- ::: -->
 
 <!-- of the forked repository, in the `.github/workflows/deploy.yml` ([link][07]) file which will contain the required `HTML`, `css`, `.js`, and other files
 is used for generating the required `HTML`, `css`, `.js`, as well as the other files - other than the `gh-pages`

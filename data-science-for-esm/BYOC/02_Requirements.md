@@ -29,7 +29,7 @@ Python and Jupyter Notebooks (`.ipynb`) are optimally used in an IDE.
 Our recommendation is [VSCode][VSCode][^2], together with the `Jupyter` [extension][Jupyter].
 
 
-[^1]: Yours Python venv can very, all depending on the Jupyter Notebooks' content.
+[^1]: Yours Python `venv` can very, all depending on the Jupyter Notebooks' content.
 [^2]:   <b><font color='red'>Also used by the [PyPSA developers][PyPSA-Earth], due to its simplicity, and being open-source.</font></b>
 
 

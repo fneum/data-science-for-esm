@@ -1,11 +1,11 @@
-<!-- Modify the Content
-=============== -->
+<!-- Content and Structure
+================================ -->
 <!-- ```{contents}
 :local:
 :depth: 1
 ``` -->
-Anatomy of a Jupyter Book
---------------------------
+<span style="font-size:2.25em;">Anatomy of a Jupyter Book</span>
+<!-- -------------------------- -->
 There are three things that you need in order to build a [Jupyter Book][jupyter-book]:
 * A configuration file ([_config.yml][fneum_content])
 * A table of contents file ([_toc.yml][fneum_toc])
@@ -32,7 +32,8 @@ Use the files presented here as the template of your book, as they will reduce y
 
 * The website logo, as well as the other figures can be placed in the `data-science-for-esm/_images/` [folder][_images_folder].
 * The `.ipynb` and the `.md` content files are to be located in the root, or a subfolder, of the cloned `data-science-for-esm`, and specified accordingly in the `_toc.yml`[^2].
-
+<br />
+<br />
 
 Modify the Content
 ===================
@@ -51,7 +52,7 @@ git commit -m 'new changes applied'
 git push origin content_branch
 ~~~
 
-* Both the `_config.yml`, as well as the `_toc.yml` are to remain in the root of the `data-science-for esm` folder.
+* Both the `_config.yml`, as well as the `_toc.yml` are to remain in the root of the `data-science-for-esm` folder.
 
 * The metadata of the website, such as the author, logo, and other relevant GitHub and Google Colab links, are to be defined in the `_config.yml`[^3]:
     * Use the already provided `_toc.yml` and `_config.yml` files as a template, and follow their structure.

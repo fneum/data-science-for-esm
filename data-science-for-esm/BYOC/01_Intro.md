@@ -6,21 +6,22 @@ Educators Build Your Own Content
 :local:
 ``` -->
 
-This guide helps academics, and alike, in building their own custom website, which is based on a [Jupyter Book][JupyterBook] customized website. This repository is used as an example in the figures that follow.
+This guide helps academics, and alike, in building their own custom website, based on a tailor-made [Jupyter Book][JupyterBook]. This repository is used as an example in the figures that follow.
 
 :::{admonition} Empowerment
 :class: tip
 **To create a course page like this one, follow this guide.**
 :::
 
-* Its primary purpose is to guide you on how to generate a GitHub page, to be used for learning material, i.e. lectures, or similar.
+* Its primary purpose is to guide you on how to generate a GitHub Page, to be used for learning material, i.e. lectures, or similar.
 <!-- * Its purpose can be anything else, for that matter. -->
 * This setup uses the the [Github Pages action][gh_actions_python], executed on the [cookiecutter-jupyter-book][cookiecutter][^1] content.
 
 <!-- > **Note:** *This serves only as a reference, as the the full explanation is below.* -->
 
-By following these instructions, one is able to create his own website, alike this one, with a tailor-made content, quickly and with ease. Albeit, there are two or three things to keep in mind when doing so. These are specified in the following text:
+By following these instructions, one is able to create a course website, alike this one, with purpose made content, quickly and with ease. Albeit, there are two or three things to keep in mind when doing so. Follow the steps elaborated in the following sections:
 
+<!-- These are specified in the following text: -->
 <!-- > TOC:
 ---
 ***
@@ -57,7 +58,7 @@ ___
 | [Deployment Settings](./05_Deploy.md)         |
 | [Modify the Content](./06_Content.md)         |
 | [GitHub Workflow Deployment](./07_Workflow.md)|
-| [Further Reading and Citation](./08_Ref.md)   |
+| [References](./08_Ref.md)   |
 :::
 
 <!-- [^1]: [More details also here](https://jupyterbook.org/en/stable/start/create.html) -->

@@ -38,9 +38,9 @@ Further explanation of this command, i.e. the `jupyter-book build`, as well as t
 1. [Build from the command line](https://jupyterbook.org/en/stable/basics/build.html)
 1. [Structure the Table of Contents](https://jupyterbook.org/en/stable/structure/toc.html)
 
-Content (i.e. feature) branch
--------------------------
-There is a very valid reason for deploying your website from a non-main branch though, i.e. commonly termed `feature` branch[^3].
+Content (i.e. feature) branch[^3]
+------------------------------
+There is a very valid reason for deploying your website from a non-main branch though, i.e. commonly termed feature branch[^4].
 
 The argument for doing so is to keep the `main` branch of your forked repository `https://github.com/<user>/data-science-for-esm` synchronized/identical to `main` branch of the upstream `https://github.com/fneum/data-science-for-esm` repository.
 
@@ -67,7 +67,8 @@ In order to save these changes, follow the instructions in [Modify the Content](
 
 [^1]: In this example it is the `main` branch.
 [^2]: <span style="font-size:.8em;">The workflow has been successfully tested using the `main` branch, as well as the side-branches, once correctly specifying the branch, and the permissions, in the `deploy.yml`, as explained above.</span>
-[^3]: In this material the `feature` branch is termed `content_branch`
+[^3]: <strong><font color='red'>This section is intended for </font></strong> <mark style="background-color: red; color: black"><b>advanced use</b></mark>
+[^4]: In this material the feature branch is defined as `content_branch`.
 
 <!-- # Internal Doc References -->
 [deploy_1]: https://github.com/open-energy-transition/data-science-for-esm/blob/ef394898e3100e2bd2d074a8b2da89235355cd4e/.github/workflows/deploy.yml#L4-L7

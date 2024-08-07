@@ -10,7 +10,7 @@ This guide helps academics, and alike, in building their own custom website, bas
 
 :::{admonition} Empowerment
 :class: tip
-**To create a course page like this one, follow this guide.**
+**To create a course page like this one, follow these instructions.**
 :::
 
 * Its primary purpose is to guide you on how to generate a GitHub Page, to be used for learning material, i.e. lectures, or similar.
@@ -19,7 +19,7 @@ This guide helps academics, and alike, in building their own custom website, bas
 
 <!-- > **Note:** *This serves only as a reference, as the the full explanation is below.* -->
 
-By following these instructions, one is able to create a course website, alike this one, with purpose made content, quickly and with ease. Albeit, there are two or three things to keep in mind when doing so. Follow the steps elaborated in the following sections:
+By following these instructions, one is able to create a course website, alike this one, with a purpose made content, quickly and with ease. Albeit, there are two or three things to keep in mind when doing so. Follow the steps elaborated in the following sections:
 
 <!-- These are specified in the following text: -->
 <!-- > TOC:
@@ -58,7 +58,7 @@ ___
 | [Deployment Settings](./05_Deploy.md)         |
 | [Modify the Content](./06_Content.md)         |
 | [GitHub Workflow Deployment](./07_Workflow.md)|
-| [References](./08_Ref.md)   |
+| [References](./08_Ref.md)                     |
 :::
 
 <!-- [^1]: [More details also here](https://jupyterbook.org/en/stable/start/create.html) -->

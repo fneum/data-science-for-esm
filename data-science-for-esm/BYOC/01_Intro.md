@@ -6,7 +6,7 @@ Educators Build Your Own Content
 :local:
 ``` -->
 
-This section helps academics, and alike, in building their own custom website, which is based on a [Jupyter Book][JupyterBook] customized website. This repository is used as an example in the figures that follow.
+This guide helps academics, and alike, in building their own custom website, which is based on a [Jupyter Book][JupyterBook] customized website. This repository is used as an example in the figures that follow.
 
 :::{admonition} Empowerment
 :class: tip
@@ -47,9 +47,9 @@ ___
 
 :::{admonition} Table of Content
 :class: seealso
-:class: dropdown
+<!-- :class: full-width -->
 
-|TOC                                            |
+|[Educators Build Your Own Content](./01_Intro.md#educators-build-your-own-content)|
 |:----------------------------------------------|
 | [Requirements](./02_Requirements.md)          |
 | [Create a New Fork](./03_Fork.md)             |

@@ -4,6 +4,7 @@
 :local:
 :depth: 1
 ``` -->
+
 <span style="font-size:2.25em;">Anatomy of a Jupyter Book</span>
 <!-- -------------------------- -->
 **Three things** are needed for building a [Jupyter Book][jupyter-book]:

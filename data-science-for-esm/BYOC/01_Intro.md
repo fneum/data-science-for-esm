@@ -19,7 +19,7 @@ This guide helps academics, and alike, in building their own custom website, bas
 
 <!-- > **Note:** *This serves only as a reference, as the the full explanation is below.* -->
 
-By following these instructions, one is able to create a course website, alike this one, with a purpose made content, quickly and with ease. Albeit, there are two or three things to keep in mind when doing so. Follow the steps elaborated in the following sections:
+By following these instructions, one is able to create a course website, alike this one, with a purpose made content, quickly and with ease. Albeit, there are two or three things to keep in mind when doing so. Follow the steps elaborated in the {ref}`following sections <foo>`:
 
 <!-- These are specified in the following text: -->
 <!-- > TOC:
@@ -36,6 +36,9 @@ ___
 
 <!-- :::{list-table}
 :header-rows: 1
+:name: foo
+:align: left
+
 * - TOC
 * - [Requirements](./02_Requirements.md)
 * - [Create a New Fork](./03_Fork.md)
@@ -46,10 +49,14 @@ ___
 * - [Further Reading and Citation](./08_Ref.md)
 ::: -->
 
-:::{admonition} Table of Content
+::::{admonition} Table of Content
 :class: seealso
 <!-- :class: full-width -->
 
+:::{table}
+:header-rows: 3
+:name: foo
+:width: 95%
 |[Educators Build Your Own Content](./01_Intro.md#educators-build-your-own-content)|
 |:----------------------------------------------|
 | [Requirements](./02_Requirements.md)          |
@@ -59,8 +66,9 @@ ___
 | [Modify the Content](./06_Content.md)         |
 | [GitHub Workflow Deployment](./07_Workflow.md)|
 | [References](./08_Ref.md)                     |
-:::
 
+:::
+::::
 <!-- [^1]: [More details also here](https://jupyterbook.org/en/stable/start/create.html) -->
 [^1]: <strong><font color='red'>These serves only as a reference, as the the full explanation is here!</font></strong>
 

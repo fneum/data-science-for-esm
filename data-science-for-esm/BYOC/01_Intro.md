@@ -14,7 +14,7 @@ This guide helps academics, and alike, in building their own custom website, whi
 :::
 
 * Its primary purpose is to guide you on how to generate a GitHub page, to be used for learning material, i.e. lectures, or similar.
-* Its purpose can be anything else, for that matter.
+<!-- * Its purpose can be anything else, for that matter. -->
 * This setup uses the the [Github Pages action][gh_actions_python], executed on the [cookiecutter-jupyter-book][cookiecutter][^1] content.
 
 <!-- > **Note:** *This serves only as a reference, as the the full explanation is below.* -->

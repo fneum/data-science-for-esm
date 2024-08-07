@@ -27,8 +27,6 @@ permissions:
   checks: read
 ~~~
 
-
-
 This setup uses the `main` branch in the workflow, but it can also be any other newly created side-branch. Upon the `git push`, the [workflow](./07_Workflow.md#github-workflow-deployment) will be triggered.
 
 The deployment itself is the `jupyter-build book data-science-for-esm` [command][command]. This command is in charge generating the HTML code from the data provided in the data-science-for-esm [folder][folder].
@@ -38,6 +36,8 @@ Further explanation of this command, i.e. the `jupyter-book build`, as well as t
 1. [Build from the command line](https://jupyterbook.org/en/stable/basics/build.html)
 1. [Structure the Table of Contents](https://jupyterbook.org/en/stable/structure/toc.html)
 
+___
+
 Content (i.e. feature) branch[^3]
 ------------------------------
 There is a very valid reason for deploying your website from a non-main branch though, i.e. commonly termed feature branch[^4].
@@ -46,7 +46,7 @@ The argument for doing so is to keep the `main` branch of your forked repository
 
 In particular, this approach facilitates comparing the fork and the upstream, retrieving updates/patches, and also allows you to "reset" your fork, if/when something has gone completely wrong with the content development.
 
-A simple workflow of keeping you fork's `main` up-to-date with the upstream `main` is:
+A simple workflow of keeping your fork's `main` up-to-date with the upstream `main` is:
 ~~~
 git remote add upstream https://github.com/fneum/data-science-for-esm
 git pull upstream main
@@ -66,8 +66,8 @@ git cherry-pick --continue
 In order to save these changes, follow the instructions in [Modify the Content](./06_Content.md#modify-the-content) section.
 
 [^1]: In this example it is the `main` branch.
-[^2]: <span style="font-size:.8em;">The workflow has been successfully tested using the `main` branch, as well as the side-branches, once correctly specifying the branch, and the permissions, in the `deploy.yml`, as explained above.</span>
-[^3]: <strong><font color='red'>This section is intended for </font></strong> <mark style="background-color: red; color: black"><b>advanced use</b></mark>
+[^2]: <span style="font-size:.8em;">The workflow has been successfully tested using the `main` branch, as well as the side-branches, once correctly specifying the branch, and the permissions, in the `deploy.yml` file, as explained above.</span>
+[^3]: <strong><font color='red'>This section is intended for </font></strong> <mark style="background-color: red; color: black"><b>advanced use.</b></mark>
 [^4]: In this material the feature branch is defined as `content_branch`.
 
 <!-- # Internal Doc References -->

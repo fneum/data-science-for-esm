@@ -30,7 +30,9 @@ Our recommendation is [VSCode][VSCode][^2], together with the `Jupyter` [extensi
 
 ## Git
 
-To follow this tutorial, basic usage of [Git][Git] is a pre requirement. It is strongly recommended to understand, or refresh on, the basics of Git, before moving forward. Besides the prior mentioned Atlassian, these are some information rich YouTube references on Git:
+To follow this tutorial, basic usage of [Git][Git_1] is a pre requirement. It is strongly recommended to understand, or refresh on, the basics of Git, before moving forward.
+
+Besides the prior mentioned Atlassian source, [this][Git_2] is the PyPSA Earth reference, and these are some fun, information rich, YouTube Git video tutorials:
 
 * [Git Tutorial for Beginners: Command-Line Fundamentals](https://www.youtube.com/watch?v=HVsySz-h9r4)
 * [Git Tutorial For Dummies](https://www.youtube.com/watch?v=mJ-qvsxPHpY)
@@ -49,4 +51,5 @@ To follow this tutorial, basic usage of [Git][Git] is a pre requirement. It is s
 [PyPSA-Earth]:  https://pypsa-earth.readthedocs.io/en/latest/installation.html
 [VSCode]:       https://github.com/microsoft/vscode
 [Jupyter]:      https://medium.com/@claudia.nikel/how-to-setup-a-jupyter-notebook-in-vs-code-w-virtual-env-kernels-install-packages-884cf643375e
-[Git]:          https://www.atlassian.com/git
+[Git_1]:        https://www.atlassian.com/git
+[Git_2]:        https://pypsa-earth.readthedocs.io/en/latest/software_hints.html#git

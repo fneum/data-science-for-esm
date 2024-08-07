@@ -28,6 +28,14 @@ Python and Jupyter Notebooks (`.ipynb`) are optimally used in an IDE.
 
 Our recommendation is [VSCode][VSCode][^2], together with the `Jupyter` [extension][Jupyter].
 
+## Git
+
+To follow this tutorial, basic usage of [Git][Git] is a pre requirement. It is strongly recommended to understand, or refresh on, the basics of Git, before moving forward. Besides the prior mentioned Atlassian, these are some information rich YouTube references on Git:
+
+* [Git Tutorial for Beginners: Command-Line Fundamentals](https://www.youtube.com/watch?v=HVsySz-h9r4)
+* [Git Tutorial For Dummies](https://www.youtube.com/watch?v=mJ-qvsxPHpY)
+* [Learn Git in 15 Minutes](https://www.youtube.com/watch?v=USjZcfj8yxE).
+
 
 [^1]: Your Python `venv` can very, depending on the Jupyter Notebooks' content.
 [^2]:   <b><font color='red'>Also used by the [PyPSA developers][PyPSA-Earth], due to its simplicity, and being open-source.</font></b>
@@ -41,3 +49,4 @@ Our recommendation is [VSCode][VSCode][^2], together with the `Jupyter` [extensi
 [PyPSA-Earth]:  https://pypsa-earth.readthedocs.io/en/latest/installation.html
 [VSCode]:       https://github.com/microsoft/vscode
 [Jupyter]:      https://medium.com/@claudia.nikel/how-to-setup-a-jupyter-notebook-in-vs-code-w-virtual-env-kernels-install-packages-884cf643375e
+[Git]:          https://www.atlassian.com/git

@@ -11,9 +11,9 @@ on:
     branches:
     - main
 ~~~
-Upon the `git push` command to the specified branch[^1], the workflow will be triggered.
+Upon the `git push` command to the specified branch<b>[^1]</b>, the workflow will be triggered.
 
-> **Note:** The specified `branch` can be any[^2], other than the <ins>`gh-pages`</ins>.
+> **Note:** The specified `branch` can be any<b>[^2]</b>, other than the <ins>`gh-pages`</ins>.
 
 In the same [`deploy.yml` file][deploy_2] set the following permissions:
 

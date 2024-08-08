@@ -1,6 +1,6 @@
 Requirements
 =============
-For a successful workflow run, the [correct python environment][venv], with all of the [python package dependencies][dependencies] included, is required[^1].
+For a successful workflow run, the [correct python environment][venv], with all of the [python package dependencies][dependencies] included, is required.<b>[^1]</b>
 
 Our suggestion is adopting the package manager `mamba` (or `conda`), which for the installation instructions are provided in the [Miniforge GitHub repository][mamba_install], as well as in the [PyPSA-Earth documentation][PyPSA-Earth].
 
@@ -26,11 +26,11 @@ pip install highspy
 
 Python and Jupyter Notebooks (`.ipynb`) are optimally used in an IDE.
 
-Our recommendation is [VSCode][VSCode][^2], together with the `Jupyter` [extension][Jupyter].
+Our recommendation is [VSCode][VSCode]<b>[^2]</b>, together with the `Jupyter` [extension][Jupyter].
 
 ## Git
 
-To follow this tutorial, basic usage of [Git][Git_1] is a pre requirement. It is strongly recommended to refresh[^3] your Git basics, before moving forwards.
+To follow this tutorial, basic usage of [Git][Git_1] is a pre requirement. It is strongly recommended to refresh<b>[^3]</b> your Git basics, before moving forwards.
 
 Besides the aforementioned Atlassian source, [this][Git_2] is the PyPSA Earth Git reference, and these are some fun, information rich, YouTube Git video tutorials:
 

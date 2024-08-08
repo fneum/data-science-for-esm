@@ -6,7 +6,7 @@ Educators Build Your Own Content
 :local:
 ``` -->
 
-This guide helps academics, and alike, in building their own custom website, based on a tailor-made [Jupyter Book][JupyterBook]. This repository is used as an example in the figures that follow.
+This guide helps academics, and alike, in building their own custom website, based on a tailor-made [Jupyter Book][JupyterBook_1]. This repository is used as an example in the figures that follow.
 
 :::{admonition} Empowerment
 :class: tip
@@ -15,11 +15,13 @@ This guide helps academics, and alike, in building their own custom website, bas
 
 * Its primary purpose is to guide you on how to generate a GitHub Page, to be used for learning material, i.e. lectures, or similar.
 <!-- * Its purpose can be anything else, for that matter. -->
-* This setup uses the [Github Pages action][gh_actions_python], executed on the [cookiecutter-jupyter-book][cookiecutter][^1] content.
+* This setup uses the [Github Pages action][gh_actions_python], and follows the Jupyter Book [structure][JupyterBook_2].[^1]
 
 <!-- > **Note:** *This serves only as a reference, as the the full explanation is below.* -->
 
-By following these instructions, one is able to create a course website, alike this one, with a purpose made content, quickly and with ease. Albeit, there are two or three things to keep in mind when doing so. Follow the steps elaborated in the {ref}`following sections <foo>`:
+By following these instructions, one is able to create a course website, alike this one, with a purpose made content, quickly and with ease.
+
+Albeit, there are two or three things to keep in mind when doing so. Follow the steps shown in the {ref}`following sections <foo>`:
 
 <!-- These are specified in the following text: -->
 <!-- > TOC:
@@ -70,13 +72,14 @@ ___
 
 :::
 ::::
-<!-- [^1]: [More details also here](https://jupyterbook.org/en/stable/start/create.html) -->
 [^1]: <strong><font color='red'>These serves only as a reference, as the the full explanation is here!</font></strong>
+<!-- [^1]: [More details also here](https://jupyterbook.org/en/stable/start/create.html) -->
 
 
 
 <!-- # Internal Doc References -->
-[JupyterBook]:  https://jupyterbook.org/en/stable/start/create.html
-[cookiecutter]: https://executablebooks.github.io/cookiecutter-jupyter-book/intro.html
-<!-- [gh_actions]:           https://github.com/peaceiris/actions-gh-pages -->
+[JupyterBook_1]:        https://jupyterbook.org/en/stable/start/create.html
+[JupyterBook_2]:        https://jupyterbook.org/en/stable/basics/organize.html
 [gh_actions_python]:    https://github.com/peaceiris/actions-gh-pages?tab=readme-ov-file#%EF%B8%8F-static-site-generators-with-python
+<!-- [cookiecutter]:     https://executablebooks.github.io/cookiecutter-jupyter-book/intro.html -->
+<!-- [gh_actions]:       https://github.com/peaceiris/actions-gh-pages -->

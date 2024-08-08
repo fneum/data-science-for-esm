@@ -1,4 +1,4 @@
-Deployment Settings
+Deploy Settings
 ===================
 > **Note:** The key point is to set the correct deployment branch in the <code>./github/workflows/deploy.yml</code>.
 

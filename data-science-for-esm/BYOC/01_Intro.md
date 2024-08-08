@@ -15,7 +15,7 @@ This guide helps academics, and alike, in building their own custom website, bas
 
 * Its primary purpose is to guide you on how to generate a GitHub Page, to be used for learning material, i.e. lectures, or similar.
 <!-- * Its purpose can be anything else, for that matter. -->
-* This setup uses the the [Github Pages action][gh_actions_python], executed on the [cookiecutter-jupyter-book][cookiecutter][^1] content.
+* This setup uses the [Github Pages action][gh_actions_python], executed on the [cookiecutter-jupyter-book][cookiecutter][^1] content.
 
 <!-- > **Note:** *This serves only as a reference, as the the full explanation is below.* -->
 
@@ -62,8 +62,8 @@ ___
 | [Requirements](./02_Requirements.md#requirements)                                 |
 | [Create a New Fork](./03_Fork.md#create-a-new-fork)                               |
 | [GitHub Pages Setting](./04_GH_Pages.md#github-pages-setting)                     |
-| [Deployment Settings](./05_Deploy.md#deployment-settings)                         |
-| [Advanced Deployment Settings](./06_Deploy_Advanced.md#content-ie-feature-branch) |
+| [Deploy Settings](./05_Deploy.md#deploy-settings)                         |
+| [Advanced Deploy Settings](./06_Deploy_Advanced.md#content-ie-feature-branch) |
 | [Modify the Content](./07_Content.md#modify-the-content)                          |
 | [GitHub Workflow Deployment](./08_Workflow.md#github-workflow-deployment)         |
 | [References](./09_Ref.md#references)                                              |

@@ -1,6 +1,6 @@
 GitHub Pages Setting
 =====================
-In your fork of this repository, there is a single GitHub Setting which needs modifying:
+In your fork of this repository, there is a single GitHub Setting that needs modifying:
 
 * In the GitHub repository `https://github.com/<user>/data-science-for-esm`, go to the GitHub **Settings** -> **Pages**.
 

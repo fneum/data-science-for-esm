@@ -4,13 +4,13 @@ In the [previous section](./05_Deploy.md#deployment-settings) we defined the `ma
 
 This section is intended for advanced users, who would like to:
 1. deploy their website from a so-called feature branch,
-1. keep the main branch synchronized with the original source, i.e. upstream.
+1. keep the main branch synchronized with the original source, i.e. the upstream.
 
-There is a very valid reason why one would want to deploy your website from a non-main branch, i.e. commonly termed a feature branch.
+There is a valid reason why one would want the website deploying from a non-main branch, i.e. commonly termed a feature branch.
 
-The argument for doing so is to keep the `main` branch of your forked repository `https://github.com/<user>/data-science-for-esm` synchronized/identical to the `main` branch of the upstream `https://github.com/fneum/data-science-for-esm` repository.
+The argument for doing so is to keep the `main` branch of your fork `https://github.com/<user>/data-science-for-esm` synchronized/identical to the `main` branch of the upstream `https://github.com/fneum/data-science-for-esm` repository.
 
-In particular, this approach facilitates comparing the fork and the upstream, retrieving updates/patches, and also allows you <ins>resetting</ins> your fork, in case something gone completely wrong.
+In particular, this approach facilitates comparing the fork and the upstream, retrieving updates/patches, and also allows you <ins>resetting</ins> your fork, in case something has gone completely wrong.
 
 A simple workflow of keeping your fork's `main` up-to-date with the upstream `main` is:
 ~~~

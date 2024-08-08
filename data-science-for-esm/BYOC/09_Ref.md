@@ -21,6 +21,10 @@ References
 * https://pypsa-eur.readthedocs.io/en/latest/introduction.html
 :::
 
+:::{tab-item} Git
+1. https://www.atlassian.com/git
+1. [https://videotutorials.notion.site/Introduction-to-Git](https://videotutorials.notion.site/Introduction-to-Git-ac396a0697704709a12b6a0e545db049)
+1. https://git-scm.com/
 ::::
 
 ::::{tab-set}

@@ -57,15 +57,16 @@ ___
 :header-rows: 3
 :name: foo
 :width: 95%
-|[Educators Build Your Own Content](./01_Intro.md#educators-build-your-own-content)|
-|:----------------------------------------------|
-| [Requirements](./02_Requirements.md)          |
-| [Create a New Fork](./03_Fork.md)             |
-| [GitHub Pages Setting](./04_GH_Pages.md)      |
-| [Deployment Settings](./05_Deploy.md)         |
-| [Modify the Content](./06_Content.md)         |
-| [GitHub Workflow Deployment](./07_Workflow.md)|
-| [References](./08_Ref.md)                     |
+|[Educators Build Your Own Content](./01_Intro.md#educators-build-your-own-content) |
+|:----------------------------------------------------------------------------------|
+| [Requirements](./02_Requirements.md#requirements)                                 |
+| [Create a New Fork](./03_Fork.md#create-a-new-fork)                               |
+| [GitHub Pages Setting](./04_GH_Pages.md#github-pages-setting)                     |
+| [Deployment Settings](./05_Deploy.md#deployment-settings)                         |
+| [Advanced Deployment Settings](./06_Deploy_Advanced.md#content-ie-feature-branch) |
+| [Modify the Content](./07_Content.md#modify-the-content)                          |
+| [GitHub Workflow Deployment](./08_Workflow.md#github-workflow-deployment)         |
+| [References](./09_Ref.md#references)                                              |
 
 :::
 ::::

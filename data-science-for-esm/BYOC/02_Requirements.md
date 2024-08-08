@@ -30,9 +30,9 @@ Our recommendation is [VSCode][VSCode][^2], together with the `Jupyter` [extensi
 
 ## Git
 
-To follow this tutorial, basic usage of [Git][Git_1] is a pre requirement. It is strongly recommended to refresh[^3] on the Git basics, before moving forwards.
+To follow this tutorial, basic usage of [Git][Git_1] is a pre requirement. It is strongly recommended to refresh[^3] your Git basics, before moving forwards.
 
-Besides the aforementioned Atlassian source, [this][Git_2] is the PyPSA Earth reference on Git, and these are some fun, information rich, YouTube Git video tutorials:
+Besides the aforementioned Atlassian source, [this][Git_2] is the PyPSA Earth Git reference, and these are some fun, information rich, YouTube Git video tutorials:
 
 * [Git Tutorial for Beginners: Command-Line Fundamentals](https://www.youtube.com/watch?v=HVsySz-h9r4)
 * [Git Tutorial For Dummies](https://www.youtube.com/watch?v=mJ-qvsxPHpY)

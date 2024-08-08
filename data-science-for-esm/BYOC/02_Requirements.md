@@ -2,7 +2,7 @@ Requirements
 =============
 For a successful workflow run, the [correct python environment][venv], with all of the [python package dependencies][dependencies] included, is required[^1].
 
-Our suggestion is adopt the package manager `mamba` (or `conda`), which for installation instructions are provided in the [Miniforge GitHub repository][mamba_install], as well as in the [PyPSA-Earth documentation][PyPSA-Earth].
+Our suggestion is adopting the package manager `mamba` (or `conda`), which for installation instructions are provided in the [Miniforge GitHub repository][mamba_install], as well as in the [PyPSA-Earth documentation][PyPSA-Earth].
 
 * There is no need for the BAU:
 
@@ -32,7 +32,7 @@ Our recommendation is [VSCode][VSCode][^2], together with the `Jupyter` [extensi
 
 To follow this tutorial, basic usage of [Git][Git_1] is a pre requirement. It is strongly recommended to understand, or refresh on, the basics of Git, before moving forwards.
 
-Besides the aforementioned Atlassian source, [this][Git_2] is the PyPSA Earth reference, and these are some fun, information rich, YouTube Git video tutorials:
+Besides the aforementioned Atlassian source, [this][Git_2] is the PyPSA Earth reference on Git, and these are some fun, information rich, YouTube Git video tutorials:
 
 * [Git Tutorial for Beginners: Command-Line Fundamentals](https://www.youtube.com/watch?v=HVsySz-h9r4)
 * [Git Tutorial For Dummies](https://www.youtube.com/watch?v=mJ-qvsxPHpY)

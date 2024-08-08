@@ -30,7 +30,7 @@ Our recommendation is [VSCode][VSCode][^2], together with the `Jupyter` [extensi
 
 ## Git
 
-To follow this tutorial, basic usage of [Git][Git_1] is a pre requirement. It is strongly recommended to understand, or refresh on, the basics of Git, before moving forwards.
+To follow this tutorial, basic usage of [Git][Git_1] is a pre requirement. It is strongly recommended to refresh[^3] on the Git basics, before moving forwards.
 
 Besides the aforementioned Atlassian source, [this][Git_2] is the PyPSA Earth reference on Git, and these are some fun, information rich, YouTube Git video tutorials:
 
@@ -39,8 +39,9 @@ Besides the aforementioned Atlassian source, [this][Git_2] is the PyPSA Earth re
 * [Learn Git in 15 Minutes](https://www.youtube.com/watch?v=USjZcfj8yxE).
 
 
-[^1]: Your Python `venv` can very, depending on the Jupyter Notebooks' content.
+[^1]:   Your Python `venv` can very, depending on the Jupyter Notebooks' content.
 [^2]:   <b><font color='red'>Also used by the [PyPSA developers][PyPSA-Earth], due to its simplicity, and being open-source.</font></b>
+[^3]:   That is, in case you aren't a day-to-day user.
 
 
 

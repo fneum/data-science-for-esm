@@ -2,7 +2,7 @@ Requirements
 =============
 For a successful workflow run, the [correct python environment][venv], with all of the [python package dependencies][dependencies] included, is required[^1].
 
-Our suggestion is adopting the package manager `mamba` (or `conda`), which for installation instructions are provided in the [Miniforge GitHub repository][mamba_install], as well as in the [PyPSA-Earth documentation][PyPSA-Earth].
+Our suggestion is adopting the package manager `mamba` (or `conda`), which for the installation instructions are provided in the [Miniforge GitHub repository][mamba_install], as well as in the [PyPSA-Earth documentation][PyPSA-Earth].
 
 * There is no need for the BAU:
 

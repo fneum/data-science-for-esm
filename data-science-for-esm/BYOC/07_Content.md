@@ -35,7 +35,7 @@ Markdown also easily integrates into Jupyter Notebook files . For more refer to 
 Use the files presented here as the template of your Jupyter Book, as they will reduce your content development time.
 
 * The `.ipynb` and the `.md` content files are to be located in the root, or a subfolder, of the cloned `data-science-for-esm`, and specified accordingly in the `_toc.yml`<b>[^1]</b>.
-* Both the `_config.yml`, as well as the `_toc.yml` are to remain in the root of the `data-science-for-esm` folder.
+* Both the `_config.yml`, as well as the `_toc.yml`, are to remain in the root of the `data-science-for-esm` folder.
 * The website logo, as well as the other figures, can be placed in the `data-science-for-esm/_images/` [folder][_images_folder].
 <br />
 <br />

@@ -33,6 +33,7 @@ Upon the deployment finalization, the status indicator turns to:
 </figure>
 </center>
 
+
 [^1]: https://github.com/executablebooks/cookiecutter-jupyter-book/tree/main
 
 

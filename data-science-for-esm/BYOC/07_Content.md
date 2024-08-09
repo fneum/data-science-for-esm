@@ -28,13 +28,13 @@ For the full list of the available file formats go to the [JupyterBook](https://
 
 :::{admonition} Jupyter Notebook
 :class: tip
-Jupyter Notebook files can also contain markdown. For more refer to the [MyST](https://executablebooks.github.io/cookiecutter-jupyter-book/notebooks.html).
+Markdown also easily integrates into Jupyter Notebook files . For more refer to the [MyST](https://executablebooks.github.io/cookiecutter-jupyter-book/notebooks.html).
 :::
 ::::
 
 Use the files presented here as the template of your Jupyter Book, as they will reduce your content development time.
 
-* The `.ipynb` and the `.md` content files are to be located in the root, or a subfolder, of the cloned `data-science-for-esm`, and specified accordingly in the `_toc.yml`[^1].
+* The `.ipynb` and the `.md` content files are to be located in the root, or a subfolder, of the cloned `data-science-for-esm`, and specified accordingly in the `_toc.yml`<b>[^1]</b>.
 * Both the `_config.yml`, as well as the `_toc.yml` are to remain in the root of the `data-science-for-esm` folder.
 * The website logo, as well as the other figures can be placed in the `data-science-for-esm/_images/` [folder][_images_folder].
 <br />
@@ -57,7 +57,7 @@ git commit -m 'new changes applied'
 git push origin content_branch
 ~~~
 
-* The metadata of the website, such as the author, logo, and other relevant GitHub and Google Colab links, are to be defined in the `_config.yml`[^3]:
+* The metadata of the website, such as the author, logo, and other relevant GitHub and Google Colab links, are to be defined in the `_config.yml`<b>[^3]</b>:
     * Use the already provided `_toc.yml` and `_config.yml` files as a template, and follow their structure.
 
 * In the `data-science-for-esm/_toc.yml` [file](https://github.com/fneum/data-science-for-esm/blob/bc6e35f5c007a33972d23d1df7e26c59f2a875dd/data-science-for-esm/_toc.yml), a sequence of files to be included in the Jupyter Book, and the GitHub Page, is defined, and further used by the `jupyter-build book` command.

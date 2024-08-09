@@ -3,10 +3,10 @@ Content (i.e. feature) Branch
 In the [previous section](./05_Deploy.md#deployment-settings) we defined the `main` branch as the deployment branch.
 
 This section is intended for advanced users, who would like to:
-1. deploy their website from a so-called feature branch,
-1. keep the main branch synchronized with the original source, i.e. the upstream.
+1. deploy their website from a so-called `feature` branch,
+1. keep the `main` branch in sync with the original source, i.e. the upstream.
 
-There is a valid reason why one would want the website deploying from a non-main branch, i.e. commonly termed a feature branch.
+There is a valid reason why one would want the workflow triggering from a non-main branch, i.e. commonly termed a `feature` branch<b>[^1]</b>.
 
 The argument for doing so is to keep the `main` branch of your fork `https://github.com/<user>/data-science-for-esm` synchronized/identical to the `main` branch of the upstream `https://github.com/fneum/data-science-for-esm` repository.
 
@@ -15,6 +15,7 @@ In particular, this approach facilitates comparing the fork and the upstream, re
 A simple workflow of keeping your fork's `main` up-to-date with the upstream `main` is:
 ~~~
 git remote add upstream https://github.com/fneum/data-science-for-esm
+git switch main # move to the main branch of your fork
 git pull upstream main
 ~~~
 To merge the `main` branch updates, obtained by synchronizing your `main` with the upstream `main`, into your Jupyter Book `content_branch`:
@@ -29,11 +30,11 @@ git cherry-pick <last main branch commit hash>
 git cherry-pick --continue
 ```
 
-In order to save these changes, follow the instructions in [Modify the Content](./06_Content.md#modify-the-content) section.
+In order to save these changes, follow the instructions in [Modify the Content](./07_Content.md#modify-the-content) section.
 
 
 <!-- [^1]: <strong><font color='red'>This section is intended for </font></strong> <mark style="background-color: red; color: black"><b>advanced use.</b></mark> -->
-[^1]: In this material the feature branch is defined as `content_branch`.
+[^1]: <b>In this material the `feature` branch is defined as the `content_branch`.</b>
 
 
 

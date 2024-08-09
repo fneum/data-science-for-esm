@@ -27,14 +27,17 @@ permissions:
   checks: read
 ~~~
 
-This setup uses the `main` branch in the workflow, but it can also be any other newly created side-branch. Upon the `git push`, the [workflow](./07_Workflow.md#github-workflow-deployment) will be triggered.
+This setup uses the `main` branch in the workflow, but it can also be any other newly created side-branch. Upon the `git push`, the [workflow](./08_Workflow.md#github-workflow-deployment) will be triggered.
 
 The deployment itself is the `jupyter-build book data-science-for-esm` [command][command]. This command is in charge generating the HTML code from the data provided in the data-science-for-esm [folder][folder].
 
-Further explanation of this command, i.e. the `jupyter-book build`, as well as the other commands is provided in the [README.md](https://github.com/open-energy-transition/data-science-for-esm/blob/37c3ef84651a12ee947573dfedd6c4b7786731bc/README.md) file. A more detailed explanation is to be found at the following Jupyter Book references:
+Further explanation of this command, i.e. the `jupyter-book build`, as well as the other commands is provided in the [README.md](https://github.com/open-energy-transition/data-science-for-esm/blob/37c3ef84651a12ee947573dfedd6c4b7786731bc/README.md) file. A more detailed explanation is to be found in the following Jupyter Book references:
 <!-- 1. [Build your book](https://jupyterbook.org/en/stable/start/build.html) -->
 1. [Build from the command line](https://jupyterbook.org/en/stable/basics/build.html)
 1. [Structure the Table of Contents](https://jupyterbook.org/en/stable/structure/toc.html)
+
+Although it is perfectly fine to trigger the workflow from the `main` working branch, there are a couple of reasons why you should stay off the `main` branch and use a `feature` branch instead. These are explained in the next [section](./06_Deploy_Advanced.md#content-ie-feature-branch).
+
 
 
 [^1]: In this example it is the `main` branch.

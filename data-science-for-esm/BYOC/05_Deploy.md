@@ -2,7 +2,7 @@ Deploy Settings
 ===================
 > **Note:** The key point is to set the correct deployment branch in the <code>./github/workflows/deploy.yml</code>.
 
-In the <code>.github/workflows/deploy.yml</code> [file][deploy_1], of the cloned repository, specify the branch, to be used by the workflow: 
+In the <code>.github/workflows/deploy.yml</code> [file][deploy_1], of the cloned repository, specify the branch, to be used by the workflow:
 
 ~~~
 on:

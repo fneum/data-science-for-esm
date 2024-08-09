@@ -6,7 +6,7 @@
 ``` -->
 
 <span style="font-size:2.25em;">Anatomy of a Jupyter Book</span>
-<!-- -------------------------- -->
+
 **Three things** are needed for building a [Jupyter Book][jupyter-book]:
 * A configuration file ([_config.yml][fneum_content])
 * A table of contents file ([_toc.yml][fneum_toc])

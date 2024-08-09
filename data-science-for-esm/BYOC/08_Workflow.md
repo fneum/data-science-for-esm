@@ -1,13 +1,13 @@
 GitHub Workflow Deployment
 =========================================================
-In [Deployment Settings](./05_Deploy.md#deployment-settings) we defined the deployment branch in the `.github/workflows/deploy.yml` [file][deploy], which is used by the workflow, whenever performing `git push`.
+In [Deploy Settings](./05_Deploy.md#deployment-settings) we defined the deployment branch in the `.github/workflows/deploy.yml` [file][deploy], which is used by the workflow, whenever performing `git push`.
 
 You are free to use any branch, other than the `gh-pages`, keeping in mind that only upon the `git push`, the workflow will be triggered.
 
 The workflow deployment itself is tracked by your repository's status indicator, in this case a beige-brown dot &nbsp;<strong><b><font color='peru'>⏺</font></strong></b>
 * _Clicking on it will show the running status, and the deployment details_.
 
-As mentioned, the deployment takes minutes to finish, depending on the content files, i.e. the python commands in the Jupyter Notebooks, which will take the most of time required for the deployment.
+As mentioned, the deployment takes minutes to finish, depending on the content files, i.e. the python commands in the Jupyter Notebooks. These will take up the most of the required deployment time.
 
 <center>
 <figure>
@@ -20,7 +20,7 @@ As mentioned, the deployment takes minutes to finish, depending on the content f
 
 Upon the deployment finalization, the status indicator turns to:
 * _successful_: a green thick <strong><b><font color='green'>🗸</font></strong></b>
-    * you should be able to see the changes taking place, after some moments, at the specified `https://<user>.github.io/data-science-for-esm`[^1]
+    * you should be able to see the changes taking place, after some moments, at the specified `https://<user>.github.io/data-science-for-esm`<b>[^1]</b>
 * _unsuccessful_: a red cross mark <font color="red">🗶</font>
     * indicating an error in the `_toc.yml`, or one of the content files, which need to be revisited.
 

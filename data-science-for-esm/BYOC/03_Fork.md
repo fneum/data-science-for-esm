@@ -5,8 +5,8 @@ Create a New Fork
 Before forking this repository please have the following in mind: -->
 Create your fork of this repository by clicking on the figure below.
 
-In the <strong><b><mark>Create a new fork</mark></b></strong> pop-up menu, shown in the figure below, *<ins>deselect</ins>* the default **Copy the `main` branch only** option. 
-    
+In the <strong><b><mark>Create a new fork</mark></b></strong> pop-up menu, shown in the figure below, *<ins>deselect</ins>* the default **Copy the `main` branch only** option.
+
 By doing so, you will reduce further branch creation, required by the workflow.
 
 :::{admonition} Fork this repository!
@@ -28,7 +28,7 @@ In this workflow:
 * the published website static site content (`jupyter-book build` output) is in the `gh-pages` branch,
 * the source code (i.e. Jupyter Book input) is in an arbitrary `branch` defined by the user: any other than `gh-pages`,
 
-The arbitrary `branch` can be created locally: 
+The arbitrary `branch` can be created locally:
 ~~~
 git switch -c content_branch
 git push origin content_branch

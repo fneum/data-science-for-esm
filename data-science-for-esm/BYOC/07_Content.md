@@ -66,7 +66,7 @@ git push origin content_branch
 After a successful run, the TOC will be displayed in the left-side menu of the website.
 
 
-[^1]: If not being placed in the root folder, or subfolder, the workflow will be unable to find the files specified by the `_toc.yml`, resulting in the unsuccessful deployment, and unaccessible `https://<user>.github.io/data-science-for-esm`.
+[^1]: If not being placed in the root folder, or subfolder, the workflow will be unable to find the files specified by the `_toc.yml`, resulting in the unsuccessful deployment, and unaccessible `https://<your-username>.github.io/data-science-for-esm`.
 [^2]: <strong><font color='red'>Otherwise workflow deployment will break!</font></strong>
 [^3]: https://jupyterbook.org/en/stable/start/create.html#book-configuration-config-yml
 

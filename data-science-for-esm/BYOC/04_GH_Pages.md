@@ -2,12 +2,12 @@ GitHub Pages Setting
 =====================
 In your fork of this repository, there is a single GitHub Setting that needs modifying:
 
-* In the GitHub repository `https://github.com/<user>/data-science-for-esm`, go to the GitHub **Settings** -> **Pages** heading.<b>[^1]</b>
+* In the GitHub repository `https://github.com/<your-username>/data-science-for-esm`, go to the GitHub **Settings** -> **Pages** heading.<b>[^1]</b>
 
 * In the **GitHub Pages** heading, go to the **Branch** section, and change the selection from `None` to `gh-pages` `/root`.
 
 Once the branch has been selected, at the top of the page a URL will be provided<b>[^2]</b>:
-* **Your site is live at [`https://<user>.github.io/data-science-for-esm`](https://fneum.github.io/data-science-for-esm/intro.html)**.
+* **Your site is live at [`https://<your-username>.github.io/data-science-for-esm`](https://fneum.github.io/data-science-for-esm/intro.html)**.
 
 <center>
 <figure>
@@ -20,7 +20,7 @@ Once the branch has been selected, at the top of the page a URL will be provided
 
 <u>Clone the forked `data-science-for-esm` repository:</u>
 ```
-git clone https://github.com/<user>/data-science-for-esm.git
+git clone https://github.com/<your-username>/data-science-for-esm.git
 cd ./data-science-for-esm
 ```
 

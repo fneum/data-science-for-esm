@@ -8,7 +8,7 @@ This section is intended for advanced users, who would like to:
 
 There is a valid reason why one would want the workflow triggering from a non-main branch, i.e. commonly termed a `feature` branch<b>[^1]</b>.
 
-The argument for doing so is to keep the `main` branch of your fork `https://github.com/<user>/data-science-for-esm` synchronized/identical to the `main` branch of the upstream `https://github.com/fneum/data-science-for-esm` repository.
+The argument for doing so is to keep the `main` branch of your fork `https://github.com/<your-username>/data-science-for-esm` synchronized/identical to the `main` branch of the upstream `https://github.com/fneum/data-science-for-esm` repository.
 
 In particular, this approach facilitates comparing the fork and the upstream, retrieving updates/patches, and also allows you <ins>resetting</ins> your fork, in case something has gone completely wrong.
 

@@ -20,7 +20,7 @@ As mentioned, the deployment takes minutes to finish, depending on the content f
 
 Upon the deployment finalization, the status indicator turns to:
 * _successful_: a green thick <strong><b><font color='green'>🗸</font></strong></b>
-    * you should be able to see the changes taking place, after some moments, at the specified `https://<user>.github.io/data-science-for-esm`<b>[^1]</b>
+    * you should be able to see the changes taking place, after some moments, at the specified `https://<your-username>.github.io/data-science-for-esm`<b>[^1]</b>
 * _unsuccessful_: a red cross mark <font color="red">🗶</font>
     * indicating an error in the `_toc.yml`, or one of the content files, which need to be revisited.
 

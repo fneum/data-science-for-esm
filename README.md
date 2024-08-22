@@ -10,8 +10,8 @@ If you'd like to develop and/or build the Data Science for Energy System Modelli
 
 1. Clone this repository
 2. Run `pip install -r requirements.txt` (it is recommended you do this within a virtual environment)
-3. (Optional) Edit the books source files located in the `data-science-for-esm/` directory
-4. Run `jupyter-book clean data-science-for-esm/` to remove any existing builds
+3. (Optional) Edit the books source files located in the **<mark>data-science-for-esm/</mark>** directory
+4. Run `jupyter-book clean data-science-for-esm/ --all` to remove any existing builds
 5. Run `jupyter-book build data-science-for-esm/`
 
 A fully-rendered HTML version of the book will be built in `data-science-for-esm/_build/html/`.

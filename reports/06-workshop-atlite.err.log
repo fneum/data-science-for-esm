@@ -1,0 +1,95 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 154, in wrapped
+    asyncio.get_running_loop()
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 158, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+band, transform = shape_availability(shape, excluder)
+
+fig, ax = plt.subplots(figsize=(4, 8))
+shape.plot(ax=ax, color="none")
+show(band, transform=transform, cmap="Greens", ax=ax)
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mOverflowError[39m                             Traceback (most recent call last)
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/numpy/ma/core.py:509[39m, in [36m_check_fill_value[39m[34m(fill_value, ndtype)[39m
+[32m    508[39m [38;5;28;01mtry[39;00m:
+[32m--> [39m[32m509[39m     fill_value = [43mnp[49m[43m.[49m[43masarray[49m[43m([49m[43mfill_value[49m[43m,[49m[43m [49m[43mdtype[49m[43m=[49m[43mndtype[49m[43m)[49m
+[32m    510[39m [38;5;28;01mexcept[39;00m ([38;5;167;01mOverflowError[39;00m, [38;5;167;01mValueError[39;00m) [38;5;28;01mas[39;00m e:
+[32m    511[39m     [38;5;66;03m# Raise TypeError instead of OverflowError or ValueError.[39;00m
+[32m    512[39m     [38;5;66;03m# OverflowError is seldom used, and the real problem here is[39;00m
+[32m    513[39m     [38;5;66;03m# that the passed fill_value is not compatible with the ndtype.[39;00m
+
+[31mOverflowError[39m: Python integer 255 out of bounds for int8
+
+The above exception was the direct cause of the following exception:
+
+[31mTypeError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[47][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m band, transform = [43mshape_availability[49m[43m([49m[43mshape[49m[43m,[49m[43m [49m[43mexcluder[49m[43m)[49m
+[32m      3[39m fig, ax = plt.subplots(figsize=([32m4[39m, [32m8[39m))
+[32m      4[39m shape.plot(ax=ax, color=[33m"[39m[33mnone[39m[33m"[39m)
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/atlite/gis.py:302[39m, in [36mshape_availability[39m[34m(geometry, excluder)[39m
+[32m    300[39m     kwargs_keys = [[33m"[39m[33mallow_no_overlap[39m[33m"[39m, [33m"[39m[33mnodata[39m[33m"[39m]
+[32m    301[39m     kwargs = {k: v [38;5;28;01mfor[39;00m k, v [38;5;129;01min[39;00m d.items() [38;5;28;01mif[39;00m k [38;5;129;01min[39;00m kwargs_keys}
+[32m--> [39m[32m302[39m     masked, transform = [43mprojected_mask[49m[43m([49m
+[32m    303[39m [43m        [49m[43md[49m[43m[[49m[33;43m"[39;49m[33;43mraster[39;49m[33;43m"[39;49m[43m][49m[43m,[49m[43m [49m[43mgeometry[49m[43m,[49m[43m [49m[43mtransform[49m[43m,[49m[43m [49m[43mshape[49m[43m,[49m[43m [49m[43mexcluder[49m[43m.[49m[43mcrs[49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mkwargs[49m
+[32m    304[39m [43m    [49m[43m)[49m
+[32m    305[39m [38;5;28;01mif[39;00m d[[33m"[39m[33mcodes[39m[33m"[39m]:
+[32m    306[39m     [38;5;28;01mif[39;00m [38;5;28mcallable[39m(d[[33m"[39m[33mcodes[39m[33m"[39m]):
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/atlite/gis.py:216[39m, in [36mprojected_mask[39m[34m(raster, geom, transform, shape, crs, allow_no_overlap, **kwargs)[39m
+[32m    214[39m         masked = np.full(shape_, nodata)
+[32m    215[39m [38;5;28;01melse[39;00m:
+[32m--> [39m[32m216[39m     masked, transform_ = [43mmask[49m[43m([49m[43mraster[49m[43m,[49m[43m [49m[43mgeom[49m[43m,[49m[43m [49m[43mcrop[49m[43m=[49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mkwargs[49m[43m)[49m
+[32m    218[39m [38;5;28;01mif[39;00m transform [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mor[39;00m (transform_ == transform [38;5;129;01mand[39;00m masked.shape == shape):
+[32m    219[39m     [38;5;28;01mreturn[39;00m masked, transform_
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/rasterio/mask.py:195[39m, in [36mmask[39m[34m(dataset, shapes, all_touched, invert, nodata, filled, crop, pad, pad_width, indexes)[39m
+[32m    192[39m out_image.mask = out_image.mask | shape_mask
+[32m    194[39m [38;5;28;01mif[39;00m filled:
+[32m--> [39m[32m195[39m     out_image = [43mout_image[49m[43m.[49m[43mfilled[49m[43m([49m[43mnodata[49m[43m)[49m
+[32m    197[39m [38;5;28;01mreturn[39;00m out_image, transform
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/numpy/ma/core.py:3920[39m, in [36mMaskedArray.filled[39m[34m(self, fill_value)[39m
+[32m   3918[39m     fill_value = [38;5;28mself[39m.fill_value
+[32m   3919[39m [38;5;28;01melse[39;00m:
+[32m-> [39m[32m3920[39m     fill_value = [43m_check_fill_value[49m[43m([49m[43mfill_value[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[43m.[49m[43mdtype[49m[43m)[49m
+[32m   3922[39m [38;5;28;01mif[39;00m [38;5;28mself[39m [38;5;129;01mis[39;00m masked_singleton:
+[32m   3923[39m     [38;5;28;01mreturn[39;00m np.asanyarray(fill_value)
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/numpy/ma/core.py:515[39m, in [36m_check_fill_value[39m[34m(fill_value, ndtype)[39m
+[32m    510[39m     [38;5;28;01mexcept[39;00m ([38;5;167;01mOverflowError[39;00m, [38;5;167;01mValueError[39;00m) [38;5;28;01mas[39;00m e:
+[32m    511[39m         [38;5;66;03m# Raise TypeError instead of OverflowError or ValueError.[39;00m
+[32m    512[39m         [38;5;66;03m# OverflowError is seldom used, and the real problem here is[39;00m
+[32m    513[39m         [38;5;66;03m# that the passed fill_value is not compatible with the ndtype.[39;00m
+[32m    514[39m         err_msg = [33m"[39m[33mCannot convert fill_value [39m[38;5;132;01m%s[39;00m[33m to dtype [39m[38;5;132;01m%s[39;00m[33m"[39m
+[32m--> [39m[32m515[39m         [38;5;28;01mraise[39;00m [38;5;167;01mTypeError[39;00m(err_msg % (fill_value, ndtype)) [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01me[39;00m
+[32m    516[39m [38;5;28;01mreturn[39;00m np.array(fill_value)
+
+[31mTypeError[39m: Cannot convert fill_value 255 to dtype int8
+

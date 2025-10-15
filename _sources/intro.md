@@ -2,7 +2,7 @@
 
 Welcome to the website accompanying the course [Data Science for Energy System Modelling](https://moseskonto.tu-berlin.de/moses/modultransfersystem/bolognamodule/beschreibung/anzeigen.html?nummer=31027&version=2&sprache=2). This course is being developed by [Dr. Fabian Neumann](https://fneum.org) and offered as part of the curriculum of the [Department of Digital Transformation of Energy Systems at TU Berlin](https://www.tu.berlin/ensys).
 
-On this website you will find practical introductions to many Python packages that are useful for dealing with energy data and building energy system models. Course materials other than practical introductions to Python packages for students at TU Berlin are provided on [ISIS](https://isis.tu-berlin.de/course/view.php?id=40132) (winter semeter 2024/2025).
+On this website you will find practical introductions to many Python packages that are useful for dealing with energy data and building energy system models. Course materials other than practical introductions to Python packages for students at TU Berlin are provided on [ISIS](https://isis.tu-berlin.de/course/view.php?id=44803) (winter semeter 2025/2026).
 
 The course covers tutorials and examples for getting started with Python, `numpy`, `matplotlib`, `pandas`, `geopandas`, `cartopy`, `rasterio`,  `pysheds`, `atlite`, `networkx`, `linopy`, `pypsa`, `plotly`, `hvplot`, and `streamlit`. Topics covered include:
 
@@ -111,7 +111,7 @@ configuration can be installed by executing
 For extensive documentation on using environments, please see
 [the conda documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html).
 
-## Environment for this course: `esm-ws-24-25`
+## Environment for this course: `esm-ws-25-26`
 
 ### ... with `conda` (recommended)
 
@@ -128,7 +128,7 @@ you can reate this environment using `conda`
 
 Activate this environment
 
-    conda activate esm-ws-24-25
+    conda activate esm-ws-25-26
 
 This environment should be sufficient for all of your work in this course.
 
@@ -166,11 +166,5 @@ The following documentation pages might be worth a visit:
 - [Notebooks](https://jupyterlab.readthedocs.io/en/stable/user/notebook.html)
 - [Terminals](https://jupyterlab.readthedocs.io/en/stable/user/terminal.html)
 - [Managing Kernels and Terminals](https://jupyterlab.readthedocs.io/en/stable/user/running.html)
-
-## Markdown
-
-Throughout the course, you might want to write rich text documents using Markdown.
-This is also very common in Jupyter:
-
 - [Markdown Guide / Basic Syntax](https://www.markdownguide.org/basic-syntax)
 - [Official Markdown Documentation](https://daringfireball.net/projects/markdown/)

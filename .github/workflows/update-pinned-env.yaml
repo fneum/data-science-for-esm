@@ -3,6 +3,7 @@ on:
   push:
     paths:
     - environment.yaml
+    - requirements.txt
   workflow_dispatch:
 
 env:
@@ -10,7 +11,8 @@ env:
 
 jobs:
   update-conda-locked-environment:
-    name: Update pinned envs
+    if: ${{ github.ref == 'refs/heads/main' }}
+    name: Update pinned envs for conda
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -62,7 +64,8 @@ jobs:
         path: envs/*.lock.yaml
 
   update-pip-uv-locked-environment:
-    name: Update pinned envs
+    if: ${{ github.ref == 'refs/heads/main' }}
+    name: Update pinned envs for pip/uv
     runs-on: ubuntu-latest
     defaults:
       run:

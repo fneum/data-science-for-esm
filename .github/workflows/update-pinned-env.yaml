@@ -74,22 +74,16 @@ jobs:
     steps:
     - uses: actions/checkout@v5
 
-    - name: Set up Python 3.13
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.13"
-
     - name: Install uv
       uses: astral-sh/setup-uv@v6
 
     - name: Generate lockfiles for pip and uv
       run: |
-        # Create requirements.lock
-        uv pip compile requirements.txt -o requirements.lock --upgrade
+        # Generate uv.lock from pyproject.toml
+        uv lock --upgrade
 
-        # Create uv.lock
-        uv init --no-readme --no-workspace --no-package . --python 3.13
-        uv add -r requirements.txt
+        # Create requirements.lock
+        uv pip compile pyproject.toml -o requirements.lock --upgrade
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4

@@ -1,10 +1,10 @@
 {
-  "name": "DSESM Development Container",
   "image": "mcr.microsoft.com/devcontainers/python:3.13",
-  "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && uv sync --locked && echo 'source .venv/bin/activate' >> ~/.bashrc",
+  "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && uv sync --locked",
   "customizations": {
     "vscode": {
-      "extensions": ["ms-python.python", "ms-toolsai.jupyter"]
+      "extensions": ["ms-python.python", "ms-toolsai.jupyter"],
+      "settings": { "python.defaultInterpreterPath": ".venv/bin/python" }
     }
   }
 }

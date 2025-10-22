@@ -74,6 +74,11 @@ jobs:
     steps:
     - uses: actions/checkout@v5
 
+    - name: Set up Python 3.13
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.13"
+
     - name: Install uv
       uses: astral-sh/setup-uv@v6
 
@@ -85,7 +90,7 @@ jobs:
         # Create uv.lock
         uv init --no-readme --no-workspace --no-package . --python 3.13
         uv add -r requirements.txt
-        rm .python-version main.py pyproject.toml
+        rm .python-version main.py
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4

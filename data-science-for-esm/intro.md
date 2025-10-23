@@ -36,7 +36,7 @@ repository or parts of it.  There are several ways to do this:
 
 ### Individual File Download (beginner friendly):
 
-You can download individual files directly from website by clicking on the 
+You can download individual files directly from website by clicking on the
 download button at the top-right corner of each page.
 
 :::{note}
@@ -131,7 +131,7 @@ Python coupled with a package manager like `conda` provides a way to make
 isolated, reproducible **environments** where you have control over all
 installed packages and configurations. To work through the course materials, you
 need to install a specific set of packages within such a dedicated `conda`
-environment. 
+environment.
 
 #### Downloading specification files
 
@@ -330,7 +330,7 @@ Unlike with `conda`, `pip` does not provide isolated environments by default.
 ### Using `uv`
 
 :::{warning}
-Some geographical packages used in this course (e.g., `rasterio`, `geopandas`, `cartopy`) may require additional system dependencies that are not handled by `pip`. 
+Some geographical packages used in this course (e.g., `rasterio`, `geopandas`, `cartopy`) may require additional system dependencies that are not handled by `pip`.
 Unlike with `conda`, you may need to install these dependencies manually, e.g. "GDAL".
 **Only use this method if you are experienced with package management!**
 :::

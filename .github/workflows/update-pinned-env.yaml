@@ -49,9 +49,9 @@ jobs:
         for file in envs/*.lock.yaml; do
           if [ -f "$file" ]; then
             echo "Processing $file"
-            if ! grep -q "name: esm-ws-25-26" "$file"; then
-              # Insert name: esm-ws-25-26 before channels section
-              sed -i '7a name: esm-ws-25-26' "$file"
+            if ! grep -q "^name: esm-ws-25-26" "$file"; then
+              # Insert name before channels section
+              sed -i '/^channels:/i name: esm-ws-25-26' "$file"
             else
               echo "name: esm-ws-25-26 already exists in $file"
             fi

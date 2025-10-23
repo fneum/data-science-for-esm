@@ -125,7 +125,7 @@ For beginners, the Anaconda Python Distribution is recommended. If you are comfo
 
 Once Anaconda is installed, you can access `conda` in the command line using the *Anaconda Prompt* application on Windows, or the terminal application on Linux and MacOS.
 
-## Installing `conda` environments
+### Installing `conda` environments
 
 Python coupled with a package manager like `conda` provides a way to make
 isolated, reproducible **environments** where you have control over all
@@ -133,7 +133,7 @@ installed packages and configurations. To work through the course materials, you
 need to install a specific set of packages within such a dedicated `conda`
 environment. 
 
-### Downloading specification files
+#### Downloading specification files
 
 Among several other ways to do this, this can be done by creating a new
 environment from a provided `environment.yaml` file. This file lists all
@@ -160,7 +160,7 @@ file.
 :::
 
 
-### Option 1: Anaconda user interface
+#### Option 1: Anaconda user interface
 
 1. Open the Anaconda Navigator application
 2. Go to the "Environments" tab on the left
@@ -172,7 +172,7 @@ file.
 This process may take some time, depending on your internet connection and computer speed.
 :::
 
-### Option 2: Command line
+#### Option 2: Command line
 
 First, check that you have access to `conda` in your terminal (or Anaconda Prompt on Windows) by typing:
 
@@ -209,7 +209,7 @@ This process may take some time, depending on your internet connection and compu
 :::
 
 
-## Using `conda` environments
+### Using `conda` environments
 
 To use the course environment, it must be **activated** by executing in the terminal (or Anaconda Prompt on Windows):
 
@@ -264,7 +264,7 @@ If you want to permanently remove an environment, run:
 conda env remove -n esm-ws-25-26
 ```
 
-## Running Jupyter Lab
+### Running Jupyter Lab
 
 With the environment activated, you can start [Jupyter Lab](https://jupyterlab.readthedocs.io/en/stable/), a web-based interactive development environment, by typing:
 

@@ -1,0 +1,1692 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Solution pandas &#8212; Data Science for Energy System Modelling</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=43cf7565" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03-workshop-pandas-solution';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Solutions numpy &amp; matplotlib" href="02-workshop-numpy-solution.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Data Science for Energy System Modelling - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Data Science for Energy System Modelling - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introductions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-workshop-python.html">Introduction to <code class="docutils literal notranslate"><span class="pre">Python</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-workshop-numpy.html">Introduction to <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-workshop-pandas.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-workshop-python-solution.html">Solutions <code class="docutils literal notranslate"><span class="pre">Python</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-workshop-numpy-solution.html">Solutions <code class="docutils literal notranslate"><span class="pre">numpy</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Solution <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/fneum/data-science-for-esm/blob/main/data-science-for-esm/03-workshop-pandas-solution.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fneum/data-science-for-esm" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fneum/data-science-for-esm/issues/new?title=Issue%20on%20page%20%2F03-workshop-pandas-solution.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/03-workshop-pandas-solution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Solution pandas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-plants-data">Power Plants Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wind-and-solar-capacity-factors">Wind and Solar Capacity Factors</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="solution-pandas">
+<h1>Solution <code class="docutils literal notranslate"><span class="pre">pandas</span></code><a class="headerlink" href="#solution-pandas" title="Link to this heading">#</a></h1>
+<section id="power-plants-data">
+<h2>Power Plants Data<a class="headerlink" href="#power-plants-data" title="Link to this heading">#</a></h2>
+<p>In this exercise, we will use the <a class="reference external" href="https://raw.githubusercontent.com/PyPSA/powerplantmatching/master/powerplants.csv">powerplants.csv</a> dataset from the <a class="reference external" href="https://github.com/PyPSA/powerplantmatching">powerplantmatching</a> project. This dataset contains information about various power plants, including their names, countries, fuel types, capacities, and more.</p>
+<p>URL: <code class="docutils literal notranslate"><span class="pre">https://raw.githubusercontent.com/PyPSA/powerplantmatching/master/powerplants.csv</span></code></p>
+<p><strong>Task 1:</strong> Load the dataset into a pandas DataFrame.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/PyPSA/powerplantmatching/master/powerplants.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>Task 2:</strong> Run the function <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> on the DataFrame.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Capacity</th>
+      <th>Efficiency</th>
+      <th>DateIn</th>
+      <th>DateRetrofit</th>
+      <th>DateOut</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>Duration</th>
+      <th>Volume_Mm3</th>
+      <th>DamHeight_m</th>
+      <th>StorageCapacity_MWh</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>29565.000000</td>
+      <td>541.000000</td>
+      <td>23772.000000</td>
+      <td>2436.000000</td>
+      <td>932.000000</td>
+      <td>29565.000000</td>
+      <td>29565.000000</td>
+      <td>614.000000</td>
+      <td>29565.000000</td>
+      <td>29565.000000</td>
+      <td>29565.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>46.318929</td>
+      <td>0.480259</td>
+      <td>2005.777764</td>
+      <td>1988.509442</td>
+      <td>2020.609442</td>
+      <td>49.636627</td>
+      <td>9.010803</td>
+      <td>1290.093123</td>
+      <td>2.889983</td>
+      <td>6.463436</td>
+      <td>355.629403</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>198.176762</td>
+      <td>0.179551</td>
+      <td>41.415357</td>
+      <td>25.484325</td>
+      <td>10.372226</td>
+      <td>5.600155</td>
+      <td>8.090038</td>
+      <td>1541.197008</td>
+      <td>78.807802</td>
+      <td>46.451613</td>
+      <td>6634.715089</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.140228</td>
+      <td>0.000000</td>
+      <td>1899.000000</td>
+      <td>1969.000000</td>
+      <td>32.647300</td>
+      <td>-27.069900</td>
+      <td>0.007907</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>2.800000</td>
+      <td>0.356400</td>
+      <td>2004.000000</td>
+      <td>1971.000000</td>
+      <td>2018.000000</td>
+      <td>46.861100</td>
+      <td>5.029700</td>
+      <td>90.338261</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>8.200000</td>
+      <td>0.385600</td>
+      <td>2012.000000</td>
+      <td>1997.000000</td>
+      <td>2021.000000</td>
+      <td>50.207635</td>
+      <td>9.255472</td>
+      <td>792.753846</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>25.000000</td>
+      <td>0.580939</td>
+      <td>2017.000000</td>
+      <td>2009.000000</td>
+      <td>2023.000000</td>
+      <td>52.630700</td>
+      <td>12.850190</td>
+      <td>2021.408119</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>6000.000000</td>
+      <td>0.917460</td>
+      <td>2030.000000</td>
+      <td>2020.000000</td>
+      <td>2051.000000</td>
+      <td>71.012300</td>
+      <td>39.655350</td>
+      <td>16840.000000</td>
+      <td>9500.000000</td>
+      <td>1800.000000</td>
+      <td>421000.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</details>
+</div>
+<p><strong>Task 3:</strong> Provide a list of unique fuel types and technologies included in the dataset.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Look in the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> documentation for functions that might be useful to solve these tasks.</p>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">Fueltype</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Nuclear&#39;, &#39;Hard Coal&#39;, &#39;Hydro&#39;, &#39;Lignite&#39;, &#39;Natural Gas&#39;, &#39;Oil&#39;,
+       &#39;Solid Biomass&#39;, &#39;Wind&#39;, &#39;Solar&#39;, &#39;Other&#39;, &#39;Biogas&#39;, &#39;Waste&#39;,
+       &#39;Geothermal&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">Technology</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Steam Turbine&#39;, &#39;Reservoir&#39;, &#39;Pumped Storage&#39;, &#39;Run-Of-River&#39;,
+       &#39;CCGT&#39;, nan, &#39;Offshore&#39;, &#39;Onshore&#39;, &#39;Unknown&#39;, &#39;Pv&#39;, &#39;Marine&#39;,
+       &#39;Not Found&#39;, &#39;Combustion Engine&#39;, &#39;PV&#39;, &#39;CSP&#39;, &#39;unknown&#39;,
+       &#39;not found&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>Task 4:</strong> Filter the dataset by power plants with the fuel type “Hard Coal”.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coal</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Fueltype</span> <span class="o">==</span> <span class="s2">&quot;Hard Coal&quot;</span><span class="p">]</span>
+<span class="n">coal</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Fueltype</th>
+      <th>Technology</th>
+      <th>Set</th>
+      <th>Country</th>
+      <th>Capacity</th>
+      <th>Efficiency</th>
+      <th>DateIn</th>
+      <th>DateRetrofit</th>
+      <th>DateOut</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>Duration</th>
+      <th>Volume_Mm3</th>
+      <th>DamHeight_m</th>
+      <th>StorageCapacity_MWh</th>
+      <th>EIC</th>
+      <th>projectID</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>Borssele</td>
+      <td>Hard Coal</td>
+      <td>Steam Turbine</td>
+      <td>PP</td>
+      <td>Netherlands</td>
+      <td>485.000000</td>
+      <td>NaN</td>
+      <td>1973.0</td>
+      <td>NaN</td>
+      <td>2034.0</td>
+      <td>51.433200</td>
+      <td>3.716000</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'49W000000000054X'}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-NL-2'}, 'ENTSOE': {'49...</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>Didcot</td>
+      <td>Hard Coal</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>United Kingdom</td>
+      <td>1490.000000</td>
+      <td>0.550000</td>
+      <td>1970.0</td>
+      <td>1998.0</td>
+      <td>2013.0</td>
+      <td>51.622300</td>
+      <td>-1.260800</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'48WSTN0000DIDCBC'}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-UK-22'}, 'ENTSOE': {'4...</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>Mellach</td>
+      <td>Hard Coal</td>
+      <td>Steam Turbine</td>
+      <td>CHP</td>
+      <td>Austria</td>
+      <td>200.000000</td>
+      <td>NaN</td>
+      <td>1986.0</td>
+      <td>1986.0</td>
+      <td>2020.0</td>
+      <td>46.911700</td>
+      <td>15.488300</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'14W-WML-KW-----0'}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-AT-11'}, 'ENTSOE': {'1...</td>
+    </tr>
+    <tr>
+      <th>150</th>
+      <td>Emile Huchet</td>
+      <td>Hard Coal</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>France</td>
+      <td>596.493211</td>
+      <td>NaN</td>
+      <td>1958.0</td>
+      <td>2010.0</td>
+      <td>2022.0</td>
+      <td>49.152500</td>
+      <td>6.698100</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'17W100P100P0344D', '17W100P100P0345B'}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-FR-67'}, 'ENTSOE': {'1...</td>
+    </tr>
+    <tr>
+      <th>151</th>
+      <td>Amercoeur</td>
+      <td>Hard Coal</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>Belgium</td>
+      <td>451.000000</td>
+      <td>0.187765</td>
+      <td>1968.0</td>
+      <td>NaN</td>
+      <td>2009.0</td>
+      <td>50.431000</td>
+      <td>4.395500</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'22WAMERCO000010Y'}</td>
+      <td>{'BEYONDCOAL': {'BEYOND-BE-27'}, 'ENTSOE': {'2...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>29779</th>
+      <td>St</td>
+      <td>Hard Coal</td>
+      <td>NaN</td>
+      <td>CHP</td>
+      <td>Germany</td>
+      <td>21.645000</td>
+      <td>NaN</td>
+      <td>1982.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>49.976593</td>
+      <td>9.068953</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan}</td>
+      <td>{'MASTR': {'MASTR-SEE971943692655'}}</td>
+    </tr>
+    <tr>
+      <th>29804</th>
+      <td>Uer</td>
+      <td>Hard Coal</td>
+      <td>NaN</td>
+      <td>CHP</td>
+      <td>Germany</td>
+      <td>15.200000</td>
+      <td>NaN</td>
+      <td>1964.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>51.368132</td>
+      <td>6.662350</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan}</td>
+      <td>{'MASTR': {'MASTR-SEE988421065542'}}</td>
+    </tr>
+    <tr>
+      <th>29813</th>
+      <td>Walheim</td>
+      <td>Hard Coal</td>
+      <td>NaN</td>
+      <td>PP</td>
+      <td>Germany</td>
+      <td>244.000000</td>
+      <td>NaN</td>
+      <td>1964.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>49.017585</td>
+      <td>9.157690</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan, nan}</td>
+      <td>{'MASTR': {'MASTR-SEE937157344278', 'MASTR-SEE...</td>
+    </tr>
+    <tr>
+      <th>29830</th>
+      <td>Wd Ffw</td>
+      <td>Hard Coal</td>
+      <td>NaN</td>
+      <td>CHP</td>
+      <td>Germany</td>
+      <td>123.000000</td>
+      <td>NaN</td>
+      <td>1990.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>50.099000</td>
+      <td>8.653000</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan, nan}</td>
+      <td>{'MASTR': {'MASTR-SEE915289541482', 'MASTR-SEE...</td>
+    </tr>
+    <tr>
+      <th>29835</th>
+      <td>West</td>
+      <td>Hard Coal</td>
+      <td>NaN</td>
+      <td>CHP</td>
+      <td>Germany</td>
+      <td>277.000000</td>
+      <td>NaN</td>
+      <td>1985.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>52.442456</td>
+      <td>10.762681</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan, nan}</td>
+      <td>{'MASTR': {'MASTR-SEE917432813484', 'MASTR-SEE...</td>
+    </tr>
+  </tbody>
+</table>
+<p>332 rows × 18 columns</p>
+</div></div></div>
+</details>
+</div>
+<p><strong>Task 5:</strong> Identify the 5 largest coal power plants. In which countries are they located? When were they built?</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selection</span> <span class="o">=</span> <span class="n">coal</span><span class="o">.</span><span class="n">Capacity</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
+<span class="n">selection</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([194, 3652, 767, 3651, 3704], dtype=&#39;int64&#39;, name=&#39;id&#39;)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coal</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">selection</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;Capacity&quot;</span><span class="p">,</span> <span class="s2">&quot;DateIn&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>Capacity</th>
+      <th>DateIn</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>194</th>
+      <td>Kozienice</td>
+      <td>Poland</td>
+      <td>3682.216205</td>
+      <td>1972.0</td>
+    </tr>
+    <tr>
+      <th>3652</th>
+      <td>Vuglegirska</td>
+      <td>Ukraine</td>
+      <td>3600.000000</td>
+      <td>1972.0</td>
+    </tr>
+    <tr>
+      <th>767</th>
+      <td>Opole</td>
+      <td>Poland</td>
+      <td>3071.893939</td>
+      <td>1993.0</td>
+    </tr>
+    <tr>
+      <th>3651</th>
+      <td>Zaporizhia</td>
+      <td>Ukraine</td>
+      <td>2825.000000</td>
+      <td>1972.0</td>
+    </tr>
+    <tr>
+      <th>3704</th>
+      <td>Moldavskaya Gres</td>
+      <td>Moldova</td>
+      <td>2520.000000</td>
+      <td>1964.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</details>
+</div>
+<p><strong>Task 6:</strong> Identify the power plant with the longest name.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Name</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name                   Kesznyeten Hernadviz Hungary Kesznyeten Hernad...
+Fueltype                                                           Hydro
+Technology                                                  Run-Of-River
+Set                                                                   PP
+Country                                                          Hungary
+Capacity                                                             4.4
+Efficiency                                                           NaN
+DateIn                                                            1945.0
+DateRetrofit                                                      1992.0
+DateOut                                                              NaN
+lat                                                            47.995972
+lon                                                            21.033037
+Duration                                                             NaN
+Volume_Mm3                                                           0.0
+DamHeight_m                                                         14.0
+StorageCapacity_MWh                                                  0.0
+EIC                                                                {nan}
+projectID                   {&#39;JRC&#39;: {&#39;JRC-H2138&#39;}, &#39;GEO&#39;: {&#39;GEO-42677&#39;}}
+Name: 2595, dtype: object
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>Task 7:</strong> Identify the 10 northernmost powerplants. What type of power plants are they?</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Fueltype</th>
+      <th>Technology</th>
+      <th>Set</th>
+      <th>Country</th>
+      <th>Capacity</th>
+      <th>Efficiency</th>
+      <th>DateIn</th>
+      <th>DateRetrofit</th>
+      <th>DateOut</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>Duration</th>
+      <th>Volume_Mm3</th>
+      <th>DamHeight_m</th>
+      <th>StorageCapacity_MWh</th>
+      <th>EIC</th>
+      <th>projectID</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>13729</th>
+      <td>Havoygavlen Wind Farm</td>
+      <td>Wind</td>
+      <td>Onshore</td>
+      <td>PP</td>
+      <td>Norway</td>
+      <td>78.0</td>
+      <td>NaN</td>
+      <td>2003.0</td>
+      <td>NaN</td>
+      <td>2021.0</td>
+      <td>71.012300</td>
+      <td>24.594200</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan, nan}</td>
+      <td>{'GEM': {'G100000917445', 'G100000917626'}}</td>
+    </tr>
+    <tr>
+      <th>14629</th>
+      <td>Kjollefjord Wind Farm</td>
+      <td>Wind</td>
+      <td>Onshore</td>
+      <td>PP</td>
+      <td>Norway</td>
+      <td>39.0</td>
+      <td>NaN</td>
+      <td>2006.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>70.918500</td>
+      <td>27.289900</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan}</td>
+      <td>{'GEM': {'G100000917523'}}</td>
+    </tr>
+    <tr>
+      <th>4385</th>
+      <td>Repvag</td>
+      <td>Hydro</td>
+      <td>Reservoir</td>
+      <td>Store</td>
+      <td>Norway</td>
+      <td>4.4</td>
+      <td>NaN</td>
+      <td>1953.0</td>
+      <td>1953.0</td>
+      <td>NaN</td>
+      <td>70.773547</td>
+      <td>25.616486</td>
+      <td>2810.704545</td>
+      <td>28.3</td>
+      <td>172.0</td>
+      <td>12367.1</td>
+      <td>{nan}</td>
+      <td>{'JRC': {'JRC-N339'}, 'OPSD': {'OEU-4174'}}</td>
+    </tr>
+    <tr>
+      <th>18578</th>
+      <td>Raggovidda Wind Farm</td>
+      <td>Wind</td>
+      <td>Onshore</td>
+      <td>PP</td>
+      <td>Norway</td>
+      <td>97.0</td>
+      <td>NaN</td>
+      <td>2014.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>70.765700</td>
+      <td>29.083300</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan, nan}</td>
+      <td>{'GEM': {'G100000918729', 'G100000918029'}}</td>
+    </tr>
+    <tr>
+      <th>5363</th>
+      <td>Maroyfjord</td>
+      <td>Hydro</td>
+      <td>Reservoir</td>
+      <td>Store</td>
+      <td>Norway</td>
+      <td>4.4</td>
+      <td>NaN</td>
+      <td>1956.0</td>
+      <td>1956.0</td>
+      <td>NaN</td>
+      <td>70.751421</td>
+      <td>27.355047</td>
+      <td>1533.681818</td>
+      <td>13.8</td>
+      <td>225.3</td>
+      <td>6748.2</td>
+      <td>{nan}</td>
+      <td>{'JRC': {'JRC-N289'}, 'OPSD': {'OEU-4036'}}</td>
+    </tr>
+    <tr>
+      <th>6506</th>
+      <td>Melkoya</td>
+      <td>Natural Gas</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>Norway</td>
+      <td>230.0</td>
+      <td>NaN</td>
+      <td>2007.0</td>
+      <td>2007.0</td>
+      <td>NaN</td>
+      <td>70.689366</td>
+      <td>23.600448</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{'50WP00000000456T'}</td>
+      <td>{'ENTSOE': {'50WP00000000456T'}, 'OPSD': {'OEU...</td>
+    </tr>
+    <tr>
+      <th>13634</th>
+      <td>Hammerfest Snohvit Terminal</td>
+      <td>Natural Gas</td>
+      <td>CCGT</td>
+      <td>PP</td>
+      <td>Norway</td>
+      <td>229.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>70.685400</td>
+      <td>23.590000</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan}</td>
+      <td>{'GEM': {'L100000407847'}}</td>
+    </tr>
+    <tr>
+      <th>13636</th>
+      <td>Hamnefjell Wind Farm</td>
+      <td>Wind</td>
+      <td>Onshore</td>
+      <td>PP</td>
+      <td>Norway</td>
+      <td>52.0</td>
+      <td>NaN</td>
+      <td>2017.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>70.667900</td>
+      <td>29.719000</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>{nan}</td>
+      <td>{'GEM': {'G100000918725'}}</td>
+    </tr>
+    <tr>
+      <th>5425</th>
+      <td>Hammerfest</td>
+      <td>Hydro</td>
+      <td>Reservoir</td>
+      <td>Store</td>
+      <td>Norway</td>
+      <td>1.1</td>
+      <td>NaN</td>
+      <td>1947.0</td>
+      <td>1947.0</td>
+      <td>NaN</td>
+      <td>70.657936</td>
+      <td>23.714418</td>
+      <td>1638.181818</td>
+      <td>10.6</td>
+      <td>88.0</td>
+      <td>1802.0</td>
+      <td>{nan}</td>
+      <td>{'JRC': {'JRC-N127'}, 'OPSD': {'OEU-3550'}}</td>
+    </tr>
+    <tr>
+      <th>5270</th>
+      <td>Kongsfjord</td>
+      <td>Hydro</td>
+      <td>Reservoir</td>
+      <td>Store</td>
+      <td>Norway</td>
+      <td>4.4</td>
+      <td>NaN</td>
+      <td>1946.0</td>
+      <td>1946.0</td>
+      <td>NaN</td>
+      <td>70.598729</td>
+      <td>29.057905</td>
+      <td>3343.795455</td>
+      <td>88.1</td>
+      <td>70.5</td>
+      <td>14712.7</td>
+      <td>{nan}</td>
+      <td>{'JRC': {'JRC-N210'}, 'OPSD': {'OEU-3801'}}</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</details>
+</div>
+<p><strong>Task 8:</strong> What is the average start year of each fuel type? Sort the fuel types by their average start year in ascending order and round to the nearest integer.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Fueltype&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">DateIn</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fueltype
+Hard Coal        1972.0
+Hydro            1973.0
+Nuclear          1976.0
+Lignite          1977.0
+Other            1992.0
+Waste            1997.0
+Geothermal       2000.0
+Oil              2001.0
+Solid Biomass    2001.0
+Natural Gas      2002.0
+Wind             2010.0
+Biogas           2013.0
+Solar            2015.0
+Name: DateIn, dtype: float64
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="wind-and-solar-capacity-factors">
+<h2>Wind and Solar Capacity Factors<a class="headerlink" href="#wind-and-solar-capacity-factors" title="Link to this heading">#</a></h2>
+<p>In this exercise, we will work with a time series dataset containing hourly wind and solar capacity factors for Ireland, taken from <a class="reference external" href="https://model.energy">model.energy</a>.</p>
+<p><strong>Task 1:</strong> Use <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code> to load the dataset from the following URL into a pandas DataFrame. Ensure that the time stamps are treated as <code class="docutils literal notranslate"><span class="pre">pd.DatetimeIndex</span></code>.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://model.energy/data/time-series-2b42655fa0b49b73fb15871dba2f7000.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>Task 2:</strong> Calculate the mean capacity factor for wind and solar over the entire time period.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>onwind    0.366898
+solar     0.099274
+dtype: float64
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>Task 3:</strong> Calculate the correlation between wind and solar capacity factors.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Go to the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/index.html">pandas documentation</a> for functions that might be useful to solve these tasks.</p>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>onwind</th>
+      <th>solar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>onwind</th>
+      <td>1.000000</td>
+      <td>-0.096682</td>
+    </tr>
+    <tr>
+      <th>solar</th>
+      <td>-0.096682</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</details>
+</div>
+<p><strong>Task 4:</strong> Plot the wind and solar capacity factors for the month of May.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;05-2011&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;capacity factor&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;capacity factor&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/f646bbd5c44bff7b02edbb4ed73b4c8614aee3be969cfcc030cb013c6779e78f.png" src="_images/f646bbd5c44bff7b02edbb4ed73b4c8614aee3be969cfcc030cb013c6779e78f.png" />
+</div>
+</details>
+</div>
+<p><strong>Task 5:</strong> Plot the weekly average capacity factors for wind and solar over the entire time period.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;W&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="_images/2c1033218f3628fd38d216deffdf7fb645a78a34258659e119e5a36a6ba5b63d.png" src="_images/2c1033218f3628fd38d216deffdf7fb645a78a34258659e119e5a36a6ba5b63d.png" />
+</div>
+</details>
+</div>
+<p><strong>Task 6:</strong> Go to <a class="reference external" href="https://model.energy">model.energy</a> and retrieve the time series for another region of your choice. Recreate the analysis above and compare the results.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Look for “Download Comma-Separated-Variable (CSV) file of data” in Step 2.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02-workshop-numpy-solution.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Solutions <code class="docutils literal notranslate"><span class="pre">numpy</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-plants-data">Power Plants Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wind-and-solar-capacity-factors">Wind and Solar Capacity Factors</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Fabian Neumann
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022-2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

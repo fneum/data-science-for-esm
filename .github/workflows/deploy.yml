@@ -23,6 +23,11 @@ jobs:
     - name: Install environment with pip
       run: pip install -r requirements.txt
 
+    # Build the book
+    - name: Build the book
+      run: |
+        jupyter-book build data-science-for-esm
+
     # https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow
 
     # Upload the book's HTML as an artifact

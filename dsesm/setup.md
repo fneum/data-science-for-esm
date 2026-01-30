@@ -1,22 +1,4 @@
-# Welcome
-
-Welcome to the website accompanying the course [Data Science for Energy System Modelling](https://moseskonto.tu-berlin.de/moses/modultransfersystem/bolognamodule/beschreibung/anzeigen.html?nummer=31027&version=2&sprache=2). This course is being developed by [Dr. Fabian Neumann](https://fneum.org) and offered as part of the curriculum of the [Department of Digital Transformation of Energy Systems at TU Berlin](https://www.tu.berlin/ensys).
-
-On this website you will find practical introductions to many Python packages that are useful for dealing with energy data and building energy system models. Course materials other than practical introductions to Python packages for students at TU Berlin are provided on [ISIS](https://isis.tu-berlin.de/course/view.php?id=44803) (winter semeter 2025/2026).
-
-The course covers tutorials and examples for getting started with Python, `numpy`, `matplotlib`, `pandas`, `geopandas`, `cartopy`, `rasterio`,  `pysheds`, `atlite`, `networkx`, `linopy`, `pypsa`, `plotly`, `hvplot`, and `streamlit`. Topics covered include:
-
-- time series analysis (e.g., demand, wind and solar production)
-- tabular data (e.g., power plants, industrial sites, LNG terminals)
-- geographical data (e.g., power plants, industrial sites, LNG terminals)
-- data visualisation (e.g., static and interactive plots, maps, dashboards)
-- converting weather data to renewable generation availability
-- land eligibility analysis (e.g., where can we build wind turbines or solar parks)
-- optimisation (e.g. linear programming and using solvers)
-- electricity market modelling (e.g., how dispatch is determined and prices form)
-- power flow modelling (e.g., how electricity can cause grid congestion)
-- capacity expansion planning (e.g., where to build new generation, storage, and transmission)
-- sector-coupling (e.g., hydrogen, heat pumps, electric vehicles)
+# Setup
 
 ## Quickstart with Google Colab
 
@@ -25,9 +7,8 @@ services like  [Google Colab (colab.google)](https://colab.google) which provide
 an online Python version in a [Jupyter Notebook](jupyter.org/) environment. This
 requires a Google account.
 
-Navigate to the other pages. You will find a rocket-shaped button at the top of
-each page that says "Open in Colab". Click this button to open the page in
-Google Colab.
+Navigate to the other pages. You will find a download button at the top of
+each page. Download the `.ipynb` file and import it in Google Colab.
 
 ## Getting the Code
 

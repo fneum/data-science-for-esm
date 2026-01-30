@@ -1,54 +1,70 @@
-name: deploy
+# This file was created automatically with `jupyter-book init --gh-pages` 🪄 💚
+# Ensure your GitHub Pages settings for this repository are set to deploy with **GitHub Actions**.
+
+name: Jupyter Book (via myst) GitHub Pages Deploy
 
 on:
-  # Trigger the workflow on push to main branch
   push:
+    # Runs on pushes targeting the default branch
     branches:
     - main
 
-# This job installs dependencies, build the book, and pushes it to `gh-pages`
+env:
+  # `BASE_URL` determines, relative to the root of the domain, the URL that your site is served from.
+  # E.g., if your site lives at `https://mydomain.org/myproject`, set `BASE_URL=/myproject`.
+  # If, instead, your site lives at the root of the domain, at `https://mydomain.org`, set `BASE_URL=''`.
+  BASE_URL: /${{ github.event.repository.name }}
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
 jobs:
-  build-and-deploy-book:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
 
     steps:
-    - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
+  
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+
+      # - name: Install Jupyter Book (via myst)
+      #   run: npm install -g jupyter-book
 
     # Install dependencies
-    - name: Setup Python
-      uses: actions/setup-python@v6
-      with:
-        python-version: '3.13'
-        cache: pip
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+          cache: pip
 
-    - name: Install environment with pip
-      run: pip install -r requirements.txt
+      - name: Install environment with pip
+        run: pip install -r requirements.txt
 
-    # Build the book
-    - name: Build the book
-      run: |
-        jupyter-book build data-science-for-esm
+      - name: Build HTML Assets
+        run: jupyter-book build --html --execute
 
-    # cache notebooks
-    - name: cache executed notebooks
-      uses: actions/cache@v4
-      with:
-        path: _build/.jupyter_cache
-        key: jupyter-book-cache-${{ hashFiles('requirements.txt') }}
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: './_build/html'
 
-
-    # https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow
-
-    # Upload the book's HTML as an artifact
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v4
-      with:
-        path: data-science-for-esm/_build/html
-
-    # Deploy the book's HTML to GitHub Pages
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -44,21 +44,20 @@ jobs:
       with:
         node-version: 18.x
 
-      # - name: Install Jupyter Book (via myst)
-      #   run: npm install -g jupyter-book
-
     # Install dependencies
     - name: Setup Python
       uses: actions/setup-python@v6
       with:
         python-version: '3.13'
-        cache: pip
 
-    - name: Install environment with pip
-      run: pip install -r requirements.txt
+    - name: Install environment with uv
+      run: |
+        python -m pip install uv
+        uv sync
 
     - name: Build HTML Assets
-      run: jupyter-book build --html --execute
+      run: | 
+        uv run jupyter-book build --html --execute
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v4

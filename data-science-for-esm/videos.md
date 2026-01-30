@@ -199,7 +199,7 @@ Video recordings of the lectures and workshops are available on [YouTube](https:
 {button}`Go to Notebook <10-workshop-pypsa-cem.ipynb>`
 
 
-## Lecture 9: Sector-Coupling   
+## Lecture 9: Sector-Coupling
 
 :::{iframe} https://www.youtube.com/embed/KSnIcPyuQT8
 :width: 100%

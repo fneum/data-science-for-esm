@@ -146,7 +146,7 @@ file.
 1. Open the Anaconda Navigator application
 2. Go to the "Environments" tab on the left
 3. Click "Import" at the bottom
-4. In the dialog, provide a name for the new environment (e.g. `esm-ws-25-26`) and select the downloaded `environment.yaml` file
+4. In the dialog, provide a name for the new environment (e.g. `esm-ss-26`) and select the downloaded `environment.yaml` file
 5. Click "Import" to create the environment and install all required packages
 
 :::{note}
@@ -195,15 +195,15 @@ This process may take some time, depending on your internet connection and compu
 To use the course environment, it must be **activated** by executing in the terminal (or Anaconda Prompt on Windows):
 
 ```sh
-conda activate esm-ws-25-26
+conda activate esm-ss-26
 ```
 
 This can be done anywhere; you do not need to be in the course repository folder.
 
-You should now see the string `(esm-ws-25-26)` prepended to your prompt.
+You should now see the string `(esm-ss-26)` prepended to your prompt.
 
 Now, any execution of Python will use the packages installed in your
-environment `esm-ws-25-26`.
+environment `esm-ss-26`.
 
 :::{warning}
 The activation step has to be repeated whenever you open a new terminal; it is not persistent across terminal sessions.
@@ -242,7 +242,7 @@ conda list
 If you want to permanently remove an environment, run:
 
 ```sh
-conda env remove -n esm-ws-25-26
+conda env remove -n esm-ss-26
 ```
 
 ### Running Jupyter Lab
@@ -361,12 +361,12 @@ Now, whenever you open a Jupyter Notebook file (`.ipynb`), VS Code will
 automatically provide you with an interactive interface to run and edit your
 notebooks. To link the notebook to the correct Python environment, click on the
 **kernel** name in the top-right corner of the notebook interface and select the
-appropriate environment (i.e., `esm-ws-25-26`).
+appropriate environment (i.e., `esm-ss-26`).
 
 This setup is a lot more powerful than Jupyter Lab alone, as it provides many
 additional features such as code completion and AI-assisted coding.
 
-
+<!--
 ### Github Codespaces
 
 Github Codespaces provides a cloud-based development environment that can be
@@ -393,4 +393,4 @@ The free runtime for Github Codespaces is limited to 120 hours per month per use
 
 :::{warning}
 Github Codespaces sessions will time out after a period of inactivity. Unsaved work may be lost. Make sure to frequently save your work.
-:::
+::: -->

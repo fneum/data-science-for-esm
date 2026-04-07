@@ -1,23 +1,24 @@
-name: esm-ws-25-26 # Name needs to be changed in .github/workflows/update-pinned-env.yaml too
+name: esm-ss-26 # Name needs to be changed in .github/workflows/update-pinned-env.yaml too
 channels:
 - conda-forge
 dependencies:
-- python>=3.12,<3.14
+- python>=3.13,<3.14
 - pip
 
   # main packages
 - numpy
 - scipy
 - pandas>=2
+- pypsa>=1.1.2
 - geopandas>=1
 - xarray
 - networkx
 - yaml
-- pyomo
+- pyomo>=6.6
 - netcdf4
-- atlite>=0.4.1
-- powerplantmatching>=0.7.1
-- rasterio>=1.3.2
+- atlite>=0.5
+- powerplantmatching>=0.8.1
+- rasterio>=1.4.3
 - pysheds
 - pyarrow
 - numba
@@ -35,6 +36,7 @@ dependencies:
 - openpyxl
 - libgdal-hdf5
 - libgdal-netcdf
+- cfgrib
 
   # geodata utilities
 - shapely>2
@@ -45,8 +47,6 @@ dependencies:
   # plotting
 - matplotlib>=3.9
 - plotly
-- hvplot
-- holoviews
 - geoviews>=1.10
 - graphviz
 
@@ -56,5 +56,4 @@ dependencies:
 - pre-commit
 
 - pip:
-  - highspy
-  - pypsa>=1
+  - highspy>=1.13

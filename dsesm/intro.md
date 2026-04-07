@@ -2,7 +2,7 @@
 
 Welcome to the website accompanying the course [Data Science for Energy System Modelling](https://moseskonto.tu-berlin.de/moses/modultransfersystem/bolognamodule/beschreibung/anzeigen.html?nummer=31027&version=2&sprache=2). This course is being developed by [Dr. Fabian Neumann](https://fneum.org) and offered as part of the curriculum of the [Department of Digital Transformation of Energy Systems at TU Berlin](https://www.tu.berlin/ensys).
 
-On this website you will find practical introductions to many Python packages that are useful for dealing with energy data and building energy system models. Video recordings of the lectures and workshops are available on [YouTube](https://www.youtube.com/watch?v=BqvbdtDrW7g&list=PL9_USGH2eQENhhCH9md2bJDNKPTIISWgd&pp=sAgC). Further course materials for students at TU Berlin are provided on [ISIS](https://isis.tu-berlin.de/course/view.php?id=44803) (winter semeter 2025/2026).
+On this website you will find practical introductions to many Python packages that are useful for dealing with energy data and building energy system models. Video recordings of the lectures and workshops are available on [YouTube](https://www.youtube.com/watch?v=BqvbdtDrW7g&list=PL9_USGH2eQENhhCH9md2bJDNKPTIISWgd&pp=sAgC). Further course materials for students at TU Berlin are provided on [ISIS](https://isis.tu-berlin.de/course/view.php?id=48364) (summer term 2026, [previous semester](https://isis.tu-berlin.de/course/view.php?id=44803)).
 
 The course covers tutorials and examples for getting started with Python, `numpy`, `matplotlib`, `pandas`, `geopandas`, `cartopy`, `rasterio`,  `pysheds`, `atlite`, `networkx`, `linopy`, `pypsa`, `plotly`, `hvplot`, and `streamlit`. Topics covered include:
 

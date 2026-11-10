@@ -4,7 +4,7 @@
 
 You can begin with the course without a local Python installation using online
 services like  [Google Colab (colab.google)](https://colab.google) which provide
-an online Python version in a [Jupyter Notebook](jupyter.org/) environment. This
+an online Python version in a [Jupyter Notebook](https://jupyter.org/) environment. This
 requires a Google account.
 
 Navigate to the other pages. You will find a download button at the top of
@@ -17,7 +17,7 @@ repository or parts of it.  There are several ways to do this:
 
 ### Individual File Download (beginner friendly):
 
-You can download individual files directly from website by clicking on the
+You can download individual files directly from the website by clicking on the
 download button at the top-right corner of each page.
 
 :::{note}
@@ -32,7 +32,7 @@ of your choice.
 :::{warning}
 This method does not allow you to easily update the course materials later on. You will need to re-download the ZIP file and re-extract it to get the latest
 updates.
-::::
+:::
 
 ### Git Option (more advanced):
 
@@ -94,7 +94,7 @@ be difficult! Fortunately, the problem is solved by using **package managers**.
 
 The easiest way to set up a full-stack scientific Python deployment without
 prior experience is to use a Python distribution, such as
-[Anaconda](https://www.anaconda.com). The instructions differ for Windows, MacOS, and Linux. Closely, follow the instructions (and videos) at
+[Anaconda](https://www.anaconda.com). The instructions differ for Windows, MacOS, and Linux. Follow the instructions closely (and videos) at
 
 https://www.anaconda.com/docs/getting-started/getting-started
 
@@ -146,7 +146,7 @@ file.
 1. Open the Anaconda Navigator application
 2. Go to the "Environments" tab on the left
 3. Click "Import" at the bottom
-4. In the dialog, provide a name for the new environment (e.g. `esm-ss-26`) and select the downloaded `environment.yaml` file
+4. In the dialog, provide a name for the new environment (e.g. `esm-ss-26`) and select the downloaded `.lock.yaml` file for your operating system
 5. Click "Import" to create the environment and install all required packages
 
 :::{note}
@@ -186,7 +186,11 @@ conda env create -f envs/linux-64.lock.yaml
 ```
 
 :::{note}
-This process may take some time, depending on your internet connection and computer speed. If you encounter issues that the environment could not be solved, try using the
+This process may take some time, depending on your internet connection and computer speed. If the environment cannot be solved, try the unpinned `environment.yaml` file:
+
+```sh
+conda env create -f envs/environment.yaml
+```
 :::
 
 
@@ -311,7 +315,7 @@ Unlike with `conda`, `pip` does not provide isolated environments by default.
 ### Using `uv`
 
 :::{warning}
-Some geographical packages used in this course (e.g., `rasterio`, `geopandas`, `cartopy`) may require additional system dependencies that are not handled by `pip`.
+Some geographical packages used in this course (e.g., `rasterio`, `geopandas`, `cartopy`) may require additional system dependencies that are not handled by `uv`.
 Unlike with `conda`, you may need to install these dependencies manually, e.g. "GDAL".
 **Only use this method if you are experienced with package management!**
 :::
@@ -332,10 +336,10 @@ uv sync
 
 It is important that you run this command in the root folder of the course repository, where the `pyproject.toml` and `uv.lock` files are located.
 
-You can also add more packages later using `uv pip install package_name`, e.g.
+You can also add more packages later using `uv add package_name`, e.g.
 
 ```sh
-uv pip install pandas
+uv add pandas
 ```
 
 Once this is done, you can start a new Jupyter Lab session in your browser with this environment by running:
